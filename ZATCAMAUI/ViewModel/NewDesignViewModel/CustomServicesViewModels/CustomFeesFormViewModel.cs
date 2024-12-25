@@ -250,7 +250,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     {
 
                         FeesCalculatorResponse = data.result;
-                        //ExtraFeesDescription = AppResources.Customsdeclarationissuancefees + " = " + FeesCalculatorResponse.extraFeesMinimumValue + " > " + " " + FeesCalculatorResponse.totalPayment + " * " + FeesCalculatorResponse.extraFeesPercentage + " > " + FeesCalculatorResponse.extraFeesMaximumValue;
+                        ExtraFeesDescription =$"{AppResources.ExtraFeesDescription} * {FeesCalculatorResponse.extraFeesPercentage} {AppResources.LowFees} {FeesCalculatorResponse.extraFeesMinimumValue} {AppResources.MaxFees}{FeesCalculatorResponse.extraFeesMaximumValue} {AppResources.SAR}";
 
                         if (FeesCalculatorResponse.vat != null && FeesCalculatorResponse.vat > 0)
                         {

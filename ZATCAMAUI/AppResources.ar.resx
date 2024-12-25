@@ -10210,7 +10210,13 @@ info@zatca.gov.sa</value>
     <value>رسوم الخدمات الجمركية</value>
 </data>
 <data name="ExtraFeesDescription" xml:space="preserve">
-    <value>رسوم الخدمات الجمركية = قيمة المنتج * 0.0015 حد ادنى 15 ريال بحد اقصى 500 ريال</value>
+    <value>رسوم الخدمات الجمركية = قيمة المنتج</value>
+</data>
+<data name="LowFees" xml:space="preserve">
+    <value>بحد ادنى</value>
+</data>
+<data name="MaxFees" xml:space="preserve">
+    <value>ريال بحد اقصى</value>
 </data>
 	<data name="cleared" xml:space="preserve">
     <value>معتمده</value>
@@ -10339,13 +10345,13 @@ info@zatca.gov.sa</value>
     <value>الرقم الموحد للمنشأة</value>
 </data>
 	<data name="NDTotalDisclaimer" xml:space="preserve">
-    <value>المجموع: الرسوم الجمركية + الضريبة الانتقائية إن وجدت + قيمة إصدار البيان الجمركي + ضريبة القيمة المضافة</value>
+    <value>المجموع: الرسوم الجمركية + الضريبة الانتقائية إن وجدت + قيمة رسوم الخدمات الجمركية + ضريبة القيمة المضافة</value>
 </data>
 	<data name="CustomsdeclarationDisclaimer" xml:space="preserve">
     <value>قيمة المنتج x الرسوم الجمركية</value>
 </data>
 	<data name="VATCertificatesDisclaimer" xml:space="preserve">
-    <value>(الرسوم الجمركية + الضريبة الانتقائية إن وجدت + قيمة المنتج أو سعر الحد الأدنى أيهما أعلى + رسوم إصدار البيان الجمركي) x نسبة ضريبة القيمة المضافة</value>
+    <value>(الرسوم الجمركية + الضريبة الانتقائية إن وجدت + قيمة المنتج أو سعر الحد الأدنى أيهما أعلى + رسوم الخدمات الجمركية) x نسبة ضريبة القيمة المضافة</value>
 </data>
 	<data name="QTY" xml:space="preserve">
     <value>الكمية</value>
