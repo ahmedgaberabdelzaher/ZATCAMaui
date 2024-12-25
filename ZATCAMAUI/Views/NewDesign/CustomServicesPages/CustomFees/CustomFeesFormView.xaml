@@ -501,7 +501,7 @@
                                 <!--Extra fees Disclamier-->
                                 <Label Style="{StaticResource BodyLabelGrey}"
                                         FontSize="12"
-                                        Text="{x:Static ResourceManager:AppResources.ExtraFeesDescription}" />
+                                        Text="{Binding ExtraFeesDescription}" />
 
                                 <Label
                                     HorizontalOptions="Start"

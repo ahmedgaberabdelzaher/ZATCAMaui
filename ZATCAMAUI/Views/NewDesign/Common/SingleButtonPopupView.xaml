@@ -6,8 +6,8 @@
     xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
-    BackgroundColor="#88000000"
     BackgroundClicked="OnBackGroundClicked"
+    BackgroundColor="#88000000"
     FlowDirection="{Binding AppDirection}">
     <Border
         BackgroundColor="White"
@@ -15,7 +15,7 @@
         StrokeThickness="0"
         Style="{StaticResource CommonTopCurves}"
         VerticalOptions="EndAndExpand">
-        <ScrollView VerticalScrollBarVisibility="Never">
+        <ScrollView VerticalOptions="End" VerticalScrollBarVisibility="Never">
 
             <StackLayout>
                 <Label

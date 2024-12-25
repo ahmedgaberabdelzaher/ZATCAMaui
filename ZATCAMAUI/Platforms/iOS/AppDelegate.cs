@@ -76,10 +76,6 @@ public class AppDelegate : MauiUIApplicationDelegate
             .ServerCertificateValidationCallback +=
             (sender, cert, chain, sslPolicyErrors) => true;
             App.AppVersion = NSBundle.MainBundle.InfoDictionary["CFBundleShortVersionString"].ToString();
-            //App iosapp = new App();
-            //App.appObj = iosapp;
-
-
 
             //var config = AgentConfiguration.Create("EUM-AAB-AUM");
             //config.LoggingLevel = LoggingLevel.Debug;
@@ -88,13 +84,10 @@ public class AppDelegate : MauiUIApplicationDelegate
             //config.CollectorURL = "https://eum.gazt.gov.sa:443";
             //Instrumentation.InitWithConfiguration(config);
 
-
-            // Xamarin.FormsGoogleMaps.Init("AIzaSyCnIhK1NNzYNX-pZ1JjZpsLAXzHPgQOgSM");
-
             //App.InitializeAppDynamics();
 
         }
-        catch (Exception exp)
+        catch (Exception)
         {
 
         }
