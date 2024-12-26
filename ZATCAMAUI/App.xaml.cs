@@ -442,8 +442,8 @@ namespace ZATCAMAUI
 
                 IsAppRunningInBackground = false;
                 Preferences.Default.Set("timeOut", DateTime.Now);
-                PageSettings.CheckTarget_Environment("QA");
-                PageSettings.GetBaseURL("QA");
+                PageSettings.CheckTarget_Environment("STG");
+                PageSettings.GetBaseURL("STG");
 
               //  Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NCaF5cXmZCf1FpRmJGdld5fUVHYVZUTXxaS00DNHVRdkdnWXhccnRTRGJfVkd3X0M="); //MAUI 26.*
               Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MzUyMzAyMUAzMjM3MmUzMDJlMzBQbGhybFVDcUVRclBQN1IzbjIwSHZtUUo1UDkybUZMVFJyUGUrU0N6dGg4PQ=="); //MAUI 27.*

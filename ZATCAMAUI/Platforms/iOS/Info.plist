@@ -91,7 +91,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>286</string>
 	<key>CFBundleVersion</key>
-	<string>5.0.313</string>
+	<string>5.0.314</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.gazt.egazt</string>
 	<key>NSAppleMusicUsageDescription</key>
