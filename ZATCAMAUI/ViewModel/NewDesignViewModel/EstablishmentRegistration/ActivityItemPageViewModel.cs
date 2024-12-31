@@ -14,6 +14,7 @@ using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using static ZATCAMAUI.Models.ErrorMessage;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages;
+using ZATCAMAUI.Core.Exceptions;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 {
@@ -979,8 +980,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Mesg==>" + ex.Message);
-                Console.WriteLine("ex==>"+ ex.StackTrace);
             }
             finally
             {
@@ -1102,10 +1101,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 MopupService.Instance.PushAsync(new ActivitiesPopupPageView(dataModel = new PopUpServiceModel { existedActivities = NregMulActivityList }, false), true);
             }
-
-
-
-
         }
         private async Task fetchTabDataAndBind()
         {
@@ -1272,9 +1267,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     LicenseData = NregActivityList.Where(i => i.Type == "ZS0004").ToList();
                 }
             }
-            catch (Exception ex)
+            catch (GAZTVATRegistrationInProcessException ex)
             {
-
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
             }
             finally
             {
@@ -1394,15 +1401,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             catch (Exception)
             {
-
             }
         }
 
         public async Task validateCRNumber(string idNumber, bool CallMulset = false)
         {
             IsLoading = true;
-
-
             try
             {
                 if (string.IsNullOrEmpty(idNumber))
@@ -1414,64 +1418,56 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                 if (!string.IsNullOrEmpty(result))
                 {
-                    try
+                    validateCR = JsonConvert.DeserializeObject<ValidateCR>(result);
+                    CrName = validateCR?.Crname;
+                    CRNumber = validateCR?.Crnum;
+                    CRNationalNumber = validateCR?.Z700Crnum;
+
+                    EnableCRNationalInputField = string.IsNullOrEmpty(CRNationalNumber);
+                    if (!string.IsNullOrEmpty(CrName))
                     {
-                        validateCR = JsonConvert.DeserializeObject<ValidateCR>(result);
-                        CrName = validateCR?.Crname;
-                        CRNumber = validateCR?.Crnum;
-                        CRNationalNumber = validateCR?.Z700Crnum;
-
-                        EnableCRNationalInputField = string.IsNullOrEmpty(CRNationalNumber);
-                        if (!string.IsNullOrEmpty(CrName))
-                        {
-                            EnableCRInputField = false;
-                        }
-                        else
-                        {
-                            EnableCRInputField = true;
-                        }
-
-                        makeDropdownFieldsNorEditable();
-                        if (CallMulset == false)
-                        {
-                            IsLoading = false;
-                            return;
-                        }
-                        //Calling new API to get the specific acticities for that CR
-                        var mulActivitySet = await EstablishmentRegistrationWebServiceManager.ESTGetCRMulActivitySetList(CRNumber);
-                        if (mulActivitySet != null)
-                        {
-                            mulActivitySetData = mulActivitySet?.results;
-
-                            List<NregMulSet> existingActivitiesList = new List<NregMulSet>();
-                            NregMulSet existingActivities = null;
-
-
-                            List<NregMulSet> filteredActivities = taxPayerDetails?.Nreg_Mul_ActivitySet?.Where(a => a.Idnumber == CRNumber).ToList();
-
-                            existingActivitiesList = UtilityManager.GetExistingActivities(filteredActivities, existingActivities, activityList);
-
-                            dataModel = new PopUpServiceModel
-                            {
-                                existedActivities = existingActivitiesList
-                            };
-
-                            if (existingActivities != null)
-                            {
-                                NregMulActivityList?.AddRange(existingActivitiesList);
-                            }
-
-                        }
-
+                        EnableCRInputField = false;
                     }
-                    catch (Exception)
+                    else
+                    {
+                        EnableCRInputField = true;
+                    }
+
+                    makeDropdownFieldsNorEditable();
+                    if (CallMulset == false)
                     {
                         IsLoading = false;
+                        return;
+                    }
+                    //Calling new API to get the specific acticities for that CR
+                    var mulActivitySet = await EstablishmentRegistrationWebServiceManager.ESTGetCRMulActivitySetList(CRNumber);
+                    if (mulActivitySet != null)
+                    {
+                        mulActivitySetData = mulActivitySet?.results;
+
+                        List<NregMulSet> existingActivitiesList = new List<NregMulSet>();
+                        NregMulSet existingActivities = null;
+
+
+                        List<NregMulSet> filteredActivities = taxPayerDetails?.Nreg_Mul_ActivitySet?.Where(a => a.Idnumber == CRNumber).ToList();
+
+                        existingActivitiesList = UtilityManager.GetExistingActivities(filteredActivities, existingActivities, activityList);
+
+                        dataModel = new PopUpServiceModel
+                        {
+                            existedActivities = existingActivitiesList
+                        };
+
+                        if (existingActivities != null)
+                        {
+                            NregMulActivityList?.AddRange(existingActivitiesList);
+                        }
+
                     }
                     IsLoading = false;
                     if (validateCR != null && validateCR.Crnum == null)
                     {
-                       await PrepareError(result);
+                        await PrepareError(result);
                         return;
                     }
 
@@ -1485,43 +1481,56 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     }
 
                 }
+
+                if (validateCR != null)
+                {
+                    if (!string.IsNullOrEmpty(validateCR.Z700Crnum))
+                    {
+                        CRNumber = validateCR.Z700Crnum;
+                    }
+                }
+                IsLoading = false;
+                updateCRAttachments();
+                if (validateCR?.NotFound == "X")
+                {
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateCRNumberInValid));
+                    return;
+                }
+                if (validateCR?.Excption == "X")
+                {
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateCRNumberInValid));
+                    return;
+                }
+                CRIssueCity = new CityDropdownItem()
+                {
+                    CityName = OutletDropDowns.city_dropdownSet.Where(i => i.CityCode == validateCR?.CityCode).FirstOrDefault().CityName,
+                    CityCode = validateCR?.CityCode,
+                };
+                CRValidFrom = validateCR?.Issuedt;//?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                EnableInputFields = string.IsNullOrEmpty(validateCR?.Crname);
+                updateDatePickers(EstablishmentOutletActivitiesTabsEnum.CRDetails);
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
-
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
 
-
-
-            if (validateCR != null)
-            {
-                if (!string.IsNullOrEmpty(validateCR.Z700Crnum))
-                {
-                    CRNumber = validateCR.Z700Crnum;
-                }
-
-            }
-
-            IsLoading = false;
-            updateCRAttachments();
-            if (validateCR?.NotFound == "X")
-            {
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateCRNumberInValid));
-                return;
-            }
-            if (validateCR?.Excption == "X")
-            {
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateCRNumberInValid));
-                return;
-            }
-            CRIssueCity = new CityDropdownItem()
-            {
-                CityName = OutletDropDowns.city_dropdownSet.Where(i => i.CityCode == validateCR?.CityCode).FirstOrDefault().CityName,
-                CityCode = validateCR?.CityCode,
-            };
-            CRValidFrom = validateCR?.Issuedt;//?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
-            EnableInputFields = string.IsNullOrEmpty(validateCR?.Crname);
-            updateDatePickers(EstablishmentOutletActivitiesTabsEnum.CRDetails);
         }
 
         private async Task PrepareError(string result)
@@ -1683,8 +1692,22 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     LicensesCopies.Add(dd);
                 }
             }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
             catch (Exception)
-            { }
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
             finally
             {
                 IsLoading = false;
@@ -1693,48 +1716,66 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private async Task OnDeleteAttachment(Attachment item, string docType)
         {
-            string QuestionMark = string.Empty;
-            if (App.IsArabic)
+            try
             {
-                QuestionMark = "؟";
-            }
-            else
-            {
-                QuestionMark = "?";
-            }
-
-            var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText + " " + item.Filename + QuestionMark);
-            confirmPopup.OnSelect = async (str) =>
-            {
-                if (str == "Yes")
+                string QuestionMark = string.Empty;
+                if (App.IsArabic)
                 {
-                    IsLoading = true;
-                    var delete = EstablishmentRegistrationWebServiceManager.ESTDeleteAttachment(item?.Filename, item?.RetGuid, docType, item?.Doguid);
-                    if (!string.IsNullOrEmpty(delete) && delete == "delete")
-                    {
-                        if (docType == "RG01")
-                        {
-                            CRsCopies.Remove(item);
-                        }
-                        else if (docType == "RG12")
-                        {
-                            TransferCRsCopies.Remove(item);
-                        }
-                        else if (docType == "RG02")
-                        {
-                            LicensesCopies.Remove(item);
-                        }
-                        IsLoading = false;
-                    }
-                    else
-                    {
-                        IsLoading = false;
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                        await _dialogService.ShowError(AppResources.ZZSomethingwentwrong, AppResources.Information, "Ok", null);
-                    }
+                    QuestionMark = "؟";
                 }
-            };
-            await MopupService.Instance.PushAsync(confirmPopup);
+                else
+                {
+                    QuestionMark = "?";
+                }
+                var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText + " " + item.Filename + QuestionMark);
+                confirmPopup.OnSelect = async (str) =>
+                {
+                    if (str == "Yes")
+                    {
+                        IsLoading = true;
+                        var delete = EstablishmentRegistrationWebServiceManager.ESTDeleteAttachment(item?.Filename, item?.RetGuid, docType, item?.Doguid);
+                        if (!string.IsNullOrEmpty(delete) && delete == "delete")
+                        {
+                            if (docType == "RG01")
+                            {
+                                CRsCopies.Remove(item);
+                            }
+                            else if (docType == "RG12")
+                            {
+                                TransferCRsCopies.Remove(item);
+                            }
+                            else if (docType == "RG02")
+                            {
+                                LicensesCopies.Remove(item);
+                            }
+                            IsLoading = false;
+                        }
+                        else
+                        {
+                            IsLoading = false;
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                            await _dialogService.ShowError(AppResources.ZZSomethingwentwrong, AppResources.Information, "Ok", null);
+                        }
+                    }
+                };
+                await MopupService.Instance.PushAsync(confirmPopup);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, true, _navigationService);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
+            }
         }
 
         private async Task<bool> ValidateForm()
@@ -1938,7 +1979,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                 }
             }
-            catch (Exception )
+            catch (Exception)
             {
 
             }

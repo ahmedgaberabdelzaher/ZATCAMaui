@@ -201,7 +201,8 @@ namespace ZATCAMAUI.Core.Mangers
                 catch (GAZTVATRegistrationInProcessException)
                 {
                     throw new GAZTVATRegistrationInProcessException();
-                } catch (GAZTNetworkConnectivityIssueException)
+                }
+                catch (GAZTNetworkConnectivityIssueException)
                 {
                     throw new GAZTNetworkConnectivityIssueException();
                 }
@@ -253,24 +254,10 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             string _responseData = ESTBranchesDropDownResponse.Content.ReadAsStringAsync().Result;
                             ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_responseData);
-                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            if (errorMesg?.header?.moreInformation?.errorDetails?.Count > 0)
                             {
-                                string errorCode = errorMesg.error.innererror.errordetails[0].code;
-
-                                var errorMsg = errorMesg.error.innererror.errordetails[0].message;
-
-                                if (errorCode.Contains("206"))
-                                {
-                                    errorMsg = "206";
-                                }
-                                else if (errorCode.Contains("112"))
-                                {
-                                    errorMsg = "112";
-                                }
-
-                                string WithReplacedString = errorMsg.Replace("An exception was raised", string.Empty);
-                                errorMsg = WithReplacedString;
-                                throw new GAZTVATRegistrationInProcessException(errorMsg);
+                                string errorMessage = WebServiceManager.PrepareErrorMessageByJson(_responseData);
+                                throw new GAZTVATRegistrationInProcessException(errorMessage);
                             }
                         }
                         if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -301,11 +288,17 @@ namespace ZATCAMAUI.Core.Mangers
                                 try
                                 {
                                     ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["data"].ToString();
+                                    taxPayer = JsonConvert.DeserializeObject<TaxPayerDetails>(ESTBranchesDropDownResponseJSON);
+                                    if (statusHeader?.header?.moreInformation?.errorDetails?.Count > 0)
+                                    {
+                                        string errorMessage = WebServiceManager.PrepareErrorMessageByJson(ESTBranchesDropDownResponseJSON);
+                                        throw new GAZTVATRegistrationInProcessException(errorMessage);
+                                    }
                                 }
                                 catch (Exception)
                                 {
                                 }
-                                taxPayer = JsonConvert.DeserializeObject<TaxPayerDetails>(ESTBranchesDropDownResponseJSON);
+
                             }
                         }
                         else
@@ -404,30 +397,10 @@ namespace ZATCAMAUI.Core.Mangers
                                     ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(ESTBranchesDropDownResponseJSON);
                                     if (errorMesg?.header?.moreInformation?.errorDetails?.Count > 0)
                                     {
-                                        string ErrorMessageFormServer = string.Empty;
-                                        if (errorMesg.header.moreInformation.errorDetails.Count > 0)
-                                        {
-                                            if (errorMesg.header.moreInformation.errorDetails.Count > 2)
-                                            {
-                                                for (int i = 0; i < errorMesg.header.moreInformation.errorDetails.Count - 1; i++)
-                                                {
-                                                    ErrorMessageFormServer = ErrorMessageFormServer + " " + errorMesg.header.moreInformation.errorDetails[i].message;
-                                                }
-                                            }
-                                            else
-                                            {
-                                                ErrorMessageFormServer = errorMesg.header.moreInformation.errorDetails[0].message;
-                                            }
-                                        }
-                                        throw new GAZTVATRegistrationInProcessException(ErrorMessageFormServer);
-                                    }
-                                    else if (!string.IsNullOrEmpty(errorMesg.error.message.value))
-                                    {
-                                        string ErrorMessageFormServer = errorMesg.error.message.value;
-                                        throw new GAZTVATRegistrationInProcessException(ErrorMessageFormServer);
+                                        string errorMessage = WebServiceManager.PrepareErrorMessageByJson(ESTBranchesDropDownResponseJSON);
+                                        throw new GAZTVATRegistrationInProcessException(errorMessage);
                                     }
                                 }
-
                                 else
                                 {
                                     if (!string.IsNullOrEmpty(deserialisedResponseJSONs))
@@ -452,14 +425,13 @@ namespace ZATCAMAUI.Core.Mangers
                         }
                         else
                         {
-
                             throw new GAZTNetworkConnectivityIssueException();
                         }
                     }
                 }
-                catch (JsonReaderException)
+                catch (GAZTVATRegistrationInProcessException)
                 {
-                    throw new GAZTInvalidDataException();
+                    throw new GAZTVATRegistrationInProcessException();
                 }
                 catch (GAZTNetworkConnectivityIssueException)
                 {
@@ -467,7 +439,6 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 catch (Exception)
                 {
-
                     throw new GAZTNetworkConnectivityIssueException();
                 }
             }
@@ -672,7 +643,7 @@ namespace ZATCAMAUI.Core.Mangers
             }
             else
             {
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+                throw new InternetException();
             }
         }
         public static async Task<OutletNumber> ESTOutletNumber(string Fbnum)

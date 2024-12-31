@@ -1624,7 +1624,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                         {
                             MainActivity = false;
                         }
-                       await updateActivityList();
+                        await updateActivityList();
                         updateCRAttachments();
                     }
                     if (CrName.Length > 0)
@@ -1679,7 +1679,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                         {
                             MainActivity = false;
                         }
-                       await updateActivityList(SelectedLicenseItem?.Activity);
+                        await updateActivityList(SelectedLicenseItem?.Activity);
 
                         List<Attachment> list = new List<Attachment>();
                         var lists = taxPayerDetails.AttDetSet.Where(x => x.Dotyp == "RG02" && x.OutletRef == string.Format("{0}-{1}", SelectedLicenseItem?.Actno, SelectedLicenseItem?.Idnumber)).ToList();
@@ -1737,7 +1737,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
             {
                 await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
-            catch(Exception)
+            catch (Exception)
             {
                 await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
             }
@@ -1927,7 +1927,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
 
                 WebServiceManager.ErrorMessageForUnlockAccount = errorMesg?.header?.moreInformation?.errorDetails[0].message;
 
-               
+
                 string line1 = "";
 
                 for (int i = 0; i < errorMesg?.header?.moreInformation?.errorDetails.Count; i++)
@@ -1938,8 +1938,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
 
                 String WithReplacedString = WebServiceManager.ErrorMessageForUnlockAccount.Replace("An exception was raised", string.Empty);
 
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(WithReplacedString));
-              
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(WithReplacedString));
+
             }
         }
 
@@ -2092,46 +2092,65 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
         }
         private async Task OnDeleteAttachment(Attachment item, string docType)
         {
-            string QuestionMark = string.Empty;
-            if (App.IsArabic)
+            try
             {
-                QuestionMark = "؟";
-            }
-            else
-            {
-                QuestionMark = "?";
-            }
-            var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZUpdateZakatDelete + "   " + item.Filename + QuestionMark);
-            confirmPopup.OnSelect = async (str) =>
-            {
-                if (str == "Yes")
+                string QuestionMark = string.Empty;
+                if (App.IsArabic)
                 {
-                    IsLoading = true;
-                    var delete = EstablishmentRegistrationWebServiceManager.ESTDeleteAttachment(item?.Filename, item?.RetGuid, docType, item?.Doguid);
-                    if (!string.IsNullOrEmpty(delete) && delete == "delete")
-                    {
-                        if (docType == "RG01")
-                        {
-                            CRsCopies.Remove(item);
-                        }
-                        else if (docType == "RG12")
-                        {
-                            TransferCRsCopies.Remove(item);
-                        }
-                        else if (docType == "RG02")
-                        {
-                            LicensesCopies.Remove(item);
-                        }
-                        IsLoading = false;
-                    }
-                    else
-                    {
-                        IsLoading = false;
-                        await _dialogService.ShowError(AppResources.ZZSomethingwentwrong, AppResources.Information, "Ok", null);
-                    }
+                    QuestionMark = "؟";
                 }
-            };
-            await MopupService.Instance.PushAsync(confirmPopup);
+                else
+                {
+                    QuestionMark = "?";
+                }
+                var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZUpdateZakatDelete + "   " + item.Filename + QuestionMark);
+                confirmPopup.OnSelect = async (str) =>
+                {
+                    if (str == "Yes")
+                    {
+                        IsLoading = true;
+                        var delete = EstablishmentRegistrationWebServiceManager.ESTDeleteAttachment(item?.Filename, item?.RetGuid, docType, item?.Doguid);
+                        if (!string.IsNullOrEmpty(delete) && delete == "delete")
+                        {
+                            if (docType == "RG01")
+                            {
+                                CRsCopies.Remove(item);
+                            }
+                            else if (docType == "RG12")
+                            {
+                                TransferCRsCopies.Remove(item);
+                            }
+                            else if (docType == "RG02")
+                            {
+                                LicensesCopies.Remove(item);
+                            }
+                            IsLoading = false;
+                        }
+                        else
+                        {
+                            IsLoading = false;
+                            await _dialogService.ShowError(AppResources.ZZSomethingwentwrong, AppResources.Information, "Ok", null);
+                        }
+                    }
+                };
+                await MopupService.Instance.PushAsync(confirmPopup);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, true, _navigationService);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
+            }
         }
 
         private async Task<bool> ValidateForm()
