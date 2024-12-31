@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
@@ -70,13 +71,30 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.InternationalMobileNumb
         #endregion
         public async Task onPageLoad()
         {
-
-            mobileData = await WebServiceManager.GAZTGetMobileRegionDropdown();
-            if (mobileData != null && mobileData.Count != 0)
+            try
             {
-                MobileCodes = mobileData;
-                MobileCodes = new ObservableCollection<InternationalMobileData>(MobileCodes.OrderBy(x => x.Telefto).ToList());
-
+                mobileData = await WebServiceManager.GAZTGetMobileRegionDropdown();
+                if (mobileData != null && mobileData.Count != 0)
+                {
+                    MobileCodes = mobileData;
+                    MobileCodes = new ObservableCollection<InternationalMobileData>(MobileCodes.OrderBy(x => x.Telefto).ToList());
+                }
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
 

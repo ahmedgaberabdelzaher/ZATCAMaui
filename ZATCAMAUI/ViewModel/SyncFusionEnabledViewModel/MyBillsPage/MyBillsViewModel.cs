@@ -355,7 +355,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyBillsPage
                 _navigationService.NavigateTo(App.SFLandingPageView);
             });
         }
-        public void onPageLoad(BillInfo billInfo)
+        public async Task onPageLoad(BillInfo billInfo)
         {
             IsLoading = true;
             MyBills = null;
@@ -363,8 +363,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyBillsPage
             Colors = null;
             ObservableCollection<MyBills> myBills = null;
             ChartColorCollection ColorsChild = new ChartColorCollection();
-            try
-            {
                 try
                 {
                     string lang = UtilityManager.GetLanguageParameter();
@@ -459,28 +457,27 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyBillsPage
                         SetNoDataLabelVisibilityPPAIDList = false;
                     }
                 }
-                catch (Exception e)
+                catch (GAZTVATRegistrationInProcessException ex)
                 {
-
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessageBox(e.Message, AppResources.Information);
-                        _navigationService.GoBack();
-                    });
+                    await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
+                }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+                }
+                catch (InternetException)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+                }
+                catch (Exception)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+                }
+                finally
+                {
                     IsLoading = false;
                 }
-            }
-            catch (InternetException ex)
-            {
-
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
                 IsLoading = false;
-            }
-            IsLoading = false;
         }
         public async Task PopToRootPage()
         {

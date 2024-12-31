@@ -241,9 +241,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     await PopToRootPage();
 
                 }
-                catch (InternetException ex)
+                catch (GAZTNetworkConnectivityIssueException)
                 {
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+                }
+                catch (InternetException)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+                }
+                catch (Exception)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+                }
+                finally
+                {
+                    IsLoading = false;
                 }
                 string HTMLContent = string.Empty;
                 string HTMLContentTest = string.Empty;
@@ -294,37 +306,56 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             });
             OnFavClicked = new Command(async () =>
             {
-                if (CorrespondenceD.IsFav == false)
+                try
                 {
-                    CorrespondenceFavoriteModel FavoriteM = new CorrespondenceFavoriteModel();
-                    DateTime formattedBegdaz = DateTime.Parse(CorrespondenceD.Begdaz);
-                    FavoriteM.Begdaz = formattedBegdaz.ToString("yyyy-MM-ddTHH:mm:ss");
-                    FavoriteM.Cokey = CorrespondenceD.Cokey;
-                    FavoriteM.Cotyp = CorrespondenceD.Cotype;
-                    DateTime formattedEnddaz = DateTime.Parse(CorrespondenceD.Enddaz);
-                    FavoriteM.Enddaz = formattedEnddaz.ToString("yyyy-MM-ddTHH:mm:ss");
-                    FavoriteM.Gpart = CorrespondenceD.Gpart;
-                    FavoriteM.Zzfav = true;
-                    FavoriteM.Vkont = CorrespondenceD.Vkont;
-                    string result = await WebServiceManager.GAZTSetFavCorrespondence(FavoriteM);
-                    CorrespondenceD.IsFav = true;
-                    FavIcon = "ic_star.png";
+                    if (CorrespondenceD.IsFav == false)
+                    {
+                        CorrespondenceFavoriteModel FavoriteM = new CorrespondenceFavoriteModel();
+                        DateTime formattedBegdaz = DateTime.Parse(CorrespondenceD.Begdaz);
+                        FavoriteM.Begdaz = formattedBegdaz.ToString("yyyy-MM-ddTHH:mm:ss");
+                        FavoriteM.Cokey = CorrespondenceD.Cokey;
+                        FavoriteM.Cotyp = CorrespondenceD.Cotype;
+                        DateTime formattedEnddaz = DateTime.Parse(CorrespondenceD.Enddaz);
+                        FavoriteM.Enddaz = formattedEnddaz.ToString("yyyy-MM-ddTHH:mm:ss");
+                        FavoriteM.Gpart = CorrespondenceD.Gpart;
+                        FavoriteM.Zzfav = true;
+                        FavoriteM.Vkont = CorrespondenceD.Vkont;
+                        string result = await WebServiceManager.GAZTSetFavCorrespondence(FavoriteM);
+                        CorrespondenceD.IsFav = true;
+                        FavIcon = "ic_star.png";
+                    }
+                    else if (CorrespondenceD.IsFav == true)
+                    {
+                        CorrespondenceFavoriteModel FavoriteM = new CorrespondenceFavoriteModel();
+                        DateTime formattedBegdaz = DateTime.Parse(CorrespondenceD.Begdaz);
+                        FavoriteM.Begdaz = formattedBegdaz.ToString("yyyy-MM-ddTHH:mm:ss");
+                        FavoriteM.Cokey = CorrespondenceD.Cokey;
+                        FavoriteM.Cotyp = CorrespondenceD.Cotype;
+                        DateTime formattedEnddaz = DateTime.Parse(CorrespondenceD.Enddaz);
+                        FavoriteM.Enddaz = formattedEnddaz.ToString("yyyy-MM-ddTHH:mm:ss");
+                        FavoriteM.Gpart = CorrespondenceD.Gpart;
+                        FavoriteM.Zzfav = false;
+                        FavoriteM.Vkont = CorrespondenceD.Vkont;
+                        string result = await WebServiceManager.GAZTSetFavCorrespondence(FavoriteM);
+                        CorrespondenceD.IsFav = false;
+                        FavIcon = "ic_star_border.png";
+                    }
                 }
-                else if (CorrespondenceD.IsFav == true)
+                catch (GAZTNetworkConnectivityIssueException)
                 {
-                    CorrespondenceFavoriteModel FavoriteM = new CorrespondenceFavoriteModel();
-                    DateTime formattedBegdaz = DateTime.Parse(CorrespondenceD.Begdaz);
-                    FavoriteM.Begdaz = formattedBegdaz.ToString("yyyy-MM-ddTHH:mm:ss");
-                    FavoriteM.Cokey = CorrespondenceD.Cokey;
-                    FavoriteM.Cotyp = CorrespondenceD.Cotype;
-                    DateTime formattedEnddaz = DateTime.Parse(CorrespondenceD.Enddaz);
-                    FavoriteM.Enddaz = formattedEnddaz.ToString("yyyy-MM-ddTHH:mm:ss");
-                    FavoriteM.Gpart = CorrespondenceD.Gpart;
-                    FavoriteM.Zzfav = false;
-                    FavoriteM.Vkont = CorrespondenceD.Vkont;
-                    string result = await WebServiceManager.GAZTSetFavCorrespondence(FavoriteM);
-                    CorrespondenceD.IsFav = false;
-                    FavIcon = "ic_star_border.png";
+                    await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+                }
+                catch (InternetException)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+                }
+                catch (Exception)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+                }
+                finally
+                {
+                    IsLoading = false;
                 }
             });
         }

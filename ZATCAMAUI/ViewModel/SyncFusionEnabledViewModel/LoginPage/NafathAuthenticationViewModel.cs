@@ -46,10 +46,29 @@ public class NafathAuthenticationViewModel : BaseViewModel
 
         get
         {
-            return new Command(() =>
+            return new Command(async() =>
             {
-                _isTimerRepeatRequired = true;
-                InitPeriodicStatusChecker();
+                try
+                {
+                    _isTimerRepeatRequired = true;
+                    InitPeriodicStatusChecker();
+                }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+                }
+                catch (InternetException)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+                }
+                catch (Exception)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+                }
+                finally
+                {
+                    IsLoading = false;
+                }
             });
         }
     }
@@ -182,13 +201,26 @@ public class NafathAuthenticationViewModel : BaseViewModel
                 }
             }
         }
-        catch (GAZTErrorException ex)
+        catch (GAZTVATRegistrationInProcessException ex)
+        {
+            await UtilityManager.HandleExceptionMessage(ex.Message, false);
+        }
+        catch (GAZTNetworkConnectivityIssueException)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+        }
+        catch (InternetException)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+        }
+        catch (Exception)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+        }
+        finally
         {
             IsLoading = false;
-            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
         }
-        
-
     }
 
     private async Task Login(string TIN, string guid)
@@ -240,37 +272,47 @@ public class NafathAuthenticationViewModel : BaseViewModel
 
             }
         }
+        catch (GAZTNetworkConnectivityIssueException)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+        }
+        catch (InternetException)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+        }
         catch (Exception)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+        }
+        finally
         {
             IsLoading = false;
         }
-
-
     }
 
     public async Task LoginCompleted()
     {
-        string response = string.Empty;
-        string UserId = App.LoginDataRetrieved.TIN;
-
-        Instrumentation.SetUserData("user_id", UserId);
-
-        //string lang = "E";
-        string language = UtilityManager.GetLanguageParameter();
-
-
-        // * NEW TP PROFILE API
-        TaxPayerProfile TPProfile = await WebServiceManager.GetTPProfileAndUpdatePasswordAPICall(UserId);
-
-        TaxPayerAccountDetail AccountDetail = await WebServiceManager.GetTPAccountDetails(UserId);
-
-        if (TPProfile != null)
+        try
         {
-            App.TP = new TaxPayerProfile();
-            App.TP = TPProfile;
-            App.TP.userId = TPProfile.TIN;
-            try
+            string response = string.Empty;
+            string UserId = App.LoginDataRetrieved.TIN;
+
+            Instrumentation.SetUserData("user_id", UserId);
+
+            //string lang = "E";
+            string language = UtilityManager.GetLanguageParameter();
+
+
+            // * NEW TP PROFILE API
+            TaxPayerProfile TPProfile = await WebServiceManager.GetTPProfileAndUpdatePasswordAPICall(UserId);
+
+            TaxPayerAccountDetail AccountDetail = await WebServiceManager.GetTPAccountDetails(UserId);
+
+            if (TPProfile != null)
             {
+                App.TP = new TaxPayerProfile();
+                App.TP = TPProfile;
+                App.TP.userId = TPProfile.TIN;
                 if (App.TP != null)
                 {
                     App.TP.firstName = TPProfile.firstName;
@@ -286,47 +328,63 @@ public class NafathAuthenticationViewModel : BaseViewModel
 
                 }
 
+
+
             }
-            catch (Exception)
+
+            if (AccountDetail != null)
             {
-
-
+                if (App.LoginDataRetrieved == null)
+                {
+                    App.LoginDataRetrieved = new LoginModel();
+                }
+                App.LoginDataRetrieved.AppMsg = AccountDetail.applicationMessage;
+                App.LoginDataRetrieved.TpMpVip = AccountDetail.taxpayerVip;
+                App.LoginDataRetrieved.AppVersion = AccountDetail.applicationVerion;
+                App.LoginDataRetrieved.NameLast = AccountDetail.lastName;
+                App.LoginDataRetrieved.Emailid = AccountDetail.emailId;
+                App.LoginDataRetrieved.FbGuid = AccountDetail.GUID;
+                App.LoginDataRetrieved.NameFirst = AccountDetail.firstName;
+                App.LoginDataRetrieved.DeviceToken = AccountDetail.deviceToken;
+                App.LoginDataRetrieved.DeviceFlag = AccountDetail.device;
+                App.LoginDataRetrieved.DeviceId = AccountDetail.deviceId;
+                App.LoginDataRetrieved.DeviceTyp = AccountDetail.deviceType;
+                App.LoginDataRetrieved.DeviceToken = AccountDetail.deviceToken;
+                App.LoginDataRetrieved.EpSignup = AccountDetail.eligiblePersonSignup;
+                App.LoginDataRetrieved.EtReg = AccountDetail.exciseTaxRegisteration;
+                App.LoginDataRetrieved.VtReg = AccountDetail.VATRegisteration;
+                App.LoginDataRetrieved.ZkReg = AccountDetail.zakatRegisteration;
+                App.LoginDataRetrieved.Euser = AccountDetail.authenticationUser;
+                App.LoginDataRetrieved.FcmId = AccountDetail.fcmId;
+                App.LoginDataRetrieved.NameOrg1 = AccountDetail.organizationName;
+                App.LoginDataRetrieved.TIN = AccountDetail.TIN;
+                App.LoginDataRetrieved.EtSignup = AccountDetail.exciseSignup;
+                App.LoginDataRetrieved.VtSignup = AccountDetail.VATSignup;
+                App.LoginDataRetrieved.ZkSignup = AccountDetail.zakatSignup;
+                App.LoginDataRetrieved.message = AccountDetail.messageTitle;
+                App.LoginDataRetrieved.TypeChk = AccountDetail.typeCheck;
+                App.LoginDataRetrieved.CozatcaTile = AccountDetail.cozatcaTileFlag;
             }
-
         }
-
-        if (AccountDetail != null)
+        catch (GAZTVATRegistrationInProcessException ex)
         {
-            if (App.LoginDataRetrieved == null)
-            {
-                App.LoginDataRetrieved = new LoginModel();
-            }
-            App.LoginDataRetrieved.AppMsg = AccountDetail.applicationMessage;
-            App.LoginDataRetrieved.TpMpVip = AccountDetail.taxpayerVip;
-            App.LoginDataRetrieved.AppVersion = AccountDetail.applicationVerion;
-            App.LoginDataRetrieved.NameLast = AccountDetail.lastName;
-            App.LoginDataRetrieved.Emailid = AccountDetail.emailId;
-            App.LoginDataRetrieved.FbGuid = AccountDetail.GUID;
-            App.LoginDataRetrieved.NameFirst = AccountDetail.firstName;
-            App.LoginDataRetrieved.DeviceToken = AccountDetail.deviceToken;
-            App.LoginDataRetrieved.DeviceFlag = AccountDetail.device;
-            App.LoginDataRetrieved.DeviceId = AccountDetail.deviceId;
-            App.LoginDataRetrieved.DeviceTyp = AccountDetail.deviceType;
-            App.LoginDataRetrieved.DeviceToken = AccountDetail.deviceToken;
-            App.LoginDataRetrieved.EpSignup = AccountDetail.eligiblePersonSignup;
-            App.LoginDataRetrieved.EtReg = AccountDetail.exciseTaxRegisteration;
-            App.LoginDataRetrieved.VtReg = AccountDetail.VATRegisteration;
-            App.LoginDataRetrieved.ZkReg = AccountDetail.zakatRegisteration;
-            App.LoginDataRetrieved.Euser = AccountDetail.authenticationUser;
-            App.LoginDataRetrieved.FcmId = AccountDetail.fcmId;
-            App.LoginDataRetrieved.NameOrg1 = AccountDetail.organizationName;
-            App.LoginDataRetrieved.TIN = AccountDetail.TIN;
-            App.LoginDataRetrieved.EtSignup = AccountDetail.exciseSignup;
-            App.LoginDataRetrieved.VtSignup = AccountDetail.VATSignup;
-            App.LoginDataRetrieved.ZkSignup = AccountDetail.zakatSignup;
-            App.LoginDataRetrieved.message = AccountDetail.messageTitle;
-            App.LoginDataRetrieved.TypeChk = AccountDetail.typeCheck;
-            App.LoginDataRetrieved.CozatcaTile = AccountDetail.cozatcaTileFlag;
+            await UtilityManager.HandleExceptionMessage(ex.Message, false);
+        }
+        catch (GAZTNetworkConnectivityIssueException)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+        }
+        catch (InternetException)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+        }
+        catch (Exception)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+        }
+        finally
+        {
+            IsLoading = false;
         }
     }
 }

@@ -3093,12 +3093,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                IsLoading = false;
-                await ShowDialog(ex.Message);
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
             }
-            catch (InternetException ex)
+            catch (GAZTNetworkConnectivityIssueException)
             {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
             IsNewLoading = false;
         }
@@ -3260,7 +3271,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                 if (res != null && res.data != null && response != null)
                 {
-
                     VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(App.VATDeclrationFbguid, VATDeclarationData.data.Fbnumz, App.EUser, "");
                     await PopToRootPage();
                     if (_vATDeclaration != null && _vATDeclaration.data != null)
@@ -3351,32 +3361,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     }
                 }
             }
-            catch (GAZTVATRegistrationInProcessException ex)
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
             {
                 IsLoading = false;
-                await ShowDialog(ex.Message);
-            }
-            catch (InternetException ex)
-            {
-                if (showPopupMsg)
-                {
-                    List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
-                    HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
-                    NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-                    headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
-                    headerAmountInfo.IsLinkAvailable = false;
-                    headerAmountInfo.Message = ex.Message;
-
-                    headerWithInfos.Add(headerAmountInfo);
-
-
-                    newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
-                    newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                    newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
-
-                    await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
-
-                }
             }
             IsNewLoading = false;
         }
@@ -3827,9 +3826,25 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                 ManageThePreperiodcorrSwitch();
             }
-            catch (InternetException ex)
+            catch (GAZTVATRegistrationInProcessException ex)
             {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
 
@@ -3926,8 +3941,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 await PopToRootPage();
                 if (response != null && response.data1 != null && !string.IsNullOrEmpty(response.data1.Fbnumz))
                 {
-                    try
-                    {
                         if (response != null && response.data1 != null)
                         {
                             VATDeclarationData.data = response.data1;
@@ -3963,23 +3976,33 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         }
                         await SetButtons(VATDeclarationData);
                         return response;
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.Write(ex.ToString());
-                        Console.Write(ex.StackTrace.ToString());
-                        return null;
-                    }
+                    
                 }
                 return response;
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                throw new GAZTVATRegistrationInProcessException(ex.Message);
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+                return null;
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+                return null;
             }
             catch (InternetException)
             {
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+                return null;
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+                return null;
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
         public async Task ShowDialog(string msg)
@@ -5701,9 +5724,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     IsAmendButtonAvailable = false;
                 }
             }
-            catch (InternetException ex)
+            catch (GAZTNetworkConnectivityIssueException)
             {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
         public void SetButtonStrings(string ButtonName)
@@ -5864,27 +5899,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                IsLoading = false;
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
-            }
-            catch (GAZTValidatePaymentInProcessException ex)
-            {
-                IsLoading = false;
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
-            }
-            catch (InternetException)
-            {
-                IsLoading = false;
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                _navigationService.GoBack();
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
             }
             catch (GAZTNetworkConnectivityIssueException)
             {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
                 IsLoading = false;
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-
             }
         }
 

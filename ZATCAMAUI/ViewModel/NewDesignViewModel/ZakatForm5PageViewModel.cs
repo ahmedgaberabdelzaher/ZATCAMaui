@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Windows.Input;
 using ZATCAMAUI.Core.Enums;
+using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models.Form5Models;
@@ -3047,10 +3048,24 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     // IsLoading = false;
                 }
             }
-            catch (Exception ex)
+            catch (GAZTVATRegistrationInProcessException ex)
             {
-                await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
+                await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
+            }
+            finally
+            {
                 IsLoading = false;
             }
 

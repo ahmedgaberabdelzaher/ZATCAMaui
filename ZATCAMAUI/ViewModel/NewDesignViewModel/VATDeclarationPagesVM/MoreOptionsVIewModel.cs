@@ -39,7 +39,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
         public ICommand OnAddButtonClicked { get; set; }
         public ICommand OnClearButtonClicked { get; set; }
         public ICommand GoBackClick { get; set; }
-       
+
         private VATDeclaration _vATDeclarationData;
 
         public ICommand OnAttachmentClick { get; set; }
@@ -51,7 +51,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
         byte[] attachment;
         public int NumberOfAttachmentComingFromServer = 0;
 
-      
+
         private bool _attachmentSizeVisibility = attachmentSizeVisibility;
         public bool AttachmentSizeVisibility
         {
@@ -289,7 +289,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
                 OnPropertyChanged("PreviousNoteText");
             }
         }
-      
+
         public MoreOptionsVIewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             if (navigationService == null)
@@ -341,8 +341,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
                     }
                 }
                 AddNote();
-               // MessagingCenter.Send<Object, string>(this, "AddNoteForVATDeclaration", "AddNoteForVATDeclaration");
-               
+                // MessagingCenter.Send<Object, string>(this, "AddNoteForVATDeclaration", "AddNoteForVATDeclaration");
+
             });
             if (navigationService == null)
             {
@@ -427,7 +427,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
                                                         _attachment.d.Erfdt = uploadedDate;
                                                         _attachment.d.ColorOf = (Color)App.Current.Resources["SecondaryNew"];
                                                         VATDeclarationDataForAttch.data.ATTACHSet.Add(_attachment.d);
-                                                      //  VATDeclarationData.d.ATTACHSet.results.Add(_attachment.d);
+                                                        //  VATDeclarationData.d.ATTACHSet.results.Add(_attachment.d);
                                                         ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATDeclarationDataForAttch.data.ATTACHSet as List<Attachment>);
                                                         MainThread.BeginInvokeOnMainThread(() =>
                                                         {
@@ -530,7 +530,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
             }
             catch (Exception ex)
             {
-                
+
             }
         }
 
@@ -539,38 +539,43 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
         {
 
             AttachmentRootOject _attachment = null;
-            await Task.Run(() =>
+
+            IsLoading = true;
+            try
             {
-                IsLoading = true;
-            });
-            await Task.Run(async () =>
+                AttachmentRootOject attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachmentByteData, AttachmentName, VATDeclarationDataForAttch.data.ReturnIdz, "ZVLU", contentType);
+                if (attachment != null && attachment.d != null)
+                {
+                    attachmentSizeVisibility = true;
+                    AttachmentSizeVisibility = attachmentSizeVisibility;
+                    SizeList.Add(AttachmentSize);
+                    AttachmentUploadedSize = GetAttachMentSize(SizeList);// AttachmentUploadedSize + AttachmentSize;
+                    TotalAttachmentSize = AttachmentUploadedSize;
+                    _attachment = attachment;
+                }
+                else
+                {
+                    _attachment = null;
+                }
+            }
+            catch (GAZTNetworkConnectivityIssueException)
             {
-                try
-                {
-                    AttachmentRootOject attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachmentByteData, AttachmentName, VATDeclarationDataForAttch.data.ReturnIdz, "ZVLU", contentType);
-                    if (attachment != null && attachment.d != null)
-                    {
-                        attachmentSizeVisibility = true;
-                        AttachmentSizeVisibility = attachmentSizeVisibility;
-                        SizeList.Add(AttachmentSize);
-                        AttachmentUploadedSize = GetAttachMentSize(SizeList);// AttachmentUploadedSize + AttachmentSize;
-                        TotalAttachmentSize = AttachmentUploadedSize;
-                        _attachment = attachment;
-                    }
-                    else
-                    {
-                        _attachment = null;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    //  return null;
-                }
-            });
-            await Task.Run(() =>
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
             {
                 IsLoading = false;
-            });
+            }
+
+            IsLoading = false;
             return _attachment;
         }
         public void PopToRootPage()
@@ -746,7 +751,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
         {
             try
             {
-     
+
                 SetNote();
 
                 //if (App.ICRStatus == "E0001")
@@ -795,8 +800,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
             }
             catch (Exception ex)
             {
-                
-                
+
+
 
             }
         }
@@ -846,13 +851,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
                 {
                     VATDeclarationData.data.ATTACHSet.Add(item);
                 }
-              
+
                 await submitbtn(VATDeclarationData);
             }
             catch (Exception ex)
             {
-                
-                
+
+
 
             }
         }
@@ -918,8 +923,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
             }
             catch (Exception ex)
             {
-                
-                
+
+
 
             }
         }
@@ -927,15 +932,39 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
 
         public async Task submitbtn(VATDeclaration VATDeclarationData1)
         {
-            string operation = "70";// Passed operation "01" to submit the VAT Declaration Data
-                                    //   VATDeclarationData.d.StepNumberz = "04";
-                                    //VATDeclarationData.d.StepNumber = "00";
-                                    // VATDeclarationData.d.Fbguid = string.Empty;
-            VATDeclarationData1.data.StepNumberz = "04";
-            VATDeclarationData1.data.UserTypz = "TP";
-            VATDeclarationData1.data.Operationz = operation;
-            VATDeclaration response = await WebServiceManager.SaveVATDeclarationData(VATDeclarationData1);
-            await MopupService.Instance.PopAsync();
+            try
+            {
+                string operation = "70";// Passed operation "01" to submit the VAT Declaration Data
+                                        //   VATDeclarationData.d.StepNumberz = "04";
+                                        //VATDeclarationData.d.StepNumber = "00";
+                                        // VATDeclarationData.d.Fbguid = string.Empty;
+                VATDeclarationData1.data.StepNumberz = "04";
+                VATDeclarationData1.data.UserTypz = "TP";
+                VATDeclarationData1.data.Operationz = operation;
+                VATDeclaration response = await WebServiceManager.SaveVATDeclarationData(VATDeclarationData1);
+                await MopupService.Instance.PopAsync();
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
+            }
+
         }
     }
 }

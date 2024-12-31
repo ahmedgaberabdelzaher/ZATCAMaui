@@ -34,7 +34,6 @@ namespace ZATCAMAUI.Core.Mangers
                     content.Add(fileContent, "attachmentFile", fileName);
                     var lang = UtilityManager.GetLanguageParameter();
                     string AttBy = "TP";
-                    //String url = Constants.GAZTSaveAttachment + " + RetGuid + "'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + "'" + ",AttBy='" + AttBy + "'" + ")/AttachMedSet";
                     String url = ZATCAConstants.GAZTSaveAttachment + "&attachmentFlag=New" + "&returnGUID=" + RetGuid + "&formGUID=" + "&documentCategory=" + Dotyp + "&serialNumber=1" + "&documentId=" + "&attachedByPerson=TP" + "&fileName=" + fileName;
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(App.httpClientHandler);
@@ -53,17 +52,31 @@ namespace ZATCAMAUI.Core.Mangers
                     var serialized = JsonConvert.SerializeObject(_attachment, serializeOptions);
                     var response = await client.PostAsync(url, content);
                     var responsestr = response.Content.ReadAsStringAsync().Result;
-                    _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
+                    ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(responsestr);
+                    if (statusHeader?.header?.status?.code != "E999999")
+                    {
+                        _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
                     return _attachment;
+
+                    }
+                    else
+                    {
+                        throw new GAZTNetworkConnectivityIssueException();
+                    }
+                   
+                }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
                 catch (Exception)
                 {
-                    return null;
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
             {
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+                throw new InternetException();
             }
         }
         public static string GAZTDeleteVATDeRegistrationAttachment(string fileName, string RetGuid, string Dotyp)
@@ -96,21 +109,11 @@ namespace ZATCAMAUI.Core.Mangers
                     client.DefaultRequestHeaders.Add("Authorization", App.Token);
                     var serialized = JsonConvert.SerializeObject(_attachmentReq);
                     HttpContent contentPost = new StringContent(serialized, Encoding.UTF8, ZATCAConstants.ContentType);
-                    //  client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "multipart/form-data");
                     HttpResponseMessage res = client.PostAsync(url, contentPost).Result;
                     var responsestr = res.Content.ReadAsStringAsync().Result;
                     _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
-                    //HttpResponseMessage res = client.DeleteAsync(url).Result;
-                    //var responsestr = res.Content.ReadAsStringAsync().Result;
-                    //_attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
                     if (res != null)
                     {
-                        //HttpHeaders headers = res.Headers;
-                        //IEnumerable<string> values;
-                        //if (headers.TryGetValues("delete", out values))
-                        //{
-                        //    DeleteToken = values.First();
-                        //}
                         if (res.StatusCode == HttpStatusCode.NoContent || res.StatusCode == HttpStatusCode.OK)
                             DeleteToken = "X";
                     }
@@ -179,18 +182,29 @@ namespace ZATCAMAUI.Core.Mangers
                         }
 
                         string GAZTVATDeregreasonDataResponseJSON = GAZTVATDeregreasonDataResponse.Content.ReadAsStringAsync().Result;
-                        if (!string.IsNullOrEmpty(GAZTVATDeregreasonDataResponseJSON))
+                        ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(GAZTVATDeregreasonDataResponseJSON);
+                        if (statusHeader?.header?.status?.code != "E999999")
                         {
-                            reasonData = JsonConvert.DeserializeObject<VATDeregistrationModelRootObject>(GAZTVATDeregreasonDataResponseJSON);
-                            if (reasonData == null)
+                            if (!string.IsNullOrEmpty(GAZTVATDeregreasonDataResponseJSON))
                             {
-                                throw new Exception(AppResources.Nodataavailable);
+                                reasonData = JsonConvert.DeserializeObject<VATDeregistrationModelRootObject>(GAZTVATDeregreasonDataResponseJSON);
+                                if (reasonData == null)
+                                {
+                                    throw new GAZTVATRegistrationInProcessException(AppResources.Somethingwentwrong);
+                                }
                             }
+                            else
+                            {
+                                throw new GAZTVATRegistrationInProcessException(AppResources.Somethingwentwrong);
+                            }
+
                         }
                         else
                         {
-                            throw new Exception(AppResources.NoBillsAvailable);
+                            throw new GAZTNetworkConnectivityIssueException();
                         }
+
+
                     }
                     return reasonData;
                 }
@@ -198,14 +212,18 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
                 catch (Exception)
                 {
-                    return null;
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
             {
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+                throw new InternetException();
             }
         }
         #endregion
@@ -235,10 +253,8 @@ namespace ZATCAMAUI.Core.Mangers
                     client.DefaultRequestHeaders.Add("Authorization", App.Token);
                     string status = "E0001";
 
-                    // String url = Constants.GAZTGETVATDeregAttachmentsDropdownList + "',Lang='" + lang + "',Officer='" + "',Gpart='" + App.LoginDataRetrieved.TIN + "',Status='" + status + "',TxnTp='" + selectedType + "',Formproc='ZTAX_VT_REG'" + ")?&$expand=VR_UI_BTNSet,ELGBL_DOCSet&$format=json";
                     String url = ZATCAConstants.GAZTGETVATDeregAttachmentsDropdownList + App.LoginDataRetrieved.TIN + "&language=" + lang + "&status=" + status + "&transactionType=" + selectedType + "&formProcess=ZTAX_VT_REG";
-                    //client.DefaultRequestHeaders.Add("Token", "123");
-                    //client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTVATDeregAttDataResponse = await client.GetAsync(uri);
                     if (GAZTVATDeregAttDataResponse != null)
@@ -265,36 +281,49 @@ namespace ZATCAMAUI.Core.Mangers
                             App.Token = NewToken;
                         }
                         string VatDeregAttListResultModelSetResponseJson = GAZTVATDeregAttDataResponse.Content.ReadAsStringAsync().Result;
-                        if (!string.IsNullOrEmpty(VatDeregAttListResultModelSetResponseJson))
+                        ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(VatDeregAttListResultModelSetResponseJson);
+                        if (statusHeader?.header?.status?.code != "E999999")
                         {
-                            VatDeregAttListResultModelSetResponseJson = JObject.Parse(VatDeregAttListResultModelSetResponseJson)["data"].ToString();
+                            if (!string.IsNullOrEmpty(VatDeregAttListResultModelSetResponseJson))
+                            {
+                                VatDeregAttListResultModelSetResponseJson = JObject.Parse(VatDeregAttListResultModelSetResponseJson)["data"].ToString();
 
-                            vATDeregAttDetails = JsonConvert.DeserializeObject<VATDeRegistrationAttachmentDropdownDetails>(VatDeregAttListResultModelSetResponseJson);
-                            if (vATDeregAttDetails == null)
+                                vATDeregAttDetails = JsonConvert.DeserializeObject<VATDeRegistrationAttachmentDropdownDetails>(VatDeregAttListResultModelSetResponseJson);
+                                if (vATDeregAttDetails == null)
+                                {
+                                    throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
+                                }
+                            }
+                            else
                             {
                                 throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
                             }
+
                         }
                         else
                         {
-                            throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
+                            throw new GAZTNetworkConnectivityIssueException();
                         }
+
                     }
                     return vATDeregAttDetails;
                 }
-                catch (GAZTVATRegistrationInProcessException ex)
+                catch (GAZTErrorException ex)
                 {
-                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                    throw new GAZTErrorException(ex.Message);
+                }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
                 catch (Exception)
                 {
-                    App.IsSessionExpired = true;
-                    return null;
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
             {
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+                throw new InternetException();
             }
         }
         #endregion
@@ -326,7 +355,6 @@ namespace ZATCAMAUI.Core.Mangers
                     string url = ZATCAConstants.GAZTGETVATDeregSuspensionDate + App.LoginDataRetrieved.TIN + "&userType=" + "TP" + "&transactionType=" + "VT_SUSP" + "&requestType=" + "Suspension";
 
                     var uri = new Uri(url);
-                    //HttpResponseMessage Response = await GetServiceManager.MakeGetAPICall(url, false, "");
                     HttpResponseMessage GAZTVATDeregreasonDataResponse = client.GetAsync(uri).Result;
                     if (GAZTVATDeregreasonDataResponse != null)
                     {
@@ -353,35 +381,43 @@ namespace ZATCAMAUI.Core.Mangers
                         }
 
                         string GAZTVATDeregreasonDataResponseJSON = GAZTVATDeregreasonDataResponse.Content.ReadAsStringAsync().Result;
-                        if (!string.IsNullOrEmpty(GAZTVATDeregreasonDataResponseJSON))
+
+                        ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(GAZTVATDeregreasonDataResponseJSON);
+                        if (statusHeader?.header?.status?.code != "E999999")
                         {
-                            reasonData = JsonConvert.DeserializeObject<VATDeregistrationLastICRDateRootObject>(GAZTVATDeregreasonDataResponseJSON);
-                            if (reasonData == null)
+                            if (!string.IsNullOrEmpty(GAZTVATDeregreasonDataResponseJSON))
                             {
-                                throw new Exception(AppResources.Nodataavailable);
+                                reasonData = JsonConvert.DeserializeObject<VATDeregistrationLastICRDateRootObject>(GAZTVATDeregreasonDataResponseJSON);
+                                if (reasonData == null)
+                                {
+                                    throw new Exception(AppResources.Nodataavailable);
+                                }
+                            }
+                            else
+                            {
+                                throw new Exception(AppResources.NoBillsAvailable);
                             }
                         }
                         else
                         {
-                            throw new Exception(AppResources.NoBillsAvailable);
+                            throw new GAZTNetworkConnectivityIssueException();
                         }
+
                     }
                     return reasonData;
                 }
-                catch (GAZTVATRegistrationInProcessException ex)
+                catch (GAZTNetworkConnectivityIssueException)
                 {
-                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
                 catch (Exception)
-
                 {
-                    App.IsSessionExpired = true;
-                    return null;
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
             {
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+                throw new InternetException();
             }
         }
         #endregion
@@ -445,6 +481,9 @@ namespace ZATCAMAUI.Core.Mangers
 
                         GAZTVATDeregreasonDataResponseJSON = GAZTVATDeregreasonDataResponse.Content.ReadAsStringAsync().Result;
 
+                        ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(GAZTVATDeregreasonDataResponseJSON);
+                        if (statusHeader?.header?.status?.code == "E999999")
+                            throw new GAZTNetworkConnectivityIssueException();
                     }
                     return GAZTVATDeregreasonDataResponseJSON;
                 }
@@ -452,15 +491,18 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
                 catch (Exception)
                 {
-                    App.IsSessionExpired = true;
-                    return null;
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
             {
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+                throw new InternetException();
             }
         }
         #endregion
@@ -474,8 +516,6 @@ namespace ZATCAMAUI.Core.Mangers
                 string NewToken = string.Empty;
                 try
                 {
-                    //HttpClient client = new HttpClient(App.httpClientHandler);
-                    //char lang = WebServiceManager.GetLangZParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     var lang = UtilityManager.GetLanguageParameter();
                     string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
@@ -489,8 +529,6 @@ namespace ZATCAMAUI.Core.Mangers
                     client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
                     client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
                     client.DefaultRequestHeaders.Add("Authorization", App.Token);
-                    //  client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
-                    // string url = Constants.VatRefundList + "(TaxType='VT',Lang='" + lang + "',Gpart='" + App.LoginDataRetrieved.TIN + "',Euser='',Flag='W',Fbguid='')?&$expand=STATUSSet,WI_DTLSet,VatRef_HeaderSet,VatRef_SubItemsSet&$format=json";
                     string url = ZATCAConstants.VatRefundList + App.TP.TIN + "&language=" + lang + "&flag=W" + "&taxType=VT";
 
                     var uri = new Uri(url);
@@ -520,40 +558,57 @@ namespace ZATCAMAUI.Core.Mangers
                         }
 
                         string VatRefundsListResultModelSetResponseJson = VatRefundsResponse.Content.ReadAsStringAsync().Result;
-                        if (!string.IsNullOrEmpty(VatRefundsListResultModelSetResponseJson))
+
+                        ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(VatRefundsListResultModelSetResponseJson);
+                        if (statusHeader?.header?.status?.code != "E999999")
                         {
-                            try
+                            if (!string.IsNullOrEmpty(VatRefundsListResultModelSetResponseJson))
                             {
-                                VatRefundsListResultModelSetResponseJson = JObject.Parse(VatRefundsListResultModelSetResponseJson)["data"].ToString();
+                                try
+                                {
+                                    VatRefundsListResultModelSetResponseJson = JObject.Parse(VatRefundsListResultModelSetResponseJson)["data"].ToString();
 
-                                VatRefundsListResultModelSet = JsonConvert.DeserializeObject<VatRefundsListResultModel>(VatRefundsListResultModelSetResponseJson);
+                                    VatRefundsListResultModelSet = JsonConvert.DeserializeObject<VatRefundsListResultModel>(VatRefundsListResultModelSetResponseJson);
 
+                                }
+                                catch (Exception)
+                                {
+                                    throw new GAZTErrorException(AppResources.Somethingwentwrong);
+                                }
+                                if (VatRefundsListResultModelSet == null)
+                                {
+                                    throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
+                                }
                             }
-                            catch (Exception ex)
-                            {
-                                Console.WriteLine(ex);
-                                throw new GAZTErrorException(AppResources.Somethingwentwrong);
-                            }
-                            if (VatRefundsListResultModelSet == null)
+                            else
                             {
                                 throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
                             }
                         }
                         else
                         {
-                            throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
+                            throw new GAZTNetworkConnectivityIssueException();
                         }
+
                     }
                     return VatRefundsListResultModelSet;
                 }
-                catch (GAZTErrorException )
+                catch (GAZTErrorException ex)
                 {
-                    throw new GAZTErrorException(AppResources.Somethingwentwrong);
+                    throw new GAZTErrorException(ex.Message);
+                }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
             {
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+                throw new InternetException();
             }
         }
 
@@ -565,9 +620,6 @@ namespace ZATCAMAUI.Core.Mangers
                 string NewToken = string.Empty;
                 try
                 {
-                    //HttpClient client = new HttpClient(App.httpClientHandler);
-                    //string lang = WebServiceManager.GetLangZParameterAREN();
-                    //  string url = Constants.VatRefundDisplayData + "FormGuid='" + formguid + "',Formprocx='ZTAX_VAT_MAISC_PROC',Gpartx='" + App.LoginDataRetrieved.TIN + "',Langx='" + lang + "',Officerx='',TxnTpx='')?$expand=AttdetSet,BankDtlSet,NotesSet,VtfrAmtSet&$format=json"; //Cr4194 VAT refund ..
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     var lang = UtilityManager.GetLanguageParameter();
                     string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
@@ -611,66 +663,48 @@ namespace ZATCAMAUI.Core.Mangers
                         }
 
                         string VatRefundsListResultModelSetResponseJson = VatRefundsResponse.Content.ReadAsStringAsync().Result;
-
-                        if (VatRefundsResponse.StatusCode == HttpStatusCode.BadRequest)
+                        ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(VatRefundsListResultModelSetResponseJson);
+                        if (statusHeader?.header?.status?.code != "E999999")
                         {
-                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(VatRefundsListResultModelSetResponseJson);
-                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            if (VatRefundsResponse.StatusCode == HttpStatusCode.BadRequest)
                             {
-                                WebServiceManager.ErrorMessageForUnlockAccount = errorMesg.error.innererror.errordetails[0].message;
-                                string WithReplacedString = WebServiceManager.ErrorMessageForUnlockAccount.Replace("An exception was raised", string.Empty);
-                                WebServiceManager.ErrorMessageForUnlockAccount = WithReplacedString;
-                                throw new GAZTErrorException(WebServiceManager.ErrorMessageForUnlockAccount);
-                            }
-                        }
-                        //else if (!string.IsNullOrEmpty(VatRefundsListResultModelSetResponseJson))
-                        //{
-                        //    VatRefundsListResultModelSetResponseJson = JObject.Parse(VatRefundsListResultModelSetResponseJson)["data"].ToString();
-                        //    VatRefundDisplayDataModel = JsonConvert.DeserializeObject<VatRefundDisplayDataModel>(VatRefundsListResultModelSetResponseJson);
-                        //    if (VatRefundDisplayDataModel == null)
-                        //    {
-                        //        throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
-                        //    }
-                        //}
-                        //else
-                        //{
-                        //    throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
-                        //}
-                        else if (!string.IsNullOrEmpty(VatRefundsListResultModelSetResponseJson))
-                        {
-                            try
-                            {
-                                VatRefundsListResultModelSetResponseJson = JObject.Parse(VatRefundsListResultModelSetResponseJson)["data"].ToString();
+                                string errorMessage = WebServiceManager.PrepareErrorMessageByJson(VatRefundsListResultModelSetResponseJson);
 
-                                VatRefundDisplayDataModel = JsonConvert.DeserializeObject<VatRefundDisplayDataModel>(VatRefundsListResultModelSetResponseJson);
+                                throw new GAZTErrorException(errorMessage);
 
                             }
-                            catch (Exception ex)
-                            {
-                                string error = WebServiceManager.PrepareErrorMessageByJson(VatRefundsListResultModelSetResponseJson);
-                                throw new GAZTErrorException(error);
 
-                                //ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(VatRefundsListResultModelSetResponseJson);
-                                //if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
-                                //{
-                                //    WebServiceManager.ErrorMessageForUnlockAccount = errorMesg.error.innererror.errordetails[0].message;
-                                //    String WithReplacedString = WebServiceManager.ErrorMessageForUnlockAccount.Replace("An exception was raised", string.Empty);
-                                //    WebServiceManager.ErrorMessageForUnlockAccount = WithReplacedString;
-                                //    throw new GAZTErrorException(WebServiceManager.ErrorMessageForUnlockAccount);
-                                //}
-                                //Console.WriteLine(ex);
-                                //throw new GAZTErrorException(AppResources.Somethingwentwrong);
+                            else if (!string.IsNullOrEmpty(VatRefundsListResultModelSetResponseJson))
+                            {
+                                try
+                                {
+                                    VatRefundsListResultModelSetResponseJson = JObject.Parse(VatRefundsListResultModelSetResponseJson)["data"].ToString();
+
+                                    VatRefundDisplayDataModel = JsonConvert.DeserializeObject<VatRefundDisplayDataModel>(VatRefundsListResultModelSetResponseJson);
+
+                                }
+                                catch (Exception)
+                                {
+                                    string error = WebServiceManager.PrepareErrorMessageByJson(VatRefundsListResultModelSetResponseJson);
+                                    throw new GAZTErrorException(error);
+                                }
+                                if (VatRefundDisplayDataModel == null)
+                                {
+                                    throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
+                                }
+
                             }
-                            if (VatRefundDisplayDataModel == null)
+                            else
                             {
                                 throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
                             }
-
                         }
                         else
                         {
-                            throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
+                            throw new GAZTNetworkConnectivityIssueException();
                         }
+
+
                     }
                     return VatRefundDisplayDataModel;
                 }
@@ -678,10 +712,18 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     throw new GAZTErrorException(ex.Message);
                 }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
             }
             else
             {
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+                throw new InternetException();
             }
         }
 
@@ -693,8 +735,6 @@ namespace ZATCAMAUI.Core.Mangers
                 string NewToken = string.Empty;
                 try
                 {
-                    //HttpClient client = new HttpClient(App.httpClientHandler);
-                    //string lang = WebServiceManager.GetLangZParameterAREN();
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     var lang = UtilityManager.GetLanguageParameter();
                     string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
@@ -736,42 +776,58 @@ namespace ZATCAMAUI.Core.Mangers
                             }
                             App.Token = NewToken;
                         }
-
                         string VatRefundsListResultModelSetResponseJson = VatRefundsResponse.Content.ReadAsStringAsync().Result;
-                        if (!string.IsNullOrEmpty(VatRefundsListResultModelSetResponseJson))
+
+                        ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(VatRefundsListResultModelSetResponseJson);
+                        if (statusHeader?.header?.status?.code != "E999999")
                         {
-                            try
+                            if (!string.IsNullOrEmpty(VatRefundsListResultModelSetResponseJson))
                             {
-                                VatRefundsListResultModelSetResponseJson = JObject.Parse(VatRefundsListResultModelSetResponseJson)["data"].ToString();
+                                try
+                                {
+                                    VatRefundsListResultModelSetResponseJson = JObject.Parse(VatRefundsListResultModelSetResponseJson)["data"].ToString();
 
-                                VarRefundIbanDataModel = JsonConvert.DeserializeObject<VarRefundIbanDataModel>(VatRefundsListResultModelSetResponseJson);
+                                    VarRefundIbanDataModel = JsonConvert.DeserializeObject<VarRefundIbanDataModel>(VatRefundsListResultModelSetResponseJson);
 
+                                }
+                                catch (Exception ex)
+                                {
+                                    throw new GAZTErrorException(AppResources.Somethingwentwrong);
+                                }
+                                if (VarRefundIbanDataModel == null)
+                                {
+                                    throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
+                                }
                             }
-                            catch (Exception ex)
-                            {
-                                Console.WriteLine(ex);
-                                throw new GAZTErrorException(AppResources.Somethingwentwrong);
-                            }
-                            if (VarRefundIbanDataModel == null)
+                            else
                             {
                                 throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
                             }
+
                         }
                         else
                         {
-                            throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
+                            throw new GAZTNetworkConnectivityIssueException();
                         }
                     }
                     return VarRefundIbanDataModel;
                 }
-                catch (GAZTErrorException )
+                catch (GAZTErrorException)
                 {
                     throw new GAZTErrorException(AppResources.Somethingwentwrong);
+                }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
             {
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+                throw new InternetException();
             }
         }
 
@@ -832,54 +888,64 @@ namespace ZATCAMAUI.Core.Mangers
                         }
 
                         string VatRefundsListResultModelSetResponseJson = VatRefundsResponse.Content.ReadAsStringAsync().Result;
-
-                        if (VatRefundsResponse.StatusCode == HttpStatusCode.BadRequest)
+                        ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(VatRefundsListResultModelSetResponseJson);
+                        if (statusHeader?.header?.status?.code != "E999999")
                         {
-                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(VatRefundsListResultModelSetResponseJson);
-                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            if (VatRefundsResponse.StatusCode == HttpStatusCode.BadRequest)
                             {
-                                WebServiceManager.ErrorMessageForUnlockAccount = errorMesg.error.innererror.errordetails[0].message;
-                                string WithReplacedString = WebServiceManager.ErrorMessageForUnlockAccount.Replace("An exception was raised", string.Empty);
-                                WebServiceManager.ErrorMessageForUnlockAccount = WithReplacedString;
+                                ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(VatRefundsListResultModelSetResponseJson);
+                                if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                                {
+                                    WebServiceManager.ErrorMessageForUnlockAccount = errorMesg.error.innererror.errordetails[0].message;
+                                    string WithReplacedString = WebServiceManager.ErrorMessageForUnlockAccount.Replace("An exception was raised", string.Empty);
+                                    WebServiceManager.ErrorMessageForUnlockAccount = WithReplacedString;
+                                }
                             }
-                        }
-                        else if (!string.IsNullOrEmpty(VatRefundsListResultModelSetResponseJson))
-                        {
-                            var result = JObject.Parse(VatRefundsListResultModelSetResponseJson);
-                            if (result["result"] != null)
+                            else if (!string.IsNullOrEmpty(VatRefundsListResultModelSetResponseJson))
                             {
-                                VatRefundsListResultModelSetResponseJson = JObject.Parse(VatRefundsListResultModelSetResponseJson)["result"].ToString();
-                                _newRequestSummaryDataResponse = JsonConvert.DeserializeObject<VatRefundDisplayDataModel>(VatRefundsListResultModelSetResponseJson);
+                                var result = JObject.Parse(VatRefundsListResultModelSetResponseJson);
+                                if (result["result"] != null)
+                                {
+                                    VatRefundsListResultModelSetResponseJson = JObject.Parse(VatRefundsListResultModelSetResponseJson)["result"].ToString();
+                                    _newRequestSummaryDataResponse = JsonConvert.DeserializeObject<VatRefundDisplayDataModel>(VatRefundsListResultModelSetResponseJson);
+                                }
+                                else
+                                {
+                                    var error_message = WebServiceManager.PrepareErrorMessageByJson(VatRefundsListResultModelSetResponseJson);
+                                    throw new GAZTErrorException(error_message);
+                                }
                             }
                             else
                             {
-                                var error_message = WebServiceManager.PrepareErrorMessageByJson(VatRefundsListResultModelSetResponseJson);
-                                throw new GAZTErrorException(error_message);
+                                throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
                             }
+
                         }
                         else
                         {
-                            throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
+                            throw new GAZTNetworkConnectivityIssueException();
                         }
+
+
                     }
                     return _newRequestSummaryDataResponse;
-                }
-                catch (GAZTUnlockAccountException ex)
-                {
-                    throw new GAZTUnlockAccountException(ex.Message);
                 }
                 catch (GAZTErrorException ex)
                 {
                     throw new GAZTErrorException(ex.Message);
                 }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
                 catch (Exception)
                 {
-                    throw new GAZTErrorException(AppResources.Somethingwentwrong);
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
             {
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+                throw new InternetException();
             }
         }
 

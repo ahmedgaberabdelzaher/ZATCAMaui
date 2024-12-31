@@ -326,55 +326,54 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATLookupPage
             try
             {
                 isMendatoryDataEntered = true;
-                await Task.Run(() =>
+
+                IsLoading = true;
+                ValidateFormData();//isMendatoryDataEntered
+                if (isMendatoryDataEntered)
                 {
-                    IsLoading = true;
-                });
-                await Task.Run(async () =>
-                {
-                    ValidateFormData();//isMendatoryDataEntered
-                    if (isMendatoryDataEntered)
+                    isMendatoryDataEntered = true;
+                    string _language = UtilityManager.GetLanguageParameter();
+                    VATLookUp vatLookUp = await WebServiceManager.GAZTGetVATLookUp(_language, SelectedParameterType.id, LookupNumber);
+                    if (vatLookUp.d != null)
                     {
-                        isMendatoryDataEntered = true;
-                        string _language = UtilityManager.GetLanguageParameter();
-                        VATLookUp vatLookUp = await WebServiceManager.GAZTGetVATLookUp(_language, SelectedParameterType.id, LookupNumber);
-                        if (vatLookUp.d != null)
+                        if (string.IsNullOrEmpty(vatLookUp.d.results[0].Description))// Provided condiotion as per Vinay, Description comes null when the there is no error while calling the API
                         {
-                            if (string.IsNullOrEmpty(vatLookUp.d.results[0].Description))// Provided condiotion as per Vinay, Description comes null when the there is no error while calling the API
-                            {
-                                NameOrNoResultLabel = AppResources.Name;
-                                Name = vatLookUp.d.results[0].Name;
-                            }
-                            else
-                            {
-                                NameOrNoResultLabel = "";
-                                Name = "";
-                                MainThread.BeginInvokeOnMainThread(async () =>
-                                 {
-                                     await _dialogService.ShowMessageBox(vatLookUp.d.results[0].Description, AppResources.ZError);
-                                 });
-                            }
+                            NameOrNoResultLabel = AppResources.Name;
+                            Name = vatLookUp.d.results[0].Name;
                         }
                         else
                         {
-                            Name = vatLookUp.d.results[0].Name;
-                            NameOrNoResultLabel = AppResources.Nodataavailable;
+                            NameOrNoResultLabel = "";
+                            Name = "";
+                            MainThread.BeginInvokeOnMainThread(async () =>
+                             {
+                                 await _dialogService.ShowMessageBox(vatLookUp.d.results[0].Description, AppResources.ZError);
+                             });
                         }
                     }
-                    // IsLoading = true;
-                });
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                    else
+                    {
+                        Name = vatLookUp.d.results[0].Name;
+                        NameOrNoResultLabel = AppResources.Nodataavailable;
+                    }
+                }
+                IsLoading = false;
             }
-            catch (InternetException ex)
+            catch (GAZTNetworkConnectivityIssueException)
             {
-                await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
             StringBuilder captcha = GetCaptcha();
             Captcha = captcha.ToString();

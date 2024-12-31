@@ -217,22 +217,22 @@ public class OTPPageViewModel : BaseViewModel
 
             }
         }
-        catch (Exception gex)
+        catch (GAZTNetworkConnectivityIssueException)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+        }
+        catch (InternetException)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+        }
+        catch (Exception)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+        }
+        finally
         {
             IsLoading = false;
             IsShowMsgView = true;
-            if (gex is GAZTNetworkConnectivityIssueException)
-            {
-                MessageTxt = AppResources.NetworkConnectivityIssue;
-            }
-            else if (gex is InternetException)
-            {
-                MessageTxt = AppResources.ZZInternetConnectionMessage;
-            }
-            else
-            {
-                MessageTxt = AppResources.RequestTimeoutDescription;
-            }
         }
     }
 
@@ -325,27 +325,28 @@ public class OTPPageViewModel : BaseViewModel
             }
             IsLoading = false;
         }
-        catch (Exception gex)
+        catch (GAZTNetworkConnectivityIssueException)
         {
-            string MessageForTheUser = gex.Message;
-
-            if (gex is GAZTNetworkConnectivityIssueException)
-            {
-                MessageForTheUser = AppResources.NetworkConnectivityIssue;
-            }
-            else if (gex is InternetException)
-            {
-                MessageForTheUser = AppResources.ZZInternetConnectionMessage;
-            }
+            await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+        }
+        catch (InternetException)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+        }
+        catch (Exception)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+        }
+        finally
+        {
             IsLoading = false;
-
-            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
         }
 
     }
 
     public async Task LoginCompleted()
-    {
+    {  try
+            {
         IsLoading = true;
         string response = string.Empty;
         string UserId = App.LoginDataRetrieved.TIN;
@@ -366,8 +367,7 @@ public class OTPPageViewModel : BaseViewModel
             App.TP = new TaxPayerProfile();
             App.TP = TPProfile;
             App.TP.userId = TPProfile.TIN;
-            try
-            {
+          
                 if (App.TP != null)
                 {
                     App.TP.firstName = TPProfile.firstName;
@@ -382,11 +382,6 @@ public class OTPPageViewModel : BaseViewModel
                     App.TP.VtpmFg = TPProfile.VtpmFg;
                     App.TP.authenticationUser1 = TPProfile.authenticationUser1;
                 }
-            }
-            catch (Exception)
-            {
-                IsLoading = false;
-            }
 
         }
 
@@ -422,6 +417,27 @@ public class OTPPageViewModel : BaseViewModel
             App.LoginDataRetrieved.message = AccountDetail.messageTitle;
             App.LoginDataRetrieved.TypeChk = AccountDetail.typeCheck;
             App.LoginDataRetrieved.CozatcaTile = AccountDetail.cozatcaTileFlag;
+        }
+        }
+        catch (GAZTVATRegistrationInProcessException ex)
+        {
+            await UtilityManager.HandleExceptionMessage(ex.Message, false);
+        }
+        catch (GAZTNetworkConnectivityIssueException)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+        }
+        catch (InternetException)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+        }
+        catch (Exception)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+        }
+        finally
+        {
+            IsLoading = false;
         }
 
 

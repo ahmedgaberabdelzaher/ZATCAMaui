@@ -727,7 +727,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
 
                 }
             });
-            OnCaptchaRegenerateClicked = new Command( () =>
+            OnCaptchaRegenerateClicked = new Command(() =>
             {
                 StringBuilder captcha = GetCaptcha();
                 Captcha = captcha.ToString();
@@ -763,10 +763,10 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
         {
             get
             {
-                return new Command(async() =>
+                return new Command(async () =>
                 {
                     await SendOTPToRegisterMobileNumber();
-                }, ()=> _isResendOTPEnabled);
+                }, () => _isResendOTPEnabled);
             }
         }
 
@@ -939,8 +939,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
         }
         private async Task SendOTPToRegisterMobileNumber()
         {
-            try
-            {
                 IsLoading = true;
                 try
                 {
@@ -997,20 +995,28 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
                         await _dialogService.ShowMessageBox(AppResources.ZPleaseEnterAValidUserID, AppResources.ZError);
                     }
                 }
-                catch (GAZTVATRegistrationInProcessException exs)
-                {
-                    IsLoading = false;
-                    await _dialogService.ShowMessage(exs.Message, AppResources.Information);
-
-                }
-                IsLoading = false;
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
             }
-            catch (InternetException ex)
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
             {
                 IsLoading = false;
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                
             }
+            IsLoading = false;
+           
         }
         private async Task ValidateOTP()
         {
@@ -1108,7 +1114,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             {
                 IsLoading = false;
                 await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
-                
+
             }
         }
         private async Task SendUserNameToRegidteredEmail()
@@ -1117,7 +1123,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
             {
                 IsLoading = true;
                 string idNumber = GetTinId();
-               
+
                 string lang = UtilityManager.GetLanguageParameter();
                 string st = ZATCAConstants.BaseUrlOfODataServices + ZATCAConstants.ForgotPasswordServiceName + "/HeaderSet(Tin=";
                 string id = st + "'" + "" + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "1" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "ZS001" + "'" + ",Idnumber='" + idNumber + "'" + ",Otp='" + "" + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "U" + "')";
@@ -1164,11 +1170,25 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
                 }
                 IsLoading = false;
             }
-            catch (InternetException ex)
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
             {
                 IsLoading = false;
-                await _dialogService.ShowMessageBox(ex.Message, AppResources.ZError);
-               
             }
         }
         private async Task ChangePassword()
@@ -1239,11 +1259,25 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
                 }
                 IsLoading = false;
             }
-            catch (InternetException ex)
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
             {
                 IsLoading = false;
-                await _dialogService.ShowMessageBox(ex.Message, AppResources.Alerts);
-                
             }
         }
         public async Task PopToRootPage()
@@ -1272,36 +1306,44 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordP
                 List<TINModel> Tins = new List<TINModel>();
                 try
                 {
-                    try
+                    SelectedTinId = null;
+                    Tins = await WebServiceManager.GAZTGetAllTins(IDNumber);
+                    TINs = Tins;
+                    if (Tins.Count != 0 && SelectedTinId == null)
                     {
-                        SelectedTinId = null;
-                        Tins = await WebServiceManager.GAZTGetAllTins(IDNumber);
-                        TINs = Tins;
-                        if (Tins.Count != 0 && SelectedTinId == null)
-                        {
-                            IsVisibleTinIds = true;
-                            SelectedTinId = TINs[0];
-                        }
-                        else
-                        {
-                            IsVisibleTinIds = false;
-                            await _dialogService.ShowMessageBox(AppResources.NoTINsAvailable, AppResources.Information);
-                        }
-                        IsLoading = false;
+                        IsVisibleTinIds = true;
+                        SelectedTinId = TINs[0];
                     }
-                    catch (Exception)
+                    else
                     {
                         IsVisibleTinIds = false;
-                        IsVisibleTinIds = false;
-                        await _dialogService.ShowMessageBox(AppResources.NetworkConnectivityIssue, AppResources.Information);
+                        await _dialogService.ShowMessageBox(AppResources.NoTINsAvailable, AppResources.Information);
                     }
+                    IsLoading = false;
                 }
-                catch (InternetException ex)
+
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    await UtilityManager.HandleExceptionMessage(ex.Message, false);
+                }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+                }
+                catch (InternetException)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+                }
+                catch (Exception)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+                }
+                finally
                 {
                     IsLoading = false;
-                    await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
-                    
+                    IsVisibleTinIds = false;
                 }
+
             }
             else
             {

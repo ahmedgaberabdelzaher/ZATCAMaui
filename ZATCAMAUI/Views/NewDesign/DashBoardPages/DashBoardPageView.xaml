@@ -13,8 +13,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    ios:Page.UseSafeArea="True"
     x:Name="page"
+    ios:Page.UseSafeArea="True"
     BackgroundImageSource="partials_background"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False"
@@ -27,7 +27,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
-            
+
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -146,7 +146,10 @@
                         StrokeShape="RoundRectangle 12,12,0,0"
                         VerticalOptions="FillAndExpand">
 
-                        <ScrollView Scrolled="ScrollView_Scrolled" Margin="0,0,0,10" VerticalScrollBarVisibility="Never">
+                        <ScrollView
+                            Margin="0,0,0,10"
+                            Scrolled="ScrollView_Scrolled"
+                            VerticalScrollBarVisibility="Never">
 
                             <StackLayout Spacing="0">
 
@@ -294,14 +297,17 @@
                                         Grid.Column="2"
                                         HorizontalOptions="EndAndExpand"
                                         Source="WhiteCircle_arrow_right.png">
-                                          <Image.Triggers>
-                                                    <DataTrigger TargetType="Image" Binding="{Binding AppDirection}" Value="RightToLeft">
-                                                        <Setter Property="Rotation" Value="180"></Setter>
-                                                    </DataTrigger>
+                                        <Image.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding AppDirection}"
+                                                TargetType="Image"
+                                                Value="RightToLeft">
+                                                <Setter Property="Rotation" Value="180" />
+                                            </DataTrigger>
 
-                                                </Image.Triggers>
+                                        </Image.Triggers>
                                         <Image.GestureRecognizers>
-                                            <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding OnZakatNowCommand}" />
+                                            <TapGestureRecognizer Command="{Binding OnZakatNowCommand}" NumberOfTapsRequired="1" />
                                         </Image.GestureRecognizers>
                                     </Image>
                                     <Label
@@ -326,7 +332,6 @@
                                             <Label
                                                 Grid.Column="0"
                                                 Style="{StaticResource SectionTitleBlack}"
-                                                
                                                 Text="{x:Static ResourceManager:AppResources.DashBoardPendingBills}"
                                                 VerticalOptions="Center" />
 
@@ -350,14 +355,16 @@
                                                     </Label.FormattedText>
                                                 </Label>
 
-                                                <Image Source="circle_arrow_right.png" 
-                                                       VerticalOptions="Center">
-                                                      <Image.Triggers>
-                                                    <DataTrigger TargetType="Image" Binding="{Binding AppDirection}" Value="RightToLeft">
-                                                        <Setter Property="Rotation" Value="180"></Setter>
-                                                    </DataTrigger>
+                                                <Image Source="circle_arrow_right.png" VerticalOptions="Center">
+                                                    <Image.Triggers>
+                                                        <DataTrigger
+                                                            Binding="{Binding AppDirection}"
+                                                            TargetType="Image"
+                                                            Value="RightToLeft">
+                                                            <Setter Property="Rotation" Value="180" />
+                                                        </DataTrigger>
 
-                                                </Image.Triggers>
+                                                    </Image.Triggers>
                                                     <Image.GestureRecognizers>
                                                         <TapGestureRecognizer Command="{Binding TappedOnMyBills}" />
                                                     </Image.GestureRecognizers>
@@ -387,8 +394,11 @@
 
                                                 <Image Source="circle_arrow_right.png" VerticalOptions="Center">
                                                     <Image.Triggers>
-                                                        <DataTrigger TargetType="Image" Binding="{Binding AppDirection}" Value="RightToLeft">
-                                                            <Setter Property="Rotation" Value="180"></Setter>
+                                                        <DataTrigger
+                                                            Binding="{Binding AppDirection}"
+                                                            TargetType="Image"
+                                                            Value="RightToLeft">
+                                                            <Setter Property="Rotation" Value="180" />
                                                         </DataTrigger>
 
                                                     </Image.Triggers>
@@ -410,7 +420,7 @@
                                             VerticalScrollBarVisibility="Never">
 
                                             <CollectionView.ItemsLayout>
-                                                <GridItemsLayout VerticalItemSpacing="5" Orientation="Vertical"/>
+                                                <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="5" />
                                             </CollectionView.ItemsLayout>
 
                                             <CollectionView.ItemTemplate>
@@ -419,11 +429,11 @@
 
                                                     <cards:SfCardView
                                                         Padding="5"
-                                                        FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                                         BackgroundColor="White"
                                                         BorderColor="{StaticResource NeutralLightGrey}"
                                                         BorderWidth="1"
                                                         CornerRadius="16"
+                                                        FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                                         HorizontalOptions="FillAndExpand"
                                                         VerticalOptions="FillAndExpand">
 
@@ -491,8 +501,7 @@
                                                                         </StackLayout>
 
                                                                         <Border.GestureRecognizers>
-                                                                            <TapGestureRecognizer Command="{Binding Source={x:Reference page}, Path=BindingContext.BillsPayNowCommand}"
-                                                                                                  CommandParameter="{Binding .}"/>
+                                                                            <TapGestureRecognizer Command="{Binding Source={x:Reference page}, Path=BindingContext.BillsPayNowCommand}" CommandParameter="{Binding .}" />
                                                                         </Border.GestureRecognizers>
                                                                     </Border>
 
@@ -538,7 +547,10 @@
                                                 Text="{Binding NextCommitmentsString}"
                                                 VerticalOptions="Center" />
 
-                                            <Grid ColumnDefinitions="auto,30" RowDefinitions="auto" Margin="0,10,0,0">
+                                            <Grid
+                                                Margin="0,10,0,0"
+                                                ColumnDefinitions="auto,30"
+                                                RowDefinitions="auto">
 
                                                 <Label Style="{StaticResource ValueLabelBlackMedium}" Text="{Binding SelectedCommitmentFilterValue}" />
 
@@ -641,9 +653,10 @@
                                                 <CollectionView.ItemTemplate>
                                                     <DataTemplate>
 
-                                                        <StackLayout Orientation="Horizontal"
-                                                                     FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
-                                                                     WidthRequest="350">
+                                                        <StackLayout
+                                                            FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
+                                                            Orientation="Horizontal"
+                                                            WidthRequest="350">
 
                                                             <cards:SfCardView
                                                                 BackgroundColor="White"
@@ -809,8 +822,11 @@
                                                         VerticalOptions="Center" />
                                                     <Image HorizontalOptions="EndAndExpand" Source="circle_arrow_right.png">
                                                         <Image.Triggers>
-                                                            <DataTrigger TargetType="Image" Binding="{Binding AppDirection}" Value="RightToLeft">
-                                                                <Setter Property="Rotation" Value="180"></Setter>
+                                                            <DataTrigger
+                                                                Binding="{Binding AppDirection}"
+                                                                TargetType="Image"
+                                                                Value="RightToLeft">
+                                                                <Setter Property="Rotation" Value="180" />
                                                             </DataTrigger>
 
                                                         </Image.Triggers>
@@ -955,8 +971,11 @@
                                                 VerticalOptions="Center" />
                                             <Image HorizontalOptions="EndAndExpand" Source="circle_arrow_right.png">
                                                 <Image.Triggers>
-                                                    <DataTrigger TargetType="Image" Binding="{Binding AppDirection}" Value="RightToLeft">
-                                                        <Setter Property="Rotation" Value="180"></Setter>
+                                                    <DataTrigger
+                                                        Binding="{Binding AppDirection}"
+                                                        TargetType="Image"
+                                                        Value="RightToLeft">
+                                                        <Setter Property="Rotation" Value="180" />
                                                     </DataTrigger>
 
                                                 </Image.Triggers>
@@ -976,7 +995,7 @@
                                                 VerticalScrollBarVisibility="Never">
 
                                                 <CollectionView.ItemsLayout>
-                                                    <GridItemsLayout VerticalItemSpacing="8" Orientation="Vertical"/>
+                                                    <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="8" />
                                                 </CollectionView.ItemsLayout>
 
                                                 <CollectionView.ItemTemplate>
@@ -984,11 +1003,11 @@
 
                                                         <cards:SfCardView
                                                             Margin="3"
-                                                            FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                                             BackgroundColor="White"
                                                             BorderColor="{StaticResource NeutralLightGrey}"
                                                             BorderWidth="1"
                                                             CornerRadius="16"
+                                                            FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                                             VerticalOptions="Fill">
 
                                                             <StackLayout Margin="10" Spacing="8">
@@ -1147,9 +1166,12 @@
                                                 Text="{x:Static ResourceManager:AppResources.VatInstalmentPlan}"
                                                 VerticalOptions="Center" />
                                             <Image HorizontalOptions="EndAndExpand" Source="circle_arrow_right.png">
-                                                  <Image.Triggers>
-                                                    <DataTrigger TargetType="Image" Binding="{Binding AppDirection}" Value="RightToLeft">
-                                                        <Setter Property="Rotation" Value="180"></Setter>
+                                                <Image.Triggers>
+                                                    <DataTrigger
+                                                        Binding="{Binding AppDirection}"
+                                                        TargetType="Image"
+                                                        Value="RightToLeft">
+                                                        <Setter Property="Rotation" Value="180" />
                                                     </DataTrigger>
 
                                                 </Image.Triggers>
@@ -1195,24 +1217,24 @@
 
                                                                     <chart:SfCircularChart
                                                                         HeightRequest="80"
-                                                                        WidthRequest="80"
-                                                                        VerticalOptions="CenterAndExpand">
-                                                                        
+                                                                        VerticalOptions="CenterAndExpand"
+                                                                        WidthRequest="80">
+
                                                                         <chart:DoughnutSeries
-                                                                            PaletteBrushes="{Binding ChartColors}"
-                                                                            ItemsSource="{Binding Series}"
                                                                             InnerRadius="0.7"
+                                                                            ItemsSource="{Binding Series}"
+                                                                            PaletteBrushes="{Binding ChartColors}"
                                                                             XBindingPath="XValue"
                                                                             YBindingPath="YValue">
                                                                             <chart:DoughnutSeries.CenterView>
-                                                                                 <Image
-                                                                        Margin="2,2,0,0"
-                                                                        HeightRequest="32"
-                                                                        Source="sf_Payment.png"
-                                                                        VerticalOptions="Center"
-                                                                        WidthRequest="32" />
-                                                                                </chart:DoughnutSeries.CenterView>
-                                                                          
+                                                                                <Image
+                                                                                    Margin="2,2,0,0"
+                                                                                    HeightRequest="32"
+                                                                                    Source="sf_Payment.png"
+                                                                                    VerticalOptions="Center"
+                                                                                    WidthRequest="32" />
+                                                                            </chart:DoughnutSeries.CenterView>
+
                                                                         </chart:DoughnutSeries>
                                                                     </chart:SfCircularChart>
                                                                 </Grid>
@@ -1227,10 +1249,7 @@
                                                                         Style="{StaticResource SectionTitleBlackBold}"
                                                                         Text="{Binding TaxTypeDescription}" />
 
-                                                                    <Label
-                                                                        
-                                                                        FontSize="15"
-                                                                        Style="{StaticResource ValueLabelBlackLight}">
+                                                                    <Label FontSize="15" Style="{StaticResource ValueLabelBlackLight}">
                                                                         <Label.FormattedText>
                                                                             <FormattedString>
                                                                                 <Span
@@ -1246,17 +1265,14 @@
                                                                         </Label.FormattedText>
                                                                     </Label>
 
-                                                                    <Label
-                                                                        Style="{StaticResource BodyLabelBlackMedium}"
-                                                                        Text="{x:Static ResourceManager:AppResources.DashBoardNextPaymentDue}" />
+                                                                    <Label Style="{StaticResource BodyLabelBlackMedium}" Text="{x:Static ResourceManager:AppResources.DashBoardNextPaymentDue}" />
 
                                                                     <Label
-                                                                        
                                                                         FontSize="15"
                                                                         Style="{StaticResource ValueLabelBlackLight}"
                                                                         Text="{Binding DayMonth}" />
 
-                                                                    <StackLayout  Orientation="Horizontal">
+                                                                    <StackLayout Orientation="Horizontal">
 
 
                                                                         <BoxView
@@ -1430,13 +1446,14 @@
                                                         <TapGestureRecognizer Command="{Binding RefundRequestCommand}" />
                                                     </StackLayout.GestureRecognizers>
                                                 </StackLayout>
-                                                <BoxView x:Name="refundreqMenuBox"
-                                                          IsVisible="{Binding IsRefundreqMenuBoxVisible}"
-                                                         Style="{StaticResource WhiteLineSeperator}" />
+                                                <BoxView
+                                                    x:Name="refundreqMenuBox"
+                                                    IsVisible="{Binding IsRefundreqMenuBoxVisible}"
+                                                    Style="{StaticResource WhiteLineSeperator}" />
                                                 <StackLayout
                                                     x:Name="fillingMenu"
-                                                    Orientation="Horizontal"
                                                     IsVisible="{Binding IsFillingMenuVisible}"
+                                                    Orientation="Horizontal"
                                                     Spacing="20">
                                                     <Image Source="menu_return.png" Style="{StaticResource SmallIcon}" />
                                                     <Label Style="{StaticResource ButtonLabelWhiteBold}" Text="{x:Static ResourceManager:AppResources.NDFillingFrequency}" />
@@ -1444,9 +1461,10 @@
                                                         <TapGestureRecognizer Command="{Binding ChnageFillingPeriodCommand}" />
                                                     </StackLayout.GestureRecognizers>
                                                 </StackLayout>
-                                                <BoxView x:Name="fillingMenuBox"
-                                                          IsVisible="{Binding IsFillingMenuBoxVisible}"
-                                                         Style="{StaticResource WhiteLineSeperator}" />
+                                                <BoxView
+                                                    x:Name="fillingMenuBox"
+                                                    IsVisible="{Binding IsFillingMenuBoxVisible}"
+                                                    Style="{StaticResource WhiteLineSeperator}" />
                                                 <StackLayout IsVisible="{Binding IfRegInZakat}">
                                                     <StackLayout
                                                         Margin="0,0,0,15"
@@ -1517,7 +1535,7 @@
                                                     <Image Source="taxpayer_subsidy.png" Style="{StaticResource SmallIcon}" />
                                                     <Label Style="{StaticResource ButtonLabelWhiteBold}" Text="{x:Static ResourceManager:AppResources.TaxPayerSubsidyRequest}" />
                                                     <StackLayout.GestureRecognizers>
-                                                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding TaxPayerSubsidyRequestCommand}" />
+                                                        <TapGestureRecognizer Command="{Binding TaxPayerSubsidyRequestCommand}" NumberOfTapsRequired="1" />
                                                     </StackLayout.GestureRecognizers>
                                                 </StackLayout>
                                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
@@ -1537,21 +1555,17 @@
                                             <!--  Contact Zatca For Audit Case ends  -->
                                             <!--  CR6264 starts  -->
 
-                                            <Grid
-                                                ColumnDefinitions="auto,*"
-                                                ColumnSpacing="20">
+                                            <Grid ColumnDefinitions="auto,*" ColumnSpacing="20">
                                                 <Image Source="taxpayer_subsidy.png" Style="{StaticResource SmallIcon}" />
                                                 <Label
                                                     Grid.Column="1"
                                                     Style="{StaticResource ButtonLabelWhiteBold}"
-                                                    Text="{Binding VatProfitGoodsTileTxt}"/>
+                                                    Text="{Binding VatProfitGoodsTileTxt}" />
                                                 <Grid.GestureRecognizers>
                                                     <TapGestureRecognizer Command="{Binding ProfitOnGoodsCommand}" />
                                                 </Grid.GestureRecognizers>
                                             </Grid>
-                                            <BoxView
-                                                x:Name="tileUpdatedBoxView"
-                                                Style="{StaticResource WhiteLineSeperator}" />
+                                            <BoxView x:Name="tileUpdatedBoxView" Style="{StaticResource WhiteLineSeperator}" />
                                             <!--  CR6264 ends  -->
                                             <!--  RateUS  Starts  -->
                                             <StackLayout Spacing="20">
@@ -1766,9 +1780,10 @@
 
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>
-                                        <StackLayout x:Name="Item"
-                                                     FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
-                                                     Margin="10">
+                                        <StackLayout
+                                            x:Name="Item"
+                                            Margin="10"
+                                            FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
                                             <StackLayout.GestureRecognizers>
                                                 <TapGestureRecognizer
                                                     BindingContext="{Binding Source={x:Reference menu}, Path=BindingContext}"

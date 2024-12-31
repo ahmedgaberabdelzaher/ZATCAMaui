@@ -5,6 +5,7 @@ using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Manager;
+using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.UpdateEffDateModel;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
@@ -13,7 +14,7 @@ using StatusSetResult = ZATCAMAUI.Models.ZakatExemptionListModel.StatusSetResult
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 {
-    
+
     public class ZakatExemptionRequestListViewModel : BaseViewModel
     {
         public ZakatExemptionListModel zakatExemptionListModel;
@@ -36,7 +37,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             protected set { downloadCertCommand = value; }
         }
 
-        
+
 
         #region Properies
         private bool _isSearchButtonVisible = true;
@@ -58,7 +59,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         }
 
         private bool _isCloseButtonVisible = false;
-        
+
         public bool IsCloseButtonVisible
         {
             get
@@ -121,7 +122,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 OnPropertyChanged("NoDataAvailable");
             }
         }
-        
+
 
         public string _searchText = "";
         /// <summary>
@@ -156,7 +157,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
         }
 
-        
+
         public string _selectedStatusForFilter = null;
         public string SelectedStatusForFilter
         {
@@ -247,7 +248,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         #endregion
 
 
-        
+
 
 
         #region Constructor
@@ -260,12 +261,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             downloadCertCommand = new Command(OnCertificateDownload);
         }
 
-        
+
         #endregion
 
 
         public async void CreateNewRequest()
-        {   
+        {
             try
             {
 
@@ -299,59 +300,80 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
         }
 
-        
+
 
         ///<summary>
         ///To display tapped item content
         ///</summary>
         public async void OnItemTapped(object obj)
         {
-            var fbnumListSet = obj as ZakatExemptionListModel.FbnumListSetResult;
+            try
+            {
+                var fbnumListSet = obj as ZakatExemptionListModel.FbnumListSetResult;
 
-            if (fbnumListSet.DispErr)
-            {
-                MainThread.BeginInvokeOnMainThread(async () => {
-                    await _dialogService.ShowMessageBox(AppResources.ZakatExemptiomRequestMessage, AppResources.Information);
-                });
-            }
-            else
-            {
-                zakatExemptionModel = await ZakatExemptionWebServiceManager.GetRequestToZakatExemtionRequest(fbnumListSet);
-                zakatExemptionModel.d = zakatExemptionModel.data;
-                if (fbnumListSet.Fbsta.Equals("IP011") && (fbnumListSet.Fbust.Equals("E0019") || fbnumListSet.Fbust.Equals("E0031")))
+                if (fbnumListSet.DispErr)
                 {
-                    zakatExemptionModel.d.OpenPageOnEdit = true;
-
+                    MainThread.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessageBox(AppResources.ZakatExemptiomRequestMessage, AppResources.Information);
+                    });
                 }
                 else
                 {
-                    zakatExemptionModel.d.OpenPageOnEdit = true;
-                }
-
-                try
-                {
-                    MainThread.BeginInvokeOnMainThread(async () =>
+                    zakatExemptionModel = await ZakatExemptionWebServiceManager.GetRequestToZakatExemtionRequest(fbnumListSet);
+                    zakatExemptionModel.d = zakatExemptionModel.data;
+                    if (fbnumListSet.Fbsta.Equals("IP011") && (fbnumListSet.Fbust.Equals("E0019") || fbnumListSet.Fbust.Equals("E0031")))
                     {
-                        _navigationService.NavigateTo(App.ZakatExemptionPageView, zakatExemptionModel);
-                    });
-                }
+                        zakatExemptionModel.d.OpenPageOnEdit = true;
 
-                catch (Exception ex)
-                {
-                    MainThread.BeginInvokeOnMainThread(async () =>
+                    }
+                    else
                     {
-                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        _navigationService.GoBack();
-                    });
+                        zakatExemptionModel.d.OpenPageOnEdit = true;
+                    }
+
+                    try
+                    {
+                        MainThread.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _navigationService.NavigateTo(App.ZakatExemptionPageView, zakatExemptionModel);
+                        });
+                    }
+
+                    catch (Exception)
+                    {
+                        await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
+                    }
                 }
             }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
+            }
+
         }
 
         private void OnCertificateDownload(object obj)
         {
             var fbnumListSet = obj as ZakatExemptionListModel.FbnumListSetResult;
             {
-                String downloadurl = ZATCAConstants.ZakatExemtionDownloadCert + fbnumListSet.Fbnum ;
+                String downloadurl = ZATCAConstants.ZakatExemtionDownloadCert + fbnumListSet.Fbnum;
                 _navigationService.NavigateTo(App.PdfView, downloadurl);
             }
         }
@@ -366,9 +388,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
         public void FilterWithStatus(string selectedStatusDescription)
         {
-           CopiedZakatExemptionListViewData = new ObservableCollection<FbnumListSetResult>(ZakatExemptionListViewData.Where(searchedObjects => searchedObjects.StatusDesc.Equals(selectedStatusDescription, StringComparison.CurrentCultureIgnoreCase)));
+            CopiedZakatExemptionListViewData = new ObservableCollection<FbnumListSetResult>(ZakatExemptionListViewData.Where(searchedObjects => searchedObjects.StatusDesc.Equals(selectedStatusDescription, StringComparison.CurrentCultureIgnoreCase)));
         }
-        
+
 
         public void PopulateStatusTypeList()
         {
@@ -402,9 +424,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
         public void FilterOnBasisOfTaxType()
         {
-            
+
         }
-        
+
 
         public void FiltersClicked()
         {
@@ -464,7 +486,24 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 }
                 IsLoading = false;
             }
-            catch (Exception ex)
+
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
             {
                 IsLoading = false;
             }

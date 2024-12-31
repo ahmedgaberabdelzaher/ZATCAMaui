@@ -1,6 +1,7 @@
 ﻿
 using System.Globalization;
 using System.Windows.Input;
+using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 
@@ -46,51 +47,53 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
 
         public async Task LogOut()
         {
-            await Task.Run(() =>
+            try
             {
                 App.DisplayProgressView();
-            });
-            if (App.TP != null)
-                App.TP = null;
-            if (App.PreviousIsArabic)
-            {
-                string langName = "ar-AE";
-                AppResources.Culture = new CultureInfo(langName);
-            }
-            else
-            {
-                string langName = "en-US";
-                AppResources.Culture = new CultureInfo(langName);
-            }
 
-            try
-            {
+                if (App.TP != null)
+                    App.TP = null;
+                if (App.PreviousIsArabic)
+                {
+                    string langName = "ar-AE";
+                    AppResources.Culture = new CultureInfo(langName);
+                }
+                else
+                {
+                    string langName = "en-US";
+                    AppResources.Culture = new CultureInfo(langName);
+                }
+
                 await WebServiceManager.GAZTLogOff();
-            }
-            catch
-            {
 
-            }
-
-            await Task.Run(() =>
-            {
                 App.HideProgressView();
-            });
 
-            App.IsLogOut = true;
-            App.IsLoginCalled = false;
-            App.IsSamlApiCalledAndroid = false;
+                App.IsLogOut = true;
+                App.IsLoginCalled = false;
+                App.IsSamlApiCalledAndroid = false;
 
-            try
-            {
                 App.httpClientHandler = new HttpClientHandler();
                 App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
                 App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
+
+                _navigationService.GoBack();
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
             }
-            _navigationService.GoBack();
+            finally
+            {
+                App.HideProgressView();
+            }
         }
 
         #endregion

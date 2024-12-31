@@ -87,7 +87,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
 
                 // Resources["CheckBoxValidationStyle"] = App.Current.Resources["StyleCheckBoxValidatorGreen"];
             }
-            catch (Exception )
+            catch (Exception)
             {
             }
         }
@@ -318,9 +318,9 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 viewModel.IsLoading = false;
             });
-           
+
         }
-     
+
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
@@ -363,7 +363,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                         SetNote();
                     }
                 }
-             
+
                 if (AddNotePageViewModel.ClearNoteClicked == true)
                 {
                     Note note = viewModel.VATDeclarationData.data.NOTESSet.Where(w => w.DataVersionz == "00000").FirstOrDefault();
@@ -388,7 +388,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             Note objNote = new Note();
             int count = viewModel.VATDeclarationData.data.NOTESSet.Count;
             string Url = ZATCAConstants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VATR_M_SRV/NOTESSet('00" + (count + 1).ToString() + "')";
-           
+
             objNote.Notenoz = (count + 1).ToString();
             objNote.DataVersionz = "00000";
             objNote.Refnamez = String.Empty;
@@ -428,7 +428,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 Note objNote = new Note();
                 int count = viewModel.VATDeclarationData.data.NOTESSet.Count;
                 string Url = ZATCAConstants.BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VATR_M_SRV/NOTESSet('00" + (count + 1).ToString() + "')";
-               
+
                 objNote.Notenoz = (count + 1).ToString();
                 objNote.DataVersionz = "00000";
                 objNote.Refnamez = String.Empty;
@@ -492,7 +492,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         public void OnPageSelected(object sender, SelectionChangedEventArgs e)
         {
             SfTabView_SelectionChanged(null, null);
-           
+
         }
         private void chkDeclaration_CheckedChanged(object sender, CheckedChangedEventArgs e)
         {
@@ -758,7 +758,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 var senderObj = (Entry)sender;
                 if (viewModel.IsUnFocusedTextBox == false)
                 {
-                    
+
                     if (!string.IsNullOrEmpty(senderObj.Text))
                     {
                         isArabicChecked = isCheckArabic(senderObj.Text);
@@ -813,7 +813,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 var senderObj = (Entry)sender;
                 if (viewModel.IsUnFocusedTextBox == false)
                 {
-                   
+
                     if (!string.IsNullOrEmpty(senderObj.Text))
                     {
                         isArabicChecked = isCheckArabic(senderObj.Text);
@@ -913,7 +913,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 var senderObj = (Entry)sender;
                 if (viewModel.IsUnFocusedTextBox == false)
                 {
-                   
+
                     if (!string.IsNullOrEmpty(senderObj.Text))
                     {
                         isArabicChecked = isCheckArabic(senderObj.Text);
@@ -966,7 +966,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 var senderObj = (Entry)sender;
                 if (viewModel.IsUnFocusedTextBox == false)
                 {
-                   
+
                     if (!string.IsNullOrEmpty(senderObj.Text))
                     {
                         isArabicChecked = isCheckArabic(senderObj.Text);
@@ -1063,7 +1063,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 var senderObj = (Entry)sender;
                 if (viewModel.IsUnFocusedTextBox == false)
                 {
-                  
+
                     if (!string.IsNullOrEmpty(senderObj.Text))
                     {
                         isArabicChecked = isCheckArabic(senderObj.Text);
@@ -1118,7 +1118,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             {
                 bool isArabicChecked = true;
                 var senderObj = (Entry)sender;
-               
+
                 if (!string.IsNullOrEmpty(senderObj.Text))
                 {
                     isArabicChecked = isCheckArabicWithMinus(senderObj.Text);
@@ -1888,7 +1888,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                         if (IsAllEntered == false)
                         {
                             viewModel.IsMainButtonEnabled = false;
-                            
+
                         }
                         else
                         {
@@ -2370,7 +2370,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 {
                     IsAllEntered = false;
                 }
-               
+
                 if (IsAllEntered == false)
                 {
                     viewModel.IsMainButtonEnabled = false;
@@ -2386,7 +2386,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
             }
             return IsAllEntered;
         }
-   
+
         private void EntryPreperiodcorr_TextChanged(object sender, TextChangedEventArgs e)
         {
             try
@@ -2908,7 +2908,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                         if (Convert.ToDouble(EntryExportsAmt.Text) > 0)
                         {
                             Message = AppResources.ZZOurrecordsindicatethatyouarenotmainly;
-                           
+
                         }
                     }
                 }
@@ -3021,7 +3021,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                                 {
                                     //PopUp popUp = new PopUp();
                                     Message = AppResources.ZZValidationMessage09_IfThresholdType002AndZTTH_VTTH_PerNotEqualToZero;
-                                   
+
                                 }
                             }
                         }
@@ -3897,43 +3897,41 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 }
             }
         }
-        private void Unfocused_IBAN(object sender, FocusEventArgs e)
+        private async void Unfocused_IBAN(object sender, FocusEventArgs e)
         {
             try
             {
-                try
+                var response = WebServiceManager.GAZTCheckIBAN(viewModel.IbanNumberText);
+                if (response != null)
                 {
-                    var response = WebServiceManager.GAZTCheckIBAN(viewModel.IbanNumberText);
-                    if (response != null)
-                    {
-                        viewModel.IsIBANValid = true;
-                    }
-                    else
-                    {
-                        viewModel.IsIBANValid = false;
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            viewModel._dialogService.ShowMessage(AppResources.ZZIBANisincorrect, AppResources.Information);
-                        });
-                    }
+                    viewModel.IsIBANValid = true;
                 }
-                catch (InternetException ex)
+                else
                 {
+                    viewModel.IsIBANValid = false;
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
-                        viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                       await viewModel._dialogService.ShowMessage(AppResources.ZZIBANisincorrect, AppResources.Information);
                     });
                 }
             }
+
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
             catch (Exception)
             {
-
-
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                viewModel.IsLoading = false;
                 viewModel.IsIBANValid = false;
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    viewModel._dialogService.ShowMessage(AppResources.ZZIBANisincorrect, AppResources.Information);
-                });
             }
         }
         private void chkRefundDeclaration_CheckedChanged(object sender, CheckedChangedEventArgs e)
@@ -3967,7 +3965,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         private void EntryVatAmount_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             CheckMandetoryFields();
-           
+
         }
         private void EntryVatAdjustmentWithSAR_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
@@ -4473,7 +4471,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
 
                 throw;
             }
-            int PageName = (int) SfTabView.SelectedIndex;
+            int PageName = (int)SfTabView.SelectedIndex;
             if (PageName == 0)
             {
                 viewModel.InstrunctionClicked();
@@ -4485,7 +4483,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 {
                     viewModel.IsMainButtonEnabled = false;
                 }
-               
+
                 viewModel.IsFirstTimeGet = false;
                 if (viewModel.IsGetAcknowledgementClicked == true)
                 {
@@ -4662,14 +4660,14 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                                 bool value1 = viewModel.IsCheckedDraftMode();
                                 if (viewModel.IsMainButtonEnabled == false && (App.ICRStatus == "E0001" || value1))
                                 {
-                                    
+
                                 }
                                 else
                                 {
                                     viewModel.IsVisibleSummary = true;
                                     viewModel.ClearPage();
                                     viewModel.SummaryClicked();
-                                  
+
                                 }
                                 //Add because it will  not navigate in tobefilled and draft mode
                                 if (App.ICRStatus == "E0001" || value1)
@@ -5517,7 +5515,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 var senderObj = (Entry)sender;
                 if (viewModel.IsUnFocusedTextBox == false)
                 {
-                   
+
                     CheckMandetoryFields();
                     if (!string.IsNullOrEmpty(senderObj.Text))
                     {

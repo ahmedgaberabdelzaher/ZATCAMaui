@@ -1,9 +1,11 @@
-﻿using Newtonsoft.Json;
+﻿using Mopups.Services;
+using Newtonsoft.Json;
 using PanCardView.Extensions;
 using System.Globalization;
 using System.Net;
 using System.Text.RegularExpressions;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 
 namespace ZATCAMAUI.Core.Mangers
 {
@@ -1187,7 +1189,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                 return gregDate.ToString("yyyy/MM/dd", CultureInfo.InvariantCulture);
 
-               // return tempDate.ToString("yyyy/MM/dd", enCul.DateTimeFormat);
+                // return tempDate.ToString("yyyy/MM/dd", enCul.DateTimeFormat);
             }
             catch (Exception)
             {
@@ -1217,7 +1219,7 @@ namespace ZATCAMAUI.Core.Mangers
 
 
                     //var var2 = tempDate.ToString("yyyy/MM/dd", arSA.DateTimeFormat);
-                    var var2 =  $"{hijriYear}/{hijriMonth:00}/{hijriDay:00}";
+                    var var2 = $"{hijriYear}/{hijriMonth:00}/{hijriDay:00}";
                     return var2;
                 }
                 catch (Exception)
@@ -1612,13 +1614,33 @@ namespace ZATCAMAUI.Core.Mangers
                     return "";
                 }
             }
-            catch (Exception )
+            catch (Exception)
             {
                 return "";
             }
-           
+
 
         }
+
+        public static async Task HandleExceptionMessage(string popUpMessage, bool isNavigateUp = false, Interfaces.INavigationService _navigationService = null)
+        {
+            try
+            {
+                if (MopupService.Instance.PopupStack.Any())
+                    await MopupService.Instance.PopAllAsync(false);
+
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(popUpMessage));
+                if (isNavigateUp && _navigationService != null)
+                {
+                        _navigationService.GoBack();
+                }
+            }
+            catch (Exception)
+            {
+            }
+
+        }
+     
         public static string FormatDateToYYYYDDMMFromDateTypeString(DateTime? dateToConvert)
         {
             string requiredDate = string.Empty;

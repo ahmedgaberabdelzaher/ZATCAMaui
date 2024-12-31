@@ -27,7 +27,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage
         public static string Fbguid { get; set; }
         #endregion
         #region Property
-        
+
         private ZakatReturnDetailsD _zakatReturnDetail;
         public ZakatReturnDetailsD ZakatReturnDetail
         {
@@ -243,70 +243,74 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage
             try
             {
                 Fbguid = fbguid;
-                await Task.Run(() =>
+                IsLoading = true;
+                ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(fbguid);
+                PopToRootPage();
+                if (zakatReturnDetails != null && zakatReturnDetails.d != null)
                 {
-                    IsLoading = true;
-                });
-                await Task.Run(async () =>
-                {
-                    ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(fbguid);
-                    PopToRootPage();
-                    if (zakatReturnDetails != null && zakatReturnDetails.d != null)
-                    {
-                        ZakatReturnDetails = zakatReturnDetails;
-                        ZakatReturnDetail = zakatReturnDetails.d;
-                        GetUpdatedDataAfterAddingComma();
-                        SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
-                        SetChangeFromEstimateTAccountringBasisButtonVisibility(ZakatReturnDetails.d.Statusz);
+                    ZakatReturnDetails = zakatReturnDetails;
+                    ZakatReturnDetail = zakatReturnDetails.d;
+                    GetUpdatedDataAfterAddingComma();
+                    SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
+                    SetChangeFromEstimateTAccountringBasisButtonVisibility(ZakatReturnDetails.d.Statusz);
 
-                        Abrzu = ZakatReturnListPageViewModel.ReturnPeriod;
+                    Abrzu = ZakatReturnListPageViewModel.ReturnPeriod;
+                }
+                else
+                {
+                    IsLoading = false;
+                    if (string.IsNullOrEmpty(WebServiceManager.ErrorMessage))
+                    {
+                        MainThread.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                            _navigationService.GoBack();
+                        });
                     }
                     else
                     {
-                        IsLoading = false;
-                        if (string.IsNullOrEmpty(WebServiceManager.ErrorMessage))
+                        //     Dear taxpayer, the return is under GAZT review and cannot be amended.
+                        if (WebServiceManager.ErrorMessage.Equals("Dear taxpayer, the return is under GAZT review and cannot be amended."))// message is always coming in english from the server
                         {
                             MainThread.BeginInvokeOnMainThread(async () =>
                             {
-                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                                _navigationService.GoBack();
+                                if (App.IsArabic)
+                                {
+                                    await _dialogService.ShowMessage(AppResources.ZDearTaxpayerTheReturnIsUnderGAZTReviewAndCannotBeAmended, AppResources.Information);
+                                    _navigationService.GoBack();
+                                    WebServiceManager.ErrorMessage = string.Empty;
+                                }
+                                else
+                                {
+                                    await _dialogService.ShowMessage(WebServiceManager.ErrorMessage, AppResources.Information);
+                                    _navigationService.GoBack();
+                                    WebServiceManager.ErrorMessage = string.Empty;
+                                }
                             });
                         }
-                        else
-                        {
-                            //     Dear taxpayer, the return is under GAZT review and cannot be amended.
-                            if (WebServiceManager.ErrorMessage.Equals("Dear taxpayer, the return is under GAZT review and cannot be amended."))// message is always coming in english from the server
-                            {
-                                MainThread.BeginInvokeOnMainThread(async () =>
-                                {
-                                    if (App.IsArabic)
-                                    {
-                                        await _dialogService.ShowMessage(AppResources.ZDearTaxpayerTheReturnIsUnderGAZTReviewAndCannotBeAmended, AppResources.Information);
-                                        _navigationService.GoBack();
-                                        WebServiceManager.ErrorMessage = string.Empty;
-                                    }
-                                    else
-                                    {
-                                        await _dialogService.ShowMessage(WebServiceManager.ErrorMessage, AppResources.Information);
-                                        _navigationService.GoBack();
-                                        WebServiceManager.ErrorMessage = string.Empty;
-                                    }
-                                });
-                            }
-                        }
                     }
-                });
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                }
+                IsLoading = false;
             }
-            catch (InternetException ex)
+            catch (GAZTVATRegistrationInProcessException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                });
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
         public void PopToRootPage()
@@ -392,84 +396,73 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage
         {
             try
             {
-                await Task.Run(() =>
+                IsLoading = true;
+                GetUpdatedDataAfterRemovingComma();
+                ZakatReturnDetails _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(ZakatReturnDetails, "59");
+                if (_zakatReturnDetails != null && _zakatReturnDetails.d != null)
                 {
-                    IsLoading = true;
-                });
-                await Task.Run(async () =>
+                    MainThread.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessageBox(AppResources.ZZReleasedSuccessfully, AppResources.ZZNotification);
+                    });
+
+                }
+                else
                 {
                     try
                     {
-                        GetUpdatedDataAfterRemovingComma();
-                        ZakatReturnDetails _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(ZakatReturnDetails, "59");
-                        if (_zakatReturnDetails != null && _zakatReturnDetails.d != null)
-                        {
-                            try
-                            {
-                                MainThread.BeginInvokeOnMainThread(async () =>
-                                {
-                                    await _dialogService.ShowMessageBox(AppResources.ZZReleasedSuccessfully, AppResources.ZZNotification);
-                                });
-                            }
-                            catch (Exception)
-                            {
 
-
-                            }
-                        }
-                        else
-                        {
-                            try
-                            {
-                              
-                                MainThread.BeginInvokeOnMainThread(async () =>
-                                    {
-                                        
-                                        await _dialogService.ShowMessage(WebServiceManager.ErrorMessage, AppResources.Information);
-                                        _navigationService.GoBack();
-                                        WebServiceManager.ErrorMessage = string.Empty;
-                                    });
-                            }
-                            catch (Exception)
-                            {
-
-
-                            }
-                          
-                        }
-                        ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(Fbguid);
-                        PopToRootPage();
-                       if (zakatReturnDetails != null)
-                        {
-                            ZakatReturnDetails = zakatReturnDetails;
-                            if (zakatReturnDetails.d != null)
-                            {
-                                ZakatReturnDetail = zakatReturnDetails.d;
-                                GetUpdatedDataAfterAddingComma();
-                                if (ZakatReturnDetails.d.Statusz != null)
-                                {
-                                    SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
-                                }
-                            }
-                        }
-                    }
-                    catch (InternetException ex)
-                    {
                         MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        });
+                            {
+
+                                await _dialogService.ShowMessage(WebServiceManager.ErrorMessage, AppResources.Information);
+                                _navigationService.GoBack();
+                                WebServiceManager.ErrorMessage = string.Empty;
+                            });
                     }
-                });
-                await Task.Run(() =>
+                    catch (Exception)
+                    {
+
+
+                    }
+
+                }
+                ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(Fbguid);
+                PopToRootPage();
+                if (zakatReturnDetails != null)
                 {
-                    IsLoading = false;
-                });
+                    ZakatReturnDetails = zakatReturnDetails;
+                    if (zakatReturnDetails.d != null)
+                    {
+                        ZakatReturnDetail = zakatReturnDetails.d;
+                        GetUpdatedDataAfterAddingComma();
+                        if (ZakatReturnDetails.d.Statusz != null)
+                        {
+                            SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
+                        }
+                    }
+                }
+                IsLoading = false;
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
-
-
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
         private ZakatReturnDetailsD GetUpdatedDataAfterAddingComma()

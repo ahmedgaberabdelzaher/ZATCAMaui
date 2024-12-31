@@ -419,12 +419,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
         {
 
             AttachmentRootOject _attachment = null;
-            await Task.Run(() =>
-            {
                 IsLoading = true;
-            });
-            await Task.Run(async () =>
-            {
                 try
                 {
                     AttachmentRootOject attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachmentByteData, AttachmentName, VATDeclarationDataForAttch.data.ReturnIdz, "VTA0", contentType);
@@ -442,15 +437,25 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
                         _attachment = null;
                     }
                 }
-                catch (Exception ex)
-                {
-                    //  return null;
-                }
-            });
-            await Task.Run(() =>
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
             {
                 IsLoading = false;
-            });
+            }
+
+            IsLoading = false;
+           
             return _attachment;
         }
         public void PopToRootPage()

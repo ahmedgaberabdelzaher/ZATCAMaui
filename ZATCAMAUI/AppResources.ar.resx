@@ -455,7 +455,7 @@
         <value>لا يوجد رقم مميز مرتبط مع البريد الإلكتروني المدخل</value>
     </data>
 	<data name="NetworkConnectivityIssue" xml:space="preserve">
-        <value>توجد مشكلة في الشبكة، يرجى إعادة المحاولة لاحقًا</value>
+        <value>الخدمة غير متوفرة حالياً، يرجى المحاولة مرة أخرى</value>
     </data>
 	<data name="VATCertificates" xml:space="preserve">
         <value>ضريبة القيمة المضافة</value>
@@ -569,7 +569,7 @@
         <value>الرمز المرئي المدخل غير صحيح، يرجى المحاولة مرة أخرى</value>
     </data>
 	<data name="Somethingwentwrong" xml:space="preserve">
-        <value>حدث خطأ ما يرجى اعادة المحاوله</value>
+        <value>الخدمة غير متوفرة حالياً، يرجى المحاولة مرة أخرى</value>
     </data>
 	<data name="Pleasechangepassword" xml:space="preserve">
         <value>يرجى تغيير كلمة المرور</value>
@@ -866,7 +866,7 @@
         <value>رقم الجوال الجديد يجب أن يكون مختلف عن رقم الجوال الحالي</value>
     </data>
 	<data name="ZZInternetConnectionMessage" xml:space="preserve">
-        <value>تعذر الاتصال بالإنترنت</value>
+        <value>لا يوجد اتصال بالإنترنت، يرجى التحقق من إعدادات الشبكة الخاصة بك</value>
         <comment>ES11,ES13 PensionerProfileView,ES8 BankDetailsView,FAQsView</comment>
     </data>
 	<data name="ZClose" xml:space="preserve">

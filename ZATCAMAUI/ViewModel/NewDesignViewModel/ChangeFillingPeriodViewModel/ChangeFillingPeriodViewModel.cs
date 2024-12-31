@@ -790,7 +790,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                         break;
                     }
                 }
-               await _navigationService.NavigateTo(App.ChangeFillingPeriodListPageView);
+                await _navigationService.NavigateTo(App.ChangeFillingPeriodListPageView);
             });
 
             FrequencyContinueBtnTapped = new Command(async () => await this.FrequencyContinueBtnClicked());
@@ -1899,7 +1899,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
         {
             try
             {
-              await  _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
+                await _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
             }
             catch (InternetException ex)
             {
@@ -2075,19 +2075,34 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 IsLoading = false;
                 return response;
             }
-            catch (GAZTVATRegistrationInProcessException ex)
+            catch (GAZTVATChangeFillingPeriodException ex)
             {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
                 IsLoading = false;
                 isSubmitted = false;
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 return response;
             }
 
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+                return response;
+            }
+
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+                return response;
+            }
             catch (Exception)
             {
-
-                isSubmitted = false;
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
                 return response;
+            }
+            finally
+            {
+                IsLoading = false;
+                isSubmitted = false;
             }
         }
 
@@ -2289,28 +2304,28 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 }
                 IsLoading = false;
             }
-            catch (InternetException ex)
-            {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                IsLoading = false;
-                _navigationService.GoBack();
-            }
             catch (GAZTVATChangeFillingPeriodException ex)
             {
-                IsLoading = false;
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
+                await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
+            }
+
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
-
-                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                _navigationService.GoBack();
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
             }
             finally
             {
                 IsLoading = false;
             }
+
         }
 
         public async Task GetEffectiveDateList()
@@ -2318,48 +2333,42 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             try
             {
                 IsLoading = true;
-                try
+                var resultData = await VATChangeFillingWebServiceManager.GAZTGetVATChangeFillingPeriodDropdownData(App.LoginDataRetrieved.TIN);
+                IsLoading = false;
+                if (resultData != null && resultData.d != null)
                 {
-                    var resultData = await VATChangeFillingWebServiceManager.GAZTGetVATChangeFillingPeriodDropdownData(App.LoginDataRetrieved.TIN);
-                    IsLoading = false;
-                    if (resultData != null && resultData.d != null)
+                    EffectiveDateResponse = resultData;
+                    await ShowInstructionDialog();
+                    setEffectiveDatePickerModel();
+                    AddAttachmentOptions();
+                    if (App.selectedVatFillingItem != "")
                     {
-                        EffectiveDateResponse = resultData;
-                        await ShowInstructionDialog();
-                        setEffectiveDatePickerModel();
-                        AddAttachmentOptions();
-                        if (App.selectedVatFillingItem != "")
-                        {
-                            PopulateDraftData();
-                            SetMoreOptioButtons();
-                        }
+                        PopulateDraftData();
+                        SetMoreOptioButtons();
                     }
-                    else
-                    {
-                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                        _navigationService.GoBack();
-                    }
-                    
                 }
-                catch (InternetException ex)
+                else
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    IsLoading = false;
-                    _navigationService.GoBack();
+                    await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
                 }
                 IsLoading = false;
             }
-            catch (GAZTVATChangeFillingPeriodException ex)
+            catch (GAZTNetworkConnectivityIssueException)
             {
-                IsLoading = false;
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
+            }
+            finally
+            {
                 IsLoading = false;
-                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                _navigationService.GoBack();
             }
         }
 
@@ -2383,19 +2392,27 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 }
                 IsLoading = false;
             }
-            catch (GAZTVATChangeFillingPeriodException ex)
+            catch (GAZTVATRegistrationInProcessException ex)
             {
-                IsLoading = false;
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
+                await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
+            }
+
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
-
-
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
+            }
+            finally
+            {
                 IsLoading = false;
-                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                _navigationService.GoBack();
             }
         }
 

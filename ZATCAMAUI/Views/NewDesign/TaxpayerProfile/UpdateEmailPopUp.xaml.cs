@@ -2,6 +2,7 @@
 using Mopups.Services;
 using System.Globalization;
 using System.Text.RegularExpressions;
+using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
@@ -48,7 +49,7 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
                     if (TPAPIResponse.login == "X")
                     {
                         var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.TPUpdateEmailSuccessConfirmation);
-                        confirmPopup.OnSelect =  (result) =>
+                        confirmPopup.OnSelect = (result) =>
                         {
                             if (result == "Yes")
                             {
@@ -72,7 +73,22 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
                                     }
 
                                     try { await WebServiceManager.GAZTLogOff(); }
-                                    catch { }
+                                    catch (GAZTNetworkConnectivityIssueException)
+                                    {
+                                        await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, viewModel._navigationService);
+                                    }
+                                    catch (InternetException)
+                                    {
+                                        await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, true, viewModel._navigationService);
+                                    }
+                                    catch (Exception)
+                                    {
+                                        await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+                                    }
+                                    finally
+                                    {
+                                        App.HideProgressView();
+                                    }
 
                                     await Task.Run(() =>
                                     {
@@ -127,12 +143,25 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
 
                 viewModel.IsLoading = false;
             }
-            catch (Exception ex)
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, viewModel._navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, true, viewModel._navigationService);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
             {
                 viewModel.IsLoading = false;
-                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-
-
             }
 
             return TP;

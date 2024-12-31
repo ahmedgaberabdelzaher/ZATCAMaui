@@ -1,5 +1,6 @@
 ﻿
 using Mopups.Services;
+using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
@@ -116,17 +117,17 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             {
                 MessagingCenter.Subscribe<object, string>(this, "Card_Payment", async (sender, arg) =>
                 {
-                   await viewModel.MadaPaymentSelected();
+                    await viewModel.MadaPaymentSelected();
 
                 });
                 MessagingCenter.Subscribe<object, string>(this, "Apple_Pay", async (sender, arg) =>
                 {
-                  await  viewModel.ApplePaySelected();
+                    await viewModel.ApplePaySelected();
                 });
                 MessagingCenter.Subscribe<object, string>(this, "SADAD", async (sender, arg) =>
                 {
 
-                   await viewModel.gotoSuccessPage();
+                    await viewModel.gotoSuccessPage();
                 });
                 MessagingCenter.Subscribe<App, string>(this, "ApplePayData", async (sender, arg) =>
                 {
@@ -212,7 +213,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 newDesignPopUp.HeaderWithInfos = headerWithInfos;
                 newDesignPopUp.MainHeader = AppResources.Copied;
 
-              await  MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                await MopupService.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
         }
 
@@ -220,25 +221,44 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
         {
 
 
-          await doValidateVATReturnAmount();
+            await doValidateVATReturnAmount();
         }
 
 
         public async Task doValidateVATReturnAmount()
         {
-
-            VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(viewModel.VATDeclarationData.data.Fbguid, viewModel.VATDeclarationData.data.Fbnum, App.TP.Tin, viewModel.VATDeclarationData.data.Persl);
-
-
-            if (_vATDeclaration.data.MadabutFg == "X")
+            try
             {
-                await MopupService.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
+
+                VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(viewModel.VATDeclarationData.data.Fbguid, viewModel.VATDeclarationData.data.Fbnum, App.TP.Tin, viewModel.VATDeclarationData.data.Persl);
+
+
+                if (_vATDeclaration.data.MadabutFg == "X")
+                {
+                    await MopupService.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
+                }
+                else
+                {
+
+                    await MopupService.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, _vATDeclaration.data.OpenliMsg));
+
+                }
             }
-            else
+            catch (GAZTNetworkConnectivityIssueException)
             {
-
-                await MopupService.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, _vATDeclaration.data.OpenliMsg));
-
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                viewModel.IsLoading = false;
             }
 
         }

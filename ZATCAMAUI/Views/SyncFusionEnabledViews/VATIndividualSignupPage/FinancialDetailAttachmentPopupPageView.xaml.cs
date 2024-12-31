@@ -223,7 +223,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 {
                     // int indexToReduceTheSize = viewModel.GetDeletedAttachmentIndex(attachment);
                     string results = await WebServiceManager.GAZTDeleteVATDeclarationAttachment(attachment.Filename, attachment.Doguid);
-                   await PopToRootPage();
+                    await PopToRootPage();
                     if (results == "X")
                     {
                         Attachment listitem = (from itm in viewModel.VatAttachmentsList
@@ -251,10 +251,21 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
                 viewModel.IsLoading = false;
             }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
             catch (Exception)
             {
-
-
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                viewModel.IsLoading = false;
             }
         }
         private void OnDownloadAttachmentClicked(object sender, EventArgs e)
@@ -329,7 +340,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
                 MessagingCenter.Subscribe<object, string>(this, "YesPressedToDeleteFinancialAttachment", async (sender, arg) =>
                 {
-                  await  DeleteAttachmentForMessagingCenterCall();
+                    await DeleteAttachmentForMessagingCenterCall();
                 });
             }
             catch (Exception)
@@ -362,7 +373,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
         }
 
-      
+
 
         private void btn1_Clicked(object sender, EventArgs e)
         {

@@ -583,8 +583,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 IsLoading = true;
                 try
                 {
-                    try
-                    {
                         App.IBanValidatedResponse = string.Empty;
                         var response = await WebServiceManager.GAZTCheckIBAN(IBANValue);
                         if (response != null)
@@ -621,23 +619,25 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                             isIBanValid = false;
                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZIBANisincorrect));
                         }
-                    }
-                    catch (InternetException ex)
-                    {
-                        IsLoading = false;
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                    }
                 }
 
-                catch (Exception )
+                catch (GAZTNetworkConnectivityIssueException)
                 {
-                    //IBan is InValid
-                    isIBanValid = false;
-                    IsLoading = false;
-                  await  MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZIBANisincorrect));
+                    await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
                 }
-
-
+                catch (InternetException)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+                }
+                catch (Exception)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+                }
+                finally
+                {
+                    IsLoading = false;
+                    isIBanValid = false;
+                }
             }
         }
         public async Task IBANBankAccountFormGUID()

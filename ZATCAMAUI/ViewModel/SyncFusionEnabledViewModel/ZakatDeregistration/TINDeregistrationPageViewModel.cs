@@ -2936,12 +2936,26 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 PopulateAttachments(AttachmentTypeList);
                 SetAllTransferOutletData();
             }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+            catch (GAZTErrorException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+
             catch (InternetException)
             {
-
-
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
                 App.HideProgressView();
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
             }
 
         }
@@ -3198,64 +3212,28 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         IDTypeDataModel = new VATSignUpD();
                         SelectedIdNumber = string.Empty;
                     }
-                    catch (GAZTException gex)
-                    {
-                        // Handle the GAZT custom exception.
-                        string MessageForTheUser = gex.Message;
-                        if (gex is GAZTInvalidDataException)
-                        {
-                            MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                        }
-                        if (gex is GAZTNetworkConnectivityIssueException)
-                        {
-                            MessageForTheUser = AppResources.NetworkConnectivityIssue;
-                        }
-                        else if (gex is GAZTInternetException)
-                        {
-                            MessageForTheUser = AppResources.ZZInternetConnectionMessage;
-                        }
-                        else if (gex is GAZTSessionExpiredException)
-                        {
-                            MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
-                        }
 
+                    catch (GAZTNetworkConnectivityIssueException)
+                    {
                         if (MopupService.Instance.PopupStack.Count() > 0)
                             await MopupService.Instance.PopAsync();
-
-                        //await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-
-                        _navigationService.GoBack();
+                        await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
                     }
-                    catch (InternetException ex)
+                    catch (InternetException)
                     {
                         if (MopupService.Instance.PopupStack.Count() > 0)
                             await MopupService.Instance.PopAsync();
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-
-
-                    }
-                    catch (HttpRequestException ex)
-                    {
-
-
-                        string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-
-                        // IsLoading = false;
-                        if (MopupService.Instance.PopupStack.Count() > 0)
-                            await MopupService.Instance.PopAsync();
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                        await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
                     }
                     catch (Exception)
                     {
-
-
-                        string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-
                         if (MopupService.Instance.PopupStack.Count() > 0)
                             await MopupService.Instance.PopAsync();
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-
+                        await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+                    }
+                    finally
+                    {
+                        IsLoading = false;
                     }
                 }
 
@@ -3407,60 +3385,27 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         IDTypeDataModel = new VATSignUpD();
                         SelectedIdNumber = string.Empty;
                     }
-                    catch (GAZTException gex)
+                    catch (GAZTNetworkConnectivityIssueException)
                     {
-                        // Handle the GAZT custom exception.
-                        string MessageForTheUser = gex.Message;
-                        if (gex is GAZTInvalidDataException)
-                        {
-                            MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                        }
-                        if (gex is GAZTNetworkConnectivityIssueException)
-                        {
-                            MessageForTheUser = AppResources.NetworkConnectivityIssue;
-                        }
-                        else if (gex is GAZTInternetException)
-                        {
-                            MessageForTheUser = AppResources.ZZInternetConnectionMessage;
-                        }
-                        else if (gex is GAZTSessionExpiredException)
-                        {
-                            MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
-                        }
                         if (MopupService.Instance.PopupStack.Count() > 0)
                             await MopupService.Instance.PopAsync();
-
-                        //   await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-
-                        _navigationService.GoBack();
+                        await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
                     }
-                    catch (InternetException ex)
+                    catch (InternetException)
                     {
                         if (MopupService.Instance.PopupStack.Count() > 0)
                             await MopupService.Instance.PopAsync();
-                        // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-
-
-                    }
-                    catch (HttpRequestException)
-                    {
-                        string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-
-                        if (MopupService.Instance.PopupStack.Count() > 0)
-                            await MopupService.Instance.PopAsync();
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-
+                        await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
                     }
                     catch (Exception)
                     {
-
-
-                        string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                         if (MopupService.Instance.PopupStack.Count() > 0)
                             await MopupService.Instance.PopAsync();
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                        await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+                    }
+                    finally
+                    {
+                        IsLoading = false;
                     }
                 }
 
@@ -3592,59 +3537,27 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         PkrDBO = string.Empty;
 
                     }
-                    catch (GAZTException gex)
+                    catch (GAZTNetworkConnectivityIssueException)
                     {
-                        // Handle the GAZT custom exception.
-                        string MessageForTheUser = gex.Message;
-                        if (gex is GAZTInvalidDataException)
-                        {
-                            MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                        }
-                        if (gex is GAZTNetworkConnectivityIssueException)
-                        {
-                            MessageForTheUser = AppResources.NetworkConnectivityIssue;
-                        }
-                        else if (gex is GAZTInternetException)
-                        {
-                            MessageForTheUser = AppResources.ZZInternetConnectionMessage;
-                        }
-                        else if (gex is GAZTSessionExpiredException)
-                        {
-                            MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
-                        }
-
                         if (MopupService.Instance.PopupStack.Count() > 0)
                             await MopupService.Instance.PopAsync();
-
-                        //  await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-
-                        _navigationService.GoBack();
+                        await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
                     }
-                    catch (InternetException ex)
+                    catch (InternetException)
                     {
                         if (MopupService.Instance.PopupStack.Count() > 0)
                             await MopupService.Instance.PopAsync();
-                        //    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-
-                    }
-                    catch (HttpRequestException)
-                    {
-                        string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                        if (MopupService.Instance.PopupStack.Count() > 0)
-                            await MopupService.Instance.PopAsync();
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-
+                        await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
                     }
                     catch (Exception)
                     {
-                        string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                         if (MopupService.Instance.PopupStack.Count() > 0)
                             await MopupService.Instance.PopAsync();
-                        // await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-
+                        await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+                    }
+                    finally
+                    {
+                        IsLoading = false;
                     }
                 }
 
@@ -3659,111 +3572,98 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             try
             {
                 IsLoading = true;
-                try
+                string resultData = await VATChangeFillingWebServiceManager.GAZTGetTInNumberData(tinNumber);
+
+                SelectedDob = string.Empty;
+                if (IDTypeDataModel == null)
                 {
-                    string resultData = await VATChangeFillingWebServiceManager.GAZTGetTInNumberData(tinNumber);
+                    IDTypeDataModel = new VATSignUpD();
+                }
 
-                    SelectedDob = string.Empty;
-                    if (IDTypeDataModel == null)
+                string _responseData = string.Empty;
+                string ErrorMessage = string.Empty;
+                _responseData = JObject.Parse(resultData)["result"].ToString();
+                IDTypeDataModel = JsonConvert.DeserializeObject<VATSignUpD>(_responseData);
+                FirstNameFromIdType = IDTypeDataModel.name1;
+                if (string.IsNullOrWhiteSpace(_responseData))
+                {
+                    IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(resultData);
+                    if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
                     {
-                        IDTypeDataModel = new VATSignUpD();
-                    }
+                        App.HideProgressView();
+                        FrameIDError = true;
 
-                    string _responseData = string.Empty;
-                    string ErrorMessage = string.Empty;
-                    _responseData = JObject.Parse(resultData)["result"].ToString();
-                    IDTypeDataModel = JsonConvert.DeserializeObject<VATSignUpD>(_responseData);
-                    FirstNameFromIdType = IDTypeDataModel.name1;
-                    if (string.IsNullOrWhiteSpace(_responseData))
-                    {
-                        IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(resultData);
-                        if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
-                        {
-                            App.HideProgressView();
-                            FrameIDError = true;
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
 
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
-
-                        }
-                        else
-                        {
-                            FrameIDError = false;
-                            App.HideProgressView();
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
-
-                        }
                     }
                     else
                     {
-                        ///IDTypeDataModel = new VATSignUpD();
-                        //IDTypeDataModel = resultData.d;
-                        IsEnteredTINValid = true;
-                        IBANType idType = IBANTypesList.Where(m => m.key == IDTypeDataModel.Idtype).FirstOrDefault();
-                        if (idType != null)
+                        FrameIDError = false;
+                        App.HideProgressView();
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+
+                    }
+                }
+                else
+                {
+                    ///IDTypeDataModel = new VATSignUpD();
+                    //IDTypeDataModel = resultData.d;
+                    IsEnteredTINValid = true;
+                    IBANType idType = IBANTypesList.Where(m => m.key == IDTypeDataModel.Idtype).FirstOrDefault();
+                    if (idType != null)
+                    {
+                        SelectedIdtype = idType.Text;
+                        SelectedIDTypeCode = idType.key;
+                        IsName1Visible = false;
+
+
+                        FirstNameLbl = AppResources.ZZZVATRFirstName;
+                        SurnameNameLbl = AppResources.TinDeregistrationSurName;
+
+                        TINNumber = IDTypeDataModel.TIN;
+                        SelectedIdNumber = IDTypeDataModel.Idnum;
+
+                        SelectedDob = IDTypeDataModel.birthDate10;
+                        PickerDOBDateDisplay = IDTypeDataModel.birthDate10;
+
+                        if (SelectedIdtype == AppResources.TinDeregistrationNationalID)
                         {
-                            SelectedIdtype = idType.Text;
-                            SelectedIDTypeCode = idType.key;
-                            IsName1Visible = false;
-
-
-                            FirstNameLbl = AppResources.ZZZVATRFirstName;
-                            SurnameNameLbl = AppResources.TinDeregistrationSurName;
-
-                            TINNumber = IDTypeDataModel.TIN;
-                            SelectedIdNumber = IDTypeDataModel.Idnum;
-
-                            SelectedDob = IDTypeDataModel.birthDate10;
-                            PickerDOBDateDisplay = IDTypeDataModel.birthDate10;
-
-                            if (SelectedIdtype == AppResources.TinDeregistrationNationalID)
-                            {
-                                NationalTypeSelected();
-                            }
-                            else if (SelectedIdtype == AppResources.TinDeregistrationCompanyID)
-                            {
-                                IsName1Visible = true;
-                                CompanyIdTypeSelected();
-                            }
-                            else if (SelectedIdtype == AppResources.TinDeregistrationIQAMANumber)
-                            {
-                                IqamaTypeSelected();
-                            }
-                            else if (SelectedIdtype == AppResources.TinDeregistrationGCCID)
-                            {
-                                GCCIdTypeSelected();
-                            }
+                            NationalTypeSelected();
+                        }
+                        else if (SelectedIdtype == AppResources.TinDeregistrationCompanyID)
+                        {
+                            IsName1Visible = true;
+                            CompanyIdTypeSelected();
+                        }
+                        else if (SelectedIdtype == AppResources.TinDeregistrationIQAMANumber)
+                        {
+                            IqamaTypeSelected();
+                        }
+                        else if (SelectedIdtype == AppResources.TinDeregistrationGCCID)
+                        {
+                            GCCIdTypeSelected();
                         }
                     }
-                    IsLoading = false;
-                }
-                catch (InternetException ex)
-                {
-                    IsLoading = false;
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-
-
-                    _navigationService.GoBack();
                 }
                 IsLoading = false;
-            }
-            catch (GAZTVATChangeFillingPeriodException ex)
-            {
-                IsLoading = false;
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
-                _navigationService.GoBack();
-            }
-            catch (GAZTErrorException ex)
-            {
                 IsLoading = false;
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
-
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-
-                _navigationService.GoBack();
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
+            }
+            finally
+            {
                 IsLoading = false;
             }
         }
@@ -3774,90 +3674,84 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             try
             {
                 IsLoading = true;
-                try
+
+                string resultData = await VATChangeFillingWebServiceManager.GAZTGetTInNumberData(tinNumber);
+
+                SelectedDob = string.Empty;
+                if (IDTypeDataModel == null)
                 {
-                    string resultData = await VATChangeFillingWebServiceManager.GAZTGetTInNumberData(tinNumber);
+                    IDTypeDataModel = new VATSignUpD();
+                }
 
-                    SelectedDob = string.Empty;
-                    if (IDTypeDataModel == null)
+                string _responseData = JObject.Parse(resultData)["d"].ToString();
+                IDTypeDataModel = JsonConvert.DeserializeObject<VATSignUpD>(_responseData);
+                if (_responseData == null)
+                {
+                    IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(resultData);
+                    if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
                     {
-                        IDTypeDataModel = new VATSignUpD();
-                    }
+                        App.HideProgressView();
 
-                    string _responseData = JObject.Parse(resultData)["d"].ToString();
-                    IDTypeDataModel = JsonConvert.DeserializeObject<VATSignUpD>(_responseData);
-                    if (_responseData == null)
-                    {
-                        IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(resultData);
-                        if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
-                        {
-                            App.HideProgressView();
+                        FrameIDError = true;
 
-                            FrameIDError = true;
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
 
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
-
-                        }
-                        else
-                        {
-                            FrameIDError = false;
-                            App.HideProgressView();
-
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
-
-                        }
                     }
                     else
                     {
-                        IBANType idType = IBANTypesList.Where(m => m.key == IDTypeDataModel.Idtype).FirstOrDefault();
+                        FrameIDError = false;
+                        App.HideProgressView();
 
-                        SelectedOutletForCloseTranser.PermitTypes = new List<PermitSetResult>(SelectedOutletForCloseTranser.PermitTypes.ToList().Select(
-                          x =>
-                          {
-                              x.APermitIdTypeTb = idType.Text;
-                              x.APermitIdNoTb = IDTypeDataModel.Idnum;
-                              x.APermitNm1Tb = IDTypeDataModel.name1;
-                              x.APermitNm2Tb = IDTypeDataModel.name2;
-                              x.APermitNm3Tb = IDTypeDataModel.name1;
-                              x.APermitNm4Tb = IDTypeDataModel.name2;
-                              x.APermitNm5Tb = IDTypeDataModel.fatherName;
-                              x.APermitNm6Tb = IDTypeDataModel.grandfatherName;
-                              x.APermitNm7Tb = IDTypeDataModel.familyName;
-                              if (!string.IsNullOrEmpty(IDTypeDataModel.birthDate10))
-                              {
-                                  x.APermitDobTb = ConvertDateFormat(IDTypeDataModel.birthDate10);
-                              }
-                              x.APermitDeregDisplayDobDate = IDTypeDataModel.birthDate10;
-                              x.APermitIdTypeTb = IDTypeDataModel.Idtype;
-                              return x;
-                          }
-                          ).ToList());
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+
                     }
-
-                    IsLoading = false;
                 }
-                catch (InternetException ex)
+                else
                 {
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    IBANType idType = IBANTypesList.Where(m => m.key == IDTypeDataModel.Idtype).FirstOrDefault();
 
-                    IsLoading = false;
-                    _navigationService.GoBack();
+                    SelectedOutletForCloseTranser.PermitTypes = new List<PermitSetResult>(SelectedOutletForCloseTranser.PermitTypes.ToList().Select(
+                      x =>
+                      {
+                          x.APermitIdTypeTb = idType.Text;
+                          x.APermitIdNoTb = IDTypeDataModel.Idnum;
+                          x.APermitNm1Tb = IDTypeDataModel.name1;
+                          x.APermitNm2Tb = IDTypeDataModel.name2;
+                          x.APermitNm3Tb = IDTypeDataModel.name1;
+                          x.APermitNm4Tb = IDTypeDataModel.name2;
+                          x.APermitNm5Tb = IDTypeDataModel.fatherName;
+                          x.APermitNm6Tb = IDTypeDataModel.grandfatherName;
+                          x.APermitNm7Tb = IDTypeDataModel.familyName;
+                          if (!string.IsNullOrEmpty(IDTypeDataModel.birthDate10))
+                          {
+                              x.APermitDobTb = ConvertDateFormat(IDTypeDataModel.birthDate10);
+                          }
+                          x.APermitDeregDisplayDobDate = IDTypeDataModel.birthDate10;
+                          x.APermitIdTypeTb = IDTypeDataModel.Idtype;
+                          return x;
+                      }
+                      ).ToList());
                 }
+
                 IsLoading = false;
+
             }
-            catch (GAZTVATChangeFillingPeriodException ex)
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
+            }
+            finally
             {
                 IsLoading = false;
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-
-                _navigationService.GoBack();
-            }
-            catch (Exception ex)
-            {
-                IsLoading = false;
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-
-                _navigationService.GoBack();
             }
         }
 
@@ -4207,9 +4101,27 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 }
             }
+            catch (GAZTErrorException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
             catch (Exception)
             {
-
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
 
@@ -4263,7 +4175,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 SummaryAttachments.Add(item);
             }
             OnPropertyChanged("SummaryAttachments");
-            
+
         }
 
         public async Task GoBackBtnClicked()
@@ -4754,7 +4666,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     }
                     else if (SelectedOutletForCloseTranser.PermitTypes.FirstOrDefault(x => string.IsNullOrWhiteSpace(x.APermitDeregDisplayDate)) != null)
                     {
-                         await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleasefillallthemandatoryfields));
 
                         return;
                     }
@@ -5916,56 +5828,49 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 }
                 catch (GAZTVATRegistrationInProcessException ex)
                 {
-                    throw ex;
+                    await UtilityManager.HandleExceptionMessage(ex.Message, false);
                 }
+
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+                }
+
                 catch (InternetException)
                 {
-
-
-                    isSubmitted = false;
-
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
-                }
-                catch (GAZTErrorException ex)
-                {
-                    isSubmitted = false;
-
-
-                    string message = ex.Message;
-
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
+                    await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
                 }
                 catch (Exception)
                 {
+                    await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+                }
+                finally
+                {
                     isSubmitted = false;
                 }
+
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                throw ex;
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
             }
+
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+
             catch (InternetException)
             {
-
-
-                isSubmitted = false;
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
-            }
-            catch (GAZTErrorException ex)
-            {
-                isSubmitted = false;
-
-
-                string message = ex.Message;
-
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message));
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
-                isSubmitted = false;
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
             }
             finally
             {
+                isSubmitted = false;
                 if (MopupService.Instance.PopupStack.Count > 0)
                     await MopupService.Instance.PopAsync(true);
             }
@@ -6068,9 +5973,27 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 IsLoading = false;
 
             }
+            catch (GAZTErrorException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
             catch (Exception)
             {
-
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
 
         }
@@ -6105,15 +6028,28 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         }
 
-        public void DeleteAttachment(Attachment attachment)
+        public async Task DeleteAttachment(Attachment attachment)
         {
             try
             {
                 string results = UploadAttachementsWebServiceManager.GAZTGenericDeleteAttachment(attachment.Filename, TinDeregistrationData.CaseGuid, "", attachment.Doguid);
             }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
             catch (Exception)
             {
-
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
 
         }

@@ -221,12 +221,17 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage
                 }
                 //      FormBundleList = formbundleList.d.results;
             }
-            catch (InternetException ex)
+            catch (GAZTNetworkConnectivityIssueException)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                });
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
             }
         }
         public async Task onSelectedFormBindleFbtyp()
@@ -243,53 +248,23 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage
 
                 IsLoading = false;
             }
-            catch (GAZTException gex)
+            catch (GAZTNetworkConnectivityIssueException)
             {
-                // Handle the GAZT custom exception.
-                string MessageForTheUser = gex.Message;
-                if (gex is GAZTInvalidDataException)
-                {
-                    MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                }
-                if (gex is GAZTNetworkConnectivityIssueException)
-                {
-                    MessageForTheUser = AppResources.NetworkConnectivityIssue;
-                }
-                else if (gex is GAZTInternetException)
-                {
-                    MessageForTheUser = AppResources.ZZInternetConnectionMessage;
-                }
-                else if (gex is GAZTSessionExpiredException)
-                {
-                    MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
-                }
-
-                IsLoading = false;
-
-                await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
             }
-
-            catch (HttpRequestException )
+            catch (InternetException)
             {
-                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                IsLoading = false;
-            }
-
-            catch (InternetException ex)
-            {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-               
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
-
-
-                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-
-                await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
                 IsLoading = false;
             }
+
         }
         public void PopToRootPage()
         {

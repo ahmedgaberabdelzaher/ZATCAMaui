@@ -7,7 +7,7 @@ using static ZATCAMAUI.Models.ErrorMessage;
 
 namespace ZATCAMAUI.Core.Mangers
 {
-   
+
     public static class TaxpayerSubsidyWebServiceManager
     {
         public static async Task<string> TaxpayerSubsidyPostRequestAsync(string source)
@@ -49,35 +49,34 @@ namespace ZATCAMAUI.Core.Mangers
                     HttpResponseMessage res = await client.PostAsync(uri, contentPost);
 
                     _requestResponse = await res.Content.ReadAsStringAsync();
-                    if (!string.IsNullOrEmpty(_requestResponse))
-                    {
-                        ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_requestResponse);
-                        if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
-                        {
-                            string errorMessage = string.Empty;
-                            errorMessage = errorMesg.error.innererror.errordetails[0].message;
-                            errorMessage += errorMesg.error.innererror.errordetails[1].message;
-                            string WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
-                            errorMessage = WithReplacedString;
-                            throw new GAZTVATRegistrationInProcessException(errorMessage);
-                        }
-                    }
 
+
+                    ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(_requestResponse);
+
+                    if (statusHeader?.header?.status?.code == "E999999")
+                    {
+                        throw new GAZTNetworkConnectivityIssueException();
+                    }
                 }
                 catch (GAZTVATRegistrationInProcessException ex)
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
 
                 }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+
+                }
                 catch (Exception)
                 {
-                    return null;
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
                 return _requestResponse;
             }
             else
             {
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+                throw new InternetException();
             }
         }
     }

@@ -597,7 +597,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                                 MobileNumber = string.Empty;
                             }
                         }
-                        catch (Exception ex)
+
+                        catch (GAZTNetworkConnectivityIssueException)
+                        {
+                            await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+                        }
+
+                        catch (InternetException)
+                        {
+                            await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+                        }
+                        catch (Exception)
+                        {
+                            await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+                        }
+                        finally
                         {
                             IsLoading = false;
                             ClearOTPForm();

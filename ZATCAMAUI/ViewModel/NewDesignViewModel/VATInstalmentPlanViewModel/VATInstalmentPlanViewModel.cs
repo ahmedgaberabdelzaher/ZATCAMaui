@@ -2717,8 +2717,6 @@ public class VATInstalmentPlanViewModel : BaseViewModel
             IsLoading = true;
             VatInstalments = null;
             VatInstalmentPlanResponse vATInstalment = null;
-            try
-            {
                 if (App.selectedVATItem != "")
                 {
                     if (App.selectedVATItemFbust == "E0075" || App.selectedVATItemFbust == "E0074" || App.selectedVATItemFbust == "E0018")
@@ -2891,29 +2889,29 @@ public class VATInstalmentPlanViewModel : BaseViewModel
                     _navigationService.GoBack();
                 }
                 IsLoading = false;
-            }
-            catch (InternetException ex)
-            {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                IsLoading = false;
-                _navigationService.GoBack();
-            }
-            IsLoading = false;
+            
         }
         catch (GAZTVATRegistrationInProcessException ex)
         {
-            IsLoading = false;
-            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-            _navigationService.GoBack();
+            await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
+        }
 
+        catch (GAZTNetworkConnectivityIssueException)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+        }
+
+        catch (InternetException)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
         }
         catch (Exception)
         {
-
-
+            await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
+        }
+        finally
+        {
             IsLoading = false;
-            await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-            _navigationService.GoBack();
         }
     }
 
@@ -3409,23 +3407,28 @@ public class VATInstalmentPlanViewModel : BaseViewModel
         }
         catch (GAZTVATRegistrationInProcessException ex)
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                IsLoading = false;
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
-
-            });
+            await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
             return response;
         }
-
+        catch (GAZTNetworkConnectivityIssueException)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            return response;
+        }
+        catch (InternetException)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            return response;
+        }
         catch (Exception)
         {
-            IsLoading = false;
-
+            await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
             return response;
         }
-
+        finally
+        {
+            IsLoading = false;
+        }
     }
 
     #endregion

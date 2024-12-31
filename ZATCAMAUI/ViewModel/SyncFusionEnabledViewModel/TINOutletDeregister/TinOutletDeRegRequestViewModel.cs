@@ -1340,7 +1340,20 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
             }
             IsLoading = false;
         }
+        catch (GAZTNetworkConnectivityIssueException)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+        }
+
+        catch (InternetException)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+        }
         catch (Exception)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+        }
+        finally
         {
             IsLoading = false;
         }
@@ -1559,10 +1572,27 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
 
 
         }
-        catch (Exception ex)
+        catch (GAZTVATRegistrationInProcessException ex)
+        {
+            await UtilityManager.HandleExceptionMessage(ex.Message, false);
+        }
+
+        catch (GAZTNetworkConnectivityIssueException)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+        }
+
+        catch (InternetException)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+        }
+        catch (Exception)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+        }
+        finally
         {
             IsLoading = false;
-            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
         }
 
 
@@ -1952,15 +1982,26 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
                 setDeregReasonPickerModel();
             }
         }
-        catch (InternetException)
+        catch (GAZTNetworkConnectivityIssueException)
         {
-
-
-            App.HideProgressView();
-
-            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
+            await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+        }catch (GAZTErrorException ex)
+        {
+            await UtilityManager.HandleExceptionMessage(ex.Message, false);
         }
 
+        catch (InternetException)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+        }
+        catch (Exception)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+        }
+        finally
+        {
+            App.HideProgressView();
+        }
     }
 
     public void SetDefaultDate()

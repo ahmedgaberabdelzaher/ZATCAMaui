@@ -390,9 +390,9 @@
                                     x:Name="PPicker"
                                     Background="white"
                                     IsOpen="False"
-                                    OkButtonClicked="PPicker_OkButtonClicked"
                                     ItemHeight="40"
-                                    Mode="Dialog">
+                                    Mode="Dialog"
+                                    OkButtonClicked="PPicker_OkButtonClicked">
 
                                     <syncfusion:SfPicker.TextStyle>
                                         <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralGreay}" />
@@ -433,8 +433,7 @@
 
                                     <custom:CustomSfPicker.FooterView>
 
-                                        <syncfusion:PickerFooterView Height="46"
-                                                                     Background="{StaticResource NeutralBlack}">
+                                        <syncfusion:PickerFooterView Height="46" Background="{StaticResource NeutralBlack}">
 
                                             <syncfusion:PickerFooterView.TextStyle>
                                                 <syncfusion:PickerTextStyle TextColor="White" />

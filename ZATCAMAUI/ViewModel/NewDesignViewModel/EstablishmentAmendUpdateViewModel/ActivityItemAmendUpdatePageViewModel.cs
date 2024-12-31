@@ -96,7 +96,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 OnPropertyChanged(nameof(LicenseDetails));
             }
         }
-        
+
         private bool CanExecuteClickCommand(object args) => EnableInputFields;
         private bool CanIssueByExecuteClickCommand(object args) => EnableIssueByDropDown;
 
@@ -1268,9 +1268,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     IsLoading = false;
                 }
             }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
             catch (Exception)
             {
-                IsLoading = false;
             }
             finally
             {
@@ -1645,11 +1657,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     }
                 }
             }
-            catch (Exception)
+            catch (GAZTNetworkConnectivityIssueException)
             {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
 
-
-
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch(Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
             }
             finally
             {
@@ -1714,14 +1733,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
         }
         public async Task validateCRNumber()
         {
-
-            if (CRNumber != null && CRNumber.Length > 0)
+            try
             {
-                IsLoading = true;
-                var result = await EstablishmentRegistrationWebServiceManager.ESTValidateCRNum(CRNumber);
-                try
+                if (CRNumber != null && CRNumber.Length > 0)
                 {
-                    
+                    IsLoading = true;
+                    var result = await EstablishmentRegistrationWebServiceManager.ESTValidateCRNum(CRNumber);
+
+
                     if (!string.IsNullOrEmpty(result))
                     {
                         validateCR = JsonConvert.DeserializeObject<ValidateCR>(result);
@@ -1729,54 +1748,73 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                         CRMainGroup = activityList.act_groupSet.Where(i => i.IndSector == validateCR?.ActMgrp).FirstOrDefault();
                         CRSubGroup = activityList.act_subgroupSet.Where(i => i.IndSector == validateCR?.ActSgrp).FirstOrDefault();
                     }
-                }
-                catch (Exception)
-                {
                     IsLoading = false;
-                }
-                IsLoading = false;
-                if (validateCR != null && validateCR.Crnum == null)
-                {
-                    await PrepareError(result);
-                    return;
-                }
-
-                if (validateCR != null)
-                {
-                    if (!string.IsNullOrEmpty(validateCR.Z700Crnum))
+                    if (validateCR != null && validateCR.Crnum == null)
                     {
-                        CRNumber = validateCR.Z700Crnum;
+                        await PrepareError(result);
+                        return;
                     }
 
-                }
-
-                updateCRAttachments();
-                if (validateCR?.NotFound == "X")
-                {
-                    MainThread.BeginInvokeOnMainThread(async () =>
+                    if (validateCR != null)
                     {
-                        await _dialogService.ShowMessage(AppResources.ESTValidateCRNumberInValid, AppResources.Information);
-                    });
-                    return;
-                }
-                if (validateCR?.Excption == "X")
-                {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(AppResources.ESTValidateCRNumberInValid, AppResources.Information);
-                    });
-                    return;
-                }
-                CRIssueCity = new CityDropdownItem()
-                {
-                    CityName = OutletDropDowns.city_dropdownSet.Where(i => i.CityCode == validateCR?.CityCode).FirstOrDefault().CityName,
-                    CityCode = SelectedCRItem?.CityCode,
-                };
-                CRValidFrom = validateCR?.Issuedt;//?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
-                EnableInputFields = string.IsNullOrEmpty(validateCR?.Crname);
+                        if (!string.IsNullOrEmpty(validateCR.Z700Crnum))
+                        {
+                            CRNumber = validateCR.Z700Crnum;
+                        }
 
-                updateDatePickers(EstablishmentOutletActivitiesTabsEnum.CRDetails);
+                    }
+
+                    updateCRAttachments();
+                    if (validateCR?.NotFound == "X")
+                    {
+                        MainThread.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(AppResources.ESTValidateCRNumberInValid, AppResources.Information);
+                        });
+                        return;
+                    }
+                    if (validateCR?.Excption == "X")
+                    {
+                        MainThread.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(AppResources.ESTValidateCRNumberInValid, AppResources.Information);
+                        });
+                        return;
+                    }
+                    CRIssueCity = new CityDropdownItem()
+                    {
+                        CityName = OutletDropDowns.city_dropdownSet.Where(i => i.CityCode == validateCR?.CityCode).FirstOrDefault().CityName,
+                        CityCode = SelectedCRItem?.CityCode,
+                    };
+                    CRValidFrom = validateCR?.Issuedt;//?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                    EnableInputFields = string.IsNullOrEmpty(validateCR?.Crname);
+
+                    updateDatePickers(EstablishmentOutletActivitiesTabsEnum.CRDetails);
+                }
             }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (GAZTErrorException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
+            }
+
+
 
         }
 
@@ -1955,8 +1993,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     }
                 }
             }
-            catch (Exception )
-            {}
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
             finally
             {
                 IsLoading = false;
@@ -2093,7 +2142,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     return false;
                 }
                 else if (LicenseSubGroup == null && LicenseDetails.SubGroup)
-                { 
+                {
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateASubGroup));
                     return false;
                 }
@@ -2187,8 +2236,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
             }
             catch (Exception ex)
             {
-                
-                
+
+
                 HijriCalendar hijriCalendar = new HijriCalendar();
                 return $"{hijriCalendar.GetYear(date):0000}/{hijriCalendar.GetMonth(date):00}/{hijriCalendar.GetDayOfMonth(date):00}";
             }

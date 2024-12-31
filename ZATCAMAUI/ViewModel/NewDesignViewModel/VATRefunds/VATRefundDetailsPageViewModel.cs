@@ -10,7 +10,7 @@ using ZATCAMAUI.Models.VATRefunds;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
 {
-    
+
     public class VATRefundDetailsPageViewModel : BaseViewModel
     {
         #region Commands
@@ -261,7 +261,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
             }
         }
 
-       
+
 
         public VATRefundDetailsPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
@@ -300,17 +300,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
             }
             catch (GAZTErrorException ex)
             {
-                IsLoading = false;
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
             }
-            catch (InternetException ex)
+            catch (GAZTNetworkConnectivityIssueException)
             {
-                IsLoading = false;
-
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true,_navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
+            }
+            finally
             {
                 IsLoading = false;
             }
@@ -393,25 +397,33 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 IsLoading = true;
                 VatNewReqSummaryData = await VATDeregistrationWebServiceManager.GAZTVATRefundSubmitRequest(VatNewReqSummaryData);
 
-               await _navigationService.NavigateTo(App.VATRefundsSuccessPageView, VatNewReqSummaryData);
+                await _navigationService.NavigateTo(App.VATRefundsSuccessPageView, VatNewReqSummaryData);
 
                 IsLoading = false;
             }
-            catch (InternetException)
-            {
-                IsLoading = false;
 
-                await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
-            }
             catch (GAZTErrorException ex)
             {
-                IsLoading = false;
-
-                string message = ex.Message;
-
-                await _dialogService.ShowMessage(message, AppResources.Information);
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
             }
 
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
+            }
         }
 
         public async Task OnVoidBtnClicked()
@@ -424,43 +436,35 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
 
             try
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
+                IsLoading = true;
+
 
                 VatNewReqSummaryData = await VATDeregistrationWebServiceManager.GAZTVATRefundSubmitRequest(VatNewReqSummaryData);
 
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
-            }
-            catch (InternetException ex)
-            {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                IsLoading = false;
 
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
-                });
             }
             catch (GAZTErrorException ex)
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
 
-                string message = ex.Message;
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
 
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(message, AppResources.Information);
-                });
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
 
         }

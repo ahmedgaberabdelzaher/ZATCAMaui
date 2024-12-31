@@ -996,16 +996,26 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                         selectedOutletItem = null;
                         _navigationService.GoBack();
                     }
-                    catch (Exception ex)
+                    catch (GAZTVATRegistrationInProcessException ex)
                     {
-                        IsLoading = false;
-                        if (ex is HTTPBadRequestException)
-                        {
-                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        }
+                        await UtilityManager.HandleExceptionMessage(ex.Message, false);
+                    }
+                    catch (GAZTNetworkConnectivityIssueException)
+                    {
+                        await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+                    }
+
+                    catch (InternetException)
+                    {
+                        await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+                    }
+                    catch (Exception)
+                    {
+                        await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
                     }
                     finally
                     {
+                        IsLoading = false;
                         CanExecute = true;
                     }
                 }
@@ -1035,8 +1045,22 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 taxPayerDetails?.AttDetSet?.Clear();
                 taxPayerDetails?.AttDetSet?.AddRange(_taxPayerDetails?.AttDetSet);
             }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
             catch (Exception)
             {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
             }
             finally
             {
@@ -1052,8 +1076,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 if (_enum == EstablishmentRegistrationOutletTabsEnum.OutletDetail)
                 {
                     clearFormData();
-                    try
-                    {
                         var _outletTempData = await EstablishmentRegistrationWebServiceManager.ESTOutletList(taxPayerDetails?.PortalUsrx, App.LoginDataRetrieved.TIN, taxPayerDetails?.Fbnumx);
                         _outletTempData.ForEach(_out =>
                         {
@@ -1098,12 +1120,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
 
 
                        
-                    }
-                    catch (Exception)
-                    {
-
-
-                    }
+                    
                 }
                 else if (_enum == EstablishmentRegistrationOutletTabsEnum.AddressDetails)
                 {
@@ -1184,10 +1201,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     }
                 }
             }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
             catch (Exception)
             {
-
-
             }
             finally
             {

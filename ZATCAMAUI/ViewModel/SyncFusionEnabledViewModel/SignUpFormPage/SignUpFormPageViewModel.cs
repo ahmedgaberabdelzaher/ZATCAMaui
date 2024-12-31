@@ -101,7 +101,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
                 OnPropertyChanged("SelectedLOrC");
             }
         }
-      
+
         private SignUpUsing _selectedSignUpUsingSetForCancle = null;
         public SignUpUsing SelectedSignUpUsingSetForCancle
         {
@@ -684,7 +684,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
         {
             try
             {
-                GoBackClick = new Command( () =>
+                GoBackClick = new Command(() =>
                 {
                     _navigationService.GoBack();
                 });
@@ -757,10 +757,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
         }
         public async Task SetIssueIdList()
         {
-            await Task.Run(() =>
-            {
-                IsLoading = true;
-            });
+            IsLoading = true;
             try
             {
                 IssuedByList = null;
@@ -769,66 +766,23 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
                 IssuedByList = new List<IssuedByResponse>(IssuedBy);
 
             }
-            catch (GAZTException gex)
+            catch (GAZTNetworkConnectivityIssueException)
             {
-                // Handle the GAZT custom exception.
-                string MessageForTheUser = gex.Message;
-                if (gex is GAZTInvalidDataException)
-                {
-                    MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                }
-                if (gex is GAZTNetworkConnectivityIssueException)
-                {
-                    MessageForTheUser = AppResources.NetworkConnectivityIssue;
-                }
-                else if (gex is GAZTInternetException)
-                {
-                    MessageForTheUser = AppResources.ZZInternetConnectionMessage;
-                }
-                else if (gex is GAZTSessionExpiredException)
-                {
-                    MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
-                }
-
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    IsLoading = false;
-
-                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                    //_navigationService.GoBack();
-                });
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
             }
-
-            catch (HttpRequestException ex)
+            catch (InternetException)
             {
-                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    IsLoading = false;
-
-                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                    //_navigationService.GoBack();
-                });
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
-
-
-                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    IsLoading = false;
-
-                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                    //_navigationService.GoBack();
-                });
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
             }
-            await Task.Run(() =>
+            finally
             {
                 IsLoading = false;
-            });
-
+            }
+            IsLoading = false;
         }
         public async Task SetCityList()
         {
@@ -844,66 +798,24 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage
                 CityR = CityListSignup.d.cities;
                 CityList = CityR;
             }
-            catch (GAZTException gex)
+            catch (GAZTNetworkConnectivityIssueException)
             {
-
-                // Handle the GAZT custom exception.
-                string MessageForTheUser = gex.Message;
-                if (gex is GAZTInvalidDataException)
-                {
-                    MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                }
-                if (gex is GAZTNetworkConnectivityIssueException)
-                {
-                    MessageForTheUser = AppResources.NetworkConnectivityIssue;
-                }
-                else if (gex is GAZTInternetException)
-                {
-                    MessageForTheUser = AppResources.ZZInternetConnectionMessage;
-                }
-                else if (gex is GAZTSessionExpiredException)
-                {
-                    MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
-                }
-
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    IsLoading = false;
-
-                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                    //_navigationService.GoBack();
-                });
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
             }
-            catch (HttpRequestException ex)
+            catch (InternetException)
             {
-                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    IsLoading = false;
-
-                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                    //_navigationService.GoBack();
-                });
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
-
-
-                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    IsLoading = false;
-
-                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                    //_navigationService.GoBack();
-                });
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
             }
-            MainThread.BeginInvokeOnMainThread(async () =>
+            finally
             {
                 IsLoading = false;
+            }
+            IsLoading = false;
 
-            });
         }
         public async Task SetDefaultDate()
         {

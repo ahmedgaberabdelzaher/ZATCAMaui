@@ -5,6 +5,7 @@ using System.Windows.Input;
 using Mopups.Services;
 using Newtonsoft.Json;
 using ZATCAMAUI.Core.Enums;
+using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models.EstablishmentRegistration;
@@ -855,16 +856,26 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         selectedOutletItem = null;
                         _navigationService.GoBack();
                     }
-                    catch (Exception ex)
+                    catch (GAZTVATRegistrationInProcessException ex)
                     {
-                        IsLoading = false;
-                        if (ex is HTTPBadRequestException)
-                        {
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                        }
+                        await UtilityManager.HandleExceptionMessage(ex.Message, false);
+                    }
+                    catch (GAZTNetworkConnectivityIssueException)
+                    {
+                        await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+                    }
+
+                    catch (InternetException)
+                    {
+                        await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+                    }
+                    catch (Exception)
+                    {
+                        await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
                     }
                     finally
                     {
+                        IsLoading = false;
                         CanExecute = true;
                     }
                 }
@@ -925,8 +936,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             if (preLoadedItem?.Type == "BUP002")
                             {
                                 var result = await EstablishmentRegistrationWebServiceManager.ESTValidateCRNum(preLoadedItem?.Idnumber);
-                                try
-                                {
+                               
                                     if (!string.IsNullOrEmpty(result))
                                     {
                                         validateCR = JsonConvert.DeserializeObject<ValidateCR>(result);
@@ -935,12 +945,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                                     {
                                         PrepareError(result);
                                     }
-
-                                }
-                                catch (Exception)
-                                {
-
-                                }
 
                                 if (!string.IsNullOrEmpty(validateCR?.Crname))
                                 {
@@ -1052,10 +1056,22 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     }
                 }
             }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
             catch (Exception)
             {
-
-
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
             }
             finally
             {

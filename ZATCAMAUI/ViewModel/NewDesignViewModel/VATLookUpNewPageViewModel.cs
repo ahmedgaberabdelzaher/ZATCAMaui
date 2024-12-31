@@ -210,7 +210,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         }
         #endregion
 
-        
+
         public VATLookUpNewPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             try
@@ -235,11 +235,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     IsLoading = false;
                 });
             }
-            catch (Exception )
+            catch (Exception)
             {
 
             }
-            
+
 
         }
 
@@ -356,8 +356,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             catch (Exception)
 
             {
-
-
                 IsLoading = false;
                 isMandatoryDataEntered = false;
             }
@@ -368,7 +366,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             IsNameVisible = false;
             LookupNumber = "";
             LookUpButtonText = AppResources.ZVATLookUpSearchButtonText;
-           
+
         }
         public async Task getBarcodeData(string LookUpNo = "")
         {
@@ -433,7 +431,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                             LookUpButtonText = AppResources.ZVATLookUpSearchButtonText;
                             return;
                         }
-                      
+
                     }
                     else
                     {
@@ -445,56 +443,28 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 }
                 IsMainView = true;
             }
-            catch (GAZTException gex)
+            catch (GAZTVATRegistrationInProcessException ex)
             {
-                IsMainView = true;
-                // Handle the GAZT custom exception.
-                string MessageForTheUser = gex.Message;
-                if (gex is GAZTInvalidDataException)
-                {
-                    MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                }
-                if (gex is GAZTNetworkConnectivityIssueException)
-                {
-                    MessageForTheUser = AppResources.NetworkConnectivityIssue;
-                }
-                else if (gex is GAZTInternetException)
-                {
-                    MessageForTheUser = AppResources.ZZInternetConnectionMessage;
-                }
-                else if (gex is GAZTSessionExpiredException)
-                {
-                    MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
-                }
-
-                IsLoading = false;
-
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
             }
-            catch (HttpRequestException)
+            catch (GAZTNetworkConnectivityIssueException)
             {
-                IsMainView = true;
-                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                IsLoading = false;
-
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
-                IsMainView = true;
-                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                IsLoading = false;
-
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
             }
             finally
             {
-                
+                IsLoading = false;
+                IsMainView = true;
                 IsShowScanView = false;
             }
-
-
-
         }
         #endregion
 

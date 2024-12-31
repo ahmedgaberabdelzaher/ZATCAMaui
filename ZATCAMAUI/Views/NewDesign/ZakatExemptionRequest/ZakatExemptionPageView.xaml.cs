@@ -1,3 +1,5 @@
+using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
@@ -108,13 +110,26 @@ public partial class ZakatExemptionPageView : ContentPage
                 }
             }
         }
+        catch (GAZTVATRegistrationInProcessException ex)
+        {
+            await UtilityManager.HandleExceptionMessage(ex.Message, false);
+        }
+        catch (GAZTNetworkConnectivityIssueException)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, viewModel._navigationService);
+        }
+        catch (InternetException)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, true, viewModel._navigationService);
+        }
         catch (Exception)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+        }
+        finally
         {
             viewModel.IsLoading = false;
         }
-
-
-
     }
 
     private void SetViewsToDefault()

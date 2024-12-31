@@ -2060,26 +2060,29 @@ public class ContractReleaseViewModel : BaseViewModel
             isSubmitted = false;
             return false;
         }
-
-        catch (InternetException ex)
+        catch (GAZTNetworkConnectivityIssueException)
         {
-            IsLoading = false;
-
-            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+            await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            return false;
+        }
+        catch (InternetException)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             return false;
         }
         catch (GAZTVATRegistrationInProcessException ex)
         {
-            IsLoading = false;
-            await _dialogService.ShowMessage(ex.Message, AppResources.ZError);
+            await UtilityManager.HandleExceptionMessage(ex.Message, false);
             return false;
         }
-
         catch (Exception ex)
         {
-            IsLoading = false;
-            await _dialogService.ShowMessage(ex.Message, AppResources.ZError);
+            await UtilityManager.HandleExceptionMessage(ex.Message, false);
             return false;
+        }
+        finally
+        {
+            IsLoading = false;
         }
     }
 
@@ -2229,17 +2232,24 @@ public class ContractReleaseViewModel : BaseViewModel
         }
         catch (GAZTVATRegistrationInProcessException ex)
         {
+            await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
+        }
 
-            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-            _navigationService.GoBack();
-            IsLoading = false;
+        catch (InternetException)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+        }
+        catch (GAZTNetworkConnectivityIssueException)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
         }
         catch (Exception)
         {
-
+            await UtilityManager.HandleExceptionMessage(AppResources.ZZSomethingwentwrong, true, _navigationService);
+        }
+        finally
+        {
             IsLoading = false;
-            await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-            _navigationService.GoBack();
         }
     }
 

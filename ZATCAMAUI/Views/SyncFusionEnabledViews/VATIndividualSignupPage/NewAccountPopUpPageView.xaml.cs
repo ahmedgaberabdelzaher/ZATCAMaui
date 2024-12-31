@@ -109,8 +109,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             try
             {
-                try
-                {
                     var response = await WebServiceManager.GAZTCheckIBAN(viewModel.IbanNumberText);
                     if (response != null)
                     {
@@ -132,16 +130,24 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             await viewModel._dialogService.ShowMessage(AppResources.ZZIBANisincorrect, AppResources.Information);
                         }
                     }
-                }
-                catch (InternetException ex)
-                {
-                    await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                }
+               
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue,false);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage,false);
             }
             catch (Exception)
-            { 
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                viewModel.IsLoading = false;
                 viewModel.IsIBANValid = false;
-                await viewModel._dialogService.ShowMessage(AppResources.ZZIBANisincorrect, AppResources.Information);
             }
         }
 
