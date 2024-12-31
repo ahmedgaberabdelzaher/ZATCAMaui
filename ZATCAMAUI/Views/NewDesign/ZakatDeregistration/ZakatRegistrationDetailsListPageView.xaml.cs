@@ -98,17 +98,9 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                 {
                     var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "VATDeregistrationDetails_Tapped", "VAT Deregistration eService");
                     bool IsInstructionChecked = false;
-                    try
-                    {
-                        VATDeRegistrationDetails vATDeRegistrationDetails = await VatRegistrationWebServiceManager.GAZTGetVATDeRegistrationData();
-                        IsInstructionChecked = vATDeRegistrationDetails?.data?.Agreeflg == true;
-                    }
-                    catch (GAZTVATRegistrationInProcessException ex)
-                    {
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                        return;
-                    }
 
+                    VATDeRegistrationDetails vATDeRegistrationDetails = await VatRegistrationWebServiceManager.GAZTGetVATDeRegistrationData();
+                    IsInstructionChecked = vATDeRegistrationDetails?.data?.Agreeflg == true;
 
                     await MopupService.Instance.PushAsync(new VATDeregistrationInstructionsPage(IsInstructionChecked));
                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
@@ -127,15 +119,28 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                 var view = sender as SfListView;
                 view.SelectedItem = null;
             }
+
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, viewModel._navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, true, viewModel._navigationService);
+            }
             catch (Exception)
             {
-
-                selectedLv.SelectedItem = null;
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
             }
             finally
             {
                 selectedLv.SelectedItem = null;
             }
+
         }
     }
 }

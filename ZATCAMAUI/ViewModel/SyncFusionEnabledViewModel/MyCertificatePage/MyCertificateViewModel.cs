@@ -514,10 +514,25 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyCertificatePage
 
                 }
             }
-            catch (InternetException ex)
+            catch (GAZTVATRegistrationInProcessException ex)
             {
-                await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
         public async Task PopToRootPage()

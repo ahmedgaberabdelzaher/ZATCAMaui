@@ -688,12 +688,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         private async Task<AttachmentRootOject> SaveAttachment(Stream attachmentByteData, string contentType, string Doctype)
         {
             AttachmentRootOject _attachment = null;
-            await Task.Run(() =>
-            {
                 IsLoading = true;
-            });
-            await Task.Run(async () =>
-            {
                 try
                 {
                     if (IsComeForWhichAttachment == WhichAttachment.VATAmendRegistration)
@@ -742,17 +737,23 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     }
 
                 }
-                catch (Exception)
-                {
-                    //  return null;
-
-
-                }
-            });
-            await Task.Run(() =>
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
             {
                 IsLoading = false;
-            });
+            }
+            IsLoading = false;
             return _attachment;
 
         }

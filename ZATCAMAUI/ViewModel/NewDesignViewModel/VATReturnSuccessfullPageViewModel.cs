@@ -319,9 +319,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         {
             try
             {
-                try
-                {
-
                     IsLoading = true;
 
                     var platform = "";
@@ -335,7 +332,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         platform = "C3";
                     }
 
-
                     ValidatePayment modelDetails = new ValidatePayment();
                     modelDetails.Fbnum = fbNum;
                     modelDetails.Pymntty = paymentType;
@@ -345,13 +341,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     modelDetails.Sadad = "";
 
                     PaymentData = await WebServiceManager.GAZTValidatePayment(modelDetails);
-
-
-
-
                     if (PaymentData != null && PaymentData.d != null)
                     {
-
                         if (PaymentData.d.Guid != null && PaymentData.d.Guid == "")
                         {
                             await MopupService.Instance.PushAsync(new PaymentExceptionPageView());
@@ -380,38 +371,30 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         }
                         else
                         {
-
                             ApplePayStatus = await ProcessApplePay();
                         }
                     }
-
                     IsLoading = false;
-
-                }
-                catch (GAZTValidatePaymentInProcessException ex)
-                {
-                    IsLoading = false;
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                }
-                catch (InternetException )
-                {
-                    IsLoading = false;
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                    _navigationService.GoBack();
-                }
-                catch (GAZTNetworkConnectivityIssueException )
-                {
-                    IsLoading = false;
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-
-                }
             }
-            catch (InternetException )
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
             {
                 IsLoading = false;
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                _navigationService.GoBack();
             }
         }
         public async Task<CreateMadaResponseRoot> GetWebviewContent(string srcid)
@@ -583,9 +566,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 IsLoading = false;
 
             }
-            catch (InternetException ex)
+            catch (GAZTNetworkConnectivityIssueException)
             {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
     }

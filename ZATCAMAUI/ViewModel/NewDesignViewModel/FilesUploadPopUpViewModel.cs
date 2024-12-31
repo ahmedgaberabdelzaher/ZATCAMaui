@@ -1080,7 +1080,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         }
 
 
-        public void DeleteAttachment(bool result, VATAttachment attachment)
+        public async Task DeleteAttachment(bool result, VATAttachment attachment)
         {
             try
             {
@@ -1193,7 +1193,20 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 IsLoading = false;
           
             }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
             catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
             {
                 IsLoading = false;
             }
@@ -1320,8 +1333,22 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     _attachment = null;
                 }
             }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
             catch (Exception)
             {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
             IsLoading = false;
             return _attachment;

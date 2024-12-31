@@ -8,6 +8,7 @@ using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.AttachmentRequest;
 using ZATCAMAUI.Models.EstablishmentRegistration;
+using static ZATCAMAUI.Models.ErrorMessage;
 
 namespace ZATCAMAUI.Core.Mangers
 {
@@ -30,7 +31,7 @@ namespace ZATCAMAUI.Core.Mangers
                         Dotyp = string.Empty;
                     }
                     String url = ZATCAConstants.GAZTSaveAttachmentGeneric + outletRef + "&returnGUID=" + RetGuid + "&attachmentFlag=New" + "&documentCategory=" + Dotyp + "&serialNumber=1" + "&attachedByPerson=" + AttBy + /*"&fileName=" + fileName +*/ "&documentId=" + "&fileName=" + fileName;
-       
+
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     client.Timeout = TimeSpan.FromMinutes(5);
@@ -70,17 +71,30 @@ namespace ZATCAMAUI.Core.Mangers
 
                     var response = await client.PostAsync(url, content);
                     var responsestr = response.Content.ReadAsStringAsync().Result;
-                    _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
-                    return _attachment;
+                    ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(responsestr);
+                    if (statusHeader?.header?.status?.code != "E999999")
+                    {
+                        _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
+                        return _attachment;
+                    }
+                    else
+                    {
+                        throw new GAZTNetworkConnectivityIssueException();
+                    }
+
+                }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
                 catch (Exception)
                 {
-                    return null;
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
             {
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+                throw new InternetException();
             }
         }
 
@@ -99,7 +113,7 @@ namespace ZATCAMAUI.Core.Mangers
                 string DeleteToken = string.Empty;
                 try
                 {
-                   DeleteAttachmentRequest _attachment = new DeleteAttachmentRequest()
+                    DeleteAttachmentRequest _attachment = new DeleteAttachmentRequest()
                     {
                         fileName = fileName,
                         returnGUID = RetGuid,
@@ -128,21 +142,35 @@ namespace ZATCAMAUI.Core.Mangers
                     HttpContent contentPost = new StringContent(serialized, Encoding.UTF8, ZATCAConstants.ContentType);
                     HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
                     var responsestr = res.Content.ReadAsStringAsync().Result;
-                    if (res != null)
+                    ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(responsestr);
+                    if (statusHeader?.header?.status?.code != "E999999")
                     {
-                        if (res.StatusCode == HttpStatusCode.NoContent || res.StatusCode == HttpStatusCode.OK)
-                            DeleteToken = "X";
+                        if (res != null)
+                        {
+                            if (res.StatusCode == HttpStatusCode.NoContent || res.StatusCode == HttpStatusCode.OK)
+                                DeleteToken = "X";
+                        }
+                        return DeleteToken;
+
                     }
-                    return DeleteToken;
+                    else
+                    {
+                        throw new GAZTNetworkConnectivityIssueException();
+                    }
+
+                }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
                 catch (Exception)
                 {
-                    return DeleteToken;
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
             {
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+                throw new InternetException();
             }
         }
         #endregion

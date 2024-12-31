@@ -846,9 +846,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     IBANIDNumberList = iBANIDNumbersResponse;
                 }
             }
-            catch (InternetException ex)
+            catch (GAZTNetworkConnectivityIssueException)
             {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
 
@@ -993,8 +1005,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 }
 
             }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
             catch (Exception)
             {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
             return false;
         }
@@ -1153,9 +1178,29 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 }
                 return response;
             }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+                return null;
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+                return null;
+            }
             catch (InternetException)
             {
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+                return null;
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+                return null;
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
         public void SetCommasforAll()

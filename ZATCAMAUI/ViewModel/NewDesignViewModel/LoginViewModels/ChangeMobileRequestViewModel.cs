@@ -721,11 +721,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             {
                 try
                 {
-                    //if (!DissableSendOtp)
-                    //{
-                    //    return;
-                    //}
-                    //ShowSendOTP = false;
                     if (NafathGUID.Length > 0)
                     {
                         //ChangeMobModel.d.Captcha = Captcha;
@@ -772,29 +767,131 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (GAZTNetworkConnectivityIssueException)
                 {
-                    Console.WriteLine("----->" + ex.StackTrace);
+                    await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
                 }
+                catch (InternetException)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+                }
+                catch (Exception)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+                }
+                finally
+                {
+                    IsLoading = false;
+                }
+
 
             });
             VerifyOTPBtnCliked = new Command(async () =>
             {
-                EnteredOTP = OTPFirstDigit + OTPSecondDigit + OTPThirdDigit + OTPFourthDigit;
-                if (EnteredOTP.Length != 4)
+                try
                 {
-                    await _dialogService.ShowMessage(AppResources.PleaseenterOTP, AppResources.Information);
-                    return;
+                    EnteredOTP = OTPFirstDigit + OTPSecondDigit + OTPThirdDigit + OTPFourthDigit;
+                    if (EnteredOTP.Length != 4)
+                    {
+                        await _dialogService.ShowMessage(AppResources.PleaseenterOTP, AppResources.Information);
+                        return;
+                    }
+                    else
+                    {
+                        ChangeMobModel.d.Operationz = "86";
+                        ChangeMobModel.d.Otp = EnteredOTP;
+
+                        //ShowOTPSection = false;
+                        //ShowAttachmentSection = true;
+                        IsLoading = true;
+                        var data = await WebServiceManager.SaveChangeMobileNumberAsync(ChangeMobModel);
+                        IsLoading = false;
+                        if (data.Item1 != null)
+                        {
+                            if (data.Item1.IsSuccessStatusCode)
+                            {
+                                if (data.Item2 != null)
+                                {
+                                    ShowOTPSuccessMessage = true;
+                                    //ChangeMobModel = JsonConvert.DeserializeObject<ChangeMobileNumberModel>(data.Item2);
+                                    var response = JsonConvert.DeserializeObject<ChangeMobileNumberModel>(data.Item2);
+
+                                    if (response != null && response.result == null)
+                                    {
+                                        await ShowErrorWithQuitAsync(data.Item2);
+                                    }
+                                    else
+                                    {
+                                        ChangeMobModel.d = response.result;
+                                        ShowOTPSection = false;
+
+                                        if (NafathGUID.Length > 0)
+                                        {
+                                            ShowPrintFormButton = false;
+                                            AttachmentLable = AppResources.AttachChamberOfCommerce;
+                                        }
+                                        ShowAttachmentDetailsPage();
+                                    }
+                                }
+                                else
+                                {
+                                    await ShowErrorWithQuitAsync(data.Item2);
+                                }
+                            }
+                            else
+                            {
+                                EnteredOTP = OTPFirstDigit = OTPSecondDigit = OTPThirdDigit = OTPFourthDigit = string.Empty;
+
+                                OTPAttemptsCount = OTPAttemptsCount + 1;
+                                if (OTPAttemptsCount >= 3)
+                                {
+                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.OTPMaxAttempts));
+                                    TxtMobileNumber = string.Empty;
+                                    OTPFirstDigit = string.Empty;
+                                    OTPSecondDigit = string.Empty;
+                                    OTPThirdDigit = string.Empty;
+                                    OTPFourthDigit = string.Empty;
+                                    //DissableSendOtp = true;
+                                    StopTimer();
+                                }
+                                else
+                                {
+                                    OTPFirstDigit = string.Empty;
+                                    OTPSecondDigit = string.Empty;
+                                    OTPThirdDigit = string.Empty;
+                                    OTPFourthDigit = string.Empty;
+                                    await ShowErrorWithQuitAsync(data.Item2);
+                                }
+
+                            }
+                        }
+                    }
                 }
-                else
+                catch (GAZTNetworkConnectivityIssueException)
                 {
+                    await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+                }
+                catch (InternetException)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+                }
+                catch (Exception)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+                }
+                finally
+                {
+                    IsLoading = false;
+                }
 
 
-                    ChangeMobModel.d.Operationz = "86";
-                    ChangeMobModel.d.Otp = EnteredOTP;
-
-                    //ShowOTPSection = false;
-                    //ShowAttachmentSection = true;
+            });
+            OnResendOTPClicked = new Command(async () =>
+            {
+                try
+                {
+                    ChangeMobModel.d.Operationz = "85";
+                    changeMobModel.d.NewTlnmbr = TxtCountryCode.Replace("+", "00") + TxtMobileNumber;
                     IsLoading = true;
                     var data = await WebServiceManager.SaveChangeMobileNumberAsync(ChangeMobModel);
                     IsLoading = false;
@@ -804,90 +901,39 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                         {
                             if (data.Item2 != null)
                             {
-                                ShowOTPSuccessMessage = true;
-                                //ChangeMobModel = JsonConvert.DeserializeObject<ChangeMobileNumberModel>(data.Item2);
-                                var response = JsonConvert.DeserializeObject<ChangeMobileNumberModel>(data.Item2);
-
-                                if (response != null && response.result == null)
-                                {
-                                    await ShowErrorWithQuitAsync(data.Item2);
-                                }
-                                else
-                                {
-                                    ChangeMobModel.d = response.result;
-                                    ShowOTPSection = false;
-
-                                    if (NafathGUID.Length > 0)
-                                    {
-                                        ShowPrintFormButton = false;
-                                        AttachmentLable = AppResources.AttachChamberOfCommerce;
-                                    }
-                                    ShowAttachmentDetailsPage();
-                                }
+                                ChangeMobModel = JsonConvert.DeserializeObject<ChangeMobileNumberModel>(data.Item2);
+                                ChangeMobModel.d = ChangeMobModel.result;
+                                ShowOTPSection = true;
+                                StartOTPTimer();
                             }
                             else
                             {
                                 await ShowErrorWithQuitAsync(data.Item2);
                             }
-                        }
-                        else
-                        {
-                            EnteredOTP = OTPFirstDigit = OTPSecondDigit = OTPThirdDigit = OTPFourthDigit = string.Empty;
-
-                            OTPAttemptsCount = OTPAttemptsCount + 1;
-                            if (OTPAttemptsCount >= 3)
-                            {
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.OTPMaxAttempts));
-                                TxtMobileNumber = string.Empty;
-                                OTPFirstDigit = string.Empty;
-                                OTPSecondDigit = string.Empty;
-                                OTPThirdDigit = string.Empty;
-                                OTPFourthDigit = string.Empty;
-                                //DissableSendOtp = true;
-                                StopTimer();
-                            }
-                            else
-                            {
-                                OTPFirstDigit = string.Empty;
-                                OTPSecondDigit = string.Empty;
-                                OTPThirdDigit = string.Empty;
-                                OTPFourthDigit = string.Empty;
-                                await ShowErrorWithQuitAsync(data.Item2);
-                            }
-
-                        }
-                    }
-                }
-
-            });
-            OnResendOTPClicked = new Command(async () =>
-            {
-                ChangeMobModel.d.Operationz = "85";
-                changeMobModel.d.NewTlnmbr = TxtCountryCode.Replace("+", "00") + TxtMobileNumber;
-                IsLoading = true;
-                var data = await WebServiceManager.SaveChangeMobileNumberAsync(ChangeMobModel);
-                IsLoading = false;
-                if (data.Item1 != null)
-                {
-                    if (data.Item1.IsSuccessStatusCode)
-                    {
-                        if (data.Item2 != null)
-                        {
-                            ChangeMobModel = JsonConvert.DeserializeObject<ChangeMobileNumberModel>(data.Item2);
-                            ChangeMobModel.d = ChangeMobModel.result;
-                            ShowOTPSection = true;
-                            StartOTPTimer();
                         }
                         else
                         {
                             await ShowErrorWithQuitAsync(data.Item2);
                         }
                     }
-                    else
-                    {
-                        await ShowErrorWithQuitAsync(data.Item2);
-                    }
                 }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+                }
+                catch (InternetException)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+                }
+                catch (Exception)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+                }
+                finally
+                {
+                    IsLoading = false;
+                }
+
             });
             OnTransferCopyOfCRChoiceButtonClick = new Command(async (type) =>
             {
@@ -915,41 +961,61 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
 
             SubmitBtnClicked = new Command(async () =>
             {
-                if (ShowAttachmentSection == true && AttachedForms.Count != 1)
+                try
                 {
-                    await _dialogService.ShowError(AppResources.AttachmentWarnMsg, AppResources.Information, AppResources.OKText, null);
-                    return;
-                }
-                if (ESTLedge == false && ChangeMobModel.d.Tintyp != "A")
-                {
-                    await _dialogService.ShowError(AppResources.ESTValidatePledge, AppResources.Information, AppResources.OKText, null);
-                    return;
-                }
-                else
-                {
-                    changeMobModel.d.Operationz = "01";
-                    IsLoading = true;
-                    var data = await WebServiceManager.SaveChangeMobileNumberAsync(ChangeMobModel);
-                    IsLoading = false;
-                    if (data.Item1.IsSuccessStatusCode)
+                    if (ShowAttachmentSection == true && AttachedForms.Count != 1)
                     {
-                        ChangeMobModel = JsonConvert.DeserializeObject<ChangeMobileNumberModel>(data.Item2);
-                        ChangeMobModel.d = ChangeMobModel.result;
-                        if (ChangeMobModel?.d != null)
+                        await _dialogService.ShowError(AppResources.AttachmentWarnMsg, AppResources.Information, AppResources.OKText, null);
+                        return;
+                    }
+                    if (ESTLedge == false && ChangeMobModel.d.Tintyp != "A")
+                    {
+                        await _dialogService.ShowError(AppResources.ESTValidatePledge, AppResources.Information, AppResources.OKText, null);
+                        return;
+                    }
+                    else
+                    {
+                        changeMobModel.d.Operationz = "01";
+                        IsLoading = true;
+                        var data = await WebServiceManager.SaveChangeMobileNumberAsync(ChangeMobModel);
+                        IsLoading = false;
+                        if (data.Item1.IsSuccessStatusCode)
                         {
-                            await _dialogService.ShowMessage(AppResources.ChangeMobSuccessMsg + " - " + ChangeMobModel.d.Fbnumz, AppResources.Information);
-                            _navigationService.GoBack();
+                            ChangeMobModel = JsonConvert.DeserializeObject<ChangeMobileNumberModel>(data.Item2);
+                            ChangeMobModel.d = ChangeMobModel.result;
+                            if (ChangeMobModel?.d != null)
+                            {
+                                await _dialogService.ShowMessage(AppResources.ChangeMobSuccessMsg + " - " + ChangeMobModel.d.Fbnumz, AppResources.Information);
+                                _navigationService.GoBack();
+                            }
+                            else
+                            {
+                                await ShowErrorWithQuitAsync(data.Item2);
+                            }
                         }
                         else
                         {
                             await ShowErrorWithQuitAsync(data.Item2);
                         }
                     }
-                    else
-                    {
-                        await ShowErrorWithQuitAsync(data.Item2);
-                    }
                 }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+                }
+                catch (InternetException)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+                }
+                catch (Exception)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+                }
+                finally
+                {
+                    IsLoading = false;
+                }
+
             });
 
             NafathClicked = new Command(async () =>
@@ -1130,11 +1196,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                     AttachedForms.Add(dd);
                 }
             }
-            catch (Exception ex)
+            catch (GAZTNetworkConnectivityIssueException)
             {
-                Console.WriteLine(ex.StackTrace);
-
-
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
             }
             finally
             {
@@ -1268,17 +1340,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                         await ShowErrorWithQuitAsync(data.Item2);
                     }
                 }
-                else
-                {
-                    //TODO
-                }
             }
-            catch (Exception ex)
+            catch (GAZTNetworkConnectivityIssueException)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
-                });
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
             }
             finally
             {
@@ -1338,9 +1411,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                     }
                 }
             }
-            catch (Exception ex)
+            catch (GAZTNetworkConnectivityIssueException)
             {
-                Console.WriteLine(ex.StackTrace);
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
 
         }
@@ -1769,7 +1854,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                 IsLoading = true;
                 if (string.IsNullOrEmpty(guid))
                 {
-                   await getIdTypesData(guid);
+                    await getIdTypesData(guid);
                 }
                 else
                 {
@@ -1789,7 +1874,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                     IsLoading = false;
                     if (nafathChmbResponse != null && nafathChmbResponse.d != null)
                     {
-                       await getIdTypesData(nafathChmbResponse?.d?.Guid);
+                        await getIdTypesData(nafathChmbResponse?.d?.Guid);
                     }
                     else
                     {
@@ -1797,9 +1882,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                     }
                 }
             }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
             catch (Exception)
             {
-
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
             }
             finally
             {
@@ -1810,33 +1903,52 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
 
         private async Task getIdTypesData(string guidNf)
         {
-            IsLoading = true;
-            var data = await WebServiceManager.GetIDTypesForChangeMobNumber(guidNf);
-            IsLoading = false;
-            if (data?.Item1 != null)
+            try
             {
-                if (data.Item1.IsSuccessStatusCode)
+                IsLoading = true;
+                var data = await WebServiceManager.GetIDTypesForChangeMobNumber(guidNf);
+                IsLoading = false;
+                if (data?.Item1 != null)
                 {
-                    if (data.Item2 != null)
+                    if (data.Item1.IsSuccessStatusCode)
                     {
-                        ChangeMobModel = JsonConvert.DeserializeObject<ChangeMobileNumberModel>(data.Item2);
-
-                        ManagerName = ChangeMobModel.d.Mgrnm;
-                        ManagerId = ChangeMobModel.d.Mgrid;
-                        foreach (var item in ChangeMobModel.d.IDTYPSet)
+                        if (data.Item2 != null)
                         {
-                            CopyIDTypes.Add(item);
+                            ChangeMobModel = JsonConvert.DeserializeObject<ChangeMobileNumberModel>(data.Item2);
+
+                            ManagerName = ChangeMobModel.d.Mgrnm;
+                            ManagerId = ChangeMobModel.d.Mgrid;
+                            foreach (var item in ChangeMobModel.d.IDTYPSet)
+                            {
+                                CopyIDTypes.Add(item);
+                            }
                         }
                     }
+                    else if (data?.Item1.StatusCode == System.Net.HttpStatusCode.BadRequest)
+                    {
+                        await ShowErrorWithQuitAsync(data.Item2);
+                    }
+                    else
+                    {
+                        await ShowErrorWithQuitAsync(data.Item2);
+                    }
                 }
-                else if (data?.Item1.StatusCode == System.Net.HttpStatusCode.BadRequest)
-                {
-                    await ShowErrorWithQuitAsync(data.Item2);
-                }
-                else
-                {
-                    await ShowErrorWithQuitAsync(data.Item2);
-                }
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
 
@@ -1862,7 +1974,26 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
 
         internal async Task InitCountryCodesAPI()
         {
-            CountryCodesList = await WebServiceManager.GAZTGetMobileRegionDropdown();
+            try
+            {
+                CountryCodesList = await WebServiceManager.GAZTGetMobileRegionDropdown();
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
+            }
         }
         private bool CheckOnlyNumber(char letter)
         {
@@ -1924,7 +2055,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
         public async Task PrintForm(string fbnumz)
         {
             string pdfUrl = ZATCAConstants.PrintFormUrl + fbnumz;
-           await ShowPdf(pdfUrl);
+            await ShowPdf(pdfUrl);
         }
         public async Task ShowPdf(string pdfUrl)
         {
@@ -1932,14 +2063,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
             {
                 if (pdfUrl != null)
                 {
-                  await  _navigationService.NavigateTo(App.PdfView, pdfUrl);
+                    await _navigationService.NavigateTo(App.PdfView, pdfUrl);
                 }
                 else
                 {
                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNoteAvailable));
                 }
             }
-            catch (Exception )
+            catch (Exception)
             {
 
 
@@ -1950,17 +2081,35 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
 
         public async Task OnRentAttachmentDeleteButtonTapped(Attachment obj)
         {
-            var delStatus = await DeleteAttachment(obj.Filename, obj.RetGuid, obj.Dotyp, obj.Doguid);
-
-            if (delStatus.ToLower() == "delete")
+            try
             {
-                AttachedForms.Remove(obj);
-            }
-            else
-            {
-                ShowValidationPopup(AppResources.Somethingwentwrong);
-            }
+                var delStatus = await DeleteAttachment(obj.Filename, obj.RetGuid, obj.Dotyp, obj.Doguid);
 
+                if (delStatus.ToLower() == "delete")
+                {
+                    AttachedForms.Remove(obj);
+                }
+                else
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+                }
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
+            }
 
         }
         private void ShowValidationPopup(string _message)
@@ -2063,17 +2212,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LoginViewModels
                 IsLoading = false;
             }
 
-            catch (InternetException ex)
+            catch (GAZTNetworkConnectivityIssueException)
             {
-                IsLoading = false;
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-
-                
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
             }
             finally
             {
                 IsLoading = false;
             }
+
         }
     }
 }

@@ -149,7 +149,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             {
                 IsLoading = true;
                 var selectedItem = (obj as Syncfusion.Maui.ListView.ItemTappedEventArgs).DataItem as InstalmentPlanModel;
-                SelectedOutletOptionIndex =OutletDecisionOptions.IndexOf(selectedItem);
+                SelectedOutletOptionIndex = OutletDecisionOptions.IndexOf(selectedItem);
                 if (OutletDecisionOptions.IndexOf(selectedItem) == 0)
                 {
                     EnableVAtInstalmentPlan();
@@ -169,7 +169,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
 
 
-            RequestInstalmentButtonTapped = new Command(async () => await RequestInstalmentButtonClicked ());
+            RequestInstalmentButtonTapped = new Command(async () => await RequestInstalmentButtonClicked());
 
             CreateNewRequestTapped = new Command(async () => await this.CreateNewRequest());
 
@@ -702,7 +702,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 OnPropertyChanged("IsVATRevokeInstalmentVisible");
             }
         }
-        
+
 
         //private bool _isRevokeInstallmentPlanVisible = false;
         //public bool IsRevokeInstallmentPlanVisible
@@ -1324,7 +1324,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             {
                 await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 _navigationService.GoBack();
-               
+
             }
         }
         private void CheckForPendingReturns()
@@ -1397,7 +1397,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             {
 
             }
-            
+
         }
 
         private void ShowPendigReturns()
@@ -1450,9 +1450,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
             if (ReqVatInstalmentPlanResponseList.d.ASSLISTSet != null)
             {
-                var VATInstalmentListData = new ObservableCollection<Result31> ();
+                var VATInstalmentListData = new ObservableCollection<Result31>();
 
-               
+
                 RequestForInstalmentPlanList = ReqVatInstalmentPlanResponseList.d.ASSLISTSet.Where(w => w.Fbtyp.Contains("VTIA")).ToList();
 
                 foreach (var instalmentListModel in RequestForInstalmentPlanList)
@@ -1528,7 +1528,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             await MopupService.Instance.PushAsync(new VATInstalmentPopupNotesPageView());
         }
 
-      
+
         #region API Methods
 
         #region GETVatInstalmentPlan
@@ -1576,18 +1576,27 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     }
                     catch (GAZTVATRegistrationInProcessException ex)
                     {
-                        throw ex;
+                        await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
                     }
-                    catch (InternetException ex)
-                    {
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                            IsLoading = false;
-                            _navigationService.GoBack();
-                        });
 
+                    catch (GAZTNetworkConnectivityIssueException)
+                    {
+                        await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
                     }
+
+                    catch (InternetException)
+                    {
+                        await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+                    }
+                    catch (Exception)
+                    {
+                        await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
+                    }
+                    finally
+                    {
+                        IsLoading = false;
+                    }
+
                 });
                 await Task.Run(() =>
                 {
@@ -1729,83 +1738,42 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
             try
             {
-                await Task.Run(() =>
+                IsLoading = true;
+                var selectedItem = RequestForInstalmentPlanList[index];
+                var selectedItemFormID = await VATInstalationPlanWebServiceManager.GAZTGetFbGuidDetailsInputData(App.LoginDataRetrieved.FbGuid, selectedItem.Fbnum, App.LoginDataRetrieved.TIN, selectedItem.Fbust, "VTIA");
+
+                if (selectedItemFormID.d != null)
                 {
-                    IsLoading = true;
-                });
-                await Task.Run(async () =>
-                {
-
-                    IsLoading = true;
-                    try
+                    var itemDetails = await VATInstalationPlanWebServiceManager.GetRequestToVATInstalmentPlanDetails("", selectedItemFormID.d.Fbguid);
+                    if (itemDetails != null && itemDetails.d != null)
                     {
-
-                        var selectedItem = RequestForInstalmentPlanList[index];
-
-
-                        var selectedItemFormID = await VATInstalationPlanWebServiceManager.GAZTGetFbGuidDetailsInputData(App.LoginDataRetrieved.FbGuid, selectedItem.Fbnum, App.LoginDataRetrieved.TIN, selectedItem.Fbust, "VTIA");
-                        
-
-                        if (selectedItemFormID.d != null)
-                        {
-
-                            var itemDetails = await VATInstalationPlanWebServiceManager.GetRequestToVATInstalmentPlanDetails("", selectedItemFormID.d.Fbguid);
-
-                            if (itemDetails != null && itemDetails.d != null)
-                            {
-                                PopulateSummaryReasonData(itemDetails);
-                            }
-
-
-                        }
-
-
-                        PopToRootPage();
-
-
-                        IsLoading = false;
+                        PopulateSummaryReasonData(itemDetails);
                     }
-                    catch (GAZTVATRegistrationInProcessException ex)
-                    {
-                        throw ex;
-                    }
-                    catch (InternetException ex)
-                    {
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                            IsLoading = false;
-                            _navigationService.GoBack();
-                        });
-                    }
-                });
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
-
+                }
+                PopToRootPage();
+                IsLoading = false;
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    IsLoading = false;
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
+            }
 
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
 
@@ -1818,96 +1786,41 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
             try
             {
-                await Task.Run(() =>
+                IsLoading = true;
+                var getFormID = await VATInstalationPlanWebServiceManager.GAZTGetFbGuidDetailsInputData(App.LoginDataRetrieved.FbGuid, "", App.LoginDataRetrieved.TIN, "E0045", "VTIA");
+                if (getFormID.d != null)
                 {
-                    IsLoading = true;
-                });
-                await Task.Run(async () =>
-                {
-
-                    IsLoading = true;
-
-                    try
+                    FormGuidValue = getFormID.d.Fbguid;
+                    DisplayInstallmentAgreementSchedulePlan itemDetails = await VATInstalationPlanWebServiceManager.GetDisplayInstallmentAgreementSchedulePlan(formGuid: FormGuidValue);
+                    if (itemDetails != null && itemDetails.d != null)
                     {
-
-
-                        var getFormID = await VATInstalationPlanWebServiceManager.GAZTGetFbGuidDetailsInputData(App.LoginDataRetrieved.FbGuid, "", App.LoginDataRetrieved.TIN, "E0045", "VTIA");
-
-
-                        if (getFormID.d != null)
-                        {
-                            FormGuidValue = getFormID.d.Fbguid;
-
-
-                            DisplayInstallmentAgreementSchedulePlan itemDetails = await VATInstalationPlanWebServiceManager.GetDisplayInstallmentAgreementSchedulePlan(formGuid: FormGuidValue);
-                            // var itemDetails = await WebServiceManager.GetRequestToVATInstalmentPlanDetails("", getFormID.d.Fbguid);
-
-                            if (itemDetails != null && itemDetails.d != null)
-                            {
-
-                                RequestForScheduleList = itemDetails.d.VtiaIahdSet;
-                            }
-
-
-                        }
-
-
-                        PopToRootPage();
-                        // If seesion Expired it will navigate to Dashboard page
-
-                        // EnableSlectionView();
-
-
-                        IsLoading = false;
+                        RequestForScheduleList = itemDetails.d.VtiaIahdSet;
                     }
-                    catch (GAZTVATRegistrationInProcessException ex)
-                    {
-                        throw ex;
-                    }
-                    catch (InternetException ex)
-                    {
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                            IsLoading = false;
-                            _navigationService.GoBack();
-                        });
-                        //   await Task.Run(() =>
-                        //   {
-                        //  });
-                    }
-                });
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
-
+                }
+                PopToRootPage();
+                IsLoading = false;
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                //await Task.Run(() =>
-                //{
+                await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
+            }
 
-                //});
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    IsLoading = false;
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
 
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
 
@@ -1920,110 +1833,77 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
             try
             {
-                await Task.Run(() =>
+                IsLoading = true;
+                var selectedItem = RequestForScheduleList[index];
+
+                AgreementNumber = selectedItem.AgreementNo;
+
+                var itemDetails = await VATInstalationPlanWebServiceManager.GetDisplayInstallmentScheduleDetails(selectedItem.Opbel, FormGuidValue, "");
+                // var itemDetails = await WebServiceManager.GetRequestToVATInstalmentPlanDetails("", getFormID.d.Fbguid);
+
+                if (itemDetails != null && itemDetails.d != null)
                 {
-                    IsLoading = true;
-                });
-                await Task.Run(async () =>
-                {
 
-                    IsLoading = true;
-                    //VatInstalments = null;
-                    //VatInstalmentPlanResponse vATInstalment = null;
-                    try
+                    RequestForScheduleDetails = itemDetails.d.VtiaIadtSet;
+                    // RequestForScheduleList = itemDetails.d.VtiaIahdSet.Results;
+
+                    for (int i = 0; i < RequestForScheduleDetails.Count; i++)
                     {
-                        var selectedItem = RequestForScheduleList[index];
+                        DateTime dateStart = new DateTime();
 
-                        AgreementNumber = selectedItem.AgreementNo;
-
-                        var itemDetails = await VATInstalationPlanWebServiceManager.GetDisplayInstallmentScheduleDetails(selectedItem.Opbel, FormGuidValue, "");
-                        // var itemDetails = await WebServiceManager.GetRequestToVATInstalmentPlanDetails("", getFormID.d.Fbguid);
-
-                        if (itemDetails != null && itemDetails.d != null)
-                        {
-
-                            RequestForScheduleDetails = itemDetails.d.VtiaIadtSet;
-                            // RequestForScheduleList = itemDetails.d.VtiaIahdSet.Results;
-
-                            for (int i = 0; i < RequestForScheduleDetails.Count; i++)
-                            {
-                                DateTime dateStart = new DateTime();
-
-                                string apiDate = @"""" + RequestForScheduleDetails[i].DueDate + @"""";
-                                dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
+                        string apiDate = @"""" + RequestForScheduleDetails[i].DueDate + @"""";
+                        dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
 
 
-                                GregorianCalendar hjCalendar = new GregorianCalendar();
-                                int year = hjCalendar.GetYear(dateStart);
-                                int month = hjCalendar.GetMonth(dateStart);
-                                int day = hjCalendar.GetDayOfMonth(dateStart);
+                        GregorianCalendar hjCalendar = new GregorianCalendar();
+                        int year = hjCalendar.GetYear(dateStart);
+                        int month = hjCalendar.GetMonth(dateStart);
+                        int day = hjCalendar.GetDayOfMonth(dateStart);
 
-                                string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+                        string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
 
-                                RequestForScheduleDetails[i].DueDate = dateStr;
+                        RequestForScheduleDetails[i].DueDate = dateStr;
 
-                                string dt1 = string.Empty;
-                                string[] dts = null;
-                                dts = RequestForScheduleDetails[i].DueDate.Split('/');
-                                //dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
-                                dt1 = dts[0] + "-" + dts[1] + "-" + dts[2];
-                                RequestForScheduleDetails[i].DueDate = dt1;
+                        string dt1 = string.Empty;
+                        string[] dts = null;
+                        dts = RequestForScheduleDetails[i].DueDate.Split('/');
+                        //dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+                        dt1 = dts[0] + "-" + dts[1] + "-" + dts[2];
+                        RequestForScheduleDetails[i].DueDate = dt1;
 
-                            }
-                            ScheduleNoOfMonths = itemDetails.d.Noofmon;
-                            ScheduleAmountRemaining = string.Format("{0:N2}", double.Parse(itemDetails.d.TotalRemAmnt));
-                            ScheduleMonthlyInstalment = string.Format("{0:N2}", double.Parse(itemDetails.d.TotalInstall));
-                            ScheduleTotalAmountPaid = string.Format("{0:N2}", double.Parse(itemDetails.d.TotalAmntPaid));
-
-                        }
-
-
-                        PopToRootPage();
-
-                        IsLoading = false;
                     }
-                    catch (GAZTVATRegistrationInProcessException ex)
-                    {
-                        throw ex;
-                    }
-                    catch (InternetException ex)
-                    {
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                            IsLoading = false;
-                            _navigationService.GoBack();
-                        });
-                    }
-                });
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                    ScheduleNoOfMonths = itemDetails.d.Noofmon;
+                    ScheduleAmountRemaining = string.Format("{0:N2}", double.Parse(itemDetails.d.TotalRemAmnt));
+                    ScheduleMonthlyInstalment = string.Format("{0:N2}", double.Parse(itemDetails.d.TotalInstall));
+                    ScheduleTotalAmountPaid = string.Format("{0:N2}", double.Parse(itemDetails.d.TotalAmntPaid));
+                }
+                PopToRootPage();
+                IsLoading = false;
 
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    IsLoading = false;
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
 
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
             }
+            finally
+            {
+                IsLoading = false;
+            }
+
         }
 
 
@@ -2034,85 +1914,46 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
             try
             {
-                await Task.Run(() =>
+                IsLoading = true;
+                rEQVatInstalmentPlanResponse = await VATInstalationPlanWebServiceManager.GetRequestToVATInstalmentData();
+                PopToRootPage();
+
+                if (rEQVatInstalmentPlanResponse != null && rEQVatInstalmentPlanResponse.d != null)
                 {
-                    IsLoading = true;
-                });
-                await Task.Run(async () =>
+                    BindVatRevokeInstalments();
+                }
+                else
                 {
-
-                    IsLoading = true;
-                    try
+                    MainThread.BeginInvokeOnMainThread(async () =>
                     {
+                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                }
 
-                        rEQVatInstalmentPlanResponse = await VATInstalationPlanWebServiceManager.GetRequestToVATInstalmentData();
-
-                        PopToRootPage();
-
-
-                        if (rEQVatInstalmentPlanResponse != null && rEQVatInstalmentPlanResponse.d != null)
-                        {
-                            BindVatRevokeInstalments();
-                        }
-                        else
-                        {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                                _navigationService.GoBack();
-                            });
-                        }
-
-
-
-                        IsLoading = false;
-                    }
-                    catch (GAZTVATRegistrationInProcessException ex)
-                    {
-                        throw ex;
-                    }
-                    catch (InternetException ex)
-                    {
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                            IsLoading = false;
-                            _navigationService.GoBack();
-                        });
-
-                    }
-                });
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
-
+                IsLoading = false;
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                //await Task.Run(() =>
-                //{
+                await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
+            }
 
-                //});
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    IsLoading = false;
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
 
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
         #endregion
@@ -2161,20 +2002,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 IsLoading = false;
             }
 
-            catch (InternetException ex)
+            catch (GAZTNetworkConnectivityIssueException)
             {
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-
-                //   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-
-                    //SetIDNumberEnability = true;
-                    //IDNumber = String.Empty;
-                    // UserIDLayoutVisibility = true;
-                });
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
             }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
+            }
+
         }
         #endregion
         #region SendOTPForVatRevokeAsync
@@ -2198,11 +2042,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 {
                     WebServiceManager.ErrorMessage = string.Empty;
                     ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(result);
-                    if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                    if ( errorMesg?.header?.moreInformation?.errorDetails[0].message != null)
                     {
-                        WebServiceManager.ErrorMessage = errorMesg.error.innererror.errordetails[0].message;
-                        await _dialogService.ShowMessage(WebServiceManager.ErrorMessage, AppResources.Information);
-                        //  throw new GAZTVATRegistrationInProcessException(WebServiceManager.ErrorMessage);
+                        string errorMessage = WebServiceManager.PrepareErrorMessageByJson(result);
+                        await _dialogService.ShowMessage(errorMessage, AppResources.Information);
                     }
                     else
                     {
@@ -2215,7 +2058,20 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 }
                 IsLoading = false;
             }
-            catch (Exception ex)
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
             {
                 IsLoading = false;
             }
@@ -2244,16 +2100,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 {
                     WebServiceManager.ErrorMessage = string.Empty;
                     ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(result);
-                    if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                    if (errorMesg?.header?.moreInformation?.errorDetails[0]?.message != null)
                     {
-                        WebServiceManager.ErrorMessage = errorMesg.error.innererror.errordetails[0].message;
-                        //  await MopupService.Instance.PopAsync();
-                        await _dialogService.ShowMessage(WebServiceManager.ErrorMessage, AppResources.Information);
-                        //  throw new GAZTVATRegistrationInProcessException(WebServiceManager.ErrorMessage);
+                        string errorMessage = WebServiceManager.PrepareErrorMessageByJson(result);
+                        await _dialogService.ShowMessage(errorMessage, AppResources.Information);
                     }
                     else
                     {
-                        //Something went wrong
                         await MopupService.Instance.PopAsync();
                     }
                 }
@@ -2261,12 +2114,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 {
                     await MopupService.Instance.PopAsync();
                     await _dialogService.ShowMessageBox(AppResources.VATRevokeSuccessMessage, AppResources.Information);
-
                     EnableVATLandingPage();
-
                 }
             }
-            catch (Exception ex)
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
             {
                 IsLoading = false;
             }

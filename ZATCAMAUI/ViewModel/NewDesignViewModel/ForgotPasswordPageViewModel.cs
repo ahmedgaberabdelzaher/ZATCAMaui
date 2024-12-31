@@ -1755,7 +1755,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
             });
 
-            VerifyOTPCommand = new Command(async() =>
+            VerifyOTPCommand = new Command(async () =>
             {
                 IsLoading = true;
                 await OtpFilled();
@@ -1938,7 +1938,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             {
                 IsLoading = true;
                 ImageCaptchaModel result = await WebServiceManager.GetCaptchaImage(ApplicationCode, GUID);
-               await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                 if (result != null)
                 {
                     ImageBase64 = result.data.cval;
@@ -1948,123 +1948,130 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 }
                 IsLoading = false;
             }
-            catch (GAZTErrorException ex)
+            catch (GAZTNetworkConnectivityIssueException)
             {
-                IsLoading = false;
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-               
-                SetIDNumberEnability = true;
-                IDNumber = String.Empty;
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
             }
-
-            catch (InternetException ex)
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
             {
                 IsLoading = false;
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                
-
                 SetIDNumberEnability = true;
                 IDNumber = String.Empty;
             }
         }
         private async Task SendOTPToRegisterMobileNumber()
         {
+            IsLoading = true;
+            Enabled = false;
             try
             {
-                IsLoading = true;
-                Enabled = false;
-                try
+                string idNumber = GetTinId();
+                string lang = UtilityManager.GetLanguageParameter();
+                string st = ZATCAConstants.BaseUrlOfODataServices + ZATCAConstants.ForgotPasswordServiceName + "/SecuredHeaderSet(Tin=";
+                string id = st + "'" + "" + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "1" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + "" + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "P" + "')";
+                string st1 = ZATCAConstants.BaseUrlOfODataServices + ZATCAConstants.ForgotPasswordServiceName + "/SecuredHeaderSet(Tin=";
+                string uri = st1 + "'" + "" + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + "" + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "P" + "')";
+                string type = ZATCAConstants.ForgotPasswordServiceName + ".Header";// "ZDP_FRGT_USRNM_PWD_SRV.Header";
+                ForgotPasswordOTP forgotPasswordOTP = new ForgotPasswordOTP();
+                Metadata metadata = new Metadata();
+                metadata.id = id;
+                metadata.uri = uri;
+                metadata.type = type;
+                D d = new D();
+                d.Action = "";
+                d.Tin = idNumber;
+                d.Langu = UtilityManager.GetLanguageParameter();
+                d.EmailId = "";
+                d.SubType = "";
+                d.Idnumber = "";
+                d.RdBt = "P";
+                d.TpType = "";
+                d.MobileNo = "";
+                d.Hyperlink = "";
+                d.Name = "";
+                d.Otp = "";
+                d.NewPwd = "";
+                d.CnfPwd = "";
+                d.Application = "FPWD";
+                d.Captcha = Captcha;
+                d.Guid = GUID;
+                forgotPasswordOTP.d = d;
+                var OTPreq = new OTPRequest();
+
+                OTPreq.TIN = idNumber;
+                OTPreq.email = "";
+                OTPreq.birthDate = "";
+                OTPreq.language = UtilityManager.GetLanguageParameter();
+                OTPreq.captchaCode = Captcha;
+                OTPreq.GUID = GUID;
+
+                var OTPResponseDATA = await WebServiceManager.SendOTP(OTPreq);
+
+                await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                if (OTPResponseDATA?.result != null)
                 {
-                    string idNumber = GetTinId();
-                    string lang = UtilityManager.GetLanguageParameter();
-                    string st = ZATCAConstants.BaseUrlOfODataServices + ZATCAConstants.ForgotPasswordServiceName + "/SecuredHeaderSet(Tin=";
-                    string id = st + "'" + "" + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "1" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + "" + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "P" + "')";
-                    string st1 = ZATCAConstants.BaseUrlOfODataServices + ZATCAConstants.ForgotPasswordServiceName + "/SecuredHeaderSet(Tin=";
-                    string uri = st1 + "'" + "" + "'" + ",Langu='" + lang + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + "" + "'" + ",Dob=datetime'" + "2019-12-21T00%3A00%3A00" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "P" + "')";
-                    string type = ZATCAConstants.ForgotPasswordServiceName + ".Header";// "ZDP_FRGT_USRNM_PWD_SRV.Header";
-                    ForgotPasswordOTP forgotPasswordOTP = new ForgotPasswordOTP();
-                    Metadata metadata = new Metadata();
-                    metadata.id = id;
-                    metadata.uri = uri;
-                    metadata.type = type;
-                    D d = new D();
-                    d.Action = "";
-                    d.Tin = idNumber;
-                    d.Langu = UtilityManager.GetLanguageParameter();
-                    d.EmailId = "";
-                    d.SubType = "";
-                    d.Idnumber = "";
-                    d.RdBt = "P";
-                    d.TpType = "";
-                    d.MobileNo = "";
-                    d.Hyperlink = "";
-                    d.Name = "";
-                    d.Otp = "";
-                    d.NewPwd = "";
-                    d.CnfPwd = "";
-                    d.Application = "FPWD";
-                    d.Captcha = Captcha;
-                    d.Guid = GUID;
-                    forgotPasswordOTP.d = d;
-                    var OTPreq = new OTPRequest();
+                    ContinueButtonEnability = true;
+                    IsResendOTPEnabled = false;
+                    StartOTPTimer();
+                    ResendOTPTextColor = (Color)Application.Current.Resources["DarkGrayTextColor"];
+                    IsAPICalledSuccessfully = true;
 
-                    OTPreq.TIN = idNumber;
-                    OTPreq.email = "";
-                    OTPreq.birthDate = "";
-                    OTPreq.language = UtilityManager.GetLanguageParameter();
-                    OTPreq.captchaCode = Captcha;
-                    OTPreq.GUID = GUID;
+                    OTPFirstDigit = string.Empty;
+                    OTPSecondDigit = string.Empty;
+                    OTPThirdDigit = string.Empty;
+                    OTPFourthDigit = string.Empty;
 
-                    var OTPResponseDATA = await WebServiceManager.SendOTP(OTPreq);
+                    StartPage = 2;
 
-                    await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-                    if (OTPResponseDATA?.result != null)
-                    {
-                        ContinueButtonEnability = true;
-                        IsResendOTPEnabled = false;
-                        StartOTPTimer();
-                        ResendOTPTextColor = (Color)Application.Current.Resources["DarkGrayTextColor"];
-                        IsAPICalledSuccessfully = true;
-
-                        OTPFirstDigit = string.Empty;
-                        OTPSecondDigit = string.Empty;
-                        OTPThirdDigit = string.Empty;
-                        OTPFourthDigit = string.Empty;
-
-                        StartPage = 2;
-
-                        DefaultCardLayoutVisibility = false;
-                        UserIDLayoutVisibility = false;
-                        VerificationCodeVisibility = true;
-                        MobileNumber = OTPResponseDATA.result.mobileNumber;
-                        OTPSentOnThisMobileNumber = AppResources.MobileNumber + " " + MobileNumber;
-                        Captcha = OTPResponseDATA.result.captchaCode;
-                    }
-                    else
-                    {
-                        IsLoading = false;
-                        MessageTxt = AppResources.ErrorCaptcha;
-                        IsShowMsgView = true;
-                    }
-
+                    DefaultCardLayoutVisibility = false;
+                    UserIDLayoutVisibility = false;
+                    VerificationCodeVisibility = true;
+                    MobileNumber = OTPResponseDATA.result.mobileNumber;
+                    OTPSentOnThisMobileNumber = AppResources.MobileNumber + " " + MobileNumber;
+                    Captcha = OTPResponseDATA.result.captchaCode;
                 }
-                catch (GAZTErrorException ex)
+                else
                 {
-                    IsAPICalledSuccessfully = false;
-                    SetIDNumberEnability = true;
-                    IDNumber = String.Empty;
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    IsLoading = false;
+                    MessageTxt = AppResources.ErrorCaptcha;
+                    IsShowMsgView = true;
                 }
-                IsLoading = false;
+
             }
-            catch (InternetException ex)
+            catch (GAZTVATRegistrationInProcessException ex)
             {
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
                 IsLoading = false;
-
+                IsAPICalledSuccessfully = false;
                 SetIDNumberEnability = true;
                 IDNumber = String.Empty;
             }
+
+            IsLoading = false;
+
         }
         private async Task ValidateOTP()
         {
@@ -2196,17 +2203,25 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 }
                 IsLoading = false;
             }
-            catch (GAZTErrorException ex)
+            catch (GAZTVATRegistrationInProcessException ex)
             {
-                IsLoading = false;
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
             }
-            catch (InternetException ex)
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
             {
                 IsLoading = false;
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-
             }
         }
         public async Task SendIDNumberToUsernameEmail()
@@ -2250,16 +2265,27 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 }
                 IsLoading = false;
             }
-            catch (GAZTErrorException edx)
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
             {
                 IsLoading = false;
-                await _dialogService.ShowMessageBox(edx.Message, AppResources.Information);
             }
-            catch (InternetException ex)
-            {
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                IsLoading = false;
-            }
+
         }
         private async Task SendUserNameToRegidteredEmail()
         {
@@ -2294,18 +2320,27 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 }
                 IsLoading = false;
             }
-            catch (GAZTErrorException eax)
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
             {
                 IsLoading = false;
-                await _dialogService.ShowMessageBox(eax.Message, AppResources.Information);
+            }
 
-            }
-            catch (InternetException ex)
-            {
-                IsLoading = false;
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                
-            }
         }
         private async Task ChangePassword()
         {
@@ -2359,15 +2394,25 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 }
                 IsLoading = false;
             }
-            catch (GAZTErrorException ex)
+            catch (GAZTVATRegistrationInProcessException ex)
             {
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
             }
-            catch (InternetException ex)
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
             {
                 IsLoading = false;
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
             }
         }
 
@@ -2413,44 +2458,50 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 List<TINModel> Tins = new List<TINModel>();
                 try
                 {
-                    try
+                    IsLoading = true;
+                    SelectedTinId = null;
+                    Tins = await WebServiceManager.GAZTGetAllTins(Email);
+                    TINs = Tins;
+                    if (Tins.Count != 0)
                     {
-                        IsLoading = true;
-                        SelectedTinId = null;
-                        Tins = await WebServiceManager.GAZTGetAllTins(Email);
-                        TINs = Tins;
-                        if (Tins.Count != 0)
-                        {
-                            Enabled = true;
-                            IsAPICalledSuccessfully = true;
-                            UserNameLabelText = AppResources.UserName;
-                            IsVisibleTinIds = true;
-                            SelectedTinId = TINs.FirstOrDefault();
-                        }
-                        else
-                        {
-                            IsAPICalledSuccessfully = false;
-
-                            IsVisibleTinIds = false;
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NoTINsAvailable));
-
-                        }
-                        IsLoading = false;
+                        Enabled = true;
+                        IsAPICalledSuccessfully = true;
+                        UserNameLabelText = AppResources.UserName;
+                        IsVisibleTinIds = true;
+                        SelectedTinId = TINs.FirstOrDefault();
                     }
-                    catch (Exception)
+                    else
                     {
                         IsAPICalledSuccessfully = false;
 
                         IsVisibleTinIds = false;
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NetworkConnectivityIssue));
-                        IsLoading = false;
-                    }
-                }
-                catch (InternetException ex)
-                {
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NoTINsAvailable));
 
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    }
                     IsLoading = false;
+                }
+
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    await UtilityManager.HandleExceptionMessage(ex.Message, false);
+                }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+                }
+                catch (InternetException)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+                }
+                catch (Exception)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+                }
+                finally
+                {
+                    IsLoading = false;
+                    IsAPICalledSuccessfully = false;
+                    IsVisibleTinIds = false;
                 }
             }
             else

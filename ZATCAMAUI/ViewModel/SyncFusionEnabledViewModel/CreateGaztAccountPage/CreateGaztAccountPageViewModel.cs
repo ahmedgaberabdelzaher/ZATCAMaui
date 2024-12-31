@@ -276,8 +276,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage
         {
             try
             {
-                await Task.Run(async () =>
-                {
                     SignUpNextBodyModel CreateModel = new SignUpNextBodyModel();
                     CreateModel.ABirthdt = SignUpModelRootObjectM.d.signupD.ABirthdt;
                     CreateModel.ACity = SignUpModelRootObjectM.d.signupD.ACity;
@@ -326,12 +324,22 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage
                         numberOfSeconds = 120;
                         TimerStart(numberOfSeconds);
                     }
-
-                });
             }
-            catch (InternetException ex)
+            catch (GAZTNetworkConnectivityIssueException)
             {
-                await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
         public void TimerStart(int Seconds)
@@ -457,17 +465,26 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage
                     }
                     else
                     {
-                        await Task.Run(() =>
-                        {
                             IsLoading = false;
-                        });
                        await _navigationService.NavigateTo(App.AccountCreatedPageView);
                     }
                 }
             }
-            catch (InternetException ex)
+            catch (GAZTNetworkConnectivityIssueException)
             {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
         #endregion

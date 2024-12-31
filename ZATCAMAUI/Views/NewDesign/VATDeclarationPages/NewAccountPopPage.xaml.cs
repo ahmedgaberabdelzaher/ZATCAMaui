@@ -48,8 +48,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
         {
             try
             {
-                try
-                {
                     var response = WebServiceManager.GAZTCheckIBAN(viewModel.IbanNumberText);
                     if (response != null)
                     {
@@ -75,22 +73,23 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                             });
                         }
                     }
-                }
-                catch (InternetException ex)
-                {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    });
-                }
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                viewModel.IsLoading = false;
                 viewModel.IsIBANValid = false;
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await viewModel._dialogService.ShowMessage(AppResources.ZZIBANisincorrect, AppResources.Information);
-                });
             }
         }
 

@@ -298,7 +298,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 OnPropertyChanged("StepNumberz");
             }
         }
-    
+
         private bool _isFirstSubmission = true;
         public bool IsFirstSubmission
         {
@@ -2833,12 +2833,17 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                         VatAttachmentsList = myCollection;
                     }
                 }
-                catch (InternetException ex)
+                catch (GAZTNetworkConnectivityIssueException)
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    });
+                    await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+                }
+                catch (InternetException)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+                }
+                catch (Exception)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
                 }
             });
             onSummaryClicked = new Command(async () =>
@@ -2847,7 +2852,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             });
             onCreditCarriedForwardClicked = new Command(async () =>
             {
-                _navigationService.NavigateTo(App.CreditCarriedPageView, VATDeclarationData);
+                await _navigationService.NavigateTo(App.CreditCarriedPageView, VATDeclarationData);
                 //   CreditCarriedClicked();
             });
             onOptionClicked = new Command(async () =>
@@ -3772,12 +3777,20 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                     }
                 }
             }
-            catch (InternetException ex)
+            catch (GAZTNetworkConnectivityIssueException)
             {
-                MainThread.BeginInvokeOnMainThread(() =>
-                {
-                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                });
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
                 IsLoading = false;
             }
         }
@@ -4049,117 +4062,118 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
         }
         public async Task VATReturnResetAsync()
         {
-            await Task.Run(() =>
+
+            IsLoading = true;
+            try
             {
-                IsLoading = true;
-            });
-            await Task.Run(async () =>
-            {
-                try
+                CreateDataForPost();
+                string operation = "14";// Passed 14 to set RESET
+                VATDeclarationData.data.Operationz = operation;
+                StepNumber = "01";
+                if (IsDeclarationCheckedForInstruction == true)
                 {
-                    CreateDataForPost();
-                    string operation = "14";// Passed 14 to set RESET
-                    VATDeclarationData.data.Operationz = operation;
-                    StepNumber = "01";
-                    if (IsDeclarationCheckedForInstruction == true)
-                    {
-                        StepNumber = "02";
-                    }
-                    if (IsCheckedTaxPayerDetailsInfo == true)
-                    {
-                        StepNumber = "03";
-                    }
-                    if (IsDeclarationCheckedForSummary == true)
-                    {
-                        StepNumber = "04";
-                    }
-                    VATDeclarationData.data.StepNumber = StepNumber;
-                    VATDeclarationData.data.UserTypz = "TP";
-                    var response = WebServiceManager.GAZTSetVATReturnReset(VATDeclarationData);
+                    StepNumber = "02";
+                }
+                if (IsCheckedTaxPayerDetailsInfo == true)
+                {
+                    StepNumber = "03";
+                }
+                if (IsDeclarationCheckedForSummary == true)
+                {
+                    StepNumber = "04";
+                }
+                VATDeclarationData.data.StepNumber = StepNumber;
+                VATDeclarationData.data.UserTypz = "TP";
+                var response = WebServiceManager.GAZTSetVATReturnReset(VATDeclarationData);
+                PopToRootPage();
+                var res = await SaveReturnAndGetReturnAndSetButtons();
+
+
+
+                if (res != null && res.data != null && response != null)
+                {
+
+                    VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(App.Fbguid, VATDeclarationData.data.Fbnumz, App.EUser, "");
                     PopToRootPage();
-                    var res = await SaveReturnAndGetReturnAndSetButtons();
-
-
-
-                    if (res != null && res.data != null && response != null)
+                    if (_vATDeclaration != null && _vATDeclaration.data != null)
                     {
+                        VATDeclarationData = _vATDeclaration;
+                        ResponseVATDeclarationD = VATDeclarationData.data;
 
-                        VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(App.Fbguid, VATDeclarationData.data.Fbnumz, App.EUser, "");
-                        PopToRootPage();
-                        if (_vATDeclaration != null && _vATDeclaration.data != null)
+                        SetCommasforAll();
+                        if (DummyATTACHSetsList != null && DummyATTACHSetsList.Count() != 0)
                         {
-                            VATDeclarationData = _vATDeclaration;
-                            ResponseVATDeclarationD = VATDeclarationData.data;
-
-                            SetCommasforAll();
-                            if (DummyATTACHSetsList != null && DummyATTACHSetsList.Count() != 0)
-                            {
-                                VATDeclarationData.data.ATTACHSet = DummyATTACHSetsList;
-                            }
-                            //SetData();
+                            VATDeclarationData.data.ATTACHSet = DummyATTACHSetsList;
                         }
+                        //SetData();
+                    }
 
 
+                    MainThread.BeginInvokeOnMainThread(async () =>
+                    {
+                        await ManageEnabledAsyncProperty(false);
+                        IsMainButtonVisible = false;
+                        IsSwichButtonEnableToTap = false;
+                        IsEnableIBAN = false;
+                        IsEnableCheckedRefund = false;
+                        IsEnableIBANType = false;
+                        IsEnableIBANIdNumber = false;
+                        IsMoreButtonEnabled = false;
+                    });
+                    MainThread.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_ReturnRestoredToTheLastBilledVersion, AppResources.Information);
+                    });
+                }
+                else
+                {
+                    IsLoading = false;
+                    if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
+                    {
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
-                            await ManageEnabledAsyncProperty(false);
-                            IsMainButtonVisible = false;
-                            IsSwichButtonEnableToTap = false;
-                            IsEnableIBAN = false;
-                            IsEnableCheckedRefund = false;
-                            IsEnableIBANType = false;
-                            IsEnableIBANIdNumber = false;
-                            IsMoreButtonEnabled = false;
-                        });
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_ReturnRestoredToTheLastBilledVersion, AppResources.Information);
+                            await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                            _navigationService.GoBack();
                         });
                     }
                     else
                     {
-                        IsLoading = false;
-                        if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
+                        MainThread.BeginInvokeOnMainThread(async () =>
                         {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                                _navigationService.GoBack();
-                            });
-                        }
-                        else
-                        {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await _dialogService.ShowMessage(WebServiceManager.ErrorMessageForVAT, AppResources.Information);
-                                // _navigationService.GoBack();
-                                WebServiceManager.ErrorMessageForVAT = string.Empty;
-                            });
-                        }
+                            await _dialogService.ShowMessage(WebServiceManager.ErrorMessageForVAT, AppResources.Information);
+                            // _navigationService.GoBack();
+                            WebServiceManager.ErrorMessageForVAT = string.Empty;
+                        });
                     }
                 }
-                catch (InternetException ex)
-                {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    });
-                }
-            });
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
+            }
             IsLoading = false;
         }
 
-        public async void OpenIbanSet()
+        public void OpenIbanSet()
         {
             try
             {
                 IsLoading = true;
-                await Task.Run(() =>
-                {
-                    IsVisibleDropdownForRefund = true;
-                    IsDropdownVisibleForIban = true;
-                    IsVisiblechkRefundDeclaration = true;
-                });
+                IsVisibleDropdownForRefund = true;
+                IsDropdownVisibleForIban = true;
+                IsVisiblechkRefundDeclaration = true;
                 IsLoading = false;
             }
             catch (Exception)
@@ -4587,12 +4601,25 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
 
                 ManageThePreperiodcorrSwitch();
             }
-            catch (InternetException ex)
+            catch (GAZTVATRegistrationInProcessException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                });
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
         private List<String> _ListOfActionButtonsApplicable;

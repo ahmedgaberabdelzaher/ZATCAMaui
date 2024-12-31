@@ -3,6 +3,7 @@ using System.Windows.Input;
 using Mopups.Animations;
 using Mopups.Enums;
 using Mopups.Services;
+using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models.TINOutletDeregister;
@@ -168,14 +169,32 @@ public class TINOutletDeregistrationViewModel : BaseViewModel
                 }));
             });
         }
+        catch (GAZTVATRegistrationInProcessException ex)
+        {
+             UtilityManager.HandleExceptionMessage(ex.Message, false);
+        }
+
+        catch (GAZTNetworkConnectivityIssueException)
+        {
+             UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+        }
+
+        catch (InternetException)
+        {
+             UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+        }
         catch (Exception)
+        {
+             UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+        }
+        finally
         {
             IsLoading = false;
         }
     }
 
 
-    private  void DeleteRequest(object item)
+    private void DeleteRequest(object item)
     {
         // NOTE : from mobile we are not allowing user to create/Delete/Cancel/ Open request for Outlet De-Registrations.
         try
@@ -208,7 +227,25 @@ public class TINOutletDeregistrationViewModel : BaseViewModel
 
 
         }
+        catch (GAZTVATRegistrationInProcessException ex)
+        {
+             UtilityManager.HandleExceptionMessage(ex.Message, false);
+        }
+
+        catch (GAZTNetworkConnectivityIssueException)
+        {
+             UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+        }
+
+        catch (InternetException)
+        {
+             UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+        }
         catch (Exception)
+        {
+             UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+        }
+        finally
         {
             IsLoading = false;
         }
@@ -295,10 +332,28 @@ public class TINOutletDeregistrationViewModel : BaseViewModel
             }
             IsLoading = false;
         }
+        catch (GAZTErrorException ex)
+        {
+            await UtilityManager.HandleExceptionMessage(ex.Message, false);
+        }
+        catch (GAZTNetworkConnectivityIssueException)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+        }
+
+        catch (InternetException)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+        }
         catch (Exception)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+        }
+        finally
         {
             IsLoading = false;
         }
+
     }
     public void FilterWithReferenceNumber()
     {

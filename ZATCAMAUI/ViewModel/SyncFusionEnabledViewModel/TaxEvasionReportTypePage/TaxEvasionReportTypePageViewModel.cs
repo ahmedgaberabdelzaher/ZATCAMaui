@@ -170,50 +170,22 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePag
                     });
                 }
             }
-            catch (GAZTException gex)
+            catch (GAZTNetworkConnectivityIssueException)
             {
-                // Handle the GAZT custom exception.
-                string MessageForTheUser = gex.Message;
-                if (gex is GAZTInvalidDataException)
-                {
-                    MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                }
-                if (gex is GAZTNetworkConnectivityIssueException)
-                {
-                    MessageForTheUser = AppResources.NetworkConnectivityIssue;
-                }
-                else if (gex is GAZTInternetException)
-                {
-                    MessageForTheUser = AppResources.ZZInternetConnectionMessage;
-                }
-                else if (gex is GAZTSessionExpiredException)
-                {
-                    MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
-                }
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await Task.Run(() =>
-                    {
-                        IsLoading = false;
-                    });
-                    await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true,_navigationService);
+            }
+
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
-
-
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await Task.Run(() =>
-                    {
-                        IsLoading = false;
-                    });
-
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
 

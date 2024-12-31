@@ -1008,8 +1008,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
         {
             try
             {
-                try
-                {
                     if (SelectedReturnsVAT != null)
                     {
                         if (isStatusNotValid(SelectedReturnsVAT))
@@ -1040,23 +1038,23 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
                             await _dialogService.ShowMessage(AppResources.ZZZReturnUnderReview, AppResources.Information);
                         }
                     }
-                }
-                catch (InternetException)
-                {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                        _navigationService.GoBack();
-                    });
-                }
+              
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
             }
             catch (InternetException)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
         public bool isStatusNotValid(MyReturnsResult SelectedReturnsVAT)
@@ -1092,388 +1090,345 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.MyReturnsPageViewModel
         }
         public async Task OnPageLoad()
         {
-            IsZakatVisible = false;
-            IsVATVisible = false;
-            IsETVisible = false;
-            IsWHVisible = false;
-            ReturnsZakatNonSubmited = null;
-            ReturnsZakatOverDue = null;
-            ReturnsZakatSubmited = null;
-            List<MyReturnsResult> ReturnsZakatNonSubmitedChild = new List<MyReturnsResult>();
-            List<MyReturnsResult> ReturnsZakatOverDueChild = new List<MyReturnsResult>();
-            List<MyReturnsResult> ReturnsZakatSubmitedChild = new List<MyReturnsResult>();
-            ReturnsVATNonSubmited = null;
-            ReturnsVATOverDue = null;
-            ReturnsVATSubmited = null;
-            List<MyReturnsResult> ReturnsVATNonSubmitedChild = new List<MyReturnsResult>();
-            List<MyReturnsResult> ReturnsVATOverDueChild = new List<MyReturnsResult>();
-            List<MyReturnsResult> ReturnsVATSubmitedChild = new List<MyReturnsResult>();
-            ReturnsETNonSubmited = null;
-            ReturnsETOverDue = null;
-            ReturnsETSubmited = null;
-            List<MyReturnsResult> ReturnsETNonSubmitedChild = new List<MyReturnsResult>();
-            List<MyReturnsResult> ReturnsETOverDueChild = new List<MyReturnsResult>();
-            List<MyReturnsResult> ReturnsETSubmitedChild = new List<MyReturnsResult>();
-            ReturnsWHNonSubmited = null;
-            ReturnsWHOverDue = null;
-            ReturnsWHSubmited = null;
-            List<MyReturnsResult> ReturnsWHNonSubmitedChild = new List<MyReturnsResult>();
-            List<MyReturnsResult> ReturnsWHOverDueChild = new List<MyReturnsResult>();
-            List<MyReturnsResult> ReturnsWHSubmitedChild = new List<MyReturnsResult>();
-            Task GetReturnDataTask = null;
-            GetReturnDataTask = Task.Run(async () =>
-            {
-                MyReturns = await WebServiceManager.GAZTGetReturnData(App.TP.TIN);
-            });
             try
             {
+                IsZakatVisible = false;
+                IsVATVisible = false;
+                IsETVisible = false;
+                IsWHVisible = false;
+                ReturnsZakatNonSubmited = null;
+                ReturnsZakatOverDue = null;
+                ReturnsZakatSubmited = null;
+                List<MyReturnsResult> ReturnsZakatNonSubmitedChild = new List<MyReturnsResult>();
+                List<MyReturnsResult> ReturnsZakatOverDueChild = new List<MyReturnsResult>();
+                List<MyReturnsResult> ReturnsZakatSubmitedChild = new List<MyReturnsResult>();
+                ReturnsVATNonSubmited = null;
+                ReturnsVATOverDue = null;
+                ReturnsVATSubmited = null;
+                List<MyReturnsResult> ReturnsVATNonSubmitedChild = new List<MyReturnsResult>();
+                List<MyReturnsResult> ReturnsVATOverDueChild = new List<MyReturnsResult>();
+                List<MyReturnsResult> ReturnsVATSubmitedChild = new List<MyReturnsResult>();
+                ReturnsETNonSubmited = null;
+                ReturnsETOverDue = null;
+                ReturnsETSubmited = null;
+                List<MyReturnsResult> ReturnsETNonSubmitedChild = new List<MyReturnsResult>();
+                List<MyReturnsResult> ReturnsETOverDueChild = new List<MyReturnsResult>();
+                List<MyReturnsResult> ReturnsETSubmitedChild = new List<MyReturnsResult>();
+                ReturnsWHNonSubmited = null;
+                ReturnsWHOverDue = null;
+                ReturnsWHSubmited = null;
+                List<MyReturnsResult> ReturnsWHNonSubmitedChild = new List<MyReturnsResult>();
+                List<MyReturnsResult> ReturnsWHOverDueChild = new List<MyReturnsResult>();
+                List<MyReturnsResult> ReturnsWHSubmitedChild = new List<MyReturnsResult>();
+                Task GetReturnDataTask = null;
+                GetReturnDataTask = Task.Run(async () =>
+                {
+                    MyReturns = await WebServiceManager.GAZTGetReturnData(App.TP.TIN);
+                });
+
                 if (GetReturnDataTask != null)
                     GetReturnDataTask.Wait();
-            }
-            catch (AggregateException ae)
-            {
-                foreach (var gex in ae.InnerExceptions)
+
+                if (!string.IsNullOrEmpty(UtilityManager.TPTaxAvalable))
                 {
-                    // Handle the GAZT custom exception.
-                    if (gex is GAZTException)
+                    string[] TpTypes = UtilityManager.TPTaxAvalable.Split(',');
+                    foreach (string ItemType in TpTypes)
                     {
-                        string MessageForTheUser = gex.Message;
-                        if (gex is GAZTNetworkConnectivityIssueException)
+                        if (ItemType == "05")
                         {
-                            MessageForTheUser = AppResources.NetworkConnectivityIssue;
+                            IsZakatVisible = true;
                         }
-                        else if (gex is GAZTInternetException)
+                        if (ItemType == "03" || ItemType == "13")
                         {
-                            MessageForTheUser = AppResources.ZZInternetConnectionMessage;
+                            IsVATVisible = true;
                         }
-                        else if (gex is GAZTSessionExpiredException)
+                        if (ItemType == "07")
                         {
-                            MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
+                            IsETVisible = true;
                         }
-                        MainThread.BeginInvokeOnMainThread(async () =>
+                        if (ItemType == "01")
                         {
-                            if (MessageForTheUser == AppResources.ZZInternetConnectionMessage)
-                            {
-                                await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                                _navigationService.GoBack();
-                            }
-                            else if (MessageForTheUser == AppResources.NetworkConnectivityIssue)
-                            {
-                                await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                                _navigationService.GoBack();
-                            }
-                            else if (MessageForTheUser == AppResources.ZYourSessionhasexpiredPleaseLoginagain)
-                            {
-                                PopToRootPage();
-                            }
-                        });
+                            IsWHVisible = true;
+                        }
                     }
-                    // Rethrow any other exception.
+                }
+                if (MyReturns != null && MyReturns.ICRReturns != null && MyReturns.ICRReturns.Count > 0)
+                {
+                    foreach (MyReturnsResult ItemR in MyReturns.ICRReturns)
+                    {
+                        if ((0 == string.Compare(ItemR.taxType, "ITAX", true)) || (0 == string.Compare(ItemR.taxType, "ZAKT", true)))
+                        {
+                            if (0 == string.Compare(ItemR.statusDescription, "Submitted", true))
+                            {
+                                ReturnsZakatSubmitedChild.Add(ItemR);
+                            }
+                            else if (0 == string.Compare(ItemR.statusDescription, "Non Submitted", true))
+                            {
+                                ReturnsZakatNonSubmitedChild.Add(ItemR);
+                                if (0 == string.Compare(ItemR.dueStatus, "X", true))
+                                {
+                                    ReturnsZakatOverDueChild.Add(ItemR);
+                                }
+                            }
+                        }
+                        if ((0 == string.Compare(ItemR.taxType, "VATX", true)) || (0 == string.Compare(ItemR.taxType, "VTEP", true)))
+                        {
+                            if (0 == string.Compare(ItemR.statusDescription, "Submitted", true))
+                            {
+                                ReturnsVATSubmitedChild.Add(ItemR);
+                            }
+                            else if (0 == string.Compare(ItemR.statusDescription, "Non Submitted", true))
+                            {
+                                ReturnsVATNonSubmitedChild.Add(ItemR);
+                                if (0 == string.Compare(ItemR.dueStatus, "X", true))
+                                {
+                                    ReturnsVATOverDueChild.Add(ItemR);
+                                }
+                            }
+                        }
+                        if ((0 == string.Compare(ItemR.taxType, "ETAX", true)))
+                        {
+                            if (0 == string.Compare(ItemR.statusDescription, "Submitted", true))
+                            {
+                                ReturnsETSubmitedChild.Add(ItemR);
+                            }
+                            else if (0 == string.Compare(ItemR.statusDescription, "Non Submitted", true))
+                            {
+                                ReturnsETNonSubmitedChild.Add(ItemR);
+                                if (0 == string.Compare(ItemR.dueStatus, "X", true))
+                                {
+                                    ReturnsETOverDueChild.Add(ItemR);
+                                }
+                            }
+                        }
+                        if ((0 == string.Compare(ItemR.taxType, "WHTX", true)))
+                        {
+                            if (0 == string.Compare(ItemR.statusDescription, "Submitted", true))
+                            {
+                                ReturnsWHSubmitedChild.Add(ItemR);
+                            }
+                            else if (0 == string.Compare(ItemR.statusDescription, "Non Submitted", true))
+                            {
+                                ReturnsWHNonSubmitedChild.Add(ItemR);
+                                if (0 == string.Compare(ItemR.dueStatus, "X", true))
+                                {
+                                    ReturnsWHOverDueChild.Add(ItemR);
+                                }
+                            }
+                        }
+                    }
+                    if (ReturnsZakatNonSubmitedChild.Count > 0)
+                    {
+                        ReturnsZakatNonSubmited = ReturnsZakatNonSubmitedChild.OrderByDescending(a => a.dueDate).ToList<MyReturnsResult>();
+                        IsVisibleZakatNonSumbitted = true;
+                        IsVisibleZakatNonSumbittedLabel = false;
+                        NonSubmittedZakatReturnsCount = AppResources.ZAKATReturns + "(" + ReturnsZakatNonSubmitedChild.Count + ")";
+                    }
                     else
                     {
-                        throw;
+                        IsVisibleZakatNonSumbitted = false;
+                        IsVisibleZakatNonSumbittedLabel = true;
+                        NonSubmittedZakatReturnsCount = AppResources.ZAKATReturns + "(0)";
                     }
-                }
-            }
-            catch (GAZTSessionExpiredException)
-            {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(AppResources.ZYourSessionhasexpiredPleaseLoginagain, AppResources.Information);
-                    PopToRootPage();
-                });
-            }
-            catch (Exception)
-            {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    PopToRootPage();
-                });
-            }
-            if (!string.IsNullOrEmpty(UtilityManager.TPTaxAvalable))
-            {
-                string[] TpTypes = UtilityManager.TPTaxAvalable.Split(',');
-                foreach (string ItemType in TpTypes)
-                {
-                    if (ItemType == "05")
+                    if (ReturnsZakatOverDueChild.Count > 0)
                     {
-                        IsZakatVisible = true;
+                        ReturnsZakatOverDue = ReturnsZakatOverDueChild.OrderByDescending(a => a.dueDate).ToList<MyReturnsResult>();
+                        IsVisibleZakatOverDue = true;
+                        IsVisibleZakatOverDueLabel = false;
+                        OverDueZakatReturnsCount = AppResources.ZAKATReturns + "(" + ReturnsZakatOverDueChild.Count + ")";
                     }
-                    if (ItemType == "03" || ItemType == "13")
+                    else
                     {
-                        IsVATVisible = true;
+                        IsVisibleZakatOverDue = false;
+                        IsVisibleZakatOverDueLabel = true;
+                        OverDueZakatReturnsCount = AppResources.ZAKATReturns + "(0)";
                     }
-                    if (ItemType == "07")
+                    if (ReturnsZakatSubmitedChild.Count > 0)
                     {
-                        IsETVisible = true;
+                        ReturnsZakatSubmited = ReturnsZakatSubmitedChild.OrderByDescending(a => a.dueDate).ToList<MyReturnsResult>();
+                        IsVisibleZakatSumbitted = true;
+                        IsVisibleZakatSumbittedLabel = false;
+                        SubmittedZakatReturnsCount = AppResources.ZAKATReturns + "(" + ReturnsZakatSubmitedChild.Count + ")";
                     }
-                    if (ItemType == "01")
+                    else
                     {
-                        IsWHVisible = true;
+                        IsVisibleZakatSumbitted = false;
+                        IsVisibleZakatSumbittedLabel = true;
+                        SubmittedZakatReturnsCount = AppResources.ZAKATReturns + "(0)";
                     }
-                }
-            }
-            if (MyReturns != null && MyReturns.ICRReturns != null && MyReturns.ICRReturns.Count > 0)
-            {
-                foreach (MyReturnsResult ItemR in MyReturns.ICRReturns)
-                {
-                    if ((0 == string.Compare(ItemR.taxType, "ITAX", true)) || (0 == string.Compare(ItemR.taxType, "ZAKT", true)))
+                    if (ReturnsVATNonSubmitedChild.Count > 0)
                     {
-                        if (0 == string.Compare(ItemR.statusDescription, "Submitted", true))
-                        {
-                            ReturnsZakatSubmitedChild.Add(ItemR);
-                        }
-                        else if (0 == string.Compare(ItemR.statusDescription, "Non Submitted", true))
-                        {
-                            ReturnsZakatNonSubmitedChild.Add(ItemR);
-                            if (0 == string.Compare(ItemR.dueStatus, "X", true))
-                            {
-                                ReturnsZakatOverDueChild.Add(ItemR);
-                            }
-                        }
+                        ReturnsVATNonSubmited = ReturnsVATNonSubmitedChild.OrderByDescending(a => a.dueDate).ToList<MyReturnsResult>();
+                        IsVisibleVATNonSumbitted = true;
+                        IsVisibleVATNonSumbittedLabel = false;
+                        NonSubmittedVATReturnsCount = AppResources.VatReturns + "(" + ReturnsVATNonSubmitedChild.Count + ")";
                     }
-                    if ((0 == string.Compare(ItemR.taxType, "VATX", true)) || (0 == string.Compare(ItemR.taxType, "VTEP", true)))
+                    else
                     {
-                        if (0 == string.Compare(ItemR.statusDescription, "Submitted", true))
-                        {
-                            ReturnsVATSubmitedChild.Add(ItemR);
-                        }
-                        else if (0 == string.Compare(ItemR.statusDescription, "Non Submitted", true))
-                        {
-                            ReturnsVATNonSubmitedChild.Add(ItemR);
-                            if (0 == string.Compare(ItemR.dueStatus, "X", true))
-                            {
-                                ReturnsVATOverDueChild.Add(ItemR);
-                            }
-                        }
+                        IsVisibleVATNonSumbitted = false;
+                        IsVisibleVATNonSumbittedLabel = true;
+                        NonSubmittedVATReturnsCount = AppResources.VatReturns + "(0)";
                     }
-                    if ((0 == string.Compare(ItemR.taxType, "ETAX", true)))
+                    if (ReturnsVATOverDueChild.Count > 0)
                     {
-                        if (0 == string.Compare(ItemR.statusDescription, "Submitted", true))
-                        {
-                            ReturnsETSubmitedChild.Add(ItemR);
-                        }
-                        else if (0 == string.Compare(ItemR.statusDescription, "Non Submitted", true))
-                        {
-                            ReturnsETNonSubmitedChild.Add(ItemR);
-                            if (0 == string.Compare(ItemR.dueStatus, "X", true))
-                            {
-                                ReturnsETOverDueChild.Add(ItemR);
-                            }
-                        }
+                        ReturnsVATOverDue = ReturnsVATOverDueChild.OrderByDescending(a => a.dueDate).ToList<MyReturnsResult>();
+                        IsVisibleVATOverDue = true;
+                        IsVisibleVATOverDueLabel = false;
+                        OverDueVATReturnsCount = AppResources.VatReturns + "(" + ReturnsVATOverDueChild.Count + ")";
                     }
-                    if ((0 == string.Compare(ItemR.taxType, "WHTX", true)))
+                    else
                     {
-                        if (0 == string.Compare(ItemR.statusDescription, "Submitted", true))
-                        {
-                            ReturnsWHSubmitedChild.Add(ItemR);
-                        }
-                        else if (0 == string.Compare(ItemR.statusDescription, "Non Submitted", true))
-                        {
-                            ReturnsWHNonSubmitedChild.Add(ItemR);
-                            if (0 == string.Compare(ItemR.dueStatus, "X", true))
-                            {
-                                ReturnsWHOverDueChild.Add(ItemR);
-                            }
-                        }
+                        IsVisibleVATOverDue = false;
+                        IsVisibleVATOverDueLabel = true;
+                        OverDueVATReturnsCount = AppResources.VatReturns + "(0)";
                     }
-                }
-                if (ReturnsZakatNonSubmitedChild.Count > 0)
-                {
-                    ReturnsZakatNonSubmited = ReturnsZakatNonSubmitedChild.OrderByDescending(a => a.dueDate).ToList<MyReturnsResult>();
-                    IsVisibleZakatNonSumbitted = true;
-                    IsVisibleZakatNonSumbittedLabel = false;
-                    NonSubmittedZakatReturnsCount = AppResources.ZAKATReturns + "(" + ReturnsZakatNonSubmitedChild.Count + ")";
-                }
-                else
-                {
-                    IsVisibleZakatNonSumbitted = false;
-                    IsVisibleZakatNonSumbittedLabel = true;
-                    NonSubmittedZakatReturnsCount = AppResources.ZAKATReturns + "(0)";
-                }
-                if (ReturnsZakatOverDueChild.Count > 0)
-                {
-                    ReturnsZakatOverDue = ReturnsZakatOverDueChild.OrderByDescending(a => a.dueDate).ToList<MyReturnsResult>();
-                    IsVisibleZakatOverDue = true;
-                    IsVisibleZakatOverDueLabel = false;
-                    OverDueZakatReturnsCount = AppResources.ZAKATReturns + "(" + ReturnsZakatOverDueChild.Count + ")";
-                }
-                else
-                {
-                    IsVisibleZakatOverDue = false;
-                    IsVisibleZakatOverDueLabel = true;
-                    OverDueZakatReturnsCount = AppResources.ZAKATReturns + "(0)";
-                }
-                if (ReturnsZakatSubmitedChild.Count > 0)
-                {
-                    ReturnsZakatSubmited = ReturnsZakatSubmitedChild.OrderByDescending(a => a.dueDate).ToList<MyReturnsResult>();
-                    IsVisibleZakatSumbitted = true;
-                    IsVisibleZakatSumbittedLabel = false;
-                    SubmittedZakatReturnsCount = AppResources.ZAKATReturns + "(" + ReturnsZakatSubmitedChild.Count + ")";
-                }
-                else
-                {
-                    IsVisibleZakatSumbitted = false;
-                    IsVisibleZakatSumbittedLabel = true;
-                    SubmittedZakatReturnsCount = AppResources.ZAKATReturns + "(0)";
-                }
-                if (ReturnsVATNonSubmitedChild.Count > 0)
-                {
-                    ReturnsVATNonSubmited = ReturnsVATNonSubmitedChild.OrderByDescending(a => a.dueDate).ToList<MyReturnsResult>();
-                    IsVisibleVATNonSumbitted = true;
-                    IsVisibleVATNonSumbittedLabel = false;
-                    NonSubmittedVATReturnsCount = AppResources.VatReturns + "(" + ReturnsVATNonSubmitedChild.Count + ")";
-                }
-                else
-                {
-                    IsVisibleVATNonSumbitted = false;
-                    IsVisibleVATNonSumbittedLabel = true;
-                    NonSubmittedVATReturnsCount = AppResources.VatReturns + "(0)";
-                }
-                if (ReturnsVATOverDueChild.Count > 0)
-                {
-                    ReturnsVATOverDue = ReturnsVATOverDueChild.OrderByDescending(a => a.dueDate).ToList<MyReturnsResult>();
-                    IsVisibleVATOverDue = true;
-                    IsVisibleVATOverDueLabel = false;
-                    OverDueVATReturnsCount = AppResources.VatReturns + "(" + ReturnsVATOverDueChild.Count + ")";
-                }
-                else
-                {
-                    IsVisibleVATOverDue = false;
-                    IsVisibleVATOverDueLabel = true;
-                    OverDueVATReturnsCount = AppResources.VatReturns + "(0)";
-                }
-                if (ReturnsVATSubmitedChild.Count > 0)
-                {
-                    ReturnsVATSubmited = ReturnsVATSubmitedChild.OrderByDescending(a => a.dueDate).ToList<MyReturnsResult>();
-                    IsVisibleVATSumbitted = true;
-                    IsVisibleVATSumbittedLabel = false;
-                    SubmittedVATReturnsCount = AppResources.VatReturns + "(" + ReturnsVATSubmitedChild.Count + ")";
-                }
-                else
-                {
-                    IsVisibleVATSumbitted = false;
-                    IsVisibleVATSumbittedLabel = true;
-                    SubmittedVATReturnsCount = AppResources.VatReturns + "(0)";
-                }
-                if (ReturnsETNonSubmitedChild.Count > 0)
-                {
-                    ReturnsETNonSubmited = ReturnsETNonSubmitedChild.OrderByDescending(a => a.dueDate).ToList<MyReturnsResult>();
-                    IsVisibleETNonSumbitted = true;
-                    IsVisibleETNonSumbittedLabel = false;
-                    NonSubmittedETReturnsCount = AppResources.ETReturns + "(" + ReturnsETNonSubmitedChild.Count + ")";
+                    if (ReturnsVATSubmitedChild.Count > 0)
+                    {
+                        ReturnsVATSubmited = ReturnsVATSubmitedChild.OrderByDescending(a => a.dueDate).ToList<MyReturnsResult>();
+                        IsVisibleVATSumbitted = true;
+                        IsVisibleVATSumbittedLabel = false;
+                        SubmittedVATReturnsCount = AppResources.VatReturns + "(" + ReturnsVATSubmitedChild.Count + ")";
+                    }
+                    else
+                    {
+                        IsVisibleVATSumbitted = false;
+                        IsVisibleVATSumbittedLabel = true;
+                        SubmittedVATReturnsCount = AppResources.VatReturns + "(0)";
+                    }
+                    if (ReturnsETNonSubmitedChild.Count > 0)
+                    {
+                        ReturnsETNonSubmited = ReturnsETNonSubmitedChild.OrderByDescending(a => a.dueDate).ToList<MyReturnsResult>();
+                        IsVisibleETNonSumbitted = true;
+                        IsVisibleETNonSumbittedLabel = false;
+                        NonSubmittedETReturnsCount = AppResources.ETReturns + "(" + ReturnsETNonSubmitedChild.Count + ")";
+                    }
+                    else
+                    {
+                        IsVisibleETNonSumbitted = false;
+                        IsVisibleETNonSumbittedLabel = true;
+                        NonSubmittedETReturnsCount = AppResources.ETReturns + "(0)";
+                    }
+                    if (ReturnsETOverDueChild.Count > 0)
+                    {
+                        ReturnsETOverDue = ReturnsETOverDueChild.OrderByDescending(a => a.dueDate).ToList<MyReturnsResult>();
+                        IsVisibleETOverDue = true;
+                        IsVisibleETOverDueLabel = false;
+                        OverDueETReturnsCount = AppResources.ETReturns + "(" + ReturnsETOverDueChild.Count + ")";
+                    }
+                    else
+                    {
+                        IsVisibleETOverDue = false;
+                        IsVisibleETOverDueLabel = true;
+                        OverDueETReturnsCount = AppResources.ETReturns + "(0)";
+                    }
+                    if (ReturnsETSubmitedChild.Count > 0)
+                    {
+                        ReturnsETSubmited = ReturnsETSubmitedChild.OrderByDescending(a => a.dueDate).ToList<MyReturnsResult>();
+                        IsVisibleETSumbitted = true;
+                        IsVisibleETSumbittedLabel = false;
+                        SubmittedETReturnsCount = AppResources.ETReturns + "(" + ReturnsETSubmitedChild.Count + ")";
+                    }
+                    else
+                    {
+                        IsVisibleETSumbitted = false;
+                        IsVisibleETSumbittedLabel = true;
+                        SubmittedETReturnsCount = AppResources.ETReturns + "(0)";
+                    }
+                    if (ReturnsWHNonSubmitedChild.Count > 0)
+                    {
+                        ReturnsWHNonSubmited = ReturnsWHNonSubmitedChild.OrderByDescending(a => a.dueDate).ToList<MyReturnsResult>();
+                        IsVisibleWHNonSumbitted = true;
+                        IsVisibleWHNonSumbittedLabel = false;
+                        NonSubmittedWHReturnsCount = AppResources.ZZWithholding + "(" + ReturnsWHNonSubmitedChild.Count + ")";
+                    }
+                    else
+                    {
+                        IsVisibleWHNonSumbitted = false;
+                        IsVisibleWHNonSumbittedLabel = true;
+                        NonSubmittedWHReturnsCount = AppResources.ZZWithholding + "(0)";
+                    }
+                    if (ReturnsWHOverDueChild.Count > 0)
+                    {
+                        ReturnsWHOverDue = ReturnsWHOverDueChild.OrderByDescending(a => a.dueDate).ToList<MyReturnsResult>();
+                        IsVisibleWHOverDue = true;
+                        IsVisibleWHOverDueLabel = false;
+                        OverDueWHReturnsCount = AppResources.ZZWithholding + "(" + ReturnsWHOverDueChild.Count + ")";
+                    }
+                    else
+                    {
+                        IsVisibleWHOverDue = false;
+                        IsVisibleWHOverDueLabel = true;
+                        OverDueWHReturnsCount = AppResources.ZZWithholding + "(0)";
+                    }
+                    if (ReturnsWHSubmitedChild.Count > 0)
+                    {
+                        ReturnsWHSubmited = ReturnsWHSubmitedChild.OrderByDescending(a => a.dueDate).ToList<MyReturnsResult>();
+                        IsVisibleWHSumbitted = true;
+                        IsVisibleWHSumbittedLabel = false;
+                        SubmittedWHReturnsCount = AppResources.ZZWithholding + "(" + ReturnsWHSubmitedChild.Count + ")";
+                    }
+                    else
+                    {
+                        IsVisibleWHSumbitted = false;
+                        IsVisibleWHSumbittedLabel = true;
+                        SubmittedWHReturnsCount = AppResources.ZZWithholding + "(0)";
+                    }
                 }
                 else
                 {
                     IsVisibleETNonSumbitted = false;
                     IsVisibleETNonSumbittedLabel = true;
-                    NonSubmittedETReturnsCount = AppResources.ETReturns + "(0)";
-                }
-                if (ReturnsETOverDueChild.Count > 0)
-                {
-                    ReturnsETOverDue = ReturnsETOverDueChild.OrderByDescending(a => a.dueDate).ToList<MyReturnsResult>();
-                    IsVisibleETOverDue = true;
-                    IsVisibleETOverDueLabel = false;
-                    OverDueETReturnsCount = AppResources.ETReturns + "(" + ReturnsETOverDueChild.Count + ")";
-                }
-                else
-                {
                     IsVisibleETOverDue = false;
                     IsVisibleETOverDueLabel = true;
-                    OverDueETReturnsCount = AppResources.ETReturns + "(0)";
-                }
-                if (ReturnsETSubmitedChild.Count > 0)
-                {
-                    ReturnsETSubmited = ReturnsETSubmitedChild.OrderByDescending(a => a.dueDate).ToList<MyReturnsResult>();
-                    IsVisibleETSumbitted = true;
-                    IsVisibleETSumbittedLabel = false;
-                    SubmittedETReturnsCount = AppResources.ETReturns + "(" + ReturnsETSubmitedChild.Count + ")";
-                }
-                else
-                {
                     IsVisibleETSumbitted = false;
                     IsVisibleETSumbittedLabel = true;
-                    SubmittedETReturnsCount = AppResources.ETReturns + "(0)";
-                }
-                if (ReturnsWHNonSubmitedChild.Count > 0)
-                {
-                    ReturnsWHNonSubmited = ReturnsWHNonSubmitedChild.OrderByDescending(a => a.dueDate).ToList<MyReturnsResult>();
-                    IsVisibleWHNonSumbitted = true;
-                    IsVisibleWHNonSumbittedLabel = false;
-                    NonSubmittedWHReturnsCount = AppResources.ZZWithholding + "(" + ReturnsWHNonSubmitedChild.Count + ")";
-                }
-                else
-                {
+                    IsVisibleVATNonSumbitted = false;
+                    IsVisibleVATNonSumbittedLabel = true;
+                    IsVisibleVATOverDue = false;
+                    IsVisibleVATOverDueLabel = true;
+                    IsVisibleVATSumbitted = false;
+                    IsVisibleVATSumbittedLabel = true;
+                    IsVisibleZakatNonSumbitted = false;
+                    IsVisibleZakatNonSumbittedLabel = true;
+                    IsVisibleZakatOverDue = false;
+                    IsVisibleZakatOverDueLabel = true;
+                    IsVisibleZakatSumbitted = false;
+                    IsVisibleZakatSumbittedLabel = true;
                     IsVisibleWHNonSumbitted = false;
                     IsVisibleWHNonSumbittedLabel = true;
-                    NonSubmittedWHReturnsCount = AppResources.ZZWithholding + "(0)";
-                }
-                if (ReturnsWHOverDueChild.Count > 0)
-                {
-                    ReturnsWHOverDue = ReturnsWHOverDueChild.OrderByDescending(a => a.dueDate).ToList<MyReturnsResult>();
-                    IsVisibleWHOverDue = true;
-                    IsVisibleWHOverDueLabel = false;
-                    OverDueWHReturnsCount = AppResources.ZZWithholding + "(" + ReturnsWHOverDueChild.Count + ")";
-                }
-                else
-                {
                     IsVisibleWHOverDue = false;
                     IsVisibleWHOverDueLabel = true;
-                    OverDueWHReturnsCount = AppResources.ZZWithholding + "(0)";
-                }
-                if (ReturnsWHSubmitedChild.Count > 0)
-                {
-                    ReturnsWHSubmited = ReturnsWHSubmitedChild.OrderByDescending(a => a.dueDate).ToList<MyReturnsResult>();
-                    IsVisibleWHSumbitted = true;
-                    IsVisibleWHSumbittedLabel = false;
-                    SubmittedWHReturnsCount = AppResources.ZZWithholding + "(" + ReturnsWHSubmitedChild.Count + ")";
-                }
-                else
-                {
                     IsVisibleWHSumbitted = false;
                     IsVisibleWHSumbittedLabel = true;
+                    NonSubmittedZakatReturnsCount = AppResources.ZAKATReturns + "(0)";
+                    OverDueZakatReturnsCount = AppResources.ZAKATReturns + "(0)";
+                    SubmittedZakatReturnsCount = AppResources.ZAKATReturns + "(0)";
+                    NonSubmittedVATReturnsCount = AppResources.VatReturns + "(0)";
+                    OverDueVATReturnsCount = AppResources.VatReturns + "(0)";
+                    SubmittedVATReturnsCount = AppResources.VatReturns + "(0)";
+                    NonSubmittedETReturnsCount = AppResources.ETReturns + "(0)";
+                    OverDueETReturnsCount = AppResources.ETReturns + "(0)";
+                    SubmittedETReturnsCount = AppResources.ETReturns + "(0)";
+                    NonSubmittedWHReturnsCount = AppResources.ZZWithholding + "(0)";
+                    OverDueWHReturnsCount = AppResources.ZZWithholding + "(0)";
                     SubmittedWHReturnsCount = AppResources.ZZWithholding + "(0)";
                 }
             }
-            else
+            catch (GAZTNetworkConnectivityIssueException)
             {
-                IsVisibleETNonSumbitted = false;
-                IsVisibleETNonSumbittedLabel = true;
-                IsVisibleETOverDue = false;
-                IsVisibleETOverDueLabel = true;
-                IsVisibleETSumbitted = false;
-                IsVisibleETSumbittedLabel = true;
-                IsVisibleVATNonSumbitted = false;
-                IsVisibleVATNonSumbittedLabel = true;
-                IsVisibleVATOverDue = false;
-                IsVisibleVATOverDueLabel = true;
-                IsVisibleVATSumbitted = false;
-                IsVisibleVATSumbittedLabel = true;
-                IsVisibleZakatNonSumbitted = false;
-                IsVisibleZakatNonSumbittedLabel = true;
-                IsVisibleZakatOverDue = false;
-                IsVisibleZakatOverDueLabel = true;
-                IsVisibleZakatSumbitted = false;
-                IsVisibleZakatSumbittedLabel = true;
-                IsVisibleWHNonSumbitted = false;
-                IsVisibleWHNonSumbittedLabel = true;
-                IsVisibleWHOverDue = false;
-                IsVisibleWHOverDueLabel = true;
-                IsVisibleWHSumbitted = false;
-                IsVisibleWHSumbittedLabel = true;
-                NonSubmittedZakatReturnsCount = AppResources.ZAKATReturns + "(0)";
-                OverDueZakatReturnsCount = AppResources.ZAKATReturns + "(0)";
-                SubmittedZakatReturnsCount = AppResources.ZAKATReturns + "(0)";
-                NonSubmittedVATReturnsCount = AppResources.VatReturns + "(0)";
-                OverDueVATReturnsCount = AppResources.VatReturns + "(0)";
-                SubmittedVATReturnsCount = AppResources.VatReturns + "(0)";
-                NonSubmittedETReturnsCount = AppResources.ETReturns + "(0)";
-                OverDueETReturnsCount = AppResources.ETReturns + "(0)";
-                SubmittedETReturnsCount = AppResources.ETReturns + "(0)";
-                NonSubmittedWHReturnsCount = AppResources.ZZWithholding + "(0)";
-                OverDueWHReturnsCount = AppResources.ZZWithholding + "(0)";
-                SubmittedWHReturnsCount = AppResources.ZZWithholding + "(0)";
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
         #endregion

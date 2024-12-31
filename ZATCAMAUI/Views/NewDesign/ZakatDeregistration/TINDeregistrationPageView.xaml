@@ -168,8 +168,8 @@
                                         <custom:GAZTBorderlessEntry
                                             InputTransparent="True"
                                             IsReadOnly="True"
-                                            Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationReason}"
                                             Keyboard="Text"
+                                            Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationReason}"
                                             Style="{StaticResource DefaultEntry}"
                                             Text="{Binding SelectedReason.ReasonDesc}">
                                             <custom:GAZTBorderlessEntry.GestureRecognizers>
@@ -269,10 +269,10 @@
                         <StackLayout
                             Grid.Row="3"
                             Grid.Column="0"
-                            Margin="0,10"
-                            Spacing="10"
                             Grid.ColumnSpan="2"
-                            IsVisible="{Binding IsOption1Visible}">
+                            Margin="0,10"
+                            IsVisible="{Binding IsOption1Visible}"
+                            Spacing="10">
                             <Label x:Name="DateLabel" Style="{StaticResource CaptionLabelGrey}">
                                 <Label.FormattedText>
                                     <FormattedString>
@@ -282,7 +282,7 @@
                                 </Label.FormattedText>
                             </Label>
 
-                            <custom:CustomSfTextInputView IsVisible="{Binding isEditingAllowed}" >
+                            <custom:CustomSfTextInputView IsVisible="{Binding isEditingAllowed}">
                                 <custom:CustomSfTextInputView.TextInputView>
                                     <custom:GAZTBorderlessEntry
                                         x:Name="DateLbl2"
@@ -325,8 +325,7 @@
                                 Grid.Row="5"
                                 Grid.Column="0"
                                 Grid.ColumnSpan="2">
-                                <custom:CustomSfTextInputView
-                                    x:Name="FrmDBO">
+                                <custom:CustomSfTextInputView x:Name="FrmDBO">
                                     <custom:CustomSfTextInputView.TextInputView>
 
                                         <custom:GAZTBorderlessEntry
@@ -367,11 +366,10 @@
                                     HorizontalOptions="FillAndExpand"
                                     ItemHeight="40"
                                     Mode="Dialog"
-                                    
                                     SelectedItem="{Binding TodayDate}">
 
                                     <custom:CustomDatePicker.ColumnHeaderView>
-                                        <syncfusion:PickerColumnHeaderView Height="46" Background="White"/>
+                                        <syncfusion:PickerColumnHeaderView Height="46" Background="White" />
                                     </custom:CustomDatePicker.ColumnHeaderView>
 
 
@@ -423,7 +421,6 @@
                                     HorizontalOptions="FillAndExpand"
                                     ItemHeight="40"
                                     Mode="Dialog"
-                                    
                                     SelectedItem="{Binding TodayDateinHijri}">
 
                                     <custom:CustomHijriDatePicker.SelectionView>
@@ -431,16 +428,17 @@
                                     </custom:CustomHijriDatePicker.SelectionView>
 
                                     <custom:CustomHijriDatePicker.ColumnHeaderView>
-                                        <syncfusion:PickerColumnHeaderView Height="46" Background="White"/>
+                                        <syncfusion:PickerColumnHeaderView Height="46" Background="White" />
                                     </custom:CustomHijriDatePicker.ColumnHeaderView>
 
                                     <custom:CustomHijriDatePicker.HeaderView>
 
                                         <syncfusion:PickerHeaderView
-                                            Height="46" Background="{StaticResource Primary}"
-                                            Text="{x:Static ResourceManager:AppResources.TinDeregistrationDate}" >
+                                            Height="46"
+                                            Background="{StaticResource Primary}"
+                                            Text="{x:Static ResourceManager:AppResources.TinDeregistrationDate}">
 
-                                             <syncfusion:PickerHeaderView.TextStyle>
+                                            <syncfusion:PickerHeaderView.TextStyle>
                                                 <syncfusion:PickerTextStyle TextColor="White" />
                                             </syncfusion:PickerHeaderView.TextStyle>
 
@@ -488,8 +486,7 @@
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <StackLayout Orientation="Horizontal"
-                                              Margin="0,10">
+                                <StackLayout Margin="0,10" Orientation="Horizontal">
                                     <Label
                                         HorizontalOptions="Start"
                                         Style="{StaticResource CaptionLabelBlack}"
@@ -506,7 +503,7 @@
                                 </StackLayout>
 
                                 <StackLayout>
-                                    <custom:CustomSfTextInputView x:Name="FrmDBO2" >
+                                    <custom:CustomSfTextInputView x:Name="FrmDBO2">
                                         <custom:CustomSfTextInputView.TextInputView>
 
                                             <custom:GAZTBorderlessEntry
@@ -529,9 +526,9 @@
                                         </inputLayout:SfTextInputLayout.GestureRecognizers>
                                         <inputLayout:SfTextInputLayout.TrailingView>
                                             <Image
-                                                    HorizontalOptions="EndAndExpand"
-                                                    Source="calendar.png"
-                                                    Style="{StaticResource SmallIcon}" />
+                                                HorizontalOptions="EndAndExpand"
+                                                Source="calendar.png"
+                                                Style="{StaticResource SmallIcon}" />
                                         </inputLayout:SfTextInputLayout.TrailingView>
                                     </custom:CustomSfTextInputView>
 
@@ -545,11 +542,10 @@
                                         HorizontalOptions="FillAndExpand"
                                         ItemHeight="40"
                                         Mode="Dialog"
-                                        
                                         SelectedItem="{Binding TodayDate}">
 
                                         <custom:CustomDatePicker.ColumnHeaderView>
-                                            <syncfusion:PickerColumnHeaderView Height="46" Background="White"/>
+                                            <syncfusion:PickerColumnHeaderView Height="46" Background="White" />
                                         </custom:CustomDatePicker.ColumnHeaderView>
 
 
@@ -562,11 +558,11 @@
                                         </custom:CustomDatePicker.SelectedTextStyle>
 
                                         <custom:CustomDatePicker.HeaderView>
-                                            
+
                                             <syncfusion:PickerHeaderView
-                                            Height="46"
-                                            Background="{StaticResource NeutralBlack}"
-                                            Text="{x:Static ResourceManager:AppResources.TinDeregistrationDate}">
+                                                Height="46"
+                                                Background="{StaticResource NeutralBlack}"
+                                                Text="{x:Static ResourceManager:AppResources.TinDeregistrationDate}">
 
                                                 <syncfusion:PickerHeaderView.TextStyle>
                                                     <syncfusion:PickerTextStyle TextColor="White" />
@@ -581,8 +577,7 @@
                                         <custom:CustomDatePicker.FooterView>
 
 
-                                            <syncfusion:PickerFooterView  Height="46"
-                                            Background="{StaticResource NeutralBlack}">
+                                            <syncfusion:PickerFooterView Height="46" Background="{StaticResource NeutralBlack}">
 
                                                 <syncfusion:PickerFooterView.TextStyle>
                                                     <syncfusion:PickerTextStyle TextColor="White" />
@@ -605,7 +600,6 @@
                                         HorizontalOptions="FillAndExpand"
                                         ItemHeight="40"
                                         Mode="Dialog"
-                                        
                                         SelectedItem="{Binding TodayDateinHijri}">
 
                                         <custom:CustomHijriDatePicker.SelectionView>
@@ -613,15 +607,15 @@
                                         </custom:CustomHijriDatePicker.SelectionView>
 
                                         <custom:CustomHijriDatePicker.ColumnHeaderView>
-                                            <syncfusion:PickerColumnHeaderView Height="46" Background="White"/>
+                                            <syncfusion:PickerColumnHeaderView Height="46" Background="White" />
                                         </custom:CustomHijriDatePicker.ColumnHeaderView>
 
                                         <custom:CustomHijriDatePicker.HeaderView>
 
                                             <syncfusion:PickerHeaderView
                                                 Height="46"
-                                            Background="{StaticResource NeutralBlack}"
-                                                Text="{x:Static ResourceManager:AppResources.TinDeregistrationDate}" >
+                                                Background="{StaticResource NeutralBlack}"
+                                                Text="{x:Static ResourceManager:AppResources.TinDeregistrationDate}">
                                                 <syncfusion:PickerHeaderView.TextStyle>
                                                     <syncfusion:PickerTextStyle TextColor="White" />
                                                 </syncfusion:PickerHeaderView.TextStyle>
@@ -663,9 +657,9 @@
                                                 x:Name="EntryTIN"
                                                 IsEnabled="{Binding TinText.IsEditable}"
                                                 Placeholder="{x:Static ResourceManager:AppResources.TIN}"
+                                                Style="{StaticResource DefaultEntry}"
                                                 Text="{Binding TINNumber}"
                                                 TextChanged="OnTinEntered"
-                                                Style="{StaticResource DefaultEntry}"
                                                 Unfocused="BorderlessTINEntry_Unfocused">
                                                 <custom:GAZTBorderlessEntry.Behaviors>
                                                     <behaviors:OnlyNumericValuesBehaviour />
@@ -732,8 +726,8 @@
                                                 x:Name="idNumber"
                                                 IsEnabled="{Binding IdNumberText.IsEditable}"
                                                 Placeholder="{x:Static ResourceManager:AppResources.IDNumber}"
-                                                Text="{Binding SelectedIdNumber}"
                                                 Style="{StaticResource DefaultEntry}"
+                                                Text="{Binding SelectedIdNumber}"
                                                 Unfocused="EntryIDNo_Unfocused">
                                                 <custom:GAZTBorderlessEntry.Behaviors>
                                                     <behaviors:OnlyNumericValuesBehaviour />
@@ -769,9 +763,7 @@
                             </StackLayout>
 
                             <StackLayout IsVisible="{Binding IsDobVisible}">
-                                <custom:CustomSfTextInputView
-                                    x:Name="FrmDBO1"
-                                    Margin="0,10,0,0">
+                                <custom:CustomSfTextInputView x:Name="FrmDBO1" Margin="0,10,0,0">
                                     <custom:CustomSfTextInputView.TextInputView>
 
                                         <custom:GAZTBorderlessEntry
@@ -816,11 +808,10 @@
                                     HorizontalOptions="FillAndExpand"
                                     ItemHeight="40"
                                     Mode="Dialog"
-                                    
                                     SelectedItem="{Binding TodayDate}">
 
                                     <custom:CustomDatePicker.ColumnHeaderView>
-                                        <syncfusion:PickerColumnHeaderView Height="46" Background="White"/>
+                                        <syncfusion:PickerColumnHeaderView Height="46" Background="White" />
                                     </custom:CustomDatePicker.ColumnHeaderView>
 
                                     <custom:CustomDatePicker.SelectionView>
@@ -872,7 +863,6 @@
                                     HorizontalOptions="FillAndExpand"
                                     ItemHeight="40"
                                     Mode="Dialog"
-                                    
                                     SelectedItem="{Binding TodayDateinHijri}">
 
                                     <custom:CustomHijriDatePicker.SelectionView>
@@ -933,14 +923,13 @@
                                         </Label.FormattedText>
                                     </Label>
 
-                                    <custom:CustomSfTextInputView
-                                        Margin="0,6">
+                                    <custom:CustomSfTextInputView Margin="0,6">
                                         <custom:CustomSfTextInputView.TextInputView>
 
                                             <custom:GAZTBorderlessEntry
-                                                Style="{StaticResource DefaultEntry}"
                                                 IsEnabled="{Binding FirstNameText.IsEditable}"
                                                 Placeholder="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}"
+                                                Style="{StaticResource DefaultEntry}"
                                                 Text="{Binding FirstNameFromIdType, Mode=TwoWay}">
                                                 <custom:GAZTBorderlessEntry.Behaviors>
                                                     <behaviors:AlphabetandArabicCharacters />
@@ -960,8 +949,7 @@
                                         </Label.FormattedText>
                                     </Label>
 
-                                    <custom:CustomSfTextInputView
-                                        Margin="0,6">
+                                    <custom:CustomSfTextInputView Margin="0,6">
                                         <custom:CustomSfTextInputView.TextInputView>
 
                                             <custom:GAZTBorderlessEntry
@@ -983,8 +971,7 @@
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource CaptionLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.TinDeregistrationFathersName}" />
-                                    <custom:CustomSfTextInputView
-                                        Margin="0,6">
+                                    <custom:CustomSfTextInputView Margin="0,6">
                                         <custom:CustomSfTextInputView.TextInputView>
 
                                             <custom:GAZTBorderlessEntry
@@ -1005,14 +992,13 @@
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource CaptionLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.TinDeregistrationGrandFathersName}" />
-                                    <custom:CustomSfTextInputView
-                                        Margin="0,6">
+                                    <custom:CustomSfTextInputView Margin="0,6">
                                         <custom:CustomSfTextInputView.TextInputView>
 
                                             <custom:GAZTBorderlessEntry
-                                                Style="{StaticResource DefaultEntry}"
                                                 IsEnabled="{Binding GrandFathersNameText.IsEditable}"
                                                 Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationGrandFathersName}"
+                                                Style="{StaticResource DefaultEntry}"
                                                 Text="{Binding IDTypeDataModel.GrandfatherName}">
                                                 <custom:GAZTBorderlessEntry.Behaviors>
                                                     <behaviors:AlphabetandArabicCharacters />
@@ -1028,8 +1014,7 @@
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource CaptionLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.TinDeregistrationFamilyName}" />
-                                    <custom:CustomSfTextInputView
-                                        Margin="0,6">
+                                    <custom:CustomSfTextInputView Margin="0,6">
                                         <custom:CustomSfTextInputView.TextInputView>
 
                                             <custom:GAZTBorderlessEntry
@@ -1054,8 +1039,7 @@
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource CaptionLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.TinDeregistrationName1}" />
-                                    <custom:CustomSfTextInputView
-                                        Margin="0,6">
+                                    <custom:CustomSfTextInputView Margin="0,6">
                                         <custom:CustomSfTextInputView.TextInputView>
 
                                             <custom:GAZTBorderlessEntry
@@ -1076,8 +1060,7 @@
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource CaptionLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.TinDeregistrationName2}" />
-                                    <custom:CustomSfTextInputView
-                                        Margin="0,6">
+                                    <custom:CustomSfTextInputView Margin="0,6">
                                         <custom:CustomSfTextInputView.TextInputView>
 
                                             <custom:GAZTBorderlessEntry
@@ -1663,13 +1646,12 @@
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource CaptionLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.ZZName}" />
-                                    <custom:CustomSfTextInputView
-                                        Margin="0,6">
+                                    <custom:CustomSfTextInputView Margin="0,6">
                                         <custom:CustomSfTextInputView.TextInputView>
 
                                             <custom:GAZTBorderlessEntry
-                                                Style="{StaticResource DefaultEntry}"
                                                 Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationContactPersonName}"
+                                                Style="{StaticResource DefaultEntry}"
                                                 Text="{Binding TinDeregistrationData.ADecName}">
                                                 <custom:GAZTBorderlessEntry.Behaviors>
                                                     <behaviors:AlphabetandArabicCharacters />
@@ -1683,13 +1665,12 @@
                                         HorizontalOptions="StartAndExpand"
                                         Style="{StaticResource CaptionLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.TinDeregistrationDesignation}" />
-                                    <custom:CustomSfTextInputView
-                                        Margin="0,6">
+                                    <custom:CustomSfTextInputView Margin="0,6">
                                         <custom:CustomSfTextInputView.TextInputView>
 
                                             <custom:GAZTBorderlessEntry
-                                                Style="{StaticResource DefaultEntry}"
                                                 Placeholder="{x:Static ResourceManager:AppResources.TinDeregistrationDesignation}"
+                                                Style="{StaticResource DefaultEntry}"
                                                 Text="{Binding TinDeregistrationData.ADecDesig}">
                                                 <custom:GAZTBorderlessEntry.Behaviors>
                                                     <behaviors:AlphabetandArabicCharacters />
@@ -1704,8 +1685,7 @@
                                         Style="{StaticResource CaptionLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.MobileNumber}" />
 
-                                    <custom:CustomSfTextInputView
-                                        Margin="0,6">
+                                    <custom:CustomSfTextInputView Margin="0,6">
 
                                         <inputLayout:SfTextInputLayout.LeadingView>
                                             <StackLayout Orientation="Horizontal" WidthRequest="40">
@@ -1722,10 +1702,10 @@
                                         <custom:CustomSfTextInputView.TextInputView>
 
                                             <custom:GAZTBorderlessEntry
-                                                Style="{StaticResource DefaultEntry}"
                                                 Keyboard="Numeric"
                                                 MaxLength="10"
                                                 Placeholder="{x:Static ResourceManager:AppResources.MobileNumber}"
+                                                Style="{StaticResource DefaultEntry}"
                                                 Text="{Binding TinDeregistrationData.ADecTelNo}"
                                                 Unfocused="EntryMobileNo_Unfocused">
                                                 <custom:GAZTBorderlessEntry.Behaviors>
@@ -1808,8 +1788,7 @@
                 <!--#endregion-->
 
                 <!--#region Summary view-->
-                <ScrollView IsVisible="{Binding IsSummaryViewEnabled}"
-                            VerticalScrollBarVisibility="Never">
+                <ScrollView IsVisible="{Binding IsSummaryViewEnabled}" VerticalScrollBarVisibility="Never">
                     <Grid
                         Margin="20"
                         BackgroundColor="Transparent"
@@ -1839,11 +1818,11 @@
 
 
                             <Label
-                            FontFamily="{StaticResource SomarBold}"
-                            FontSize="24"
-                            HorizontalOptions="StartAndExpand"
-                            Text="{x:Static ResourceManager:AppResources.ZSummary}"
-                            TextColor="{StaticResource Primary}" />
+                                FontFamily="{StaticResource SomarBold}"
+                                FontSize="24"
+                                HorizontalOptions="StartAndExpand"
+                                Text="{x:Static ResourceManager:AppResources.ZSummary}"
+                                TextColor="{StaticResource Primary}" />
                             <Label
                                 Grid.Row="1"
                                 Grid.Column="0"
@@ -1914,18 +1893,18 @@
                                                         <ColumnDefinition Width="*" />
                                                         <ColumnDefinition Width="*" />
                                                     </Grid.ColumnDefinitions>
-                                                      <Label
-                                                            HorizontalOptions="StartAndExpand"
-                                                            HorizontalTextAlignment="Start"
-                                                            LineBreakMode="WordWrap"
-                                                            Style="{StaticResource BodyLabelGrey}"
-                                                            Text="{Binding SummaryTitle}" />
-                                                   <Label
-                                                            HorizontalOptions="End"
-                                                            HorizontalTextAlignment="End"
-                                                            Grid.Column="1"
-                                                            Style="{StaticResource ValueLabelBlack}"
-                                                            Text="{Binding SummaryData}" />
+                                                    <Label
+                                                        HorizontalOptions="StartAndExpand"
+                                                        HorizontalTextAlignment="Start"
+                                                        LineBreakMode="WordWrap"
+                                                        Style="{StaticResource BodyLabelGrey}"
+                                                        Text="{Binding SummaryTitle}" />
+                                                    <Label
+                                                        Grid.Column="1"
+                                                        HorizontalOptions="End"
+                                                        HorizontalTextAlignment="End"
+                                                        Style="{StaticResource ValueLabelBlack}"
+                                                        Text="{Binding SummaryData}" />
                                                 </Grid>
                                             </DataTemplate>
                                         </BindableLayout.ItemTemplate>

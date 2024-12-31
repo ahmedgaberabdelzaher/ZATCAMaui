@@ -7,6 +7,7 @@ using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Manager;
+using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Views.NewDesign.Common;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
@@ -15,7 +16,7 @@ using static ZATCAMAUI.Models.ZakatExemptionModel;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
 {
-   
+
     public class ZakatExemptionPageViewModel : BaseViewModel
     {
         public ZakatExemptionModel zakatExemptionModel;
@@ -344,13 +345,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
                 _selectedEntityID = value;
                 OnPropertyChanged("SelectedEntityID");
                 SelectedEntityIDCategory = "";
-                if(SelectedEntityID=="06")
+                if (SelectedEntityID == "06")
                 {
                     IsOffspringVisible = true;
                 }
                 else
                 {
-                    IsOffspringVisible=false;
+                    IsOffspringVisible = false;
                 }
             }
         }
@@ -374,7 +375,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
         private string _selectedTechincalNumber;
 
         public List<EntityAttachments> FilteredAttachments { get; set; }
-        public Dictionary<string,bool> AttachmentsUploaded { get; set; }
+        public Dictionary<string, bool> AttachmentsUploaded { get; set; }
         private List<ZakatExemptionModel.AttachmentModel> _selectedAttachments;
         public List<ZakatExemptionModel.AttachmentModel> SelectedAttachments
         {
@@ -528,7 +529,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
                 OnPropertyChanged("ZakatExemptionYearVisible");
             }
         }
-        
+
         private bool _entityInformationVisible = false;
 
         public bool EntityInformationVisible
@@ -542,7 +543,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
                 OnPropertyChanged("EntityInformationVisible");
             }
         }
-        
+
         private bool _summaryVisible = false;
 
         public bool SummaryVisible
@@ -740,7 +741,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
                 OnPropertyChanged("IsJustificationThreeVisible");
             }
         }
-        
+
         private bool _isJustificationFourVisible = false;
 
         public bool IsJustificationFourVisible
@@ -754,7 +755,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
                 OnPropertyChanged("IsJustificationFourVisible");
             }
         }
-        
+
         private bool _isJustificationFiveVisible = false;
 
         public bool IsJustificationFiveVisible
@@ -803,9 +804,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
             get { return _justicationOne; }
             set
             {
-                if(value.Length > 0)
+                if (value.Length > 0)
                 {
-                    ZakatJustificationConButtonEnabled = true; 
+                    ZakatJustificationConButtonEnabled = true;
                 }
                 else
                 {
@@ -1023,14 +1024,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
 
 
         public ZakatExemptionPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
-        { 
+        {
             GoBackClick = new Command(() => { BackNavigations(); });
             ZakatExemptionYearConBtnTapped = new Command(() =>
             {
                 FinancialYearToBeExemptedConBtnClicked();
             });
 
-            ZakatExcemptionTPDetailsBtnTapped = new Command(() => {
+            ZakatExcemptionTPDetailsBtnTapped = new Command(() =>
+            {
 
                 ExcemptionDetailsbtnTapped();
             });
@@ -1039,7 +1041,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
             {
                 EntityInfoToBeExemptedConBtnClicked();
             });
-            
+
             AttachmentsConBtnTapped = new Command(() =>
             {
                 AttachmentsConBtnClicked();
@@ -1052,7 +1054,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
 
             ShowExemptionYearPicker = new Command(() =>
             {
-                
+
                 showPickerDialog();
             });
             ShowEntityTypePicker = new Command(() =>
@@ -1063,57 +1065,71 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
             {
                 showEntityCategoryPicker();
             });
-            ShowComEstablishOtherPicker = new Command(() => {
+            ShowComEstablishOtherPicker = new Command(() =>
+            {
                 ShowCompanyEstablishmentOtherPicker();
             });
-            NewCompanyArticalsAttachmentTapped = new Command(() => {
+            NewCompanyArticalsAttachmentTapped = new Command(() =>
+            {
                 NewCompanyArticalsAttachmentsPopup();
             });
 
-            NewCertificateOfRegAttachmentTapped = new Command(() => {
+            NewCertificateOfRegAttachmentTapped = new Command(() =>
+            {
                 NewCertifcateOfRegAttachmentsPopup();
             });
-            NewCharitableTrustAttachmentTapped = new Command(() => {
+            NewCharitableTrustAttachmentTapped = new Command(() =>
+            {
                 NewCharitableTrustAttachmentsPopup();
             });
-            NewCharityLicenseAttachmentTapped = new Command(() => {
+            NewCharityLicenseAttachmentTapped = new Command(() =>
+            {
                 NewCharityLicenseAttachmentsPopup();
             });
-            NewMemorandumOfAssociationAttachmentTapped = new Command(() => {
+            NewMemorandumOfAssociationAttachmentTapped = new Command(() =>
+            {
                 NewMemoRandomAttachmentsPopup();
             });
-            NewOtherAttachmentTapped = new Command(() => {
+            NewOtherAttachmentTapped = new Command(() =>
+            {
                 NewOtherAttachmentsPopup();
             });
 
-            AddtionalAtachmentTapped = new Command(() => {
+            AddtionalAtachmentTapped = new Command(() =>
+            {
                 NewAddtionalAtachmentPopUp();
             });
-            AddNewJustificationTapped = new Command(() => {
+            AddNewJustificationTapped = new Command(() =>
+            {
                 AddNewJustification();
             });
 
-            RemoveJustificiationOne = new Command(() => {
+            RemoveJustificiationOne = new Command(() =>
+            {
                 IsJustificationOneVisible = false;
             });
-            RemoveJustificiationTwo = new Command(() => {
+            RemoveJustificiationTwo = new Command(() =>
+            {
                 IsJustificationTwoVisible = false;
             });
-            RemoveJustificiationThree = new Command(() => {
+            RemoveJustificiationThree = new Command(() =>
+            {
                 IsJustificationThreeVisible = false;
             });
-            RemoveJustificiationFour = new Command(() => {
+            RemoveJustificiationFour = new Command(() =>
+            {
                 IsJustificationFourVisible = false;
             });
 
 
             //BackNavigations In Summary screen
-            GoBackToZakatExemptionYearb=new Command(() =>{ GoBackFromEntityDetailsView(); });
-            GoBackToZakatEntityInfo=new Command(()=> { GoBackFromAttachmentsView(); });
-            GoBackToZakatExemptionAttachments=new Command(()=> { GoBackFromJustification(); });
-            GoBackToZakatExemptionJustifications = new Command(()=> { GoBackFromSummaryView(); });
+            GoBackToZakatExemptionYearb = new Command(() => { GoBackFromEntityDetailsView(); });
+            GoBackToZakatEntityInfo = new Command(() => { GoBackFromAttachmentsView(); });
+            GoBackToZakatExemptionAttachments = new Command(() => { GoBackFromJustification(); });
+            GoBackToZakatExemptionJustifications = new Command(() => { GoBackFromSummaryView(); });
 
-            SummaryConBtnTapped = new Command(async () => {
+            SummaryConBtnTapped = new Command(async () =>
+            {
                 try
                 {
                     if (PageOnEditMode && AdditionalAttachmentsListViewData.Count == 0)
@@ -1153,39 +1169,32 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
                         throw new GAZTErrorException(Message.ToString());
                     }
                 }
-                catch (GAZTUnlockAccountException ex)
+                catch (GAZTVATRegistrationInProcessException ex)
                 {
+                    await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
                 }
-                catch (InternetException ex)
+                catch (GAZTNetworkConnectivityIssueException)
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        _navigationService.GoBack();
-                    });
+                    await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
                 }
-                catch (Exception ex)
+                catch (InternetException)
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        _navigationService.GoBack();
-                    });
+                    await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+                }
+                catch (Exception)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
+                }
+                finally
+                {
+                    IsLoading = false;
                 }
             });
         }
-        public  async Task<ZakatExemptionModel> GetDetailsForZakatExeRwq()
+        public async Task<ZakatExemptionModel> GetDetailsForZakatExeRwq()
         {
             ZakatExemptionModel zakatExemptionModel = new ZakatExemptionModel();
-            try
-            {
-                zakatExemptionModel = await ZakatExemptionWebServiceManager.GetRequestToZakatExemtionRequest(null);
-                
-            }
-            catch (Exception ex)
-            {
-                IsLoading = false;
-            }
+            zakatExemptionModel = await ZakatExemptionWebServiceManager.GetRequestToZakatExemtionRequest(null);
             return zakatExemptionModel;
         }
         internal async Task GetDetailsForZakatExeRwqAsync()
@@ -1193,12 +1202,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
             IsLoading = true;
             try
             {
-                zakatExemptionModel  = await ZakatExemptionWebServiceManager.GetRequestToZakatExemtionRequest(null);
+                zakatExemptionModel = await ZakatExemptionWebServiceManager.GetRequestToZakatExemtionRequest(null);
                 IsLoading = false;
-                if (zakatExemptionModel != null && zakatExemptionModel.data!=null)
+                if (zakatExemptionModel != null && zakatExemptionModel.data != null)
                 {
                     zakatExemptionModel.d = zakatExemptionModel.data;
-                   if(zakatExemptionModel.data.CR6774.Equals("X"))
+                    if (zakatExemptionModel.data.CR6774.Equals("X"))
                     {
                         IsNew = true;
                     }
@@ -1208,10 +1217,26 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
                     }
                 }
             }
-            catch (Exception ex) {
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
                 IsLoading = false;
             }
-           
         }
 
         private void ExcemptionDetailsbtnTapped()
@@ -1284,12 +1309,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
                 {
                     if (SelectedEntityType.Length > 0 && SelectedEntityID.Equals("03"))
                     {
-                        if(CompanyEstablishmentOther.Length > 0 && NatureOfEntity.Length > 0)
+                        if (CompanyEstablishmentOther.Length > 0 && NatureOfEntity.Length > 0)
                         {
                             PreviewAttachmentView();
                         }
                     }
-                    else if(SelectedEntityType.Length > 0 && NatureOfEntity.Length > 0)
+                    else if (SelectedEntityType.Length > 0 && NatureOfEntity.Length > 0)
                     {
                         PreviewAttachmentView();
                     }
@@ -1312,7 +1337,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
 
         private void PreviewAttachmentView()
         {
-          //  OtherAttachmentVisible = true; //Other is always visible irrespective of selections
+            //  OtherAttachmentVisible = true; //Other is always visible irrespective of selections
             switch (SelectedEntityID)
             {
                 case "01":
@@ -1365,20 +1390,20 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
             SummaryVisible = false;
             selectedPage = (int)PagesEnum.Attachments;
         }
-        
+
         private void AddNewJustification()
         {
             try
             {
-                if(!IsJustificationOneVisible)
+                if (!IsJustificationOneVisible)
                 {
                     IsJustificationOneVisible = true;
                 }
-                else if(!IsJustificationTwoVisible)
+                else if (!IsJustificationTwoVisible)
                 {
                     IsJustificationTwoVisible = true;
                 }
-                else if(!IsJustificationThreeVisible)
+                else if (!IsJustificationThreeVisible)
                 {
                     IsJustificationThreeVisible = true;
                 }
@@ -1449,7 +1474,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
                 //EnableEntityDetailsView();
                 //EnableEntityDetailsConButton();
 
-                
+
                 //}
 
             }
@@ -1467,7 +1492,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
                 });
             }
         }
-        
+
         private void JustificationConBtnClicked()
         {
             try
@@ -1484,7 +1509,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
                     SummaryVisible = true;
                     selectedPage = (int)PagesEnum.Summary;
                 }
-              
+
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -1528,7 +1553,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
 
             selectedPage = (int)PagesEnum.EntityDetails;
         }
-        
+
         private void GoBackFromJustification()
         {
             CurrentIndex = 4;
@@ -1542,7 +1567,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
 
             selectedPage = (int)PagesEnum.Attachments;
         }
-        
+
         private void GoBackFromSummaryView()
         {
             if (IsEditRequired || PageOnEditMode)
@@ -1563,7 +1588,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
                 selectedPage = (int)PagesEnum.Justification;
             }
         }
-         
+
         private void GoBackFromExcepmtionYearPAge()
         {
             CurrentIndex = 2;
@@ -1659,13 +1684,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
             genericPickerModel.PageCode = 1;
             PickerModelExcemptionYear = genericPickerModel;
             SelectedYear = "";
-            
+
 
         }
 
         internal string GetYearIDByType(string selectedValue)
         {
-            var index =  zakatExemptionModel.d.PeriodKeySet.FindIndex(x => x.Persl == selectedValue);
+            var index = zakatExemptionModel.d.PeriodKeySet.FindIndex(x => x.Persl == selectedValue);
             return zakatExemptionModel.d.PeriodKeySet[index].Persl;
         }
 
@@ -1749,7 +1774,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
             }
             var list = new List<string>();
             var categories = zakatExemptionModel.d.entityCategories.Where((e) => e.entityType.Equals(SelectedEntityID));
-            foreach(EntityCategories option in categories)
+            foreach (EntityCategories option in categories)
             {
                 try
                 {
@@ -1839,7 +1864,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
                 PickerModelEstOther = null;
             }
 
-            if(App.IsArabic)
+            if (App.IsArabic)
             {
                 list.Add("شركة");
                 list.Add("مؤسسة");
@@ -1847,7 +1872,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
             }
             else
             {
-                list.Add("Company"); 
+                list.Add("Company");
                 list.Add("Establishment");
                 list.Add("Other");
             }
@@ -1923,37 +1948,38 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
             }
             else
             {
-                switch(SelectedAttachmentNumber){
+                switch (SelectedAttachmentNumber)
+                {
 
                     case (int)WhichAttachment.ZakatExemtionAttachmentOne:
-                            CompanyArticalsAttachmentsListViewData.Clear();
+                        CompanyArticalsAttachmentsListViewData.Clear();
                         break;
                     case (int)WhichAttachment.ZakatExemtionAttachmentTwo:
-                            CertificateOfRegAttachmentsListViewData.Clear();
+                        CertificateOfRegAttachmentsListViewData.Clear();
                         break;
                     case (int)WhichAttachment.ZakatExemtionAttachmentThree:
-                            CharitableTrustAttachmentsListViewData.Clear();
+                        CharitableTrustAttachmentsListViewData.Clear();
                         break;
                     case (int)WhichAttachment.ZakatExemtionAttachmentFour:
-                            CharityLicenseAttachmentsListViewData.Clear();
+                        CharityLicenseAttachmentsListViewData.Clear();
                         break;
                     case (int)WhichAttachment.ZakatExemtionAttachmentFive:
-                            MemorandumOfAssociationAttachmentsListViewData.Clear();
+                        MemorandumOfAssociationAttachmentsListViewData.Clear();
                         break;
                     case (int)WhichAttachment.ZakatExemtionAttachmentSix:
-                            OtherAttachmentsListViewData.Clear();
+                        OtherAttachmentsListViewData.Clear();
                         break;
                     case (int)WhichAttachment.ZakatExemtionAttachmentSeven:
-                            AdditionalAttachmentsListViewData.Clear();
+                        AdditionalAttachmentsListViewData.Clear();
                         break;
 
-                } 
+                }
             }
 
             ZakatAttachmentConButtonEnabled = ActiveAttachmentContinueButton();
         }
 
-        public  bool ActiveAttachmentContinueButton()
+        public bool ActiveAttachmentContinueButton()
         {
             bool ActivateContinueButton = false;
 
@@ -1969,7 +1995,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
                 }
 
             }
-            
+
             if (CertificateRegAttachmentVisible)
             {
                 if (CertificateOfRegAttachmentsListViewData != null && CertificateOfRegAttachmentsListViewData.Count > 0)
@@ -1981,7 +2007,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
                     return false;
                 }
             }
-            
+
             if (CharitableTrustAttachmentVisible)
             {
                 if (CharitableTrustAttachmentsListViewData != null && CharitableTrustAttachmentsListViewData.Count > 0)
@@ -1993,7 +2019,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
                     return false;
                 }
             }
-            
+
             if (CharityAttachmentVisible)
             {
                 if (CharityLicenseAttachmentsListViewData != null && CharityLicenseAttachmentsListViewData.Count > 0)
@@ -2004,7 +2030,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
                 {
                     return false;
                 }
-                
+
             }
 
             if (MemorandomAttachmentVisible)
@@ -2018,7 +2044,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
                     return false;
                 }
             }
-           
+
 
             return ActivateContinueButton;
         }
@@ -2035,7 +2061,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
             {
                 SelectedAttachmentNumber = (int)WhichAttachment.ZakatExemtionAttachmentOne;
                 await MopupService.Instance.PushAsync(new FilesUploadPopUpPageView(
-                    CompanyArticalsAttachmentsListViewData.ToList(),WhichAttachment.ZakatExemtionAttachmentOne,
+                    CompanyArticalsAttachmentsListViewData.ToList(), WhichAttachment.ZakatExemtionAttachmentOne,
                     zakatExemptionModel.d.ReturnIdz));
 
             }
@@ -2196,7 +2222,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
                 Console.WriteLine(ex.Message);
             }
         }
-        
+
         public async void NewOtherAttachmentsPopup()
         {
             if (MopupService.Instance.PopupStack.Count > 0) return;
@@ -2319,8 +2345,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
             zakatExcemptionReq.EnType = SelectedEntityID;
             zakatExcemptionReq.entityCategory = _selectedTechincalNumber;
 
-            
-           //*
+
+            //*
             if (CompanyEstablishmentOther.ToLower().Equals("company") || CompanyEstablishmentOther.Equals("شركة"))
             {
                 zakatExcemptionReq.TypTrust = "1";
@@ -2329,7 +2355,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
             {
                 zakatExcemptionReq.TypTrust = "2";
             }
-            else if(CompanyEstablishmentOther.ToLower().Equals("other") || CompanyEstablishmentOther.Equals("أخرى"))
+            else if (CompanyEstablishmentOther.ToLower().Equals("other") || CompanyEstablishmentOther.Equals("أخرى"))
             {
                 zakatExcemptionReq.TypTrust = "3";
             }
@@ -2377,7 +2403,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
                 offNotesSet.Tdline = JusticationOne;
                 OffNotesList.Add(offNotesSet);
             }
-          
+
             if (IsJustificationOneVisible && JusticationTwo.Trim().Length > 0)
             {
                 Models.Off_notesSet offNotesSet = new Models.Off_notesSet();
@@ -2482,7 +2508,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
             zakatExcemptionReq.ZerqBtnSet = new List<Object>();
 
             var serilized = JsonConvert.SerializeObject(zakatExcemptionReq);
-            
+
             return zakatExcemptionReq;
         }
 
@@ -2649,13 +2675,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
                 PageOnEditMode = false;
             }
 
-            
+
         }
 
         private void setAttachments()
         {
-            List<ZakatExemptionModel.AttachmentModel> attachmentModels = new List<ZakatExemptionModel.AttachmentModel> ();
-            FilteredAttachments = zakatExemptionModel.d.entityAttachments.Where((e)=>e.entityType==SelectedEntityID && e.technicalNumber==_selectedTechincalNumber).ToList();
+            List<ZakatExemptionModel.AttachmentModel> attachmentModels = new List<ZakatExemptionModel.AttachmentModel>();
+            FilteredAttachments = zakatExemptionModel.d.entityAttachments.Where((e) => e.entityType == SelectedEntityID && e.technicalNumber == _selectedTechincalNumber).ToList();
             foreach (var attachment in FilteredAttachments)
             {
                 ZakatExemptionModel.AttachmentModel attachmentModel = new ZakatExemptionModel.AttachmentModel();

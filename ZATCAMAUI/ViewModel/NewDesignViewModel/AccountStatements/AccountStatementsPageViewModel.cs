@@ -1828,8 +1828,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                     TaxTypeForFilter.Add(tempInDirectTax);
                 }
             }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
             catch (Exception)
             {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
 
@@ -1885,19 +1898,51 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
 
                
             }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
             catch (Exception)
-            { IsLoading = false;
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
 
         public async Task PopulateDataForTransactionTypes(string taxType)
         {
-            var tempValues = await WebServiceManager.GAZTGetAccountStatementsRevenueDropDownSet(taxType);
-            foreach (ASRevenueDropDownSetDataResults aSRevenueDropDownSetDataResults in tempValues.d)
+            try
             {
-                aSRevenueDropDownSetDataResults.TaxType = taxType;
-                AllTransactionFilters.Add(aSRevenueDropDownSetDataResults);
+                var tempValues = await WebServiceManager.GAZTGetAccountStatementsRevenueDropDownSet(taxType);
+                foreach (ASRevenueDropDownSetDataResults aSRevenueDropDownSetDataResults in tempValues.d)
+                {
+                    aSRevenueDropDownSetDataResults.TaxType = taxType;
+                    AllTransactionFilters.Add(aSRevenueDropDownSetDataResults);
 
+                }
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
 
@@ -1957,8 +2002,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
 
                 ChipDataFilterlistForYears = orderedChipDataFilterlistForYears;
             }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
             catch (Exception)
             {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
             }
             finally
             {
@@ -2109,32 +2163,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
 
 
             }
-            catch (GAZTErrorException ex)
+            catch (GAZTNetworkConnectivityIssueException)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    IsLoading = false;
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                });
-
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
             }
-            catch (InternetException ex)
+            catch (InternetException)
             {
-                IsLoading = false;
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
-
-
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
 
@@ -2202,13 +2245,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
 
                 IsLoading = false;
             }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
             catch (Exception)
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
-
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
         public static string GetMonthName(string Month)

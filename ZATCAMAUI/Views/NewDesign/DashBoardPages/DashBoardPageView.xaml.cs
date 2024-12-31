@@ -69,8 +69,6 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
             }
             catch (Exception)
             {
-
-
             }
         }
 

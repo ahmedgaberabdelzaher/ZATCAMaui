@@ -1027,7 +1027,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                 }
                 catch (Exception gex)
                 {
-                     if (gex is InternetException)
+                    if (gex is InternetException)
                     {
                         IsLoading = false;
                         await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
@@ -1623,16 +1623,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                IsLoading = false;
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
+                await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
+            }
+            finally
+            {
                 IsLoading = false;
-                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                _navigationService.GoBack();
-
             }
         }
 
@@ -1747,15 +1754,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                IsLoading = false;
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
+                await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
+            }
+            finally
+            {
                 IsLoading = false;
-                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                _navigationService.GoBack();
             }
         }
 
@@ -1787,15 +1802,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                IsLoading = false;
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
+                await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
+            }
+            finally
+            {
                 IsLoading = false;
-                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                _navigationService.GoBack();
             }
         }
 
@@ -2159,15 +2182,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                IsLoading = false;
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
+                await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
+            }
+            finally
+            {
                 IsLoading = false;
-                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                _navigationService.GoBack();
             }
         }
 
@@ -2689,40 +2720,39 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             {
                 IsLoading = true;
                 ZakatWithdrawMainDataModel _ZakatWithdrawMainData = new ZakatWithdrawMainDataModel();
-                try
-                {
-                    _ZakatWithdrawMainData = await ZAKATWithdrawObjectionsWebServiceManager.GAZTGetZakatWithDrawMainData();
 
-                    if (_ZakatWithdrawMainData == null)
-                    {
-                        IsLoading = false;
-                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                        _navigationService.GoBack();
-                    }
-                    IsLoading = false;
-                }
-                catch (InternetException ex)
+                _ZakatWithdrawMainData = await ZAKATWithdrawObjectionsWebServiceManager.GAZTGetZakatWithDrawMainData();
+
+                if (_ZakatWithdrawMainData == null)
                 {
                     IsLoading = false;
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 }
-
                 IsLoading = false;
+
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                IsLoading = false;
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
+                await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
-                IsLoading = false;
-                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                _navigationService.GoBack();
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
             }
+            finally
+            {
+                IsLoading = false;
+            }
+
         }
 
         public async Task ZakatWithDrawList()
@@ -2731,38 +2761,36 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             {
                 IsLoading = true;
                 ZakatObjectionWithDrawListModelClass _ZakatObjectionWithDrawList = new ZakatObjectionWithDrawListModelClass();
-                try
-                {
-                    _ZakatObjectionWithDrawList = await ZAKATWithdrawObjectionsWebServiceManager.GAZTGetZakatWithDrawList();
 
-                    if (_ZakatObjectionWithDrawList == null)
-                    {
-                        IsLoading = false;
-                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                        _navigationService.GoBack();
-                    }
-                    IsLoading = false;
-                }
-                catch (InternetException ex)
+                _ZakatObjectionWithDrawList = await ZAKATWithdrawObjectionsWebServiceManager.GAZTGetZakatWithDrawList();
+
+                if (_ZakatObjectionWithDrawList == null)
                 {
                     IsLoading = false;
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 }
-
                 IsLoading = false;
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                IsLoading = false;
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
+                await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
+            }
+            finally
+            {
                 IsLoading = false;
-                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                _navigationService.GoBack();
             }
         }
 
@@ -2772,38 +2800,36 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             {
                 IsLoading = true;
                 ZakatObjectionWDDropdownModel _ZakatObjectionWDDropdown = new ZakatObjectionWDDropdownModel();
-                try
-                {
-                    _ZakatObjectionWDDropdown = await ZAKATWithdrawObjectionsWebServiceManager.GAZTGetZakatWithDrawDDData(objFbnum);
+                _ZakatObjectionWDDropdown = await ZAKATWithdrawObjectionsWebServiceManager.GAZTGetZakatWithDrawDDData(objFbnum);
 
-                    if (_ZakatObjectionWDDropdown == null)
-                    {
-                        IsLoading = false;
-                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                        _navigationService.GoBack();
-                    }
-                    IsLoading = false;
-                }
-                catch (InternetException ex)
+                if (_ZakatObjectionWDDropdown == null)
                 {
                     IsLoading = false;
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 }
                 IsLoading = false;
+
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                IsLoading = false;
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
+                await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
+            }
+            finally
+            {
                 IsLoading = false;
-                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                _navigationService.GoBack();
             }
         }
 
@@ -2814,39 +2840,35 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
 
                 IsLoading = true;
                 AttachmentRootOject _Attachment = new AttachmentRootOject();
-                try
+                _Attachment = await ZAKATWithdrawObjectionsWebServiceManager.GAZTSaveZakatObjectionWDAttachment(AttachmentByte, fileName, RetGuid, Dotyp, contentType);
+
+                if (_Attachment == null)
                 {
-                    _Attachment = await ZAKATWithdrawObjectionsWebServiceManager.GAZTSaveZakatObjectionWDAttachment(AttachmentByte, fileName, RetGuid, Dotyp, contentType);
-
-                    if (_Attachment == null)
-                    {
-                        IsLoading = false;
-                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                        _navigationService.GoBack();
-                    }
                     IsLoading = false;
+                    await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
                 }
-                catch (InternetException ex)
-                {
-
-                    IsLoading = false;
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                }
-
                 IsLoading = false;
+
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                IsLoading = false;
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
+                await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
+            }
+            finally
+            {
                 IsLoading = false;
-                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                _navigationService.GoBack();
             }
         }
 

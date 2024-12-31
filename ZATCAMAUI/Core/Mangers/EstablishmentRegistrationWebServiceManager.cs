@@ -30,7 +30,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                     if (!NetworkCheck.IsInternet())
                     {
-                        throw new GAZTInternetException();
+                        throw new InternetException();
                     }
                     var lang = UtilityManager.GetLanguageParameter();
                     string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
@@ -68,21 +68,31 @@ namespace ZATCAMAUI.Core.Mangers
                             App.Token = NewToken;
                         }
                         string ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
-                        if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
+                        ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(ESTBranchesDropDownResponseJSON);
+
+                        if (statusHeader?.header?.status?.code != "E999999")
                         {
-                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["data"].ToString();
-                            dropDownModels = JsonConvert.DeserializeObject<List<BranchesDropDownModel>>(ESTBranchesDropDownResponseJSON);
+                            if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
+                            {
+                                ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["data"].ToString();
+                                dropDownModels = JsonConvert.DeserializeObject<List<BranchesDropDownModel>>(ESTBranchesDropDownResponseJSON);
+                            }
                         }
+                        else
+                        {
+                            throw new GAZTNetworkConnectivityIssueException();
+                        }
+
                     }
                 }
                 catch (Exception)
                 {
-
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
             {
-                throw new GAZTInternetException();
+                throw new InternetException();
             }
             return dropDownModels;
         }
@@ -139,7 +149,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                                 string WithReplacedString = errorMsg.Replace("An exception was raised", string.Empty);
                                 errorMsg = WithReplacedString;
-                                throw new GAZTErrorException(errorMsg);
+                                throw new GAZTVATRegistrationInProcessException(errorMsg);
                             }
                         }
                         if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -161,32 +171,48 @@ namespace ZATCAMAUI.Core.Mangers
                             App.Token = NewToken;
                         }
                         string ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
-                        if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
+                        ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(ESTBranchesDropDownResponseJSON);
+
+                        if (statusHeader?.header?.status?.code != "E999999")
                         {
-                            try
+                            if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
                             {
-                                ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["data"].ToString();
-                            }
-                            catch (Exception)
-                            {
-
-
-                            }
-                            taxPayer = JsonConvert.DeserializeObject<TaxPayerDetails>(ESTBranchesDropDownResponseJSON);
-                            if (step.Equals("02") && taxPayer.Nreg_IdSet.Count > 0)
-                            {
-                                ZATCAConstants.IdSet = taxPayer.Nreg_IdSet;
+                                try
+                                {
+                                    ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["data"].ToString();
+                                }
+                                catch (Exception)
+                                {
+                                }
+                                taxPayer = JsonConvert.DeserializeObject<TaxPayerDetails>(ESTBranchesDropDownResponseJSON);
+                                if (step.Equals("02") && taxPayer.Nreg_IdSet.Count > 0)
+                                {
+                                    ZATCAConstants.IdSet = taxPayer.Nreg_IdSet;
+                                }
                             }
                         }
+                        else
+                        {
+                            throw new GAZTNetworkConnectivityIssueException();
+                        }
+
                     }
+                }
+                catch (GAZTVATRegistrationInProcessException)
+                {
+                    throw new GAZTVATRegistrationInProcessException();
+                } catch (GAZTNetworkConnectivityIssueException)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
                 catch (Exception)
                 {
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
             {
-                throw new GAZTInternetException();
+                throw new InternetException();
             }
             return taxPayer;
         }
@@ -244,7 +270,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                                 string WithReplacedString = errorMsg.Replace("An exception was raised", string.Empty);
                                 errorMsg = WithReplacedString;
-                                throw new GAZTErrorException(errorMsg);
+                                throw new GAZTVATRegistrationInProcessException(errorMsg);
                             }
                         }
                         if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -266,27 +292,44 @@ namespace ZATCAMAUI.Core.Mangers
                             App.Token = NewToken;
                         }
                         string ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
-                        if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
+                        ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(ESTBranchesDropDownResponseJSON);
+
+                        if (statusHeader?.header?.status?.code != "E999999")
                         {
-                            try
+                            if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
                             {
-                                ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["data"].ToString();
+                                try
+                                {
+                                    ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["data"].ToString();
+                                }
+                                catch (Exception)
+                                {
+                                }
+                                taxPayer = JsonConvert.DeserializeObject<TaxPayerDetails>(ESTBranchesDropDownResponseJSON);
                             }
-                            catch (Exception)
-                            {
-                            }
-                            taxPayer = JsonConvert.DeserializeObject<TaxPayerDetails>(ESTBranchesDropDownResponseJSON);
+                        }
+                        else
+                        {
+                            throw new GAZTNetworkConnectivityIssueException();
                         }
                     }
                 }
-                catch (JsonReaderException)
+                catch (GAZTVATRegistrationInProcessException)
                 {
-                    throw new GAZTInvalidDataException();
+                    throw new GAZTVATRegistrationInProcessException();
+                }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
             {
-                throw new GAZTInternetException();
+                throw new InternetException();
             }
             return taxPayer;
         }
@@ -301,7 +344,7 @@ namespace ZATCAMAUI.Core.Mangers
                     var lang = UtilityManager.GetLanguageParameter();
                     if (!NetworkCheck.IsInternet())
                     {
-                        throw new GAZTInternetException();
+                        throw new InternetException();
                     }
                     string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
                     string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
@@ -347,94 +390,87 @@ namespace ZATCAMAUI.Core.Mangers
                             App.Token = NewToken;
                         }
                         string ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
-                        try
+                        ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(ESTBranchesDropDownResponseJSON);
+
+                        if (statusHeader?.header?.status?.code != "E999999")
                         {
-
-                            string deserialisedResponseJSONs = JObject.Parse(ESTBranchesDropDownResponseJSON)["result"]?.ToString();
-
-                            if (deserialisedResponseJSONs == null)
+                            try
                             {
-                                ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(ESTBranchesDropDownResponseJSON);
-                                if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails.Count > 0)
-                                {
-                                    string ErrorMessageFormServer = string.Empty;
-                                    if (errorMesg.error.innererror.errordetails?.Count > 0)
-                                    {
 
-                                        if (errorMesg.error.innererror.errordetails.Count > 2)
+                                string deserialisedResponseJSONs = JObject.Parse(ESTBranchesDropDownResponseJSON)["result"]?.ToString();
+
+                                if (deserialisedResponseJSONs == null)
+                                {
+                                    ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(ESTBranchesDropDownResponseJSON);
+                                    if (errorMesg?.header?.moreInformation?.errorDetails?.Count > 0)
+                                    {
+                                        string ErrorMessageFormServer = string.Empty;
+                                        if (errorMesg.header.moreInformation.errorDetails.Count > 0)
                                         {
-                                            for (int i = 0; i < errorMesg.error.innererror.errordetails.Count - 1; i++)
+                                            if (errorMesg.header.moreInformation.errorDetails.Count > 2)
                                             {
-                                                ErrorMessageFormServer = ErrorMessageFormServer + " " + errorMesg.error.innererror.errordetails[i].message;
+                                                for (int i = 0; i < errorMesg.header.moreInformation.errorDetails.Count - 1; i++)
+                                                {
+                                                    ErrorMessageFormServer = ErrorMessageFormServer + " " + errorMesg.header.moreInformation.errorDetails[i].message;
+                                                }
+                                            }
+                                            else
+                                            {
+                                                ErrorMessageFormServer = errorMesg.header.moreInformation.errorDetails[0].message;
                                             }
                                         }
-                                        else
-                                        {
-                                            ErrorMessageFormServer = errorMesg.error.innererror.errordetails[0].message;
-                                        }
-
+                                        throw new GAZTVATRegistrationInProcessException(ErrorMessageFormServer);
                                     }
-
-
-                                    throw new HTTPBadRequestException(ErrorMessageFormServer);
+                                    else if (!string.IsNullOrEmpty(errorMesg.error.message.value))
+                                    {
+                                        string ErrorMessageFormServer = errorMesg.error.message.value;
+                                        throw new GAZTVATRegistrationInProcessException(ErrorMessageFormServer);
+                                    }
                                 }
-                                else if (errorMesg != null && errorMesg.error != null && errorMesg.error.message != null && !string.IsNullOrEmpty(errorMesg.error.message.value))
+
+                                else
                                 {
-                                    string ErrorMessageFormServer = errorMesg.error.message.value;
-                                    throw new HTTPBadRequestException(ErrorMessageFormServer);
+                                    if (!string.IsNullOrEmpty(deserialisedResponseJSONs))
+                                    {
+                                        taxPayer = JsonConvert.DeserializeObject<TaxPayerDetails>(deserialisedResponseJSONs);
+                                    }
                                 }
                             }
-
-                            else
+                            catch (GAZTVATRegistrationInProcessException ex)
                             {
-                                if (!string.IsNullOrEmpty(deserialisedResponseJSONs))
+                                throw new GAZTVATRegistrationInProcessException(ex.Message);
+                            }
+                            catch (Exception)
+                            {
+                                if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
                                 {
-                                    taxPayer = JsonConvert.DeserializeObject<TaxPayerDetails>(deserialisedResponseJSONs);
+                                    string errorMessage = WebServiceManager.PrepareErrorMessageByJson(ESTBranchesDropDownResponseJSON);
+                                    throw new GAZTVATRegistrationInProcessException(errorMessage);
                                 }
                             }
                         }
-                        catch (Exception ex)
+                        else
                         {
-
-
-                            System.Diagnostics.Debug.WriteLine("API RESPONSE ERROR : {0}", ex);
-                            if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
-                            {
-                                ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(ESTBranchesDropDownResponseJSON);
-                                if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails.Count > 0)
-                                {
-                                    string ErrorMessageFormServer = errorMesg.error.innererror.errordetails[0].message;
-                                    throw new HTTPBadRequestException(ErrorMessageFormServer);
-                                }
-                                else if (errorMesg != null && errorMesg.error != null && errorMesg.error.message != null && !string.IsNullOrEmpty(errorMesg.error.message.value))
-                                {
-                                    string ErrorMessageFormServer = errorMesg.error.message.value;
-                                    throw new HTTPBadRequestException(ErrorMessageFormServer);
-                                }
-                            }
+                            throw new GAZTNetworkConnectivityIssueException();
                         }
-
-
                     }
                 }
-                catch (JsonReaderException ex)
+                catch (JsonReaderException)
                 {
                     throw new GAZTInvalidDataException();
                 }
-                catch (HttpRequestException)
+                catch (GAZTNetworkConnectivityIssueException)
                 {
-                }
-                catch (GAZTException)
-                {
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
                 catch (Exception)
-
                 {
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
             {
-                throw new GAZTInternetException();
+                throw new InternetException();
             }
             return taxPayer;
         }
@@ -450,7 +486,7 @@ namespace ZATCAMAUI.Core.Mangers
                     var lang = UtilityManager.GetLanguageParameter();
                     if (!NetworkCheck.IsInternet())
                     {
-                        throw new GAZTInternetException();
+                        throw new InternetException();
                     }
                     string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
                     string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
@@ -489,32 +525,39 @@ namespace ZATCAMAUI.Core.Mangers
                             App.Token = NewToken;
                         }
                         string ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
-                        if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
+                        ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(ESTBranchesDropDownResponseJSON);
+
+                        if (statusHeader?.header?.status?.code != "E999999")
                         {
-                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["data"].ToString();
-                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["nationalities"].ToString();
-                            nationalities = JsonConvert.DeserializeObject<List<TaxpayerNationality>>(ESTBranchesDropDownResponseJSON);
+                            if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
+                            {
+                                ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["data"].ToString();
+                                ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["nationalities"].ToString();
+                                nationalities = JsonConvert.DeserializeObject<List<TaxpayerNationality>>(ESTBranchesDropDownResponseJSON);
+                            }
+                        }
+                        else
+                        {
+                            throw new GAZTNetworkConnectivityIssueException();
                         }
                     }
+                }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
                 catch (JsonReaderException)
                 {
                     throw new GAZTInvalidDataException();
                 }
-                catch (HttpRequestException)
-                {
-                }
-                catch (GAZTException)
-                {
-                }
                 catch (Exception)
-
                 {
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
             {
-                throw new GAZTInternetException();
+                throw new InternetException();
             }
             return nationalities;
         }
@@ -538,34 +581,41 @@ namespace ZATCAMAUI.Core.Mangers
                     string AttBy = "TP";
                     String url = ZATCAConstants.GAZTESTSaveAttachment + "&attachmentFlag=New" + "&returnGUID=" + RetGuid + "&formGUID=" + "&documentCategory=" + Doctype + "&serialNumber=1" + "&documentId=" + "&attachedByPerson=TP" + "&fileName=" + fileName;
                     var uri = new Uri(url);
-                    //var uri = new Uri(string.Format("{0}(RetGuid='{1}',OutletRef='{2}',Flag='N',Dotyp='{3}',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet",
-                    //    Constants.ESTPostAttachment, RetGuid, outletref, Doctype));
-
                     HttpClient client = new HttpClient();
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
                     client.DefaultRequestHeaders.Add("X-Session-Language", lang);
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
                     client.DefaultRequestHeaders.Add("Authorization", App.Token);
-
-                    //ByteArrayContent baContent = new ByteArrayContent(AttachmentByte);
-                    //if (!string.IsNullOrEmpty(contentType))
-                    //    baContent.Headers.ContentType = new MediaTypeHeaderValue(contentType);
                     var response = await client.PostAsync(url, content);
                     var responsestr = response.Content.ReadAsStringAsync().Result;
-                    responsestr = JObject.Parse(responsestr)["result"].ToString();
-                    Attachment _attachment = JsonConvert.DeserializeObject<Attachment>(responsestr);
-                    return _attachment;
+
+                    ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(responsestr);
+
+                    if (statusHeader?.header?.status?.code != "E999999")
+                    {
+                        responsestr = JObject.Parse(responsestr)["result"].ToString();
+                        Attachment _attachment = JsonConvert.DeserializeObject<Attachment>(responsestr);
+                        return _attachment;
+                    }
+                    else
+                    {
+                        throw new GAZTNetworkConnectivityIssueException();
+                    }
+
+                }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
                 catch (Exception)
-
                 {
-                    return null;
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
             {
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+                throw new InternetException();
             }
         }
         public static string ESTDeleteAttachment(string fileName, string RetGuid, string docType, string docguid)
@@ -604,36 +654,16 @@ namespace ZATCAMAUI.Core.Mangers
                     HttpContent contentPost = new StringContent(serialized, Encoding.UTF8, ZATCAConstants.ContentType);
                     HttpResponseMessage res = client.PostAsync(url, contentPost).Result;
 
-                    //var uri = new Uri(string.Format("{0}(RetGuid='{1}',Flag='N',OutletRef='',Dotyp='{2}',SchGuid='',Srno=1,Doguid='{3}',AttBy='X')/$value",
-                    //    , RetGuid, docType, docguid));
-                    //HttpClient client = new HttpClient();
-
-                    //client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-                    //client.DefaultRequestHeaders.Add("Accept", "application/json");
-                    //client.DefaultRequestHeaders.Add("slug", WebUtility.UrlEncode(fileName));
-
-                    //client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "multipart/form-data");
-
-                    //HttpResponseMessage response = client.DeleteAsync(uri).Result;
                     var responsestr = res.Content.ReadAsStringAsync().Result;
                     if (res != null)
                     {
-                        //HttpHeaders headers = response.Headers;
-                        //IEnumerable<string> values;
-                        //if (headers.TryGetValues("delete", out values))
-                        //{
-                        //    DeleteToken = values.First();
-                        //}
                         if (res.StatusCode == HttpStatusCode.NoContent || res.StatusCode == HttpStatusCode.OK)
                             DeleteToken = "X";
                     }
                     return "delete";
                 }
                 catch (Exception)
-
                 {
-
-
                     return DeleteToken;
                 }
             }
@@ -652,7 +682,7 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     if (!NetworkCheck.IsInternet())
                     {
-                        throw new GAZTInternetException();
+                        throw new InternetException();
                     }
                     string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
                     string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
@@ -693,30 +723,39 @@ namespace ZATCAMAUI.Core.Mangers
                             App.Token = NewToken;
                         }
                         string ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
-                        if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
+
+                        ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(ESTBranchesDropDownResponseJSON);
+
+                        if (statusHeader?.header?.status?.code != "E999999")
                         {
-                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["data"].ToString();
-                            outletNumber = JsonConvert.DeserializeObject<OutletNumber>(ESTBranchesDropDownResponseJSON);
+                            if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
+                            {
+                                ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["data"].ToString();
+                                outletNumber = JsonConvert.DeserializeObject<OutletNumber>(ESTBranchesDropDownResponseJSON);
+                            }
+                        }
+                        else
+                        {
+                            throw new GAZTNetworkConnectivityIssueException();
                         }
                     }
+                }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
                 catch (JsonReaderException)
                 {
                     throw new GAZTInvalidDataException();
                 }
-                catch (HttpRequestException)
-                {
-                }
-                catch (GAZTException)
-                {
-                }
                 catch (Exception)
                 {
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
             {
-                throw new GAZTInternetException();
+                throw new InternetException();
             }
             return outletNumber;
         }
@@ -730,7 +769,7 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     if (!NetworkCheck.IsInternet())
                     {
-                        throw new GAZTInternetException();
+                        throw new InternetException();
                     }
                     string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
                     string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
@@ -770,10 +809,19 @@ namespace ZATCAMAUI.Core.Mangers
                             App.Token = NewToken;
                         }
                         string ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
-                        if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
+                        ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(ESTBranchesDropDownResponseJSON);
+
+                        if (statusHeader?.header?.status?.code != "E999999")
                         {
-                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["data"].ToString();
-                            outletNumber = JsonConvert.DeserializeObject<OutletNumber>(ESTBranchesDropDownResponseJSON);
+                            if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
+                            {
+                                ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["data"].ToString();
+                                outletNumber = JsonConvert.DeserializeObject<OutletNumber>(ESTBranchesDropDownResponseJSON);
+                            }
+                        }
+                        else
+                        {
+                            throw new GAZTNetworkConnectivityIssueException();
                         }
                     }
                 }
@@ -781,19 +829,19 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     throw new GAZTInvalidDataException();
                 }
-                catch (HttpRequestException)
+                catch (GAZTNetworkConnectivityIssueException)
                 {
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
-                catch (GAZTException)
-                {
-                }
+
                 catch (Exception)
                 {
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
             {
-                throw new GAZTInternetException();
+                throw new InternetException();
             }
             return outletNumber;
         }
@@ -808,7 +856,7 @@ namespace ZATCAMAUI.Core.Mangers
                     var lang = UtilityManager.GetLanguageParameter();
                     if (!NetworkCheck.IsInternet())
                     {
-                        throw new GAZTInternetException();
+                        throw new InternetException();
                     }
                     var url = ZATCAConstants.ESTOutletCityStateCountryDropDown + lang;
                     string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
@@ -825,8 +873,6 @@ namespace ZATCAMAUI.Core.Mangers
 
                     var uri = new Uri(url);
                     HttpResponseMessage ESTBranchesDropDownResponse = await client.GetAsync(uri);
-                    //HttpResponseMessage ESTBranchesDropDownResponse = await GetServiceManager.MakeGetAPICall(string.Format("{0}(Spras='{1}',Land1='',Bland='',Cityc='')?&$expand=country_dropdownSet,State_dropdownSet,city_dropdownSet&$format=json",
-                    //    Constants.ESTOutletCityStateCountryDropDown, lang), false, "");
                     if (ESTBranchesDropDownResponse != null)
                     {
                         if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -848,30 +894,36 @@ namespace ZATCAMAUI.Core.Mangers
                             App.Token = NewToken;
                         }
                         string ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
-                        if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
+
+                        ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(ESTBranchesDropDownResponseJSON);
+
+                        if (statusHeader?.header?.status?.code != "E999999")
                         {
                             ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["data"].ToString();
                             dropDownModels = JsonConvert.DeserializeObject<OutletDropDowns>(ESTBranchesDropDownResponseJSON);
                         }
+                        else
+                        {
+                            throw new GAZTNetworkConnectivityIssueException();
+                        }
                     }
+                }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
                 catch (JsonReaderException)
                 {
                     throw new GAZTInvalidDataException();
                 }
-                catch (HttpRequestException)
-                {
-                }
-                catch (GAZTException)
-                {
-                }
                 catch (Exception)
                 {
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
             {
-                throw new GAZTInternetException();
+                throw new InternetException();
             }
             return dropDownModels;
         }
@@ -887,7 +939,7 @@ namespace ZATCAMAUI.Core.Mangers
                     indSector = (string.IsNullOrEmpty(indSector) || string.IsNullOrWhiteSpace(indSector)) ? string.Empty : indSector;
                     if (!NetworkCheck.IsInternet())
                     {
-                        throw new GAZTInternetException();
+                        throw new InternetException();
                     }
                     HttpClient client = new HttpClient();
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
@@ -897,8 +949,6 @@ namespace ZATCAMAUI.Core.Mangers
                     client.DefaultRequestHeaders.Add("Authorization", App.Token);
                     var url = ZATCAConstants.ESTActiivtyGroupSubGroupList + lang + "&industrySector=" + indSector;
                     HttpResponseMessage ESTBranchesDropDownResponse = await client.GetAsync(url);
-                    //HttpResponseMessage ESTBranchesDropDownResponse = await GetServiceManager.MakeGetAPICall(string.Format("{0}(Spras='{1}',IndSector='{2}')?&$expand=act_groupSet,act_subgroupSet,activitySet&$format=json",
-                    //    Constants.ESTActiivtyGroupSubGroupList, lang, indSector), false, "");
                     if (ESTBranchesDropDownResponse != null)
                     {
                         if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -920,38 +970,43 @@ namespace ZATCAMAUI.Core.Mangers
                             App.Token = NewToken;
                         }
                         string ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
-                        if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
+                        ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(ESTBranchesDropDownResponseJSON);
+
+                        if (statusHeader?.header?.status?.code != "E999999")
                         {
                             ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["data"].ToString();
                             list = JsonConvert.DeserializeObject<ActivitySetsList>(ESTBranchesDropDownResponseJSON);
+
                         }
+                        else
+                        {
+                            throw new GAZTNetworkConnectivityIssueException();
+                        }
+
                     }
+                }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
                 catch (JsonReaderException)
                 {
                     throw new GAZTInvalidDataException();
                 }
-                catch (HttpRequestException ex)
-                {
-                    throw ex;
-                }
-                catch (GAZTException gex)
-                {
-                    throw gex;
-                }
+
                 catch (Exception)
                 {
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
             {
-                throw new GAZTInternetException();
+                throw new InternetException();
             }
             return list;
         }
         public static async Task<string> ESTValidateCRNum(string cr)
         {
-            //ValidateCR validate = null;
             string ESTBranchesDropDownResponseJSON = string.Empty;
             if (NetworkCheck.IsInternet())
             {
@@ -960,7 +1015,7 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     if (!NetworkCheck.IsInternet())
                     {
-                        throw new GAZTInternetException();
+                        throw new InternetException();
                     }
 
                     var CrNumber = new JProperty("CRNumber", cr);
@@ -1015,30 +1070,37 @@ namespace ZATCAMAUI.Core.Mangers
                             App.Token = NewToken;
                         }
                         ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
-                        if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
+                        ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(ESTBranchesDropDownResponseJSON);
+                        if (statusHeader?.header?.status?.code != "E999999")
                         {
-                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["result"].ToString();
-                            //validate = JsonConvert.DeserializeObject<ValidateCR>(ESTBranchesDropDownResponseJSON);
+                            if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
+                            {
+                                ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["result"].ToString();
+                            }
                         }
+                        else
+                        {
+                            throw new GAZTNetworkConnectivityIssueException();
+                        }
+
                     }
+                }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
                 catch (JsonReaderException)
                 {
                     throw new GAZTInvalidDataException();
                 }
-                catch (HttpRequestException)
-                {
-                }
-                catch (GAZTException)
-                {
-                }
                 catch (Exception)
                 {
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
             {
-                throw new GAZTInternetException();
+                throw new InternetException();
             }
             return ESTBranchesDropDownResponseJSON;
         }
@@ -1093,42 +1155,40 @@ namespace ZATCAMAUI.Core.Mangers
                             App.Token = NewToken;
                         }
                         string ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
-                        if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
+                        ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(ESTBranchesDropDownResponseJSON);
+
+                        if (statusHeader?.header?.status?.code != "E999999")
                         {
-                            var checkObj = JObject.Parse(ESTBranchesDropDownResponseJSON);//["d"].ToString();
+                            if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
+                            {
+                                var checkObj = JObject.Parse(ESTBranchesDropDownResponseJSON);
 
-                            if (ESTBranchesDropDownResponseJSON != null && checkObj != null)
-                            {
-                                ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["data"].ToString();
-                                ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["outlets"].ToString();
-                                outlets = JsonConvert.DeserializeObject<List<OutletItem>>(ESTBranchesDropDownResponseJSON);
-                            }
-                            else
-                            {
-                                ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(ESTBranchesDropDownResponseJSON);
-                                if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null
-                                    && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                                if (ESTBranchesDropDownResponseJSON != null && checkObj != null)
                                 {
-                                    string errorCode = errorMesg.error.innererror.errordetails[0].code;
-
-                                    var errorMsg = errorMesg.error.innererror.errordetails[0].message;
-
-                                    string WithReplacedString = errorMsg.Replace("An exception was raised", string.Empty);
-                                    errorMsg = WithReplacedString;
-
-                                    throw new GAZTErrorException(errorMsg);
+                                    ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["data"].ToString();
+                                    ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["outlets"].ToString();
+                                    outlets = JsonConvert.DeserializeObject<List<OutletItem>>(ESTBranchesDropDownResponseJSON);
+                                }
+                                else
+                                {
+                                    string errorMessage = WebServiceManager.PrepareErrorMessageByJson(ESTBranchesDropDownResponseJSON);
+                                    throw new GAZTErrorException(errorMessage);
                                 }
                             }
                         }
+                        else
+                        {
+                            throw new GAZTNetworkConnectivityIssueException();
+                        }
                     }
+                }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
                 catch (JsonReaderException)
                 {
                     throw new GAZTInvalidDataException();
-                }
-
-                catch (HttpRequestException)
-                {
                 }
                 catch (GAZTException gex)
                 {
@@ -1137,6 +1197,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                 catch (Exception)
                 {
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
@@ -1155,7 +1216,7 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     if (!NetworkCheck.IsInternet())
                     {
-                        throw new GAZTInternetException();
+                        throw new InternetException();
                     }
                     string url = ZATCAConstants.ESTOutletAddressFetch;
                     ESTOutletAddressRequest eSTOutletAddressRequest = new ESTOutletAddressRequest();
@@ -1180,8 +1241,8 @@ namespace ZATCAMAUI.Core.Mangers
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
                     HttpResponseMessage ESTBranchesDropDownResponse = await client.PostAsync(url, contentPost);
                     var detailJson = ESTBranchesDropDownResponse.Content.ReadAsStringAsync().Result;
-                    /*HttpResponseMessage ESTBranchesDropDownResponse = await GetServiceManager.MakeGetAPICall(string.Format("{0}?$format=json&$filter=IdType eq '{1}' and IdNumber eq '{2}' and Tin eq '{3}' and TpType eq 'I'",
-                   // Constants.ESTOutletAddressFetch, idType, IdNumber, tin), false, "");*/
+
+
                     if (ESTBranchesDropDownResponse != null)
                     {
                         if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -1203,31 +1264,39 @@ namespace ZATCAMAUI.Core.Mangers
                             App.Token = NewToken;
                         }
                         string ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
-                        if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
+                        ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(ESTBranchesDropDownResponseJSON);
+                        if (statusHeader?.header?.status?.code != "E999999")
                         {
-                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["data"].ToString();
-                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["results"].ToString();
-                            address = JsonConvert.DeserializeObject<List<OutletAddress>>(ESTBranchesDropDownResponseJSON);
+                            if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
+                            {
+                                ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["data"].ToString();
+                                ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["results"].ToString();
+                                address = JsonConvert.DeserializeObject<List<OutletAddress>>(ESTBranchesDropDownResponseJSON);
+                            }
                         }
                     }
+                    else
+                    {
+                        throw new GAZTNetworkConnectivityIssueException();
+                    }
+                }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
                 catch (JsonReaderException)
                 {
                     throw new GAZTInvalidDataException();
                 }
-                catch (HttpRequestException)
-                {
-                }
-                catch (GAZTException)
-                {
-                }
+
                 catch (Exception)
                 {
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
             {
-                throw new GAZTInternetException();
+                throw new InternetException();
             }
             return address;
         }
@@ -1260,12 +1329,12 @@ namespace ZATCAMAUI.Core.Mangers
                         portalUser = email,
                         TIN = App.LoginDataRetrieved.TIN
                     };
-                    //var uri = new Uri(string.Format(Constants.ESTOutletList));
                     var deleteOutletData = JsonConvert.SerializeObject(deleteOutletRequest);
                     HttpContent contentPost = new StringContent(deleteOutletData, Encoding.UTF8, ZATCAConstants.ContentType);
                     HttpResponseMessage response = await client.PostAsync(uri, contentPost);
-                    //HttpResponseMessage response = client.DeleteAsync(uri).Result;
                     var responsestr = response.Content.ReadAsStringAsync().Result;
+                    ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(responsestr);
+
                     if (response != null)
                     {
                         HttpHeaders headers = response.Headers;
@@ -1276,6 +1345,7 @@ namespace ZATCAMAUI.Core.Mangers
                         }
                     }
                     return "delete";
+
                 }
                 catch (Exception)
                 {
@@ -1297,7 +1367,7 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     if (!NetworkCheck.IsInternet())
                     {
-                        throw new GAZTInternetException();
+                        throw new InternetException();
                     }
                     string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
                     string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
@@ -1342,10 +1412,19 @@ namespace ZATCAMAUI.Core.Mangers
                             App.Token = NewToken;
                         }
                         string ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
-                        if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
+                        ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(ESTBranchesDropDownResponseJSON);
+
+                        if (statusHeader?.header?.status?.code != "E999999")
                         {
-                            ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["result"].ToString();
-                            financial = JsonConvert.DeserializeObject<FinancialDetail>(ESTBranchesDropDownResponseJSON);
+                            if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
+                            {
+                                ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["result"].ToString();
+                                financial = JsonConvert.DeserializeObject<FinancialDetail>(ESTBranchesDropDownResponseJSON);
+                            }
+                        }
+                        else
+                        {
+                            throw new GAZTNetworkConnectivityIssueException();
                         }
                     }
                 }
@@ -1353,19 +1432,18 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     throw new GAZTInvalidDataException();
                 }
-                catch (HttpRequestException)
+                catch (GAZTNetworkConnectivityIssueException)
                 {
-                }
-                catch (GAZTException)
-                {
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
                 catch (Exception)
                 {
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
             {
-                throw new GAZTInternetException();
+                throw new InternetException();
             }
             return financial;
         }
@@ -1380,7 +1458,7 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     if (!NetworkCheck.IsInternet())
                     {
-                        throw new GAZTInternetException();
+                        throw new InternetException();
                     }
                     string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
                     string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
@@ -1425,29 +1503,29 @@ namespace ZATCAMAUI.Core.Mangers
                             App.Token = NewToken;
                         }
                         string ESTBranchesDropDownResponseJSON = await ESTBranchesDropDownResponse.Content.ReadAsStringAsync();
-                        if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
+                        ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(ESTBranchesDropDownResponseJSON);
+
+                        if (statusHeader?.header?.status?.code != "E999999")
                         {
-
-                            if (!ESTBranchesDropDownResponseJSON.Contains("An exception was raised") || !ESTBranchesDropDownResponseJSON.Contains("error"))
+                            if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
                             {
+                                if (!ESTBranchesDropDownResponseJSON.Contains("An exception was raised") || !ESTBranchesDropDownResponseJSON.Contains("error"))
+                                {
 
-                                ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["result"].ToString();
-                                financial = JsonConvert.DeserializeObject<FinancialDetail>(ESTBranchesDropDownResponseJSON);
+                                    ESTBranchesDropDownResponseJSON = JObject.Parse(ESTBranchesDropDownResponseJSON)["result"].ToString();
+                                    financial = JsonConvert.DeserializeObject<FinancialDetail>(ESTBranchesDropDownResponseJSON);
+                                }
                             }
-
-
+                            else
+                            {
+                                throw new GAZTNetworkConnectivityIssueException();
+                            }
                         }
                     }
                 }
-                catch (JsonReaderException)
+                catch (GAZTNetworkConnectivityIssueException)
                 {
-                    throw new GAZTInvalidDataException();
-                }
-                catch (HttpRequestException)
-                {
-                }
-                catch (GAZTException)
-                {
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
                 catch (Exception)
                 {
@@ -1456,7 +1534,7 @@ namespace ZATCAMAUI.Core.Mangers
             }
             else
             {
-                throw new GAZTInternetException();
+                throw new InternetException();
             }
             return financial;
         }
@@ -1471,7 +1549,7 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     if (!NetworkCheck.IsInternet())
                     {
-                        throw new GAZTInternetException();
+                        throw new InternetException();
                     }
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
@@ -1505,48 +1583,51 @@ namespace ZATCAMAUI.Core.Mangers
                             App.Token = NewToken;
                         }
                         var ESTBranchesDropDownResponseJSON = ESTBranchesDropDownResponse.Content.ReadAsStringAsync().Result;
-                        financial = JsonConvert.DeserializeObject<ActivityUpdateViewResponseModel>(ESTBranchesDropDownResponseJSON);
+                        ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(ESTBranchesDropDownResponseJSON);
 
-                        if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.OK || ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Created)
+                        if (statusHeader?.header?.status?.code != "E999999")
                         {
-                            if (financial != null && financial.d != null)
+
+                            financial = JsonConvert.DeserializeObject<ActivityUpdateViewResponseModel>(ESTBranchesDropDownResponseJSON);
+
+                            if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.OK || ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Created)
                             {
-                                if (financial.d.UpdFlg)
+                                if (financial != null && financial.d != null)
                                 {
-                                    if (pageType.Equals("2"))
-                                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZZCRUpdateSuccess));
-                                    else if (pageType.Equals("1"))
-                                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZZLicenseUpdateSuccess));
+                                    if (financial.d.UpdFlg)
+                                    {
+                                        if (pageType.Equals("2"))
+                                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZZCRUpdateSuccess));
+                                        else if (pageType.Equals("1"))
+                                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZZLicenseUpdateSuccess));
+                                    }
                                 }
                             }
-                        }
 
 
-                        if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.BadRequest)
-                        {
-                            ErrorObj errorMesgs = JsonConvert.DeserializeObject<ErrorObj>(ESTBranchesDropDownResponseJSON);
-                            if (errorMesgs != null && errorMesgs.error != null && errorMesgs.error.innererror != null
-                                                                && errorMesgs.error.innererror.errordetails != null && errorMesgs.error.innererror.errordetails[0].message != null)
+                            if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.BadRequest)
                             {
-                                string errorCode = errorMesgs.error.innererror.errordetails[0].code;
-
-                                var errorMsg = errorMesgs.error.innererror.errordetails[0].message;
-
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(errorMsg));
-
+                                string errorMessage = WebServiceManager.PrepareErrorMessageByJson(ESTBranchesDropDownResponseJSON);
+                                throw new GAZTVATRegistrationInProcessException(errorMessage);
                             }
                         }
                     }
+                    else
+                    {
+                        throw new GAZTNetworkConnectivityIssueException();
+                    }
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
                 catch (JsonReaderException)
                 {
                     throw new GAZTInvalidDataException();
                 }
-                catch (HttpRequestException)
+                catch (GAZTNetworkConnectivityIssueException)
                 {
-                }
-                catch (GAZTException)
-                {
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
                 catch (Exception)
                 {
@@ -1555,7 +1636,7 @@ namespace ZATCAMAUI.Core.Mangers
             }
             else
             {
-                throw new GAZTInternetException();
+                throw new InternetException();
             }
             return "";
         }

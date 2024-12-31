@@ -9,7 +9,7 @@ using static ZATCAMAUI.Models.ErrorMessage;
 
 namespace ZATCAMAUI.Core.Manager
 {
-   public static class VatEffectiveDateWebServiceManager
+    public static class VatEffectiveDateWebServiceManager
     {
         public async static Task<UpdateVatEffectiveDateModel> GAZTGetIBanAccounts()
         {
@@ -34,7 +34,7 @@ namespace ZATCAMAUI.Core.Manager
                     client.DefaultRequestHeaders.Add("Authorization", App.Token);
 
 
-                    String url = ZATCAConstants.GetRequestedUpdateVatEffDates+App.LoginDataRetrieved.TIN;
+                    String url = ZATCAConstants.GetRequestedUpdateVatEffDates + App.LoginDataRetrieved.TIN;
 
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTIBanAccountsResponse = await client.GetAsync(uri);
@@ -62,30 +62,45 @@ namespace ZATCAMAUI.Core.Manager
                             App.Token = NewToken;
                         }
                         String ResponseData = GAZTIBanAccountsResponse.Content.ReadAsStringAsync().Result;
-                        response = JsonConvert.DeserializeObject<UpdateVatEffectiveDateModel>(ResponseData);
-
-                        if (!string.IsNullOrEmpty(ResponseData) && response == null)
+                        ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(ResponseData);
+                        if (statusHeader?.header?.status?.code != "E999999")
                         {
-                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(ResponseData);
-                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            response = JsonConvert.DeserializeObject<UpdateVatEffectiveDateModel>(ResponseData);
+
+                            if (!string.IsNullOrEmpty(ResponseData) && response == null)
                             {
-                                string errorMessage = string.Empty;
-                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
-                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
-                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
-                                errorMessage = WithReplacedString;
-                                throw new Exception(errorMessage);
+                                ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(ResponseData);
+                                if (errorMesg?.header?.moreInformation?.errorDetails != null ||
+errorMesg?.header?.moreInformation?.errorDetails.Count > 0)
+                                {
+                                    string errorMessage = WebServiceManager.PrepareErrorMessageByJson(ResponseData);
+                                    throw new GAZTVATRegistrationInProcessException(errorMessage);
+                                }
+
+
                             }
+                            return response;
                         }
-                        return response;
+                        else
+                        {
+                            throw new GAZTNetworkConnectivityIssueException();
+                        }
+
 
                     }
                     return response;
                 }
-                catch (Exception ex)
+                catch (GAZTVATRegistrationInProcessException ex)
                 {
-                    App.IsSessionExpired = true;
-                    return null;
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else

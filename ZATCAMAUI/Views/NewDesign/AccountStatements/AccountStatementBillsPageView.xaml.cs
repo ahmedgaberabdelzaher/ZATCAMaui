@@ -2,6 +2,8 @@
 using Mopups.Animations;
 using Mopups.Enums;
 using Mopups.Services;
+using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.SyncfusionEnabledModels;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements;
@@ -169,15 +171,30 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
                 {
                     viewModel.accoungtDetails1 = new Models.AccountDetails.AccoungtDetails();
                 }
-
-
                 await Application.Current.MainPage.Navigation.PushAsync(new AccountStatementsDetailPageView(item, viewModel.accoungtDetails1));
 
                 if (e.Item == null) return;
                 if (sender is ListView lv) lv.SelectedItem = null;
             }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue,false);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
             catch (Exception)
             {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                viewModel.IsLoading = false;
             }
 
         }

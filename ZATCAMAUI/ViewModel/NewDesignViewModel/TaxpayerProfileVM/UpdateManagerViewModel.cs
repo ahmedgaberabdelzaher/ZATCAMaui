@@ -6,6 +6,7 @@ using ZATCAMAUI.Models.TPProfile;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using static ZATCAMAUI.Models.ErrorMessage;
 using ZATCAMAUI.Core.Interfaces;
+using ZATCAMAUI.Core.Exceptions;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 {
@@ -84,64 +85,83 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM
 
         public async Task LoadManagerDetails()
         {
-            IsLoading = true;
-            var data = await WebServiceManager.GetTPManagerDetails();
-            IsLoading = false;
-            MgrList.Clear();
-            if (data.Item1 != null)
+            try
             {
-                if (data.Item1.IsSuccessStatusCode)
+                IsLoading = true;
+                var data = await WebServiceManager.GetTPManagerDetails();
+                IsLoading = false;
+                MgrList.Clear();
+                if (data.Item1 != null)
                 {
-                    if (data.Item2 != null)
+                    if (data.Item1.IsSuccessStatusCode)
                     {
-                        ChangeManagerModel = JsonConvert.DeserializeObject<UpdateManagerModel>(data.Item2);
-                        if(ChangeManagerModel.D != null)
+                        if (data.Item2 != null)
                         {
-
-                            foreach(ManagerList item in ChangeManagerModel.D.Results)
+                            ChangeManagerModel = JsonConvert.DeserializeObject<UpdateManagerModel>(data.Item2);
+                            if (ChangeManagerModel.D != null)
                             {
-                                ManagerList newItem = new ManagerList();
-                                item.Gpart = App.TP.TIN;
-                                newItem = item;
-                                if (item.BirthDt != null)
+
+                                foreach (ManagerList item in ChangeManagerModel.D.Results)
                                 {
-                                    newItem.BirthDt = Convert.ToDateTime(item.BirthDt.ToString()).ToShortDateString();
+                                    ManagerList newItem = new ManagerList();
+                                    item.Gpart = App.TP.TIN;
+                                    newItem = item;
+                                    if (item.BirthDt != null)
+                                    {
+                                        newItem.BirthDt = Convert.ToDateTime(item.BirthDt.ToString()).ToShortDateString();
+                                    }
+                                    if (item.Editfg.Equals("Y"))
+                                    {
+                                        newItem.EnableIDNumber = item.Mgrid.Length > 0 ? false : true;
+                                        newItem.EnableManagerName = item.Mgrnm.Length > 0 ? false : true;
+                                        newItem.EnableBirthdate = item.BirthDt.ToString().Length > 0 ? false : true;
+                                        newItem.EnableMobNumber = item.MobNo.Length > 0 ? false : true;
+                                        newItem.EnableEmail = item.Email.Length > 0 ? false : true;
+                                    }
+                                    else
+                                    {
+                                        newItem.EnableIDNumber = false;
+                                        newItem.EnableManagerName = false;
+                                        newItem.EnableBirthdate = false;
+                                        newItem.EnableMobNumber = false;
+                                        newItem.EnableEmail = false;
+                                    }
+                                    MgrList.Add(newItem);
                                 }
-                                if (item.Editfg.Equals("Y"))
-                                {
-                                    newItem.EnableIDNumber = item.Mgrid.Length > 0 ? false : true;
-                                    newItem.EnableManagerName = item.Mgrnm.Length > 0 ? false : true;
-                                    newItem.EnableBirthdate = item.BirthDt.ToString().Length > 0 ? false : true;
-                                    newItem.EnableMobNumber = item.MobNo.Length > 0 ? false : true;
-                                    newItem.EnableEmail = item.Email.Length > 0 ? false : true;
-                                }
-                                else
-                                {
-                                    newItem.EnableIDNumber = false;
-                                    newItem.EnableManagerName = false;
-                                    newItem.EnableBirthdate = false;
-                                    newItem.EnableMobNumber = false;
-                                    newItem.EnableEmail = false;
-                                }
-                                MgrList.Add(newItem);
+                            }
+                            if (MgrList.Count > 0)
+                            {
+                                ShowListview = true;
+                                ShowNoData = false;
+                            }
+                            else
+                            {
+                                ShowListview = false;
+                                ShowNoData = true;
                             }
                         }
-                        if(MgrList.Count > 0)
-                        {
-                            ShowListview = true;
-                            ShowNoData = false;
-                        }
-                        else
-                        {
-                            ShowListview = false;
-                            ShowNoData = true;
-                        }
+                    }
+                    else
+                    {
+                        await ShowErrorWithQuitAsync(data.Item2);
                     }
                 }
-                else
-                {
-                    await ShowErrorWithQuitAsync(data.Item2);
-                }
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
         private async Task ShowErrorWithQuitAsync(string item2)

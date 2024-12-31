@@ -251,12 +251,25 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ChecKTINStatusPage
                     }
                 }
             }
-            catch (InternetException ex)
+            catch (GAZTVATRegistrationInProcessException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                });
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
         public void PopToRootPage()

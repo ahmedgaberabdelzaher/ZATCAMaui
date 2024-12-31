@@ -885,10 +885,22 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
                     await NoInternetGoBack();
                 }
             }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
             catch (Exception)
             {
-                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                _navigationService.GoBack();
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
         public async Task NoInternetGoBack()
@@ -909,14 +921,23 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
                     PopToRootPage();
                     CList = citylist.Data;
                 }
-                else
-                {
-
-                }
             }
-            catch (InternetException )
+            catch (GAZTNetworkConnectivityIssueException)
             {
-                await NoInternetGoBack();
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true,_navigationService);
+            }
+
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
+            }
+            finally
+            {
+                IsLoading = false;
             }
             IsLoading = false;
         }

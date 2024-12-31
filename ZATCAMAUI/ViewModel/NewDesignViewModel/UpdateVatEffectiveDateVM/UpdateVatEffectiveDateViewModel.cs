@@ -4,8 +4,10 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using ZATCAMAUI.Core.Enums;
+using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Manager;
+using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models.UpdateEffDateModel;
 using static ZATCAMAUI.ViewModel.NewDesignViewModel.UpdateVatEffectiveDateVM.FilterVatEffectiveDatePageViewModel;
 
@@ -149,57 +151,66 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.UpdateVatEffectiveDateVM
 
         public async Task GetAllVatEffectiveDateLogs()
         {
-            List<ItemSetResult> VatLogss = new List<ItemSetResult>();
-            IsLoading = true;
-            VatLogs?.Clear();
-            CopiedVatLogs?.Clear();
-
-            LogResponse = await VatEffectiveDateWebServiceManager.GAZTGetIBanAccounts();
-
-            await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-            IsLoading = false;
-
-            if (LogResponse != null && LogResponse.d != null && LogResponse.d.ItemSet != null
-            && LogResponse.d.ItemSet != null && LogResponse.d.ItemSet.Count > 0)
+            try
             {
-                try
+                List<ItemSetResult> VatLogss = new List<ItemSetResult>();
+                IsLoading = true;
+                VatLogs?.Clear();
+                CopiedVatLogs?.Clear();
+
+                LogResponse = await VatEffectiveDateWebServiceManager.GAZTGetIBanAccounts();
+
+                await PopToRootPage();
+                IsLoading = false;
+
+                if (LogResponse != null && LogResponse.d != null && LogResponse.d.ItemSet != null
+                && LogResponse.d.ItemSet != null && LogResponse.d.ItemSet.Count > 0)
                 {
-                    IsListVisible = true;
-                    NoDataAvailable = false;
-                    //VatLogss = ;
-                    VatLogs = new ObservableCollection<ItemSetResult>(LogResponse.d.ItemSet);
-                    CopiedVatLogs.Clear();
-                    CopiedVatLogs = VatLogs;
-
-
-
+                        IsListVisible = true;
+                        NoDataAvailable = false;
+                        VatLogs = new ObservableCollection<ItemSetResult>(LogResponse.d.ItemSet);
+                        CopiedVatLogs.Clear();
+                        CopiedVatLogs = VatLogs;
                 }
-                catch (Exception ex)
+                else
                 {
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
-                    IsLoading = false;
+                    IsListVisible = false;
+                    NoDataAvailable = true;
                 }
-
             }
-            else
+            catch (GAZTVATRegistrationInProcessException ex)
             {
-                IsListVisible = false;
-                NoDataAvailable = true;
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
             IsLoading = false;
         }
 
         public void FilterWithReferenceNumber()
         {
-            // CopiedVatLogs.Clear();
             CopiedVatLogs = new ObservableCollection<ItemSetResult>(VatLogs.Where(searchedObjects => searchedObjects.Fbnum.Contains(SearchText)));
 
         }
         public void FiltersClicked()
         {
             _navigationService.NavigateTo(App.FilterVatEffectiveDatePageView);
-            /*IsSortByVisible = !IsSortByVisible;*/
         }
 
         public void handleFilterData()

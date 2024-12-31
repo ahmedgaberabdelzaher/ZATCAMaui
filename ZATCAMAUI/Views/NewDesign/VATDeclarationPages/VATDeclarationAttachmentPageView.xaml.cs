@@ -217,8 +217,21 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 }
                 viewModel.IsLoading = false;
             }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
             catch (Exception)
             {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                viewModel.IsLoading = false;
             }
         }
         public async Task PopToRootPage()
@@ -290,9 +303,21 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, viewModel._navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, true, viewModel._navigationService);
+            }
             catch (Exception)
             {
-
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                viewModel.IsLoading = false;
             }
         }
 

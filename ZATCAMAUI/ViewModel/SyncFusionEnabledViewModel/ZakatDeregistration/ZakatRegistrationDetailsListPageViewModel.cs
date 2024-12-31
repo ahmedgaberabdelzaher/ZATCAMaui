@@ -250,16 +250,12 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 else
                 {
                     await _navigationService.NavigateTo(App.TINDeregistrationPageView, ZakatDeregResponseData);
+                
                 }
-            }
-            catch (InternetException)
-            {
-                App.HideProgressView();
-                await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
             }
             catch (GAZTErrorException ex)
             {
-                App.HideProgressView();
+               
                 string message = ex.Message;
 
                 try
@@ -305,6 +301,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                                     App.HideProgressView();
                                 }
+
                                 catch (InternetException)
                                 {
                                     App.HideProgressView();
@@ -324,9 +321,22 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                 }
             }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
             catch (Exception)
             {
-                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                App.HideProgressView();
             }
         }
 

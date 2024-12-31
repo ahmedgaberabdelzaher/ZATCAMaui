@@ -2377,8 +2377,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 IsZakat = Preferences.Get("isZakat", false);
                 IsPenaltyVisible = !Preferences.Get("isZakat", false);
 
-                 getYesCommand();
-                 getNoCommand();
+                getYesCommand();
+                getNoCommand();
 
 
 
@@ -2575,7 +2575,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 if (ZakatReferanceNumber != null)
                 {
 
-                    string downloadurl = ZATCAConstants.ZOdownloadAckLetter + ZakatReferanceNumber ;
+                    string downloadurl = ZATCAConstants.ZOdownloadAckLetter + ZakatReferanceNumber;
                     await _navigationService.NavigateTo(App.PdfView, downloadurl);
 
 
@@ -4126,7 +4126,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             {
 
             }
-            
+
 
         }
 
@@ -4855,26 +4855,29 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                     await ShowDialog(AppResources.ZZSomethingwentwrong);
                     _navigationService.GoBack();
                 }
-               
+
 
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                IsLoading = false;
-                await ShowDialog(ex.Message);
-                _navigationService.GoBack();
+                await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
             }
-            catch (InternetException ex)
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
+            }
+            finally
             {
                 IsLoading = false;
-                await ShowDialog(ex.Message);
-                _navigationService.GoBack();
-            }
-            catch (Exception esx)
-            {
-                IsLoading = false;
-                await ShowDialog(AppResources.ZZSomethingwentwrong);
-                _navigationService.GoBack();
             }
         }
 
@@ -5145,7 +5148,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                         if (apiDate != null && !apiDate.Contains("Date"))
                         {
 
-                            DateTime dt = DateTime.Parse(ZakatInstalments.d.Z_INVOICE_UI5Set[i].ADueDtTb,new CultureInfo("en-US"));
+                            DateTime dt = DateTime.Parse(ZakatInstalments.d.Z_INVOICE_UI5Set[i].ADueDtTb, new CultureInfo("en-US"));
 
                             ZakatInstalments.d.Z_INVOICE_UI5Set[i].ADueDtTb = dt.ToString("yyyy-MM-ddTHH:mm:ss");
                         }
@@ -5269,22 +5272,36 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 response = await OldZakatInstallmentWebServiceManager.SaveOldZakatInstalmentData(request);
                 await PopToRootPage();
                 IsLoading = false;
-                
+
                 return response;
             }
+
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                IsLoading = false;
-                await ShowDialog(ex.Message);
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
                 return response;
             }
 
-            catch (Exception)
+            catch (GAZTNetworkConnectivityIssueException)
             {
-                IsLoading = false;
-                return null;
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+                return response;
             }
 
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+                return response;
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+                return response; ;
+            }
+            finally
+            {
+                IsLoading = false;
+            }
         }
 
         #endregion

@@ -404,8 +404,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             try
             {
                 IsLoading = true;
-                try
-                {
+               
 
                     var resultData = await VATChangeFillingWebServiceManager.GAZTGetVATChangeFillingList(App.LoginDataRetrieved.TIN);
                     if (resultData != null)
@@ -428,30 +427,24 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                         _navigationService.GoBack();
                     }
                     IsLoading = false;
-                }
-                catch (InternetException ex)
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    IsLoading = false;
-                    _navigationService.GoBack();
-
-                }
-                IsLoading = false;
 
             }
-            catch (GAZTVATRegistrationInProcessException ex)
+            catch (GAZTNetworkConnectivityIssueException)
             {
-                IsLoading = false;
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
 
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
-
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
+            }
+            finally
             {
                 IsLoading = false;
-                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                _navigationService.GoBack();
             }
         }
 
@@ -502,19 +495,29 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 }
                 IsLoading = false;
             }
-            catch (GAZTVATChangeFillingPeriodException ex)
+            catch (GAZTVATRegistrationInProcessException ex)
             {
+                await UtilityManager.HandleExceptionMessage(ex.Message, true,_navigationService);
+            }
 
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
 
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
-                IsLoading = false;
-                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                _navigationService.GoBack();
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
             }
+            finally
+            {
+                IsLoading = false;
+            }
+
         }
 
         private void PopulateAttachentsListData(List<Attachment> dAttachSet)

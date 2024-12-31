@@ -638,10 +638,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
 
             }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
             catch (InternetException)
             {
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                _navigationService.GoBack();
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
 
         }
@@ -724,53 +735,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                 IsLoading = false;
             }
-            catch (AggregateException ae)
+            catch (GAZTNetworkConnectivityIssueException)
             {
-                IsLoading = false;
-                foreach (var gex in ae.InnerExceptions)
-                {
-                    // Handle the GAZT custom exception.
-                    if (gex is GAZTException)
-                    {
-                        string MessageForTheUser = gex.Message;
-                        if (gex is GAZTNetworkConnectivityIssueException)
-                        {
-                            MessageForTheUser = AppResources.NetworkConnectivityIssue;
-                        }
-                        else if (gex is GAZTInternetException)
-                        {
-                            MessageForTheUser = AppResources.ZZInternetConnectionMessage;
-                        }
-                        else if (gex is GAZTSessionExpiredException)
-                        {
-                            MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
-                        }
-                        if (MessageForTheUser == AppResources.ZZInternetConnectionMessage)
-                        {
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                            _navigationService.GoBack();
-                        }
-                        else if (MessageForTheUser == AppResources.NetworkConnectivityIssue)
-                        {
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                            _navigationService.GoBack();
-                        }
-                        else if (MessageForTheUser == AppResources.ZYourSessionhasexpiredPleaseLoginagain)
-                        {
-                            await PopToRootPage();
-                        }
-                    }
-                }
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
             }
-            catch (GAZTSessionExpiredException)
+            catch (InternetException)
             {
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZYourSessionhasexpiredPleaseLoginagain));
-                await PopToRootPage();
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                await PopToRootPage();
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
 
             IsLoading = false;
@@ -932,13 +911,26 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 }
 
             }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
             catch (Exception)
             {
-
-
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
             }
-
-
+            finally
+            {
+                IsLoading = false;
+            }
         }
 
         public void updatePicker()

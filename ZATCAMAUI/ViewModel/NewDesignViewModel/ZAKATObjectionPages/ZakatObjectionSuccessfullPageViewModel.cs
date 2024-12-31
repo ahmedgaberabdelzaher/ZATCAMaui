@@ -24,7 +24,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
 
         #region Property
 
-       
+
 
         private EstimatedZAKATReturnsSADADNumberResult _estimatedZAKATSADADNumber;
         public EstimatedZAKATReturnsSADADNumberResult EstimatedZAKATSADADNumber
@@ -101,64 +101,64 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
 
         public async Task OnPageLoad(ZakatReturnDetailsD ZakatReturnDetail)
         {
-            await Task.Run(() =>
+            try
             {
                 IsLoading = true;
-            });
-            await Task.Run(async () =>
-            {
-                try
+                SetSuccussMessageVisibility();
+                EstimatedZAKATReturnsSADADNumber estimatedZAKATReturnsSADADNumber = await WebServiceManager.GAZTGetEstimatedZakatReturnSADADNumber(ZakatReturnDetail.Fbnum, ZAKATReturnDetailsViewModel.Fbguid); // Method to get the invoice
+                PopToRootPage();
+                if (estimatedZAKATReturnsSADADNumber != null && estimatedZAKATReturnsSADADNumber.d != null)
                 {
-                    SetSuccussMessageVisibility();
-                    EstimatedZAKATReturnsSADADNumber estimatedZAKATReturnsSADADNumber = await WebServiceManager.GAZTGetEstimatedZakatReturnSADADNumber(ZakatReturnDetail.Fbnum, ZAKATReturnDetailsViewModel.Fbguid); // Method to get the invoice
-                    PopToRootPage();
-                    if (estimatedZAKATReturnsSADADNumber != null && estimatedZAKATReturnsSADADNumber.d != null)
+                    if (Convert.ToDouble(estimatedZAKATReturnsSADADNumber.d.results[0].Undisamt) > 0 || Convert.ToDouble(estimatedZAKATReturnsSADADNumber.d.results[0].Disamt) > 0)
                     {
-                        if (Convert.ToDouble(estimatedZAKATReturnsSADADNumber.d.results[0].Undisamt) > 0 || Convert.ToDouble(estimatedZAKATReturnsSADADNumber.d.results[0].Disamt) > 0)
+                        Cokey = estimatedZAKATReturnsSADADNumber.d.Cokey;
+                        Cotyp = estimatedZAKATReturnsSADADNumber.d.Cotyp;
+
+                        if (string.IsNullOrEmpty(estimatedZAKATReturnsSADADNumber.d.results[0].Sopbel))
                         {
-                            Cokey = estimatedZAKATReturnsSADADNumber.d.Cokey;
-                            Cotyp = estimatedZAKATReturnsSADADNumber.d.Cotyp;
-
-                            if (string.IsNullOrEmpty(estimatedZAKATReturnsSADADNumber.d.results[0].Sopbel))
-                            {
-                                IsrefreshEnabled = true;
-                                RefreshIconImageSource = "ic_refresh.png";
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZVatAcknowledgmentWaitingText));
-
-                            }
-                            else
-                            {
-                                EstimatedZAKATSADADNumber = estimatedZAKATReturnsSADADNumber.d.results[0];
-                                IsrefreshEnabled = false;
-                                RefreshIconImageSource = "";
-                                GetUpdatedDataAfterAddingComma();
-
-                            }
+                            IsrefreshEnabled = true;
+                            RefreshIconImageSource = "ic_refresh.png";
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZVatAcknowledgmentWaitingText));
 
                         }
-                    }
-                    else
-                    {
-                       MainThread.BeginInvokeOnMainThread(async () =>
+                        else
                         {
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                            _navigationService.GoBack();
-                        });
-                        IsLoading = false;
+                            EstimatedZAKATSADADNumber = estimatedZAKATReturnsSADADNumber.d.results[0];
+                            IsrefreshEnabled = false;
+                            RefreshIconImageSource = "";
+                            GetUpdatedDataAfterAddingComma();
+
+                        }
+
                     }
                 }
-                catch (InternetException ex)
+                else
                 {
-                   MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                    });
+                    MainThread.BeginInvokeOnMainThread(async () =>
+                     {
+                         await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                         _navigationService.GoBack();
+                     });
+                    IsLoading = false;
                 }
-            });
-            await Task.Run(() =>
+                IsLoading = false;
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
             {
                 IsLoading = false;
-            });
+            }
         }
 
 
@@ -166,20 +166,20 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
         {
             if (App.IsSessionExpired)
             {
-               MainThread.BeginInvokeOnMainThread(() =>
-                {
-                    var _navigation = Application.Current.MainPage.Navigation;
-                    foreach (var item in _navigation.NavigationStack)
-                    {
-                        if (item.GetType().Name == App.SFAnonymousLandingPageView)
-                        {
-                            _navigation.RemovePage(item);
-                            break;
-                        }
-                    }
-                    _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
-                    _navigation.NavigationStack.ToList().Clear();
-                });
+                MainThread.BeginInvokeOnMainThread(() =>
+                 {
+                     var _navigation = Application.Current.MainPage.Navigation;
+                     foreach (var item in _navigation.NavigationStack)
+                     {
+                         if (item.GetType().Name == App.SFAnonymousLandingPageView)
+                         {
+                             _navigation.RemovePage(item);
+                             break;
+                         }
+                     }
+                     _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
+                     _navigation.NavigationStack.ToList().Clear();
+                 });
             }
         }
         public void GetPdfUrl()
@@ -196,12 +196,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             else
             {
                 //pop that certificate is not available
-               MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNoteAvailable));
+                MainThread.BeginInvokeOnMainThread(async () =>
+                 {
+                     await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PdfIsNoteAvailable));
 
-                    // await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
-                });
+                     // await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
+                 });
             }
             //}
         }

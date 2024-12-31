@@ -1,6 +1,7 @@
 ﻿
 
 using System.Globalization;
+using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
@@ -37,11 +38,22 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
                 await WebServiceManager.GAZTLogOff();
             }
-            catch
+            catch (GAZTNetworkConnectivityIssueException)
             {
-
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
             }
-
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                App.HideProgressView();
+            }
             await Task.Run(() =>
             {
                 App.HideProgressView();

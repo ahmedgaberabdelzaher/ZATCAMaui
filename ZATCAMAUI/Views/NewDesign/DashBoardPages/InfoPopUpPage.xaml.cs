@@ -1,6 +1,7 @@
 ﻿using Mopups.Pages;
 using Mopups.Services;
 using System.Globalization;
+using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel;
 
@@ -73,9 +74,21 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
             {
                 await WebServiceManager.GAZTLogOff();
             }
-            catch
+            catch (GAZTNetworkConnectivityIssueException)
             {
-
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, viewModel._navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, true, viewModel._navigationService);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                App.HideProgressView();
             }
 
             App.HideProgressView();

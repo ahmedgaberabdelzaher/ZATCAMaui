@@ -66,20 +66,25 @@ namespace ZATCAMAUI.Core.Mangers
                         }
 
                         String __ZAKATObjectionListData = response.Content.ReadAsStringAsync().Result;
-                        __ZAKATObjectionListData = JObject.Parse(__ZAKATObjectionListData).ToString();
-                        _ZAKATObjectionList = JsonConvert.DeserializeObject<ZakatObjectionListModel>(__ZAKATObjectionListData);
-                        if (!string.IsNullOrEmpty(__ZAKATObjectionListData))
+                        ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(__ZAKATObjectionListData);
+                        if (statusHeader?.header?.status?.code != "E999999")
                         {
-                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(__ZAKATObjectionListData);
-                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            __ZAKATObjectionListData = JObject.Parse(__ZAKATObjectionListData).ToString();
+                            _ZAKATObjectionList = JsonConvert.DeserializeObject<ZakatObjectionListModel>(__ZAKATObjectionListData);
+                            if (!string.IsNullOrEmpty(__ZAKATObjectionListData))
                             {
-                                string errorMessage = string.Empty;
-                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
-                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
-                                string WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
-                                errorMessage = WithReplacedString;
-                                throw new GAZTVATRegistrationInProcessException(errorMessage);
+                                ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(__ZAKATObjectionListData);
+                                if (errorMesg?.header?.moreInformation?.errorDetails != null ||
+                       errorMesg?.header?.moreInformation?.errorDetails.Count > 0)
+                                {
+                                    string errorMessage = WebServiceManager.PrepareErrorMessageByJson(__ZAKATObjectionListData);
+                                    throw new GAZTVATRegistrationInProcessException(errorMessage);
+                                }
                             }
+                        }
+                        else
+                        {
+                            throw new GAZTNetworkConnectivityIssueException();
                         }
                     }
                     return _ZAKATObjectionList;
@@ -88,17 +93,22 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception ex)
+                catch (HttpRequestException)
                 {
-                    
-                    
-                    App.IsSessionExpired = true;
-                    return null;
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
             {
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+                throw new InternetException();
             }
         }
 
@@ -177,8 +187,8 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 catch (Exception ex)
                 {
-                    
-                    
+
+
                     App.IsSessionExpired = true;
                     return null;
                 }
@@ -258,9 +268,9 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 catch (Exception ex)
                 {
-                               
-                    
-                    
+
+
+
                     App.IsSessionExpired = true;
                     return null;
                 }
@@ -334,8 +344,8 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 catch (Exception ex)
                 {
-                    
-                    
+
+
                     App.IsSessionExpired = true;
                     return null;
                 }
@@ -412,11 +422,11 @@ namespace ZATCAMAUI.Core.Mangers
 
                 catch (Exception ex)
                 {
-                    
-                    
+
+
                     App.IsSessionExpired = true;
 
-                
+
 
 
                     App.IsSessionExpired = true;
@@ -575,8 +585,8 @@ namespace ZATCAMAUI.Core.Mangers
                 catch (Exception ex)
                 {
 
-                    
-                    
+
+
                     App.IsSessionExpired = true;
                     return null;
                 }
@@ -649,8 +659,8 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 catch (Exception ex)
                 {
-                    
-                    
+
+
                     App.IsSessionExpired = true;
                     return null;
                 }
@@ -723,8 +733,8 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 catch (Exception ex)
                 {
-                    
-                    
+
+
                     App.IsSessionExpired = true;
                     return null;
                 }
@@ -793,8 +803,8 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 catch (Exception ex)
                 {
-                    
-                    
+
+
                     App.IsSessionExpired = true;
                     return null;
                 }
@@ -863,8 +873,8 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 catch (Exception ex)
                 {
-                    
-                    
+
+
                     App.IsSessionExpired = true;
                     return null;
                 }
@@ -932,8 +942,8 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 catch (Exception ex)
                 {
-                    
-                    
+
+
                     App.IsSessionExpired = true;
                     return null;
                 }
@@ -1002,8 +1012,8 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 catch (Exception ex)
                 {
-                    
-                    
+
+
                     App.IsSessionExpired = true;
                     return null;
                 }

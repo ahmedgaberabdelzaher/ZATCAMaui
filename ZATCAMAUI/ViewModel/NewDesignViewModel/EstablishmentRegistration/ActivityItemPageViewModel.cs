@@ -13,6 +13,7 @@ using ZATCAMAUI.Views.NewDesign.Common;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using static ZATCAMAUI.Models.ErrorMessage;
 using ZATCAMAUI.Core.Interfaces;
+using ZATCAMAUI.Core.Exceptions;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 {
@@ -909,7 +910,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                         if (App.IsArabic)
                         {
-                            item. ArrowImageSource = "arrowLeft.png";
+                            item.ArrowImageSource = "arrowLeft.png";
                             item.Institute = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? ZATCAConstants.ArIssueBy.FirstOrDefault(i => i.Value == CRIssueBy).Key : ZATCAConstants.ArIssueBy.FirstOrDefault(i => i.Value == LicenseIssueBy).Key;
                         }
                         else
@@ -941,7 +942,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     }
                 }
             }
-            catch (Exception )
+            catch (Exception)
             {
             }
             finally
@@ -1115,7 +1116,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
 
                     if (!string.IsNullOrEmpty(CRNumber))
-                       await validateCRNumber();
+                        await validateCRNumber();
                 }
                 else if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
                 {
@@ -1189,9 +1190,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     LicenseData = NregActivityList.Where(i => i.Type == "ZS0004").ToList();
                 }
             }
-            catch (Exception ex)
+            catch (GAZTNetworkConnectivityIssueException)
             {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
 
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
             }
             finally
             {
@@ -1299,28 +1308,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                 if (!string.IsNullOrEmpty(result))
                 {
-                    try
+                    validateCR = JsonConvert.DeserializeObject<ValidateCR>(result);
+                    CrName = validateCR.Crname;
+                    if (!string.IsNullOrEmpty(CrName))
                     {
-                        validateCR = JsonConvert.DeserializeObject<ValidateCR>(result);
-                        CrName = validateCR.Crname;
-                        if (!string.IsNullOrEmpty(CrName))
-                        {
-                            EnableCRInputField = false;
-                        }
-                        else
-                        {
-                            EnableCRInputField = true;
-                        }
-                        CRAcitivity = activityList.activitySet.Where(i => i.IndSector == validateCR?.Activity).FirstOrDefault();
-                        CRMainGroup = activityList.act_groupSet.Where(i => i.IndSector == validateCR?.ActMgrp).FirstOrDefault();
-                        CRSubGroup = activityList.act_subgroupSet.Where(i => i.IndSector == validateCR?.ActSgrp).FirstOrDefault();
+                        EnableCRInputField = false;
+                    }
+                    else
+                    {
+                        EnableCRInputField = true;
+                    }
+                    CRAcitivity = activityList.activitySet.Where(i => i.IndSector == validateCR?.Activity).FirstOrDefault();
+                    CRMainGroup = activityList.act_groupSet.Where(i => i.IndSector == validateCR?.ActMgrp).FirstOrDefault();
+                    CRSubGroup = activityList.act_subgroupSet.Where(i => i.IndSector == validateCR?.ActSgrp).FirstOrDefault();
 
-                        makeDropdownFieldsNorEditable();
-                    }
-                    catch (Exception ex)
-                    {
-                        IsLoading = false;
-                    }
+                    makeDropdownFieldsNorEditable();
                     IsLoading = false;
                     if (validateCR != null && validateCR.Crnum == null)
                     {
@@ -1339,11 +1341,27 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                 }
             }
-            catch (Exception)
+            catch (GAZTNetworkConnectivityIssueException)
             {
-
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
             }
 
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (GAZTErrorException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
+            }
 
 
             if (validateCR != null)
@@ -1538,8 +1556,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     LicensesCopies.Add(dd);
                 }
             }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
             catch (Exception)
-            { }
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
             finally
             {
                 IsLoading = false;

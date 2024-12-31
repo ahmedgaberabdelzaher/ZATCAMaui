@@ -839,11 +839,21 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     }
 
                 }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+                }
+                catch (InternetException)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+                }
                 catch (Exception)
                 {
-
-
-                    //  return null;
+                    await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+                }
+                finally
+                {
+                    IsLoading = false;
                 }
             });
             await Task.Run(() =>

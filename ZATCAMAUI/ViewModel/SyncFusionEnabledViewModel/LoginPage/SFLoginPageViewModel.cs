@@ -513,50 +513,41 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                     {
                         try
                         {
-                            try
+                            IsLoading = true;
+                            TINs = await WebServiceManager.SFGAZTGetAllTINs(Email);
+                            if (TINs != null && TINs.Count != 0)
                             {
-                                IsLoading = true;
-                                TINs = await WebServiceManager.SFGAZTGetAllTINs(Email);
-                                if (TINs != null && TINs.Count != 0)
+                                if (SelectedTinId == null)
                                 {
-                                    if (SelectedTinId == null)
-                                    {
-                                        SelectedTinId = TINs[0];
-                                    }
+                                    SelectedTinId = TINs[0];
                                 }
-                                else
-                                {
-                                    IsVisibleTinIds = false;
-                                    await _dialogService.ShowMessageBox(AppResources.NoTINsAvailable, AppResources.Information);
-                                    IsVisibleTinIds = false;
-                                }
-                                IsLoading = false;
                             }
-                            catch (Exception)
+                            else
                             {
                                 IsVisibleTinIds = false;
+                                await _dialogService.ShowMessageBox(AppResources.NoTINsAvailable, AppResources.Information);
                                 IsVisibleTinIds = false;
-                                await _dialogService.ShowMessageBox(AppResources.NetworkConnectivityIssue, AppResources.Information);
-                                IsLoading = false;
                             }
-                        }
-                        catch (GAZTException gex)
-                        {
                             IsLoading = false;
-                            string MessageForTheUser = gex.Message;
-                            if (gex is GAZTNetworkConnectivityIssueException)
-                            {
-                                MessageForTheUser = AppResources.NetworkConnectivityIssue;
-                            }
-                            else if (gex is GAZTInternetException)
-                            {
-                                MessageForTheUser = AppResources.ZZInternetConnectionMessage;
-                            }
-                            else if (gex is GAZTException)
-                            {
-                                MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                            }
-                            await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+
+                        }
+                        catch (GAZTNetworkConnectivityIssueException)
+                        {
+                            await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+                        }
+                        catch (InternetException)
+                        {
+                            await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+                        }
+                        catch (Exception)
+                        {
+                            await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+                        }
+                        finally
+                        {
+                            IsVisibleTinIds = false;
+                            IsVisibleTinIds = false;
+                            IsLoading = false;
                         }
                     });
                 }
@@ -746,21 +737,25 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                         MessageTxt = json.GetValue("httpMessage").ToString();
                     }
                 }
-                catch (Exception gex)
+                catch (GAZTVATRegistrationInProcessException ex)
                 {
-                    string MessageForTheUser = gex.Message;
-
-                    if (gex is GAZTNetworkConnectivityIssueException)
-                    {
-                        MessageForTheUser = AppResources.NetworkConnectivityIssue;
-                    }
-                    else if (gex is InternetException)
-                    {
-                        MessageForTheUser = AppResources.ZZInternetConnectionMessage;
-                    }
+                    await UtilityManager.HandleExceptionMessage(ex.Message, false);
+                }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+                }
+                catch (InternetException)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+                }
+                catch (Exception)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+                }
+                finally
+                {
                     IsLoading = false;
-
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                 }
             }
             finally
@@ -772,29 +767,48 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
 
         internal async Task TinEntryUnfocusedAsync(string text)
         {
-            IsLoading = true;
-            int return_code = UtilityManager.CheckEmailOrTin(text.Trim());
-            switch (return_code)
+            try
             {
-                case 0:
-                    IsTinDropdownVisible = false;
-                    SelectedTin = string.Empty;
-                    break;
-                case 1:
-                    IsTinDropdownVisible = false;
-                    SelectedTin = string.Empty;
-                    break;
-                case 2:
-                    TinsList = await WebServiceManager.GetTinsBasedOnEmail(text.Trim());
+                IsLoading = true;
+                int return_code = UtilityManager.CheckEmailOrTin(text.Trim());
+                switch (return_code)
+                {
+                    case 0:
+                        IsTinDropdownVisible = false;
+                        SelectedTin = string.Empty;
+                        break;
+                    case 1:
+                        IsTinDropdownVisible = false;
+                        SelectedTin = string.Empty;
+                        break;
+                    case 2:
+                        TinsList = await WebServiceManager.GetTinsBasedOnEmail(text.Trim());
 
-                    if (TinsList.Data != null && TinsList.Data.Count > 0)
-                    {
-                        SelectedTin = AppResources.PleaseSelectTIN;
-                        IsTinDropdownVisible = true;
-                    }
-                    break;
+                        if (TinsList.Data != null && TinsList.Data.Count > 0)
+                        {
+                            SelectedTin = AppResources.PleaseSelectTIN;
+                            IsTinDropdownVisible = true;
+                        }
+                        break;
+                }
+                IsLoading = false;
             }
-            IsLoading = false;
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
+            }
         }
         private async Task OpenTinsDropdown()
         {

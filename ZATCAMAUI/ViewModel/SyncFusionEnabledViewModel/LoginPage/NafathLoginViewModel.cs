@@ -1,5 +1,6 @@
 using System;
 using System.Windows.Input;
+using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
@@ -52,7 +53,7 @@ public class NafathLoginViewModel : BaseViewModel
         }
     }
 
-    
+
     private async Task DisplayLocationPermissionDilaogAsync()
     {
         try
@@ -128,7 +129,19 @@ public class NafathLoginViewModel : BaseViewModel
             }
             IsLoading = false;
         }
+        catch (GAZTNetworkConnectivityIssueException)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+        }
+        catch (InternetException)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+        }
         catch (Exception)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+        }
+        finally
         {
             IsLoading = false;
         }
@@ -158,16 +171,16 @@ public class NafathLoginViewModel : BaseViewModel
 
     private async Task<NafathLoginResponseModel> Login()
     {
-        NafathLoginRequestModel model = new NafathLoginRequestModel()
-        {
-            Idnumber = NafathId,
-            Inpchz = App.IncomingChannel,
-            Langz = WebServiceManager.GetLangZParameterAREN(),
-            processType = navigation
-        };
+            NafathLoginRequestModel model = new NafathLoginRequestModel()
+            {
+                Idnumber = NafathId,
+                Inpchz = App.IncomingChannel,
+                Langz = WebServiceManager.GetLangZParameterAREN(),
+                processType = navigation
+            };
 
-        NafathLoginResponse = await WebServiceManager.NafathLogin(model);
-        NafathLoginResponse.result.idNumber = NafathId;
-        return NafathLoginResponse;
+            NafathLoginResponse = await WebServiceManager.NafathLogin(model);
+            NafathLoginResponse.result.idNumber = NafathId;
+            return NafathLoginResponse;
     }
 }

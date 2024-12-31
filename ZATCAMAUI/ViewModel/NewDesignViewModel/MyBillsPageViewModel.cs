@@ -490,142 +490,155 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
         public async Task ShowPaymentOptions()
         {
-
-            if (BModel != null)
+            try
             {
-                if (BModel.MadabutFg == "X")
+                if (BModel != null)
                 {
-                    await MopupService.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
+                    if (BModel.MadabutFg == "X")
+                    {
+                        await MopupService.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
+                    }
+                    else
+                    {
+                        await MopupService.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, BModel.OpenliMsg));
+                    }
+                    var total = "";
+                    if (MultiplePayableBills != null && MultiplePayableBills.Count > 0)
+                    {
+                        total = MultiplePayableBills.Sum(x => Double.Parse(x.TestDueAmount)).ToString();
+                    }
+                    else
+                    {
+                        total = BModel.TestDueAmount;
+                    }
+                    selectedFbNum = BModel.Fbnum;
+                    selectedSadadNo = BModel.VTRE2;
+                    selectedAmount = total;
+                    selectedTaxablePeriod = BModel.Persl;
+                    isPayNowTapped = false;
+
                 }
-                else
-                {
-                    await MopupService.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, BModel.OpenliMsg));
-                }
-                var total = "";
-                if (MultiplePayableBills != null && MultiplePayableBills.Count > 0)
-                {
-                    total = MultiplePayableBills.Sum(x => Double.Parse(x.TestDueAmount)).ToString();
-                }
-                else
-                {
-                    total = BModel.TestDueAmount;
-                }
-                selectedFbNum = BModel.Fbnum;
-                selectedSadadNo = BModel.VTRE2;
-                selectedAmount = total;
-                selectedTaxablePeriod = BModel.Persl;
-                isPayNowTapped = false;
+            }
+            catch (Exception)
+            {
 
             }
+
+
         }
         public async Task onPageLoad(BillInfo billInfo)
         {
             IsLoading = true;
             MyBills = null;
 
+
             try
             {
-                try
+                string lang = UtilityManager.GetLanguageParameter();
+                MyBills = await WebServiceManager.GetUserBills(App.TP.TIN, lang);
+                await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+
+                if (MyBills != null)
                 {
-                    string lang = UtilityManager.GetLanguageParameter();
-                    MyBills = await WebServiceManager.GetUserBills(App.TP.TIN, lang);
-                    await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
-                    if (MyBills != null)
+                    if (MyBills.Count != 0)
                     {
 
-                        if (MyBills.Count != 0)
-                        {
-
-                            IsListVisible = true;
-                            isNoDataLableVisible = false;
-                        }
-                        else
-                        {
-                            IsListVisible = false;
-                            isNoDataLableVisible = true;
-                        }
-
-                    }
-
-
-                    if (MyBills != null && MyBills.Count != 0)
-                    {
-                        MyBillsOriginal = MyBills;
-
-                        SelcectedBillsIndex = 0;
-
-                        int milliseconds = 1000;
-                        Thread.Sleep(milliseconds);
-
-                        if (billInfo != null)
-                        {
-                            if (billInfo.BillTypeName == AppResources.Paid)
-                            {
-                                SelcectedBillsIndex = 1;
-                            }
-                            else if (billInfo.BillTypeName == AppResources.UnPaid)
-                            {
-                                SelcectedBillsIndex = 2;
-                            }
-                            else if (billInfo.BillTypeName == AppResources.Partial)
-                            {
-                                SelcectedBillsIndex = 3;
-                            }
-                        }
-
-                        foreach (MyBills myBills in MyBills)
-                        {
-                            if (myBills.Period.Contains("000000") || myBills.PeriodPart1.Contains("000000") || myBills.PeriodPart2.Contains("000000"))
-                            {
-                                myBills.IsPeriodVisible = false;
-                            }
-                            else
-                            {
-                                myBills.IsPeriodVisible = true;
-                            }
-
-                            if (myBills.Status == "Partially Paid")
-                            {
-                                if (string.IsNullOrEmpty(myBills.Paidamt))
-                                {
-                                    myBills.Paidamt = "0";
-                                }
-
-                                if (!string.IsNullOrEmpty(myBills.BETRW) && !string.IsNullOrEmpty(myBills.Paidamt))
-                                {
-                                    myBills.TotalRemainingAmount = (double.Parse(myBills.BETRW, NumberStyles.Number, CultureInfo.InvariantCulture) - double.Parse(myBills.Paidamt, NumberStyles.Number, CultureInfo.InvariantCulture)).ToString();
-                                    string format = "$#,##0.00;-$#,##0.00;Zero";
-                                    decimal dRem = decimal.Parse(myBills.TotalRemainingAmount, NumberStyles.Number, CultureInfo.InvariantCulture);
-
-                                    decimal positiveMoneyRem = dRem;
-                                    positiveMoneyRem.ToString(format);  //will return $24,508,975.94
-                                    myBills.TotalRemainingAmount = UtilityManager.GetCommaSeparatedAmount(positiveMoneyRem.ToString());
-                                }
-                            }
-                        }
-                        FilterIfTypeAndStausFilterSelected(false);
+                        IsListVisible = true;
+                        isNoDataLableVisible = false;
                     }
                     else
                     {
+                        IsListVisible = false;
                         isNoDataLableVisible = true;
                     }
+
                 }
-                catch (Exception e)
+
+
+                if (MyBills != null && MyBills.Count != 0)
                 {
-                    IsLoading = false;
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(e.Message));
-                    _navigationService.GoBack();
-                   
+                    MyBillsOriginal = MyBills;
+
+                    SelcectedBillsIndex = 0;
+
+                    int milliseconds = 1000;
+                    Thread.Sleep(milliseconds);
+
+                    if (billInfo != null)
+                    {
+                        if (billInfo.BillTypeName == AppResources.Paid)
+                        {
+                            SelcectedBillsIndex = 1;
+                        }
+                        else if (billInfo.BillTypeName == AppResources.UnPaid)
+                        {
+                            SelcectedBillsIndex = 2;
+                        }
+                        else if (billInfo.BillTypeName == AppResources.Partial)
+                        {
+                            SelcectedBillsIndex = 3;
+                        }
+                    }
+
+                    foreach (MyBills myBills in MyBills)
+                    {
+                        if (myBills.Period.Contains("000000") || myBills.PeriodPart1.Contains("000000") || myBills.PeriodPart2.Contains("000000"))
+                        {
+                            myBills.IsPeriodVisible = false;
+                        }
+                        else
+                        {
+                            myBills.IsPeriodVisible = true;
+                        }
+
+                        if (myBills.Status == "Partially Paid")
+                        {
+                            if (string.IsNullOrEmpty(myBills.Paidamt))
+                            {
+                                myBills.Paidamt = "0";
+                            }
+
+                            if (!string.IsNullOrEmpty(myBills.BETRW) && !string.IsNullOrEmpty(myBills.Paidamt))
+                            {
+                                myBills.TotalRemainingAmount = (double.Parse(myBills.BETRW, NumberStyles.Number, CultureInfo.InvariantCulture) - double.Parse(myBills.Paidamt, NumberStyles.Number, CultureInfo.InvariantCulture)).ToString();
+                                string format = "$#,##0.00;-$#,##0.00;Zero";
+                                decimal dRem = decimal.Parse(myBills.TotalRemainingAmount, NumberStyles.Number, CultureInfo.InvariantCulture);
+
+                                decimal positiveMoneyRem = dRem;
+                                positiveMoneyRem.ToString(format);  //will return $24,508,975.94
+                                myBills.TotalRemainingAmount = UtilityManager.GetCommaSeparatedAmount(positiveMoneyRem.ToString());
+                            }
+                        }
+                    }
+                    FilterIfTypeAndStausFilterSelected(false);
+                }
+                else
+                {
+                    isNoDataLableVisible = true;
                 }
             }
-            catch (InternetException ex)
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
             {
                 IsLoading = false;
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                _navigationService.GoBack();
-              
             }
+
             IsLoading = false;
         }
 
@@ -681,8 +694,25 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 }
 
             }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
             catch (Exception)
             {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
 
@@ -884,92 +914,86 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
         {
             try
             {
-                try
+                IsLoading = true;
+
+                var platform = "";
+
+                if (DeviceInfo.Platform == DevicePlatform.iOS)
+                {
+                    platform = "C4";
+                }
+                else if (DeviceInfo.Platform == DevicePlatform.Android)
+                {
+                    platform = "C3";
+                }
+                //PaymentData = await WebServiceManager.GAZTValidatePayment(fbNum, App.LoginDataRetrieved.TIN, platform);
+
+
+                ValidatePayment modelDetails = new ValidatePayment();
+                modelDetails.Fbnum = fbNum;
+                modelDetails.Pymntty = paymentType;
+                modelDetails.Tin = App.LoginDataRetrieved.TIN;
+                modelDetails.Srcid = platform;
+                modelDetails.Srctile = "53";
+                modelDetails.Sadad = sdadNo;
+
+                PaymentData = await WebServiceManager.GAZTValidatePayment(modelDetails);
+
+                IsLoading = false;
+                if (PaymentData.d.Guid != null && PaymentData.d.Guid == "")
+                {
+                    await MopupService.Instance.PushAsync(new PaymentExceptionPageView());
+                    return;
+                }
+
+                if (PaymentData != null && PaymentData.d != null)
                 {
 
-                    IsLoading = true;
-
-                    var platform = "";
-
-                    if (DeviceInfo.Platform == DevicePlatform.iOS)
+                    if (PaymentData.d.Guid != null)
                     {
-                        platform = "C4";
-                    }
-                    else if (DeviceInfo.Platform == DevicePlatform.Android)
-                    {
-                        platform = "C3";
-                    }
-                    //PaymentData = await WebServiceManager.GAZTValidatePayment(fbNum, App.LoginDataRetrieved.TIN, platform);
 
+                        App.PaymentGuid = PaymentData.d.Guid;
 
-                    ValidatePayment modelDetails = new ValidatePayment();
-                    modelDetails.Fbnum = fbNum;
-                    modelDetails.Pymntty = paymentType;
-                    modelDetails.Tin = App.LoginDataRetrieved.TIN;
-                    modelDetails.Srcid = platform;
-                    modelDetails.Srctile = "53";
-                    modelDetails.Sadad = sdadNo;
-
-                    PaymentData = await WebServiceManager.GAZTValidatePayment(modelDetails);
-
-                    IsLoading = false;
-                    if (PaymentData.d.Guid != null && PaymentData.d.Guid == "")
-                    {
-                        await MopupService.Instance.PushAsync(new PaymentExceptionPageView());
-                        return;
                     }
 
-                    if (PaymentData != null && PaymentData.d != null)
+                    if (paymentType == "Mada Payment")
                     {
 
-                        if (PaymentData.d.Guid != null)
+                        IsLoading = true;
+                        //CR7420
+                        CreateMadaResponseRoot respose = await GetWebviewContent(PaymentData.d.Srcid);
+                        IsLoading = false;
+                        if (!string.IsNullOrEmpty(respose?.result?.securityAuthorizationKey))
                         {
-
-                            App.PaymentGuid = PaymentData.d.Guid;
-
+                            App.securityAuthorizationKey = respose.result.securityAuthorizationKey;
+                            await _navigationService.NavigateTo(App.PaymentProcessWebview, 2);
                         }
-
-                        if (paymentType == "Mada Payment")
-                        {
-
-                            IsLoading = true;
-                            //CR7420
-                            CreateMadaResponseRoot respose = await GetWebviewContent(PaymentData.d.Srcid);
-                            IsLoading = false;
-                            if (!string.IsNullOrEmpty(respose?.result?.securityAuthorizationKey))
-                            {
-                                App.securityAuthorizationKey = respose.result.securityAuthorizationKey;
-                                await _navigationService.NavigateTo(App.PaymentProcessWebview, 2);
-                            }
-                        }
-
                     }
 
+                }
 
-                }
-                catch (GAZTValidatePaymentInProcessException ex)
-                {
-                    IsLoading = false;
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                }
-                catch (InternetException)
-                {
-                    IsLoading = false;
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                    _navigationService.GoBack();
-                }
+
+
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
             }
             catch (InternetException)
             {
-                IsLoading = false;
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                _navigationService.GoBack();
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
-
-            catch (GAZTNetworkConnectivityIssueException)
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
             {
                 IsLoading = false;
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
             }
         }
 
