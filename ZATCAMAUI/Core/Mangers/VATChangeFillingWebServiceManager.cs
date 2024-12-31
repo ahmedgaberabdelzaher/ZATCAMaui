@@ -2,6 +2,7 @@
 using System.Net.Http.Headers;
 using System.Text;
 using Newtonsoft.Json;
+using Org.BouncyCastle.Asn1.Ocsp;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Models;
@@ -64,15 +65,25 @@ namespace ZATCAMAUI.Core.Mangers
                             App.Token = NewToken;
                         }
                         _VATChangeFillingPeriodRequestData = _vATChangeFillingPeriodGetResponse.Content.ReadAsStringAsync().Result;
-                        if (!string.IsNullOrEmpty(_VATChangeFillingPeriodRequestData))
+
+                        ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(_VATChangeFillingPeriodRequestData);
+                        if (statusHeader?.header?.status?.code != "E999999")
                         {
-                            _vATChangeFillingPeriodRequestModel = JsonConvert.DeserializeObject<VATChangeFillingPeriodRequestModel>(_VATChangeFillingPeriodRequestData);
+                            if (!string.IsNullOrEmpty(_VATChangeFillingPeriodRequestData))
+                            {
+                                _vATChangeFillingPeriodRequestModel = JsonConvert.DeserializeObject<VATChangeFillingPeriodRequestModel>(_VATChangeFillingPeriodRequestData);
+                            }
+                            if (!string.IsNullOrEmpty(_VATChangeFillingPeriodRequestData) && _vATChangeFillingPeriodRequestModel.d == null)
+                            {
+                                var message = WebServiceManager.PrepareErrorMessageByJson(_VATChangeFillingPeriodRequestData);
+                                throw new GAZTVATChangeFillingPeriodException(message);
+                            }
                         }
-                        if (!string.IsNullOrEmpty(_VATChangeFillingPeriodRequestData) && _vATChangeFillingPeriodRequestModel.d == null)
+                        else
                         {
-                            var message  = WebServiceManager.PrepareErrorMessageByJson(_VATChangeFillingPeriodRequestData);
-                            throw new GAZTVATChangeFillingPeriodException(message);
+                            throw new GAZTNetworkConnectivityIssueException();
                         }
+
                     }
                     return _vATChangeFillingPeriodRequestModel;
                 }
@@ -80,15 +91,18 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     throw new GAZTVATChangeFillingPeriodException(ex.Message);
                 }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
                 catch (Exception)
                 {
-                    App.IsSessionExpired = true;
-                    return null;
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
             {
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+                throw new InternetException();
             }
         }
 
@@ -125,35 +139,46 @@ namespace ZATCAMAUI.Core.Mangers
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
                     HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
                     string _contractReleasesubmitResponse = res.Content.ReadAsStringAsync().Result;
-                    _vATChangeFillingPeriodRequestModel = JsonConvert.DeserializeObject<VATChangeFillingPeriodRequestModel>(_contractReleasesubmitResponse);
-                    if (!string.IsNullOrEmpty(_contractReleasesubmitResponse) && _vATChangeFillingPeriodRequestModel.d == null)
+                    ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(_contractReleasesubmitResponse);
+                    if (statusHeader?.header?.status?.code != "E999999")
                     {
-                        ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_contractReleasesubmitResponse);
-                        if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                        _vATChangeFillingPeriodRequestModel = JsonConvert.DeserializeObject<VATChangeFillingPeriodRequestModel>(_contractReleasesubmitResponse);
+                        if (!string.IsNullOrEmpty(_contractReleasesubmitResponse) && _vATChangeFillingPeriodRequestModel.d == null)
                         {
-                            string errorMessage = string.Empty;
-                            errorMessage = errorMesg.error.innererror.errordetails[0].message;
-                            errorMessage += errorMesg.error.innererror.errordetails[1].message;
-                            String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
-                            errorMessage = WithReplacedString;
-                            throw new GAZTVATRegistrationInProcessException(errorMessage);
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_contractReleasesubmitResponse);
+
+                            if (errorMesg?.header?.moreInformation?.errorDetails != null ||
+              errorMesg?.header?.moreInformation?.errorDetails.Count > 0)
+                            {
+                                string errorMessage = WebServiceManager.PrepareErrorMessageByJson(_contractReleasesubmitResponse);
+                                throw new GAZTVATChangeFillingPeriodException(errorMessage);
+                            }
+
                         }
+                        return _vATChangeFillingPeriodRequestModel;
                     }
-                    return _vATChangeFillingPeriodRequestModel;
+                    else
+                    {
+                        throw new GAZTNetworkConnectivityIssueException();
+                    }
+
                 }
                 catch (GAZTVATChangeFillingPeriodException ex)
                 {
                     throw new GAZTVATChangeFillingPeriodException(ex.Message);
                 }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
                 catch (Exception)
                 {
-                    App.IsSessionExpired = true;
-                    return null;
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
             {
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+                throw new InternetException();
             }
         }
 
@@ -183,7 +208,7 @@ namespace ZATCAMAUI.Core.Mangers
                     String url = ZATCAConstants.VATChangeFillingPeriodGetDropdownURL + gpart + "&language=" + lang;
                     var uri = new Uri(url);
                     HttpResponseMessage _vATRefillingGetDropdownResponse = client.GetAsync(uri).Result;
-                  
+
                     if (_vATRefillingGetDropdownResponse != null)
                     {
                         if (_vATRefillingGetDropdownResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -208,47 +233,50 @@ namespace ZATCAMAUI.Core.Mangers
                             App.Token = NewToken;
                         }
                         String _VATRefillingRequestData = _vATRefillingGetDropdownResponse.Content.ReadAsStringAsync().Result;
-                        
-                        if (!string.IsNullOrEmpty(_VATRefillingRequestData))
+
+                        ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(_VATRefillingRequestData);
+                        if (statusHeader?.header?.status?.code != "E999999")
                         {
-                            if (string.IsNullOrEmpty(_VATRefillingRequestData) != true)
+                            if (!string.IsNullOrEmpty(_VATRefillingRequestData))
                             {
-                                _vATRefillingDropdownModel = JsonConvert.DeserializeObject<VATRefillingDropdownModel>(_VATRefillingRequestData);
+                                if (string.IsNullOrEmpty(_VATRefillingRequestData) != true)
+                                {
+                                    _vATRefillingDropdownModel = JsonConvert.DeserializeObject<VATRefillingDropdownModel>(_VATRefillingRequestData);
+                                }
                             }
-
-
-
                         }
-
+                        else
+                        {
+                            throw new GAZTNetworkConnectivityIssueException();
+                        }
                     }
                     return _vATRefillingDropdownModel;
                 }
-                catch (GAZTVATChangeFillingPeriodException ex)
+                catch (GAZTNetworkConnectivityIssueException)
                 {
-                    throw new GAZTVATChangeFillingPeriodException(ex.Message);
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
                 catch (Exception)
                 {
-                    App.IsSessionExpired = true;
-                    return null;
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
             {
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+                throw new InternetException();
             }
         }
 
         public async static Task<string> GAZTGetTInNumberData(string tin)
         {
-
+            string SignUpCityList = string.Empty;
             VATSignUp _validateIDResponse = new VATSignUp();
             if (NetworkCheck.IsInternet())
             {
                 VATSignUp vATSignUp = new VATSignUp();
                 string IsIDTypeValidList = string.Empty;
                 string NewToken = string.Empty;
-                string SignUpCityList = string.Empty;
+
                 try
                 {
                     HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
@@ -297,24 +325,18 @@ namespace ZATCAMAUI.Core.Mangers
                             App.Token = NewToken;
                         }
                         SignUpCityList = await VATSignUpIdValidateObject.Content.ReadAsStringAsync();
+                        ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(SignUpCityList);
+                        if (statusHeader?.header?.status?.code == "E999999")
+                        {
+                            throw new GAZTNetworkConnectivityIssueException();
+                        }
+                        return SignUpCityList;
                     }
-                    return SignUpCityList;
+
                 }
-                catch (JsonReaderException )
+                catch (GAZTNetworkConnectivityIssueException)
                 {
-                    throw new GAZTInvalidDataException();
-                }
-                catch (HttpRequestException ex)
-                {
-                    throw ex;
-                }
-                catch (GAZTSessionExpiredException gex)
-                {
-                    throw gex;
-                }
-                catch (GAZTException gex)
-                {
-                    throw gex;
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
                 catch (Exception)
                 {
@@ -323,8 +345,9 @@ namespace ZATCAMAUI.Core.Mangers
             }
             else
             {
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+                throw new InternetException();
             }
+            return SignUpCityList;
         }
 
         public async static Task<ValidateIDResponse> GAZTVATChangeFillingPeriodValidateIDnumber(string tin, string idType, string idnum, string country, string passExpdt, string taxpDOB)
@@ -390,38 +413,31 @@ namespace ZATCAMAUI.Core.Mangers
                             App.Token = NewToken;
                         }
                         SignUpCityList = await VATSignUpIdValidateObject.Content.ReadAsStringAsync();
-                        _validateIDResponse = JsonConvert.DeserializeObject<ValidateIDResponse>(SignUpCityList);
-                        if (!string.IsNullOrEmpty(SignUpCityList) && _validateIDResponse.d == null)
+
+                        ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(SignUpCityList);
+                        if (statusHeader?.header?.status?.code != "E999999")
                         {
-                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(SignUpCityList);
-                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            _validateIDResponse = JsonConvert.DeserializeObject<ValidateIDResponse>(SignUpCityList);
+                            if (!string.IsNullOrEmpty(SignUpCityList) && _validateIDResponse.d == null)
                             {
-                                string errorMessage = string.Empty;
-                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
-                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
-                                string WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
-                                errorMessage = WithReplacedString;
-                                _validateIDResponse.errorMessage = errorMessage;
+                                string errorMessage = WebServiceManager.PrepareErrorMessageByJson(SignUpCityList);
+                                throw new GAZTVATRegistrationInProcessException(errorMessage);
                             }
+                        }
+                        else
+                        {
+                            throw new GAZTNetworkConnectivityIssueException();
                         }
                     }
                     return _validateIDResponse;
                 }
-                catch (JsonReaderException)
+                catch (GAZTVATRegistrationInProcessException ex)
                 {
-                    throw new GAZTInvalidDataException();
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (HttpRequestException ex)
+                catch (GAZTNetworkConnectivityIssueException)
                 {
-                    throw ex;
-                }
-                catch (GAZTSessionExpiredException gex)
-                {
-                    throw gex;
-                }
-                catch (GAZTException gex)
-                {
-                    throw gex;
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
                 catch (Exception)
                 {
@@ -459,12 +475,9 @@ namespace ZATCAMAUI.Core.Mangers
                     client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
                     client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
                     client.DefaultRequestHeaders.Add("Authorization", App.Token);
-                    //String url = Constants.VATChangeFillingListURL + "TaxType='" + taxType + "',AudTin='" + "',Gpart='" + gpart + "',Lang='" + lang + "'," +
-                    //  "UserTin='" + "')?&$expand=ASSLISTSet,STATUSSet,REQTYPSet&$format=json";
                     String url = ZATCAConstants.VATChangeFillingListURL + gpart + "&language=" + lang;
                     var uri = new Uri(url);
                     HttpResponseMessage _vatChangeFillingListResponse = client.GetAsync(uri).Result;
-                    //HttpResponseMessage _vatChangeFillingListResponse = await GetServiceManager.MakeGetAPICall(url, false, "");
 
                     if (_vatChangeFillingListResponse != null)
                     {
@@ -491,20 +504,22 @@ namespace ZATCAMAUI.Core.Mangers
                         }
 
                         String _vatChangeFillingListData = _vatChangeFillingListResponse.Content.ReadAsStringAsync().Result;
-                        //_vATChangeFillingListModel = JObject.Parse(_vatChangeFillingListData)["d"].ToString();
-
-                        //if (!string.IsNullOrEmpty(_vatChangeFillingListData) && _vATChangeFillingListModel.d == null)
-                        //{
-
-                        if (!string.IsNullOrEmpty(_vatChangeFillingListData))
+                        ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(_vatChangeFillingListData);
+                        if (statusHeader?.header?.status?.code != "E999999")
                         {
-                            // _vatChangeFillingListData = JObject.Parse(_vatChangeFillingListData)["data"].ToString();
-                            if (string.IsNullOrEmpty(_vatChangeFillingListData) != true)
+                            if (!string.IsNullOrEmpty(_vatChangeFillingListData))
                             {
-                                _vATChangeFillingListModel = JsonConvert.DeserializeObject<VATChangeFillingListModel>(_vatChangeFillingListData);
+                                if (string.IsNullOrEmpty(_vatChangeFillingListData) != true)
+                                {
+                                    _vATChangeFillingListModel = JsonConvert.DeserializeObject<VATChangeFillingListModel>(_vatChangeFillingListData);
+                                }
                             }
-
                         }
+                        else
+                        {
+                            throw new GAZTNetworkConnectivityIssueException();
+                        }
+
 
                     }
 
@@ -512,19 +527,18 @@ namespace ZATCAMAUI.Core.Mangers
 
                 }
 
-                catch (GAZTVATChangeFillingPeriodException ex)
+                catch (GAZTNetworkConnectivityIssueException)
                 {
-                    throw new GAZTVATChangeFillingPeriodException(ex.Message);
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
                 catch (Exception)
                 {
-                    App.IsSessionExpired = true;
-                    return null;
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
             {
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+                throw new InternetException();
             }
         }
 
@@ -579,39 +593,43 @@ namespace ZATCAMAUI.Core.Mangers
                             App.Token = NewToken;
                         }
                         String _vatChangeFillingSummaryData = _vatChangeFillingSumamryResponse.Content.ReadAsStringAsync().Result;
-                        if (!string.IsNullOrEmpty(_vatChangeFillingSummaryData))
+                        ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(_vatChangeFillingSummaryData);
+                        if (statusHeader?.header?.status?.code != "E999999")
                         {
-                            _vATChangeFillingSummaryModel = JsonConvert.DeserializeObject<VATChangeFillingSummaryModel>(_vatChangeFillingSummaryData);
-                        }
-                        if (!string.IsNullOrEmpty(_vatChangeFillingSummaryData) && _vATChangeFillingSummaryModel.d == null)
-                        {
-                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_vatChangeFillingSummaryData);
-                            if (errorMesg != null && errorMesg.header != null && errorMesg.header.moreInformation != null && errorMesg.header.moreInformation.errorDetails != null && errorMesg.header.moreInformation.errorDetails[0].message != null)
+                            if (!string.IsNullOrEmpty(_vatChangeFillingSummaryData))
                             {
-                                string errorMessage = string.Empty;
-                                errorMessage = errorMesg.header.moreInformation.errorDetails[0].message;
-                                errorMessage += errorMesg.header.moreInformation.errorDetails[1].message;
-                                string WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
-                                errorMessage = WithReplacedString;
-                                throw new GAZTVATChangeFillingPeriodException(errorMessage);
+                                _vATChangeFillingSummaryModel = JsonConvert.DeserializeObject<VATChangeFillingSummaryModel>(_vatChangeFillingSummaryData);
                             }
+                            if (!string.IsNullOrEmpty(_vatChangeFillingSummaryData) && _vATChangeFillingSummaryModel.d == null)
+                            {
+                                string errorMessage = WebServiceManager.PrepareErrorMessageByJson(_vatChangeFillingSummaryData);
+
+                                throw new GAZTVATRegistrationInProcessException(errorMessage);
+                            }
+                        }
+                        else
+                        {
+                            throw new GAZTNetworkConnectivityIssueException();
                         }
                     }
                     return _vATChangeFillingSummaryModel;
                 }
-                catch (GAZTVATChangeFillingPeriodException ex)
+                catch (GAZTVATRegistrationInProcessException ex)
                 {
-                    throw new GAZTVATChangeFillingPeriodException(ex.Message);
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
                 catch (Exception)
                 {
-                    App.IsSessionExpired = true;
-                    return null;
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
             {
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+                throw new InternetException();
             }
         }
 

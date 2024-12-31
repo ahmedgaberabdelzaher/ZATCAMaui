@@ -147,8 +147,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
         public async Task OnPageLoad(ZakatReturnDetailsD zakatReturnDetailsD)
         {
             IsLoading = true;
-            await Task.Run(async () =>
-            {
                 try
                 {
                     SetSuccussMessageVisibility();
@@ -221,15 +219,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                         estimatedZAKATReturnsSADADNumber.d.results[0].InvoiceVisibility = false;
                     }
                 }
-                catch (InternetException ex)
-                {
-                    IsLoading = false;
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                    });
-                }
-            });
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
+            }
+
             IsLoading = false;
         }
 

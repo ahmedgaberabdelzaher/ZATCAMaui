@@ -190,10 +190,21 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AttachmentPages
                 }
                 viewModel.IsLoading = false;
             }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
             catch (Exception)
             {
-
-
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                viewModel.IsLoading = false;
             }
         }
         public void PopToRootPage()
@@ -261,9 +272,21 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.AttachmentPages
                 }
 
             }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, viewModel._navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, true, viewModel._navigationService);
+            }
             catch (Exception)
             {
-
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                viewModel.IsLoading = false;
             }
         }
         private async Task DownloadAndSaveFile(string pathToFile, string fileContents)

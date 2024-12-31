@@ -1,5 +1,6 @@
 ﻿using System.Windows.Input;
 using Mopups.Services;
+using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
@@ -368,25 +369,31 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 d.TaxpDob = gUID2.TpDOb;
 
                 otp.d = d;
-
-                await Task.Run(async () =>
-                {
                     otpRecvided = new AbsherOTPResponse();
                     otpRecvided = await WebServiceManager.getValidateAbsher(otp, true);
-                });
 
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
                     IsVerifyOTPEnabled = true;
-                 //   await MopupService.Instance.PushAsync(new AttachmentInformationPopUp("OTP Enabled"));
 
                 });
             }
-            catch(Exception ex)
+            catch (GAZTNetworkConnectivityIssueException)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
 
@@ -435,9 +442,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     d.OtpCode = OTP;
                     otp.d = d;
                 }
-
-                await Task.Run(async () =>
-                {
                     ValidateAbhserOTPModel otpRecvided2 = await WebServiceManager.ValidateAbsher(otp, false);
                     if (otpRecvided2 != null)
                     {
@@ -449,16 +453,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         MessagingCenter.Send<Object, object>(this, "Otpvalidated", "error");
                         await MopupService.Instance.PopAsync();
                     }
-                });
             }
-            catch (Exception ex)
+            catch (GAZTNetworkConnectivityIssueException)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
-                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
             }
-           
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
+            }
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Net.Http.Headers;
 using System.Text;
 using Newtonsoft.Json;
+using Org.BouncyCastle.Asn1.Ocsp;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Models.VATInstalmentModels;
@@ -41,24 +42,42 @@ namespace ZATCAMAUI.Core.Mangers
                     client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
                     client.DefaultRequestHeaders.Add("Authorization", App.Token);
                     String url = ZATCAConstants.GetReqVATInstalmentdata + App.LoginDataRetrieved.TIN + "&transactionType=" + taxType + "&language=" + lang;
-                    //String url = Constants.GetReqVATInstalmentdata + "TaxType='" + taxType + "',AudTin='" + "',Gpart='" + App.LoginDataRetrieved.TIN + "',Lang='" + lang + "',UserTin='" + "')?&$expand=ASSLISTSet,STATUSSet,REQTYPSet&$format=json";
-                    // HttpResponseMessage _requestVATInstalmentPlanresponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     var uri = new Uri(url);
                     HttpResponseMessage _requestVATInstalmentPlanresponse = await client.GetAsync(uri);
                     var detailJson = _requestVATInstalmentPlanresponse.Content.ReadAsStringAsync().Result;
-                    _requestVATInstalmentPlan = JsonConvert.DeserializeObject<ReqVatInstalmentPlanResponse>(detailJson);
-
+                    ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(detailJson);
+                    if (statusHeader?.header?.status?.code != "E999999")
+                    {
+                        try
+                        {
+                            _requestVATInstalmentPlan = JsonConvert.DeserializeObject<ReqVatInstalmentPlanResponse>(detailJson);
+                        }
+                        catch (Exception)
+                        {
+                            throw new GAZTVATRegistrationInProcessException(AppResources.Somethingwentwrong);
+                        }
+                    }
+                    else
+                    {
+                        throw new GAZTNetworkConnectivityIssueException();
+                    }
                 }
                 catch (GAZTVATRegistrationInProcessException ex)
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
                 catch (Exception)
                 {
-                    return null;
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
-
+            }
+            else
+            {
+                throw new InternetException();
             }
             return _requestVATInstalmentPlan;
         }
@@ -115,38 +134,45 @@ namespace ZATCAMAUI.Core.Mangers
                             App.Token = NewToken;
                         }
                         string _VATRefillingRequestData = _vATRefillingGetDropdownResponse.Content.ReadAsStringAsync().Result;
-                        _InstalmentDetailsInputs = JsonConvert.DeserializeObject<VATInstalmentDetailsInputModel>(_VATRefillingRequestData);
 
 
-
-                        if (!string.IsNullOrEmpty(_VATRefillingRequestData) && _InstalmentDetailsInputs.d == null)
+                        ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(_VATRefillingRequestData);
+                        if (statusHeader?.header?.status?.code != "E999999")
                         {
+                            _InstalmentDetailsInputs = JsonConvert.DeserializeObject<VATInstalmentDetailsInputModel>(_VATRefillingRequestData);
                             ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_VATRefillingRequestData);
-                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            if (errorMesg?.header?.moreInformation?.errorDetails != null ||
+errorMesg?.header?.moreInformation?.errorDetails.Count > 0)
                             {
-                                string errorMessage = string.Empty;
-                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
-                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
-                                string WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
-                                errorMessage = WithReplacedString;
+                                string errorMessage = WebServiceManager.PrepareErrorMessageByJson(_VATRefillingRequestData);
                                 throw new GAZTVATRegistrationInProcessException(errorMessage);
                             }
                         }
+                        else
+                        {
+                            throw new GAZTNetworkConnectivityIssueException();
+                        }
+
                     }
                     return _InstalmentDetailsInputs;
                 }
+
                 catch (GAZTVATRegistrationInProcessException ex)
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
                 catch (Exception)
                 {
-                    return null;
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
             {
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+                throw new InternetException();
             }
         }
 
@@ -178,42 +204,43 @@ namespace ZATCAMAUI.Core.Mangers
                     client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
                     client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
                     client.DefaultRequestHeaders.Add("Authorization", App.Token);
-                    //String url = Constants.GetRequestToVATInstalmentPlanById
-                    //  + "FormGuid='" + FormGuid + "',Euser='" + Euser + "',Gpartz=''," +
-                    //  "Langz='" + lang + "',Officerz='" + "',PortalUsrz='" + "',TxnTpz='" + "')?&$expand=VTIASet,VTISSet,NOTESSet,ATTACHMENTSet,VTADSet&$format=json";
                     String url = ZATCAConstants.GetRequestToVATInstalmentPlanById
                         + App.TP.TIN + "&language=" + lang + "&formGUID=" + FormGuid;
-                    // HttpResponseMessage _requestVATInstalmentPlanresponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     var uri = new Uri(url);
                     HttpResponseMessage _requestVATInstalmentPlanresponse = await client.GetAsync(uri);
                     var detailJson = _requestVATInstalmentPlanresponse.Content.ReadAsStringAsync().Result;
-                    _requestToVATInstallmentPlanDetails = JsonConvert.DeserializeObject<RequestToVATInstallmentPlanDetails>(detailJson);
-
-                    if (!string.IsNullOrEmpty(detailJson) && _requestToVATInstallmentPlanDetails.d == null)
+                    ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(detailJson);
+                    if (statusHeader?.header?.status?.code != "E999999")
                     {
-                        ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(detailJson);
-                        if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                        _requestToVATInstallmentPlanDetails = JsonConvert.DeserializeObject<RequestToVATInstallmentPlanDetails>(detailJson);
+                        if (!string.IsNullOrEmpty(detailJson) && _requestToVATInstallmentPlanDetails.d == null)
                         {
-                            string errorMessage = string.Empty;
-                            errorMessage = errorMesg.error.innererror.errordetails[0].message;
-                            errorMessage += errorMesg.error.innererror.errordetails[1].message;
-                            string WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
-                            errorMessage = WithReplacedString;
+                            string errorMessage = WebServiceManager.PrepareErrorMessageByJson(detailJson);
                             throw new GAZTVATRegistrationInProcessException(errorMessage);
                         }
                     }
-
+                    else
+                    {
+                        throw new GAZTNetworkConnectivityIssueException();
+                    }
                 }
                 catch (GAZTVATRegistrationInProcessException ex)
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
 
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
                 catch (Exception)
                 {
-                    return null;
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
-
+            }
+            else
+            {
+                throw new InternetException();
             }
             return _requestToVATInstallmentPlanDetails;
         }
@@ -245,43 +272,44 @@ namespace ZATCAMAUI.Core.Mangers
                     client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
                     client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
                     client.DefaultRequestHeaders.Add("Authorization", App.Token);
-                    //String url = Constants.GetDisplayInstallmentAgreementSchedule
-                    //  + "FormGuid='" + FormGuid + "',Euser='" + Euser + "',Gpart=''," +
-                    //  "Langz='" + lang + "',Opbel='" + "')?&$expand=VTIA_IADTSet,VTIA_IAHDSet&$format=json";
                     String url = ZATCAConstants.GetDisplayInstallmentAgreementSchedule + App.TP.TIN + "&formGUID=" + formGuid + "&language=" + lang;
                     var uri = new Uri(url);
                     HttpResponseMessage _requestVATInstalmentPlanresponse = await client.GetAsync(uri);
 
-                    // HttpResponseMessage _requestVATInstalmentPlanresponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     var detailJson = _requestVATInstalmentPlanresponse.Content.ReadAsStringAsync().Result;
-
-                    _displayInstallmentAgreementSchedulePlan = JsonConvert.DeserializeObject<DisplayInstallmentAgreementSchedulePlan>(detailJson);
-
-                    if (!string.IsNullOrEmpty(detailJson) && _displayInstallmentAgreementSchedulePlan.d == null)
+                    ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(detailJson);
+                    if (statusHeader?.header?.status?.code != "E999999")
                     {
-                        ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(detailJson);
-                        if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                        _displayInstallmentAgreementSchedulePlan = JsonConvert.DeserializeObject<DisplayInstallmentAgreementSchedulePlan>(detailJson);
+                        if (!string.IsNullOrEmpty(detailJson) && _displayInstallmentAgreementSchedulePlan.d == null)
                         {
-                            string errorMessage = string.Empty;
-                            errorMessage = errorMesg.error.innererror.errordetails[0].message;
-                            errorMessage += errorMesg.error.innererror.errordetails[1].message;
-                            string WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
-                            errorMessage = WithReplacedString;
+                            string errorMessage = WebServiceManager.PrepareErrorMessageByJson(detailJson);
                             throw new GAZTVATRegistrationInProcessException(errorMessage);
                         }
                     }
-
+                    else
+                    {
+                        throw new GAZTNetworkConnectivityIssueException();
+                    }
                 }
                 catch (GAZTVATRegistrationInProcessException ex)
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
 
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
                 catch (Exception)
                 {
-                    return null;
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
 
+            }
+            else
+            {
+                throw new InternetException();
             }
             return _displayInstallmentAgreementSchedulePlan;
         }
@@ -314,41 +342,42 @@ namespace ZATCAMAUI.Core.Mangers
                     client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
                     client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
                     client.DefaultRequestHeaders.Add("Authorization", App.Token);
-                    //String url = Constants.GetInstallmentSchedule
-                    //    + "FormGuid='" + FormGuid + "',Euser='" + Euser + "',Gpart=''," +
-                    //    "Langz='E',Opbel='" + Opbel + "')?$expand=VTIA_IADTSet,VTIA_IAHDSet&$format=json";
                     String url = ZATCAConstants.GetDisplayInstallmentAgreementSchedule + App.TP.TIN + "&formGUID=" + fromGuid + "&language=" + lang + "&documentNumber=" + opbel + "&serialNumber=" + eUser;
                     var uri = new Uri(url);
                     HttpResponseMessage _requestVATInstalmentPlanresponse = await client.GetAsync(uri);
-                    // HttpResponseMessage _requestVATInstalmentPlanresponse = await GetServiceManager.MakeGetAPICall(url, false, "");
                     var detailJson = _requestVATInstalmentPlanresponse.Content.ReadAsStringAsync().Result;
-
-                    _vATInstalmentScheduleDetailsModel = JsonConvert.DeserializeObject<VATInstalmentScheduleDetailsModel>(detailJson);
-
-                    if (!string.IsNullOrEmpty(detailJson) && _vATInstalmentScheduleDetailsModel.d == null)
+                    ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(detailJson);
+                    if (statusHeader?.header?.status?.code != "E999999")
                     {
-                        ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(detailJson);
-                        if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                        _vATInstalmentScheduleDetailsModel = JsonConvert.DeserializeObject<VATInstalmentScheduleDetailsModel>(detailJson);
+
+                        if (!string.IsNullOrEmpty(detailJson) && _vATInstalmentScheduleDetailsModel.d == null)
                         {
-                            string errorMessage = string.Empty;
-                            errorMessage = errorMesg.error.innererror.errordetails[0].message;
-                            errorMessage += errorMesg.error.innererror.errordetails[1].message;
-                            string WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
-                            errorMessage = WithReplacedString;
+                            string errorMessage = WebServiceManager.PrepareErrorMessageByJson(detailJson);
                             throw new GAZTVATRegistrationInProcessException(errorMessage);
                         }
+                    }
+                    else
+                    {
+                        throw new GAZTNetworkConnectivityIssueException();
                     }
                 }
                 catch (GAZTVATRegistrationInProcessException ex)
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
                 catch (Exception)
                 {
-                    return null;
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
-
+            }
+            else
+            {
+                throw new InternetException();
             }
             return _vATInstalmentScheduleDetailsModel;
         }
@@ -409,21 +438,20 @@ namespace ZATCAMAUI.Core.Mangers
                             App.Token = NewToken;
                         }
                         string vatInstalmentData = GAZTVATInstalmentDataResponse.Content.ReadAsStringAsync().Result;
-                        vATInstalmentDetails = JsonConvert.DeserializeObject<VatInstalmentPlanResponse>(vatInstalmentData);
-                        if (!string.IsNullOrEmpty(vatInstalmentData) && vATInstalmentDetails.d == null)
-                        {
-                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(vatInstalmentData);
-                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
-                            {
-                                string errorMessage = string.Empty;
-                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
-                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
-                                string WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
-                                errorMessage = WithReplacedString;
-                                throw new GAZTVATRegistrationInProcessException(errorMessage);
-                                //throw new GAZTErrorException(errorMessage);
 
+                        ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(vatInstalmentData);
+                        if (statusHeader?.header?.status?.code != "E999999")
+                        {
+                            vATInstalmentDetails = JsonConvert.DeserializeObject<VatInstalmentPlanResponse>(vatInstalmentData);
+                            if (!string.IsNullOrEmpty(vatInstalmentData) && vATInstalmentDetails.d == null)
+                            {
+                                string errorMessage = WebServiceManager.PrepareErrorMessageByJson(vatInstalmentData);
+                                throw new GAZTVATRegistrationInProcessException(errorMessage);
                             }
+                        }
+                        else
+                        {
+                            throw new GAZTNetworkConnectivityIssueException();
                         }
                     }
                     return vATInstalmentDetails;
@@ -432,15 +460,18 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
                 catch (Exception)
                 {
-                    App.IsSessionExpired = true;
-                    return null;
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
             {
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+                throw new InternetException();
             }
         }
 
@@ -517,42 +548,44 @@ namespace ZATCAMAUI.Core.Mangers
                         HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
                         HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
                         var _zakatReturnDetailsDesponsestr = res.Content.ReadAsStringAsync().Result;
-                        _vatResponseObject = JsonConvert.DeserializeObject<VatInstalmentPlanResponse>(_zakatReturnDetailsDesponsestr);
-                        if (_vatResponseObject.d == null && _vatResponseObject.result != null)
+                        ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(_zakatReturnDetailsDesponsestr);
+                        if (statusHeader?.header?.status?.code != "E999999")
                         {
-                            _vatResponseObject.d = _vatResponseObject.result;
-                        }
-                        if (_vatResponseObject == null || _vatResponseObject.d == null)
-                        {
-                            WebServiceManager.ErrorMessage = string.Empty;
-                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_zakatReturnDetailsDesponsestr);
-                            if (errorMesg?.header?.moreInformation?.errorDetails[0]?.message != null)
+                            _vatResponseObject = JsonConvert.DeserializeObject<VatInstalmentPlanResponse>(_zakatReturnDetailsDesponsestr);
+                            if (_vatResponseObject.d == null && _vatResponseObject.result != null)
                             {
-                                WebServiceManager.ErrorMessage = errorMesg?.header?.moreInformation?.errorDetails[0]?.message;
-                                throw new GAZTVATRegistrationInProcessException(WebServiceManager.ErrorMessage);
-
+                                _vatResponseObject.d = _vatResponseObject.result;
                             }
+                            if (_vatResponseObject == null || _vatResponseObject.d == null)
+                            {
+                                string errorMessage = WebServiceManager.PrepareErrorMessageByJson(_zakatReturnDetailsDesponsestr);
+                                throw new GAZTVATRegistrationInProcessException(errorMessage);
+                            }
+                            return _vatResponseObject;
                         }
-                        return _vatResponseObject;
+                        else
+                        {
+                            throw new GAZTNetworkConnectivityIssueException();
+                        }
+
                     }
-
-
-
                 }
                 catch (GAZTVATRegistrationInProcessException ex)
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception ex)
+                catch (GAZTNetworkConnectivityIssueException)
                 {
-                    
-                    
-                    return null;
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
             {
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+                throw new InternetException();
             }
 
 
@@ -611,21 +644,19 @@ namespace ZATCAMAUI.Core.Mangers
                             App.Token = NewToken;
                         }
                         String vatInstalmentData = GAZTVATInstalmentDataResponse.Content.ReadAsStringAsync().Result;
-                        btnDetails = JsonConvert.DeserializeObject<VtiaBtnSetModel>(vatInstalmentData);
-                        if (!string.IsNullOrEmpty(vatInstalmentData) && btnDetails.D == null)
+                        ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(vatInstalmentData);
+                        if (statusHeader?.header?.status?.code != "E999999")
                         {
-                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(vatInstalmentData);
-                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            btnDetails = JsonConvert.DeserializeObject<VtiaBtnSetModel>(vatInstalmentData);
+                            if (!string.IsNullOrEmpty(vatInstalmentData) && btnDetails.D == null)
                             {
-                                string errorMessage = string.Empty;
-                                errorMessage = errorMesg.error.innererror.errordetails[0].message;
-                                errorMessage += errorMesg.error.innererror.errordetails[1].message;
-                                String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
-                                errorMessage = WithReplacedString;
+                                string errorMessage = WebServiceManager.PrepareErrorMessageByJson(vatInstalmentData);
                                 throw new GAZTVATRegistrationInProcessException(errorMessage);
-                                //throw new GAZTErrorException(errorMessage);
-
                             }
+                        }
+                        else
+                        {
+                            throw new GAZTNetworkConnectivityIssueException();
                         }
                     }
                     return btnDetails;
@@ -634,25 +665,26 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
                 catch (Exception)
                 {
-                    App.IsSessionExpired = true;
-                    return null;
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
             {
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+                throw new InternetException();
             }
         }
         public static async Task<string> SaveVATInstalmentRevokeData(RequestToVATInstallmentPlanDetails _vATInstalment)
         {
-
             if (NetworkCheck.IsInternet())
             {
                 try
                 {
-
                     RequestToVATInstallmentPlanDetails _vatResponseObject = new RequestToVATInstallmentPlanDetails();
                     string LangZ = WebServiceManager.GetLangZParameterAREN();
                     String url = ZATCAConstants.SaveVATInstalmentdata;
@@ -661,11 +693,6 @@ namespace ZATCAMAUI.Core.Mangers
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
                     var serilized = JsonConvert.SerializeObject(_vATInstalment.d);
-                    //client.DefaultRequestHeaders.Add("Token", "123");
-                    //client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
-                    //client.DefaultRequestHeaders.Add("X-Requested-With", "X");
-                    //client.DefaultRequestHeaders.Add("Accept", "application/json");
-
                     var lang = UtilityManager.GetLanguageParameter();
 
                     string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
@@ -685,36 +712,33 @@ namespace ZATCAMAUI.Core.Mangers
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
                     HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
                     var _zakatReturnDetailsDesponsestr = res.Content.ReadAsStringAsync().Result;
-                    //_vatResponseObject = JsonConvert.DeserializeObject<RequestToVATInstallmentPlanDetails>(_zakatReturnDetailsDesponsestr);
-                    //if (_vatResponseObject == null || _vatResponseObject.d == null)
-                    //{
-                    //    WebServiceManager.ErrorMessage = string.Empty;
-                    //    ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_zakatReturnDetailsDesponsestr);
-                    //    if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
-                    //    {
-                    //        WebServiceManager.ErrorMessage = errorMesg.error.innererror.errordetails[0].message;
-                    //        throw new GAZTVATRegistrationInProcessException(WebServiceManager.ErrorMessage);
-                    //    }
-                    //}
-                    return _zakatReturnDetailsDesponsestr;
+                    ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(_zakatReturnDetailsDesponsestr);
+                    if (statusHeader?.header?.status?.code != "E999999")
+                    {
+                        return _zakatReturnDetailsDesponsestr;
+                    }
+                    else
+                    {
+                        throw new GAZTNetworkConnectivityIssueException();
+                    }
                 }
                 catch (GAZTVATRegistrationInProcessException ex)
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception ex)
+                catch (GAZTNetworkConnectivityIssueException)
                 {
-                    
-                    
-                    return null;
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+                catch (Exception)
+                {
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
             {
-                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+                throw new InternetException();
             }
-
-
         }
         #endregion
     }

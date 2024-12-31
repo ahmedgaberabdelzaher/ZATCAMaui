@@ -214,108 +214,117 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
         {
             try
             {
-                try
+                Result2 IbanListsResults;
+                IBanListResponse = await WebServiceManager.GetIBanDataForCR1645();
+                if (IBanListResponse != null && IBanListResponse.D != null && IBanListResponse.D.Results != null && IBanListResponse.D.Results.Count > 0)
                 {
-                    Result2 IbanListsResults;
-                    IBanListResponse = await WebServiceManager.GetIBanDataForCR1645();
-                    if (IBanListResponse != null && IBanListResponse.D != null && IBanListResponse.D.Results != null && IBanListResponse.D.Results.Count > 0)
+                    viewModel.CR1645IBanListModel = IBanListResponse.D.Results;
+
+
+                    for (int i = 0; i < IBanListResponse.D.Results.Count; i++)
                     {
-                        viewModel.CR1645IBanListModel = IBanListResponse.D.Results;
-
-
-                        for (int i = 0; i < IBanListResponse.D.Results.Count; i++)
+                        IbanListsResults = new Result2()
                         {
-                            IbanListsResults = new Result2()
-                            {
-                                Partner = string.Empty,
-                                Bkvid = string.Empty,
-                                Iban = IBanListResponse.D.Results[i].Iban
-                            };
-                            viewModel.VATDeclarationDetails.data.IBANSet.Add(IbanListsResults);
-                        }
-                        if (viewModel.VATDeclarationDetails.data.IBANSet.Count > 0)
+                            Partner = string.Empty,
+                            Bkvid = string.Empty,
+                            Iban = IBanListResponse.D.Results[i].Iban
+                        };
+                        viewModel.VATDeclarationDetails.data.IBANSet.Add(IbanListsResults);
+                    }
+                    if (viewModel.VATDeclarationDetails.data.IBANSet.Count > 0)
+                    {
+                        viewModel.IBANList = new ObservableCollection<Result2>();
+                        viewModel.IBANList = new ObservableCollection<Result2>(viewModel.VATDeclarationDetails.data.IBANSet);
+
+                        viewModel.SelectedIBAN = viewModel.VATDeclarationDetails.data.IBANSet.FirstOrDefault();
+
+                        await getAllChecks();
+                    }
+
+
+
+                    for (int i = 0; i < IBanListResponse.D.Results.Count; i++)
+                    {
+                        if (IBanListResponse.D.Results[i].IdType == "ZS0005")
                         {
-                            viewModel.IBANList = new ObservableCollection<Result2>();
-                            viewModel.IBANList = new ObservableCollection<Result2>(viewModel.VATDeclarationDetails.data.IBANSet);
-
-                            viewModel.SelectedIBAN = viewModel.VATDeclarationDetails.data.IBANSet.FirstOrDefault();
-
-                           await getAllChecks();
-                        }
-
-
-
-                        for (int i = 0; i < IBanListResponse.D.Results.Count; i++)
-                        {
-                            if (IBanListResponse.D.Results[i].IdType == "ZS0005")
+                            viewModel.IBANTypesList.Add(new IBANType
                             {
-                                viewModel.IBANTypesList.Add(new IBANType
-                                {
-                                    key = "ZS0005",
-                                    Text = AppResources.ZIBANCompanyID
-                                });
-                            }
-                            else if (IBanListResponse.D.Results[i].IdType == "ZS0001")
-                            {
-                                viewModel.IBANTypesList.Add(new IBANType
-                                {
-                                    key = "ZS0001",
-                                    Text = AppResources.ZIBANNationalID
-                                });
-                            }
-                            else if (IBanListResponse.D.Results[i].IdType == "ZS0003")
-                            {
-                                viewModel.IBANTypesList.Add(new IBANType
-                                {
-                                    key = "ZS0003",
-                                    Text = AppResources.TinDeregistrationGCCID
-                                });
-                            }
-                            else if (IBanListResponse.D.Results[i].IdType == "BUP002")
-                            {
-                                viewModel.IBANTypesList.Add(new IBANType
-                                {
-                                    key = "BUP002",
-                                    Text = AppResources.ZIBANCommercialRegistrationID
-                                });
-                            }
-
-                        }
-                        for (int i = 0; i < IBanListResponse.D.Results.Count; i++)
-                        {
-
-                            viewModel.IBANIDNumberList.Add(new IBANIDNumber
-                            {
-                                Idnumber = IBanListResponse.D.Results[i].IdNumber,
-                                Type = ""
+                                key = "ZS0005",
+                                Text = AppResources.ZIBANCompanyID
                             });
                         }
-                    }
+                        else if (IBanListResponse.D.Results[i].IdType == "ZS0001")
+                        {
+                            viewModel.IBANTypesList.Add(new IBANType
+                            {
+                                key = "ZS0001",
+                                Text = AppResources.ZIBANNationalID
+                            });
+                        }
+                        else if (IBanListResponse.D.Results[i].IdType == "ZS0003")
+                        {
+                            viewModel.IBANTypesList.Add(new IBANType
+                            {
+                                key = "ZS0003",
+                                Text = AppResources.TinDeregistrationGCCID
+                            });
+                        }
+                        else if (IBanListResponse.D.Results[i].IdType == "BUP002")
+                        {
+                            viewModel.IBANTypesList.Add(new IBANType
+                            {
+                                key = "BUP002",
+                                Text = AppResources.ZIBANCommercialRegistrationID
+                            });
+                        }
 
-                    else
+                    }
+                    for (int i = 0; i < IBanListResponse.D.Results.Count; i++)
                     {
-                        viewModel.IsIBANValid = false;
 
+                        viewModel.IBANIDNumberList.Add(new IBANIDNumber
+                        {
+                            Idnumber = IBanListResponse.D.Results[i].IdNumber,
+                            Type = ""
+                        });
                     }
                 }
-                catch (InternetException ex)
+
+                else
                 {
-                    await viewModel._dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    viewModel.IsIBANValid = false;
                 }
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+               viewModel. IsLoading = false;
             }
         }
         public async Task onPageLoad()
         {
             if (viewModel.VATDeclarationDetails.data.Cr1645GoliveFg.Equals("X"))
             {
-              await  GetAllIbanList();
+                await GetAllIbanList();
             }
             else
             {
-              await  getAllChecks();
+                await getAllChecks();
             }
         }
         public async Task getAllChecks()
@@ -729,7 +738,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                     if (arg != null)
                     {
                         await MopupService.Instance.PopAsync();
-                       await saveRefund();
+                        await saveRefund();
                     }
                 });
             }
@@ -861,12 +870,12 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                     newDesignPopUp.HeaderWithInfos = headerWithInfos;
                     newDesignPopUp.MainHeader = AppResources.ZZZConfirmationMsg;
 
-                   await MopupService.Instance.PushAsync(new ShowVatInformationConfirmationPageView(newDesignPopUp));
+                    await MopupService.Instance.PushAsync(new ShowVatInformationConfirmationPageView(newDesignPopUp));
 
                 }
                 else
                 {
-                   await saveRefund();
+                    await saveRefund();
                 }
             }
         }
@@ -892,7 +901,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
         private async void IBANAccManagementTapped(object sender, EventArgs e)
         {
             await MopupService.Instance.PopAsync();
-           await viewModel._navigationService.NavigateTo(App.GAZTBankAccountManagementPageView, true);
+            await viewModel._navigationService.NavigateTo(App.GAZTBankAccountManagementPageView, true);
 
         }
 

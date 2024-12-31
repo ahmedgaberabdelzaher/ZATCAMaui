@@ -123,70 +123,29 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
 
 
             }
-            catch (InternetException)
-            {
-                App.HideProgressView();
 
-                try
-                {
-                    IsInstructionsVisible = false;
 
-                    await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
-                    await MopupService.Instance.PopAsync();
-
-                }
-                catch (Exception)
-                {
-                }
-            }
             catch (GAZTErrorException ex)
             {
-                App.HideProgressView();
-
-                string message = ex.Message;
-
-                try
-                {
-                    IsInstructionsVisible = false;
-
-                    PopUp popUp = new PopUp();
-                    StringBuilder PopMsg = new StringBuilder();
-
-                    popUp.Message = message;
-                    popUp.HeaderText = AppResources.Information;
-
-                    if (App.IsArabic)
-                    {
-                        popUp.FlowDirections = "RightToLeft";
-                        popUp.isFontSet = true;
-                    }
-                    else
-                    {
-                        popUp.FlowDirections = "LeftToRight";
-                    }
-
-                    await _dialogService.ShowMessage(message, AppResources.Information);
-                    await MopupService.Instance.PopAsync();
-                }
-
-                catch (Exception)
-                {
-                }
+                await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
-                try
-                {
-                    App.HideProgressView();
-
-                    IsInstructionsVisible = false;
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    await MopupService.Instance.PopAsync();
-
-                }
-                catch (Exception )
-                {
-                }
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
+            }
+            finally
+            {
+                IsInstructionsVisible = false;
+                App.HideProgressView();
+                await MopupService.Instance.PopAsync();
             }
         }
     }

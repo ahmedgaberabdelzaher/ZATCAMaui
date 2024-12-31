@@ -1484,24 +1484,26 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
                 IsLoading = false;
             }
-            catch (InternetException ex)
-            {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                IsLoading = false;
-                _navigationService.GoBack();
-
-            }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                IsLoading = false;
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
+                await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
+            }
+            finally
+            {
                 IsLoading = false;
-                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                _navigationService.GoBack();
             }
 
         }
@@ -1548,26 +1550,26 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 IsLoading = false;
 
             }
-            catch (InternetException ex)
-            {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                IsLoading = false;
-                _navigationService.GoBack();
-            }
             catch (GAZTVATRegistrationInProcessException ex)
             {
+                await UtilityManager.HandleExceptionMessage(ex.Message, true,_navigationService);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
 
-
-                IsLoading = false;
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
-
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
+            }
+            finally
+            {
                 IsLoading = false;
-                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                _navigationService.GoBack();
             }
         }
 

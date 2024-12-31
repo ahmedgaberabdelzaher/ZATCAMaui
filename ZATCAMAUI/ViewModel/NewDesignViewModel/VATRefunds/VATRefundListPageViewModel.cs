@@ -255,17 +255,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
             }
             catch (GAZTErrorException ex)
             {
-                IsLoading = false;
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-            }
-            catch (InternetException ex)
-            {
-                IsLoading = false;
+                await UtilityManager.HandleExceptionMessage(ex.Message, true,_navigationService);
 
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
+            }
+            finally
             {
                 IsLoading = false;
             }
@@ -305,19 +311,25 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
 
                 IsLoading = false;
             }
-            catch (InternetException )
-            {
-                IsLoading = false;
-
-                await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
-            }
             catch (GAZTErrorException ex)
             {
-                IsLoading = false;
-                string message = ex.Message;
-                await _dialogService.ShowMessage(message, AppResources.Information);
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+              
             }
-            catch (Exception ex)
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
             {
                 IsLoading = false;
             }

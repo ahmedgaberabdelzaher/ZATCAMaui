@@ -339,9 +339,19 @@ public partial class MoreOptionsNote : PopupPage
             }
             viewModel.IsLoading = false;
         }
-        catch (Exception ex)
+        catch (GAZTNetworkConnectivityIssueException)
         {
+            await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
         }
+        catch (InternetException)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+        }
+        catch (Exception)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+        }
+       
     }
     public async Task PopToRootPage()
     {
@@ -409,9 +419,21 @@ public partial class MoreOptionsNote : PopupPage
                 }
             }
         }
-        catch (Exception ex)
+        catch (GAZTNetworkConnectivityIssueException)
         {
-
+            await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, viewModel._navigationService);
+        }
+        catch (InternetException)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, true, viewModel._navigationService);
+        }
+        catch (Exception)
+        {
+            await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+        }
+        finally
+        {
+            viewModel.IsLoading = false;
         }
     }
 

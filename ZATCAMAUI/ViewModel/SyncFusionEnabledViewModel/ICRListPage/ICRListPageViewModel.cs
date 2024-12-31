@@ -217,8 +217,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ICRListPage
                 IsLoading = true;
                 ICRList = null;
                 ICR icrList = null;
-                try
-                {
                     string lang = UtilityManager.GetLanguageParameter();
                     icrList = await WebServiceManager.GAZTGetICRs(App.TP.TIN, lang);
                    await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
@@ -245,22 +243,28 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ICRListPage
                         _navigationService.GoBack();
                     }
                     IsLoading = false;
-                }
-                catch (InternetException ex)
-                {
-
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    IsLoading = false;
-                    _navigationService.GoBack();
-                }
-             
+               
 
             }
-            catch (InternetException ex)
+            catch (GAZTVATRegistrationInProcessException ex)
             {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
                 IsLoading = false;
-                _navigationService.GoBack();
             }
         }
         public async Task GetVATAllReturnsAsync()
@@ -273,8 +277,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ICRListPage
             ICRListSet selectedICRForStatus = null;
             try
             {
-                try
-                {
                     if (SelectedICR != null)
                     {
                         if (isStatusNotValid())
@@ -316,19 +318,22 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ICRListPage
                             IsLoading = false;
                         }
                     }
-                }
-                catch (InternetException)
-                {
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    IsLoading = false;
-                    _navigationService.GoBack();
-                }
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
             }
             catch (InternetException)
             {
-                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
                 IsLoading = false;
-                _navigationService.GoBack();
             }
         }
         public bool isStatusNotValid()

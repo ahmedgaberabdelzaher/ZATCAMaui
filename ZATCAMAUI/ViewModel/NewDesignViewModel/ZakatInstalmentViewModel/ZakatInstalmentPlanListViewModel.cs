@@ -30,7 +30,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
         private bool _IsZakatSummaryVisible = false;
         private bool _isZakatSummaryRevokeVisible = false;
         private bool _isAttachmentsViewEnabled = false;
-        ZakatInstalmentValidateNewRequestModel result ;
+        ZakatInstalmentValidateNewRequestModel result;
         public List<ZakatInvoicesResult> selectedList = new List<ZakatInvoicesResult>();
 
         public Timer otpTimer;
@@ -138,13 +138,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             });
 
 
-            ReqInstalmentBtnTapped = new Command(async() =>
+            ReqInstalmentBtnTapped = new Command(async () =>
             {
-              await  CheckDueInvoicesAsync();
+                await CheckDueInvoicesAsync();
             });
 
 
-            SummaryattachmentsListViewTapCommand = new Command<object>(async(obj) =>
+            SummaryattachmentsListViewTapCommand = new Command<object>(async (obj) =>
             {
                 IsLoading = true;
                 var item = (obj as Syncfusion.Maui.ListView.ItemTappedEventArgs).DataItem as ZakatListModel;
@@ -171,7 +171,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 IsLoading = false;
             });
 
-            OutletDecisionOptionsListViewTapCommand = new Command<object>(async(obj) =>
+            OutletDecisionOptionsListViewTapCommand = new Command<object>(async (obj) =>
             {
                 IsLoading = true;
                 var selectedItem = (obj as Syncfusion.Maui.ListView.ItemTappedEventArgs).DataItem as InstalmentPlanModel;
@@ -201,7 +201,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             RejecteButtonTapped = new Command(async (Object Item) =>
             {
                 ZakatListObjec = Item as ZakatListModel;
-               await MopupService.Instance.PushAsync(new ZakatRejectionReasonPopupPageView());
+                await MopupService.Instance.PushAsync(new ZakatRejectionReasonPopupPageView());
             });
 
 
@@ -228,7 +228,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 {
                     String downloadurl = ZATCAConstants.ZakatdownloadCoverFormFile + SelectedFbNum;
                     //await WebServiceManager.FileDownload(downloadurl, "pdf");
-                  await  _navigationService.NavigateTo(App.PdfView, downloadurl);
+                    await _navigationService.NavigateTo(App.PdfView, downloadurl);
 
                 }
                 IsLoading = false;
@@ -244,7 +244,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 {
                     String downloadurl = ZATCAConstants.ZOdownloadAckLetter + SelectedFbNum;
                     //await WebServiceManager.FileDownload(downloadurl, "pdf");
-                  await  _navigationService.NavigateTo(App.PdfView, downloadurl);
+                    await _navigationService.NavigateTo(App.PdfView, downloadurl);
 
 
 
@@ -297,82 +297,77 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 selectedList.Clear();
 
                 IsLoading = true;
-                try
+                ZakatInvoiceList invoiceList = null;
+                invoiceList = await ZakatInstallmentPlanWebServiceManager.GetZakatInvoicesList(IsZakat, ZakatListObjec.fbNum);
+                if (invoiceList != null && invoiceList.d?.Count > 0)
                 {
-                    ZakatInvoiceList invoiceList = null;
-                    invoiceList = await ZakatInstallmentPlanWebServiceManager.GetZakatInvoicesList(IsZakat, ZakatListObjec.fbNum);
-                    if (invoiceList != null && invoiceList.d?.Count > 0)
+                    ZakatInvoicesList = invoiceList.d;
+                    for (int i = 0; i < ZakatInvoicesList.Count; i++)
                     {
-                        ZakatInvoicesList = invoiceList.d;
-                        for (int i = 0; i < ZakatInvoicesList.Count; i++)
+                        if (ZakatInvoicesList[i].Abtyp.Equals("ITAX"))
                         {
-                            if (ZakatInvoicesList[i].Abtyp.Equals("ITAX"))
-                            {
-                                ZakatInvoicesList[i].Abtyp = AppResources.ZakatInstalmetSelectTypeIncomeTax;
-                            }
-                            else if (ZakatInvoicesList[i].Abtyp.Equals("ZAKT"))
-                            {
-                                ZakatInvoicesList[i].Abtyp = AppResources.FORM5Zakat;
-                            }
-
-                            DateTime dateStart = new DateTime();
-                            CultureInfo cultureInfo = new CultureInfo("ar-SA");
-                            string apiDate = @"""" + ZakatInvoicesList[i].DueDt + @"""";
-                            dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
-
-                            GregorianCalendar hjCalendar = new GregorianCalendar();
-                            int year = hjCalendar.GetYear(dateStart);
-                            int month = hjCalendar.GetMonth(dateStart);
-                            int day = hjCalendar.GetDayOfMonth(dateStart);
-
-                            string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
-
-                            ZakatInvoicesList[i].DueDt = dateStr;
-
-                            string dt1 = string.Empty;
-                            string[] dts = null;
-                            dts = ZakatInvoicesList[i].DueDt.Split('/');
-                            dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
-                            ZakatInvoicesList[i].DueDt = dt1;
-
-
-                            if (ZakatInvoicesList[i].InvCb == "X")
-                            {
-                                selectedList.Add(ZakatInvoicesList[i]);
-                            }
+                            ZakatInvoicesList[i].Abtyp = AppResources.ZakatInstalmetSelectTypeIncomeTax;
                         }
-                        await ApproveSubmitClicked(cmdType, offset);
-                    }
-                    else
-                    {
-                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                        _navigationService.GoBack();
-                    }
-                    IsLoading = false;
-                }
+                        else if (ZakatInvoicesList[i].Abtyp.Equals("ZAKT"))
+                        {
+                            ZakatInvoicesList[i].Abtyp = AppResources.FORM5Zakat;
+                        }
 
-                catch (InternetException ex)
+                        DateTime dateStart = new DateTime();
+                        CultureInfo cultureInfo = new CultureInfo("ar-SA");
+                        string apiDate = @"""" + ZakatInvoicesList[i].DueDt + @"""";
+                        dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
+
+                        GregorianCalendar hjCalendar = new GregorianCalendar();
+                        int year = hjCalendar.GetYear(dateStart);
+                        int month = hjCalendar.GetMonth(dateStart);
+                        int day = hjCalendar.GetDayOfMonth(dateStart);
+
+                        string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+
+                        ZakatInvoicesList[i].DueDt = dateStr;
+
+                        string dt1 = string.Empty;
+                        string[] dts = null;
+                        dts = ZakatInvoicesList[i].DueDt.Split('/');
+                        dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+                        ZakatInvoicesList[i].DueDt = dt1;
+
+
+                        if (ZakatInvoicesList[i].InvCb == "X")
+                        {
+                            selectedList.Add(ZakatInvoicesList[i]);
+                        }
+                    }
+                    await ApproveSubmitClicked(cmdType, offset);
+                }
+                else
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    IsLoading = false;
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
-
                 }
+                IsLoading = false;
 
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-
-                IsLoading = false;
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
-
+                await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
             }
-            catch (Exception )
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
+            }
+            finally
             {
                 IsLoading = false;
-                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                _navigationService.GoBack();
             }
         }
 
@@ -485,7 +480,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
             }
 
-            if (ZakatInstalmentsData.d.retmsgSet== null)
+            if (ZakatInstalmentsData.d.retmsgSet == null)
             {
                 _postData.retmsgSet = new Array[0];
             }
@@ -573,7 +568,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 request = BuildRequestObject(cmdType, offset);
 
                 response = await ZakatInstallmentPlanWebServiceManager.SaveZakatInstalmentData(request);
-               await PopToRootPage();
+                await PopToRootPage();
                 if (response != null)
                 {
                     if (cmdType == 1)
@@ -594,7 +589,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                         }
                         IsLoading = false;
                     }
-                    catch (Exception )
+                    catch (Exception)
                     {
                         IsLoading = false;
 
@@ -604,14 +599,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                IsLoading = false;
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
+                await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
             }
-
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
             catch (Exception)
             {
-               
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
+            }
+            finally
+            {
+                IsLoading = false;
             }
 
         }
@@ -621,76 +625,44 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
         {
             try
             {
-                await Task.Run(() =>
+                IsLoading = true;
+                IsLoading = true;
+                ZakatInstalmentsData = null;
+                ZakatInstalmentsData = await ZakatInstallmentPlanWebServiceManager.GetZakatInstalmentPostData(ZakatListObjec.fbNum);
 
+                if (ZakatInstalmentsData != null)
                 {
-                    IsLoading = true;
-                });
-                await Task.Run(async () =>
+                    await GetZaktaInvoiceList(cmdType, offset);
+                }
+                else
                 {
-
-                    IsLoading = true;
-                    ZakatInstalmentsData = null;
-                    try
+                    MainThread.BeginInvokeOnMainThread(async () =>
                     {
-                        ZakatInstalmentsData = await ZakatInstallmentPlanWebServiceManager.GetZakatInstalmentPostData(ZakatListObjec.fbNum);
-
-                        if (ZakatInstalmentsData != null)
-                        {
-                            await GetZaktaInvoiceList(cmdType, offset);
-                        }
-                        else
-                        {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                                _navigationService.GoBack();
-                            });
-                        }
-                        IsLoading = false;
-                    }
-                    catch (GAZTVATRegistrationInProcessException ex)
-                    {
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                            IsLoading = false;
-                            _navigationService.GoBack();
-                        });
-                    }
-                    catch (InternetException ex)
-                    {
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                            IsLoading = false;
-                            _navigationService.GoBack();
-                        });
-                        //   await Task.Run(() =>
-                        //   {
-                        //  });
-                    }
-                });
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
-
+                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                }
+                IsLoading = false;
             }
-
-            catch (Exception ex)
+            catch (GAZTVATRegistrationInProcessException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
         public async Task onPageLoad()
@@ -715,17 +687,24 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                IsLoading = false;
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
+                await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
-                IsLoading = false;
-                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                _navigationService.GoBack();
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
             }
-
+            finally
+            {
+                IsLoading = false;
+            }
         }
 
 
@@ -748,126 +727,144 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
         public async Task CheckDueInvoicesAsync()
         {
-            IsLoading = true;
-           result = await ZakatInstallmentPlanWebServiceManager.GAZTGetZakatInstalmentValidateNewReq();
-           // result = await WebServiceManager.GAZTGetZakatInstalmentValidateNewReq();
-            DueInvoicesList = null;
-            DueInvoicesListSet12 = null;
-
-            var dueInvoicesList = new ObservableCollection<ZakatInstalmentValidateNewRequestModel.Result2>();
-            var dueInvoicesListSet12 = new ObservableCollection<EvtNotif12SetResult>();
-            if (result != null && result.d != null)
+            try
             {
-                if (result.d.EvtNotif1Set != null && result.d.EvtNotif1Set.Count > 0)
-                {
+                IsLoading = true;
+                result = await ZakatInstallmentPlanWebServiceManager.GAZTGetZakatInstalmentValidateNewReq();
+                DueInvoicesList = null;
+                DueInvoicesListSet12 = null;
 
-                    foreach (ZakatInstalmentValidateNewRequestModel.Result2 result2 in result.d.EvtNotif1Set)
+                var dueInvoicesList = new ObservableCollection<ZakatInstalmentValidateNewRequestModel.Result2>();
+                var dueInvoicesListSet12 = new ObservableCollection<EvtNotif12SetResult>();
+                if (result != null && result.d != null)
+                {
+                    if (result.d.EvtNotif1Set != null && result.d.EvtNotif1Set.Count > 0)
                     {
 
-                        DateTime dateStart = new DateTime();
-                        DateTime dateStart2 = new DateTime();
-                        CultureInfo cultureInfo = new CultureInfo("ar-SA");
-                        string apiDate = @"""" + result2.Abrzo + @"""";
-                        string apiDate2 = @"""" + result2.Abrzu + @"""";
-                        dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
-                        dateStart2 = JsonConvert.DeserializeObject<DateTime>(apiDate2);
+                        foreach (ZakatInstalmentValidateNewRequestModel.Result2 result2 in result.d.EvtNotif1Set)
+                        {
 
-                        GregorianCalendar hjCalendar = new GregorianCalendar();
-                        int year = hjCalendar.GetYear(dateStart);
-                        int month = hjCalendar.GetMonth(dateStart);
-                        int day = hjCalendar.GetDayOfMonth(dateStart);
-                        int year2 = hjCalendar.GetYear(dateStart2);
-                        int month2 = hjCalendar.GetMonth(dateStart2);
-                        int day2 = hjCalendar.GetDayOfMonth(dateStart2);
+                            DateTime dateStart = new DateTime();
+                            DateTime dateStart2 = new DateTime();
+                            CultureInfo cultureInfo = new CultureInfo("ar-SA");
+                            string apiDate = @"""" + result2.Abrzo + @"""";
+                            string apiDate2 = @"""" + result2.Abrzu + @"""";
+                            dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
+                            dateStart2 = JsonConvert.DeserializeObject<DateTime>(apiDate2);
 
-                        string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
-                        string dateStr2 = string.Format("{0:00}/{1}/{2}", day2, month2, year2);
+                            GregorianCalendar hjCalendar = new GregorianCalendar();
+                            int year = hjCalendar.GetYear(dateStart);
+                            int month = hjCalendar.GetMonth(dateStart);
+                            int day = hjCalendar.GetDayOfMonth(dateStart);
+                            int year2 = hjCalendar.GetYear(dateStart2);
+                            int month2 = hjCalendar.GetMonth(dateStart2);
+                            int day2 = hjCalendar.GetDayOfMonth(dateStart2);
 
-                        result2.Abrzo = dateStr;
-                        result2.Abrzu = dateStr2;
+                            string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+                            string dateStr2 = string.Format("{0:00}/{1}/{2}", day2, month2, year2);
 
-                        string dt1 = string.Empty;
-                        string[] dts = null;
-                        dts = result2.Abrzo.Split('/');
-                        dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
-                        result2.Abrzo = dt1;
+                            result2.Abrzo = dateStr;
+                            result2.Abrzu = dateStr2;
 
-                        string dt2 = string.Empty;
-                        string[] dts2 = null;
-                        dts2 = result2.Abrzu.Split('/');
-                        dt2 = dts2[0] + "-" + UtilityManager.GetShortMonthName(dts2[1]) + "-" + dts2[2];
-                        result2.Abrzu = dt2;
+                            string dt1 = string.Empty;
+                            string[] dts = null;
+                            dts = result2.Abrzo.Split('/');
+                            dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+                            result2.Abrzo = dt1;
 
-                        result2.Betrh = string.Format("{0:N2}", double.Parse(result2.Betrh.Replace("SAR", "").Replace("ريال سعودي", ""))) + " " + AppResources.ZSAR;
+                            string dt2 = string.Empty;
+                            string[] dts2 = null;
+                            dts2 = result2.Abrzu.Split('/');
+                            dt2 = dts2[0] + "-" + UtilityManager.GetShortMonthName(dts2[1]) + "-" + dts2[2];
+                            result2.Abrzu = dt2;
 
-                        dueInvoicesList.Add(result2);
+                            result2.Betrh = string.Format("{0:N2}", double.Parse(result2.Betrh.Replace("SAR", "").Replace("ريال سعودي", ""))) + " " + AppResources.ZSAR;
+
+                            dueInvoicesList.Add(result2);
+                        }
+                        DueInvoicesList = dueInvoicesList;
+                        EnableDueInvoicesPage();
                     }
-                    DueInvoicesList = dueInvoicesList;
-                    EnableDueInvoicesPage();
-                }
-                else if (result.d.EvtNotif12Set != null && result.d.EvtNotif12Set.Count > 0)
-                {
-                    foreach (EvtNotif12SetResult evtNotif12SetResult in result.d.EvtNotif12Set)
+                    else if (result.d.EvtNotif12Set != null && result.d.EvtNotif12Set.Count > 0)
                     {
+                        foreach (EvtNotif12SetResult evtNotif12SetResult in result.d.EvtNotif12Set)
+                        {
 
-                        DateTime dateStart = new DateTime();
-                        DateTime dateStart2 = new DateTime();
-                        CultureInfo cultureInfo = new CultureInfo("ar-SA");
-                        string apiDate = @"""" + evtNotif12SetResult.Faedn + @"""";
-                        string apiDate2 = @"""" + evtNotif12SetResult.Cdate + @"""";
-                        dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
-                        dateStart2 = JsonConvert.DeserializeObject<DateTime>(apiDate2);
+                            DateTime dateStart = new DateTime();
+                            DateTime dateStart2 = new DateTime();
+                            CultureInfo cultureInfo = new CultureInfo("ar-SA");
+                            string apiDate = @"""" + evtNotif12SetResult.Faedn + @"""";
+                            string apiDate2 = @"""" + evtNotif12SetResult.Cdate + @"""";
+                            dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
+                            dateStart2 = JsonConvert.DeserializeObject<DateTime>(apiDate2);
 
-                        GregorianCalendar hjCalendar = new GregorianCalendar();
-                        int year = hjCalendar.GetYear(dateStart);
-                        int month = hjCalendar.GetMonth(dateStart);
-                        int day = hjCalendar.GetDayOfMonth(dateStart);
-                        int year2 = hjCalendar.GetYear(dateStart2);
-                        int month2 = hjCalendar.GetMonth(dateStart2);
-                        int day2 = hjCalendar.GetDayOfMonth(dateStart2);
+                            GregorianCalendar hjCalendar = new GregorianCalendar();
+                            int year = hjCalendar.GetYear(dateStart);
+                            int month = hjCalendar.GetMonth(dateStart);
+                            int day = hjCalendar.GetDayOfMonth(dateStart);
+                            int year2 = hjCalendar.GetYear(dateStart2);
+                            int month2 = hjCalendar.GetMonth(dateStart2);
+                            int day2 = hjCalendar.GetDayOfMonth(dateStart2);
 
-                        string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
-                        string dateStr2 = string.Format("{0:00}/{1}/{2}", day2, month2, year2);
+                            string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+                            string dateStr2 = string.Format("{0:00}/{1}/{2}", day2, month2, year2);
 
-                        evtNotif12SetResult.Faedn = dateStr;
-                        evtNotif12SetResult.Cdate = dateStr2;
+                            evtNotif12SetResult.Faedn = dateStr;
+                            evtNotif12SetResult.Cdate = dateStr2;
 
-                        string dt1 = string.Empty;
-                        string[] dts = null;
-                        dts = evtNotif12SetResult.Faedn.Split('/');
-                        dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
-                        evtNotif12SetResult.Faedn = dt1;
+                            string dt1 = string.Empty;
+                            string[] dts = null;
+                            dts = evtNotif12SetResult.Faedn.Split('/');
+                            dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+                            evtNotif12SetResult.Faedn = dt1;
 
-                        string dt2 = string.Empty;
-                        string[] dts2 = null;
-                        dts2 = evtNotif12SetResult.Cdate.Split('/');
-                        dt2 = dts2[0] + "-" + UtilityManager.GetShortMonthName(dts2[1]) + "-" + dts2[2];
-                        evtNotif12SetResult.Cdate = dt2;
+                            string dt2 = string.Empty;
+                            string[] dts2 = null;
+                            dts2 = evtNotif12SetResult.Cdate.Split('/');
+                            dt2 = dts2[0] + "-" + UtilityManager.GetShortMonthName(dts2[1]) + "-" + dts2[2];
+                            evtNotif12SetResult.Cdate = dt2;
 
-                        dueInvoicesListSet12.Add(evtNotif12SetResult);
+                            dueInvoicesListSet12.Add(evtNotif12SetResult);
+                        }
+                        DueInvoicesListSet12 = dueInvoicesListSet12;
+                        EnableDueInvoicesPage();
                     }
-                    DueInvoicesListSet12 = dueInvoicesListSet12;
-                    EnableDueInvoicesPage();
+                    else
+                    {
+                        App.selectedZakatItem = "";
+                        _navigationService.NavigateTo(App.ZakatInstalmentPlanPageView);
+                    }
+
                 }
                 else
                 {
-                    App.selectedZakatItem = "";
-                    _navigationService.NavigateTo(App.ZakatInstalmentPlanPageView);
+                    MainThread.BeginInvokeOnMainThread(async () =>
+                    {
+                        await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
+                    });
                 }
-
+                IsLoading = false;
             }
-            else
+            catch (GAZTVATRegistrationInProcessException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
             }
-
-
-
-            IsLoading = false;
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
+            }
+            finally
+            {
+                IsLoading = false;
+            }
 
 
 
@@ -1307,7 +1304,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
         }
 
 
-       
+
         private bool _isSummaryAttachmentsVisible = false;
         public bool IsSummaryAttachmentsVisible
         {
@@ -2099,101 +2096,90 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             try
             {
                 IsLoading = true;
-                try
+                var item = zakatListData[index];
+
+                SeletedZakatForm = await ZakatWebServiceManager.GAZTGetZakatRequestDisplayData(item.referanceNumber, item.Fbtyp);
+
+                if (SeletedZakatForm != null && SeletedZakatForm.d != null)
                 {
-                    var item = zakatListData[index];
 
-                    SeletedZakatForm = await ZakatWebServiceManager.GAZTGetZakatRequestDisplayData(item.referanceNumber, item.Fbtyp);
+                    var invoiceResult = await ZakatInstallmentPlanWebServiceManager.GAZTGetZakatInstalmentInvData(SeletedZakatForm.d.Fbnum);
 
-                    if (SeletedZakatForm != null && SeletedZakatForm.d != null)
+                    if (RequestForRevokeList != null && RequestForRevokeList.Count != 0)
                     {
 
-                        var invoiceResult = await ZakatInstallmentPlanWebServiceManager.GAZTGetZakatInstalmentInvData(SeletedZakatForm.d.Fbnum);
-
-                        if (RequestForRevokeList != null && RequestForRevokeList.Count != 0)
+                        var itemsSource = RequestForRevokeList.Where(w => w.Fbnum.Contains(SeletedZakatForm.d.Fbnum)).ToList();
+                        if (itemsSource.Count > 0)
                         {
-
-                            var itemsSource = RequestForRevokeList.Where(w => w.Fbnum.Contains(SeletedZakatForm.d.Fbnum)).ToList();
-                            if (itemsSource.Count > 0)
-                            {
-                                SelectedFbNum = itemsSource[0].Fbnum;
-                                IsZakatSummaryRevokeVisible = true;
-                            }
-                            else
-                            {
-                                IsZakatSummaryRevokeVisible = false;
-
-                            }
+                            SelectedFbNum = itemsSource[0].Fbnum;
+                            IsZakatSummaryRevokeVisible = true;
+                        }
+                        else
+                        {
+                            IsZakatSummaryRevokeVisible = false;
 
                         }
 
-                        NoOfInstalments = item.noOfInstalments;
-                        TotalAmount = string.Format("{0:N2}", item.downpayment) + " SAR";
-                        InstalmentAmount = string.Format("{0:N2}", item.dueamount) + " SAR";
-
-
-                        if (item.frequency == "01")
-                        {
-
-                            SelectedFrequencyName = AppResources.ZakatInstalmetMonthly;
-
-                        }
-                        else if (item.frequency == "02")
-                        {
-
-                            SelectedFrequencyName = AppResources.ZakatInstalmetQuarterly;
-                        }
-                        else if (item.frequency == "03")
-                        {
-
-                            SelectedFrequencyName = AppResources.ZakatInstalmetHalfYearly;
-                        }
-                        else if (item.frequency == "04")
-                        {
-                            SelectedFrequencyName = AppResources.ZakatInstalmetYearly;
-                        }
-
-
-
-                        BindZakatSummaryData(SeletedZakatForm, invoiceResult);
                     }
 
-                    else
+                    NoOfInstalments = item.noOfInstalments;
+                    TotalAmount = string.Format("{0:N2}", item.downpayment) + " SAR";
+                    InstalmentAmount = string.Format("{0:N2}", item.dueamount) + " SAR";
+
+
+                    if (item.frequency == "01")
                     {
-                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                        _navigationService.GoBack();
+
+                        SelectedFrequencyName = AppResources.ZakatInstalmetMonthly;
+
+                    }
+                    else if (item.frequency == "02")
+                    {
+
+                        SelectedFrequencyName = AppResources.ZakatInstalmetQuarterly;
+                    }
+                    else if (item.frequency == "03")
+                    {
+
+                        SelectedFrequencyName = AppResources.ZakatInstalmetHalfYearly;
+                    }
+                    else if (item.frequency == "04")
+                    {
+                        SelectedFrequencyName = AppResources.ZakatInstalmetYearly;
                     }
 
 
 
-                    IsLoading = false;
+                    BindZakatSummaryData(SeletedZakatForm, invoiceResult);
                 }
-                catch (InternetException ex)
+                else
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    IsLoading = false;
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
-
                 }
                 IsLoading = false;
 
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                IsLoading = false;
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
-
+                await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
-                IsLoading = false;
-
-                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                _navigationService.GoBack();
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
             }
-            
-
+            finally
+            {
+                IsLoading = false;
+            }
         }
 
         public async Task GetZakatInstalmentPlanList()
@@ -2203,53 +2189,49 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 IsLoading = true;
                 ReqVatInstalmentPlanResponseList = null;
                 ZakatInstalmentPlanRequestListModel rEQVatInstalmentPlanResponse = null;
+                rEQVatInstalmentPlanResponse = await ZakatWebServiceManager.GAZTGetZakatInstalmentPlanRequestList("", "", "");
+                ReqVatInstalmentPlanResponseList = rEQVatInstalmentPlanResponse;
 
-                try
+
+                await PopToRootPage();
+
+                if (ReqVatInstalmentPlanResponseList != null && ReqVatInstalmentPlanResponseList.d != null)
                 {
-                    rEQVatInstalmentPlanResponse = await ZakatWebServiceManager.GAZTGetZakatInstalmentPlanRequestList("", "", "");
-                    ReqVatInstalmentPlanResponseList = rEQVatInstalmentPlanResponse;
-
-
-                   await PopToRootPage();
-
-                    if (ReqVatInstalmentPlanResponseList != null && ReqVatInstalmentPlanResponseList.d != null)
-                    {
-                        ZakatListData = new ObservableCollection<ZakatListModel>();
+                    ZakatListData = new ObservableCollection<ZakatListModel>();
 
 
 
-                        BindVatInstalments();
+                    BindVatInstalments();
 
-                    }
-                    else
-                    {
-                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                        _navigationService.GoBack();
-                    }
-
-                    IsLoading = false;
                 }
-                catch (InternetException ex)
+                else
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    IsLoading = false;
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
-
                 }
+
                 IsLoading = false;
+
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                IsLoading = false;
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
-
+                await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
+            }
+            finally
+            {
                 IsLoading = false;
-                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                _navigationService.GoBack();
             }
         }
 
@@ -2266,126 +2248,120 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             try
             {
                 IsLoading = true;
-                try
+                ZakatInstalmentPlanRequestListModel revokResult = await ZakatWebServiceManager.GAZTGetZakatRevokeList("", "", "");
+
+                await PopToRootPage();
+
+
+                if (revokResult != null && revokResult.d != null)
                 {
 
-                    ZakatInstalmentPlanRequestListModel revokResult = await ZakatWebServiceManager.GAZTGetZakatRevokeList("", "", "");
+                    if (ZakatListData == null)
+                    {
+                        ZakatListData = new ObservableCollection<ZakatListModel>();
 
-                   await PopToRootPage();
+                    }
 
 
-                    if (revokResult != null && revokResult.d != null)
+                    RequestForRevokeList = revokResult.d.RevokeListSet;
+
+                    IsZakat = Preferences.Get("isZakat", false);
+                    if (IsZakat)
                     {
 
-                        if (ZakatListData == null)
-                        {
-                            ZakatListData = new ObservableCollection<ZakatListModel>();
-
-                        }
-
-
-                        RequestForRevokeList = revokResult.d.RevokeListSet;
-
-                        IsZakat = Preferences.Get("isZakat", false);
-                        if (IsZakat)
-                        {
-
-                            RevokeListItem = revokResult.d.WorklistSet.Where(x => x.IptypeFg == "NZ").ToList();
-                        }
-                        else
-                        {
-                            RevokeListItem = revokResult.d.WorklistSet.Where(x => x.IptypeFg == "NI").ToList();
-
-                        }
-
-
-                        for (int i = 0; i < RevokeListItem.Count; i++)
-                        {
-                            RevokeListItem[i].DpAmt = string.Format("{0:N2}", RevokeListItem[i].DpAmt) + " " + AppResources.FORM5SAR;
-                            RevokeListItem[i].TotAmt = string.Format("{0:N2}", RevokeListItem[i].TotAmt) + " " + AppResources.FORM5SAR;
-
-                            string submitDate = "";
-                            if (RevokeListItem[i].SubmitDt != null)
-                            {
-
-                                DateTime dateStart = new DateTime();
-                                CultureInfo cultureInfo = new CultureInfo("ar-SA");
-                                string apiDate = @"""" + RevokeListItem[i].SubmitDt + @"""";
-                                dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
-
-                                GregorianCalendar hjCalendar = new GregorianCalendar();
-                                int year = hjCalendar.GetYear(dateStart);
-                                int month = hjCalendar.GetMonth(dateStart);
-                                int day = hjCalendar.GetDayOfMonth(dateStart);
-
-                                string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
-
-                                string dt1 = string.Empty;
-                                string[] dts = null;
-                                dts = dateStr.Split('/');
-                                //dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
-                                dt1 = dts[0] + "-" + dts[1] + "-" + dts[2];
-                                submitDate = dt1;
-                            }
-
-                            ZakatListData.Add(new ZakatListModel()
-                            {
-                                referanceNumber = RevokeListItem[i].Fbnum,
-                                status = RevokeListItem[i].Status,
-                                dueamount = string.Format("{0:N2}", double.Parse(RevokeListItem[i].TotAmt.Replace("SAR", "").Replace("ريال سعودي", ""))) + " " + AppResources.ZSAR,
-                                instalmentAmount = string.Format("{0:N2}", double.Parse(RevokeListItem[i].DueAmt.Replace("SAR", "").Replace("ريال سعودي", ""))) + " " + AppResources.ZSAR,
-                                noOfInstalments = RevokeListItem[i].PlanDur,
-                                downpayment = string.Format("{0:N2}", double.Parse(RevokeListItem[i].DpAmt.Replace("SAR", "").Replace("ريال سعودي", ""))) + " " + AppResources.ZSAR,
-                                dateOfSubmission = submitDate,
-                                Fbtyp = Preferences.Get("isZakat", false) ? AppResources.ZakatInstalmetSelectTypeZakat : AppResources.ZakatInstalmetSelectTypeIncomeTax,
-                                frequency = RevokeListItem[i].PymntFreq,
-                                SelectedType = Preferences.Get("isZakat", false) ? AppResources.ZakatInstalmetSelectTypeZakat : AppResources.ZakatInstalmetSelectTypeIncomeTax,
-                                statusType = RevokeListItem[i].Fbust,
-                                fbNum = RevokeListItem[i].Fbnum,
-                                isShowApproveView = RevokeListItem[i].Fbsta.Equals("IP021") && RevokeListItem[i].Fbust.Equals("E0077")
-                            });
-
-                            if (ZakatListData.Count > 0)
-                            {
-                                NumberOfInstalmentPlans = ZakatListData.Count + " " + AppResources.ZakatInstalmetPlan;
-                            }
-
-                        }
-
+                        RevokeListItem = revokResult.d.WorklistSet.Where(x => x.IptypeFg == "NZ").ToList();
                     }
                     else
                     {
-                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                        _navigationService.GoBack();
+                        RevokeListItem = revokResult.d.WorklistSet.Where(x => x.IptypeFg == "NI").ToList();
+
                     }
 
 
+                    for (int i = 0; i < RevokeListItem.Count; i++)
+                    {
+                        RevokeListItem[i].DpAmt = string.Format("{0:N2}", RevokeListItem[i].DpAmt) + " " + AppResources.FORM5SAR;
+                        RevokeListItem[i].TotAmt = string.Format("{0:N2}", RevokeListItem[i].TotAmt) + " " + AppResources.FORM5SAR;
 
-                    IsLoading = false;
+                        string submitDate = "";
+                        if (RevokeListItem[i].SubmitDt != null)
+                        {
+
+                            DateTime dateStart = new DateTime();
+                            CultureInfo cultureInfo = new CultureInfo("ar-SA");
+                            string apiDate = @"""" + RevokeListItem[i].SubmitDt + @"""";
+                            dateStart = JsonConvert.DeserializeObject<DateTime>(apiDate);
+
+                            GregorianCalendar hjCalendar = new GregorianCalendar();
+                            int year = hjCalendar.GetYear(dateStart);
+                            int month = hjCalendar.GetMonth(dateStart);
+                            int day = hjCalendar.GetDayOfMonth(dateStart);
+
+                            string dateStr = string.Format("{0:00}/{1}/{2}", day, month, year);
+
+                            string dt1 = string.Empty;
+                            string[] dts = null;
+                            dts = dateStr.Split('/');
+                            //dt1 = dts[0] + "-" + UtilityManager.GetShortMonthName(dts[1]) + "-" + dts[2];
+                            dt1 = dts[0] + "-" + dts[1] + "-" + dts[2];
+                            submitDate = dt1;
+                        }
+
+                        ZakatListData.Add(new ZakatListModel()
+                        {
+                            referanceNumber = RevokeListItem[i].Fbnum,
+                            status = RevokeListItem[i].Status,
+                            dueamount = string.Format("{0:N2}", double.Parse(RevokeListItem[i].TotAmt.Replace("SAR", "").Replace("ريال سعودي", ""))) + " " + AppResources.ZSAR,
+                            instalmentAmount = string.Format("{0:N2}", double.Parse(RevokeListItem[i].DueAmt.Replace("SAR", "").Replace("ريال سعودي", ""))) + " " + AppResources.ZSAR,
+                            noOfInstalments = RevokeListItem[i].PlanDur,
+                            downpayment = string.Format("{0:N2}", double.Parse(RevokeListItem[i].DpAmt.Replace("SAR", "").Replace("ريال سعودي", ""))) + " " + AppResources.ZSAR,
+                            dateOfSubmission = submitDate,
+                            Fbtyp = Preferences.Get("isZakat", false) ? AppResources.ZakatInstalmetSelectTypeZakat : AppResources.ZakatInstalmetSelectTypeIncomeTax,
+                            frequency = RevokeListItem[i].PymntFreq,
+                            SelectedType = Preferences.Get("isZakat", false) ? AppResources.ZakatInstalmetSelectTypeZakat : AppResources.ZakatInstalmetSelectTypeIncomeTax,
+                            statusType = RevokeListItem[i].Fbust,
+                            fbNum = RevokeListItem[i].Fbnum,
+                            isShowApproveView = RevokeListItem[i].Fbsta.Equals("IP021") && RevokeListItem[i].Fbust.Equals("E0077")
+                        });
+
+                        if (ZakatListData.Count > 0)
+                        {
+                            NumberOfInstalmentPlans = ZakatListData.Count + " " + AppResources.ZakatInstalmetPlan;
+                        }
+
+                    }
+
                 }
-                catch (InternetException ex)
+                else
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    IsLoading = false;
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
-
                 }
+
+
+
                 IsLoading = false;
 
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                IsLoading = false;
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
-
+                await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
+            }
+            finally
+            {
                 IsLoading = false;
-                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    _navigationService.GoBack();
-              
             }
         }
 
@@ -2395,63 +2371,45 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             {
                 IsLoading = true;
 
-                try
-                {
-
                     ZakatRevokeValidateModel revokeResult = await WebServiceManager.GAZTGetZakatRevokeValidate(SelectedFbNum);
-
                     await PopToRootPage();
-
-                    try
-                    {
+                   
                         if (revokeResult != null && revokeResult.d != null)
                         {
                             if (revokeResult.d.Valid)
                             {
-
                                 await SendOTPToRegisterMobileNumber(SelectedFbNum, "");
-
-
                             }
-
-
                         }
                         else
                         {
                             await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                             _navigationService.GoBack();
                         }
-
-
-
                         IsLoading = false;
-                    }
-                    catch (Exception)
-                    {
-                    }
-
-                }
-                catch (InternetException ex)
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    IsLoading = false;
-                    _navigationService.GoBack();
-                }
+                    
                 IsLoading = false;
 
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                IsLoading = false;
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
-
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
                 IsLoading = false;
-                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                _navigationService.GoBack();
             }
         }
 
@@ -2464,55 +2422,43 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             {
                 IsLoading = true;
                 ZakatInstalments = null;
-                try
+                ZakatInstalments = await ZakatInstallmentPlanWebServiceManager.GetZakatInstalmentRevokePostData(SelectedFbNum);
+                if (ZakatInstalments != null)
                 {
-                    ZakatInstalments = await ZakatInstallmentPlanWebServiceManager.GetZakatInstalmentRevokePostData(SelectedFbNum);
-
-
-                    if (ZakatInstalments != null)
+                    var isrevoked = await RevokeSubmitClicked();
+                    if (isrevoked != null && isrevoked.d != null)
                     {
-
-                        var isrevoked = await RevokeSubmitClicked();
-
-                        if (isrevoked != null && isrevoked.d != null)
-                        {
-
-                            Preferences.Set("IsFromRevok", true);
-
-                            Preferences.Set("RevokeRef", isrevoked.d.Fbnum.ToString());
-
-
-                            await Application.Current.MainPage.Navigation.PushAsync(new ZakatInstalmentPlanSuccessPage());
-                        }
-
-
+                        Preferences.Set("IsFromRevok", true);
+                        Preferences.Set("RevokeRef", isrevoked.d.Fbnum.ToString());
+                        await Application.Current.MainPage.Navigation.PushAsync(new ZakatInstalmentPlanSuccessPage());
                     }
-                    else
-                    {
-                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                        _navigationService.GoBack();
-                    }
-                    IsLoading = false;
                 }
-                catch (InternetException ex)
+                else
                 {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    IsLoading = false;
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 }
                 IsLoading = false;
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                IsLoading = false;
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
+                await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
+            }
+            finally
+            {
                 IsLoading = false;
-                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                _navigationService.GoBack();
             }
         }
 
@@ -2639,15 +2585,27 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                IsLoading = false;
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
                 return response;
             }
-
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+                return response;
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+                return response;
+            }
             catch (Exception)
             {
-               
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
                 return response;
+            }
+            finally
+            {
+                IsLoading = false;
             }
 
         }
@@ -2688,18 +2646,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             {
                 IsLoading = true;
                 Enabled = false;
-                try
-                {
                     string lang = UtilityManager.GetLanguageParameter();
                     ZakatRevokeSendSMSModel revokeOTP = await WebServiceManager.GAZTZakatRevokeSendOTP(fbNumber, OTPCode);
                     await PopToRootPage();// If seesion Expired it will navigate to Dashboard page
                     if (revokeOTP?.results?.Count > 0)
                     {
                         var OTPItem = revokeOTP?.results[0];
-
-
-
-
                         if (OTPCode.Length == 0)
                         {
                             EnableOTPPage();
@@ -2716,26 +2668,37 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
                             }
                             else
-                            { await _dialogService.ShowMessage(AppResources.InvalidOTP, AppResources.Information);
+                            {
+                                await _dialogService.ShowMessage(AppResources.InvalidOTP, AppResources.Information);
                             }
 
 
                         }
- }
+                    }
                     else
                     {
                         await _dialogService.ShowMessageBox(AppResources.ZPleaseEnterAValidUserID, AppResources.ZError);
                     }
-
-                }
-                catch (Exception)
-                {
-                }
                 IsLoading = false;
             }
-            catch (InternetException ex)
+            catch (GAZTVATRegistrationInProcessException ex)
             {
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
                 IsLoading = false;
             }
         }

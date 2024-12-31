@@ -28,7 +28,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
         public ICommand GoBackClick { get; set; }
         public ICommand CloseClick { get; set; }
-        public VATInstalmentPlanRevokeViewModel(INavigationService navigationService, IDialogService dialogService):base(navigationService,dialogService)
+        public VATInstalmentPlanRevokeViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             IsArabic = App.IsArabic;
 
@@ -114,70 +114,66 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             try
             {
                 IsLoading = true;
-                await Task.Run(async () =>
+                try
                 {
 
-                    IsLoading = true;
-                    try
+                    rEQVatInstalmentPlanResponse = await VATInstalationPlanWebServiceManager.GetRequestToVATInstalmentData();
+
+                    PopToRootPage();
+
+
+                    if (rEQVatInstalmentPlanResponse != null && rEQVatInstalmentPlanResponse.d != null)
                     {
-
-                        rEQVatInstalmentPlanResponse = await VATInstalationPlanWebServiceManager.GetRequestToVATInstalmentData();
-
-                        PopToRootPage();
-
-
-                        if (rEQVatInstalmentPlanResponse != null && rEQVatInstalmentPlanResponse.d != null)
-                        {
-                            BindVatInstalments();
-                        }
-                        else
-                        {
-                            MainThread.BeginInvokeOnMainThread(async () =>
-                            {
-                                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                                _navigationService.GoBack();
-                            });
-                        }
-
-
-
-                        IsLoading = false;
+                        BindVatInstalments();
                     }
-                    catch (InternetException ex)
+                    else
                     {
                         MainThread.BeginInvokeOnMainThread(async () =>
                         {
-                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                            IsLoading = false;
+                            await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                             _navigationService.GoBack();
                         });
-
                     }
-                });
+
+
+
+                    IsLoading = false;
+                }
+                catch (InternetException ex)
+                {
+                    MainThread.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        IsLoading = false;
+                        _navigationService.GoBack();
+                    });
+
+                }
+
                 IsLoading = false;
 
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    IsLoading = false;
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
+            }
 
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    _navigationService.GoBack();
-                });
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
     }

@@ -243,51 +243,23 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPag
                     App.HideProgressView();
                 });
             }
-            catch (GAZTException gex)
-            {
-                // Handle the GAZT custom exception.
-                string MessageForTheUser = gex.Message;
-                if (gex is GAZTInvalidDataException)
-                {
-                    MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                }
-                if (gex is GAZTNetworkConnectivityIssueException)
-                {
-                    MessageForTheUser = AppResources.NetworkConnectivityIssue;
-                }
-                else if (gex is GAZTInternetException)
-                {
-                    MessageForTheUser = AppResources.ZZInternetConnectionMessage;
-                }
-                else if (gex is GAZTSessionExpiredException)
-                {
-                    MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
-                }
-                MainThread.BeginInvokeOnMainThread(async () =>
-                 {
-                     await Task.Run(() =>
-                     {
-                         IsLoading = false;
-                     });
+           catch (GAZTNetworkConnectivityIssueException)
+ {
+     await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+ }
 
-                     _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                     //viewModel._navigationService.GoBack();
-                 });
-            }
-            catch (Exception)
-            {
-
-
-                MainThread.BeginInvokeOnMainThread(async () =>
-                 {
-                     await Task.Run(() =>
-                     {
-                         IsLoading = false;
-                     });
-
-                     await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                 });
-            }
+ catch (InternetException)
+ {
+     await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+ }
+ catch(Exception)
+ {
+     await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+ }
+ finally
+ {
+     IsLoading = false;
+ }
         }
         public async Task AddAttachment()
         {

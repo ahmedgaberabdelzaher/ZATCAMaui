@@ -809,107 +809,92 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATReviewViewModel
         {
             try
             {
-                try
+                IsLoading = true;
+                var item = VATobjListViewData[index];
+                VATObjectionSummaryModel modelVATReview = new VATObjectionSummaryModel();
+                modelVATReviewsReturn = new VATObjectionFormModel.VATReviewsReturnModel();
+
+                modelVATReview = await VATObjectionWebServiceManager.GAZTGetVATObjectionSummary(item.Fbnum);
+
+                if (modelVATReview != null && modelVATReview.d != null)
                 {
-                    IsLoading = true;
-                    var item = VATobjListViewData[index];
-                    VATObjectionSummaryModel modelVATReview = new VATObjectionSummaryModel();
-                    modelVATReviewsReturn = new VATObjectionFormModel.VATReviewsReturnModel();
-
-                    modelVATReview = await VATObjectionWebServiceManager.GAZTGetVATObjectionSummary(item.Fbnum);
-
-                    if (modelVATReview != null && modelVATReview.d != null)
-                    {
-                        await BindSummaryData(modelVATReview);
-                    }
-
-                    else
-                    {
-                        IsLoading = false;
-                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong,
-                                 AppResources.Information);
-                        _navigationService.GoBack();
-                    }
-
-                    IsLoading = false;
+                    await BindSummaryData(modelVATReview);
                 }
-                catch (GAZTVATRegistrationInProcessException ex)
+                else
                 {
                     IsLoading = false;
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
                 }
-                catch (InternetException ex)
-                {
 
-                    IsLoading = false;
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    
-                    _navigationService.GoBack();
-                }
+                IsLoading = false;
+
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                IsLoading = false;
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
+                await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
+            }
+            finally
+            {
                 IsLoading = false;
-                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                _navigationService.GoBack();
             }
         }
 
         public async Task VATObjectionList()
-
         {
             try
             {
                 IsLoading = true;
 
                 VATObjectionListModel _VATObjectionList = new VATObjectionListModel();
-                try
+                _VATObjectionList = await VATObjectionWebServiceManager.GAZTGetVATObjectionList();
+
+                if (_VATObjectionList != null && _VATObjectionList.d != null)
                 {
-                    _VATObjectionList = await VATObjectionWebServiceManager.GAZTGetVATObjectionList();
+                    var selectedAssets = _VATObjectionList.d.ASSLISTSet
+                        .Where(x => x.Fbtyp.ToUpper() == "RAVT").ToList();
+                    VATReviewListSet = selectedAssets;
 
-                    if (_VATObjectionList != null && _VATObjectionList.d != null)
-                    {
-                        var selectedAssets = _VATObjectionList.d.ASSLISTSet
-                            .Where(x => x.Fbtyp.ToUpper() == "RAVT").ToList();
-                        VATReviewListSet = selectedAssets;
-
-                        PopulateVATReviewList();
-                    }
-
-                    else
-                    {
-                        IsLoading = false;
-                        await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong,
-                            AppResources.Information);
-                        _navigationService.GoBack();
-                    }
+                    PopulateVATReviewList();
                 }
-                catch (InternetException ex)
+
+                else
                 {
                     IsLoading = false;
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                   
-                    _navigationService.GoBack();
+                    await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
                 }
                 IsLoading = false;
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                IsLoading = false;
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
+                await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
+            }
+            finally
+            {
                 IsLoading = false;
-                await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                _navigationService.GoBack();
             }
         }
 

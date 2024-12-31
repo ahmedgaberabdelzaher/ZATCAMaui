@@ -295,14 +295,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     SelectedTaxTypeForFilter = TaxTypeForFilter.Where(x => x.Id == "00").FirstOrDefault();
                 }
             }
-            catch (InternetException ex)
+            catch (GAZTNetworkConnectivityIssueException)
             {
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                _navigationService.GoBack();
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
 

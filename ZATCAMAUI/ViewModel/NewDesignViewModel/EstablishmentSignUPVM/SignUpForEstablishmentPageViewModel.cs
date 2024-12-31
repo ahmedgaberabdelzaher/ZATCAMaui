@@ -19,7 +19,7 @@ using ZATCAMAUI.Core.CustomControls;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 {
- 
+
     public class SignUpForEstablishmentPageViewModel : BaseViewModel
     {
         public int DefaultMonth;
@@ -50,7 +50,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
         }
 
-       
+
 
 
         private string _txtConfirmPassword = string.Empty;
@@ -1166,8 +1166,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     }
                     catch (Exception ex)
                     {
-                        
-                        
+
+
                     }
                 }
                 OnPropertyChanged("SelectedIdType");
@@ -1354,10 +1354,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 _oTPValidDuration = value;
                 if (_oTPValidDuration.Equals(" 00:00"))
                 {
-                    ButtonDisableColor =  (Color)Application.Current.Resources["Primary"];
+                    ButtonDisableColor = (Color)Application.Current.Resources["Primary"];
                     ButtonDisableTextColor = Colors.White;
                     IsResendOTPEnabled = true;
-                    VerifyButtonDisableColor =  (Color)Application.Current.Resources["ButtonGray"];
+                    VerifyButtonDisableColor = (Color)Application.Current.Resources["ButtonGray"];
                     VerifyButtonDisableTextColor = Colors.Gray;
                     IsVerifyOTPEnabled = false;
                     IsOTPEntryEnable = false;
@@ -1752,7 +1752,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 OnPropertyChanged("EncriptedMobileNumber");
             }
         }
-        private Color _buttonDisableColor =  (Color)Application.Current.Resources["ButtonGray"];
+        private Color _buttonDisableColor = (Color)Application.Current.Resources["ButtonGray"];
         public Color ButtonDisableColor
         {
             get
@@ -1767,7 +1767,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 OnPropertyChanged("ButtonDisableColor");
             }
         }
-        private Color _verifybuttonDisableColor =  (Color)Application.Current.Resources["Secondary"];
+        private Color _verifybuttonDisableColor = (Color)Application.Current.Resources["Secondary"];
         public Color VerifyButtonDisableColor
         {
             get
@@ -2100,7 +2100,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 OnPropertyChanged("OtpMDl");
             }
         }
-       
+
         #endregion
 
         #region Constructor
@@ -2194,7 +2194,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 OnPropertyChanged("IsAllValidCRNumberEntered");
             }
         }
-       
+
 
         private bool _titleVisibility = false;
         public bool TitleVisibility
@@ -2293,7 +2293,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     //License Number Validation
                     else
                     {
-                        
+
                         //AllValid Data Entered
                         if (!string.IsNullOrEmpty(TxtLicenseNumber)
                             && TxtLicenseNumber.Length == 20
@@ -2326,7 +2326,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                         BodyText = AppResources.CRReviewthebelowinformation;
                         NextBTN = AppResources.ZZZZContinue;
                         CurrentTab = EstablishmentSignUPTabEnum.MobileVerification;
-                     
+
                     }
                     else
                     {
@@ -2340,11 +2340,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     BodyText = AppResources.ZZPleaseenteraccessCode;
                     NextBTN = AppResources.ZZZZContinue;
                     CurrentTab = EstablishmentSignUPTabEnum.EmailVerification;
-                   
+
                     TimerStart(numberOfSeconds);
                     break;
 
-                   
+
             }
         }
 
@@ -2387,10 +2387,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     }
                     catch (Exception ex)
                     {
-                        
-                        
+
+
                     }
-                    
+
                     CurrentTab = EstablishmentSignUPTabEnum.MobileVerification;
                     break;
 
@@ -2425,7 +2425,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
         public void ClearData()
         {
             //SetDefaultDate();
-            VerifyButtonDisableColor =  (Color)Application.Current.Resources["Secondary"];
+            VerifyButtonDisableColor = (Color)Application.Current.Resources["Secondary"];
             //IsVerifyOTPEnabled = true;
             IsResendOTPEnabled = false;
             ButtonDisableColor = Colors.Gray;
@@ -2515,7 +2515,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
         }
 
-       
+
         public async Task GetCaptchAndGUID()
         {
             try
@@ -2561,12 +2561,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 IsLoading = false;
             }
 
-            catch (InternetException ex)
+            catch (GAZTNetworkConnectivityIssueException)
             {
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
                 IsLoading = false;
             }
+
         }
 
 
@@ -2588,73 +2599,79 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 
                 try
                 {
-                    try
+                    SignUpNextBodyModel CreateModel = new SignUpNextBodyModel();
+                    CreateModel.ABirthdt = SignUpModelRootObjectM.d.signupD.ABirthdt;
+                    CreateModel.ACity = SignUpModelRootObjectM.d.signupD.ACity;
+                    CreateModel.ACityCode = SignUpModelRootObjectM.d.signupD.ACityCode;
+                    CreateModel.ACommId = SignUpModelRootObjectM.d.signupD.ACommId;
+                    CreateModel.AEmail = SignUpModelRootObjectM.d.signupD.AEmail;
+                    CreateModel.AFirstname = SignUpModelRootObjectM.d.signupD.AFirstname;
+                    CreateModel.AIdnumber = SignUpModelRootObjectM.d.signupD.AIdnumber;
+                    CreateModel.AIdtype = SignUpModelRootObjectM.d.signupD.AIdtype;
+                    CreateModel.AIssuedBy = SignUpModelRootObjectM.d.signupD.AIssuedBy;
+                    CreateModel.ALang = SignUpModelRootObjectM.d.signupD.ALang;
+                    CreateModel.ALastname = SignUpModelRootObjectM.d.signupD.ALastname;
+                    CreateModel.ALicenceNo = SignUpModelRootObjectM.d.signupD.ALicenceNo;
+                    CreateModel.AMobile = SignUpModelRootObjectM.d.signupD.AMobile;
+                    CreateModel.ACountry = SignUpModelRootObjectM.d.signupD.ACountry;
+
+                    CreateModel.APhone = SignUpModelRootObjectM.d.signupD.APhone;
+                    CreateModel.ATin = SignUpModelRootObjectM.d.signupD.ATin;
+                    CreateModel.ATinExist = SignUpModelRootObjectM.d.signupD.ATinExist;
+                    CreateModel.AType = SignUpModelRootObjectM.d.signupD.AType;
+                    CreateModel.CaseGuid = SignUpModelRootObjectM.d.signupD.CaseGuid;
+                    CreateModel.ACaptcha = SignUpModelRootObjectM.d.signupD.ACaptcha;
+                    if (OtpMDl != null && OtpMDl.d != null)
                     {
-                        SignUpNextBodyModel CreateModel = new SignUpNextBodyModel();
-                        CreateModel.ABirthdt = SignUpModelRootObjectM.d.signupD.ABirthdt;
-                        CreateModel.ACity = SignUpModelRootObjectM.d.signupD.ACity;
-                        CreateModel.ACityCode = SignUpModelRootObjectM.d.signupD.ACityCode;
-                        CreateModel.ACommId = SignUpModelRootObjectM.d.signupD.ACommId;
-                        CreateModel.AEmail = SignUpModelRootObjectM.d.signupD.AEmail;
-                        CreateModel.AFirstname = SignUpModelRootObjectM.d.signupD.AFirstname;
-                        CreateModel.AIdnumber = SignUpModelRootObjectM.d.signupD.AIdnumber;
-                        CreateModel.AIdtype = SignUpModelRootObjectM.d.signupD.AIdtype;
-                        CreateModel.AIssuedBy = SignUpModelRootObjectM.d.signupD.AIssuedBy;
-                        CreateModel.ALang = SignUpModelRootObjectM.d.signupD.ALang;
-                        CreateModel.ALastname = SignUpModelRootObjectM.d.signupD.ALastname;
-                        CreateModel.ALicenceNo = SignUpModelRootObjectM.d.signupD.ALicenceNo;
-                        CreateModel.AMobile = SignUpModelRootObjectM.d.signupD.AMobile;
-                        CreateModel.ACountry = SignUpModelRootObjectM.d.signupD.ACountry;
-
-                        CreateModel.APhone = SignUpModelRootObjectM.d.signupD.APhone;
-                        CreateModel.ATin = SignUpModelRootObjectM.d.signupD.ATin;
-                        CreateModel.ATinExist = SignUpModelRootObjectM.d.signupD.ATinExist;
-                        CreateModel.AType = SignUpModelRootObjectM.d.signupD.AType;
-                        CreateModel.CaseGuid = SignUpModelRootObjectM.d.signupD.CaseGuid;
-                        CreateModel.ACaptcha = SignUpModelRootObjectM.d.signupD.ACaptcha;
-                        if (OtpMDl != null && OtpMDl.d != null)
-                        {
-                            CreateModel.AAbsherGuid = OtpMDl.d.Guid16;
-                            CreateModel.AAbsherOtp = OtpMDl.d.OtpCode;
-                        }
-                        else
-                        {
-                            CreateModel.AAbsherGuid = string.Empty;
-                            CreateModel.AAbsherOtp = string.Empty;
-                        }
-                        string ResultFirstSubmit = await WebServiceManager.GAZTSignUpFirstSubmitCGZTAcc(CreateModel);
-                        SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
-                        if (ResultFirstSubmitModel.d == null)
-                        {
-                            SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message));
-                        }
-                        else
-                        {
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZYournewEmailandSMSValidationCodehasbeenresenttoyou));
-
-                            ButtonDisableColor = (Color)Application.Current.Resources["ButtonGray"];
-                            ButtonDisableTextColor = Colors.Gray;
-                            VerifyButtonDisableColor = (Color)Application.Current.Resources["Primary"];
-                            VerifyButtonDisableTextColor = Colors.White;
-                            IsResendOTPEnabled = false;
-                            IsVerifyOTPEnabled = true;
-                            IsOTPEntryEnable = true;
-                            StartOTPTimer();
-                            IsNextButtonEnable = true;
-                            IsResendOTPEnabled = false;
-
-                            SignUpModelRootObjectM.d = ResultFirstSubmitModel.d;
-                        }
+                        CreateModel.AAbsherGuid = OtpMDl.d.Guid16;
+                        CreateModel.AAbsherOtp = OtpMDl.d.OtpCode;
                     }
-                    catch (InternetException ex)
+                    else
                     {
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                        CreateModel.AAbsherGuid = string.Empty;
+                        CreateModel.AAbsherOtp = string.Empty;
                     }
+                    string ResultFirstSubmit = await WebServiceManager.GAZTSignUpFirstSubmitCGZTAcc(CreateModel);
+                    SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
+                    if (ResultFirstSubmitModel.d == null)
+                    {
+                        SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message));
+                    }
+                    else
+                    {
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZYournewEmailandSMSValidationCodehasbeenresenttoyou));
+
+                        ButtonDisableColor = (Color)Application.Current.Resources["ButtonGray"];
+                        ButtonDisableTextColor = Colors.Gray;
+                        VerifyButtonDisableColor = (Color)Application.Current.Resources["Primary"];
+                        VerifyButtonDisableTextColor = Colors.White;
+                        IsResendOTPEnabled = false;
+                        IsVerifyOTPEnabled = true;
+                        IsOTPEntryEnable = true;
+                        StartOTPTimer();
+                        IsNextButtonEnable = true;
+                        IsResendOTPEnabled = false;
+
+                        SignUpModelRootObjectM.d = ResultFirstSubmitModel.d;
+                    }
+
                 }
-                catch (InternetException ex)
+                catch (GAZTNetworkConnectivityIssueException)
                 {
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+                }
+                catch (InternetException)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+                }
+                catch (Exception)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+                }
+                finally
+                {
+                    IsLoading = false;
                 }
             }
 
@@ -2705,8 +2722,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 }
                 catch (Exception)
                 {
-                    
-                    
+
+
                 }
                 IsLoading = false;
             }
@@ -2819,7 +2836,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             {
 
             }
-           
+
 
             IsLoading = false;
 
@@ -2843,53 +2860,24 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 {
                     CityList = new ObservableCollection<SignupCityResult>(CityListSignup.d.cities);
                 }
-             
-           
+
+
             }
-            catch (GAZTException gex)
+            catch (GAZTNetworkConnectivityIssueException)
             {
-
-                // Handle the GAZT custom exception.
-                string MessageForTheUser = gex.Message;
-                if (gex is GAZTInvalidDataException)
-                {
-                    MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                }
-                if (gex is GAZTNetworkConnectivityIssueException)
-                {
-                    MessageForTheUser = AppResources.NetworkConnectivityIssue;
-                }
-                else if (gex is GAZTInternetException)
-                {
-                    MessageForTheUser = AppResources.ZZInternetConnectionMessage;
-                }
-                else if (gex is GAZTSessionExpiredException)
-                {
-                    MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
-                }
-
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    IsLoading = false;
-
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                });
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
             }
-            catch (HttpRequestException)
+            catch (InternetException)
             {
-                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
                 IsLoading = false;
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-            }
-            catch (Exception )
-            {
-                
-                
-                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                IsLoading = false;
-
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
             }
             IsLoading = false;
         }
@@ -2938,10 +2926,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     if (TotalSec < 0)
                     {
                         OTPValidDuration = " 0:00";
-                        ButtonDisableColor =  (Color)Application.Current.Resources["Primary"];
+                        ButtonDisableColor = (Color)Application.Current.Resources["Primary"];
                         ButtonDisableTextColor = Colors.White;
                         IsResendOTPEnabled = true;
-                        VerifyButtonDisableColor =  (Color)Application.Current.Resources["ButtonGray"];
+                        VerifyButtonDisableColor = (Color)Application.Current.Resources["ButtonGray"];
                         VerifyButtonDisableTextColor = Colors.Gray;
                         IsVerifyOTPEnabled = false;
                         IsOTPEntryEnable = false;
@@ -3088,7 +3076,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                         StringBuilder message = new StringBuilder();
                         foreach (Errordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
                         {
-                            message.AppendLine(itemerror.message);  
+                            message.AppendLine(itemerror.message);
                         }
                         message = message.Replace("An exception was raised", string.Empty);
                         await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(message.ToString()));
@@ -3114,50 +3102,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     }
                 }
             }
-            catch (GAZTException gex)
+            catch (GAZTNetworkConnectivityIssueException)
             {
-                // Handle the GAZT custom exception.
-                string MessageForTheUser = gex.Message;
-                if (gex is GAZTInvalidDataException)
-                {
-                    MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                }
-                if (gex is GAZTNetworkConnectivityIssueException)
-                {
-                    MessageForTheUser = AppResources.NetworkConnectivityIssue;
-                }
-                else if (gex is GAZTInternetException)
-                {
-                    MessageForTheUser = AppResources.ZZInternetConnectionMessage;
-                }
-                else if (gex is GAZTSessionExpiredException)
-                {
-                    MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
-                }
-
-                IsLoading = false;
-
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
             }
-            catch (InternetException ex)
+            catch (InternetException)
             {
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-            }
-            catch (HttpRequestException)
-            {
-                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-
-                IsLoading = false;
-
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
-
-                string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
                 IsLoading = false;
-
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
             }
         }
 
@@ -3237,11 +3196,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     return;
                 }
             }
-            catch (Exception )
+            catch (GAZTNetworkConnectivityIssueException)
             {
-
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
             }
-          
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
+            }
+
         }
         #endregion
 

@@ -14,8 +14,9 @@ public partial class OTPPageView : ContentPage
 
 		viewModel = App.Locator.OtpPageViewModel;
 		this.BindingContext = viewModel;
+		viewModel.IsShowMsgView = false;
 
-	}
+    }
 
 
 	

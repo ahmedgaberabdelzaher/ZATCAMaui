@@ -1,10 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using Mopups.Services;
+using Newtonsoft.Json;
 using PanCardView.Extensions;
 using System.Globalization;
 using System.Net;
 using System.Text.RegularExpressions;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.EstablishmentRegistration;
+using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 
 namespace ZATCAMAUI.Core.Mangers
 {
@@ -1607,11 +1609,11 @@ namespace ZATCAMAUI.Core.Mangers
                     return "";
                 }
             }
-            catch (Exception )
+            catch (Exception)
             {
                 return "";
             }
-           
+
 
         }
 
@@ -1640,7 +1642,7 @@ namespace ZATCAMAUI.Core.Mangers
                     return null;
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 return null;
             }
@@ -1671,12 +1673,30 @@ namespace ZATCAMAUI.Core.Mangers
                 }
                 return ListOfActivities;
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 return ListOfActivities;
             }
         }
 
+        public static async Task HandleExceptionMessage(string popUpMessage, bool isNavigateUp = false, Interfaces.INavigationService _navigationService = null)
+        {
+            try
+            {
+                if (MopupService.Instance.PopupStack.Any())
+                    await MopupService.Instance.PopAllAsync(false);
+
+                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(popUpMessage));
+                if (isNavigateUp && _navigationService != null)
+                {
+                        _navigationService.GoBack();
+                }
+            }
+            catch (Exception)
+            {
+            }
+
+        }
         public static string FormatDateToYYYYDDMMFromDateTypeString(DateTime? dateToConvert)
         {
             string requiredDate = string.Empty;

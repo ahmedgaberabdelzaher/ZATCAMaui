@@ -558,8 +558,6 @@ namespace ZATCAMAUI
                             }
                             catch (Exception)
                             {
-
-
                             }
                         });
                     }

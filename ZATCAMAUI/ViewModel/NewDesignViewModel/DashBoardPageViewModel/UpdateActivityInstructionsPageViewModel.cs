@@ -134,15 +134,25 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                     IsLoading = false;
                     await MopupService.Instance.PopAsync();
                 }
-                catch (GAZTVATRegistrationInProcessException exs)
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    await UtilityManager.HandleExceptionMessage(ex.Message, false);
+                }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+                }
+                catch (InternetException)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+                }
+                catch (Exception)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+                }
+                finally
                 {
                     IsLoading = false;
-                    await _dialogService.ShowMessage(exs.Message, AppResources.Information);
-                }
-                catch (InternetException ex)
-                {
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
                 }
             }
         }

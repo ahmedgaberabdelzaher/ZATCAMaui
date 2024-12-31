@@ -69,7 +69,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                                 }
                             }
                         }
-                        catch (Exception )
+                        catch (Exception)
                         {
                         }
 
@@ -216,7 +216,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
         }
 
-    
+
 
         public async Task DeleteAttachment(bool result, VATAttachment attachment)
         {
@@ -226,7 +226,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 if (result)
                 {
                     string results = await WebServiceManager.GAZTDeleteVATDeclarationAttachment(attachment.Filename, attachment.Doguid);
-                  await  PopToRootPage();
+                    await PopToRootPage();
                     if (results == "X")
                     {
                         Attachment listitem = (from itm in viewModel.VatAttachmentsList
@@ -260,10 +260,20 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
                 viewModel.IsLoading = false;
             }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
             catch (Exception)
             {
-
-
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
                 viewModel.IsLoading = false;
             }
         }
@@ -275,7 +285,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 await _navigation.PopToRootAsync();
             }
         }
-        
+
         private void btnSwitch_ClickedForNewVATChange(object sender, EventArgs e)
         {
             if (!viewModel.IsSwitchToggled)

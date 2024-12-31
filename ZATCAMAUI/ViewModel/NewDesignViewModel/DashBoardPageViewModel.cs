@@ -500,10 +500,26 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
             }
             catch (GAZTErrorException ex)
             {
-                IsLoading = false;
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
             }
-          
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
+            }
+
+
         }
 
         public List<TaxRelationSetResult> TaxTypeFilter
@@ -915,7 +931,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
             }
         }
 
-        
+
         private double _debitAmountEndProgressBar = 0;
         public double DebitAmountEndProgressBar
         {
@@ -2062,7 +2078,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
             {
                 await OnDataLoad();
                 RefreshDashboardCommand();
-               
+
                 isPayNowTapped = false;
 
                 NextCommitmentsString = AppResources.ZZMyCommitments;
@@ -2141,16 +2157,31 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                 });
 
             }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue,false);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
             catch (Exception)
             {
-
-
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
 
         public void OnDisappearing()
         {
-           
+
             MessagingCenter.Unsubscribe<GAZTNewDesignDashBoardPageView, string>(this, "StartTimerForDashboard");
             MessagingCenter.Unsubscribe<object, string>(this, "YesPressedToLogout");
             MessagingCenter.Unsubscribe<object, string>(this, "NoPressedToLogout");
@@ -2503,93 +2534,87 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
         {
             try
             {
-                try
+                IsLoading = true;
+
+                var platform = "";
+
+                if (DeviceInfo.Platform == DevicePlatform.iOS)
+                {
+                    platform = "C4";
+                }
+                else if (DeviceInfo.Platform == DevicePlatform.Android)
+                {
+                    platform = "C3";
+                }
+                PaymentData = null;
+                PaymentData = await WebServiceManager.GAZTValidateMyBillsPayment(fbNum, App.LoginDataRetrieved.TIN, platform, sdadNo, paymentType);
+
+
+                ValidatePayment modelDetails = new ValidatePayment();
+                modelDetails.Fbnum = fbNum;
+                modelDetails.Pymntty = paymentType;
+                modelDetails.Tin = App.LoginDataRetrieved.TIN;
+                modelDetails.Srcid = platform;
+                modelDetails.Srctile = "53";
+                modelDetails.Sadad = sdadNo;
+
+                PaymentData = await WebServiceManager.GAZTValidatePayment(modelDetails);
+
+                if (PaymentData != null && PaymentData.d != null)
                 {
 
-                    IsLoading = true;
-
-                    var platform = "";
-
-                    if (DeviceInfo.Platform == DevicePlatform.iOS)
+                    if (PaymentData.d.Guid != null && PaymentData.d.Guid == "")
                     {
-                        platform = "C4";
+                        await MopupService.Instance.PushAsync(new PaymentExceptionPageView());
+                        return;
                     }
-                    else if (DeviceInfo.Platform == DevicePlatform.Android)
-                    {
-                        platform = "C3";
-                    }
-                    PaymentData = null;
-                    PaymentData = await WebServiceManager.GAZTValidateMyBillsPayment(fbNum, App.LoginDataRetrieved.TIN, platform, sdadNo, paymentType);
 
-
-                    ValidatePayment modelDetails = new ValidatePayment();
-                    modelDetails.Fbnum = fbNum;
-                    modelDetails.Pymntty = paymentType;
-                    modelDetails.Tin = App.LoginDataRetrieved.TIN;
-                    modelDetails.Srcid = platform;
-                    modelDetails.Srctile = "53";
-                    modelDetails.Sadad = sdadNo;
-
-                    PaymentData = await WebServiceManager.GAZTValidatePayment(modelDetails);
-
-                    if (PaymentData != null && PaymentData.d != null)
+                    if (PaymentData.d.Guid != null)
                     {
 
-                        if (PaymentData.d.Guid != null && PaymentData.d.Guid == "")
-                        {
-                            await MopupService.Instance.PushAsync(new PaymentExceptionPageView());
-                            return;
-                        }
-
-                        if (PaymentData.d.Guid != null)
-                        {
-
-                            App.PaymentGuid = PaymentData.d.Guid;
-
-                        }
-
-                        if (paymentType == "Mada Payment")
-                        {
-
-                            IsLoading = true;
-                            //CR7420
-                            CreateMadaResponseRoot respose = await GetWebviewContent(PaymentData.d.Srcid);
-                            IsLoading = false;
-                            if (!string.IsNullOrEmpty(respose?.result?.securityAuthorizationKey))
-                            {
-                                App.securityAuthorizationKey = respose.result.securityAuthorizationKey;
-                                await _navigationService.NavigateTo(App.PaymentProcessWebview, 2);
-                            }
-                        }
+                        App.PaymentGuid = PaymentData.d.Guid;
 
                     }
 
-                    IsLoading = false;
+                    if (paymentType == "Mada Payment")
+                    {
+
+                        IsLoading = true;
+                        //CR7420
+                        CreateMadaResponseRoot respose = await GetWebviewContent(PaymentData.d.Srcid);
+                        IsLoading = false;
+                        if (!string.IsNullOrEmpty(respose?.result?.securityAuthorizationKey))
+                        {
+                            App.securityAuthorizationKey = respose.result.securityAuthorizationKey;
+                            await _navigationService.NavigateTo(App.PaymentProcessWebview, 2);
+                        }
+                    }
 
                 }
-                catch (GAZTValidatePaymentInProcessException ex)
-                {
-                    IsLoading = false;
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                }
 
-                catch (InternetException)
-                {
-                    IsLoading = false;
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                    _navigationService.GoBack();
-                }
-                catch (GAZTNetworkConnectivityIssueException)
-                {
-                    IsLoading = false;
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                }
+                IsLoading = false;
+
+
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue,false);
             }
             catch (InternetException)
             {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
                 IsLoading = false;
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                _navigationService.GoBack();
             }
         }
 
@@ -2744,134 +2769,125 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                     }
                 }
             }
-            catch (AggregateException ae)
+            catch (GAZTVATRegistrationInProcessException ex)
             {
-                IsLoading = false;
-                foreach (var gex in ae.InnerExceptions)
-                {
-                    // Handle the GAZT custom exception.
-                    if (gex is GAZTException)
-                    {
-                        string MessageForTheUser = gex.Message;
-                        if (gex is GAZTNetworkConnectivityIssueException)
-                        {
-                            MessageForTheUser = AppResources.NetworkConnectivityIssue;
-                        }
-                        else if (gex is GAZTInternetException)
-                        {
-                            MessageForTheUser = AppResources.ZZInternetConnectionMessage;
-                        }
-                        else if (gex is GAZTSessionExpiredException)
-                        {
-                            MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
-                        }
-                        if (MessageForTheUser == AppResources.ZZInternetConnectionMessage)
-                        {
-                            await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                            _navigationService.GoBack();
-                        }
-                        else if (MessageForTheUser == AppResources.NetworkConnectivityIssue)
-                        {
-                            await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
-                            _navigationService.GoBack();
-                        }
-                        else if (MessageForTheUser == AppResources.ZYourSessionhasexpiredPleaseLoginagain)
-                        {
-                          await  PopToRootPage();
-                        }
-                    }
-
-                }
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
             }
-            catch (GAZTSessionExpiredException)
+            catch (GAZTNetworkConnectivityIssueException)
             {
-                await _dialogService.ShowMessage(AppResources.ZYourSessionhasexpiredPleaseLoginagain, AppResources.Information);
-              await  PopToRootPage();
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
                 IsLoading = false;
             }
-
             IsLoading = false;
             SelectedCommitmentFilterLabelValue = AppResources.ZZOverdueCommitments;
         }
 
         public async Task GetAccountStatments()
         {
-            IsAccountsStatementLoading = true;
-
-
-
-            string lang = UtilityManager.GetLanguageParameter();
-
-            ObservableCollection<MyBills> ACBills = new ObservableCollection<MyBills>();
-
-            ObservableCollection<MyBills> TempBills = await WebServiceManager.GAZTGetMyBills(App.LoginDataRetrieved.TIN, lang, "Bills");
-
-            if (TempBills != null)
+            try
             {
+                IsAccountsStatementLoading = true;
+                string lang = UtilityManager.GetLanguageParameter();
 
+                ObservableCollection<MyBills> ACBills = new ObservableCollection<MyBills>();
 
-                var newItems = TempBills.ToList();
+                ObservableCollection<MyBills> TempBills = await WebServiceManager.GAZTGetMyBills(App.LoginDataRetrieved.TIN, lang, "Bills");
 
-
-
-                if (newItems != null)
+                if (TempBills != null)
                 {
-                    if (newItems.Count > 3)
+
+
+                    var newItems = TempBills.ToList();
+
+
+
+                    if (newItems != null)
                     {
-                        for (int i = 0; i < 3; i++)
+                        if (newItems.Count > 3)
                         {
+                            for (int i = 0; i < 3; i++)
+                            {
 
 
-                            var singleItem = newItems[i];
+                                var singleItem = newItems[i];
 
 
-                            ACBills.Add(singleItem);
+                                ACBills.Add(singleItem);
+                            }
                         }
-                    }
-                    else
-                    {
-                        for (int i = 0; i < newItems.Count; i++)
+                        else
                         {
-                            var singleItem = newItems[i];
+                            for (int i = 0; i < newItems.Count; i++)
+                            {
+                                var singleItem = newItems[i];
 
 
-                            ACBills.Add(singleItem);
+                                ACBills.Add(singleItem);
+                            }
                         }
+
                     }
+
+                    ACStatementBills = new ObservableCollection<MyBills>(ACBills);
+
 
                 }
 
-                ACStatementBills = new ObservableCollection<MyBills>(ACBills);
 
 
+                if (ACStatementBills != null && ACStatementBills.Count > 2)
+                {
+                    LastTransactionsListHeight = 220;
+                }
+                else if (ACStatementBills != null && ACStatementBills.Count > 1)
+                {
+                    LastTransactionsListHeight = 150;
+                }
+                else
+                {
+                    LastTransactionsListHeight = 75;
+                }
+                IsAccountsStatementLoading = false;
+
+                if (ACStatementBills.Count == 0)
+                {
+                    IsAccountStatementAvilable = false;
+                }
+                else
+                {
+                    IsAccountStatementAvilable = true;
+                }
             }
-
-
-
-            if (ACStatementBills != null && ACStatementBills.Count > 2)
+            catch (GAZTVATRegistrationInProcessException ex)
             {
-                LastTransactionsListHeight = 220;
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
             }
-            else if (ACStatementBills != null && ACStatementBills.Count > 1)
+            catch (GAZTNetworkConnectivityIssueException)
             {
-                LastTransactionsListHeight = 150;
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
             }
-            else
+            catch (InternetException)
             {
-                LastTransactionsListHeight = 75;
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
-            IsAccountsStatementLoading = false;
-
-            if (ACStatementBills.Count == 0)
+            catch (Exception)
             {
-                IsAccountStatementAvilable = false;
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
             }
-            else
+            finally
             {
-                IsAccountStatementAvilable = true;
+                IsLoading = false;
             }
 
         }
@@ -2904,7 +2920,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
 
                                 var singleItem = newItems[i];
 
-                               
+
                                 pendingBills.Add(singleItem);
                             }
                         }
@@ -2974,63 +2990,92 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                 }
                 Returns = temp2;
             }
-            catch (GAZTErrorException )
+            catch (GAZTVATRegistrationInProcessException ex)
             {
-
-
-
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
 
         }
         private async Task getDashboardInstalmentPlan()
         {
-
-            InstalmentResponse = await WebServiceManager.GAZTGetDashboardInstalmentPlanData(App.IsArabic ? "AR" : "EN", App.LoginDataRetrieved.TIN);
-
-            var items = new ObservableCollection<InstalmentPlanResult>();
-
-            ObservableCollection<Brush> CustomBrushes = new ObservableCollection<Brush>()
+            try
+            {
+                InstalmentResponse = await WebServiceManager.GAZTGetDashboardInstalmentPlanData(App.IsArabic ? "AR" : "EN", App.LoginDataRetrieved.TIN);
+                var items = new ObservableCollection<InstalmentPlanResult>();
+                ObservableCollection<Brush> CustomBrushes = new ObservableCollection<Brush>()
             {
                 new SolidColorBrush(Color.FromRgba("#042e66")), //Primary - InstallmentTotalAmount
                 new SolidColorBrush(Color.FromRgba("#61b34f")), //SuccessColor - NextInstallmentAmount
                 new SolidColorBrush(Color.FromRgba("#999999")) //NeutralGreay
             };
+                foreach (InstalmentPlanResult singleItem in InstalmentResponse.installmentPlans)
+                {
+                    double totalPaidBills = 0;
+                    double nextBill = 0;
+                    double unPaidBills = 0;
+                    var Data = new ObservableCollection<Model>();
+                    totalPaidBills = String.IsNullOrEmpty(singleItem.TotalInstallmentsPaid) ? 0 : int.Parse(singleItem.TotalInstallmentsPaid);
+                    nextBill = String.IsNullOrEmpty(singleItem.NextInstallmentAmount) ? 0 : 1;
+                    unPaidBills = String.IsNullOrEmpty(singleItem.TotalInstallmentsPaid) ? 0 : int.Parse(singleItem.TotalInstallmentsPaid);
+                    if (unPaidBills > 0) { unPaidBills = unPaidBills--; }
+
+                    Data.Add(new Model("Paid", totalPaidBills));
+                    Data.Add(new Model("nextPayment", nextBill));
+                    Data.Add(new Model("Remaining", unPaidBills));
+                    singleItem.Series = Data;
+                    singleItem.ChartColors = CustomBrushes;
+                    items.Add(singleItem);
+
+                }
+                InstalmentPlanList = new ObservableCollection<InstalmentPlanResult>();
+                InstalmentPlanList = items;
 
 
-            foreach (InstalmentPlanResult singleItem in InstalmentResponse.installmentPlans)
-            {
-                double totalPaidBills = 0;
-                double nextBill = 0;
-                double unPaidBills = 0;
-                var Data = new ObservableCollection<Model>();
-                totalPaidBills = String.IsNullOrEmpty(singleItem.TotalInstallmentsPaid) ? 0 : int.Parse(singleItem.TotalInstallmentsPaid);
-                nextBill = String.IsNullOrEmpty(singleItem.NextInstallmentAmount) ? 0 : 1;
-                unPaidBills = String.IsNullOrEmpty(singleItem.TotalInstallmentsPaid) ? 0 : int.Parse(singleItem.TotalInstallmentsPaid);
-                if (unPaidBills > 0) { unPaidBills = unPaidBills--; }
-
-                Data.Add(new Model("Paid", totalPaidBills));
-                Data.Add(new Model("nextPayment", nextBill));
-                Data.Add(new Model("Remaining", unPaidBills));
-                singleItem.Series = Data;
-                singleItem.ChartColors = CustomBrushes;
-                items.Add(singleItem);
-
+                if (InstalmentPlanList.Count == 0)
+                {
+                    IsInstalmentPlanVisible = false;
+                }
+                else
+                {
+                    IsInstalmentPlanVisible = true;
+                }
             }
-
-
-            InstalmentPlanList = new ObservableCollection<InstalmentPlanResult>();
-            InstalmentPlanList = items;
-
-
-            if (InstalmentPlanList.Count == 0)
+            catch (GAZTVATRegistrationInProcessException ex)
             {
-                IsInstalmentPlanVisible = false;
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
             }
-            else
+            catch (GAZTNetworkConnectivityIssueException)
             {
-                IsInstalmentPlanVisible = true;
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
             }
-
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
+            }
         }
 
 
@@ -3170,7 +3215,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
 
                             }
                         }
-                        else if (SelectedCommitmentFilterValue != null &&  SelectedCommitmentFilterValue.Equals(AppResources.ZZUpcomingCommitments))
+                        else if (SelectedCommitmentFilterValue != null && SelectedCommitmentFilterValue.Equals(AppResources.ZZUpcomingCommitments))
                         {
                             BillsAndReturnsCommitmentsOverdurItems = BillsAndReturnsCommitmentsTemp.Where(a =>
                             (a.dueDate != null && DateTime.Compare(a.DueDateDateTime, Today) > 0)
@@ -3338,7 +3383,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     await _dialogService.ShowMessage(AppResources.ZYourSessionhasexpiredPleaseLoginagain, AppResources.Information);
-                  await  PopToRootPage();
+                    await PopToRootPage();
                 });
             }
             catch (Exception)
@@ -3645,7 +3690,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
 
                 IsLoading = false;
             }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
             catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
             {
                 IsLoading = false;
             }
@@ -3704,14 +3761,22 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                 await _navigationService.NavigateTo($"/{App.SFLoginPageView}", App.GAZTNewDesignDashBoardPageView);
 
             }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue,false);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
             catch (Exception)
             {
-                IsLoading = false;
-
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
             }
-
-
-
+            finally
+            {
+                IsLoading = false;
+            }
         }
 
         #endregion
@@ -4194,38 +4259,64 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
             {
                 return new Command(async () =>
                 {
-
-                    var callTracker = Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "TaxPayerSubsidyRequestTapped", "TaxPayer Subsidy Request");
-                    var a = App.LoginDataRetrieved;
-                    IsLoading = true;
-
-                    string response = await TaxpayerSubsidyWebServiceManager.TaxpayerSubsidyPostRequestAsync("MSUB");
-
-                    if (response != null && response.Length > 0)
+                    try
                     {
-                        SubsidyResponseModel subsidyResponseModel = JsonConvert.DeserializeObject<SubsidyResponseModel>(response);
-                        if (subsidyResponseModel != null && subsidyResponseModel.Data != null)
-                        {
+                        var callTracker = Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "TaxPayerSubsidyRequestTapped", "TaxPayer Subsidy Request");
+                        var a = App.LoginDataRetrieved;
+                        IsLoading = true;
 
-                            if (!string.IsNullOrEmpty(subsidyResponseModel.Data.FormBundleGUID))
+                        string response = await TaxpayerSubsidyWebServiceManager.TaxpayerSubsidyPostRequestAsync("MSUB");
+
+                        if (response != null && response.Length > 0)
+                        {
+                            SubsidyResponseModel subsidyResponseModel = JsonConvert.DeserializeObject<SubsidyResponseModel>(response);
+                            if (subsidyResponseModel != null && subsidyResponseModel.Data != null)
                             {
 
-                                string url = subsidyResponseModel.Data.ExternalPortal;
-                                url += "?";
-                                url += "culture=" + WebServiceManager.GetLangZParameterAREN();
-                                url += "&tin=" + App.LoginDataRetrieved.TIN;
-                                url += "&token=" + subsidyResponseModel.Data.FormBundleGUID;
-                                url += "&device=MA";
-                                ZATCAConstants.TaxpayerSubsidyRequest = url;
+                                if (!string.IsNullOrEmpty(subsidyResponseModel.Data.FormBundleGUID))
+                                {
 
-                                await _navigationService.NavigateTo(App.TaxpayerSubsidyRequest);
-                                Instrumentation.EndCall(callTracker);
+                                    string url = subsidyResponseModel.Data.ExternalPortal;
+                                    url += "?";
+                                    url += "culture=" + WebServiceManager.GetLangZParameterAREN();
+                                    url += "&tin=" + App.LoginDataRetrieved.TIN;
+                                    url += "&token=" + subsidyResponseModel.Data.FormBundleGUID;
+                                    url += "&device=MA";
+                                    ZATCAConstants.TaxpayerSubsidyRequest = url;
+
+                                    await _navigationService.NavigateTo(App.TaxpayerSubsidyRequest);
+                                    Instrumentation.EndCall(callTracker);
+                                }
+
+
                             }
-
-
                         }
+                        IsLoading = false;
+
                     }
-                    IsLoading = false;
+                    catch (GAZTVATRegistrationInProcessException ex)
+                    {
+                        await UtilityManager.HandleExceptionMessage(ex.Message, false);
+                    }
+                    catch (GAZTNetworkConnectivityIssueException)
+                    {
+                        await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+                    }
+
+                    catch (InternetException)
+                    {
+                        await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+                    }
+                    catch (Exception)
+                    {
+                        await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+                    }
+                    finally
+                    {
+                        IsLoading = false;
+                    }
+
+
                 });
             }
         }
@@ -4546,7 +4637,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                 });
             }
         }
-        
+
         public ICommand ContactZatcaEmpCommand
         {
             get

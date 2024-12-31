@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
 
 namespace ZATCAMAUI.Models
@@ -114,7 +115,7 @@ namespace ZATCAMAUI.Models
         public string FieldTitle { get; set; }
         public string FieldSubTitle { get; set; }
     }
-   
+
     public class TINDeregistrationSummaryModel
     {
         public TINDeregistrationSummaryModel()
@@ -127,20 +128,20 @@ namespace ZATCAMAUI.Models
     }
 
 
-   
+
     public class ZakatDeregistrationDetailsListModel
     {
         public string ZDTitle { get; set; }
         public string ZDImageSource { get; set; }
         public string ArrowImageSource { get; set; }
     }
-   
+
     public partial class TinDeregistrationParentResponseModel
     {
         [JsonProperty("result")]
         public TinDeregistrationResponseModel D { get; set; }
     }
-   
+
     public partial class TinDeregistrationResponseModel
     {
         public Metadata Metadata { get; set; }
@@ -432,7 +433,7 @@ namespace ZATCAMAUI.Models
 
         [JsonProperty("permits")]
         public PermitSetResult[] PermitSet { get; set; }
-       // public PermitSet PermitSet { get; set; }
+        // public PermitSet PermitSet { get; set; }
 
         [JsonProperty("outlets")]
         public OutletSetResult[] OutletSet;
@@ -440,13 +441,13 @@ namespace ZATCAMAUI.Models
 
         [JsonProperty("attachments")]
         public List<Attachment> AttDetSet { get; set; }
-       // public AttachmentSet AttDetSet { get; set; }
+        // public AttachmentSet AttDetSet { get; set; }
 
         [JsonProperty("returns")]
         public ArrayList ReturnSet { get; set; }
 
         [JsonProperty("deregistration_reasonSet")]
-        public DeregistrationSet Deregistration_ReasonSet {get; set;}
+        public DeregistrationSet Deregistration_ReasonSet { get; set; }
 
     }
 
@@ -475,7 +476,7 @@ namespace ZATCAMAUI.Models
 
     }
 
-    
+
     public partial class TinDeregistrationSendResponseModel
     {
         public Metadata Metadata { get; set; }
@@ -543,7 +544,7 @@ namespace ZATCAMAUI.Models
         [JsonProperty("formBundleNumber")]
         public string Fbnumz { get; set; }
 
-      //  [JsonProperty("Fbnum")]
+        //  [JsonProperty("Fbnum")]
         public string Fbnum { get; set; }
         [JsonProperty("userStatus")]
         public string Fbust { get; set; }
@@ -772,7 +773,7 @@ namespace ZATCAMAUI.Models
 
 
     }
-   
+
     public partial class AttachmentSet : INotifyPropertyChanged
     {
 
@@ -823,13 +824,13 @@ namespace ZATCAMAUI.Models
         }
 
     }
-   
+
     public partial class PermitSet
     {
         [JsonProperty("results")]
         public PermitSetResult[] Results { get; set; }
     }
-   
+
     public partial class AttDetSetResult
     {
         [JsonProperty("__metadata")]
@@ -892,7 +893,7 @@ namespace ZATCAMAUI.Models
 
     }
 
-   
+
     public partial class Set : INotifyPropertyChanged
     {
 
@@ -922,7 +923,7 @@ namespace ZATCAMAUI.Models
             }
         }
     }
-   
+
     public partial class OutletSetResult : INotifyPropertyChanged
     {
 
@@ -1114,7 +1115,7 @@ namespace ZATCAMAUI.Models
             }
         }
     }
-   
+
     public class PermitSetResult : INotifyPropertyChanged
     {
         public PermitSetResult()
@@ -1405,24 +1406,40 @@ namespace ZATCAMAUI.Models
                 {
                     Task.Run(async () =>
                     {
-
-                        string resultData = await VATChangeFillingWebServiceManager.GAZTGetTInNumberData(value);
-                        string _responseData = JObject.Parse(resultData)["d"].ToString();
-                        VATSignUpD IDTypeDataModel = JsonConvert.DeserializeObject<VATSignUpD>(_responseData);
-                        if (_responseData != null)
+                        try
                         {
-
-
-                            IBANType idType = IBANTypesList.Where(m => m.key == IDTypeDataModel.Idtype).FirstOrDefault();
-                            if (idType != null)
+                            string resultData = await VATChangeFillingWebServiceManager.GAZTGetTInNumberData(value);
+                            string _responseData = JObject.Parse(resultData)["d"].ToString();
+                            VATSignUpD IDTypeDataModel = JsonConvert.DeserializeObject<VATSignUpD>(_responseData);
+                            if (_responseData != null)
                             {
-                                APermitDobHTb = IDTypeDataModel.TaxpDob;
-                                APermitIdTypeTb = idType.key;
-                                APermitTransTinTb = IDTypeDataModel.TIN;
+
+
+                                IBANType idType = IBANTypesList.Where(m => m.key == IDTypeDataModel.Idtype).FirstOrDefault();
+                                if (idType != null)
+                                {
+                                    APermitDobHTb = IDTypeDataModel.TaxpDob;
+                                    APermitIdTypeTb = idType.key;
+                                    APermitTransTinTb = IDTypeDataModel.TIN;
+                                }
+
                             }
 
                         }
+                        catch (GAZTNetworkConnectivityIssueException)
+                        {
+                            await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+                        }
 
+                        catch (InternetException)
+                        {
+                            await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+                        }
+                        catch (Exception)
+                        {
+                            await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+                        }
+                       
                     });
                 }
                 OnPropertyRaised(nameof(APermitIdNoTb));
@@ -1652,16 +1669,16 @@ namespace ZATCAMAUI.Models
             }
         }
     }
-   
+
     public partial class TinDeregistrationReasonSet
     {
         [JsonProperty("d")]
         public TinDeregistrationReasonSetDataModel D { get; set; }
     }
-   
+
     public partial class TinDeregistrationReasonSetDataModel
     {
-       // [JsonProperty("__metadata")]
+        // [JsonProperty("__metadata")]
         public Metadata Metadata { get; set; }
 
         [JsonProperty("TIN")]
@@ -1678,28 +1695,28 @@ namespace ZATCAMAUI.Models
         [JsonProperty("deregistrationReasons")]
         public TinDeregReasonSetResult[] Reasons { set { ReasonSet = value; } }
     }
-   
+
     public partial class OutletSet
     {
         [JsonProperty("__deferred")]
         public Deferred Deferred { get; set; }
     }
-   
+
     public partial class Deferred
     {
         [JsonProperty("uri")]
         public Uri Uri { get; set; }
     }
-   
+
     public partial class TinDeregReasonSet
     {
         [JsonProperty("deregistrationReasons")]
         public TinDeregReasonSetResult[] Results { get; set; }
     }
-   
+
     public partial class TinDeregReasonSetResult
     {
-       // [JsonProperty("__metadata")]
+        // [JsonProperty("__metadata")]
         public Metadata MetadataReasonSet { get; set; }
 
         [JsonProperty("reasonCode")]
@@ -1708,7 +1725,7 @@ namespace ZATCAMAUI.Models
         [JsonProperty("reasonDescription")]
         public string ReasonDesc { get; set; }
     }
-   
+
     public partial class FieldValidations : INotifyPropertyChanged
     {
 

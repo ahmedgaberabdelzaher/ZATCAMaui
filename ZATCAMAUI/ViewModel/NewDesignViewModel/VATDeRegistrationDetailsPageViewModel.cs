@@ -1398,7 +1398,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     {
 
                     }
-                   
+
 
                 });
             }
@@ -1494,7 +1494,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         DOB = arg.SelectedValue;
                         try
                         {
-                            if ( !string.IsNullOrWhiteSpace(TxtIDNumber) && !string.IsNullOrWhiteSpace(DOB))
+                            if (!string.IsNullOrWhiteSpace(TxtIDNumber) && !string.IsNullOrWhiteSpace(DOB))
                             {
                                 await ValidateIDNumberContact();
                             }
@@ -1606,52 +1606,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                             }
                         }
-                        catch (GAZTException gex)
+                        catch (GAZTNetworkConnectivityIssueException)
                         {
-                            // Handle the GAZT custom exception.
-                            string MessageForTheUser = gex.Message;
-                            if (gex is GAZTInvalidDataException)
-                            {
-                                MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                            }
-                            if (gex is GAZTNetworkConnectivityIssueException)
-                            {
-                                MessageForTheUser = AppResources.NetworkConnectivityIssue;
-                            }
-                            else if (gex is GAZTInternetException)
-                            {
-                                MessageForTheUser = AppResources.ZZInternetConnectionMessage;
-                            }
-                            else if (gex is GAZTSessionExpiredException)
-                            {
-                                MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
-                            }
-
-                            IsLoading = false;
-
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                            _navigationService.GoBack();
+                            await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
                         }
-                        catch (InternetException ex)
+                        catch (InternetException)
                         {
-                            IsLoading = false;
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-
-                        }
-                        catch (HttpRequestException)
-                        {
-                            string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-
-                            IsLoading = false;
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-
+                            await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
                         }
                         catch (Exception)
                         {
-                            string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                            await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+                        }
+                        finally
+                        {
                             IsLoading = false;
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-
                         }
                     }
                 }
@@ -1712,50 +1681,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                             }
                         }
-                        catch (GAZTException gex)
+                        catch (GAZTNetworkConnectivityIssueException)
                         {
-                            // Handle the GAZT custom exception.
-                            string MessageForTheUser = gex.Message;
-                            if (gex is GAZTInvalidDataException)
-                            {
-                                MessageForTheUser = AppResources.ZZSomethingwentwrong;
-                            }
-                            if (gex is GAZTNetworkConnectivityIssueException)
-                            {
-                                MessageForTheUser = AppResources.NetworkConnectivityIssue;
-                            }
-                            else if (gex is GAZTInternetException)
-                            {
-                                MessageForTheUser = AppResources.ZZInternetConnectionMessage;
-                            }
-                            else if (gex is GAZTSessionExpiredException)
-                            {
-                                MessageForTheUser = AppResources.ZYourSessionhasexpiredPleaseLoginagain;
-                            }
-
-                            IsLoading = false;
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-                            _navigationService.GoBack();
+                            await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
                         }
-                        catch (InternetException ex)
+                        catch (InternetException)
                         {
-                            IsLoading = false;
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-
-                        }
-                        catch (HttpRequestException)
-                        {
-                            string MessageForTheUser = AppResources.ZZSomethingwentwrong;
-
-                            IsLoading = false;
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                            await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
                         }
                         catch (Exception)
                         {
-                            string MessageForTheUser = AppResources.ZZSomethingwentwrong;
+                            await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+                        }
+                        finally
+                        {
                             IsLoading = false;
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
-
                         }
                     }
                 }
@@ -1798,157 +1738,145 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 VATDeRegistrationDetailsData = null;
                 VATDeRegistrationDetails vATDeRegistration = null;
 
-                try
+
+                vATDeRegistration = await VatRegistrationWebServiceManager.GAZTGetVATDeRegistrationData();
+                //TODO 7062 Changes
+
+                if (vATDeRegistration != null && vATDeRegistration.d != null)
                 {
-                    vATDeRegistration = await VatRegistrationWebServiceManager.GAZTGetVATDeRegistrationData();
-                    //TODO 7062 Changes
-                   
-                    if (vATDeRegistration != null && vATDeRegistration.d != null)
+                    VatDeregDeclaration = await VatRegistrationWebServiceManager.GAZTGetVATDeRegistrationDeclaration(vATDeRegistration.d.headerSet?.Fbnumx);
+
+                    if (vATDeRegistration.d.headerSet.Agreeflg)
                     {
-                        VatDeregDeclaration = await VatRegistrationWebServiceManager.GAZTGetVATDeRegistrationDeclaration(vATDeRegistration.d.headerSet?.Fbnumx);
+                        IsInstructionChecked = true;
 
-                        if (vATDeRegistration.d.headerSet.Agreeflg)
-                        {
-                            IsInstructionChecked = true;
-
-                        }
-                        else
-                        {
-                            IsInstructionChecked = false;
-                        }
-
-
-                        if (vATDeRegistration.d.headerSet.Declareflg)
-                        {
-                            IsDeclarationChecked = true;
-
-                        }
-                        else
-                        {
-                            IsDeclarationChecked = false;
-                        }
-
-                        //Step 5
-
-                        if (vATDeRegistration.d.headerSet.Idnumbr != null)
-                        {
-                            TxtIDNumber = vATDeRegistration.d.headerSet.Idnumbr;
-
-                        }
-                        if (vATDeRegistration.d.headerSet.Type == "ZS0001")
-                        {
-                            IDType = AppResources.NationaID;
-
-                        }
-                        else if (vATDeRegistration.d.headerSet.Type == "ZS0002")
-                        {
-                            IDType = AppResources.ZZIqamaID;
-
-                        }
-                        else if (vATDeRegistration.d.headerSet.Type == "ZS0003")
-                        {
-                            IDType = AppResources.ZZGCCID;
-
-                        }
-
-                        if (vATDeRegistration.d.headerSet.Fbstax == "IP11" && vATDeRegistration.d.headerSet.Fbustx == "E0018")
-                            IsRequestTypeEnabled = false;
-                        else
-                            IsRequestTypeEnabled = true;
-
-                        ContactPersonName = vATDeRegistration.d.headerSet.Contactnm;
-                        ReturnIDx = vATDeRegistration.d.headerSet.ReturnIdx;
-
-                        VATDeRegistrationDetailsData = vATDeRegistration;
-                        SelectedOutletOption = OutletDecisionOptions[VATDeRegistrationDetailsData != null
-                                 && VATDeRegistrationDetailsData.d != null &&
-                                 VATDeRegistrationDetailsData.d.headerSet.Reqtp == "S" ? 1 : 0];
-
-                        if (SelectedOutletOption.ActiveOutletDecisionOptions.Contains(AppResources.VATDeregistrationReasonType1))
-                        {
-                            reqType = "VT_DREG";
-                        }
-                        else
-                        {
-                            reqType = "VT_SUSP";
-                        }
-                        if (reasonList == null)
-                        {
-                            reasonList = await VATDeregistrationWebServiceManager.GAZTGETVATDeregReasonDropdownList(reqType);
-
-                        }
-                        for (int i = 0; i < reasonList.d.results.Count; i++)
-                        {
-                            if (reasonList.d.results[i].Reason == vATDeRegistration.d.headerSet.Reason)
-                            {
-                                ReasonTitle = reasonList.d.results[i].Rdesc;
-
-                            }
-                        }
-
-                        string convertedDate = string.Empty;
-
-                        if (vATDeRegistration.d.headerSet.SuspDtfrom != null)
-                        {
-                            convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.headerSet.SuspDtfrom + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                            SuspendedStartDate = DateTime.Parse(convertedDate, new CultureInfo("en-US"));//filling period
-                        }
-
-                        if (vATDeRegistration.d.headerSet.SuspDtto != null)
-                        {
-                            convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.headerSet.SuspDtto + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                            SuspendedEndDate = DateTime.Parse(convertedDate, new CultureInfo("en-US"));//filling perio end date
-
-                        }
-
-                        if (vATDeRegistration.d.headerSet.StartDate != null)
-                        {
-                            convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.headerSet.StartDate + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                            FromDate = DateTime.Parse(convertedDate, new CultureInfo("en-US"));//suspension start date
-                        }
-
-                        if (vATDeRegistration.d.headerSet.EndDate != null)
-                        {
-                            convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.headerSet.EndDate + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                            ToDate = DateTime.Parse(convertedDate, new CultureInfo("en-US"));//suspension end date
-                        }
-
-                        if (vATDeRegistration.d.headerSet.NextDtfrom != null)
-                        {
-                            convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.headerSet.NextDtfrom + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                            NextFilingStartDate = DateTime.Parse(convertedDate, new CultureInfo("en-US"));//next filling start date
-                        }
-
-                        if (vATDeRegistration.d.headerSet.NextDtto != null)
-                        {
-                            convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.headerSet.NextDtto + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                            NextFilingEndDate = DateTime.Parse(convertedDate, new CultureInfo("en-US"));//next filling end date
-                        }
-
-                        if (vATDeRegistration.d.NotesSet != null)
-                        {
-                            if (vATDeRegistration.d.NotesSet != null && vATDeRegistration.d.NotesSet.Count > 0)
-                            {
-                                OtherField = vATDeRegistration.d.NotesSet[0].Strline;
-                            }
-                        }
-                        PopulateAttachments(vATDeRegistration.d.AttdetSet);
                     }
                     else
                     {
-                        IsLoading = false;
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                        _navigationService.GoBack();
+                        IsInstructionChecked = false;
                     }
-                    IsLoading = false;
 
-                    
+
+                    if (vATDeRegistration.d.headerSet.Declareflg)
+                    {
+                        IsDeclarationChecked = true;
+
+                    }
+                    else
+                    {
+                        IsDeclarationChecked = false;
+                    }
+
+                    //Step 5
+
+                    if (vATDeRegistration.d.headerSet.Idnumbr != null)
+                    {
+                        TxtIDNumber = vATDeRegistration.d.headerSet.Idnumbr;
+
+                    }
+                    if (vATDeRegistration.d.headerSet.Type == "ZS0001")
+                    {
+                        IDType = AppResources.NationaID;
+
+                    }
+                    else if (vATDeRegistration.d.headerSet.Type == "ZS0002")
+                    {
+                        IDType = AppResources.ZZIqamaID;
+
+                    }
+                    else if (vATDeRegistration.d.headerSet.Type == "ZS0003")
+                    {
+                        IDType = AppResources.ZZGCCID;
+
+                    }
+
+                    if (vATDeRegistration.d.headerSet.Fbstax == "IP11" && vATDeRegistration.d.headerSet.Fbustx == "E0018")
+                        IsRequestTypeEnabled = false;
+                    else
+                        IsRequestTypeEnabled = true;
+
+                    ContactPersonName = vATDeRegistration.d.headerSet.Contactnm;
+                    ReturnIDx = vATDeRegistration.d.headerSet.ReturnIdx;
+
+                    VATDeRegistrationDetailsData = vATDeRegistration;
+                    SelectedOutletOption = OutletDecisionOptions[VATDeRegistrationDetailsData != null
+                             && VATDeRegistrationDetailsData.d != null &&
+                             VATDeRegistrationDetailsData.d.headerSet.Reqtp == "S" ? 1 : 0];
+
+                    if (SelectedOutletOption.ActiveOutletDecisionOptions.Contains(AppResources.VATDeregistrationReasonType1))
+                    {
+                        reqType = "VT_DREG";
+                    }
+                    else
+                    {
+                        reqType = "VT_SUSP";
+                    }
+                    if (reasonList == null)
+                    {
+                        reasonList = await VATDeregistrationWebServiceManager.GAZTGETVATDeregReasonDropdownList(reqType);
+
+                    }
+                    for (int i = 0; i < reasonList.d.results.Count; i++)
+                    {
+                        if (reasonList.d.results[i].Reason == vATDeRegistration.d.headerSet.Reason)
+                        {
+                            ReasonTitle = reasonList.d.results[i].Rdesc;
+
+                        }
+                    }
+
+                    string convertedDate = string.Empty;
+
+                    if (vATDeRegistration.d.headerSet.SuspDtfrom != null)
+                    {
+                        convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.headerSet.SuspDtfrom + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        SuspendedStartDate = DateTime.Parse(convertedDate, new CultureInfo("en-US"));//filling period
+                    }
+
+                    if (vATDeRegistration.d.headerSet.SuspDtto != null)
+                    {
+                        convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.headerSet.SuspDtto + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        SuspendedEndDate = DateTime.Parse(convertedDate, new CultureInfo("en-US"));//filling perio end date
+
+                    }
+
+                    if (vATDeRegistration.d.headerSet.StartDate != null)
+                    {
+                        convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.headerSet.StartDate + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        FromDate = DateTime.Parse(convertedDate, new CultureInfo("en-US"));//suspension start date
+                    }
+
+                    if (vATDeRegistration.d.headerSet.EndDate != null)
+                    {
+                        convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.headerSet.EndDate + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        ToDate = DateTime.Parse(convertedDate, new CultureInfo("en-US"));//suspension end date
+                    }
+
+                    if (vATDeRegistration.d.headerSet.NextDtfrom != null)
+                    {
+                        convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.headerSet.NextDtfrom + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        NextFilingStartDate = DateTime.Parse(convertedDate, new CultureInfo("en-US"));//next filling start date
+                    }
+
+                    if (vATDeRegistration.d.headerSet.NextDtto != null)
+                    {
+                        convertedDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATDeRegistration.d.headerSet.NextDtto + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+                        NextFilingEndDate = DateTime.Parse(convertedDate, new CultureInfo("en-US"));//next filling end date
+                    }
+
+                    if (vATDeRegistration.d.NotesSet != null)
+                    {
+                        if (vATDeRegistration.d.NotesSet != null && vATDeRegistration.d.NotesSet.Count > 0)
+                        {
+                            OtherField = vATDeRegistration.d.NotesSet[0].Strline;
+                        }
+                    }
+                    PopulateAttachments(vATDeRegistration.d.AttdetSet);
                 }
-                catch (InternetException ex)
+                else
                 {
                     IsLoading = false;
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                     _navigationService.GoBack();
                 }
                 IsLoading = false;
@@ -1956,20 +1884,31 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 IsDOBEditorVisible = false;
                 VoidIsVisible = false;
 
-
                 PopulateAttachmentsListViewTemplate();
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                IsLoading = false;
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                _navigationService.GoBack();
-
+                await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
             }
-            catch (Exception ex)
+
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
+            }
+            finally
             {
                 IsLoading = false;
             }
+
         }
         public async Task NewAttachmentClicked()
         {
@@ -2020,11 +1959,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 VATDeregistrationLastICRDateRootObject obj = await VATDeregistrationWebServiceManager.GAZTGETVATDeregSuspensionDate(reqType);
                 LastIcrDate = obj.d[0].Lasticrdt;
             }
+
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
             catch (Exception)
             {
-
-
-
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
 
@@ -2120,10 +2071,28 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     await MopupService.Instance.PushAsync(new PickerPageView(genericPickerModel));
                 }
             }
+
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
+            }
+
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
             catch (Exception)
             {
-
-
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
 
@@ -2245,10 +2214,27 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 }
 
             }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
             catch (Exception)
             {
-
-
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
             return true;
 
@@ -2285,11 +2271,26 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     }
                 }
             }
-            catch (Exception ex)
+            catch (GAZTErrorException ex)
             {
+                await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
 
-
-
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
+            }
+            finally
+            {
+                IsLoading = false;
             }
 
         }
@@ -2946,8 +2947,22 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     _attachment = null;
                 }
             }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
             catch (Exception)
             {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
             IsLoading = false;
             return _attachment;
@@ -3053,7 +3068,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                     VATDeRegistrationDetailsData.d.headerSet.EndDate = ToDate.ToString("yyyy-MM-ddTHH:mm:ss", new CultureInfo("en-US"));
 
-                    VATDeRegistrationDetailsData.d.headerSet.SuspDtfrom =SuspendedStartDate.ToString("yyyy-MM-ddTHH:mm:ss", new CultureInfo("en-US"));
+                    VATDeRegistrationDetailsData.d.headerSet.SuspDtfrom = SuspendedStartDate.ToString("yyyy-MM-ddTHH:mm:ss", new CultureInfo("en-US"));
 
                     VATDeRegistrationDetailsData.d.headerSet.SuspDtto = SuspendedEndDate.ToString("yyyy-MM-ddTHH:mm:ss", new CultureInfo("en-US"));
 
@@ -3284,17 +3299,27 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                IsLoading = false;
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
                 return response;
             }
-
-            catch (Exception ex)
+            catch (GAZTNetworkConnectivityIssueException)
             {
-
-                IsLoading = false;
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
                 return response;
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+                return response;
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+                return response;
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
         public async Task<VATDeRegistrationDetails> SubmitClicked()
@@ -3363,17 +3388,27 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                IsLoading = false;
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
                 return response;
             }
-
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+                return response;
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+                return response;
+            }
             catch (Exception)
             {
-
-
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
                 return response;
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
 

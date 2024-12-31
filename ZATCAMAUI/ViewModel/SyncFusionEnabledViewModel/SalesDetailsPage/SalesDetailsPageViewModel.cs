@@ -588,16 +588,25 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage
                     {
                     }
                 }
-                catch (InternetException ex)
+                catch (GAZTVATRegistrationInProcessException ex)
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                        await Task.Run(() =>
-                        {
-                            IsLoading = false;
-                        });
-                    });
+                    await UtilityManager.HandleExceptionMessage(ex.Message, false);
+                }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+                }
+                catch (InternetException)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+                }
+                catch (Exception)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+                }
+                finally
+                {
+                    IsLoading = false;
                 }
             });
             await Task.Run(() =>

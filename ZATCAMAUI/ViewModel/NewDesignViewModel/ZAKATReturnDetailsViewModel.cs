@@ -900,11 +900,25 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 }
                 IsLoading = false;
             }
-            catch (InternetException ex)
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
             {
                 IsLoading = false;
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-
             }
         }
 
@@ -1208,18 +1222,25 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
 
             }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
             catch (GAZTNetworkConnectivityIssueException)
             {
-                IsLoading = false;
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
             }
             catch (InternetException)
             {
-
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
                 IsLoading = false;
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                _navigationService.GoBack();
             }
         }
 
@@ -1361,124 +1382,151 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
             try
             {
                 IsLoading = true;
-                try
+
+                WebServiceManager.ErrorMessage = string.Empty;
+                ZakatReturnDetails UpdatedPostData = GetPostDataAfterRemovingComma(ZakatReturnDetails);
+
+                ZakatReturnDetails _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(UpdatedPostData, "59");
+                if (_zakatReturnDetails != null && _zakatReturnDetails.result != null)
                 {
-                    WebServiceManager.ErrorMessage = string.Empty;
-                    ZakatReturnDetails UpdatedPostData = GetPostDataAfterRemovingComma(ZakatReturnDetails);
-
-                    ZakatReturnDetails _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(UpdatedPostData, "59");
-                    if (_zakatReturnDetails != null && _zakatReturnDetails.result != null)
-                    {
-                        try
-                        {
-                            //Layout visibiliy changed after releasing the ICR
-                            isEditVisible = false;
-                            UnSetEditImage();
-                            isLabelVisible = true;
-                            IsEditTextVisible = false;
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZReleasedSuccessfully));
-
-                        }
-                        catch (Exception)
-                        {
-                        }
-                    }
-                    else
-                    {
-                        try
-                        {
-                            IsLoading = false;
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(WebServiceManager.ErrorMessage));
-                            _navigationService.GoBack();
-                            WebServiceManager.ErrorMessage = string.Empty;
-
-
-                        }
-                        catch (Exception)
-                        {
-                        }
-                    }
-                    if (string.IsNullOrEmpty(WebServiceManager.ErrorMessage))
-                    {
-                        ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(Fbguid);
-                        await PopToRootPage();
-                        if (zakatReturnDetails != null)
-                        {
-                            ZakatReturnDetails = zakatReturnDetails;
-                            if (zakatReturnDetails.d != null)
-                            {
-                                ZakatReturnDetail = zakatReturnDetails.d;
-                                GetUpdatedDataAfterAddingComma();
-                                var ZakatAmount = ZakatReturnDetails.d.Zkamt.Replace(",", "");
-                                SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
-                            }
-                        }
-                    }
+                    isEditVisible = false;
+                    UnSetEditImage();
+                    isLabelVisible = true;
+                    IsEditTextVisible = false;
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZReleasedSuccessfully));
 
                 }
-                catch (InternetException ex)
+                else
                 {
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+                    try
+                    {
+                        IsLoading = false;
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(WebServiceManager.ErrorMessage));
+                        _navigationService.GoBack();
+                        WebServiceManager.ErrorMessage = string.Empty;
+
+
+                    }
+                    catch (Exception)
+                    {
+                    }
+                }
+                if (string.IsNullOrEmpty(WebServiceManager.ErrorMessage))
+                {
+                    ZakatReturnDetails zakatReturnDetails = await WebServiceManager.GAZTGetZAKATReturn(Fbguid);
+                    await PopToRootPage();
+                    if (zakatReturnDetails != null)
+                    {
+                        ZakatReturnDetails = zakatReturnDetails;
+                        if (zakatReturnDetails.d != null)
+                        {
+                            ZakatReturnDetail = zakatReturnDetails.d;
+                            GetUpdatedDataAfterAddingComma();
+                            var ZakatAmount = ZakatReturnDetails.d.Zkamt.Replace(",", "");
+                            SetReleaseOrBillDetailsButtonText(ZakatReturnDetails.d.Statusz);
+                        }
+                    }
                 }
                 IsLoading = false;
             }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
             catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
             {
                 IsLoading = false;
             }
         }
         public async Task SubmitReturn()
         {
-            IsLoading = true;
-            ZakatReturnDetails UpdatedPostData = GetPostDataAfterRemovingComma(ZakatReturnDetails);
-            _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(UpdatedPostData, SubmitPostOperation);
-            if (_zakatReturnDetails != null && _zakatReturnDetails.result != null)
+            try
             {
-                SetUpdatdDatatoTheUI(_zakatReturnDetails);
-                Estsl = UtilityManager.GetCommaSeparatedAmount(_zakatReturnDetails.result.Estsl);
-                if (existingZakatBase > Convert.ToDouble(_zakatReturnDetails.result.Zkamt))
+                IsLoading = true;
+                ZakatReturnDetails UpdatedPostData = GetPostDataAfterRemovingComma(ZakatReturnDetails);
+                _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(UpdatedPostData, SubmitPostOperation);
+                if (_zakatReturnDetails != null && _zakatReturnDetails.result != null)
                 {
-                    AssignCalculatedValueAfterSubmission();
-
-                    IsCurrentZAKATTaxLess = true;
-                    bool isRequiredAttachmentAdded = SetRedEditIconForMandatoryAttachment(_zakatReturnDetails);
-                    if (isRequiredAttachmentAdded)
+                    SetUpdatdDatatoTheUI(_zakatReturnDetails);
+                    Estsl = UtilityManager.GetCommaSeparatedAmount(_zakatReturnDetails.result.Estsl);
+                    if (existingZakatBase > Convert.ToDouble(_zakatReturnDetails.result.Zkamt))
                     {
-                        SetLayoutVisibilityAfterSuccessfulSubmission();
+                        AssignCalculatedValueAfterSubmission();
+
+                        IsCurrentZAKATTaxLess = true;
+                        bool isRequiredAttachmentAdded = SetRedEditIconForMandatoryAttachment(_zakatReturnDetails);
+                        if (isRequiredAttachmentAdded)
+                        {
+                            SetLayoutVisibilityAfterSuccessfulSubmission();
+                        }
+                        else
+                        {
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseuploadtheRequiredDocumentandChangereason));
+
+
+                        }
+
                     }
                     else
                     {
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseuploadtheRequiredDocumentandChangereason));
-
-
+                        IsCurrentZAKATTaxLess = false;
+                        SetLayoutVisibilityAfterSuccessfulSubmission();
                     }
 
+                    GetDataAfterAddingComma();
+                    SetLabelsText();
                 }
                 else
                 {
-                    IsCurrentZAKATTaxLess = false;
-                    SetLayoutVisibilityAfterSuccessfulSubmission();
+                    if (string.IsNullOrEmpty(WebServiceManager.ErrorMessage))
+                    {
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
+                        _navigationService.GoBack();
+                        WebServiceManager.ErrorMessage = string.Empty;
+                    }
+                    else
+                    {
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(WebServiceManager.ErrorMessage));
+                        _navigationService.GoBack();
+                        WebServiceManager.ErrorMessage = string.Empty;
+                    }
                 }
-
-                GetDataAfterAddingComma();
-                SetLabelsText();
+                IsLoading = false;
             }
-            else
+            catch (GAZTVATRegistrationInProcessException ex)
             {
-                if (string.IsNullOrEmpty(WebServiceManager.ErrorMessage))
-                {
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
-                    _navigationService.GoBack();
-                    WebServiceManager.ErrorMessage = string.Empty;
-                }
-                else
-                {
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(WebServiceManager.ErrorMessage));
-                    _navigationService.GoBack();
-                    WebServiceManager.ErrorMessage = string.Empty;
-                }
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
             }
-            IsLoading = false;
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
+            }
+
+
         }
         private void SetUpdatdDatatoTheUI(ZakatReturnDetails _ZakatReturnDetails)
         {
@@ -1487,41 +1535,64 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
         public async Task ConfirmClicked(string PostOperation)
         {
-            IsLoading = true;
-            ZakatReturnDetails UpdatedPostData = GetPostDataAfterRemovingComma(ZakatReturnDetails);
-            _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(UpdatedPostData, PostOperation);
-            if (_zakatReturnDetails != null && _zakatReturnDetails.result != null)
+            try
             {
-                SetConfirmButtonVisibility = false;
-                DesClaimerVisibility = false;
-                if (PostOperation.Equals(ConfirmPostOperationWithoutObjection))
+                IsLoading = true;
+                ZakatReturnDetails UpdatedPostData = GetPostDataAfterRemovingComma(ZakatReturnDetails);
+                _zakatReturnDetails = await WebServiceManager.GAZTSaveZakatReturnData(UpdatedPostData, PostOperation);
+                if (_zakatReturnDetails != null && _zakatReturnDetails.result != null)
                 {
-                    App.ZakatReturnBilldetails = false;
-                    await _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+                    SetConfirmButtonVisibility = false;
+                    DesClaimerVisibility = false;
+                    if (PostOperation.Equals(ConfirmPostOperationWithoutObjection))
+                    {
+                        App.ZakatReturnBilldetails = false;
+                        await _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
+
+                    }
+                    else
+                    {
+                        await _navigationService.NavigateTo(App.ZakatObjectionSuccessfullPageView, ZakatReturnDetail);
+                    }
 
                 }
                 else
                 {
-                    await _navigationService.NavigateTo(App.ZakatObjectionSuccessfullPageView, ZakatReturnDetail);
+                    if (string.IsNullOrEmpty(WebServiceManager.ErrorMessage))
+                    {
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
+                        _navigationService.GoBack();
+                        WebServiceManager.ErrorMessage = string.Empty;
+                    }
+                    else
+                    {
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(WebServiceManager.ErrorMessage));
+                        _navigationService.GoBack();
+                        WebServiceManager.ErrorMessage = string.Empty;
+                    }
                 }
-
+                IsLoading = false;
             }
-            else
+            catch (GAZTVATRegistrationInProcessException ex)
             {
-                if (string.IsNullOrEmpty(WebServiceManager.ErrorMessage))
-                {
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
-                    _navigationService.GoBack();
-                    WebServiceManager.ErrorMessage = string.Empty;
-                }
-                else
-                {
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(WebServiceManager.ErrorMessage));
-                    _navigationService.GoBack();
-                    WebServiceManager.ErrorMessage = string.Empty;
-                }
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
             }
-            IsLoading = false;
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
+            }
         }
 
 

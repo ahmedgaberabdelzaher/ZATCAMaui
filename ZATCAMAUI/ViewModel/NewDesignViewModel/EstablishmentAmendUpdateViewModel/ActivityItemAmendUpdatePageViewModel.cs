@@ -1292,9 +1292,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     IsLoading = false;
                 }
             }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
             catch (Exception)
             {
-                IsLoading = false;
             }
             finally
             {
@@ -1612,7 +1624,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                         {
                             MainActivity = false;
                         }
-                        updateActivityList();
+                       await updateActivityList();
                         updateCRAttachments();
                     }
                     if (CrName.Length > 0)
@@ -1667,7 +1679,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                         {
                             MainActivity = false;
                         }
-                        updateActivityList(SelectedLicenseItem?.Activity);
+                       await updateActivityList(SelectedLicenseItem?.Activity);
 
                         List<Attachment> list = new List<Attachment>();
                         var lists = taxPayerDetails.AttDetSet.Where(x => x.Dotyp == "RG02" && x.OutletRef == string.Format("{0}-{1}", SelectedLicenseItem?.Actno, SelectedLicenseItem?.Idnumber)).ToList();
@@ -1716,11 +1728,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     }
                 }
             }
-            catch (Exception)
+            catch (GAZTNetworkConnectivityIssueException)
             {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
 
-
-
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch(Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
             }
             finally
             {
@@ -1842,9 +1861,22 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
 
                     }
                 }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+                }
+
+                catch (InternetException)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+                }
+                catch (GAZTErrorException ex)
+                {
+                    await UtilityManager.HandleExceptionMessage(ex.Message, false);
+                }
                 catch (Exception)
                 {
-                    IsLoading = false;
+                    await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
                 }
                 IsLoading = false;
                 if (validateCR != null && validateCR.Crnum == null)
@@ -2040,8 +2072,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     }
                 }
             }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
             catch (Exception)
-            { }
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
             finally
             {
                 IsLoading = false;

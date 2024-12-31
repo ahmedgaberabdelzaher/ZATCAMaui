@@ -631,9 +631,9 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             IsLoading = false;
             EnableTINView();
             VerifyTINBtnClicked = new Command(async () => await VerifyTinBtnCommand());
-            ConfirmPasswordBtnClicked = new Command(async () =>  await ConfirmPasswordBtnCommand());
+            ConfirmPasswordBtnClicked = new Command(async () => await ConfirmPasswordBtnCommand());
             OnResendOTPClicked = new Command(async () => await ExecuteResendOTPClickCommand(), () => IsResendOTPEnabled);
-            ConfirmOtpBtnClicked = new Command(async () => await ConfirmOtpBtnCommand(), ()=> IsVerifyOTPEnabled);
+            ConfirmOtpBtnClicked = new Command(async () => await ConfirmOtpBtnCommand(), () => IsVerifyOTPEnabled);
 
             UnlockAccountModel = new UnlockAccountModel();
             UnlockAccountModelOtp = new UnlockAccountModelOtp();
@@ -807,7 +807,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                 unlockaccountOTP.captchaCode = captcha;
                 //unlockaccountOTP.language = UtilityManager.GetLanguageParameter();
                 var result = await VatRegistrationWebServiceManager.SendOTP(unlockaccountOTP);
-                //UnlockAccountModelResponse = await VatRegistrationWebServiceManager.GaztUnlockAccount(UnlockAccountModel);
                 App.HideProgressView();
 
                 if (result != null)
@@ -818,16 +817,26 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                 }
 
             }
+
             catch (GAZTUnlockAccountException ex)
             {
-                App.HideProgressView();
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
             }
-            catch (InternetException ex)
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
             {
                 App.HideProgressView();
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
             }
         }
 
@@ -860,10 +869,24 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             }
 
 
-            catch (InternetException ex)
+            catch (GAZTVATRegistrationInProcessException ex)
             {
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
                 IsLoading = false;
             }
         }
@@ -948,48 +971,37 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                             EnableChangePasswordView();
                         }
                     }
-                    catch (GAZTUnlockAccountException ex)
+
+                    catch (GAZTVATRegistrationInProcessException ex)
                     {
-                        IsOtpAPICalled = false;
-
-                        OtpFirstDigit = string.Empty;
-                        OtpSecondDigit = string.Empty;
-                        OtpThirdDigit = string.Empty;
-                        OtpFourthDigit = string.Empty;
-
-
                         if (MopupService.Instance.PopupStack.Count > 0)
                             await MopupService.Instance.PopAsync(true);
-
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-
-
-
+                        await UtilityManager.HandleExceptionMessage(ex.Message, false);
+                    }
+                    catch (GAZTNetworkConnectivityIssueException)
+                    {
+                        if (MopupService.Instance.PopupStack.Count > 0)
+                            await MopupService.Instance.PopAsync(true);
+                        await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
                     }
                     catch (InternetException)
                     {
-                        IsOtpAPICalled = false;
                         if (MopupService.Instance.PopupStack.Count > 0)
                             await MopupService.Instance.PopAsync(true);
-
-
-
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
-
+                        await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
                     }
                     catch (Exception)
                     {
+                        await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+                    }
+                    finally
+                    {
                         IsOtpAPICalled = false;
-
                         OtpFirstDigit = string.Empty;
                         OtpSecondDigit = string.Empty;
                         OtpThirdDigit = string.Empty;
                         OtpFourthDigit = string.Empty;
-
                         App.HideProgressView();
-
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-
                     }
                 }
             }
@@ -1011,7 +1023,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             //MobileNumber = "XXXXXXXXXX" + _mobileNumber;
             numberOfSeconds = 120;
             StopTimer = false;
-           await VerifyTinBtnCommand();
+            await VerifyTinBtnCommand();
         }
 
         public async Task ConfirmPasswordBtnCommand()
@@ -1137,24 +1149,27 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
 
                     App.HideProgressView();
                     _navigationService.GoBack();
-                  await  _navigationService.NavigateTo(App.UnlockAccountSuccessPageView, PasswordChangedSuccessfully);
-
+                    await _navigationService.NavigateTo(App.UnlockAccountSuccessPageView, PasswordChangedSuccessfully);
                 }
-                catch (GAZTUnlockAccountException ex)
+                catch (GAZTVATRegistrationInProcessException ex)
                 {
-                    App.HideProgressView();
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-
+                    await UtilityManager.HandleExceptionMessage(ex.Message, false);
+                }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
                 }
                 catch (InternetException)
                 {
-                    App.HideProgressView();
-                    await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
+                    await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
                 }
                 catch (Exception)
                 {
+                    await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+                }
+                finally
+                {
                     App.HideProgressView();
-                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                 }
             }
 

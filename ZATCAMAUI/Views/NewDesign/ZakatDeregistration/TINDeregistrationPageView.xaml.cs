@@ -12,6 +12,7 @@ using Mopups.Services;
 using System.Collections.ObjectModel;
 using Newtonsoft.Json;
 using System.Globalization;
+using ZATCAMAUI.Core.Exceptions;
 
 namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
 {
@@ -1266,11 +1267,18 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                     viewModel.AttachmentsListViewData = new List<TinDeregestrationAttachmentsModel>(viewModel.AttachmentsListViewData);
                 }
             }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                 UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+
+            catch (InternetException)
+            {
+                 UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
             catch (Exception)
             {
-
-
-                return;
+                 UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
             }
         }
 

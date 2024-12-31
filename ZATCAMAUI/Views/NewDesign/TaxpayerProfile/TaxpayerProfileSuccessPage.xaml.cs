@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.TaxpayerProfileVM;
 
@@ -67,7 +68,22 @@ namespace ZATCAMAUI.Views.NewDesign.TaxpayerProfile
                 }
 
                 try { await WebServiceManager.GAZTLogOff(); }
-                catch { }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, viewModel._navigationService);
+                }
+                catch (InternetException)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, true, viewModel._navigationService);
+                }
+                catch (Exception)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+                }
+                finally
+                {
+                    App.HideProgressView();
+                }
 
                 await Task.Run(() =>
                 {
