@@ -98,7 +98,8 @@
                                 <Label Style="{StaticResource CaptionLabelGrey}">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.PortName}"/>
+                                            <Span Text="{x:Static ResourceManager:AppResources.PortName}"
+                                                  Style="{StaticResource CaptionLabelGrey}"/>
                                             <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
                                         </FormattedString>
                                     </Label.FormattedText>
