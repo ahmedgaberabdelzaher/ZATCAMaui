@@ -60,6 +60,7 @@
         public static string DATAPowerProdCZATCABaseUrl = "https://api.zatca.gov.sa/integration/third-party/";
         public static string DATAPowerQAZATCABaseUrl = "https://test-api.zatca.gov.sa/qa/third-party/";
         public static string DATAPowerSTGCustomBaseUrl = $"{DATAPowerSTGZATCABaseUrl}v1/api/customs/";
+        public static string DATAPowerQACustomBaseUrl = $"{DATAPowerQAZATCABaseUrl}v1/api/customs/";
 
         public static string IAMLoginSTGBaseUrl = "https://peservices.zatca.gov.sa/Iamext/_iam/Iaminit.aspx?APPID=Mobile";
         public static string IAMLoginProdBaseUrl = "https://eservices.zatca.gov.sa/Iam/_iam/Iaminit.aspx?APPID=Mobile";
@@ -76,15 +77,15 @@
         public static string IAMRegistraionProd = "https://eservices.zatca.gov.sa/sites/sc/ar/PublicIAMServices/Pages/TawreedClientPages/NewTRRequest.aspx";
         public static string IAMRegistraionStG = "http://esvc-web1-stg.ga.customs.gov.sa/sites/sc/ar/publiciamservices/Pages/TawreedClientPages/NewTRRequest.aspx";
 
-        public static string CustomsIssuesSTG = "https://peservices.zatca.gov.sa";
+        public static string CustomsIssuesSTG = "https://stgesvcweb01.myzatca.gov.sa";
         public static string CustomsIssuesProd = "https://eservices.zatca.gov.sa";
-        public static string CustomsIssuesStG = "http://esvc-web1-stg.ga.customs.gov.sa/sites/sc/ar/app-view/Pages/NewSettlementRequest.aspx";
 
 
 
         public static string CustomBaseUrl = CustomSTGBaseUrl;
         public static string IAMLoginBaseUrl;
         public static string ZATCABaseURL;
+        public static string CustomsIssues;
         public static string CustomPaymentBaseUrl;
         public static string VatProdBaseUrl = "https://vatmobile.zatca.gov.sa/api";
         // public static string VatSTGBaseUrl = "http://172.25.39.60:80/api";
@@ -134,6 +135,7 @@
                     IAMRegistration = IAMRegistraionStG;
                     FasahBaseUrl = FasahBaseUrlStG;
                     ZATCAPaymentWebViewBaseURL = ZATCAPaymentWebViewStgBaseURL;
+                    CustomsIssues = CustomsIssuesSTG;
                     break;
                 case "Prod":
                     App.CustomBaseUrl = DATAPowerProdCustomBaseUrl;
@@ -153,9 +155,10 @@
                     IAMRegistration = IAMRegistraionProd;
                     FasahBaseUrl = FasahBaseUrlProd;
                     ZATCAPaymentWebViewBaseURL = ZATCAPaymentWebViewProdBaseURL;
+                    CustomsIssues = CustomsIssuesProd;
                     break;
                 case "QA":
-                    App.CustomBaseUrl = DATAPowerSTGCustomBaseUrl;
+                    App.CustomBaseUrl = DATAPowerQACustomBaseUrl;
                     App.VatBaseUrl = VatSTGBaseUrl;
                     App.VatCustom = VatCustomSTGURL;
                     ZATCABaseURL = DATAPowerQAZATCABaseUrl;
@@ -172,6 +175,7 @@
                     IAMRegistration = IAMRegistraionStG;
                     FasahBaseUrl = FasahBaseUrlStG;
                     ZATCAPaymentWebViewBaseURL = ZATCAPaymentWebViewStgBaseURL;
+                    CustomsIssues = CustomsIssuesSTG;
                     break;
                 default:
                     App.CustomBaseUrl = DATAPowerSTGCustomBaseUrl;
@@ -191,6 +195,7 @@
                     IAMRegistration = IAMRegistraionStG;
                     FasahBaseUrl = FasahBaseUrlStG;
                     ZATCAPaymentWebViewBaseURL = ZATCAPaymentWebViewStgBaseURL;
+                    CustomsIssues = CustomsIssuesSTG;
                     break;
             }
         }
@@ -391,6 +396,7 @@
             {
                 return $"{CustomsIssuesProd}/sites/sc/ar/app-view/Pages/NewSettlementRequest.aspx";
             }
+        
             else
             {
                 return $"{CustomsIssuesProd}/sites/sc/ar/app-view/Pages/NewSettlementRequest.aspx";

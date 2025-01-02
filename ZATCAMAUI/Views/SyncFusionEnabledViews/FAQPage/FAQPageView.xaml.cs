@@ -20,7 +20,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.FAQPage
         {
             if (App.IsArabic)
             {
-                // viewModel.WebUrl = "https://gazt.gov.sa/ar/contactus/Pages/default.aspx";
                 viewModel.WebUrl = ZATCAConstants.GAZTFAQARUrl;
             }
             else
