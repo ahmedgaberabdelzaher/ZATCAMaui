@@ -89,9 +89,9 @@
 	<key>NSSiriUsageDescription</key>
 	<string>Please grant access to siri </string>
 	<key>CFBundleShortVersionString</key>
-	<string>286</string>
+	<string>288</string>
 	<key>CFBundleVersion</key>
-	<string>5.0.313</string>
+	<string>5.0.318</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.gazt.egazt</string>
 	<key>NSAppleMusicUsageDescription</key>

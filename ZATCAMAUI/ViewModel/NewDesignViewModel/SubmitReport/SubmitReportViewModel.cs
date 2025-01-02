@@ -1,5 +1,4 @@
 ﻿using System.Collections.ObjectModel;
-using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Windows.Input;
 using Acr.UserDialogs;
@@ -8,7 +7,6 @@ using Maui.GoogleMaps;
 using Microsoft.Maui.Handlers;
 using Mopups.Services;
 using ZATCAMAUI.Controls;
-using ZATCAMAUI.Core.AppConfigurations;
 using ZATCAMAUI.Core.CustomControls;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Interfaces;
@@ -447,15 +445,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
                 return new Command(() =>
                 {
                     SubmitReport.IsNeedReward = SubmitReport.IsNeedReward == true ? false : true;
-                    if (!SubmitReport.ReportCategory.ToLower().Contains("v"))
-                    {
-                        IsreporterDataMandatory = SubmitReport.IsNeedReward;
-                    }
-                    else
-                    {
-
-                    }
-
+                    IsreporterDataMandatory = SubmitReport.IsNeedReward;
                 });
 
             }
