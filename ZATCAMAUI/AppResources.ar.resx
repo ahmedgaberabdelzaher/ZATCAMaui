@@ -8955,6 +8955,9 @@ info@zatca.gov.sa</value>
 	<data name="DeclarationDate" xml:space="preserve">
     <value>تاريخ البيان</value>
 </data>
+	<data name="TrackDeclarationDate" xml:space="preserve">
+        <value>تاريخ البيان الجمركي</value>
+    </data>
 	<data name="Billofladingnumber" xml:space="preserve">
     <value>رقم البوليصة</value>
 </data>
@@ -10164,16 +10167,19 @@ info@zatca.gov.sa</value>
 	<data name="BillNumber" xml:space="preserve">
     <value>رقم البوليصة</value>
 </data>
-	<data name="ShipmentDeclarationNumber" xml:space="preserve">
+<data name="BillNumberDetails" xml:space="preserve">
+    <value>تفاصيل البوليصة</value>
+  </data>
+<data name="ShipmentDeclarationNumber" xml:space="preserve">
     <value>رقم البيان الجمركي</value>
-</data>
-	<data name="ShipmentStatus" xml:space="preserve">
+    </data>
+<data name="ShipmentStatus" xml:space="preserve">
     <value>حالة الشحن</value>
-</data>
-	<data name="ShipmentDeclarationDetails" xml:space="preserve">
-    <value>تفاصيل البيان</value>
-</data>
-	<data name="ContainerNumber" xml:space="preserve">
+    </data>
+<data name="ShipmentDeclarationDetails" xml:space="preserve">
+        <value>تفاصيل البيان الجمركي</value>
+    </data>
+<data name="ContainerNumber" xml:space="preserve">
     <value> رقم الحاوية</value>
 </data>
 	<data name="DownloadEdecleraton" xml:space="preserve">
@@ -10206,16 +10212,16 @@ info@zatca.gov.sa</value>
 	<data name="ProductValueHint" xml:space="preserve">
     <value>أدخل هنا القيمة الإجمالية للسلع</value>
 </data>
-<data name="Customsdeclarationissuancefees" xml:space="preserve">
+	<data name="Customsdeclarationissuancefees" xml:space="preserve">
     <value>رسوم الخدمات الجمركية</value>
 </data>
-<data name="ExtraFeesDescription" xml:space="preserve">
+	<data name="ExtraFeesDescription" xml:space="preserve">
     <value>رسوم الخدمات الجمركية = قيمة المنتج</value>
 </data>
-<data name="LowFees" xml:space="preserve">
+	<data name="LowFees" xml:space="preserve">
     <value>بحد ادنى</value>
 </data>
-<data name="MaxFees" xml:space="preserve">
+	<data name="MaxFees" xml:space="preserve">
     <value>ريال بحد اقصى</value>
 </data>
 	<data name="cleared" xml:space="preserve">
@@ -10819,8 +10825,11 @@ info@zatca.gov.sa</value>
     <value>بانتظار الرد </value>
 </data>
 	<data name="ExpressBillNumber" xml:space="preserve">
-    <value>رقم الشحنة</value>
-</data>
+        <value>تفاصيل الشحنة</value>
+  </data>
+  	<data name="ExpressBillNumberField" xml:space="preserve">
+    <value>رقم تتبع الشحنة</value>
+  </data>
 	<!-- CR6490 -->
 	<data name="TotalPenalties" xml:space="preserve">
     <value>مبلغ الغرامات المستحقة</value>
@@ -11560,37 +11569,37 @@ info@zatca.gov.sa</value>
 	<data name="ReservationEntity" xml:space="preserve">
    <value>جهة الحجز</value>
  </data>
- <data name="ClosedPenalty" xml:space="preserve">
+	<data name="ClosedPenalty" xml:space="preserve">
    <value>مغلق - تم فرض الغرامة مسبقا</value>
  </data>
- <data name="ClosedInsufficient" xml:space="preserve">
+	<data name="ClosedInsufficient" xml:space="preserve">
    <value>مغلق - لعدم توفر الأدلة الكافية</value>
  </data>
- <data name="ClosedTax" xml:space="preserve">
+	<data name="ClosedTax" xml:space="preserve">
    <value>مغلق - الاحتساب الضريبي صحيح</value>
  </data>
- <data name="ClosedTIN" xml:space="preserve">
+	<data name="ClosedTIN" xml:space="preserve">
    <value>مغلق - الرقم المميز يخص المنشأة</value>
  </data>
- <data name="ClosedRelated" xml:space="preserve">
+	<data name="ClosedRelated" xml:space="preserve">
    <value>مغلق - خارج اختصاص الهيئة</value>
  </data>
- <data name="ClosedInvalid" xml:space="preserve">
+	<data name="ClosedInvalid" xml:space="preserve">
    <value>مغلق - بلاغ غير صحيح</value>
  </data>
- <data name="ClosedResponse" xml:space="preserve">
+	<data name="ClosedResponse" xml:space="preserve">
    <value>مغلق - لا يوجد رد من المبلغ</value>
  </data>
-  <data name="ClosedImposed" xml:space="preserve">
+	<data name="ClosedImposed" xml:space="preserve">
    <value>مغلق - تم فرض الغرامة</value>
  </data>
-   <data name="ClosedFine" xml:space="preserve">
+	<data name="ClosedFine" xml:space="preserve">
    <value>مغلق - تم فرض الغرامة</value>
  </data>
- <data name="ClosedWarning" xml:space="preserve">
+	<data name="ClosedWarning" xml:space="preserve">
    <value>مغلق– تنبيه بدون غرامة</value>
  </data>
- <data name="OTPStatus" xml:space="preserve">
+	<data name="OTPStatus" xml:space="preserve">
      <value>يوجد طلب مسبقاٌ، برجاء الأنتظار</value>
   </data>
-</root> 
+</root>
