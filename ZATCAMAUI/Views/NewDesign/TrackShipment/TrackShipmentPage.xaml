@@ -101,7 +101,6 @@
                                 FontFamily="{StaticResource SomarRegular}"
                                 FontSize="14"
                                 HorizontalOptions="StartAndExpand"
-                                IsVisible="{Binding DrawShipmentTrack.HasSubTitle}"
                                 Text="{x:Static ResourceManager:AppResources.ShipmentTrackingSubTitle}"
                                 TextColor="#999999" />
 
@@ -153,7 +152,8 @@
                             </StackLayout>
 
                             <!--  Search by Label  -->
-                            <Label IsVisible="{Binding DrawShipmentTrack.HasSearchBy}" Style="{StaticResource CaptionLabelGrey}">
+                            <Label IsVisible="False"
+                                   Style="{StaticResource CaptionLabelGrey}">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.SearchBy}" />
@@ -338,7 +338,7 @@
                                         <Label
                                             FontSize="16"
                                             HorizontalOptions="StartAndExpand"
-                                            Text="{x:Static ResourceManager:AppResources.BillNumber}"
+                                            Text="{x:Static ResourceManager:AppResources.BillNumberDetails}"
                                             TextColor="{StaticResource Primary}"
                                             VerticalOptions="EndAndExpand">
 
@@ -418,7 +418,7 @@
                                 <Label Style="{StaticResource CaptionLabelGrey}">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.DeclarationDate}" />
+                                            <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TrackDeclarationDate}" />
                                             <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -477,7 +477,7 @@
                                         <syncfusion:PickerHeaderView
                                             Height="46"
                                             Background="{StaticResource NeutralBlack}"
-                                            Text="{x:Static ResourceManager:AppResources.DeclarationDate}">
+                                            Text="{x:Static ResourceManager:AppResources.TrackDeclarationDate}">
 
                                             <syncfusion:PickerHeaderView.TextStyle>
                                                 <syncfusion:PickerTextStyle FontFamily="{StaticResource SomarSemiBold}" TextColor="White" />
@@ -570,7 +570,8 @@
                                 <Label Style="{StaticResource CaptionLabelGrey}">
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.BillNumber}" />
+                                            <Span Style="{StaticResource CaptionLabelGrey}"
+                                                  Text="{x:Static ResourceManager:AppResources.BillNumber}" />
                                             <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -581,7 +582,7 @@
                                             Value="true">
                                             <Setter Property="FormattedText">
                                                 <FormattedString>
-                                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ExpressBillNumber}" />
+                                                    <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ExpressBillNumberField}" />
                                                     <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                                 </FormattedString>
 
@@ -606,7 +607,7 @@
                                                     TargetType="custom:GAZTBorderlessEntry"
                                                     Value="true">
 
-                                                    <Setter Property="Placeholder" Value="{x:Static ResourceManager:AppResources.ExpressBillNumber}" />
+                                                    <Setter Property="Placeholder" Value="{x:Static ResourceManager:AppResources.ExpressBillNumberField}" />
                                                 </DataTrigger>
 
                                             </custom:GAZTBorderlessEntry.Triggers>

@@ -9035,6 +9035,9 @@ I acknowledge that the above bank account information is correct and assume full
 	<data name="DeclarationDate" xml:space="preserve">
         <value>Declaration Date</value>
     </data>
+	<data name="TrackDeclarationDate" xml:space="preserve">
+     <value>Declaration Date</value>
+  </data>
 	<data name="Billofladingnumber" xml:space="preserve">
         <value>Bill of lading number</value>
     </data>
@@ -10223,6 +10226,9 @@ Zakat, Tax and Customs Authority
 	<data name="BillNumber" xml:space="preserve">
         <value>Bill Number</value>
     </data>
+	<data name="BillNumberDetails" xml:space="preserve">
+   <value>Bill Number Details</value>
+  </data>
 	<data name="ShipmentDeclarationNumber" xml:space="preserve">
         <value>Declaration Number</value>
     </data>
@@ -10897,7 +10903,10 @@ Then The system should cancel (/delete) the draft and apply the necessary change
     </data>
 	<!-- End of CR6741 -->
 	<data name="ExpressBillNumber" xml:space="preserve">
-        <value>Shipment Number</value>
+        <value>Shipment Details</value>
+    </data>
+	<data name="ExpressBillNumberField" xml:space="preserve">
+        <value>Shipment number details</value>
     </data>
 	<!-- Start of CR6490 -->
 	<data name="TotalPenalties" xml:space="preserve">
