@@ -7,6 +7,7 @@ using Microsoft.Maui.Handlers;
 using ZATCAMAUI.Core.CustomControls;
 using Foundation;
 using System.Drawing;
+using ZATCAMAUI.Platforms.iOS.Helper;
 
 namespace ZATCAMAUI.Platforms.iOS;
 
@@ -16,6 +17,12 @@ public class AppDelegate : MauiUIApplicationDelegate
     static nint timerTaskID;
     protected override MauiApp CreateMauiApp()
     {
+        // call Self signed Certificate class
+        WebViewHandler.Mapper.AppendToMapping(nameof(WebView), (handler, view) =>
+        {
+            handler.PlatformView.NavigationDelegate = new WebViewDelegate();
+        });
+
         EntryHandler.Mapper.AppendToMapping("EntryBorderless", (handler, view) =>
         {
             if (view is GAZTBorderlessEntry)

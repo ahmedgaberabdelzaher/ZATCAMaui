@@ -546,9 +546,7 @@ namespace ZATCAMAUI.Core.Helper
         public static string GAZTChatPartialUrlen = "https://chatbot.zatca.gov.sa/maker/GaztProd/Main/en/index_PROD.html";
         public static string GAZTChatPartialUrlar = "https://chatbot.zatca.gov.sa/maker/GaztProd/Main/ar/index_PROD.html";
 
-        //public static string GAZTChatPartialUrlen = "https://tstchatbot.gazt.gov.sa/GaztTesting/en/index_test.html";
-        //public static string GAZTChatPartialUrlar = "https://tstchatbot.gazt.gov.sa/GaztTesting/ar/index_test.html";
-
+       
         public static string GAZTFAQEnUrl = "https://zatca.gov.sa/en/HelpCenter/FAQs/Pages/FAQArchiveEservicesMV.aspx";
         public static string GAZTFAQARUrl = "https://zatca.gov.sa/ar/HelpCenter/FAQs/Pages/FAQArchiveEservicesMV.aspx";
 
@@ -561,14 +559,10 @@ namespace ZATCAMAUI.Core.Helper
 
         public static string ZAtcaCustomsTarrifsEN = "https://www.customs.gov.sa/en/Integrated-Tariff-appview";
         public static string ZAtcaCustomsTarrifsAr = "https://www.customs.gov.sa/ar/Integrated-Tariff-appview";
-        // public static string ZAtcaCustomsTarrifsAr = "http://10.112.42.23/ar/Integrated-Tariff-appView";
-
+       
         public static string ZAtcaCustomsdeclarationsEN = "https://eservices.zatca.gov.sa/sites/sc/en/app-view/pages/checkBayan.aspx";
         public static string ZAtcaCustomsdeclarationsAr = "https://eservices.zatca.gov.sa/sites/sc/ar/app-view/pages/checkBayan.aspx";
-        //public static string ZAtcaCustomsdeclarationsAr = " https://esvc-web1-stg/sites/sc/ar/app-view/Pages/checkBayan.aspx";
-        // public static string ZAtcaCustomsdeclarationsAr = "http://esvc-web1-stg.ga.customs.gov.sa/sites/sc/ar/app-view/Pages/checkBayan.aspx";
-        // public static string ZAtcaCustomsdeclarationsAr = "https://10.113.98.41/sites/sc/ar/app-view/Pages/checkBayan.aspx";
-
+       
         public static string TaxpayerSubsidyRequest = string.Empty;
         public static string GetVatEligilibilityDate = BaseUrlOfODataServices + "/v1/vat-registration/commencement-date?TIN=";
         public static string GAZTVATSignUpValidateIdDeclaration = BaseUrlOfODataServices + "/v1/taxpayers/information";//BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_REG_GET_TP_NAME_SRV/taxpayer_nameSet";//CRPENTEST(Tin='',Idtype='ZS0015',Idnum='1048089609',Country='',PassExpDt='',TaxpDob='19650224')?sap-language=A&$format=json&saml2=enabled

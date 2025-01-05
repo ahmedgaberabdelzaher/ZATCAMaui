@@ -394,12 +394,12 @@
         {
             if (App.IsArabic)
             {
-                return $"{CustomsIssuesProd}/sites/sc/ar/app-view/Pages/NewSettlementRequest.aspx";
+                return $"{CustomsIssues}/sites/sc/ar/app-view/Pages/NewSettlementRequest.aspx";
             }
         
             else
             {
-                return $"{CustomsIssuesProd}/sites/sc/ar/app-view/Pages/NewSettlementRequest.aspx";
+                return $"{CustomsIssues}/sites/sc/ar/app-view/Pages/NewSettlementRequest.aspx";
             }
         }
 

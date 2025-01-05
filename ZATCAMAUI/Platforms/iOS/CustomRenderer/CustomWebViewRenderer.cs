@@ -1,5 +1,7 @@
-﻿using Microsoft.Maui.Controls.Compatibility.Platform.iOS;
+﻿using Foundation;
+using Microsoft.Maui.Controls.Compatibility.Platform.iOS;
 using Microsoft.Maui.Controls.Platform;
+
 
 namespace ZATCAMAUI.Platforms.iOS.CustomRenderer
 {
@@ -11,4 +13,6 @@ namespace ZATCAMAUI.Platforms.iOS.CustomRenderer
             (this.Subviews[0] as UIKit.UIScrollView).ShowsVerticalScrollIndicator = false;
         }
     }
+
+    
 }
