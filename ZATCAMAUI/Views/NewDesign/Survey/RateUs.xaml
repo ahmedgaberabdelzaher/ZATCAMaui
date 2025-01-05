@@ -10,6 +10,6 @@
         <WebView
             Navigated="WebView_Navigated"
             Navigating="WebView_Navigating"
-            Source="https://s2c.gazt.gov.sa/A/da86d394" />
+            Source="https://s2c.zatca.gov.sa/A/da86d394" />
     </newdesign:BaseContentPage.PancakeView>
 </newdesign:BaseContentPage>

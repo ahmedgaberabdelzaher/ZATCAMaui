@@ -144,6 +144,7 @@
         <None Remove="KeyStoreMaui\z-mobile.keystore" />
         <None Remove="KeyStoreMaui\passowrd.rtf" />
         <None Remove="KeyStoreMaui\z-mobile.keyInfo" />
+        <None Remove="Platforms\Android\Resources\raw\inquiry.cer" />
     </ItemGroup>
     <ItemGroup>
         <Compile Remove="Platforms\Android\DependencyServices\CustomPdfRenderer.cs" />
@@ -201,6 +202,9 @@
         <Folder Include="ViewModel\NewDesignViewModel\UpdateVatEffectiveDateVM\" />
         <Folder Include="ViewModel\NewDesignViewModel\ZakatRejectionPopUpViewModel\" />
         <Folder Include="ViewModel\NewDesignViewModel\Nafat\" />
+        <Folder Include="Platforms\Android\Resources\raw\" />
+        <Folder Include="Platforms\iOS\Helper\" />
+
     </ItemGroup>
     <ItemGroup>
         <EmbeddedResource Include="Resources\Fonts\MyMaterialIcon.ttf" />
@@ -4384,6 +4388,7 @@
         <AndroidResource Include="Platforms\Android\Resources\values\styles.xml" />
         <AndroidResource Include="Platforms\Android\Resources\values-v31\themes.xml" />
         <AndroidResource Include="Platforms\Android\xml\network_security_config.xml" />
+        <AndroidResource Include="Platforms\Android\Resources\raw\inquiry.cer" />
     </ItemGroup>
     <ItemGroup Condition="'$(TargetFramework)' == 'net8.0-android'">
         <PackageReference Include="Xamarin.Firebase.Config" Version="121.6.1.1" />
