@@ -22,7 +22,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
             try
             {
                 InitializeComponent();
-
+                //test commit
                 App.VATType = PageExecutionType.Register;
                 App.ZAKATType = PageExecutionType.Register;
                 viewModel = App.Locator.SFLoginPageView;
