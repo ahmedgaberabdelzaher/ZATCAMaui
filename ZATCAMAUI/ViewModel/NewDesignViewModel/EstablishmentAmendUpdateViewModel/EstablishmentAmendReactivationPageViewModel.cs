@@ -1589,7 +1589,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
         #region Commands
 
         public ICommand OnAppearingCommand { get; set; }
-        public ICommand OnActivitiesButtonClick { get; set; }
         public Command OnNextButtonClick { get; set; }
         public ICommand OnPreButtonClick { get; set; }
         public ICommand OnVoidOrSaveDraftClick { get; set; }
@@ -1679,20 +1678,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
             TaxPayerDetailsAvailability = new TaxPayerPersonalDetailsAvailability();
             FinancialDetails = new FinancialDetails();
             PassportDetails = new PassportDetails();
-            OnActivitiesButtonClick = new Command(async (e) =>
-            {
-                try
-                {
-                    var newItem = e as Nreg_ActivityItem;
-                    var dataModel = UtilityManager.FilterActivityDetails(taxPayerDetails, activityList, newItem);
-                    await MopupService.Instance.PushAsync(new ActivitiesPopupPageView(dataModel, false), true);
-                }
-                catch (Exception)
-                {
-                }
-            });
-
-            OnNextButtonClick = new Command(async () => await navigateToNext(), () => CanExecute);
+            OnNextButtonClick = new Command(() => navigateToNext(), () => CanExecute);
             OnPreButtonClick = new Command(() =>
             {
                 if (currentTab == EstablishmentRegistrationTabsEnum.Unknown ||
@@ -3647,7 +3633,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     obj.Actno = item.Actno;
                     obj.Type = item.Type;
                     obj.Idnumber = item.Idnumber;
-                    obj.Z700Number = item.Z700Number;
+
 
                     if (item.ValidDateFrom != null)
                     {
@@ -4448,19 +4434,22 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
         public void RentAttachmentPrePopulateCheck(TaxPayerDetails taxPayerDetails)
         {
             UploadedRentDocumentsList.Clear();
-            var docRentResult = taxPayerDetails.AttDetSet.Where(x => x.Dotyp == "RG16").ToList();
+            var docRentResult = taxPayerDetails?.AttDetSet?.Where(x => x.Dotyp == "RG16").ToList();
 
-            foreach (AttDetItem attDetItem in docRentResult)
+            if (docRentResult != null)
             {
-                var obj = new Attachment();
-                obj.Filename = attDetItem.Filename;
-                obj.FileExtn = attDetItem.FileExtn;
-                obj.Mimetype = attDetItem.Mimetype;
-                obj.RetGuid = attDetItem.RetGuid;
-                obj.DocUrl = attDetItem.DocUrl;
-                obj.Dotyp = attDetItem.Dotyp;
-                obj.Doguid = attDetItem.Doguid;
-                UploadedRentDocumentsList.Add(obj);
+                foreach (AttDetItem attDetItem in docRentResult)
+                {
+                    var obj = new Attachment();
+                    obj.Filename = attDetItem.Filename;
+                    obj.FileExtn = attDetItem.FileExtn;
+                    obj.Mimetype = attDetItem.Mimetype;
+                    obj.RetGuid = attDetItem.RetGuid;
+                    obj.DocUrl = attDetItem.DocUrl;
+                    obj.Dotyp = attDetItem.Dotyp;
+                    obj.Doguid = attDetItem.Doguid;
+                    UploadedRentDocumentsList.Add(obj);
+                }
             }
 
             if (UploadedRentDocumentsList.Count > 0)

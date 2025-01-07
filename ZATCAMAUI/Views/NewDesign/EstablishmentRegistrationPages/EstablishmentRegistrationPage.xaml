@@ -15,8 +15,8 @@
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     xmlns:models="clr-namespace:ZATCAMAUI.Core.Enums"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
-    x:Name="ESTRegistrationPage"
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    x:Name="ESTRegistrationPage"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
@@ -66,7 +66,7 @@
                         Source="arrowLeft.png"
                         VerticalOptions="CenterAndExpand">
                         <Image.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding OnPreButtonClick}"  />
+                            <TapGestureRecognizer Command="{Binding OnPreButtonClick}" />
                         </Image.GestureRecognizers>
                         <Image.Triggers>
                             <DataTrigger
@@ -116,7 +116,7 @@
 
                 </Grid>
 
-              
+
                 <commonView:PageIndicatorView
                     Completed="{Binding MarkComplete}"
                     DotSize="12"
@@ -149,8 +149,8 @@
             <!--#region Body-->
             <StackLayout
                 Grid.Row="1"
-                BackgroundColor="White"
                 Padding="10,10,10,0"
+                BackgroundColor="White"
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="FillAndExpand">
 
@@ -549,9 +549,10 @@
 
                                         <BindableLayout.ItemTemplate>
                                             <DataTemplate>
-                                                <Border FlowDirection="{Binding Source={x:Reference ESTRegistrationPage}, Path=FlowDirection}"
+                                                <Border
                                                     Margin="0,0,0,10"
                                                     Padding="10"
+                                                    FlowDirection="{Binding Source={x:Reference ESTRegistrationPage}, Path=FlowDirection}"
                                                     Stroke="{StaticResource NeutralGreay}"
                                                     StrokeShape="RoundRectangle 10,10,10,10"
                                                     StrokeThickness="1"
@@ -1106,8 +1107,7 @@
                                     <CollectionView.ItemTemplate>
                                         <DataTemplate>
 
-                                            <Grid Padding="10"
-                                                  FlowDirection="{Binding Source={x:Reference ESTRegistrationPage}, Path=FlowDirection}">
+                                            <Grid Padding="10" FlowDirection="{Binding Source={x:Reference ESTRegistrationPage}, Path=FlowDirection}">
                                                 <Image
                                                     x:Name="cardBackGroundImage"
                                                     Aspect="AspectFill"
@@ -1548,9 +1548,10 @@
                                         <listView:SfListView.ItemTemplate>
                                             <DataTemplate>
 
-                                                <cards:SfCardView BackgroundColor="Transparent"
-                                                                  FlowDirection="{Binding Source={x:Reference ESTRegistrationPage}, Path=FlowDirection}"
-                                                                  HeightRequest="108">
+                                                <cards:SfCardView
+                                                    BackgroundColor="Transparent"
+                                                    FlowDirection="{Binding Source={x:Reference ESTRegistrationPage}, Path=FlowDirection}"
+                                                    HeightRequest="108">
                                                     <Grid
                                                         Margin="0"
                                                         Padding="0"
@@ -1581,9 +1582,10 @@
 
                                         <listView:SfListView.SelectedItemTemplate>
                                             <DataTemplate>
-                                                <cards:SfCardView BackgroundColor="Transparent"
-                                                                  FlowDirection="{Binding Source={x:Reference ESTRegistrationPage}, Path=FlowDirection}"
-                                                                  HeightRequest="108">
+                                                <cards:SfCardView
+                                                    BackgroundColor="Transparent"
+                                                    FlowDirection="{Binding Source={x:Reference ESTRegistrationPage}, Path=FlowDirection}"
+                                                    HeightRequest="108">
                                                     <Grid
                                                         Margin="0"
                                                         Padding="0"
@@ -2346,10 +2348,7 @@
                     </custom:CustomSfTextInputView>
 
                     <!--  5250 start  -->
-                    <Grid
-                        BackgroundColor="Red"
-                        HeightRequest="400"
-                        RowDefinitions="*">
+                    <Grid HeightRequest="400" RowDefinitions="*">
 
                         <listView:SfListView
                             x:Name="outerListView"
@@ -2364,510 +2363,553 @@
                                     <ViewCell>
                                         <ViewCell.View>
 
-<Grid RowDefinitions="auto,auto,auto"
-                                          FlowDirection="{Binding Source={x:Reference ESTRegistrationPage}, Path=FlowDirection}"
-                                          RowSpacing="10">
+                                            <Grid
+                                                FlowDirection="{Binding Source={x:Reference ESTRegistrationPage}, Path=FlowDirection}"
+                                                RowDefinitions="auto,auto,auto"
+                                                RowSpacing="10">
 
-                                         <xct:Expander Command="{Binding Source={Reference ESTRegistrationPage}, Path=BindingContext.OnEditOutletButtonClick}"
-                                                CommandParameter="{Binding .}" >
+                                                <xct:Expander Command="{Binding Source={Reference ESTRegistrationPage}, Path=BindingContext.OnEditOutletButtonClick}" CommandParameter="{Binding .}">
 
-                                                 <xct:Expander.Header>
-                                                     <cards:SfCardView
-                                            Grid.Row="0"
-                                            Margin="5,0,0,0"
-                                            BackgroundColor="White"
-                                            BorderColor="{StaticResource NeutralLightGrey}"
-                                            BorderWidth="1"
-                                            CornerRadius="10">
-
-                                            
-                                                     <Grid
-                                                x:Name="GridItem"
-                                                Padding="8"
-                                                ColumnSpacing="5"
-                                                HorizontalOptions="FillAndExpand"
-                                                VerticalOptions="Center">
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="auto" />
-                                                    <RowDefinition Height="auto" />
-
-                                                </Grid.RowDefinitions>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="*" />
-
-                                                </Grid.ColumnDefinitions>
-                                                <StackLayout>
-                                                    <Image
-                                                        IsEnabled="False"
-                                                        Aspect="AspectFit"
-                                                        HorizontalOptions="Start"
-                                                        Source="greyDropDown"
-                                                        WidthRequest="18"
-                                                          HeightRequest="18">
-
-                                                        <Image.Triggers>
-                                                     <DataTrigger TargetType="Image" Binding="{Binding IsInnerListVisible}" Value="True">
-                                                         <Setter Property="Rotation" Value="180" />
-                                                     </DataTrigger>
-                                                     <DataTrigger TargetType="Image" Binding="{Binding IsInnerListVisible}" Value="False">
-                                                         <Setter Property="Rotation" Value="0" />
-                                                     </DataTrigger>
-                                                 </Image.Triggers>
-                                                        </Image>
-                                                </StackLayout>
+                                                    <xct:Expander.Header>
+                                                        <cards:SfCardView
+                                                            Grid.Row="0"
+                                                            Margin="5,0,0,0"
+                                                            BackgroundColor="White"
+                                                            BorderColor="{StaticResource NeutralLightGrey}"
+                                                            BorderWidth="1"
+                                                            CornerRadius="10">
 
 
-                                                <StackLayout
-                                                    Grid.Row="0"
-                                                    Grid.Column="2"
-                                                    Grid.ColumnSpan="1"
-                                                    Orientation="Horizontal">
-                                                    <buttons:SfButton
-                                                        Padding="5"
-                                                        Command="{Binding Source={Reference ESTRegistrationPage}, Path=BindingContext.OnEditOutletButtonClick2}"
-                                                        CommandParameter="{Binding .}"
-                                                        HorizontalOptions="EndAndExpand"
-                                                        ImageSource="ic_location.png"
-                                                        ShowIcon="True"
-                                                        Style="{StaticResource NoBackgroundButtonStyle}" />
+                                                            <Grid
+                                                                x:Name="GridItem"
+                                                                Padding="8"
+                                                                ColumnSpacing="5"
+                                                                HorizontalOptions="FillAndExpand"
+                                                                VerticalOptions="Center">
+                                                                <Grid.RowDefinitions>
+                                                                    <RowDefinition Height="auto" />
+                                                                    <RowDefinition Height="auto" />
 
-                                                    <buttons:SfButton
-                                                        Padding="5"
-                                                        Command="{Binding Source={Reference ESTRegistrationPage}, Path=BindingContext.OnEditOutletButtonClick2}"
-                                                        CommandParameter="{Binding .}"
-                                                        HorizontalOptions="EndAndExpand"
-                                                        ImageSource="ic_Edit.png"
-                                                        IsVisible="{Binding ShowEditIcon}"
-                                                        ShowIcon="True"
-                                                        Style="{StaticResource NoBackgroundButtonStyle}" />
+                                                                </Grid.RowDefinitions>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="*" />
+                                                                    <ColumnDefinition Width="*" />
+                                                                    <ColumnDefinition Width="*" />
 
-                                                    <buttons:SfButton
-                                                        Padding="5"
-                                                        Command="{Binding Source={Reference ESTRegistrationPage}, Path=BindingContext.OnDeleteOutletButtonClick}"
-                                                        CommandParameter="{Binding .}"
-                                                        HorizontalOptions="EndAndExpand"
-                                                        ImageSource="ic_delete.png"
-                                                        IsVisible="{Binding ShowDeleteIcon}"
-                                                        ShowIcon="True"
-                                                        Style="{StaticResource NoBackgroundButtonStyle}" />
+                                                                </Grid.ColumnDefinitions>
+                                                                <StackLayout>
+                                                                    <Image
+                                                                        Aspect="AspectFit"
+                                                                        HeightRequest="18"
+                                                                        HorizontalOptions="Start"
+                                                                        IsEnabled="False"
+                                                                        Source="greyDropDown"
+                                                                        WidthRequest="18">
 
-                                                </StackLayout>
+                                                                        <Image.Triggers>
+                                                                            <DataTrigger
+                                                                                Binding="{Binding IsInnerListVisible}"
+                                                                                TargetType="Image"
+                                                                                Value="True">
+                                                                                <Setter Property="Rotation" Value="180" />
+                                                                            </DataTrigger>
+                                                                            <DataTrigger
+                                                                                Binding="{Binding IsInnerListVisible}"
+                                                                                TargetType="Image"
+                                                                                Value="False">
+                                                                                <Setter Property="Rotation" Value="0" />
+                                                                            </DataTrigger>
+                                                                        </Image.Triggers>
+                                                                    </Image>
+                                                                </StackLayout>
 
-                                                <StackLayout Grid.Row="1" Grid.Column="0">
-                                                    <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinOutletOutletNumber}" />
-                                                    <StackLayout HorizontalOptions="StartAndExpand">
-                                                        <Label
-                                                            HorizontalOptions="StartAndExpand"
-                                                            Style="{StaticResource ValueLabelBlack}"
-                                                            Text="{Binding ActNo}"
-                                                            VerticalTextAlignment="Center" />
-                                                    </StackLayout>
-                                                </StackLayout>
 
-                                                <StackLayout Grid.Row="1" Grid.Column="1">
-                                                    <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.OutletTypeField}" />
-                                                    <StackLayout HorizontalOptions="StartAndExpand">
-                                                        <Label
-                                                            Grid.Row="1"
-                                                            Grid.Column="0"
-                                                            Style="{StaticResource ValueLabelBlack}"
-                                                            Text="{Binding ActCatDesc}"
-                                                            TextColor="{StaticResource NeutralBlack}" />
-                                                    </StackLayout>
-                                                </StackLayout>
+                                                                <StackLayout
+                                                                    Grid.Row="0"
+                                                                    Grid.Column="2"
+                                                                    Grid.ColumnSpan="1"
+                                                                    Orientation="Horizontal">
+                                                                    <buttons:SfButton
+                                                                        Padding="5"
+                                                                        Command="{Binding Source={Reference ESTRegistrationPage}, Path=BindingContext.OnEditOutletButtonClick2}"
+                                                                        CommandParameter="{Binding .}"
+                                                                        HorizontalOptions="EndAndExpand"
+                                                                        ImageSource="ic_location.png"
+                                                                        ShowIcon="True"
+                                                                        Style="{StaticResource NoBackgroundButtonStyle}" />
 
-                                                <StackLayout
-                                                    Grid.Row="1"
-                                                    Grid.Column="2"
-                                                    Spacing="5">
-                                                    <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZCRNo}" />
-                                                    <StackLayout HorizontalOptions="StartAndExpand">
-                                                        <Label
-                                                            HorizontalOptions="StartAndExpand"
-                                                            Style="{StaticResource ValueLabelBlack}"
-                                                            Text="{Binding Crlicenceno}"
-                                                            VerticalTextAlignment="Center" />
-                                                    </StackLayout>
-                                                </StackLayout>
+                                                                    <buttons:SfButton
+                                                                        Padding="5"
+                                                                        Command="{Binding Source={Reference ESTRegistrationPage}, Path=BindingContext.OnEditOutletButtonClick2}"
+                                                                        CommandParameter="{Binding .}"
+                                                                        HorizontalOptions="EndAndExpand"
+                                                                        ImageSource="ic_Edit.png"
+                                                                        IsVisible="{Binding ShowEditIcon}"
+                                                                        ShowIcon="True"
+                                                                        Style="{StaticResource NoBackgroundButtonStyle}" />
+
+                                                                    <buttons:SfButton
+                                                                        Padding="5"
+                                                                        Command="{Binding Source={Reference ESTRegistrationPage}, Path=BindingContext.OnDeleteOutletButtonClick}"
+                                                                        CommandParameter="{Binding .}"
+                                                                        HorizontalOptions="EndAndExpand"
+                                                                        ImageSource="ic_delete.png"
+                                                                        IsVisible="{Binding ShowDeleteIcon}"
+                                                                        ShowIcon="True"
+                                                                        Style="{StaticResource NoBackgroundButtonStyle}" />
+
+                                                                </StackLayout>
+
+                                                                <StackLayout Grid.Row="1" Grid.Column="0">
+                                                                    <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinOutletOutletNumber}" />
+                                                                    <StackLayout HorizontalOptions="StartAndExpand">
+                                                                        <Label
+                                                                            HorizontalOptions="StartAndExpand"
+                                                                            Style="{StaticResource ValueLabelBlack}"
+                                                                            Text="{Binding ActNo}"
+                                                                            VerticalTextAlignment="Center" />
+                                                                    </StackLayout>
+                                                                </StackLayout>
+
+                                                                <StackLayout Grid.Row="1" Grid.Column="1">
+                                                                    <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.OutletTypeField}" />
+                                                                    <StackLayout HorizontalOptions="StartAndExpand">
+                                                                        <Label
+                                                                            Grid.Row="1"
+                                                                            Grid.Column="0"
+                                                                            Style="{StaticResource ValueLabelBlack}"
+                                                                            Text="{Binding ActCatDesc}"
+                                                                            TextColor="{StaticResource NeutralBlack}" />
+                                                                    </StackLayout>
+                                                                </StackLayout>
+
+                                                                <StackLayout
+                                                                    Grid.Row="1"
+                                                                    Grid.Column="2"
+                                                                    Spacing="5">
+                                                                    <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZCRNo}" />
+                                                                    <StackLayout HorizontalOptions="StartAndExpand">
+                                                                        <Label
+                                                                            HorizontalOptions="StartAndExpand"
+                                                                            Style="{StaticResource ValueLabelBlack}"
+                                                                            Text="{Binding Crlicenceno}"
+                                                                            VerticalTextAlignment="Center" />
+                                                                    </StackLayout>
+                                                                </StackLayout>
+                                                            </Grid>
+
+                                                        </cards:SfCardView>
+                                                    </xct:Expander.Header>
+
+                                                    <xct:Expander.Content>
+
+                                                        <Grid RowDefinitions="*,*">
+                                                            <listView:SfListView
+                                                                x:Name="innerListView"
+                                                                Grid.Row="0"
+                                                                Margin="5"
+                                                                IsScrollingEnabled="False"
+                                                                ItemsSource="{Binding ContactDetails}"
+                                                                ScrollBarVisibility="Never">
+                                                                <listView:SfListView.HeaderTemplate>
+                                                                    <DataTemplate>
+                                                                        <ViewCell>
+                                                                            <ViewCell.View>
+                                                                                <StackLayout x:Name="rootArea" FlowDirection="{Binding Source={x:Reference ESTRegistrationPage}, Path=FlowDirection}">
+                                                                                    <Label
+                                                                                        HorizontalOptions="StartAndExpand"
+                                                                                        HorizontalTextAlignment="Start"
+                                                                                        Style="{StaticResource ValueLabelBlack}"
+                                                                                        Text="{x:Static ResourceManager:AppResources.InnerListCrTitle}"
+                                                                                        VerticalTextAlignment="Center" />
+                                                                                </StackLayout>
+                                                                            </ViewCell.View>
+                                                                        </ViewCell>
+                                                                    </DataTemplate>
+                                                                </listView:SfListView.HeaderTemplate>
+                                                                <listView:SfListView.ItemTemplate>
+                                                                    <DataTemplate>
+                                                                        <ScrollView
+                                                                            FlowDirection="{Binding Source={x:Reference ESTRegistrationPage}, Path=FlowDirection}"
+                                                                            HorizontalOptions="FillAndExpand"
+                                                                            HorizontalScrollBarVisibility="Never"
+                                                                            Orientation="Horizontal">
+                                                                            <Grid
+                                                                                x:Name="grid"
+                                                                                Margin="0"
+                                                                                Padding="5"
+                                                                                BackgroundColor="#DBE9FA">
+                                                                                <Grid.RowDefinitions>
+                                                                                    <RowDefinition Height="auto" />
+
+                                                                                </Grid.RowDefinitions>
+                                                                                <Grid.ColumnDefinitions>
+                                                                                    <ColumnDefinition Width="Auto" />
+                                                                                    <ColumnDefinition Width="Auto" />
+                                                                                    <ColumnDefinition Width="Auto" />
+                                                                                    <ColumnDefinition Width="Auto" />
+                                                                                    <ColumnDefinition Width="Auto" />
+                                                                                    <ColumnDefinition Width="Auto" />
+                                                                                    <ColumnDefinition Width="Auto" />
+                                                                                    <ColumnDefinition Width="Auto" />
+                                                                                    <ColumnDefinition Width="Auto" />
+                                                                                    <ColumnDefinition Width="Auto" />
+                                                                                </Grid.ColumnDefinitions>
+
+                                                                                <StackLayout
+                                                                                    Grid.Row="0"
+                                                                                    Grid.Column="0"
+                                                                                    Margin="0,0,5,0">
+                                                                                    <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZCRNumber}" />
+                                                                                    <Label
+                                                                                        HorizontalOptions="StartAndExpand"
+                                                                                        HorizontalTextAlignment="Start"
+                                                                                        Style="{StaticResource ValueLabelBlack}"
+                                                                                        Text="{Binding Idnumber}"
+                                                                                        VerticalTextAlignment="Center" />
+                                                                                </StackLayout>
+
+                                                                                <StackLayout
+                                                                                    Grid.Row="0"
+                                                                                    Grid.Column="1"
+                                                                                    Margin="0,0,5,0">
+                                                                                    <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZCRName}" />
+                                                                                    <Label
+                                                                                        HorizontalOptions="StartAndExpand"
+                                                                                        HorizontalTextAlignment="Start"
+                                                                                        Style="{StaticResource ValueLabelBlack}"
+                                                                                        Text="{Binding ActName}"
+                                                                                        VerticalTextAlignment="Center" />
+                                                                                </StackLayout>
+
+                                                                                <StackLayout
+                                                                                    Grid.Row="0"
+                                                                                    Grid.Column="2"
+                                                                                    Margin="0,0,5,0">
+                                                                                    <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.CrType}" />
+                                                                                    <Label
+                                                                                        HorizontalOptions="StartAndExpand"
+                                                                                        HorizontalTextAlignment="Start"
+                                                                                        Style="{StaticResource ValueLabelBlack}"
+                                                                                        Text="{Binding CRTypeDesc}"
+                                                                                        VerticalTextAlignment="Center" />
+                                                                                </StackLayout>
+
+                                                                                <StackLayout
+                                                                                    Grid.Row="0"
+                                                                                    Grid.Column="3"
+                                                                                    Margin="0,0,5,0">
+                                                                                    <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTIssueCountryLabel}" />
+                                                                                    <Label
+                                                                                        HorizontalOptions="StartAndExpand"
+                                                                                        HorizontalTextAlignment="Start"
+                                                                                        Style="{StaticResource ValueLabelBlack}"
+                                                                                        Text="{Binding IssuedCountry}"
+                                                                                        VerticalTextAlignment="Center" />
+                                                                                </StackLayout>
+
+                                                                                <StackLayout
+                                                                                    Grid.Row="0"
+                                                                                    Grid.Column="4"
+                                                                                    Margin="0,0,5,0">
+                                                                                    <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.IssuedCity}" />
+                                                                                    <Label
+                                                                                        HorizontalOptions="StartAndExpand"
+                                                                                        HorizontalTextAlignment="Start"
+                                                                                        Style="{StaticResource ValueLabelBlack}"
+                                                                                        Text="{Binding IssuedCity}"
+                                                                                        VerticalTextAlignment="Center" />
+                                                                                </StackLayout>
+
+                                                                                <StackLayout
+                                                                                    Grid.Row="0"
+                                                                                    Grid.Column="5"
+                                                                                    Margin="0,0,5,0">
+                                                                                    <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTIssueBy}" />
+                                                                                    <Label
+                                                                                        HorizontalOptions="StartAndExpand"
+                                                                                        HorizontalTextAlignment="Start"
+                                                                                        Style="{StaticResource ValueLabelBlack}"
+                                                                                        Text="{Binding IssuedBy}"
+                                                                                        VerticalTextAlignment="Center" />
+                                                                                </StackLayout>
+
+                                                                                <StackLayout
+                                                                                    Grid.Row="0"
+                                                                                    Grid.Column="6"
+                                                                                    Margin="0,0,5,0">
+                                                                                    <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinDeregistrationValidFrom}" />
+                                                                                    <Label
+                                                                                        HorizontalOptions="StartAndExpand"
+                                                                                        HorizontalTextAlignment="Start"
+                                                                                        Style="{StaticResource ValueLabelBlack}"
+                                                                                        Text="{Binding ValidFromUI}"
+                                                                                        VerticalTextAlignment="Center" />
+                                                                                </StackLayout>
+
+                                                                                <StackLayout
+                                                                                    Grid.Row="0"
+                                                                                    Grid.Column="7"
+                                                                                    Margin="0,0,5,0">
+                                                                                    <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTMainGroup}" />
+                                                                                    <Label
+                                                                                        HorizontalOptions="StartAndExpand"
+                                                                                        HorizontalTextAlignment="Start"
+                                                                                        Style="{StaticResource ValueLabelBlack}"
+                                                                                        Text="{Binding ActMgrpDesc}"
+                                                                                        VerticalTextAlignment="Center" />
+                                                                                </StackLayout>
+
+                                                                                <StackLayout
+                                                                                    Grid.Row="0"
+                                                                                    Grid.Column="8"
+                                                                                    Margin="0,0,5,0">
+                                                                                    <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTSubGroup}" />
+                                                                                    <Label
+                                                                                        HorizontalOptions="StartAndExpand"
+                                                                                        HorizontalTextAlignment="Start"
+                                                                                        Style="{StaticResource ValueLabelBlack}"
+                                                                                        Text="{Binding ActSgrpDesc}"
+                                                                                        VerticalTextAlignment="Center" />
+                                                                                </StackLayout>
+
+                                                                                <StackLayout
+                                                                                    Grid.Row="0"
+                                                                                    Grid.Column="9"
+                                                                                    Margin="0,0,5,0">
+                                                                                    <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTActivity}" />
+                                                                                    <Label
+                                                                                        HorizontalOptions="StartAndExpand"
+                                                                                        HorizontalTextAlignment="Start"
+                                                                                        Style="{StaticResource ValueLabelBlack}"
+                                                                                        Text="{Binding ActivityDesc}"
+                                                                                        VerticalTextAlignment="Center" />
+                                                                                </StackLayout>
+
+                                                                            </Grid>
+                                                                        </ScrollView>
+                                                                    </DataTemplate>
+                                                                </listView:SfListView.ItemTemplate>
+                                                                <listView:SfListView.FooterTemplate>
+                                                                    <DataTemplate>
+                                                                        <StackLayout
+                                                                            FlowDirection="{Binding Source={x:Reference ESTRegistrationPage}, Path=FlowDirection}"
+                                                                            HorizontalOptions="Center"
+                                                                            IsVisible="{Binding Path=BindingContext.ShowCRNoData, Source={x:Reference ESTRegistrationPage}}">
+                                                                            <Label
+                                                                                HorizontalOptions="StartAndExpand"
+                                                                                HorizontalTextAlignment="Start"
+                                                                                Style="{StaticResource CaptionLabelGrey}"
+                                                                                Text="{x:Static ResourceManager:AppResources.ZVatNoData}"
+                                                                                VerticalTextAlignment="Center" />
+                                                                        </StackLayout>
+
+                                                                    </DataTemplate>
+
+                                                                </listView:SfListView.FooterTemplate>
+                                                            </listView:SfListView>
+
+                                                            <listView:SfListView
+                                                                x:Name="innerListView2"
+                                                                Grid.Row="1"
+                                                                Margin="5"
+                                                                IsScrollingEnabled="False"
+                                                                ItemsSource="{Binding ContactDetails2}"
+                                                                ScrollBarVisibility="Never"
+                                                                VerticalOptions="FillAndExpand">
+                                                                <listView:SfListView.HeaderTemplate>
+                                                                    <DataTemplate>
+                                                                        <ViewCell>
+                                                                            <ViewCell.View>
+                                                                                <StackLayout x:Name="rootArea" FlowDirection="{Binding Source={x:Reference ESTRegistrationPage}, Path=FlowDirection}">
+                                                                                    <Label
+                                                                                        HorizontalOptions="StartAndExpand"
+                                                                                        HorizontalTextAlignment="Start"
+                                                                                        Style="{StaticResource ValueLabelBlack}"
+                                                                                        Text="{x:Static ResourceManager:AppResources.ESTLicenseDetails}"
+                                                                                        VerticalTextAlignment="Center" />
+                                                                                </StackLayout>
+                                                                            </ViewCell.View>
+                                                                        </ViewCell>
+                                                                    </DataTemplate>
+                                                                </listView:SfListView.HeaderTemplate>
+                                                                <listView:SfListView.ItemTemplate>
+                                                                    <DataTemplate>
+                                                                        <ScrollView
+                                                                            FlowDirection="{Binding Source={x:Reference ESTRegistrationPage}, Path=FlowDirection}"
+                                                                            HorizontalOptions="FillAndExpand"
+                                                                            HorizontalScrollBarVisibility="Never"
+                                                                            Orientation="Horizontal">
+                                                                            <Grid
+                                                                                x:Name="grid"
+                                                                                Margin="0,5,0,0"
+                                                                                Padding="5"
+                                                                                BackgroundColor="#DBE9FA">
+                                                                                <Grid.RowDefinitions>
+                                                                                    <RowDefinition Height="auto" />
+
+                                                                                </Grid.RowDefinitions>
+                                                                                <Grid.ColumnDefinitions>
+                                                                                    <ColumnDefinition Width="Auto" />
+                                                                                    <ColumnDefinition Width="Auto" />
+                                                                                    <ColumnDefinition Width="Auto" />
+                                                                                    <ColumnDefinition Width="Auto" />
+                                                                                    <ColumnDefinition Width="Auto" />
+                                                                                    <ColumnDefinition Width="Auto" />
+                                                                                    <ColumnDefinition Width="Auto" />
+                                                                                    <ColumnDefinition Width="Auto" />
+                                                                                    <ColumnDefinition Width="Auto" />
+                                                                                </Grid.ColumnDefinitions>
+
+                                                                                <StackLayout
+                                                                                    Grid.Row="0"
+                                                                                    Grid.Column="0"
+                                                                                    Margin="0,0,5,0">
+                                                                                    <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.LicenceNumber}" />
+                                                                                    <Label
+                                                                                        HorizontalOptions="StartAndExpand"
+                                                                                        HorizontalTextAlignment="Start"
+                                                                                        Style="{StaticResource ValueLabelBlack}"
+                                                                                        Text="{Binding Idnumber}"
+                                                                                        VerticalTextAlignment="Center" />
+                                                                                </StackLayout>
+                                                                                <StackLayout
+                                                                                    Grid.Row="0"
+                                                                                    Grid.Column="1"
+                                                                                    Margin="0,0,5,0">
+                                                                                    <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.LicenceName}" />
+                                                                                    <Label
+                                                                                        HorizontalOptions="StartAndExpand"
+                                                                                        HorizontalTextAlignment="Start"
+                                                                                        Style="{StaticResource ValueLabelBlack}"
+                                                                                        Text="{Binding ActName}"
+                                                                                        VerticalTextAlignment="Center" />
+                                                                                </StackLayout>
+                                                                                <StackLayout
+                                                                                    Grid.Row="0"
+                                                                                    Grid.Column="2"
+                                                                                    Margin="0,0,5,0">
+                                                                                    <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTIssueCountryLabel}" />
+                                                                                    <Label
+                                                                                        HorizontalOptions="StartAndExpand"
+                                                                                        HorizontalTextAlignment="Start"
+                                                                                        Style="{StaticResource ValueLabelBlack}"
+                                                                                        Text="{Binding IssuedCountry}"
+                                                                                        VerticalTextAlignment="Center" />
+                                                                                </StackLayout>
+                                                                                <StackLayout
+                                                                                    Grid.Row="0"
+                                                                                    Grid.Column="3"
+                                                                                    Margin="0,0,5,0">
+                                                                                    <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.IssuedCity}" />
+                                                                                    <Label
+                                                                                        HorizontalOptions="StartAndExpand"
+                                                                                        HorizontalTextAlignment="Start"
+                                                                                        Style="{StaticResource ValueLabelBlack}"
+                                                                                        Text="{Binding IssuedCity}"
+                                                                                        VerticalTextAlignment="Center" />
+                                                                                </StackLayout>
+                                                                                <StackLayout
+                                                                                    Grid.Row="0"
+                                                                                    Grid.Column="4"
+                                                                                    Margin="0,0,5,0">
+                                                                                    <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTIssueBy}" />
+                                                                                    <Label
+                                                                                        HorizontalOptions="StartAndExpand"
+                                                                                        HorizontalTextAlignment="Start"
+                                                                                        Style="{StaticResource ValueLabelBlack}"
+                                                                                        Text="{Binding IssuedBy}"
+                                                                                        VerticalTextAlignment="Center" />
+                                                                                </StackLayout>
+                                                                                <StackLayout
+                                                                                    Grid.Row="0"
+                                                                                    Grid.Column="5"
+                                                                                    Margin="0,0,5,0">
+                                                                                    <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinDeregistrationValidFrom}" />
+                                                                                    <Label
+                                                                                        HorizontalOptions="StartAndExpand"
+                                                                                        HorizontalTextAlignment="Start"
+                                                                                        Style="{StaticResource ValueLabelBlack}"
+                                                                                        Text="{Binding ValidFromUI}"
+                                                                                        VerticalTextAlignment="Center" />
+                                                                                </StackLayout>
+
+                                                                                <StackLayout
+                                                                                    Grid.Row="0"
+                                                                                    Grid.Column="6"
+                                                                                    Margin="0,0,5,0">
+                                                                                    <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTMainGroup}" />
+                                                                                    <Label
+                                                                                        HorizontalOptions="StartAndExpand"
+                                                                                        HorizontalTextAlignment="Start"
+                                                                                        Style="{StaticResource ValueLabelBlack}"
+                                                                                        Text="{Binding ActMgrpDesc}"
+                                                                                        VerticalTextAlignment="Center" />
+                                                                                </StackLayout>
+
+                                                                                <StackLayout
+                                                                                    Grid.Row="0"
+                                                                                    Grid.Column="7"
+                                                                                    Margin="0,0,5,0">
+                                                                                    <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTSubGroup}" />
+                                                                                    <Label
+                                                                                        HorizontalOptions="StartAndExpand"
+                                                                                        HorizontalTextAlignment="Start"
+                                                                                        Style="{StaticResource ValueLabelBlack}"
+                                                                                        Text="{Binding ActSgrpDesc}"
+                                                                                        VerticalTextAlignment="Center" />
+                                                                                </StackLayout>
+
+                                                                                <StackLayout
+                                                                                    Grid.Row="0"
+                                                                                    Grid.Column="8"
+                                                                                    Margin="0,0,5,0">
+                                                                                    <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTActivity}" />
+                                                                                    <Label
+                                                                                        HorizontalOptions="StartAndExpand"
+                                                                                        HorizontalTextAlignment="Start"
+                                                                                        Style="{StaticResource ValueLabelBlack}"
+                                                                                        Text="{Binding ActivityDesc}"
+                                                                                        VerticalTextAlignment="Center" />
+                                                                                </StackLayout>
+
+
+
+
+                                                                            </Grid>
+                                                                        </ScrollView>
+                                                                    </DataTemplate>
+                                                                </listView:SfListView.ItemTemplate>
+                                                                <listView:SfListView.FooterTemplate>
+                                                                    <DataTemplate>
+                                                                        <StackLayout
+                                                                            FlowDirection="{Binding Source={x:Reference ESTRegistrationPage}, Path=FlowDirection}"
+                                                                            HorizontalOptions="Center"
+                                                                            IsVisible="{Binding Path=BindingContext.ShowLicenceNoData, Source={x:Reference ESTRegistrationPage}}">
+                                                                            <Label
+                                                                                HorizontalOptions="StartAndExpand"
+                                                                                HorizontalTextAlignment="Start"
+                                                                                Style="{StaticResource CaptionLabelGrey}"
+                                                                                Text="{x:Static ResourceManager:AppResources.VatEffNoData}"
+                                                                                VerticalTextAlignment="Center" />
+                                                                        </StackLayout>
+
+                                                                    </DataTemplate>
+
+                                                                </listView:SfListView.FooterTemplate>
+                                                            </listView:SfListView>
+
+                                                        </Grid>
+                                                    </xct:Expander.Content>
+
+
+                                                </xct:Expander>
                                             </Grid>
-                                            
-                                        </cards:SfCardView>
-                                                     </xct:Expander.Header>
-
-                                        <xct:Expander.Content>
-
-                                             <Grid RowDefinitions="*,*">
-                                                 <listView:SfListView
-                                            x:Name="innerListView"
-                                        Grid.Row="0"
-                                        Margin="5"
-                                        IsScrollingEnabled="False"
-                                        ScrollBarVisibility="Never"
-                                            ItemsSource="{Binding ContactDetails}">
-                                            <listView:SfListView.HeaderTemplate>
-                                                <DataTemplate>
-                                                    <ViewCell>
-                                                        <ViewCell.View>
-                                                            <StackLayout x:Name="rootArea"
-                                                                         FlowDirection="{Binding Source={x:Reference ESTRegistrationPage}, Path=FlowDirection}">
-                                                                <Label
-                                                                    HorizontalOptions="StartAndExpand"
-                                                                    HorizontalTextAlignment="Start"
-                                                                    Style="{StaticResource ValueLabelBlack}"
-                                                                    Text="{x:Static ResourceManager:AppResources.InnerListCrTitle}"
-                                                                    VerticalTextAlignment="Center" />
-                                                            </StackLayout>
-                                                        </ViewCell.View>
-                                                    </ViewCell>
-                                                </DataTemplate>
-                                            </listView:SfListView.HeaderTemplate>
-                                            <listView:SfListView.ItemTemplate>
-                                                <DataTemplate>
-                                                    <ScrollView HorizontalOptions="FillAndExpand"
-                                                                HorizontalScrollBarVisibility="Never"
-                                                                FlowDirection="{Binding Source={x:Reference ESTRegistrationPage}, Path=FlowDirection}"
-                                                                Orientation="Horizontal">
-                                                        <Grid
-                                                            x:Name="grid"
-                                                            Margin="0"
-                                                            Padding="5"
-                                                            BackgroundColor="#DBE9FA">
-                                                            <Grid.RowDefinitions>
-                                                                <RowDefinition Height="auto" />
-
-                                                            </Grid.RowDefinitions>
-                                                            <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition Width="Auto" />
-                                                                <ColumnDefinition Width="Auto" />
-                                                                <ColumnDefinition Width="Auto" />
-                                                                <ColumnDefinition Width="Auto" />
-                                                                <ColumnDefinition Width="Auto" />
-                                                                <ColumnDefinition Width="Auto" />
-                                                                <ColumnDefinition Width="Auto" />
-                                                                <ColumnDefinition Width="Auto" />
-                                                                <ColumnDefinition Width="Auto" />
-                                                                <ColumnDefinition Width="Auto" />
-                                                            </Grid.ColumnDefinitions>
-
-                                                            <StackLayout
-                                                                Grid.Row="0"
-                                                                Grid.Column="0"
-                                                                Margin="0,0,5,0">
-                                                                <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZCRNumber}" />
-                                                                <Label
-                                                                    HorizontalOptions="StartAndExpand"
-                                                                    HorizontalTextAlignment="Start"
-                                                                    Style="{StaticResource ValueLabelBlack}"
-                                                                    Text="{Binding Idnumber}"
-                                                                    VerticalTextAlignment="Center" />
-                                                            </StackLayout>
-                                                            <StackLayout
-                                                                Grid.Row="0"
-                                                                Grid.Column="1"
-                                                                Margin="0,0,5,0">
-                                                                <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZCRNationalNumber}" />
-                                                                <custom:CustomLabel
-                                                                    HorizontalOptions="StartAndExpand"
-                                                                    HorizontalTextAlignment="Start"
-                                                                    Style="{StaticResource ValueLabelBlack}"
-                                                                    Text="{Binding Z700Number}"
-                                                                    VerticalTextAlignment="Center" />
-                                                            </StackLayout>
-
-                                                            <StackLayout
-                                                                Grid.Row="0"
-                                                                Grid.Column="2"
-                                                                Margin="0,0,5,0">
-                                                                <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZCRName}" />
-                                                                <Label
-                                                                    HorizontalOptions="StartAndExpand"
-                                                                    HorizontalTextAlignment="Start"
-                                                                    Style="{StaticResource ValueLabelBlack}"
-                                                                    Text="{Binding ActName}"
-                                                                    VerticalTextAlignment="Center" />
-                                                            </StackLayout>
-
-                                                            <StackLayout
-                                                                Grid.Row="0"
-                                                                Grid.Column="3"
-                                                                Margin="0,0,5,0">
-                                                                <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.CrType}" />
-                                                                <Label
-                                                                    HorizontalOptions="StartAndExpand"
-                                                                    HorizontalTextAlignment="Start"
-                                                                    Style="{StaticResource ValueLabelBlack}"
-                                                                    Text="{Binding CRTypeDesc}"
-                                                                    VerticalTextAlignment="Center" />
-                                                            </StackLayout>
-
-                                                            <StackLayout
-                                                                Grid.Row="0"
-                                                                Grid.Column="4"
-                                                                Margin="0,0,5,0">
-                                                                <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTIssueCountryLabel}" />
-                                                                <Label
-                                                                    HorizontalOptions="StartAndExpand"
-                                                                    HorizontalTextAlignment="Start"
-                                                                    Style="{StaticResource ValueLabelBlack}"
-                                                                    Text="{Binding IssuedCountry}"
-                                                                    VerticalTextAlignment="Center" />
-                                                            </StackLayout>
-
-                                                            <StackLayout
-                                                                Grid.Row="0"
-                                                                Grid.Column="5"
-                                                                Margin="0,0,5,0">
-                                                                <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.IssuedCity}" />
-                                                                <Label
-                                                                    HorizontalOptions="StartAndExpand"
-                                                                    HorizontalTextAlignment="Start"
-                                                                    Style="{StaticResource ValueLabelBlack}"
-                                                                    Text="{Binding IssuedCity}"
-                                                                    VerticalTextAlignment="Center" />
-                                                            </StackLayout>
-
-                                                            <StackLayout
-                                                                Grid.Row="0"
-                                                                Grid.Column="6"
-                                                                Margin="0,0,5,0">
-                                                                <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTIssueBy}" />
-                                                                <Label
-                                                                    HorizontalOptions="StartAndExpand"
-                                                                    HorizontalTextAlignment="Start"
-                                                                    Style="{StaticResource ValueLabelBlack}"
-                                                                    Text="{Binding IssuedBy}"
-                                                                    VerticalTextAlignment="Center" />
-                                                            </StackLayout>
-
-                                                            <StackLayout
-                                                                Grid.Row="0"
-                                                                Grid.Column="7"
-                                                                Margin="0,0,5,0">
-                                                                <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinDeregistrationValidFrom}" />
-                                                                <Label
-                                                                    HorizontalOptions="StartAndExpand"
-                                                                    HorizontalTextAlignment="Start"
-                                                                    Style="{StaticResource ValueLabelBlack}"
-                                                                    Text="{Binding ValidFromUI}"
-                                                                    VerticalTextAlignment="Center" />
-                                                            </StackLayout>
-
-                                                            <StackLayout
-                                                                Grid.Row="0"
-                                                                Grid.Column="8"
-                                                                Margin="0,0,5,0">
-
-                                                                <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTActivity}" />
-                                                                <buttons:SfButton
-                                                                    Command="{Binding BindingContext.OnActivitiesButtonClick, Source={x:Reference Name=ESTRegistrationPage}}"
-                                                                    CommandParameter="{Binding .}"
-                                                                    Style="{StaticResource PrimaryButtonStyle}"
-                                                                    FontSize="12"
-                                                                    Text="{x:Static ResourceManager:AppResources.EstActivities}"
-                                                                    HeightRequest="25"
-                                                                    WidthRequest="180" />
-                                                            </StackLayout>
-
-                                                        </Grid>
-                                                    </ScrollView>
-                                                </DataTemplate>
-                                            </listView:SfListView.ItemTemplate>
-                                            <listView:SfListView.FooterTemplate>
-                                                <DataTemplate>
-                                                    <StackLayout HorizontalOptions="Center"
-                                                                 FlowDirection="{Binding Source={x:Reference ESTRegistrationPage}, Path=FlowDirection}"
-                                                                 IsVisible="{Binding Path=BindingContext.ShowCRNoData, Source={x:Reference ESTRegistrationPage}}">
-                                                        <Label
-                                                            HorizontalOptions="StartAndExpand"
-                                                            HorizontalTextAlignment="Start"
-                                                            Style="{StaticResource CaptionLabelGrey}"
-                                                            Text="{x:Static ResourceManager:AppResources.ZVatNoData}"
-                                                            VerticalTextAlignment="Center" />
-                                                    </StackLayout>
-
-                                                </DataTemplate>
-
-                                            </listView:SfListView.FooterTemplate>
-                                        </listView:SfListView>
-
-                                                 <listView:SfListView
-                                            x:Name="innerListView2"
-                                            Grid.Row="1"
-                                            Margin="5"
-                                            VerticalOptions="FillAndExpand"
-                                            IsScrollingEnabled="False"
-                                            ScrollBarVisibility="Never"
-                                            ItemsSource="{Binding ContactDetails2}">
-                                            <listView:SfListView.HeaderTemplate>
-                                                <DataTemplate>
-                                                    <ViewCell>
-                                                        <ViewCell.View>
-                                                            <StackLayout x:Name="rootArea" FlowDirection="{Binding Source={x:Reference ESTRegistrationPage}, Path=FlowDirection}">
-                                                                <Label
-                                                                    HorizontalOptions="StartAndExpand"
-                                                                    HorizontalTextAlignment="Start"
-                                                                    Style="{StaticResource ValueLabelBlack}"
-                                                                    Text="{x:Static ResourceManager:AppResources.ESTLicenseDetails}"
-                                                                    VerticalTextAlignment="Center" />
-                                                            </StackLayout>
-                                                        </ViewCell.View>
-                                                    </ViewCell>
-                                                </DataTemplate>
-                                            </listView:SfListView.HeaderTemplate>
-                                            <listView:SfListView.ItemTemplate>
-                                                <DataTemplate>
-                                                    <ScrollView HorizontalOptions="FillAndExpand"
-                                                                FlowDirection="{Binding Source={x:Reference ESTRegistrationPage}, Path=FlowDirection}"
-                                                                HorizontalScrollBarVisibility="Never"
-                                                                Orientation="Horizontal">
-                                                        <Grid
-                                                            x:Name="grid"
-                                                            Margin="0,5,0,0"
-                                                            Padding="5"
-                                                            BackgroundColor="#DBE9FA">
-                                                            <Grid.RowDefinitions>
-                                                                <RowDefinition Height="auto" />
-
-                                                            </Grid.RowDefinitions>
-                                                            <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition Width="Auto" />
-                                                                <ColumnDefinition Width="Auto" />
-                                                                <ColumnDefinition Width="Auto" />
-                                                                <ColumnDefinition Width="Auto" />
-                                                                <ColumnDefinition Width="Auto" />
-                                                                <ColumnDefinition Width="Auto" />
-                                                                <ColumnDefinition Width="Auto" />
-                                                                <ColumnDefinition Width="Auto" />
-                                                                <ColumnDefinition Width="Auto" />
-                                                            </Grid.ColumnDefinitions>
-
-                                                            <StackLayout
-                                                                Grid.Row="0"
-                                                                Grid.Column="0"
-                                                                Margin="0,0,5,0">
-                                                                <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.LicenceNumber}" />
-                                                                <Label
-                                                                    HorizontalOptions="StartAndExpand"
-                                                                    HorizontalTextAlignment="Start"
-                                                                    Style="{StaticResource ValueLabelBlack}"
-                                                                    Text="{Binding Idnumber}"
-                                                                    VerticalTextAlignment="Center" />
-                                                            </StackLayout>
-                                                            <StackLayout
-                                                                Grid.Row="0"
-                                                                Grid.Column="1"
-                                                                Margin="0,0,5,0">
-                                                                <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.LicenceName}" />
-                                                                <Label
-                                                                    HorizontalOptions="StartAndExpand"
-                                                                    HorizontalTextAlignment="Start"
-                                                                    Style="{StaticResource ValueLabelBlack}"
-                                                                    Text="{Binding ActName}"
-                                                                    VerticalTextAlignment="Center" />
-                                                            </StackLayout>
-                                                            <StackLayout
-                                                                Grid.Row="0"
-                                                                Grid.Column="2"
-                                                                Margin="0,0,5,0">
-                                                                <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTIssueCountryLabel}" />
-                                                                <Label
-                                                                    HorizontalOptions="StartAndExpand"
-                                                                    HorizontalTextAlignment="Start"
-                                                                    Style="{StaticResource ValueLabelBlack}"
-                                                                    Text="{Binding IssuedCountry}"
-                                                                    VerticalTextAlignment="Center" />
-                                                            </StackLayout>
-                                                            <StackLayout
-                                                                Grid.Row="0"
-                                                                Grid.Column="3"
-                                                                Margin="0,0,5,0">
-                                                                <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.IssuedCity}" />
-                                                                <Label
-                                                                    HorizontalOptions="StartAndExpand"
-                                                                    HorizontalTextAlignment="Start"
-                                                                    Style="{StaticResource ValueLabelBlack}"
-                                                                    Text="{Binding IssuedCity}"
-                                                                    VerticalTextAlignment="Center" />
-                                                            </StackLayout>
-                                                            <StackLayout
-                                                                Grid.Row="0"
-                                                                Grid.Column="4"
-                                                                Margin="0,0,5,0">
-                                                                <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTIssueBy}" />
-                                                                <Label
-                                                                    HorizontalOptions="StartAndExpand"
-                                                                    HorizontalTextAlignment="Start"
-                                                                    Style="{StaticResource ValueLabelBlack}"
-                                                                    Text="{Binding IssuedBy}"
-                                                                    VerticalTextAlignment="Center" />
-                                                            </StackLayout>
-                                                            <StackLayout
-                                                                Grid.Row="0"
-                                                                Grid.Column="5"
-                                                                Margin="0,0,5,0">
-                                                                <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinDeregistrationValidFrom}" />
-                                                                <Label
-                                                                    HorizontalOptions="StartAndExpand"
-                                                                    HorizontalTextAlignment="Start"
-                                                                    Style="{StaticResource ValueLabelBlack}"
-                                                                    Text="{Binding ValidFromUI}"
-                                                                    VerticalTextAlignment="Center" />
-                                                            </StackLayout>
-
-                                                            <StackLayout
-                                                                Grid.Row="0"
-                                                                Grid.Column="6"
-                                                                Margin="0,0,5,0">
-
-                                                                <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTActivity}" />
-                                                                <buttons:SfButton
-                                                                    Command="{Binding BindingContext.OnActivitiesButtonClick, Source={x:Reference Name=ESTRegistrationPage}}"
-                                                                    CommandParameter="{Binding .}"
-                                                                    Style="{StaticResource PrimaryButtonStyle}"
-                                                                    FontSize="12"
-                                                                    Text="{x:Static ResourceManager:AppResources.EstActivities}"
-                                                                    HeightRequest="25"
-                                                                    WidthRequest="180" />
-                                                            </StackLayout>
-
-
-
-
-                                                        </Grid>
-                                                    </ScrollView>
-                                                </DataTemplate>
-                                            </listView:SfListView.ItemTemplate>
-                                            <listView:SfListView.FooterTemplate>
-                                                <DataTemplate>
-                                                    <StackLayout HorizontalOptions="Center"
-                                                                 FlowDirection="{Binding Source={x:Reference ESTRegistrationPage}, Path=FlowDirection}"
-                                                                 IsVisible="{Binding Path=BindingContext.ShowLicenceNoData, Source={x:Reference ESTRegistrationPage}}">
-                                                        <Label
-                                                            HorizontalOptions="StartAndExpand"
-                                                            HorizontalTextAlignment="Start"
-                                                            Style="{StaticResource CaptionLabelGrey}"
-                                                            Text="{x:Static ResourceManager:AppResources.VatEffNoData}"
-                                                            VerticalTextAlignment="Center" />
-                                                    </StackLayout>
-
-                                                </DataTemplate>
-
-                                            </listView:SfListView.FooterTemplate>
-                                        </listView:SfListView>
-
-                                             </Grid>
-                                        </xct:Expander.Content>
-
-                                        
-                                        </xct:Expander>
-                                        </Grid>
                                         </ViewCell.View>
 
                                     </ViewCell>
 
-                                    
+
 
 
                                 </DataTemplate>
@@ -2876,7 +2918,7 @@
 
                         </listView:SfListView>
                     </Grid>
-                    
+
                     <!--  5250 End  -->
 
                 </StackLayout>
@@ -2921,9 +2963,10 @@
                                 </listView:SfListView.ItemsLayout>
                                 <listView:SfListView.ItemTemplate>
                                     <DataTemplate>
-                                        <cards:SfCardView BackgroundColor="Transparent"
-                                                          FlowDirection="{Binding Source={x:Reference ESTRegistrationPage}, Path=FlowDirection}"
-                                                          HeightRequest="108">
+                                        <cards:SfCardView
+                                            BackgroundColor="Transparent"
+                                            FlowDirection="{Binding Source={x:Reference ESTRegistrationPage}, Path=FlowDirection}"
+                                            HeightRequest="108">
                                             <Grid
                                                 Margin="0"
                                                 Padding="0"
@@ -2952,9 +2995,10 @@
                                 </listView:SfListView.ItemTemplate>
                                 <listView:SfListView.SelectedItemTemplate>
                                     <DataTemplate>
-                                        <cards:SfCardView BackgroundColor="Transparent"
-                                                          FlowDirection="{Binding Source={x:Reference ESTRegistrationPage}, Path=FlowDirection}"
-                                                          HeightRequest="108">
+                                        <cards:SfCardView
+                                            BackgroundColor="Transparent"
+                                            FlowDirection="{Binding Source={x:Reference ESTRegistrationPage}, Path=FlowDirection}"
+                                            HeightRequest="108">
                                             <Grid
                                                 Margin="0"
                                                 Padding="0"
@@ -3007,9 +3051,10 @@
                                 </listView:SfListView.ItemsLayout>
                                 <listView:SfListView.ItemTemplate>
                                     <DataTemplate>
-                                        <cards:SfCardView BackgroundColor="Transparent"
-                                                          FlowDirection="{Binding Source={x:Reference ESTRegistrationPage}, Path=FlowDirection}"
-                                                          HeightRequest="108">
+                                        <cards:SfCardView
+                                            BackgroundColor="Transparent"
+                                            FlowDirection="{Binding Source={x:Reference ESTRegistrationPage}, Path=FlowDirection}"
+                                            HeightRequest="108">
                                             <Grid
                                                 Margin="0"
                                                 Padding="0"
@@ -3038,9 +3083,10 @@
                                 </listView:SfListView.ItemTemplate>
                                 <listView:SfListView.SelectedItemTemplate>
                                     <DataTemplate>
-                                        <cards:SfCardView BackgroundColor="Transparent"
-                                                          FlowDirection="{Binding Source={x:Reference ESTRegistrationPage}, Path=FlowDirection}"
-                                                          HeightRequest="108">
+                                        <cards:SfCardView
+                                            BackgroundColor="Transparent"
+                                            FlowDirection="{Binding Source={x:Reference ESTRegistrationPage}, Path=FlowDirection}"
+                                            HeightRequest="108">
                                             <Grid
                                                 Margin="0"
                                                 Padding="0"
@@ -3197,9 +3243,9 @@
                                     <DataTemplate>
 
                                         <cards:SfCardView
-                                            FlowDirection="{Binding Source={x:Reference ESTRegistrationPage}, Path=FlowDirection}"
                                             BackgroundColor="Transparent"
                                             CornerRadius="4"
+                                            FlowDirection="{Binding Source={x:Reference ESTRegistrationPage}, Path=FlowDirection}"
                                             HeightRequest="60"
                                             HorizontalOptions="Fill"
                                             VerticalOptions="Fill">
@@ -3235,9 +3281,9 @@
                                     <DataTemplate>
 
                                         <cards:SfCardView
-                                            FlowDirection="{Binding Source={x:Reference ESTRegistrationPage}, Path=FlowDirection}"
                                             Margin="10,0,10,0"
                                             CornerRadius="4"
+                                            FlowDirection="{Binding Source={x:Reference ESTRegistrationPage}, Path=FlowDirection}"
                                             HeightRequest="60"
                                             HorizontalOptions="StartAndExpand"
                                             VerticalOptions="Start">
@@ -3283,7 +3329,8 @@
                 <!--#endregion-->
 
                 <!--#region Declaration-->
-                <Grid x:Name="DeclarationMainTab"
+                <Grid
+                    x:Name="DeclarationMainTab"
                     HorizontalOptions="FillAndExpand"
                     IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.Declaration}}"
                     RowSpacing="10"
@@ -3295,8 +3342,8 @@
 
                         <StackLayout
                             HorizontalOptions="FillAndExpand"
-                            VerticalOptions="FillAndExpand"
-                            Orientation="Vertical">
+                            Orientation="Vertical"
+                            VerticalOptions="FillAndExpand">
 
                             <cards:SfCardView
                                 x:Name="RegistrationTaxpayerTypeSummaryView"
@@ -3324,10 +3371,7 @@
                                                 VerticalOptions="Center"
                                                 WidthRequest="24" />
                                             <Border.GestureRecognizers>
-                                                <TapGestureRecognizer
-                                                    Command="{Binding OnExpendGridViewClick}"
-                                                    CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.RegistrationType}"
-                                                     />
+                                                <TapGestureRecognizer Command="{Binding OnExpendGridViewClick}" CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.RegistrationType}" />
                                             </Border.GestureRecognizers>
                                         </Border>
 
@@ -3339,10 +3383,7 @@
                                             Text="{x:Static ResourceManager:AppResources.IDType}"
                                             VerticalOptions="Center">
                                             <Label.GestureRecognizers>
-                                                <TapGestureRecognizer
-                                                    Command="{Binding OnExpendGridViewClick}"
-                                                    CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.RegistrationType}"
-                                                     />
+                                                <TapGestureRecognizer Command="{Binding OnExpendGridViewClick}" CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.RegistrationType}" />
                                             </Label.GestureRecognizers>
                                         </Label>
 
@@ -3353,10 +3394,7 @@
                                             Text="{x:Static ResourceManager:AppResources.ESTEdit}"
                                             VerticalOptions="Center">
                                             <Label.GestureRecognizers>
-                                                <TapGestureRecognizer
-                                                    Command="{Binding OnEditPageViewClick}"
-                                                    CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.RegistrationType}"
-                                                     />
+                                                <TapGestureRecognizer Command="{Binding OnEditPageViewClick}" CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.RegistrationType}" />
                                             </Label.GestureRecognizers>
                                         </Label>
 
@@ -3492,10 +3530,7 @@
                                                 VerticalOptions="Center"
                                                 WidthRequest="24" />
                                             <Border.GestureRecognizers>
-                                                <TapGestureRecognizer
-                                                    Command="{Binding OnExpendGridViewClick}"
-                                                    CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.TaxpayerDetail}"
-                                                     />
+                                                <TapGestureRecognizer Command="{Binding OnExpendGridViewClick}" CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.TaxpayerDetail}" />
                                             </Border.GestureRecognizers>
                                         </Border>
                                         <Label
@@ -3506,10 +3541,7 @@
                                             Text="{x:Static ResourceManager:AppResources.FORM5TaxpayerDetails}"
                                             VerticalOptions="Center">
                                             <Label.GestureRecognizers>
-                                                <TapGestureRecognizer
-                                                    Command="{Binding OnExpendGridViewClick}"
-                                                    CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.TaxpayerDetail}"
-                                                     />
+                                                <TapGestureRecognizer Command="{Binding OnExpendGridViewClick}" CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.TaxpayerDetail}" />
                                             </Label.GestureRecognizers>
                                         </Label>
                                         <Label
@@ -3518,10 +3550,7 @@
                                             Text="{x:Static ResourceManager:AppResources.ESTEdit}"
                                             VerticalOptions="Center">
                                             <Label.GestureRecognizers>
-                                                <TapGestureRecognizer
-                                                    Command="{Binding OnEditPageViewClick}"
-                                                    CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.TaxpayerDetail}"
-                                                     />
+                                                <TapGestureRecognizer Command="{Binding OnEditPageViewClick}" CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.TaxpayerDetail}" />
                                             </Label.GestureRecognizers>
                                         </Label>
                                     </Grid>
@@ -3795,10 +3824,7 @@
                                                 VerticalOptions="Center"
                                                 WidthRequest="24" />
                                             <Border.GestureRecognizers>
-                                                <TapGestureRecognizer
-                                                    Command="{Binding OnExpendGridViewClick}"
-                                                    CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.PassportDetails}"
-                                                     />
+                                                <TapGestureRecognizer Command="{Binding OnExpendGridViewClick}" CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.PassportDetails}" />
                                             </Border.GestureRecognizers>
                                         </Border>
                                         <Label
@@ -3809,10 +3835,7 @@
                                             Text="{x:Static ResourceManager:AppResources.ESTPassportDetailsTabTitleLabel}"
                                             VerticalOptions="Center">
                                             <Label.GestureRecognizers>
-                                                <TapGestureRecognizer
-                                                    Command="{Binding OnExpendGridViewClick}"
-                                                    CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.PassportDetails}"
-                                                     />
+                                                <TapGestureRecognizer Command="{Binding OnExpendGridViewClick}" CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.PassportDetails}" />
                                             </Label.GestureRecognizers>
                                         </Label>
                                         <Label
@@ -3821,10 +3844,7 @@
                                             Text="{x:Static ResourceManager:AppResources.ESTEdit}"
                                             VerticalOptions="Center">
                                             <Label.GestureRecognizers>
-                                                <TapGestureRecognizer
-                                                    Command="{Binding OnEditPageViewClick}"
-                                                    CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.PassportDetails}"
-                                                     />
+                                                <TapGestureRecognizer Command="{Binding OnEditPageViewClick}" CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.PassportDetails}" />
                                             </Label.GestureRecognizers>
                                         </Label>
                                     </Grid>
@@ -3933,10 +3953,7 @@
                                                 VerticalOptions="Center"
                                                 WidthRequest="24" />
                                             <Border.GestureRecognizers>
-                                                <TapGestureRecognizer
-                                                    Command="{Binding OnExpendGridViewClick}"
-                                                    CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.Outlets}"
-                                                     />
+                                                <TapGestureRecognizer Command="{Binding OnExpendGridViewClick}" CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.Outlets}" />
                                             </Border.GestureRecognizers>
                                         </Border>
                                         <Label
@@ -3947,10 +3964,7 @@
                                             Text="{x:Static ResourceManager:AppResources.ESTOutletsTabTitleLabel}"
                                             VerticalOptions="Center">
                                             <Label.GestureRecognizers>
-                                                <TapGestureRecognizer
-                                                    Command="{Binding OnExpendGridViewClick}"
-                                                    CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.Outlets}"
-                                                     />
+                                                <TapGestureRecognizer Command="{Binding OnExpendGridViewClick}" CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.Outlets}" />
                                             </Label.GestureRecognizers>
                                         </Label>
                                         <Label
@@ -3959,10 +3973,7 @@
                                             Text="{x:Static ResourceManager:AppResources.ESTEdit}"
                                             VerticalOptions="Center">
                                             <Label.GestureRecognizers>
-                                                <TapGestureRecognizer
-                                                    Command="{Binding OnEditPageViewClick}"
-                                                    CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.Outlets}"
-                                                     />
+                                                <TapGestureRecognizer Command="{Binding OnEditPageViewClick}" CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.Outlets}" />
                                             </Label.GestureRecognizers>
                                         </Label>
                                     </Grid>
@@ -3975,9 +3986,9 @@
                                         <BindableLayout.ItemTemplate>
                                             <DataTemplate>
                                                 <Grid
-                                                    FlowDirection="{Binding Source={x:Reference ESTRegistrationPage}, Path=FlowDirection}"
                                                     Padding="16,0,16,16"
                                                     ColumnSpacing="0"
+                                                    FlowDirection="{Binding Source={x:Reference ESTRegistrationPage}, Path=FlowDirection}"
                                                     HorizontalOptions="Fill"
                                                     RowSpacing="0"
                                                     VerticalOptions="Center">
@@ -4082,10 +4093,7 @@
                                                 VerticalOptions="Center"
                                                 WidthRequest="24" />
                                             <Border.GestureRecognizers>
-                                                <TapGestureRecognizer
-                                                    Command="{Binding OnExpendGridViewClick}"
-                                                    CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.FinancialDetail}"
-                                                     />
+                                                <TapGestureRecognizer Command="{Binding OnExpendGridViewClick}" CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.FinancialDetail}" />
                                             </Border.GestureRecognizers>
                                         </Border>
                                         <Label
@@ -4096,10 +4104,7 @@
                                             Text="{x:Static ResourceManager:AppResources.ZZZZVATREFinancialDetails}"
                                             VerticalOptions="Center">
                                             <Label.GestureRecognizers>
-                                                <TapGestureRecognizer
-                                                    Command="{Binding OnExpendGridViewClick}"
-                                                    CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.FinancialDetail}"
-                                                     />
+                                                <TapGestureRecognizer Command="{Binding OnExpendGridViewClick}" CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.FinancialDetail}" />
                                             </Label.GestureRecognizers>
                                         </Label>
                                         <Label
@@ -4108,10 +4113,7 @@
                                             Text="{x:Static ResourceManager:AppResources.ESTEdit}"
                                             VerticalOptions="Center">
                                             <Label.GestureRecognizers>
-                                                <TapGestureRecognizer
-                                                    Command="{Binding OnEditPageViewClick}"
-                                                    CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.FinancialDetail}"
-                                                     />
+                                                <TapGestureRecognizer Command="{Binding OnEditPageViewClick}" CommandParameter="{x:Static models:EstablishmentRegistrationTabsEnum.FinancialDetail}" />
                                             </Label.GestureRecognizers>
                                         </Label>
                                     </Grid>
@@ -4217,9 +4219,7 @@
                                 </StackLayout>
                             </cards:SfCardView>
 
-                            <Grid
-                                ColumnDefinitions="auto,*"
-                                ColumnSpacing="10">
+                            <Grid ColumnDefinitions="auto,*" ColumnSpacing="10">
 
                                 <custom:CheckboxCustom
                                     IsChecked="{Binding ESTLedge}"

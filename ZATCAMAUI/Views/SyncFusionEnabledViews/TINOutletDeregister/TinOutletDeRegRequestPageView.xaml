@@ -251,7 +251,6 @@
                                                             <RowDefinition Height="auto" />
                                                             <RowDefinition Height="auto" />
                                                             <RowDefinition Height="auto" />
-                                                            <RowDefinition Height="auto" />
                                                         </Grid.RowDefinitions>
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition Width="*" />
@@ -350,27 +349,17 @@
                                                         <StackLayout
                                                             Grid.Row="3"
                                                             Grid.Column="0"
-                                                            Spacing="5">
-                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZCRNationalNumber}" />
+                                                            Spacing="-5">
+                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinOutletIssueDate}" />
                                                             <StackLayout HorizontalOptions="StartAndExpand">
-                                                                <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" Text="{Binding AOutletZ700NumberTb}" />
+                                                                <Label Style="{StaticResource ValueLabelBlack}" Text="{Binding AOutletIssueDtTb}" />
                                                             </StackLayout>
+
                                                         </StackLayout>
+
                                                         <StackLayout
                                                             Grid.Row="3"
                                                             Grid.Column="1"
-                                                            Spacing="5">
-                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinOutletIssueDate}" />
-                                                            <StackLayout HorizontalOptions="StartAndExpand">
-                                                                <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" Text="{Binding AOutletIssueDtTb}" />
-                                                            </StackLayout>
-
-                                                        </StackLayout>
-
-
-                                                        <StackLayout
-                                                            Grid.Row="4"
-                                                            Grid.Column="0"
                                                             Spacing="-5">
                                                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinOutletCRStatus}" />
                                                             <StackLayout HorizontalOptions="StartAndExpand">
@@ -381,7 +370,7 @@
 
                                                         <StackLayout
                                                             Grid.Row="4"
-                                                            Grid.Column="1"
+                                                            Grid.Column="0"
                                                             Spacing="-5">
                                                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinOutletValidto}" />
                                                             <StackLayout HorizontalOptions="StartAndExpand">
@@ -391,8 +380,8 @@
                                                         </StackLayout>
 
                                                         <StackLayout
-                                                            Grid.Row="5"
-                                                            Grid.Column="0"
+                                                            Grid.Row="4"
+                                                            Grid.Column="1"
                                                             Spacing="-5">
                                                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinOutletCRCloseTrnsfrDt}" />
                                                             <StackLayout HorizontalOptions="StartAndExpand">
@@ -449,7 +438,7 @@
 
                                                         <StackLayout
                                                             Grid.Row="5"
-                                                            Grid.Column="1"
+                                                            Grid.Column="0"
                                                             Grid.ColumnSpan="2"
                                                             Spacing="-5">
                                                             <Label
@@ -509,12 +498,12 @@
                                                 <listView:SfListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <Grid
-                                                            FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                                             x:Name="grid"
                                                             Margin="0,5,0,0"
                                                             Padding="10"
                                                             BackgroundColor="#bbbfca"
                                                             ColumnSpacing="15"
+                                                            FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                                             RowSpacing="15">
                                                             <Grid.RowDefinitions>
                                                                 <RowDefinition Height="auto" />
@@ -770,8 +759,7 @@
                                     VerticalOptions="Center">
                                     <listView:SfListView.ItemTemplate>
                                         <DataTemplate>
-                                            <Grid HorizontalOptions="FillAndExpand"
-                                                  FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
+                                            <Grid FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}" HorizontalOptions="FillAndExpand">
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="auto" />
                                                     <RowDefinition Height="auto" />

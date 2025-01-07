@@ -1775,7 +1775,10 @@
                 <!--#endregion-->
                 <!--#region Passport details-->
                 <Grid x:Name="PassportDetailsTabMainGrid" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.PassportDetails}}">
-                    <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" VerticalScrollBarVisibility="Never">
+                    <ScrollView
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="CenterAndExpand"
+                        VerticalScrollBarVisibility="Never">
                         <Grid
                             x:Name="PassportDetailsTab"
                             HorizontalOptions="FillAndExpand"
@@ -1790,13 +1793,16 @@
                                 StrokeThickness="1"
                                 Style="{StaticResource GreyBorderFrame}">
                                 <StackLayout Padding="0,0,10,0">
-                                    <StackLayout Padding="0,0,10,0" Orientation="Horizontal" Spacing="5">
+                                    <StackLayout
+                                        Padding="0,0,10,0"
+                                        Orientation="Horizontal"
+                                        Spacing="5">
                                         <Image Source="ic_vat_info.png" />
                                         <Label
                                             Style="{StaticResource GAZTSmallBlackLbl}"
                                             Text="{x:Static ResourceManager:AppResources.Information}"
                                             TextColor="{StaticResource PrimaryColor}"
-                                            VerticalOptions="Center"/>
+                                            VerticalOptions="Center" />
                                     </StackLayout>
                                     <Label
                                         HorizontalOptions="StartAndExpand"
@@ -1872,18 +1878,18 @@
                                     <custom:CustomSfTextInputView.TextInputView>
                                         <custom:GAZTBorderlessEntry
                                             FontFamily="{StaticResource SomarLight}"
-                                            Placeholder="{x:Static ResourceManager:AppResources.ESTIssueCountryLabel}"
                                             FontSize="Small"
                                             InputTransparent="True"
                                             IsReadOnly="True"
+                                            Placeholder="{x:Static ResourceManager:AppResources.ESTIssueCountryLabel}"
                                             Style="{StaticResource DefaultEntry}"
                                             Text="{Binding SelectedPassportIssueCountry.Landx50}"
                                             TextColor="{StaticResource NeutralBlack}"
-                                            VerticalTextAlignment="Center" >
+                                            VerticalTextAlignment="Center">
                                             <custom:GAZTBorderlessEntry.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding OnPassportIssueCountryButtonClick}" />
                                             </custom:GAZTBorderlessEntry.GestureRecognizers>
-                                            </custom:GAZTBorderlessEntry>
+                                        </custom:GAZTBorderlessEntry>
                                     </custom:CustomSfTextInputView.TextInputView>
                                     <custom:CustomSfTextInputView.TrailingView>
                                         <Image
@@ -1896,7 +1902,7 @@
                                         <TapGestureRecognizer Command="{Binding OnPassportIssueCountryButtonClick}" />
                                     </custom:CustomSfTextInputView.GestureRecognizers>
                                 </custom:CustomSfTextInputView>
-                                
+
                             </StackLayout>
                             <StackLayout Grid.Row="3" HorizontalOptions="FillAndExpand">
                                 <Label Style="{StaticResource CaptionLabelGrey}">
@@ -2332,11 +2338,10 @@
                     x:Name="OutletsTabMainLayout"
                     HorizontalOptions="FillAndExpand"
                     IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationTabsEnum.Outlets}}"
-                    
                     VerticalOptions="FillAndExpand">
-                    
+
                     <!--<buttons:SfButton
-                        
+
                         Padding="5"
                         Command="{Binding OnNewOutletButtonClick}"
                         HorizontalTextAlignment="End"
@@ -2349,42 +2354,40 @@
                         TextColor="{StaticResource NewDarkGreenColor}" />-->
 
                     <custom:CustomSfTextInputView
-                        
                         Margin="0,5,0,0"
-                        Style="{StaticResource TextInputLayout}"
-                        IsHintAlwaysFloated="True">
+                        IsHintAlwaysFloated="True"
+                        Style="{StaticResource TextInputLayout}">
                         <custom:CustomSfTextInputView.TextInputView>
                             <custom:GAZTBorderlessEntry
                                 FontFamily="{StaticResource SomarRegular}"
                                 FontSize="15"
-                                IsReadOnly="True"
-                                InputTransparent="True"
                                 HorizontalTextAlignment="Start"
-                                Text="{x:Static ResourceManager:AppResources.ESTAddOutlet}"
-                                TextColor="{StaticResource NewDarkGreenColor}" 
+                                InputTransparent="True"
+                                IsReadOnly="True"
                                 Style="{StaticResource DefaultEntry}"
-                                VerticalTextAlignment="Center" >
+                                Text="{x:Static ResourceManager:AppResources.ESTAddOutlet}"
+                                TextColor="{StaticResource NewDarkGreenColor}"
+                                VerticalTextAlignment="Center">
                                 <custom:GAZTBorderlessEntry.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding OnNewOutletButtonClick}"/>
+                                    <TapGestureRecognizer Command="{Binding OnNewOutletButtonClick}" />
                                 </custom:GAZTBorderlessEntry.GestureRecognizers>
-                                </custom:GAZTBorderlessEntry>
+                            </custom:GAZTBorderlessEntry>
                         </custom:CustomSfTextInputView.TextInputView>
                         <inputLayout:SfTextInputLayout.LeadingView>
                             <Image Source="ic_add1.png" Style="{StaticResource SmallIcon}" />
-                             
+
                         </inputLayout:SfTextInputLayout.LeadingView>
 
-                       <inputLayout:SfTextInputLayout.GestureRecognizers>
+                        <inputLayout:SfTextInputLayout.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding OnNewOutletButtonClick}" />
                         </inputLayout:SfTextInputLayout.GestureRecognizers>
                     </custom:CustomSfTextInputView>
 
 
                     <custom:CustomSfTextInputView
-                        
                         Margin="0,5,0,0"
-                        Style="{StaticResource TextInputLayout}"
-                        IsHintAlwaysFloated="True">
+                        IsHintAlwaysFloated="True"
+                        Style="{StaticResource TextInputLayout}">
                         <custom:CustomSfTextInputView.TextInputView>
                             <custom:GAZTBorderlessEntry
                                 FontFamily="{StaticResource SomarRegular}"
@@ -2393,9 +2396,9 @@
                                 IsSpellCheckEnabled="false"
                                 Placeholder="{x:Static ResourceManager:AppResources.SearchText}"
                                 PlaceholderColor="{StaticResource NeutralGreay}"
+                                Style="{StaticResource DefaultEntry}"
                                 Text="{Binding SearchText}"
                                 TextColor="{StaticResource NeutralBlack}"
-                                Style="{StaticResource DefaultEntry}"
                                 VerticalTextAlignment="Center" />
                         </custom:CustomSfTextInputView.TextInputView>
                         <inputLayout:SfTextInputLayout.TrailingView>
@@ -2403,510 +2406,555 @@
                         </inputLayout:SfTextInputLayout.TrailingView>
                     </custom:CustomSfTextInputView>
                     <listView:SfListView
-                        ScrollBarVisibility="Never"
-                        ItemsSource="{Binding OutlettUiList}"
-                        IsVisible="{Binding ShowOutletList}"
                         x:Name="outerListView"
                         AutoFitMode="DynamicHeight"
-                        VerticalOptions="FillAndExpand"
                         HorizontalOptions="FillAndExpand"
-                        SelectionBackground="White">
-                         <listView:SfListView.ItemTemplate>
+                        IsVisible="{Binding ShowOutletList}"
+                        ItemsSource="{Binding OutlettUiList}"
+                        ScrollBarVisibility="Never"
+                        SelectionBackground="White"
+                        VerticalOptions="FillAndExpand">
+                        <listView:SfListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    
+
                                     <ViewCell.View>
-                                    <Grid FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*" />
-                                    </Grid.RowDefinitions>
-
-                                        <xct:Expander Command="{Binding Source={Reference ESTAmendReactivationPage}, Path=BindingContext.OnEditOutletButtonClick}"
-                                                CommandParameter="{Binding .}" >
-
-                                            <xct:Expander.Header>
-                                                <cards:SfCardView
-                                        Grid.Row="0"
-                                        Margin="5,0,0,10"
-                                        BackgroundColor="White"
-                                        BorderColor="{StaticResource NeutralLightGrey}"
-                                        BorderWidth="1"
-                                        CornerRadius="10">
-                                        <Grid
-                                            x:Name="GridItem"
-                                            Padding="8"
-                                            ColumnSpacing="5"
-                                            HorizontalOptions="FillAndExpand"
-                                            VerticalOptions="Center">
+                                        <Grid FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}">
                                             <Grid.RowDefinitions>
-                                                <RowDefinition Height="auto" />
-                                                <RowDefinition Height="auto" />
+                                                <RowDefinition Height="*" />
                                             </Grid.RowDefinitions>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
-                                            <Image
-                                                VerticalOptions="Center"
-                                                Grid.Row="0"
-                                                Grid.Column="0"
-                                                IsEnabled="False"
-                                                Margin="10,0,0,0"
-                                                HorizontalOptions="Start"
-                                                Source="arrowDropdown.png"
-                                                WidthRequest="18"
-                                                HeightRequest="18">
 
-                                                <Image.Triggers>
-                                                     <DataTrigger TargetType="Image" Binding="{Binding IsInnerListVisible}" Value="True">
-                                                         <Setter Property="Rotation" Value="180" />
-                                                     </DataTrigger>
-                                                     <DataTrigger TargetType="Image" Binding="{Binding IsInnerListVisible}" Value="False">
-                                                         <Setter Property="Rotation" Value="0" />
-                                                     </DataTrigger>
-                                                 </Image.Triggers>
+                                            <xct:Expander Command="{Binding Source={Reference ESTAmendReactivationPage}, Path=BindingContext.OnEditOutletButtonClick}" CommandParameter="{Binding .}">
 
-                                            </Image>
-                                            <StackLayout
-                                                Grid.Row="0"
-                                                Grid.Column="1"
-                                                Grid.ColumnSpan="2"
-                                                Margin="0,0,0,10"
-                                                Orientation="Horizontal">
-                                                <buttons:SfButton
-                                                    Padding="5"
-                                                    Command="{Binding Source={Reference ESTAmendReactivationPage}, Path=BindingContext.OnEditOutletButtonClick2}"
-                                                    CommandParameter="{Binding .}"
-                                                    HorizontalOptions="EndAndExpand"
-                                                    ImageSource="ic_location.png"
-                                                    ShowIcon="True"
-                                                    Style="{StaticResource NoBackgroundButtonStyle}" />
-                                                <buttons:SfButton
-                                                    Padding="5"
-                                                    Command="{Binding Source={Reference ESTAmendReactivationPage}, Path=BindingContext.OnEditOutletButtonClick2}"
-                                                    CommandParameter="{Binding .}"
-                                                    HorizontalOptions="EndAndExpand"
-                                                    ImageSource="ic_Edit.png"
-                                                    IsVisible="{Binding ShowEditIcon}"
-                                                    ShowIcon="True"
-                                                    Style="{StaticResource NoBackgroundButtonStyle}" />
-                                                <buttons:SfButton
-                                                    Padding="5"
-                                                    Command="{Binding Source={Reference ESTAmendReactivationPage}, Path=BindingContext.OnDeleteOutletButtonClick}"
-                                                    CommandParameter="{Binding .}"
-                                                    HorizontalOptions="EndAndExpand"
-                                                    ImageSource="ic_delete.png"
-                                                    IsVisible="{Binding ShowDeleteIcon}"
-                                                    ShowIcon="True"
-                                                    Style="{StaticResource NoBackgroundButtonStyle}" />
-                                            </StackLayout>
-                                            <StackLayout Grid.Row="1" Grid.Column="0">
-                                                <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinOutletOutletNumber}" />
-                                                <Label
-                                                    HorizontalOptions="StartAndExpand"
-                                                    Style="{StaticResource ValueLabelBlack}"
-                                                    Text="{Binding ActNo}"
-                                                    VerticalTextAlignment="Center" />
-                                            </StackLayout>
-                                            <StackLayout Grid.Row="1" Grid.Column="1">
-                                                <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.OutletTypeField}" />
-                                                <Label
-                                                    Grid.Row="1"
-                                                    Grid.Column="0"
-                                                    HorizontalOptions="StartAndExpand"
-                                                    Style="{StaticResource ValueLabelBlack}"
-                                                    Text="{Binding ActCatDesc}"
-                                                    TextColor="{StaticResource NeutralBlack}" />
-                                            </StackLayout>
+                                                <xct:Expander.Header>
+                                                    <cards:SfCardView
+                                                        Grid.Row="0"
+                                                        Margin="5,0,0,10"
+                                                        BackgroundColor="White"
+                                                        BorderColor="{StaticResource NeutralLightGrey}"
+                                                        BorderWidth="1"
+                                                        CornerRadius="10">
+                                                        <Grid
+                                                            x:Name="GridItem"
+                                                            Padding="8"
+                                                            ColumnSpacing="5"
+                                                            HorizontalOptions="FillAndExpand"
+                                                            VerticalOptions="Center">
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="auto" />
+                                                                <RowDefinition Height="auto" />
+                                                            </Grid.RowDefinitions>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*" />
+                                                                <ColumnDefinition Width="*" />
+                                                                <ColumnDefinition Width="*" />
+                                                            </Grid.ColumnDefinitions>
+                                                            <Image
+                                                                Grid.Row="0"
+                                                                Grid.Column="0"
+                                                                Margin="10,0,0,0"
+                                                                HeightRequest="18"
+                                                                HorizontalOptions="Start"
+                                                                IsEnabled="False"
+                                                                Source="arrowDropdown.png"
+                                                                VerticalOptions="Center"
+                                                                WidthRequest="18">
 
-                                            <StackLayout Grid.Row="1" Grid.Column="2">
-                                                <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZCRNo}" />
-                                                <Label
-                                                    HorizontalOptions="StartAndExpand"
-                                                    Style="{StaticResource ValueLabelBlack}"
-                                                    Text="{Binding Crlicenceno}"
-                                                    VerticalTextAlignment="Center" />
-                                            </StackLayout>
-                                        </Grid>
-                                    </cards:SfCardView>
+                                                                <Image.Triggers>
+                                                                    <DataTrigger
+                                                                        Binding="{Binding IsInnerListVisible}"
+                                                                        TargetType="Image"
+                                                                        Value="True">
+                                                                        <Setter Property="Rotation" Value="180" />
+                                                                    </DataTrigger>
+                                                                    <DataTrigger
+                                                                        Binding="{Binding IsInnerListVisible}"
+                                                                        TargetType="Image"
+                                                                        Value="False">
+                                                                        <Setter Property="Rotation" Value="0" />
+                                                                    </DataTrigger>
+                                                                </Image.Triggers>
 
-                                            </xct:Expander.Header>
+                                                            </Image>
+                                                            <StackLayout
+                                                                Grid.Row="0"
+                                                                Grid.Column="1"
+                                                                Grid.ColumnSpan="2"
+                                                                Margin="0,0,0,10"
+                                                                Orientation="Horizontal">
+                                                                <buttons:SfButton
+                                                                    Padding="5"
+                                                                    Command="{Binding Source={Reference ESTAmendReactivationPage}, Path=BindingContext.OnEditOutletButtonClick2}"
+                                                                    CommandParameter="{Binding .}"
+                                                                    HorizontalOptions="EndAndExpand"
+                                                                    ImageSource="ic_location.png"
+                                                                    ShowIcon="True"
+                                                                    Style="{StaticResource NoBackgroundButtonStyle}" />
+                                                                <buttons:SfButton
+                                                                    Padding="5"
+                                                                    Command="{Binding Source={Reference ESTAmendReactivationPage}, Path=BindingContext.OnEditOutletButtonClick2}"
+                                                                    CommandParameter="{Binding .}"
+                                                                    HorizontalOptions="EndAndExpand"
+                                                                    ImageSource="ic_Edit.png"
+                                                                    IsVisible="{Binding ShowEditIcon}"
+                                                                    ShowIcon="True"
+                                                                    Style="{StaticResource NoBackgroundButtonStyle}" />
+                                                                <buttons:SfButton
+                                                                    Padding="5"
+                                                                    Command="{Binding Source={Reference ESTAmendReactivationPage}, Path=BindingContext.OnDeleteOutletButtonClick}"
+                                                                    CommandParameter="{Binding .}"
+                                                                    HorizontalOptions="EndAndExpand"
+                                                                    ImageSource="ic_delete.png"
+                                                                    IsVisible="{Binding ShowDeleteIcon}"
+                                                                    ShowIcon="True"
+                                                                    Style="{StaticResource NoBackgroundButtonStyle}" />
+                                                            </StackLayout>
+                                                            <StackLayout Grid.Row="1" Grid.Column="0">
+                                                                <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinOutletOutletNumber}" />
+                                                                <Label
+                                                                    HorizontalOptions="StartAndExpand"
+                                                                    Style="{StaticResource ValueLabelBlack}"
+                                                                    Text="{Binding ActNo}"
+                                                                    VerticalTextAlignment="Center" />
+                                                            </StackLayout>
+                                                            <StackLayout Grid.Row="1" Grid.Column="1">
+                                                                <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.OutletTypeField}" />
+                                                                <Label
+                                                                    Grid.Row="1"
+                                                                    Grid.Column="0"
+                                                                    HorizontalOptions="StartAndExpand"
+                                                                    Style="{StaticResource ValueLabelBlack}"
+                                                                    Text="{Binding ActCatDesc}"
+                                                                    TextColor="{StaticResource NeutralBlack}" />
+                                                            </StackLayout>
 
-                                            <xct:Expander.Content>
+                                                            <StackLayout Grid.Row="1" Grid.Column="2">
+                                                                <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZCRNo}" />
+                                                                <Label
+                                                                    HorizontalOptions="StartAndExpand"
+                                                                    Style="{StaticResource ValueLabelBlack}"
+                                                                    Text="{Binding Crlicenceno}"
+                                                                    VerticalTextAlignment="Center" />
+                                                            </StackLayout>
+                                                        </Grid>
+                                                    </cards:SfCardView>
 
-                                                <Grid RowDefinitions="*,*">
+                                                </xct:Expander.Header>
 
-                                                    <!--<Label Grid.Row="0" Text="Test 1"></Label>
+                                                <xct:Expander.Content>
+
+                                                    <Grid RowDefinitions="*,*">
+
+                                                        <!--<Label Grid.Row="0" Text="Test 1"></Label>
                                                     <Label Grid.Row="1" Text="Test 1"></Label>-->
 
-                                                     <!--#region Inner CR Details list data-->
-                                    <listView:SfListView
-                                        x:Name="innerListView"
-                                        Grid.Row="0"
-                                        Margin="5"
-                                        IsScrollingEnabled="False"
-                                        ScrollBarVisibility="Never"
-                                        ItemsSource="{Binding ContactDetails}">
-                                        <listView:SfListView.HeaderTemplate>
-                                            <DataTemplate>
-                                                <ViewCell>
-                                                    <ViewCell.View>
-                                                        <StackLayout x:Name="rootArea">
-                                                            <Label
-                                                                HorizontalOptions="StartAndExpand"
-                                                                HorizontalTextAlignment="Start"
-                                                                Style="{StaticResource ValueLabelBlack}"
-                                                                Text="{x:Static ResourceManager:AppResources.InnerListCrTitle}"
-                                                                VerticalTextAlignment="Center" />
-                                                        </StackLayout>
-                                                    </ViewCell.View>
-                                                </ViewCell>
-                                            </DataTemplate>
-                                        </listView:SfListView.HeaderTemplate>
-                                        <listView:SfListView.ItemTemplate>
-                                            <DataTemplate>
-                                               
-                                                <ViewCell>
-                                                <ViewCell.View>
-                                                <ScrollView HorizontalOptions="FillAndExpand" Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
-                                                    <Grid
-                                                        FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
-                                                        BackgroundColor="#DBE9FA">
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="Auto" />
-                                                        </Grid.RowDefinitions>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="Auto" />
-                                                            <ColumnDefinition Width="Auto" />
-                                                            <ColumnDefinition Width="Auto" />
-                                                            <ColumnDefinition Width="Auto" />
-                                                            <ColumnDefinition Width="Auto" />
-                                                            <ColumnDefinition Width="Auto" />
-                                                            <ColumnDefinition Width="Auto" />
-                                                            <ColumnDefinition Width="Auto" />
-                                                            <ColumnDefinition Width="Auto" />
-                                                            <ColumnDefinition Width="Auto" />
-                                                        </Grid.ColumnDefinitions>
-                                                        <StackLayout
+                                                        <!--#region Inner CR Details list data-->
+                                                        <listView:SfListView
+                                                            x:Name="innerListView"
                                                             Grid.Row="0"
-                                                            Grid.Column="0"
-                                                            Margin="0,0,5,0">
-                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZCRNumber}" />
-                                                            <Label
-                                                                HorizontalOptions="StartAndExpand"
-                                                                HorizontalTextAlignment="Start"
-                                                                Style="{StaticResource ValueLabelBlack}"
-                                                                Text="{Binding Idnumber}"
-                                                                VerticalTextAlignment="Center" />
-                                                        </StackLayout>
-                                                        <StackLayout
-                                                            Grid.Row="0"
-                                                            Grid.Column="1"
-                                                            Margin="0,0,5,0">
-                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZCRNationalNumber}" />
-                                                            <custom:CustomLabel
-                                                                HorizontalOptions="StartAndExpand"
-                                                                HorizontalTextAlignment="Start"
-                                                                Style="{StaticResource ValueLabelBlack}"
-                                                                Text="{Binding Z700Number}"
-                                                                VerticalTextAlignment="Center" />
-                                                        </StackLayout>
+                                                            Margin="5"
+                                                            IsScrollingEnabled="False"
+                                                            ItemsSource="{Binding ContactDetails}"
+                                                            ScrollBarVisibility="Never">
+                                                            <listView:SfListView.HeaderTemplate>
+                                                                <DataTemplate>
+                                                                    <ViewCell>
+                                                                        <ViewCell.View>
+                                                                            <StackLayout x:Name="rootArea">
+                                                                                <Label
+                                                                                    HorizontalOptions="StartAndExpand"
+                                                                                    HorizontalTextAlignment="Start"
+                                                                                    Style="{StaticResource ValueLabelBlack}"
+                                                                                    Text="{x:Static ResourceManager:AppResources.InnerListCrTitle}"
+                                                                                    VerticalTextAlignment="Center" />
+                                                                            </StackLayout>
+                                                                        </ViewCell.View>
+                                                                    </ViewCell>
+                                                                </DataTemplate>
+                                                            </listView:SfListView.HeaderTemplate>
+                                                            <listView:SfListView.ItemTemplate>
+                                                                <DataTemplate>
 
-                                                        <StackLayout
-                                                            Grid.Row="0"
-                                                            Grid.Column="2"
-                                                            Margin="0,0,5,0">
-                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZCRName}" />
-                                                            <Label
-                                                                HorizontalOptions="StartAndExpand"
-                                                                HorizontalTextAlignment="Start"
-                                                                Style="{StaticResource ValueLabelBlack}"
-                                                                Text="{Binding ActName}"
-                                                                VerticalTextAlignment="Center" />
-                                                        </StackLayout>
-                                                        <StackLayout
-                                                            Grid.Row="0"
-                                                            Grid.Column="3"
-                                                            Margin="0,0,5,0">
-                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.CrType}" />
-                                                            <Label
-                                                                HorizontalOptions="StartAndExpand"
-                                                                HorizontalTextAlignment="Start"
-                                                                Style="{StaticResource ValueLabelBlack}"
-                                                                Text="{Binding CRTypeDesc}"
-                                                                VerticalTextAlignment="Center" />
-                                                        </StackLayout>
-                                                        <StackLayout
-                                                            Grid.Row="0"
-                                                            Grid.Column="4"
-                                                            Margin="0,0,5,0">
-                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTIssueCountryLabel}" />
-                                                            <Label
-                                                                HorizontalOptions="StartAndExpand"
-                                                                HorizontalTextAlignment="Start"
-                                                                Style="{StaticResource ValueLabelBlack}"
-                                                                Text="{Binding IssuedCountry}"
-                                                                VerticalTextAlignment="Center" />
-                                                        </StackLayout>
-                                                        <StackLayout
-                                                            Grid.Row="0"
-                                                            Grid.Column="5"
-                                                            Margin="0,0,5,0">
-                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.IssuedCity}" />
-                                                            <Label
-                                                                HorizontalOptions="StartAndExpand"
-                                                                HorizontalTextAlignment="Start"
-                                                                Style="{StaticResource ValueLabelBlack}"
-                                                                Text="{Binding IssuedCity}"
-                                                                VerticalTextAlignment="Center" />
-                                                        </StackLayout>
-                                                        <StackLayout
-                                                            Grid.Row="0"
-                                                            Grid.Column="6"
-                                                            Margin="0,0,5,0">
-                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTIssueBy}" />
-                                                            <Label
-                                                                HorizontalOptions="StartAndExpand"
-                                                                HorizontalTextAlignment="Start"
-                                                                Style="{StaticResource ValueLabelBlack}"
-                                                                Text="{Binding IssuedBy}"
-                                                                VerticalTextAlignment="Center" />
-                                                        </StackLayout>
-                                                        <StackLayout
-                                                            Grid.Row="0"
-                                                            Grid.Column="7"
-                                                            Margin="0,0,5,0">
-                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinDeregistrationValidFrom}" />
-                                                            <Label
-                                                                HorizontalOptions="StartAndExpand"
-                                                                HorizontalTextAlignment="Start"
-                                                                Style="{StaticResource ValueLabelBlack}"
-                                                                Text="{Binding ValidFromUI}"
-                                                                VerticalTextAlignment="Center" />
-                                                        </StackLayout>
+                                                                    <ViewCell>
+                                                                        <ViewCell.View>
+                                                                            <ScrollView
+                                                                                HorizontalOptions="FillAndExpand"
+                                                                                HorizontalScrollBarVisibility="Never"
+                                                                                Orientation="Horizontal">
+                                                                                <Grid BackgroundColor="#DBE9FA" FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}">
+                                                                                    <Grid.RowDefinitions>
+                                                                                        <RowDefinition Height="Auto" />
+                                                                                    </Grid.RowDefinitions>
+                                                                                    <Grid.ColumnDefinitions>
+                                                                                        <ColumnDefinition Width="Auto" />
+                                                                                        <ColumnDefinition Width="Auto" />
+                                                                                        <ColumnDefinition Width="Auto" />
+                                                                                        <ColumnDefinition Width="Auto" />
+                                                                                        <ColumnDefinition Width="Auto" />
+                                                                                        <ColumnDefinition Width="Auto" />
+                                                                                        <ColumnDefinition Width="Auto" />
+                                                                                        <ColumnDefinition Width="Auto" />
+                                                                                        <ColumnDefinition Width="Auto" />
+                                                                                        <ColumnDefinition Width="Auto" />
+                                                                                    </Grid.ColumnDefinitions>
+                                                                                    <StackLayout
+                                                                                        Grid.Row="0"
+                                                                                        Grid.Column="0"
+                                                                                        Margin="0,0,5,0">
+                                                                                        <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZCRNumber}" />
+                                                                                        <Label
+                                                                                            HorizontalOptions="StartAndExpand"
+                                                                                            HorizontalTextAlignment="Start"
+                                                                                            Style="{StaticResource ValueLabelBlack}"
+                                                                                            Text="{Binding Idnumber}"
+                                                                                            VerticalTextAlignment="Center" />
+                                                                                    </StackLayout>
+                                                                                    <StackLayout
+                                                                                        Grid.Row="0"
+                                                                                        Grid.Column="1"
+                                                                                        Margin="0,0,5,0">
+                                                                                        <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZCRName}" />
+                                                                                        <Label
+                                                                                            HorizontalOptions="StartAndExpand"
+                                                                                            HorizontalTextAlignment="Start"
+                                                                                            Style="{StaticResource ValueLabelBlack}"
+                                                                                            Text="{Binding ActName}"
+                                                                                            VerticalTextAlignment="Center" />
+                                                                                    </StackLayout>
+                                                                                    <StackLayout
+                                                                                        Grid.Row="0"
+                                                                                        Grid.Column="2"
+                                                                                        Margin="0,0,5,0">
+                                                                                        <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.CrType}" />
+                                                                                        <Label
+                                                                                            HorizontalOptions="StartAndExpand"
+                                                                                            HorizontalTextAlignment="Start"
+                                                                                            Style="{StaticResource ValueLabelBlack}"
+                                                                                            Text="{Binding CRTypeDesc}"
+                                                                                            VerticalTextAlignment="Center" />
+                                                                                    </StackLayout>
+                                                                                    <StackLayout
+                                                                                        Grid.Row="0"
+                                                                                        Grid.Column="3"
+                                                                                        Margin="0,0,5,0">
+                                                                                        <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTIssueCountryLabel}" />
+                                                                                        <Label
+                                                                                            HorizontalOptions="StartAndExpand"
+                                                                                            HorizontalTextAlignment="Start"
+                                                                                            Style="{StaticResource ValueLabelBlack}"
+                                                                                            Text="{Binding IssuedCountry}"
+                                                                                            VerticalTextAlignment="Center" />
+                                                                                    </StackLayout>
+                                                                                    <StackLayout
+                                                                                        Grid.Row="0"
+                                                                                        Grid.Column="4"
+                                                                                        Margin="0,0,5,0">
+                                                                                        <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.IssuedCity}" />
+                                                                                        <Label
+                                                                                            HorizontalOptions="StartAndExpand"
+                                                                                            HorizontalTextAlignment="Start"
+                                                                                            Style="{StaticResource ValueLabelBlack}"
+                                                                                            Text="{Binding IssuedCity}"
+                                                                                            VerticalTextAlignment="Center" />
+                                                                                    </StackLayout>
+                                                                                    <StackLayout
+                                                                                        Grid.Row="0"
+                                                                                        Grid.Column="5"
+                                                                                        Margin="0,0,5,0">
+                                                                                        <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTIssueBy}" />
+                                                                                        <Label
+                                                                                            HorizontalOptions="StartAndExpand"
+                                                                                            HorizontalTextAlignment="Start"
+                                                                                            Style="{StaticResource ValueLabelBlack}"
+                                                                                            Text="{Binding IssuedBy}"
+                                                                                            VerticalTextAlignment="Center" />
+                                                                                    </StackLayout>
+                                                                                    <StackLayout
+                                                                                        Grid.Row="0"
+                                                                                        Grid.Column="6"
+                                                                                        Margin="0,0,5,0">
+                                                                                        <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinDeregistrationValidFrom}" />
+                                                                                        <Label
+                                                                                            HorizontalOptions="StartAndExpand"
+                                                                                            HorizontalTextAlignment="Start"
+                                                                                            Style="{StaticResource ValueLabelBlack}"
+                                                                                            Text="{Binding ValidFromUI}"
+                                                                                            VerticalTextAlignment="Center" />
+                                                                                    </StackLayout>
+                                                                                    <StackLayout
+                                                                                        Grid.Row="0"
+                                                                                        Grid.Column="7"
+                                                                                        Margin="0,0,5,0">
+                                                                                        <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTMainGroup}" />
+                                                                                        <Label
+                                                                                            HorizontalOptions="StartAndExpand"
+                                                                                            HorizontalTextAlignment="Start"
+                                                                                            Style="{StaticResource ValueLabelBlack}"
+                                                                                            Text="{Binding ActMgrpDesc}"
+                                                                                            VerticalTextAlignment="Center" />
+                                                                                    </StackLayout>
 
-                                                        <StackLayout
-                                                            Grid.Row="0"
-                                                            Grid.Column="8"
-                                                            Margin="0,0,5,0">
-                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTActivity}" />
-                                                            <buttons:SfButton
-                                                                Command="{Binding BindingContext.OnActivitiesButtonClick, Source={x:Reference Name=ESTAmendReactivationPage}}"
-                                                                CommandParameter="{Binding .}"
-                                                                Style="{StaticResource PrimaryButtonStyle}"
-                                                                Text="{x:Static ResourceManager:AppResources.EstActivities}"
-                                                                HeightRequest="30"
-                                                                WidthRequest="180" />
-                                                        </StackLayout>
+                                                                                    <StackLayout
+                                                                                        Grid.Row="0"
+                                                                                        Grid.Column="8"
+                                                                                        Margin="0,0,5,0">
+                                                                                        <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTSubGroup}" />
+                                                                                        <Label
+                                                                                            HorizontalOptions="StartAndExpand"
+                                                                                            HorizontalTextAlignment="Start"
+                                                                                            Style="{StaticResource ValueLabelBlack}"
+                                                                                            Text="{Binding ActSgrpDesc}"
+                                                                                            VerticalTextAlignment="Center" />
+                                                                                    </StackLayout>
+                                                                                    <StackLayout
+                                                                                        Grid.Row="0"
+                                                                                        Grid.Column="9"
+                                                                                        Margin="0,0,5,0">
+                                                                                        <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTActivity}" />
+                                                                                        <Label
+                                                                                            HorizontalOptions="StartAndExpand"
+                                                                                            HorizontalTextAlignment="Start"
+                                                                                            Style="{StaticResource ValueLabelBlack}"
+                                                                                            Text="{Binding ActivityDesc}"
+                                                                                            VerticalTextAlignment="Center" />
+                                                                                    </StackLayout>
+                                                                                </Grid>
+                                                                            </ScrollView>
+                                                                        </ViewCell.View>
+                                                                    </ViewCell>
+                                                                </DataTemplate>
+                                                            </listView:SfListView.ItemTemplate>
+                                                            <listView:SfListView.FooterTemplate>
+                                                                <DataTemplate>
+                                                                    <ViewCell>
+                                                                        <ViewCell.View>
+
+                                                                            <StackLayout HorizontalOptions="Center" IsVisible="{Binding Path=BindingContext.ShowCRNoData, Source={x:Reference ESTAmendReactivationPage}}">
+                                                                                <Label
+                                                                                    HorizontalOptions="StartAndExpand"
+                                                                                    HorizontalTextAlignment="Start"
+                                                                                    Style="{StaticResource CaptionLabelGrey}"
+                                                                                    Text="{x:Static ResourceManager:AppResources.VatEffNoData}"
+                                                                                    VerticalTextAlignment="Center" />
+                                                                            </StackLayout>
+
+                                                                        </ViewCell.View>
+                                                                    </ViewCell>
+                                                                </DataTemplate>
+                                                            </listView:SfListView.FooterTemplate>
+                                                        </listView:SfListView>
+                                                        <!--#endregion-->
+
+                                                        <!--#region Inner License list data-->
+                                                        <listView:SfListView
+                                                            x:Name="innerListView2"
+                                                            Grid.Row="1"
+                                                            Margin="5"
+                                                            IsScrollingEnabled="False"
+                                                            ItemsSource="{Binding ContactDetails2}"
+                                                            ScrollBarVisibility="Never"
+                                                            VerticalOptions="FillAndExpand">
+                                                            <listView:SfListView.HeaderTemplate>
+                                                                <DataTemplate>
+                                                                    <ViewCell>
+                                                                        <ViewCell.View>
+                                                                            <StackLayout x:Name="rootArea">
+                                                                                <Label
+                                                                                    HorizontalOptions="StartAndExpand"
+                                                                                    HorizontalTextAlignment="Start"
+                                                                                    Style="{StaticResource ValueLabelBlack}"
+                                                                                    Text="{x:Static ResourceManager:AppResources.ESTLicenseDetails}"
+                                                                                    VerticalTextAlignment="Center" />
+                                                                            </StackLayout>
+                                                                        </ViewCell.View>
+                                                                    </ViewCell>
+                                                                </DataTemplate>
+                                                            </listView:SfListView.HeaderTemplate>
+                                                            <listView:SfListView.ItemTemplate>
+                                                                <DataTemplate>
+                                                                    <ViewCell>
+                                                                        <ViewCell.View>
+                                                                            <Grid RowDefinitions="*">
+
+                                                                                <ScrollView
+                                                                                    HorizontalOptions="FillAndExpand"
+                                                                                    HorizontalScrollBarVisibility="Never"
+                                                                                    Orientation="Horizontal">
+                                                                                    <Grid
+                                                                                        Padding="5"
+                                                                                        BackgroundColor="#DBE9FA"
+                                                                                        FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
+                                                                                        HorizontalOptions="FillAndExpand"
+                                                                                        VerticalOptions="FillAndExpand">
+                                                                                        <!--  #DBE9FA  -->
+                                                                                        <Grid.RowDefinitions>
+                                                                                            <RowDefinition Height="*" />
+                                                                                        </Grid.RowDefinitions>
+                                                                                        <Grid.ColumnDefinitions>
+                                                                                            <ColumnDefinition Width="Auto" />
+                                                                                            <ColumnDefinition Width="Auto" />
+                                                                                            <ColumnDefinition Width="Auto" />
+                                                                                            <ColumnDefinition Width="Auto" />
+                                                                                            <ColumnDefinition Width="Auto" />
+                                                                                            <ColumnDefinition Width="Auto" />
+                                                                                            <ColumnDefinition Width="Auto" />
+                                                                                            <ColumnDefinition Width="Auto" />
+                                                                                            <ColumnDefinition Width="Auto" />
+                                                                                        </Grid.ColumnDefinitions>
+
+                                                                                        <StackLayout
+                                                                                            Grid.Row="0"
+                                                                                            Grid.Column="0"
+                                                                                            Margin="0,0,5,0">
+                                                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.LicenceNumber}" />
+                                                                                            <Label
+                                                                                                HorizontalOptions="StartAndExpand"
+                                                                                                HorizontalTextAlignment="Start"
+                                                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                                                Text="{Binding Idnumber}"
+                                                                                                VerticalTextAlignment="Center" />
+                                                                                        </StackLayout>
+                                                                                        <StackLayout
+                                                                                            Grid.Row="0"
+                                                                                            Grid.Column="1"
+                                                                                            Margin="0,0,5,0">
+                                                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.LicenceName}" />
+                                                                                            <Label
+                                                                                                HorizontalOptions="StartAndExpand"
+                                                                                                HorizontalTextAlignment="Start"
+                                                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                                                Text="{Binding ActName}"
+                                                                                                VerticalTextAlignment="Center" />
+                                                                                        </StackLayout>
+                                                                                        <StackLayout
+                                                                                            Grid.Row="0"
+                                                                                            Grid.Column="2"
+                                                                                            Margin="0,0,5,0">
+                                                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTIssueCountryLabel}" />
+                                                                                            <Label
+                                                                                                HorizontalOptions="StartAndExpand"
+                                                                                                HorizontalTextAlignment="Start"
+                                                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                                                Text="{Binding IssuedCountry}"
+                                                                                                VerticalTextAlignment="Center" />
+                                                                                        </StackLayout>
+                                                                                        <StackLayout
+                                                                                            Grid.Row="0"
+                                                                                            Grid.Column="3"
+                                                                                            Margin="0,0,5,0">
+                                                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.IssuedCity}" />
+                                                                                            <Label
+                                                                                                HorizontalOptions="StartAndExpand"
+                                                                                                HorizontalTextAlignment="Start"
+                                                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                                                Text="{Binding IssuedCity}"
+                                                                                                VerticalTextAlignment="Center" />
+                                                                                        </StackLayout>
+                                                                                        <StackLayout
+                                                                                            Grid.Row="0"
+                                                                                            Grid.Column="4"
+                                                                                            Margin="0,0,5,0">
+                                                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTIssueBy}" />
+                                                                                            <Label
+                                                                                                HorizontalOptions="StartAndExpand"
+                                                                                                HorizontalTextAlignment="Start"
+                                                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                                                Text="{Binding IssuedBy}"
+                                                                                                VerticalTextAlignment="Center" />
+                                                                                        </StackLayout>
+                                                                                        <StackLayout
+                                                                                            Grid.Row="0"
+                                                                                            Grid.Column="5"
+                                                                                            Margin="0,0,5,0">
+                                                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinDeregistrationValidFrom}" />
+                                                                                            <Label
+                                                                                                HorizontalOptions="StartAndExpand"
+                                                                                                HorizontalTextAlignment="Start"
+                                                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                                                Text="{Binding ValidFromUI}"
+                                                                                                VerticalTextAlignment="Center" />
+                                                                                        </StackLayout>
+                                                                                        <StackLayout
+                                                                                            Grid.Row="0"
+                                                                                            Grid.Column="6"
+                                                                                            Margin="0,0,5,0"
+                                                                                            Spacing="2">
+                                                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTMainGroup}" />
+                                                                                            <Label
+                                                                                                HorizontalOptions="StartAndExpand"
+                                                                                                HorizontalTextAlignment="Start"
+                                                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                                                Text="{Binding ActMgrpDesc}"
+                                                                                                VerticalTextAlignment="Center" />
+                                                                                        </StackLayout>
+                                                                                        <StackLayout
+                                                                                            Grid.Row="0"
+                                                                                            Grid.Column="7"
+                                                                                            Margin="0,0,5,0">
+                                                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTSubGroup}" />
+                                                                                            <Label
+                                                                                                HorizontalOptions="StartAndExpand"
+                                                                                                HorizontalTextAlignment="Start"
+                                                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                                                Text="{Binding ActSgrpDesc}"
+                                                                                                VerticalTextAlignment="Center" />
+                                                                                        </StackLayout>
+                                                                                        <StackLayout
+                                                                                            Grid.Row="0"
+                                                                                            Grid.Column="8"
+                                                                                            Margin="0,0,5,0">
+                                                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTActivity}" />
+                                                                                            <Label
+                                                                                                HorizontalOptions="StartAndExpand"
+                                                                                                HorizontalTextAlignment="Start"
+                                                                                                Style="{StaticResource ValueLabelBlack}"
+                                                                                                Text="{Binding ActivityDesc}"
+                                                                                                VerticalTextAlignment="Center" />
+                                                                                        </StackLayout>
+                                                                                    </Grid>
+                                                                                </ScrollView>
+                                                                            </Grid>
+
+
+
+                                                                        </ViewCell.View>
+                                                                    </ViewCell>
+                                                                </DataTemplate>
+                                                            </listView:SfListView.ItemTemplate>
+                                                            <listView:SfListView.FooterTemplate>
+                                                                <DataTemplate>
+                                                                    <ViewCell>
+                                                                        <ViewCell.View>
+                                                                            <StackLayout HorizontalOptions="Center" IsVisible="{Binding Path=BindingContext.ShowLicenceNoData, Source={x:Reference ESTAmendReactivationPage}}">
+                                                                                <Label
+                                                                                    HorizontalOptions="StartAndExpand"
+                                                                                    HorizontalTextAlignment="Start"
+                                                                                    Style="{StaticResource CaptionLabelGrey}"
+                                                                                    Text="{x:Static ResourceManager:AppResources.VatEffNoData}"
+                                                                                    VerticalTextAlignment="Center" />
+                                                                            </StackLayout>
+
+
+                                                                        </ViewCell.View>
+                                                                    </ViewCell>
+                                                                </DataTemplate>
+                                                            </listView:SfListView.FooterTemplate>
+                                                        </listView:SfListView>
+                                                        <!--#endregion-->
                                                     </Grid>
-                                                </ScrollView>
-                                                </ViewCell.View>
-                                                </ViewCell>
-                                            </DataTemplate>
-                                        </listView:SfListView.ItemTemplate>
-                                        <listView:SfListView.FooterTemplate>
-                                            <DataTemplate>
-                                                <ViewCell>
-                                                    <ViewCell.View>
-
-                                                <StackLayout HorizontalOptions="Center" IsVisible="{Binding Path=BindingContext.ShowCRNoData, Source={x:Reference ESTAmendReactivationPage}}">
-                                                    <Label
-                                                        HorizontalOptions="StartAndExpand"
-                                                        HorizontalTextAlignment="Start"
-                                                        Style="{StaticResource CaptionLabelGrey}"
-                                                        Text="{x:Static ResourceManager:AppResources.VatEffNoData}"
-                                                        VerticalTextAlignment="Center" />
-                                                </StackLayout>
-
-                                                    </ViewCell.View>
-                                                </ViewCell>
-                                            </DataTemplate>
-                                        </listView:SfListView.FooterTemplate>
-                                    </listView:SfListView>
-                                    <!--#endregion-->
-
-                                                 <!--#region Inner License list data-->
-                                    <listView:SfListView
-                                        x:Name="innerListView2"
-                                        Grid.Row="1"
-                                        Margin="5"
-                                        VerticalOptions="FillAndExpand"
-                                        IsScrollingEnabled="False"
-                                        ScrollBarVisibility="Never"
-                                        ItemsSource="{Binding ContactDetails2}">
-                                        <listView:SfListView.HeaderTemplate>
-                                            <DataTemplate>
-                                                <ViewCell>
-                                                    <ViewCell.View>
-                                                        <StackLayout x:Name="rootArea">
-                                                            <Label
-                                                                HorizontalOptions="StartAndExpand"
-                                                                HorizontalTextAlignment="Start"
-                                                                Style="{StaticResource ValueLabelBlack}"
-                                                                Text="{x:Static ResourceManager:AppResources.ESTLicenseDetails}"
-                                                                VerticalTextAlignment="Center" />
-                                                        </StackLayout>
-                                                    </ViewCell.View>
-                                                </ViewCell>
-                                            </DataTemplate>
-                                        </listView:SfListView.HeaderTemplate>
-                                        <listView:SfListView.ItemTemplate>
-                                            <DataTemplate>
-                                                 <ViewCell>
-                                                    <ViewCell.View>
-                                                        <Grid RowDefinitions="*" >
-
-                                                    <ScrollView HorizontalOptions="FillAndExpand" Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
-                                                    <Grid FlowDirection="{Binding Source={x:Reference ESTAmendReactivationPage}, Path=FlowDirection}"
-                                                        VerticalOptions="FillAndExpand"
-                                                        Padding="5"
-                                                        HorizontalOptions="FillAndExpand"
-                                                        BackgroundColor="#DBE9FA"><!--#DBE9FA-->
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="*" />
-                                                        </Grid.RowDefinitions>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="Auto" />
-                                                            <ColumnDefinition Width="Auto" />
-                                                            <ColumnDefinition Width="Auto" />
-                                                            <ColumnDefinition Width="Auto" />
-                                                            <ColumnDefinition Width="Auto" />
-                                                            <ColumnDefinition Width="Auto" />
-                                                            <ColumnDefinition Width="Auto" />
-                                                      
-                                                        </Grid.ColumnDefinitions>
-
-                                                        <StackLayout
-                                                            Grid.Row="0"
-                                                            Grid.Column="0"
-                                                            Margin="0,0,5,0">
-                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.LicenceNumber}" />
-                                                            <Label
-                                                                HorizontalOptions="StartAndExpand"
-                                                                HorizontalTextAlignment="Start"
-                                                                Style="{StaticResource ValueLabelBlack}"
-                                                                Text="{Binding Idnumber}"
-                                                                VerticalTextAlignment="Center" />
-                                                        </StackLayout>
-                                                        <StackLayout
-                                                            Grid.Row="0"
-                                                            Grid.Column="1"
-                                                            Margin="0,0,5,0">
-                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.LicenceName}" />
-                                                            <Label
-                                                                HorizontalOptions="StartAndExpand"
-                                                                HorizontalTextAlignment="Start"
-                                                                Style="{StaticResource ValueLabelBlack}"
-                                                                Text="{Binding ActName}"
-                                                                VerticalTextAlignment="Center" />
-                                                        </StackLayout>
-                                                        <StackLayout
-                                                            Grid.Row="0"
-                                                            Grid.Column="2"
-                                                            Margin="0,0,5,0">
-                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTIssueCountryLabel}" />
-                                                            <Label
-                                                                HorizontalOptions="StartAndExpand"
-                                                                HorizontalTextAlignment="Start"
-                                                                Style="{StaticResource ValueLabelBlack}"
-                                                                Text="{Binding IssuedCountry}"
-                                                                VerticalTextAlignment="Center" />
-                                                        </StackLayout>
-                                                        <StackLayout
-                                                            Grid.Row="0"
-                                                            Grid.Column="3"
-                                                            Margin="0,0,5,0">
-                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.IssuedCity}" />
-                                                            <Label
-                                                                HorizontalOptions="StartAndExpand"
-                                                                HorizontalTextAlignment="Start"
-                                                                Style="{StaticResource ValueLabelBlack}"
-                                                                Text="{Binding IssuedCity}"
-                                                                VerticalTextAlignment="Center" />
-                                                        </StackLayout>
-                                                        <StackLayout
-                                                            Grid.Row="0"
-                                                            Grid.Column="4"
-                                                            Margin="0,0,5,0">
-                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTIssueBy}" />
-                                                            <Label
-                                                                HorizontalOptions="StartAndExpand"
-                                                                HorizontalTextAlignment="Start"
-                                                                Style="{StaticResource ValueLabelBlack}"
-                                                                Text="{Binding IssuedBy}"
-                                                                VerticalTextAlignment="Center" />
-                                                        </StackLayout>
-                                                        <StackLayout
-                                                            Grid.Row="0"
-                                                            Grid.Column="5"
-                                                            Margin="0,0,5,0">
-                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinDeregistrationValidFrom}" />
-                                                            <Label
-                                                                HorizontalOptions="StartAndExpand"
-                                                                HorizontalTextAlignment="Start"
-                                                                Style="{StaticResource ValueLabelBlack}"
-                                                                Text="{Binding ValidFromUI}"
-                                                                VerticalTextAlignment="Center" />
-                                                        </StackLayout>
-                                                        <StackLayout Spacing="2"
-                                                            Grid.Row="0"
-                                                            Grid.Column="6"
-                                                                    
-                                                            Margin="0,0,5,5">
-                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTActivity}" />
-                                                            <buttons:SfButton
-                                                                Command="{Binding BindingContext.OnActivitiesButtonClick, Source={x:Reference Name=ESTAmendReactivationPage}}"
-                                                                CommandParameter="{Binding .}"
-                                                                Style="{StaticResource PrimaryButtonStyle}"
-                                                                Text="{x:Static ResourceManager:AppResources.EstActivities}"
-                                                                HeightRequest="30"
-                                                                WidthRequest="180" />
-                                                        </StackLayout>
-                                                    </Grid>
-                                                </ScrollView>
-                                                        </Grid>
-                                                
 
 
-                                                    </ViewCell.View>
-                                                </ViewCell>
-                                            </DataTemplate>
-                                        </listView:SfListView.ItemTemplate>
-                                        <listView:SfListView.FooterTemplate>
-                                            <DataTemplate>
-                                                 <ViewCell>
-                                                    <ViewCell.View>
-                                                <StackLayout HorizontalOptions="Center" IsVisible="{Binding Path=BindingContext.ShowLicenceNoData, Source={x:Reference ESTAmendReactivationPage}}">
-                                                    <Label
-                                                        HorizontalOptions="StartAndExpand"
-                                                        HorizontalTextAlignment="Start"
-                                                        Style="{StaticResource CaptionLabelGrey}"
-                                                        Text="{x:Static ResourceManager:AppResources.VatEffNoData}"
-                                                        VerticalTextAlignment="Center" />
-                                                </StackLayout>
+                                                </xct:Expander.Content>
 
-
-                                                    </ViewCell.View>
-                                                </ViewCell>
-                                            </DataTemplate>
-                                        </listView:SfListView.FooterTemplate>
-                                    </listView:SfListView>
-                                    <!--#endregion-->
-                                                </Grid>
-                                               
-
-                                            </xct:Expander.Content>
-
-                                        </xct:Expander>
-                                </Grid>
-                                </ViewCell.View>
+                                            </xct:Expander>
+                                        </Grid>
+                                    </ViewCell.View>
                                 </ViewCell>
                             </DataTemplate>
                         </listView:SfListView.ItemTemplate>
 
                     </listView:SfListView>
-                    
+
                 </StackLayout>
                 <!--#endregion-->
                 <!--#region Financial deatils-->

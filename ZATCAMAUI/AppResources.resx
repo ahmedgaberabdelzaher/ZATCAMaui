@@ -127,7 +127,7 @@
 	<data name="AmountNotObjected" xml:space="preserve">
         <value>Amount not objected</value>
     </data>
-	<data name="Attachment" xml:space="preserve">
+    <data name="Attachment" xml:space="preserve">
         <value>Attachment</value>
     </data>
 	<data name="Attachments" xml:space="preserve">
@@ -139,7 +139,7 @@
 	<data name="AverageNumOfEmployment" xml:space="preserve">
         <value>Average number of employment</value>
     </data>
-	<data name="Back" xml:space="preserve">
+    <data name="Back" xml:space="preserve">
         <value>Back</value>
     </data>
 	<data name="Bill" xml:space="preserve">
@@ -190,6 +190,7 @@
 	<data name="OldEmail" xml:space="preserve">
         <value>Old email</value>
     </data>
+
 	<data name="EnterVerificationCode" xml:space="preserve">
         <value>Please enter verification code received on mobile</value>
     </data>

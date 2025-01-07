@@ -25,9 +25,9 @@
             <ScrollView
                 Grid.Row="0"
                 Margin="0,8,0,0"
-                VerticalScrollBarVisibility="Never"
                 HorizontalOptions="CenterAndExpand"
-                VerticalOptions="Center">
+                VerticalOptions="Center"
+                VerticalScrollBarVisibility="Never">
                 <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Start">
 
                     <Image Source="Forget_ic_success" />

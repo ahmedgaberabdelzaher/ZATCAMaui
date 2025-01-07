@@ -13,7 +13,6 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
         public Nreg_IdItem idItem { get; set; } = null;
         public OutletItem selectedOutletItem { get; set; } = new OutletItem();
         public bool IsEditingMode { get; set; }
-        public ActivitySetsList activitySetsList { get; set; }
     }
     public class ActivityNavigationModels
     {
