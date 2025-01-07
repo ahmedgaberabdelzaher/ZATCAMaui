@@ -4167,7 +4167,15 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
 
                 string response = await TaxEvasionWebServiceManager.GAZTCreateVATSignUpFirst(vATSignUpSubmit);
-                if (response != null)
+
+                VATSignUpSubmitResponse VatSignUpSubmitResponse = new VATSignUpSubmitResponse();
+                VatSignUpSubmitResponse = JsonConvert.DeserializeObject<VATSignUpSubmitResponse>(response);
+                if (!string.IsNullOrEmpty(response) && VatSignUpSubmitResponse.d == null)
+                {
+                    var errorMesg = WebServiceManager.PrepareErrorMessageByJson(response);
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(errorMesg));
+                }
+                else
                 {
                     int timeToExpireOTP = 120;
                     TimerStart(timeToExpireOTP);
@@ -4176,89 +4184,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     VerifyButtonDisableColor = (Color)Application.Current.Resources["Secondary"];
                     IsVerifyOTPEnabled = true;
                     OTP = string.Empty;
-
-
                 }
-                VATSignUpSubmitResponse VatSignUpSubmitResponse = new VATSignUpSubmitResponse();
-                VatSignUpSubmitResponse = JsonConvert.DeserializeObject<VATSignUpSubmitResponse>(response);
-                if (VatSignUpSubmitResponse.d == null)
-                {
-                    SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(response);
-                    StringBuilder Message = new StringBuilder();
-                    foreach (SignupErrorModelErrordetail itemerror in SignupErrorModelRootObjectModel.error.innererror.errordetails)
-                    {
-                        if (itemerror.code.Contains("ZD_ZVTX/006"))
-                        {
 
-                            Message.AppendLine(AppResources.ZZZZErroMessage6);
-                        }
-                        if (itemerror.code.Contains("ZD_ZVTX/007"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage7);
-                        }
-                        if (itemerror.code.Contains("ZD_ZVTX/008"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage8);
-                        }
-                        if (itemerror.code.Contains("ZD_ZVTX/009"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage9);
-                        }
-                        if (itemerror.code.Contains("ZD_ZVTX/0010"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage10);
-                        }
-                        if (itemerror.code.Contains("ZD_ZVTX/0011"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage11);
-                        }
-                        if (itemerror.code.Contains("ZD_ZVTX/001"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage1);
-                        }
-                        if (itemerror.code.Contains("ZD_ZVTX/002"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage2);
-                        }
-                        if (itemerror.code.Contains("ZD_ZVTX/003"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage3);
-                        }
-                        if (itemerror.code.Contains("ZD_ZVTX/004"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage4);
-                        }
-                        if (itemerror.code.Contains("ZD_ZVTX/005"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage5);
-                        }
-                        if (itemerror.code.Contains("ZD_ZVTX/005"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErroMessage5);
-                        }
-                        if (itemerror.code.Contains("ZD_ZREG/303"))
-                        {
-
-                            Message.AppendLine(AppResources.ZZZZErrorMessage303);
-                        }
-
-                    }
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
-                }
-                else
-                {
-                }
             }
             catch (GAZTNetworkConnectivityIssueException)
             {
