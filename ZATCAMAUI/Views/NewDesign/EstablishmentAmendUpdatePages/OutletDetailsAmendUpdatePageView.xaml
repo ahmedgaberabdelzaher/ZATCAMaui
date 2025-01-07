@@ -13,6 +13,7 @@
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:models="clr-namespace:ZATCAMAUI.Core.Enums"
+    x:Name="page"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
@@ -103,8 +104,7 @@
                     HorizontalOptions="End"
                     MarkSize="24"
                     MaxNum="{Binding MaxIndex}"
-                    MinNum="{Binding CurrentIndex}"
-                    />
+                    MinNum="{Binding CurrentIndex}" />
                 <Label
                     Padding="0,5,0,10"
                     FontFamily="{StaticResource SomarBold}"
@@ -146,6 +146,7 @@
                                 <StackLayout
                                     Margin="0"
                                     Padding="5,2,5,2"
+                                    FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                     Orientation="Horizontal"
                                     Spacing="2">
                                     <Label
@@ -208,21 +209,28 @@
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
-                        <buttons:SfButton
-                            Margin="0,5,0,0"
-                            Padding="5"
-                            Clicked="OutletType_Clicked"
-                            CornerRadius="10"
-                            HorizontalTextAlignment="Start"
-                            ImageAlignment="End"
-                            ImageSource="arrowDropdown.png"
-                            IsEnabled="{Binding OutletDetails.OutletType}"
-                            ShowIcon="True"
-                            Stroke="{StaticResource NeutralGreay}"
-                            StrokeThickness="1"
-                            Style="{StaticResource NoBackgroundButtonStyle}"
-                            Text="{Binding SelectedOutletType}"
-                            TextColor="{StaticResource NeutralBlack}" />
+
+                        <custom:CustomSfTextInputView IsEnabled="{Binding OutletDetails.OutletType}">
+                            <custom:CustomSfTextInputView.TextInputView>
+                                <custom:GAZTBorderlessEntry
+                                    InputTransparent="True"
+                                    IsReadOnly="True"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SelectedOutletType}"
+                                    TextColor="{StaticResource NeutralBlack}">
+                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OutletType_Clicked" />
+                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                </custom:GAZTBorderlessEntry>
+                            </custom:CustomSfTextInputView.TextInputView>
+                            <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OutletType_Clicked" />
+                            </inputLayout:SfTextInputLayout.GestureRecognizers>
+                            <inputLayout:SfTextInputLayout.TrailingView>
+                                <Image Aspect="AspectFit" Source="greyDropDown" />
+                            </inputLayout:SfTextInputLayout.TrailingView>
+                        </custom:CustomSfTextInputView>
+
                         <Label
                             Margin="0,10,0,0"
                             FontFamily="{StaticResource SomarRegular}"
@@ -1172,6 +1180,7 @@
                 BackgroundColor="White">
                 <buttons:SfButton
                     Command="{Binding OnNextButtonClick}"
+                    IsEnabled="{Binding IsNextbttnEnable}"
                     Style="{StaticResource PrimaryButtonStyle}"
                     Text="{Binding NxtButtonLabel}" />
             </Grid>

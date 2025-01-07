@@ -139,6 +139,7 @@
                                 <ViewCell>
                                     <ViewCell.View>
                                         <Border
+                                            FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                             Padding="12"
                                             HorizontalOptions="FillAndExpand"
                                             StrokeShape="RoundRectangle 15"
@@ -182,7 +183,9 @@
                         <listView:SfListView.ItemTemplate IsVisible="{Binding IsListVisible}">
                             <DataTemplate>
                                 <ViewCell>
-                                    <Border Margin="0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                    <Border Margin="0,10"
+                                            FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
+                                            Style="{StaticResource GreyBorderFrameWithShadow}">
                                         <StackLayout Padding="0,10">
                                             <Grid
                                                 x:Name="grid"

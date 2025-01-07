@@ -554,6 +554,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 OnPropertyChanged(nameof(CanExecute));
             }
         }
+        
+        private bool _isNextbttnEnable = true;
+        public bool IsNextbttnEnable
+        {
+            get => _isNextbttnEnable;
+            set
+            {
+                if (_isNextbttnEnable == value) return;
+
+                _isNextbttnEnable = value;
+                OnPropertyChanged(nameof(IsNextbttnEnable));
+            }
+        }
         private GenericPickerModel _pickerModel { get; set; }
         public GenericPickerModel PickerModel
         {
@@ -886,9 +899,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 nextNumber = newNumber,
                 goBackAction = async (List<Nreg_ActivityItem> list) =>
                 {
-                   await addActivities(list);
+                    if (list.Count > 0|| IsEditingMode==true)
+                        IsNextbttnEnable = true;
+                    else
+                        return;
+
+                    await addActivities(list);
                 }
-            }); ;
+            });
         }
 
         private async Task navigateToNext()
@@ -907,9 +925,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     {
                         currentTab = EstablishmentRegistrationOutletTabsEnum.ActivityDetails;
                     }
+                    IsNextbttnEnable = IsEditingMode;
+
                 }
                 else if (currentTab == EstablishmentRegistrationOutletTabsEnum.ActivityDetails)
                 {
+                    if(taxPayerDetails?.Nreg_ActivitySet?.Count == 0)
+                    {
+                        return;
+                    }
+                    IsNextbttnEnable = true;
+
                     currentTab = EstablishmentRegistrationOutletTabsEnum.AddressDetails;
                 }
                 else if (currentTab == EstablishmentRegistrationOutletTabsEnum.AddressDetails)
@@ -917,7 +943,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     try
                     {
                         IsLoading = true;
-                        DateTime.TryParseExact("2060/12/31", "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime maxDate);
+                        DateTime.TryParseExact("9999/12/31", "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime maxDate);
 
                         taxPayerDetails?.Nreg_AddressSet?.Clear();
                         Nreg_AddressItem defaultAddress = new Nreg_AddressItem();
@@ -936,7 +962,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                         defaultAddress.AddrType = "XXDEFAULT";
                         defaultAddress.Srcidentify = string.Format("O{0}", OutletActNumber);
                         defaultAddress.Begda = DateTime.UtcNow.ToString("yyyy-MM-ddThh:mm:ss");
-                        defaultAddress.Endda = maxDate.ToString("yyyy-MM-ddThh:mm:ss");
+                        defaultAddress.Endda = "9999-12-31T00:00:00";
                         taxPayerDetails?.Nreg_AddressSet?.Add(defaultAddress);
 
                         Nreg_AddressItem _address = new Nreg_AddressItem();
@@ -955,7 +981,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                         _address.AddrType = "0001";
                         _address.Srcidentify = $"O{OutletActNumber}";
                         _address.Begda = DateTime.UtcNow.ToString("yyyy-MM-ddThh:mm:ss");
-                        _address.Endda = maxDate.ToString("yyyy-MM-ddThh:mm:ss");
+                        _address.Endda = "9999-12-31T00:00:00";
                         taxPayerDetails?.Nreg_AddressSet?.Add(_address);
 
                         string oldMstFlasg = string.Empty;
@@ -1004,7 +1030,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     {
                         await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
                     }
-
                     catch (InternetException)
                     {
                         await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
@@ -1053,7 +1078,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
             {
                 await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
             }
-
             catch (InternetException)
             {
                 await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
@@ -1076,52 +1100,53 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 if (_enum == EstablishmentRegistrationOutletTabsEnum.OutletDetail)
                 {
                     clearFormData();
-                        var _outletTempData = await EstablishmentRegistrationWebServiceManager.ESTOutletList(taxPayerDetails?.PortalUsrx, App.LoginDataRetrieved.TIN, taxPayerDetails?.Fbnumx);
-                        _outletTempData.ForEach(_out =>
+                    var _outletTempData = await EstablishmentRegistrationWebServiceManager.ESTOutletList(taxPayerDetails?.PortalUsrx, App.LoginDataRetrieved.TIN, taxPayerDetails?.Fbnumx);
+                    _outletTempData.ForEach(_out =>
+                    {
+                        if (_out.Actcat == "M")
                         {
-                            if (_out.Actcat == "M")
-                            {
-                                isMainOutletExists = true;
-                            }
-                        });
-                        ListOutlets = _outletTempData;
-                        ListOutletTypes.Clear();
-                        ListOutletTypes.Add(AppResources.ESTMainOutlet);
-                        ListOutletTypes.Add(AppResources.ESTSubOutlet);
-                        if (isMainOutletExists)
-                            SelectedOutletType = AppResources.ESTSubOutlet;
-                        else
+                            isMainOutletExists = true;
+                        }
+                    });
+                    ListOutlets = _outletTempData;
+                    ListOutletTypes.Clear();
+                    ListOutletTypes.Add(AppResources.ESTMainOutlet);
+                    ListOutletTypes.Add(AppResources.ESTSubOutlet);
+                    if (isMainOutletExists)
+                        SelectedOutletType = AppResources.ESTSubOutlet;
+                    else
+                        SelectedOutletType = AppResources.ESTMainOutlet;
+                    if (selectedOutletItem != null)
+                    {
+                        newNumber = new OutletNumber()
+                        {
+                            Actno = selectedOutletItem?.Actno
+                        };
+                        OutletName = selectedOutletItem?.Actnm;
+                        if (selectedOutletItem.Actcat == "M")
+                        {
                             SelectedOutletType = AppResources.ESTMainOutlet;
-                        if (selectedOutletItem != null)
-                        {
-                            newNumber = new OutletNumber()
-                            {
-                                Actno = selectedOutletItem?.Actno
-                            };
-                            OutletName = selectedOutletItem?.Actnm;
-                            if (selectedOutletItem.Actcat == "M")
-                            {
-                                SelectedOutletType = AppResources.ESTMainOutlet;
-                            }
-                            else if (selectedOutletItem.Actcat == "S")
-                            {
-                                SelectedOutletType = AppResources.ESTSubOutlet;
-                            }
                         }
-                        else
+                        else if (selectedOutletItem.Actcat == "S")
                         {
-                            newNumber = await EstablishmentRegistrationWebServiceManager.ESTOutletNumberESAmendUpdate(taxPayerDetails?.Fbnumx, App.LoginDataRetrieved.TIN);
+                            SelectedOutletType = AppResources.ESTSubOutlet;
                         }
-                        OutletActNumber = newNumber == null || string.IsNullOrEmpty(newNumber?.Actno) ? "00000" : newNumber.Actno;
+                    }
+                    else
+                    {
+                        newNumber = await EstablishmentRegistrationWebServiceManager.ESTOutletNumberESAmendUpdate(taxPayerDetails?.Fbnumx, App.LoginDataRetrieved.TIN);
+                    }
+                    OutletActNumber = newNumber == null || string.IsNullOrEmpty(newNumber?.Actno) ? "00000" : newNumber.Actno;
 
-                        // OutletActNumber = $"{Int16.Parse(newNumber?.Actno):000}";
-                        taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ZakatAmendESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx, taxPayerDetails?.Fbstax, taxPayerDetails?.Fbustx
-                         );
+                    // OutletActNumber = $"{Int16.Parse(newNumber?.Actno):000}";
+                    taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ZakatAmendESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx, taxPayerDetails?.Fbstax, taxPayerDetails?.Fbustx
+                     );
 
 
-                       
-                    
+
                 }
+            
+           
                 else if (_enum == EstablishmentRegistrationOutletTabsEnum.AddressDetails)
                 {
                     OutletDropDowns = await EstablishmentRegistrationWebServiceManager.ESTOutletDropDowns();
@@ -1209,67 +1234,20 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
             {
                 await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
             }
-
             catch (InternetException)
             {
                 await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
             }
             finally
             {
                 IsLoading = false;
             }
         }
-        private void PrepareError(string result)
-        {
-            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(result);
-            var errorID = string.Empty;
-            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
-            {
-                string errorCode = errorMesg.error.innererror.errordetails[0].code;
-
-                WebServiceManager.ErrorMessageForUnlockAccount = errorMesg.error.innererror.errordetails[0].message;
-
-                if (errorCode.Contains("206"))
-                {
-                    WebServiceManager.ErrorMessageForUnlockAccount = "206";
-                }
-                else if (errorCode.Contains("112"))
-                {
-                    WebServiceManager.ErrorMessageForUnlockAccount = "112";
-                }
-                else if (errorCode.Contains("896"))
-                {
-                    errorID = errorCode;
-                }
-
-                string line1 = "";
-
-                for (int i = 0; i < errorMesg.error.innererror.errordetails.Count; i++)
-                {
-                    line1 = line1 + " " + errorMesg.error.innererror.errordetails[i].message;
-                }
-                WebServiceManager.ErrorMessageForUnlockAccount = line1;
-
-                String WithReplacedString = WebServiceManager.ErrorMessageForUnlockAccount.Replace("An exception was raised", string.Empty);
-
-                MainThread.BeginInvokeOnMainThread(async () =>
-                {
-                    if (errorID.Contains("896"))
-                    {
-                        await MopupService.Instance.PushAsync(new ErrorMessagePopup(AppResources.Error896));
-                    }
-                    else
-                    {
-                        await _dialogService.ShowMessage(WithReplacedString, AppResources.ZError);
-                    }
-
-                });
-
-            }
-        }
+        
         private void populateAddress(OutletAddress address)
         {
             BuildingNumber = address.BuildingNo;
@@ -1279,6 +1257,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
             PostalCode = address.Zipcode;
             AddNumber = address.AdditionalNo;
         }
+
         private async Task<bool> validateForm()
         {
             if (currentTab == EstablishmentRegistrationOutletTabsEnum.ActivityDetails)

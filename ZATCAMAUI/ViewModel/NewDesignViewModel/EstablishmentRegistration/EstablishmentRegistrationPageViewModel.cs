@@ -28,6 +28,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
         private Nreg_IdItem idItem { get; set; } = null;
         private string calType = string.Empty;
         public bool IsNavigationCompletedToSuccessfulPage { get; set; } = false;
+        private EstablishmentRegistrationTabsEnum previousTab;
         private EstablishmentRegistrationTabsEnum _currentTab;
         public EstablishmentRegistrationTabsEnum currentTab
         {
@@ -40,6 +41,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     {
                         MainThread.BeginInvokeOnMainThread(async () => await fetchTabDataAndBind(_currentTab));
                     }
+                    previousTab = _currentTab;
                     return;
                 }
                 _currentTab = value;
@@ -75,6 +77,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         break;
                 }
                 MainThread.BeginInvokeOnMainThread(async () => await fetchTabDataAndBind(_currentTab));
+                previousTab = _currentTab;
             }
         }
         public ObservableCollection<string> _tabList { get; set; }
@@ -1424,7 +1427,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
         }
         #region Commands
 
-
+        public ICommand OnAppearingCommand { get; set; }
         public Command OnNextButtonClick { get; set; }
         public ICommand OnPreButtonClick { get; set; }
         public ICommand OnVoidOrSaveDraftClick { get; set; }
@@ -1511,11 +1514,30 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #region Constructor
         public EstablishmentRegistrationPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            OnNextButtonClick = new Command(async () => await navigateToNext(), () => CanExecute);
+            OnNextButtonClick = new Command(async() => await navigateToNext(), () => CanExecute);
             OnPreButtonClick = new Command(() =>
             {
-                currentTab = EstablishmentRegistrationTabsEnum.Unknown;
-                _navigationService.GoBack();
+                if (currentTab == EstablishmentRegistrationTabsEnum.Unknown ||
+                currentTab == EstablishmentRegistrationTabsEnum.RegistrationType)
+                    _navigationService.GoBack();
+
+                else if ((int)previousTab >= 2)
+                {
+                    var index = (int)previousTab - 1;
+                    currentTab = (EstablishmentRegistrationTabsEnum)index;
+                }
+
+            });
+
+            OnAppearingCommand = new Command(async () =>
+            {
+                if (currentTab == EstablishmentRegistrationTabsEnum.RegistrationType)
+                {
+                    currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
+                    CurrentIndex = (int)EstablishmentRegistrationTabsEnum.RegistrationType;
+                }
+                await OnAppearing();
+
             });
 
             #region Registration Tab Variable initialization
@@ -1540,7 +1562,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             OnEstablishmentRegistrationAttachmentTapped = new Command(async () => await OnRentAddAttachmentTapped());
             #endregion
 
-            OnReportingBranchSelectButtonClick = new Command(() =>
+            OnReportingBranchSelectButtonClick = new Command(async () =>
 
             {
                 ListPopUpViewPage poupWindow = new ListPopUpViewPage(ReportingBranchList);
@@ -1548,7 +1570,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 {
                     SelectedReportingBranch = (item as BranchesDropDownModel);
                 };
-                MopupService.Instance.PushAsync(poupWindow);
+                await MopupService.Instance.PushAsync(poupWindow);
             });
 
             #endregion
@@ -1557,42 +1579,42 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
             GetGenderList();
 
-            OnPDNatinalitySelectButtonClick = new Command(() =>
+            OnPDNatinalitySelectButtonClick = new Command(async () =>
             {
                 ListPopUpViewPage poupWindow = new ListPopUpViewPage(TaxpayerFullNationlityList);
                 poupWindow.OnItemSelect = (item) => SelectedTaxpayerPDNationality = item as TaxpayerNationality;
-                MopupService.Instance.PushAsync(poupWindow);
+                await MopupService.Instance.PushAsync(poupWindow);
             });
 
-            OnPDCitizenSelectButtonClick = new Command(() =>
+            OnPDCitizenSelectButtonClick = new Command(async () =>
             {
                 ListPopUpViewPage poupWindow = new ListPopUpViewPage(TaxpayerPDNationlityList);
                 poupWindow.OnItemSelect = (item) => SelectedCitizen = item as TaxpayerNationalityLandx50;
-                MopupService.Instance.PushAsync(poupWindow);
+                await MopupService.Instance.PushAsync(poupWindow);
             });
 
-            OnPDResidenceSelectButtonClick = new Command(() =>
+            OnPDResidenceSelectButtonClick = new Command(async () =>
             {
                 ListPopUpViewPage poupWindow = new ListPopUpViewPage(TaxpayerPDNationlityList);
                 poupWindow.OnItemSelect = (item) => SelectedResidence = item as TaxpayerNationalityLandx50;
-                MopupService.Instance.PushAsync(poupWindow);
+                await MopupService.Instance.PushAsync(poupWindow);
             });
             #endregion
 
             #region Passport Variable Initialization
 
-            OnPassportIssueCountryButtonClick = new Command(() =>
+            OnPassportIssueCountryButtonClick = new Command(async () =>
             {
                 ListPopUpViewPage poupWindow = new ListPopUpViewPage(TaxpayerFullNationlityList);
                 poupWindow.OnItemSelect = (item) => SelectedPassportIssueCountry = item as TaxpayerNationality;
-                MopupService.Instance.PushAsync(poupWindow);
+                await MopupService.Instance.PushAsync(poupWindow);
             });
 
             OnPassportAttachmentTapped = new Command(async () => await OnPassportAddAttachmentButtonTapped());
             #endregion
 
-            TappedOnAttachmentInformationIcon = new Command(() =>
-            ShowValidationPopup(
+            TappedOnAttachmentInformationIcon = new Command(async () =>
+          await ShowValidationPopup(
                 AppResources.ESTAttachmentSizeNotfication
                 + Environment.NewLine
                 + AppResources.ZZChooseonlyfilewithextensionForZAKAT
@@ -1600,7 +1622,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 ));
 
             #region Outlet Tabs variable initialization
-            OnNewOutletButtonClick = new Command(() => openNewOutlet());
+            OnNewOutletButtonClick = new Command(async () => await openNewOutlet());
             OnEditOutletButtonClick = new Command(async (item) => await openEditOutletAsync(item as OuteltInfo_NestedListView, 1)); //Expander
             OuterListTapCommand = new Command(async (item) => await openEditOutletAsync(item as OuteltInfo_NestedListView, 0));
             OnEditOutletButtonClick2 = new Command(async (item) => await openEditOutletAsync(item as OuteltInfo_NestedListView, 2)); // Edit
@@ -1611,27 +1633,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                 if (newItem.Oldmst.ToString().ToUpper().Equals("X"))
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(AppResources.ExistingOutletError, AppResources.Information);
-
-                    });
+                    await _dialogService.ShowMessage(AppResources.ExistingOutletError, AppResources.Information);
                 }
                 else if (newItem.MciEntry.ToString().ToUpper().Equals("X"))
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(AppResources.DeleteError, AppResources.Information);
-
-                    });
+                    await _dialogService.ShowMessage(AppResources.DeleteError, AppResources.Information);
                 }
                 else if (newItem.ActNo.Equals("00000"))
                 {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(AppResources.MainOutletError, AppResources.Information); // Main ol cannot be deleted 
-
-                    });
+                    await _dialogService.ShowMessage(AppResources.MainOutletError, AppResources.Information); // Main ol cannot be deleted 
                 }
                 else
                 {
@@ -1650,11 +1660,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     {
                         CloseWhenBackgroundIsClicked = false
                     };
-                    confirmPopup.OnSelect = (str) =>
+                    confirmPopup.OnSelect = async (str) =>
                     {
                         if (str == "Yes")
                         {
-                            MainThread.BeginInvokeOnMainThread(() => deleteOutlet(item as OutletItem));
+                            await deleteOutlet(item as OutletItem);
                         }
                     };
                     await MopupService.Instance.PushAsync(confirmPopup);
@@ -1704,108 +1714,103 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
             #region Summary Tabs variable initialization
             OnExpendGridViewClick = new Command((_enum) => OnExpandCollapseGridViewClick(_enum));
+
             OnEditPageViewClick = new Command((_enum) =>
             {
                 currentTab = (EstablishmentRegistrationTabsEnum)_enum;
             });
 
-            OnVoidOrSaveDraftClick = new Command(async() =>
-        {
-            try
+
+
+
+            OnVoidOrSaveDraftClick = new Command(async () =>
             {
-                ListPopUpViewPage poupWindow = new ListPopUpViewPage(new List<string> { AppResources.ZZSaveAsDraft, AppResources.ZZVoid, AppResources.FORM5CalendarType });
-                poupWindow.OnItemSelect = async (item) =>
+                try
                 {
-                    var actionName = item as string;
-                    if (actionName == AppResources.ZZSaveAsDraft)
+                    ListPopUpViewPage poupWindow = new ListPopUpViewPage(new List<string> { AppResources.ZZSaveAsDraft, AppResources.ZZVoid, AppResources.FORM5CalendarType });
+                    poupWindow.OnItemSelect = async (item) =>
                     {
-                        IsLoading = true;
-
-                        taxPayerDetails.Draftfg = "X";
-                        taxPayerDetails.Gpart = App.LoginDataRetrieved.TIN;
-                        taxPayerDetails.UserTypx = "TP";
-                        var _taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
-                        if (_taxPayerDetails != null && !string.IsNullOrEmpty(_taxPayerDetails.Fbnumx))
+                        var actionName = item as string;
+                        if (actionName == AppResources.ZZSaveAsDraft)
                         {
-                            await MopupService.Instance.PushAsync(new SingleButtonPopupView(AppResources.ZZZOkayText, string.Format(AppResources.ZZZApplicationSaved, _taxPayerDetails.Fbnumx), string.Empty), true);
 
+                            IsLoading = true;
+                            await MopupService.Instance.PopAsync(true);
+                            taxPayerDetails.Draftfg = "X";
+                            taxPayerDetails.Gpart = App.LoginDataRetrieved.TIN;
+                            taxPayerDetails.UserTypx = "TP";
+                            var _taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
+                            if (_taxPayerDetails != null && !string.IsNullOrEmpty(_taxPayerDetails.Fbnumx))
+                            {
+                                await MopupService.Instance.PushAsync(new SingleButtonPopupView(AppResources.ZZZOkayText, string.Format(AppResources.ZZZApplicationSaved, _taxPayerDetails.Fbnumx), string.Empty), true);
+                            }
                         }
-                    }
-                    if (actionName == AppResources.ZZVoid)
-                    {
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                         {
-                             VoidNotePopPage voidNotePop = new VoidNotePopPage
-                             {
-                                 OnVoidSelect = async (notes) =>
-                                 {
-                                     IsLoading = true;
-                                     OffNotes note = new OffNotes()
-                                     {
-                                         Tdline = notes,
-                                         ByGpartz = App.LoginDataRetrieved.TIN
-                                     };
-                                     taxPayerDetails?.off_notesSet?.Clear();
-                                     taxPayerDetails?.off_notesSet?.Add(note);
-                                     taxPayerDetails.Operationx = "04";
-                                     taxPayerDetails.Gpart = App.LoginDataRetrieved.TIN;
-                                     taxPayerDetails.UserTypx = "TP";
-                                     taxPayerDetails.StepNumberx = string.Empty;
-                                     var _taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
-                                     currentTab = EstablishmentRegistrationTabsEnum.Unknown;
-                                     await navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
+                        else if (actionName == AppResources.ZZVoid)
+                        {
+                            await MopupService.Instance.PopAsync(true);
+                            VoidNotePopPage voidNotePop = new VoidNotePopPage();
+                            voidNotePop.OnVoidSelect = async (notes) =>
+                            {
+                                IsLoading = true;
+                                OffNotes note = new OffNotes()
+                                {
+                                    Tdline = notes,
+                                    ByGpartz = App.LoginDataRetrieved.TIN
+                                };
+                                taxPayerDetails?.off_notesSet?.Clear();
+                                taxPayerDetails?.off_notesSet?.Add(note);
+                                taxPayerDetails.Operationx = "04";
+                                taxPayerDetails.Gpart = App.LoginDataRetrieved.TIN;
+                                taxPayerDetails.UserTypx = "TP";
+                                taxPayerDetails.StepNumberx = string.Empty;
+                                var _taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
+                                currentTab = EstablishmentRegistrationTabsEnum.Unknown;
+                                _navigationService.GoBack();
+                            };
+                            await MopupService.Instance.PushAsync(voidNotePop);
+                        }
+                        else if (actionName == AppResources.FORM5CalendarType)
+                        {
 
-                                 }
-                             };
-                             await MopupService.Instance.PushAsync(voidNotePop);
-                         });
-                    }
-                    if (actionName == AppResources.FORM5CalendarType)
-                    {
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                         {
-                             ListPopUpViewPage cal = new ListPopUpViewPage(new List<string> { AppResources.NDGregorian, AppResources.NDHijri });
-                             cal.OnItemSelect = (_cal) =>
-                             {
-                                 if (_cal as string == AppResources.NDGregorian)
-                                 {
-                                     taxPayerDetails.Caltp = "Gregorian";
-                                 }
-                                 else if (_cal as string == AppResources.NDHijri)
-                                 {
-                                     taxPayerDetails.Caltp = "Hijri";
-                                 }
-                                 updateDatePickers(currentTab);
-                             };
-                             await MopupService.Instance.PushAsync(cal);
-                         });
-                    }
-                };
-                MopupService.Instance.PushAsync(poupWindow);
-            }
-            catch (GAZTVATRegistrationInProcessException ex)
-            {
-                await UtilityManager.HandleExceptionMessage(ex.Message, false);
-            }
-            catch (GAZTNetworkConnectivityIssueException)
-            {
-                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
-            }
-
-            catch (InternetException)
-            {
-                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
-            }
-            catch (Exception)
-            {
-                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
-            }
-            finally
-            {
-                IsLoading = false;
-            }
-
-        });
+                            await MopupService.Instance.PopAsync(true);
+                            ListPopUpViewPage cal = new ListPopUpViewPage(new List<string> { AppResources.NDGregorian, AppResources.NDHijri });
+                            cal.OnItemSelect = (_cal) =>
+                            {
+                                if (_cal as string == AppResources.NDGregorian)
+                                {
+                                    taxPayerDetails.Caltp = "Gregorian";
+                                }
+                                else if (_cal as string == AppResources.NDHijri)
+                                {
+                                    taxPayerDetails.Caltp = "Hijri";
+                                }
+                                updateDatePickers(currentTab);
+                            };
+                            await MopupService.Instance.PushAsync(cal);
+                        }
+                    };
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    await UtilityManager.HandleExceptionMessage(ex.Message, false);
+                }
+                catch (GAZTNetworkConnectivityIssueException)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+                }
+                catch (InternetException)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+                }
+                catch (Exception)
+                {
+                    await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+                }
+                finally
+                {
+                    IsLoading = false;
+                }
+            });
             #endregion
         }
 
@@ -1816,6 +1821,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
         {
             try
             {
+                IsLoading = true;
                 TabList
            = new ObservableCollection<string>{ AppResources.ESTRegTaxTabTitleLabel, AppResources.ESTTaxpayerPersonalDetailsTabTitleLabel,
                 AppResources.ESTPassportDetailsTabTitleLabel, AppResources.ESTOutletsTabTitleLabel,
@@ -1824,10 +1830,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 {
                     await fetchTabDataAndBind(currentTab);
                 }
+                IsLoading = false;
             }
             catch (Exception)
             {
-
+                IsLoading = false;
             }
 
         }
@@ -1838,6 +1845,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             try
             {
                 var failedMesage = AppResources.Somethingwentwrong;
+
                 if (currentTab == EstablishmentRegistrationTabsEnum.TaxpayerDetail)
                 {
                     if (await FormValidation(currentTab))
@@ -1893,10 +1901,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     {
                         if (await PushDatatoServer(currentTab))
                         {
-                            _navigationService.NavigateTo(App.RegistrationSuccessfulPage, taxPayerDetails);
+                            await _navigationService.NavigateTo(App.RegistrationSuccessfulPage, taxPayerDetails);
                         }
                     }
                 }
+                previousTab = currentTab;
             }
             catch (Exception)
             {
@@ -1908,40 +1917,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 CanExecute = true;
             }
         }
-        private void navigateToPre()
+
+        private async Task ShowValidationPopup(string _message)
         {
-            if (currentTab == EstablishmentRegistrationTabsEnum.TaxpayerDetail)
-            {
-                currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
-            }
-            else if (currentTab == EstablishmentRegistrationTabsEnum.PassportDetails)
-            {
-                currentTab = EstablishmentRegistrationTabsEnum.TaxpayerDetail;
-            }
-            else if (currentTab == EstablishmentRegistrationTabsEnum.Outlets)
-            {
-                currentTab = IsSaudi ? EstablishmentRegistrationTabsEnum.TaxpayerDetail : EstablishmentRegistrationTabsEnum.PassportDetails;
-            }
-            else if (currentTab == EstablishmentRegistrationTabsEnum.FinancialDetail)
-            {
-                currentTab = EstablishmentRegistrationTabsEnum.Outlets;
-            }
-            else if (currentTab == EstablishmentRegistrationTabsEnum.Declaration)
-            {
-                currentTab = EstablishmentRegistrationTabsEnum.FinancialDetail;
-            }
-            else if (currentTab == EstablishmentRegistrationTabsEnum.RegistrationType)
-            {
-                currentTab = EstablishmentRegistrationTabsEnum.Unknown;
-                _navigationService.GoBack();
-            }
-
-        }
-
-
-        private void ShowValidationPopup(string _message)
-        {
-            MopupService.Instance.PushAsync(new AttachmentInformationPopUp(_message));
+            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(_message));
         }
 
         private void OrgResidenceSelection(OrgResidenceNationalityEstablishmentRegistrationEnum selectedOption)
@@ -2160,24 +2139,41 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             TaxpayerFullNationlityList.ForEach(i => TaxpayerPDNationlityList.Add((TaxpayerNationalityLandx50)i));
         }
 
-        public void OnRentAttachmentDeleteButtonTapped(Attachment obj)
+        public async Task OnRentAttachmentDeleteButtonTapped(Attachment obj)
         {
-
-
-            var delStatus = DeleteAttachment(obj.Filename, obj.RetGuid, obj.Dotyp, obj.Doguid);
-
-            if (delStatus.ToLower() == "delete")
+            try
             {
-                UploadedRentDocumentsList.Remove(obj);
+                var delStatus = DeleteAttachment(obj.Filename, obj.RetGuid, obj.Dotyp, obj.Doguid);
+
+                if (delStatus.ToLower() == "delete")
+                {
+                    UploadedRentDocumentsList.Remove(obj);
+                }
+                else
+                {
+                    await ShowValidationPopup(AppResources.Somethingwentwrong);
+                }
+                if (UploadedRentDocumentsList == null || UploadedRentDocumentsList.Count() == 0)
+                {
+                    IsVisbleRentAttachmentmentList = false;
+
+                }
             }
-            else
+            catch (GAZTNetworkConnectivityIssueException)
             {
-                ShowValidationPopup(AppResources.Somethingwentwrong);
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
             }
-            if (UploadedRentDocumentsList == null || UploadedRentDocumentsList.Count() == 0)
+            catch (InternetException)
             {
-                IsVisbleRentAttachmentmentList = false;
-
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, true, _navigationService);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
 
         }
@@ -2194,28 +2190,45 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             else
             {
-                ShowValidationPopup(AppResources.ZMaximumnoof5attachmentscanbeuploaded);
+                await ShowValidationPopup(AppResources.ZMaximumnoof5attachmentscanbeuploaded);
             }
-
         }
 
-        public void OnPassportAttachmentDeleteButtonTapped(Attachment obj)
+        public async Task OnPassportAttachmentDeleteButtonTapped(Attachment obj)
         {
-            var delStatus = DeleteAttachment(obj.Filename, obj.RetGuid, obj.Dotyp, obj.Doguid);
-
-            if (delStatus.ToLower() == "delete")
+            try
             {
-                UploadedPassportDocumentsList.Remove(obj);
+                var delStatus = DeleteAttachment(obj.Filename, obj.RetGuid, obj.Dotyp, obj.Doguid);
+
+                if (delStatus.ToLower() == "delete")
+                {
+                    UploadedPassportDocumentsList.Remove(obj);
+                }
+                else
+                {
+                    await ShowValidationPopup(AppResources.Somethingwentwrong);
+                }
+
+                if (UploadedPassportDocumentsList == null || UploadedPassportDocumentsList.Count() == 0)
+                {
+                    IsVisbleAttachmentPassportList = false;
+                }
             }
-            else
+            catch (GAZTNetworkConnectivityIssueException)
             {
-                ShowValidationPopup(AppResources.Somethingwentwrong);
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
             }
-
-            if (UploadedPassportDocumentsList == null || UploadedPassportDocumentsList.Count() == 0)
+            catch (InternetException)
             {
-                IsVisbleAttachmentPassportList = false;
-
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, true, _navigationService);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
 
@@ -2232,7 +2245,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             else
             {
-                ShowValidationPopup(AppResources.ZMaximumnoof5attachmentscanbeuploaded);
+                await ShowValidationPopup(AppResources.ZMaximumnoof5attachmentscanbeuploaded);
             }
         }
 
@@ -2317,23 +2330,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                                 {
                                     if (Convert.ToDecimal(AttachmentSizeTillFourDecimal) > 0)
                                     {
-                                        try
-                                        {
-                                            string attachmentType = UtilityManager.GetContentType(Extention);
-                                            await SaveAttachment(stream, attachmentName, docType, attachmentType);
-                                        }
-                                        catch (Exception)
-                                        {
-
-
-                                        }
+                                        string attachmentType = UtilityManager.GetContentType(Extention);
+                                        await SaveAttachment(stream, attachmentName, docType, attachmentType);
                                     }
                                     else
                                     {
                                         attachmentName = string.Empty;
                                         await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
                                     }
-
                                 }
                                 else
                                 {
@@ -2348,15 +2352,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     }
                     else
                     {
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                         {
-                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZFileWithTheSameNameAlreadyExists));
-                             IsLoading = false;
-                         });
+                        IsLoading = false;
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZFileWithTheSameNameAlreadyExists));
                     }
-
                 }
-
             }
             catch (Exception)
             { }
@@ -2381,19 +2380,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
 
             }
-            catch (GAZTNetworkConnectivityIssueException)
-            {
-                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
-            }
-
-            catch (InternetException)
-            {
-                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
-            }
             catch (Exception)
-            {
-                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
-            }
+            { }
             finally
             {
                 IsLoading = false;
@@ -2445,10 +2433,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         {
                             CloseWhenBackgroundIsClicked = false
                         };
-                        someThingWhentWrong.OnDone = () =>
+                        someThingWhentWrong.OnDone = async () =>
                         {
                             currentTab = EstablishmentRegistrationTabsEnum.Unknown;
-                            _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
+                            await _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
                         };
                         await MopupService.Instance.PushAsync(someThingWhentWrong);
                         return;
@@ -2513,7 +2501,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         IqamaDesc = "";
                     }
 
-                    SelectedDOB = Convert.ToDateTime(taxPayerDetails?.Birthdt).ToString("yyyy/MM/dd");
+                    SelectedDOB = Convert.ToDateTime(taxPayerDetails?.Birthdt).ToString("yyyy/MM/dd", new CultureInfo("en-US"));
 
                     FirstName = taxPayerDetails?.NameFirst;
                     LastName = taxPayerDetails?.NameLast?.Replace(".", string.Empty);
@@ -2536,11 +2524,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 else if (_enum == EstablishmentRegistrationTabsEnum.PassportDetails)
                 {
                     taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailGetService("02", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid);
-                    Nreg_IdItem passportItem = taxPayerDetails?.Nreg_IdSet.Where(i => i.Type == "FS0002").FirstOrDefault();
+                    Nreg_IdItem passportItem = taxPayerDetails?.Nreg_IdSet?.Where(i => i.Type == "FS0002").FirstOrDefault();
                     PassportNumber = passportItem?.Idnumber;
-                    SelectedPassportIssueCountry = TaxpayerFullNationlityList.Where(i => i.Land1 == passportItem?.Country).FirstOrDefault();
-                    PassportIssueDate = Convert.ToDateTime(passportItem?.ValidDateFrom).ToString("yyyy/MM/dd");
-                    PassportExpireDate = Convert.ToDateTime(passportItem?.ValidDateTo).ToString("yyyy/MM/dd");
+                    SelectedPassportIssueCountry = TaxpayerFullNationlityList?.Where(i => i.Land1 == passportItem?.Country).FirstOrDefault();
+                    PassportIssueDate = Convert.ToDateTime(passportItem?.ValidDateFrom).ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                    PassportExpireDate = Convert.ToDateTime(passportItem?.ValidDateTo).ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                     PassportAttachmentPrepopulateCheck(taxPayerDetails);
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.Outlets)
@@ -2604,11 +2592,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     TabList.Remove(AppResources.ESTPassportDetailsTabTitleLabel);
                 }
             }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
             catch (GAZTNetworkConnectivityIssueException)
             {
                 await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
             }
-
             catch (InternetException)
             {
                 await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
@@ -2682,7 +2673,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                     if (!string.IsNullOrEmpty(taxPayerDetails?.Birthdt))
                     {
-                        SelectedDOB = Convert.ToDateTime(taxPayerDetails?.Birthdt).ToString("yyyy/MM/dd");
+                        SelectedDOB = Convert.ToDateTime(taxPayerDetails?.Birthdt).ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                     }
                     Title = taxPayerDetails?.TpTitle;
                     FirstName = taxPayerDetails?.NameFirst;
@@ -2705,18 +2696,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
 
             }
-            catch (GAZTNetworkConnectivityIssueException)
+            catch (Exception)
             {
-                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
-            }
-
-            catch (InternetException)
-            {
-                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
-            }
-            catch (Exception e)
-            {
-                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, _navigationService);
             }
             finally
             {
@@ -2759,17 +2740,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             CloseWhenBackgroundIsClicked = false
                         };
 
-                        someThingWhentWrong.OnDone = () =>
+                        someThingWhentWrong.OnDone = async () =>
                         {
-
                             currentTab = EstablishmentRegistrationTabsEnum.Unknown;
                             IsLoading = false;
                             _navigationService.GoBack();
-
-
                             currentTab = EstablishmentRegistrationTabsEnum.Unknown;
-                            _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
-
+                            await _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
                         };
 
                         await MopupService.Instance.PushAsync(someThingWhentWrong);
@@ -2802,7 +2779,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             GCCIDType = EnIDType[idItem?.Type];
                         }
                     GCCIDTypeIdNumberValue = idItem?.Idnumber;
-                    SelectedDOB = taxPayerDetails?.Birthdt;   //?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                    SelectedDOB = Convert.ToDateTime(taxPayerDetails?.Birthdt).ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                     Title = taxPayerDetails?.TpTitle;
                     FirstName = taxPayerDetails?.NameFirst;
                     LastName = taxPayerDetails?.NameLast?.Replace(".", string.Empty);
@@ -2825,11 +2802,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 else if (_enum == EstablishmentRegistrationTabsEnum.PassportDetails)
                 {
                     taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailGetService("02", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid);
-                    Nreg_IdItem passportItem = taxPayerDetails?.Nreg_IdSet.Where(i => i.Type == "FS0002").FirstOrDefault();
+                    Nreg_IdItem passportItem = taxPayerDetails?.Nreg_IdSet?.Where(i => i.Type == "FS0002").FirstOrDefault();
                     PassportNumber = passportItem?.Idnumber;
-                    SelectedPassportIssueCountry = TaxpayerFullNationlityList.Where(i => i.Land1 == passportItem?.Country).FirstOrDefault();
-                    PassportIssueDate = passportItem?.ValidDateFrom;   //?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
-                    PassportExpireDate = passportItem?.ValidDateTo;   //?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                    SelectedPassportIssueCountry = TaxpayerFullNationlityList?.Where(i => i.Land1 == passportItem?.Country).FirstOrDefault();
+                    PassportIssueDate = Convert.ToDateTime(passportItem?.ValidDateFrom).ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                    PassportExpireDate = Convert.ToDateTime(passportItem?.ValidDateTo).ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                     PassportAttachmentPrepopulateCheck(taxPayerDetails);
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.Outlets)
@@ -2847,7 +2824,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             GCCIDType = EnIDType[idItem?.Type];
                         }
                     GCCIDTypeIdNumberValue = idItem?.Idnumber;
-                    SelectedDOB = taxPayerDetails?.Birthdt;//?ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                    SelectedDOB = Convert.ToDateTime(taxPayerDetails?.Birthdt).ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                     Title = taxPayerDetails?.TpTitle;
                     FirstName = taxPayerDetails?.NameFirst;
                     LastName = taxPayerDetails?.NameLast?.Replace(".", string.Empty);
@@ -2869,9 +2846,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                     await bindingOutletList();
 
-                    //As per new CR changes this call is not needed anymore.
-
-                    //  taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, null, taxPayerDetails?.Fbnumx);
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.FinancialDetail)
                 {
@@ -2906,9 +2880,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     await udpdateDates();
                 }
             }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
             catch (GAZTNetworkConnectivityIssueException)
             {
-                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
             }
             catch (InternetException)
             {
@@ -2916,6 +2894,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             catch (Exception)
             {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
             }
             finally
             {
@@ -2930,6 +2909,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 DateTime dob = DateTime.Now;
                 ObservableCollection<object> _selectedDOBDate = new ObservableCollection<object>();
+
+                if (taxPayerDetails != null && string.IsNullOrWhiteSpace(taxPayerDetails?.Caltp))
+                    taxPayerDetails.Caltp = "Gregorian";
+
                 if (taxPayerDetails?.Caltp == "Gregorian")
                 {
                     _selectedDOBDate?.Clear();
@@ -2948,47 +2931,46 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 if (_enum == EstablishmentRegistrationTabsEnum.TaxpayerDetail)
                 {
-                    DateTime.TryParseExact(SelectedDOB, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime _dob);
+
+
                     if (taxPayerDetails?.Caltp == "Gregorian")
                     {
                         SelectedDOBDate = _selectedDOBDate;
+                        var date = DateTimeHelper.DateTimeFormater(SelectedDOB);
                         if (!string.IsNullOrWhiteSpace(SelectedDOB))
-                            DisplaySelectedDOB = _dob.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                            DisplaySelectedDOB = date.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                     }
                     else
                     {
                         SelectedDOBHijiriDate = _selectedDOBDate;
                         if (!string.IsNullOrWhiteSpace(SelectedDOB))
-                            DisplaySelectedDOB = HijriDateString(Convert.ToDateTime(SelectedDOB));
+                            DisplaySelectedDOB = DateTimeHelper.ConvertToUmAlQuraHigriDate(SelectedDOB).Item2;
                     }
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.PassportDetails)
                 {
-                    DateTime.TryParseExact(PassportIssueDate, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime _issueDate);
-                    DateTime.TryParseExact(PassportExpireDate, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime _expiryDate);
                     if (taxPayerDetails?.Caltp == "Gregorian")
                     {
                         SelectedPassportIssueDate = _selectedDOBDate;
+                        var _issueDate = DateTimeHelper.DateTimeFormater(PassportIssueDate);
+
                         if (!string.IsNullOrWhiteSpace(PassportIssueDate))
                             DisplayPassportIssueDate = _issueDate.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
-                    }
-                    else
-                    {
-                        SelectedPassportIssueHijiriDate = _selectedDOBDate;
-                        if (!string.IsNullOrWhiteSpace(PassportIssueDate))
-                            DisplayPassportIssueDate = HijriDateString(Convert.ToDateTime(PassportIssueDate));
-                    }
-                    if (taxPayerDetails?.Caltp == "Gregorian")
-                    {
+
                         SelectedPassportExpireDate = _selectedDOBDate;
+                        var _expiryDate = DateTimeHelper.DateTimeFormater(PassportExpireDate);
                         if (!string.IsNullOrWhiteSpace(PassportExpireDate))
                             DisplayPassportExpireDate = _expiryDate.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                     }
                     else
                     {
+                        SelectedPassportIssueHijiriDate = _selectedDOBDate;
+                        if (!string.IsNullOrWhiteSpace(PassportIssueDate))
+                            DisplayPassportIssueDate = DateTimeHelper.ConvertToUmAlQuraHigriDate(PassportIssueDate).Item2;
+
                         SelectedPassportExpireHijiriDate = _selectedDOBDate;
                         if (!string.IsNullOrWhiteSpace(PassportExpireDate))
-                            DisplayPassportExpireDate = HijriDateString(Convert.ToDateTime(PassportExpireDate));
+                            DisplayPassportExpireDate = DateTimeHelper.ConvertToUmAlQuraHigriDate(PassportExpireDate).Item2;
                     }
                 }
             }
@@ -3002,6 +2984,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 DateTime dob = DateTime.Now;
                 ObservableCollection<object> _selectedDOBDate = new ObservableCollection<object>();
+                if (taxPayerDetails != null && string.IsNullOrWhiteSpace(taxPayerDetails?.Caltp))
+                    taxPayerDetails.Caltp = "Gregorian";
+
                 if (taxPayerDetails?.Caltp == "Gregorian")
                 {
                     _selectedDOBDate?.Clear();
@@ -3019,12 +3004,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     _selectedDOBDate.Add(arr[0]);
                 }
 
-
-                DateTime.TryParseExact(PassportIssueDate, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime _issueDate);
-                DateTime.TryParseExact(PassportExpireDate, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime _expiryDate);
                 if (taxPayerDetails?.Caltp == "Gregorian")
                 {
                     SelectedPassportIssueDate = _selectedDOBDate;
+                    var _issueDate = DateTimeHelper.DateTimeFormater(PassportIssueDate);
                     if (!string.IsNullOrWhiteSpace(PassportIssueDate))
                         DisplayPassportIssueDate = _issueDate.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                 }
@@ -3032,7 +3015,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 {
                     SelectedPassportIssueHijiriDate = _selectedDOBDate;
                     if (!string.IsNullOrWhiteSpace(PassportIssueDate))
-                        DisplayPassportIssueDate = HijriDateString(_issueDate);
+                        DisplayPassportIssueDate = DateTimeHelper.ConvertToUmAlQuraHigriDate(PassportIssueDate).Item2;
                 }
 
             }
@@ -3062,8 +3045,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 else
                 {
-                    // CommDate = string.Format("{0:0000/00/00}", Int64.Parse(financialDetail?.ACommDate));
-                    CommDate = Convert.ToDateTime(financialDetail?.ACommDate).ToString("yyyy/MM/dd");
+                    CommDate = Convert.ToDateTime(financialDetail?.ACommDate).ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                 }
 
 
@@ -3174,7 +3156,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     if (taxPayerDetails.LastFilledRetdt != null)
                     {
 
-                        LastFulfilledReturn = taxPayerDetails.LastFilledRetdt;    //?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                        LastFulfilledReturn = taxPayerDetails.LastFilledRetdt;
 
                     }
                     if (taxPayerDetails.Zyear != null)
@@ -3271,44 +3253,35 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             {
                                 SelectedPeriod = PeriodList.FirstOrDefault();
                             }
-
-
-
                         }
                         else
                         {
                             TaxDate = financialDetailPeriod.EIsldate;
                         }
                     }
-
-
-
-
                     IsLoading = false;
-
                 }
                 else
                 {
-
                     PeriodList.Clear();
                     SelectedPeriod = null;
                     TaxDate = string.Empty;
                     taxPayerDetails.FinPeriod = string.Empty;
                 }
-
                 IsLoading = false;
-
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
             }
             catch (GAZTNetworkConnectivityIssueException)
             {
                 await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
             }
-
             catch (InternetException)
             {
                 await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
-
             catch (Exception)
             {
                 await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
@@ -3404,18 +3377,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     OutlettUiList.Add(newItem);
                 }
             }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
             catch (GAZTNetworkConnectivityIssueException)
             {
                 await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
             }
-
             catch (InternetException)
             {
                 await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
-            }
-            catch (GAZTErrorException ex)
-            {
-                await UtilityManager.HandleExceptionMessage(ex.Message, false);
             }
             catch (Exception)
             {
@@ -3427,34 +3399,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
         }
 
-        private void openNewOutlet()
+        private async Task openNewOutlet()
         {
             OutletNavigationModels outletNavigationModels = new OutletNavigationModels();
             outletNavigationModels.taxPayerDetails = taxPayerDetails;
             outletNavigationModels.idItem = idItem;
-            _navigationService.NavigateTo(App.OutletDetailsPageView, outletNavigationModels);
+            await _navigationService.NavigateTo(App.OutletDetailsPageView, outletNavigationModels);
         }
 
         private async Task openEditOutletAsync(OuteltInfo_NestedListView item, int btnCode)
         {
             try
             {
-                SelectedItem = item;
-                IsLoading = true;
-                OutletNavigationModels outletNavigationModels = new OutletNavigationModels();
-                outletNavigationModels.taxPayerDetails = taxPayerDetails;
-                var OutletActNumber = (item.ActNo == null || string.IsNullOrEmpty(item?.ActNo)) ? "00000" : item.ActNo;
-
-
-                item.ContactDetails = new ObservableCollection<Nreg_ActivityItem>();
-                item.ContactDetails2 = new ObservableCollection<Nreg_ActivityItem>();
-
-                OutletDropDowns = await EstablishmentRegistrationWebServiceManager.ESTOutletDropDowns();
-                activityList = await EstablishmentRegistrationWebServiceManager.ESTOutletGetActivitySetsList();
-
-                taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx);
-                PrepareUIBranchesList(item);
-                IsLoading = false;
                 if (btnCode == 1)
                 {
                     if (SelectedItem != null)
@@ -3474,7 +3430,39 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         item.IsInnerListVisible = !item.IsInnerListVisible;
                     }
                 }
+                SelectedItem = item;
+                IsLoading = true;
+                OutletNavigationModels outletNavigationModels = new OutletNavigationModels();
+                outletNavigationModels.taxPayerDetails = taxPayerDetails;
+                var OutletActNumber = (item.ActNo == null || string.IsNullOrEmpty(item?.ActNo)) ? "00000" : item.ActNo;
 
+
+                item.ContactDetails = new ObservableCollection<Nreg_ActivityItem>();
+                item.ContactDetails2 = new ObservableCollection<Nreg_ActivityItem>();
+
+                OutletDropDowns = await EstablishmentRegistrationWebServiceManager.ESTOutletDropDowns();
+                activityList = await EstablishmentRegistrationWebServiceManager.ESTOutletGetActivitySetsList();
+
+                taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx);
+                item = await PrepareUIBranchesList(item);
+
+                if (item.ContactDetails.Count > 0)
+                {
+                    ShowCRNoData = false;
+                }
+                else
+                {
+                    ShowCRNoData = true;
+                }
+                if (item.ContactDetails2.Count > 0)
+                {
+                    ShowLicenceNoData = false;
+                }
+                else
+                {
+                    ShowLicenceNoData = true;
+                }
+                IsLoading = false;
                 if (btnCode == 2)
                 {
                     outletNavigationModels.idItem = idItem;
@@ -3491,7 +3479,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
             }
-
             catch (InternetException)
             {
                 await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
@@ -3544,7 +3531,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             return newItem;
         }
 
-        private void PrepareUIBranchesList(OuteltInfo_NestedListView outletItem)
+        private async Task<OuteltInfo_NestedListView> PrepareUIBranchesList(OuteltInfo_NestedListView outletItem)
         {
             try
             {
@@ -3602,7 +3589,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                     if (App.IsArabic)
                     {
-                        //obj.IssuedBy = obj.IssuedCountry == "SA" ? Constants.ArIssueBy["90702"] : Constants.EnIssueBy["90718"];
                         if (obj.IssuedCountry == "SA" || obj.IssuedCountry == "Saudi Arabia" || obj.IssuedCountry.Equals("السعودية"))
                         {
                             obj.IssuedBy = ZATCAConstants.ArIssueBy["90702"];
@@ -3614,7 +3600,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     }
                     else
                     {
-                        //obj.IssuedBy = obj.IssuedCountry == "SA" ? Constants.ArIssueBy["90702"] : Constants.EnIssueBy["90718"];
                         if (obj.IssuedCountry == "SA" || obj.IssuedCountry == "Saudi Arabia" || obj.IssuedCountry.Equals("السعودية"))
                         {
                             obj.IssuedBy = ZATCAConstants.EnIssueBy["90702"];
@@ -3627,7 +3612,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                     if (item.Type.ToUpper().Equals("BUP002"))
                     {
-
                         if (item.CrType.Equals("M"))
                         {
                             if (App.IsArabic)
@@ -3650,54 +3634,73 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                                 obj.CRTypeDesc = "Sub CR";
                             }
                         }
-
                         outletItem.ContactDetails.Add(obj);
-
                     }
                     else
                     {
                         outletItem.ContactDetails2.Add(obj);
-
                     }
-
-
-                }
-                if (outletItem.ContactDetails.Count > 0)
-                {
-                    ShowCRNoData = false;
-                }
-                else
-                {
-                    ShowCRNoData = true;
-                }
-                if (outletItem.ContactDetails2.Count > 0)
-                {
-                    ShowLicenceNoData = false;
-                }
-                else
-                {
-                    ShowLicenceNoData = true;
                 }
             }
-            catch (Exception ex)
+            catch (GAZTVATRegistrationInProcessException ex)
             {
-
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
             }
-
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
+            }
+            return outletItem;
         }
 
 
 
-        private void deleteOutlet(OutletItem item)
+        private async Task deleteOutlet(OutletItem item)
         {
-            IsLoading = true;
-            var delete = EstablishmentRegistrationWebServiceManager.ESTDeleteOutletItem(taxPayerDetails?.Fbnumx, item?.Actno, taxPayerDetails?.PortalUsrx).Result;
-            if (!string.IsNullOrEmpty(delete) && delete == "delete")
+            try
             {
-                bindingOutletList();
+                IsLoading = true;
+                var delete = EstablishmentRegistrationWebServiceManager.ESTDeleteOutletItem(taxPayerDetails?.Fbnumx, item?.Actno, taxPayerDetails?.PortalUsrx).Result;
+                if (!string.IsNullOrEmpty(delete) && delete == "delete")
+                {
+                    await bindingOutletList();
+                }
+                IsLoading = false;
             }
-            IsLoading = false;
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
+            }
         }
+
         private void ResidenceTypePrePopulateData(TaxPayerDetails taxPayerDetails)
         {
             if (taxPayerDetails.Tpresidence == "1")
@@ -3895,22 +3898,36 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     }
                     else
                     {
-                        DateTime.TryParseExact(SelectedDOB, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime dob);
-                        DateTime.TryParseExact(PassportIssueDate, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime issue);
-                        DateTime.TryParseExact(PassportExpireDate, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime expiry);
-                        if (DateTime.Compare(issue, dob) < 0)
+                        DateTime dob = new DateTime();
+                        DateTime issue = new DateTime();
+                        DateTime expiry = new DateTime();
+
+                        issue = DateTimeHelper.DateTimeFormater(PassportIssueDate);
+                        expiry = DateTimeHelper.DateTimeFormater(PassportExpireDate);
+
+                        if (taxPayerDetails?.Caltp == "Gregorian")
                         {
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp("passport issue date not before dob"));
+                            dob = DateTimeHelper.DateTimeFormater(SelectedDOB);
+
+                        }
+                        else
+                        {
+                            dob = DateTimeHelper.ConvertToUmAlQuraHigriDate(SelectedDOB).Item1;
+                        }
+
+                        if (DateTime.Compare(issue.Date, dob.Date) < 0)
+                        {
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PassportIssueDisclaimer));
                             return false;
                         }
-                        else if (DateTime.Compare(expiry, dob) < 0)
+                        else if (DateTime.Compare(expiry.Date, dob.Date) < 0)
                         {
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp("passport expiry date not before dob"));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PassportExpiryDisclaimer));
                             return false;
                         }
-                        else if (DateTime.Compare(expiry, issue) < 0)
+                        else if (DateTime.Compare(expiry.Date, issue.Date) < 0)
                         {
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp("passport expiry date not before passport issue"));
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PassportDisclaimer));
                             return false;
                         }
                     }
@@ -3937,12 +3954,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TPFinacialPeriodMonthValidation));
                         return false;
                     }
-                    //TODO 5250 New Reg commented.
-                    //else if(SelectedPeriod == null ) {
-
-                    //    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TPFinacialPeriodValidation));
-                    //    return false;
-                    //}
 
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.Declaration)
@@ -3980,7 +3991,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         }
 
                     }
-                    // taxPayerDetails.Tpnationality = NationalityMapping.Where(i => i.Value == SelectedRegNationalityType).FirstOrDefault().Key;
                     taxPayerDetails.Tpnationality = string.IsNullOrEmpty(taxPayerDetails.Tpnationality) ? "" : taxPayerDetails.Tpnationality;
                     taxPayerDetails.Taxtpdetermination = "1";
                     taxPayerDetails.Tpresidence = SelectedTpresidence != String.Empty ? SelectedTpresidence : taxPayerDetails.Tpresidence;
@@ -4006,8 +4016,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.TaxpayerDetail)
                 {
-                    DateTime.TryParseExact(SelectedDOB, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime dob);
-                    taxPayerDetails.Birthdt = dob.ToString("yyyy-MM-ddThh:mm:ss");
+                    DateTime dob = new DateTime();
+                    if (taxPayerDetails?.Caltp == "Gregorian")
+                    {
+                        dob = DateTimeHelper.DateTimeFormater(SelectedDOB);
+
+                    }
+                    else
+                    {
+                        dob = DateTimeHelper.ConvertToUmAlQuraHigriDate(SelectedDOB).Item1;
+                    }
+
+                    taxPayerDetails.Birthdt = dob.ToString("yyyy-MM-ddThh:mm:ss", new CultureInfo("en-US"));
                     taxPayerDetails.TpTitle = Title;
                     taxPayerDetails.NameFirst = FirstName;
                     taxPayerDetails.NameLast = string.IsNullOrEmpty(LastName) ? string.Empty : LastName;
@@ -4044,14 +4064,16 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     passportObj.Idnumber = PassportNumber;
                     passportObj.Country = SelectedPassportIssueCountry?.Land1;
 
-                    DateTime.TryParseExact(PassportIssueDate, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime issueDate);
-                    DateTime.TryParseExact(PassportExpireDate, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime expireDate);
-                    passportObj.ValidDateFrom = issueDate.ToString("yyyy-MM-ddThh:mm:ss");
-                    passportObj.ValidDateTo = expireDate.ToString("yyyy-MM-ddThh:mm:ss");
+                    var issueDate = DateTimeHelper.DateTimeFormater(PassportIssueDate);
+
+                    var expireDate = DateTimeHelper.DateTimeFormater(PassportExpireDate);
+
+                    passportObj.ValidDateFrom = issueDate.ToString("yyyy-MM-ddThh:mm:ss", new CultureInfo("en-US"));
+                    passportObj.ValidDateTo = expireDate.ToString("yyyy-MM-ddThh:mm:ss", new CultureInfo("en-US"));
                     passportObj.Type = "FS0002";
                     passportObj.Srcidentify = "00000";
                     passportObj.Gpart = App.LoginDataRetrieved.TIN;
-                    if (taxPayerDetails.Nreg_IdSet.Count > 0)
+                    if (taxPayerDetails.Nreg_IdSet?.Count > 0)
                     {
                         taxPayerDetails.Nreg_IdSet[0].Srcidentify = "00000";
                         taxPayerDetails.Nreg_IdSet[0].Gpart = App.LoginDataRetrieved.TIN;
@@ -4077,6 +4099,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     taxPayerDetails.StepNumberx = "02";
                     taxPayerDetails.Gpart = App.LoginDataRetrieved.TIN;
                     taxPayerDetails.UserTypx = "TP";
+                    if (string.IsNullOrWhiteSpace(taxPayerDetails.Birthdt))
+                    {
+                        DateTime dob = new DateTime();
+                        if (taxPayerDetails?.Caltp == "Gregorian")
+                        {
+                            dob = DateTimeHelper.DateTimeFormater(SelectedDOB);
+
+                        }
+                        else
+                        {
+                            dob = DateTimeHelper.ConvertToUmAlQuraHigriDate(SelectedDOB).Item1;
+                        }
+                        taxPayerDetails.Birthdt = dob.ToString("yyyy-MM-ddThh:mm:ss", new CultureInfo("en-US"));
+                    }
+
                     var taxPayerDetailsResult = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
 
                     IsLoading = false;
@@ -4084,14 +4121,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 else if (_enum == EstablishmentRegistrationTabsEnum.FinancialDetail)
                 {
-                    // DateTime.TryParseExact(TaxDate, string.Format("{0:0000/00/00}", Int64.Parse(financialDetail?.EIsldate)), new CultureInfo("en-US"), DateTimeStyles.None, out DateTime Fdenddt);
                     taxPayerDetails.Accmethod = EnMethodList.FirstOrDefault(i => i.Value == SelectedMethod).Key;
                     taxPayerDetails.Fdcalender = EnCalendarTypeList.FirstOrDefault(i => i.Value == CalendarType).Key;
                     taxPayerDetails.Fdmonth = FiscalMonth;
                     taxPayerDetails.Fdday = FiscalDay == AppResources.ESTFinLastDay ? "LD" : FiscalDay;
                     taxPayerDetails.Commdt = financialDetail?.ACommDate;
                     taxPayerDetails.Caltp = calType;
-                    //taxPayerDetails.Fdenddt = Fdenddt;
                     taxPayerDetails.Chkfg = "X";
                     if (SelectedPeriod != null)
                     {
@@ -4125,15 +4160,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             catch (GAZTVATRegistrationInProcessException ex)
             {
                 await UtilityManager.HandleExceptionMessage(ex.Message, false);
+                return false;
             }
-
             catch (GAZTNetworkConnectivityIssueException)
             {
                 await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+                return false;
             }
             catch (InternetException)
             {
                 await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+                return false;
             }
             catch (Exception)
             {
@@ -4304,20 +4341,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     IsSaudi = false;
                     UploadedRentDocumentsList?.Clear();
                     break;
-            }
-        }
-        private string HijriDateString(DateTime date)//01-01-0001
-        {
-            try
-            {
-                return date.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
-            }
-            catch (Exception)
-            {
-
-
-                HijriCalendar hijriCalendar = new HijriCalendar();
-                return $"{hijriCalendar.GetYear(date):0000}/{hijriCalendar.GetMonth(date):00}/{hijriCalendar.GetDayOfMonth(date):00}";
             }
         }
 

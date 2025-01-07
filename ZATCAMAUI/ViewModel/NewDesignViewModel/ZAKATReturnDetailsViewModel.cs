@@ -2387,7 +2387,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
         public string Converthijri(DateTime FormatedFaedn)
         {
-            var calendar = new HijriCalendar();
+            var calendar = new UmAlQuraCalendar();
             var day = calendar.GetDayOfMonth(FormatedFaedn);
             var year = calendar.GetYear(FormatedFaedn);
             var month = calendar.GetMonth(FormatedFaedn);

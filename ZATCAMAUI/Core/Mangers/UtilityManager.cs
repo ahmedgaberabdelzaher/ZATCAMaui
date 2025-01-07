@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Net;
 using System.Text.RegularExpressions;
 using ZATCAMAUI.Models;
+using ZATCAMAUI.Models.EstablishmentRegistration;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 
 namespace ZATCAMAUI.Core.Mangers
@@ -1179,7 +1180,7 @@ namespace ZATCAMAUI.Core.Mangers
                 DateTime tempDate = DateTime.ParseExact(hijri, allFormats, arCul.DateTimeFormat, DateTimeStyles.AllowWhiteSpaces);
 
                 var hijriParts = hijri.Split('/');
-                var hijriCalendar = new HijriCalendar();
+                var hijriCalendar = new UmAlQuraCalendar();
 
                 int hijriYear = int.Parse(hijriParts[0]);
                 int hijriMonth = int.Parse(hijriParts[1]);
@@ -1188,8 +1189,6 @@ namespace ZATCAMAUI.Core.Mangers
                 DateTime gregDate = hijriCalendar.ToDateTime(hijriYear, hijriMonth, hijriDay, 0, 0, 0, 0);
 
                 return gregDate.ToString("yyyy/MM/dd", CultureInfo.InvariantCulture);
-
-                // return tempDate.ToString("yyyy/MM/dd", enCul.DateTimeFormat);
             }
             catch (Exception)
             {
@@ -1210,16 +1209,12 @@ namespace ZATCAMAUI.Core.Mangers
                     DateTime tempDate = DateTime.ParseExact(date, allFormats, enCul.DateTimeFormat, DateTimeStyles.AllowWhiteSpaces);
 
                     // Create an instance of the HijriCalendar
-                    HijriCalendar hijriCalendar = new HijriCalendar();
+                    UmAlQuraCalendar hijriCalendar = new UmAlQuraCalendar();
                     // Get the Hijri year, month, and day
                     int hijriYear = hijriCalendar.GetYear(tempDate);
                     int hijriMonth = hijriCalendar.GetMonth(tempDate);
                     int hijriDay = hijriCalendar.GetDayOfMonth(tempDate);
-
-
-
-                    //var var2 = tempDate.ToString("yyyy/MM/dd", arSA.DateTimeFormat);
-                    var var2 = $"{hijriYear}/{hijriMonth:00}/{hijriDay:00}";
+                    var var2 =  $"{hijriYear}/{hijriMonth:00}/{hijriDay:00}";
                     return var2;
                 }
                 catch (Exception)
@@ -1640,7 +1635,6 @@ namespace ZATCAMAUI.Core.Mangers
             }
 
         }
-     
         public static string FormatDateToYYYYDDMMFromDateTypeString(DateTime? dateToConvert)
         {
             string requiredDate = string.Empty;

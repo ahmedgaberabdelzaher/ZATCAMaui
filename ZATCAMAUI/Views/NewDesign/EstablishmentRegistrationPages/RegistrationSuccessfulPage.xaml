@@ -4,7 +4,6 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     ios:Page.UseSafeArea="True"
     BackgroundImageSource="partials_background.png"
@@ -116,11 +115,11 @@
                             </Border>
                         </StackLayout>
                     </ScrollView>
-                    <buttons:SfButton
+                    <Button
                         Grid.Row="1"
-                        Background="White"
+                        BackgroundColor="White"
                         Clicked="GoToDashBoardButtonClick"
-                        Style="{StaticResource PrimaryButtonStyle}"
+                        Style="{StaticResource PrimaryMauiButtonStyle}"
                         Text="{x:Static ResourceManager:AppResources.ESTGoToDashboard}"
                         TextColor="{StaticResource Primary}" />
                 </Grid>

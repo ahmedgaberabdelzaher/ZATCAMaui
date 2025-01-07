@@ -27,8 +27,9 @@ namespace ZATCAMAUI.Core.Mangers
                 try
                 {
                     var lang = UtilityManager.GetLanguageParameter();
+               
+                    String url = ZATCAConstants.OutletDeregistrationNewRequestUrl + "?TIN=" + App.LoginDataRetrieved.TIN + "&deregister=1" + "&language=" + lang + "&approve=" + tinDeregistrationResponseModel.Approvez + "&reject=" + tinDeregistrationResponseModel.Rejectz;
 
-                    String url = ZATCAConstants.OutletDeregistrationNewRequestUrl + App.LoginDataRetrieved.TIN + "&deregister=1" + "&language=" + lang + "&approve=" + tinDeregistrationResponseModel.Approvez + "&reject=" + tinDeregistrationResponseModel.Rejectz;
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
                     string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
@@ -731,8 +732,8 @@ namespace ZATCAMAUI.Core.Mangers
                     client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
                     client.DefaultRequestHeaders.Add("Authorization", App.Token);
 
-                    String url = string.Empty;
-                    url = ZATCAConstants.OutletDeregistrationNewRequestUrl + App.LoginDataRetrieved.TIN + "&deregister=" + DeregTypeCode + "&language=" + lang;
+                    String url = string.Empty;        
+                    url = ZATCAConstants.OutletDeregistrationNewRequestUrl + "?TIN=" + App.LoginDataRetrieved.TIN + "&deregister=" + DeregTypeCode + "&language=" + lang;
 
                     var uri = new Uri(url);
                     HttpResponseMessage _tinDeregNewRequestPrevousResponse = await client.GetAsync(uri);

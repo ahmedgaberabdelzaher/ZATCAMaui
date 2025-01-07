@@ -229,9 +229,11 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 ZakatDeregResponseData.Approvez = "";
                 ZakatDeregResponseData.Rejectz = "";
 
+                IsLoading = true;
+
                 ZakatDeregResponseData = await TINDeregistrationWebServiceManager.GaztTinDeregistrationNewRequestData(ZakatDeregResponseData);
 
-                App.HideProgressView();
+                IsLoading = false;
 
                 if (ZakatDeregResponseData != null && ZakatDeregResponseData.Deregistration_ReasonSet != null)
                 {

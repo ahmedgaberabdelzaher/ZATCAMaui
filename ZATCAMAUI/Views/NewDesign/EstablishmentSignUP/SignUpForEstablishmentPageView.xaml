@@ -2033,7 +2033,7 @@
                                 </StackLayout>
                                 <!--#endregion-->
 
-
+                              
 
                             </StackLayout>
 
@@ -2085,7 +2085,7 @@
                                 </DataTrigger>
                             </buttons:SfButton.Triggers>
                         </buttons:SfButton>
-
+                        
                     </Grid>
 
                 </Grid>

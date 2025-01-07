@@ -13,6 +13,7 @@ using ZATCAMAUI.Views.NewDesign.Common;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using static ZATCAMAUI.Models.ErrorMessage;
 using ZATCAMAUI.Core.Interfaces;
+using ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages;
 using ZATCAMAUI.Core.Exceptions;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
@@ -882,8 +883,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             Type = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? "BUP002" : "ZS0004",
 
                             ValidDateFrom = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? crIssueDate.ToString("yyyy-MM-ddThh:mm:ss") : issueDate.ToString("yyyy-MM-ddThh:mm:ss"),
-
-                            ValidDateTo = maxDate.ToString("yyyy-MM-ddThh:mm:ss"),
+                            ValidDateTo = "9999-12-31T00:00:00", // As per business this date is fixed.
 
                             Idnumber = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRNumber : LicenseNumber,
 
@@ -942,7 +942,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
             finally
@@ -1020,11 +1020,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     }
                     else
                     {
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                         {
-                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZFileWithTheSameNameAlreadyExists));
-                             IsLoading = false;
-                         });
+                        IsLoading = false;
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZFileWithTheSameNameAlreadyExists));
                     }
 
                 }
@@ -1048,6 +1045,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     EnableIssueByDropDown = false;
                     CRNumber = validateCR?.Crnum;
                     CrName = validateCR?.Crname;
+
+
                     CRIssueCountry = OutletDropDowns.country_dropdownSet.Where(i => i.Land1 == "SA").FirstOrDefault();
                     if (App.IsArabic)
                     {
@@ -1190,16 +1189,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     LicenseData = NregActivityList.Where(i => i.Type == "ZS0004").ToList();
                 }
             }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
             catch (GAZTNetworkConnectivityIssueException)
             {
                 await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
             }
-
             catch (InternetException)
             {
                 await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
             finally
@@ -1293,15 +1295,12 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             catch (Exception)
             {
-
             }
         }
 
         public async Task validateCRNumber()
         {
             IsLoading = true;
-
-
             try
             {
                 var result = await EstablishmentRegistrationWebServiceManager.ESTValidateCRNum(CRNumber);
@@ -1326,7 +1325,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     IsLoading = false;
                     if (validateCR != null && validateCR.Crnum == null)
                     {
-                        PrepareError(result);
+                        await PrepareError(result);
                         return;
                     }
 
@@ -1340,19 +1339,46 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     }
 
                 }
+
+                if (validateCR != null)
+                {
+                    if (!string.IsNullOrEmpty(validateCR.Z700Crnum))
+                    {
+                        CRNumber = validateCR.Z700Crnum;
+                    }
+                }
+                IsLoading = false;
+                updateCRAttachments();
+                if (validateCR?.NotFound == "X")
+                {
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateCRNumberInValid));
+                    return;
+                }
+                if (validateCR?.Excption == "X")
+                {
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateCRNumberInValid));
+                    return;
+                }
+                CRIssueCity = new CityDropdownItem()
+                {
+                    CityName = OutletDropDowns.city_dropdownSet.Where(i => i.CityCode == validateCR?.CityCode).FirstOrDefault().CityName,
+                    CityCode = validateCR?.CityCode,
+                };
+                CRValidFrom = validateCR?.Issuedt;//?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                EnableInputFields = string.IsNullOrEmpty(validateCR?.Crname);
+                updateDatePickers(EstablishmentOutletActivitiesTabsEnum.CRDetails);
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
             }
             catch (GAZTNetworkConnectivityIssueException)
             {
                 await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
             }
-
             catch (InternetException)
             {
                 await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
-            }
-            catch (GAZTErrorException ex)
-            {
-                await UtilityManager.HandleExceptionMessage(ex.Message, false);
             }
             catch (Exception)
             {
@@ -1363,39 +1389,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 IsLoading = false;
             }
 
-
-            if (validateCR != null)
-            {
-                if (!string.IsNullOrEmpty(validateCR.Z700Crnum))
-                {
-                    CRNumber = validateCR.Z700Crnum;
-                }
-
-            }
-
-            IsLoading = false;
-            updateCRAttachments();
-            if (validateCR?.NotFound == "X")
-            {
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateCRNumberInValid));
-                return;
-            }
-            if (validateCR?.Excption == "X")
-            {
-                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateCRNumberInValid));
-                return;
-            }
-            CRIssueCity = new CityDropdownItem()
-            {
-                CityName = OutletDropDowns.city_dropdownSet.Where(i => i.CityCode == validateCR?.CityCode).FirstOrDefault().CityName,
-                CityCode = validateCR?.CityCode,
-            };
-            CRValidFrom = validateCR?.Issuedt;//?.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
-            EnableInputFields = string.IsNullOrEmpty(validateCR?.Crname);
-            updateDatePickers(EstablishmentOutletActivitiesTabsEnum.CRDetails);
         }
 
-        private void PrepareError(string result)
+        private async Task PrepareError(string result)
         {
             ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(result);
             var errorID = string.Empty;
@@ -1428,17 +1424,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                 String WithReplacedString = WebServiceManager.ErrorMessageForUnlockAccount.Replace("An exception was raised", string.Empty);
 
-                MainThread.BeginInvokeOnMainThread(async () =>
+                if (errorID.Contains("896"))
                 {
-                    if (errorID.Contains("896"))
-                    {
-                        await MopupService.Instance.PushAsync(new ErrorMessagePopup(AppResources.Error896));
-                    }
-                    else
-                    {
-                        await _dialogService.ShowMessage(WithReplacedString, AppResources.ZError);
-                    }
-                });
+                    await MopupService.Instance.PushAsync(new ErrorMessagePopup(AppResources.Error896));
+                }
+                else
+                {
+                    await _dialogService.ShowMessage(WithReplacedString, AppResources.ZError);
+                }
             }
         }
 
@@ -1556,11 +1549,14 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     LicensesCopies.Add(dd);
                 }
             }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
             catch (GAZTNetworkConnectivityIssueException)
             {
                 await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
             }
-
             catch (InternetException)
             {
                 await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
@@ -1577,48 +1573,66 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
         private async Task OnDeleteAttachment(Attachment item, string docType)
         {
-            string QuestionMark = string.Empty;
-            if (App.IsArabic)
+            try
             {
-                QuestionMark = "؟";
-            }
-            else
-            {
-                QuestionMark = "?";
-            }
-
-            var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText + " " + item.Filename + QuestionMark);
-            confirmPopup.OnSelect = async (str) =>
-            {
-                if (str == "Yes")
+                string QuestionMark = string.Empty;
+                if (App.IsArabic)
                 {
-                    IsLoading = true;
-                    var delete = EstablishmentRegistrationWebServiceManager.ESTDeleteAttachment(item?.Filename, item?.RetGuid, docType, item?.Doguid);
-                    if (!string.IsNullOrEmpty(delete) && delete == "delete")
-                    {
-                        if (docType == "RG01")
-                        {
-                            CRsCopies.Remove(item);
-                        }
-                        else if (docType == "RG12")
-                        {
-                            TransferCRsCopies.Remove(item);
-                        }
-                        else if (docType == "RG02")
-                        {
-                            LicensesCopies.Remove(item);
-                        }
-                        IsLoading = false;
-                    }
-                    else
-                    {
-                        IsLoading = false;
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-                        await _dialogService.ShowError(AppResources.ZZSomethingwentwrong, AppResources.Information, "Ok", null);
-                    }
+                    QuestionMark = "؟";
                 }
-            };
-            await MopupService.Instance.PushAsync(confirmPopup);
+                else
+                {
+                    QuestionMark = "?";
+                }
+                var confirmPopup = new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText + " " + item.Filename + QuestionMark);
+                confirmPopup.OnSelect = async (str) =>
+                {
+                    if (str == "Yes")
+                    {
+                        IsLoading = true;
+                        var delete = EstablishmentRegistrationWebServiceManager.ESTDeleteAttachment(item?.Filename, item?.RetGuid, docType, item?.Doguid);
+                        if (!string.IsNullOrEmpty(delete) && delete == "delete")
+                        {
+                            if (docType == "RG01")
+                            {
+                                CRsCopies.Remove(item);
+                            }
+                            else if (docType == "RG12")
+                            {
+                                TransferCRsCopies.Remove(item);
+                            }
+                            else if (docType == "RG02")
+                            {
+                                LicensesCopies.Remove(item);
+                            }
+                            IsLoading = false;
+                        }
+                        else
+                        {
+                            IsLoading = false;
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+                            await _dialogService.ShowError(AppResources.ZZSomethingwentwrong, AppResources.Information, "Ok", null);
+                        }
+                    }
+                };
+                await MopupService.Instance.PushAsync(confirmPopup);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, true, _navigationService);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
+            }
         }
 
         private async Task<bool> ValidateForm()
@@ -1804,7 +1818,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
 
 
-                HijriCalendar hijriCalendar = new HijriCalendar();
+                UmAlQuraCalendar hijriCalendar = new UmAlQuraCalendar();
                 return $"{hijriCalendar.GetYear(date):0000}/{hijriCalendar.GetMonth(date):00}/{hijriCalendar.GetDayOfMonth(date):00}";
             }
         }

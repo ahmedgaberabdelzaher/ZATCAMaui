@@ -233,6 +233,7 @@
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding CRNumber}"
                                     TextColor="{StaticResource NeutralBlack}"
+                                    Unfocused="CREntry_Unfocused"
                                     VerticalOptions="Center"
                                     VerticalTextAlignment="Center" />
                             </custom:CustomSfTextInputView.TextInputView>
@@ -470,6 +471,7 @@
                                 <DataTemplate>
                                     <Border
                                         Padding="10"
+                                        FlowDirection="{Binding Source={x:Reference ESTActivityItemPage}, Path=FlowDirection}"
                                         Stroke="{StaticResource NeutralGreay}"
                                         StrokeShape="RoundRectangle 10,10,10,10"
                                         StrokeThickness="1">
@@ -553,6 +555,7 @@
                                 <DataTemplate>
                                     <Border
                                         Padding="10"
+                                        FlowDirection="{Binding Source={x:Reference ESTActivityItemPage}, Path=FlowDirection}"
                                         Stroke="{StaticResource NeutralGreay}"
                                         StrokeShape="RoundRectangle 10,10,10,10"
                                         StrokeThickness="1">
@@ -778,7 +781,8 @@
                                 <cards:SfCardView
                                     BackgroundColor="Transparent"
                                     BorderColor="{StaticResource NeutralGreay}"
-                                    BorderWidth="0.7">
+                                    BorderWidth="0.7"
+                                    FlowDirection="{Binding Source={x:Reference ESTActivityItemPage}, Path=FlowDirection}">
                                     <Grid
                                         Padding="12"
                                         ColumnSpacing="10"
@@ -1249,20 +1253,18 @@
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
                                     <Border
+                                        Margin="10,0"
                                         Padding="10"
+                                        FlowDirection="{Binding Source={x:Reference ESTActivityItemPage}, Path=FlowDirection}"
                                         Stroke="{StaticResource NeutralGreay}"
                                         StrokeShape="RoundRectangle 10,10,10,10"
                                         StrokeThickness="1">
                                         <Grid
-                                            ColumnSpacing="0"
+                                            ColumnDefinitions="auto,*,auto"
+                                            ColumnSpacing="10"
                                             HorizontalOptions="Fill"
                                             RowSpacing="0"
                                             VerticalOptions="Center">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="auto" />
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="auto" />
-                                            </Grid.ColumnDefinitions>
                                             <Image
                                                 Grid.Column="0"
                                                 HorizontalOptions="Center"
@@ -1270,7 +1272,6 @@
                                                 VerticalOptions="Center" />
                                             <Label
                                                 Grid.Column="1"
-                                                Margin="10,0,0,0"
                                                 HorizontalOptions="StartAndExpand"
                                                 HorizontalTextAlignment="Start"
                                                 Style="{StaticResource BodyLabelGrey}"
@@ -1491,9 +1492,9 @@
                 Margin="0,20,0,20"
                 Padding="20,15"
                 BackgroundColor="White">
-                <buttons:SfButton
+                <Button
                     Command="{Binding OnNextButtonClick}"
-                    Style="{StaticResource PrimaryButtonStyle}"
+                    Style="{StaticResource PrimaryMauiButtonStyle}"
                     Text="{x:Static ResourceManager:AppResources.ZZNext}" />
             </Grid>
 

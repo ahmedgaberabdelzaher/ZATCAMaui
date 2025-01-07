@@ -2806,7 +2806,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
             //TodayDateinHijri
             List<object> todaycollectionHijri = new List<object>();
-            var calendar = new HijriCalendar();
+            var calendar = new UmAlQuraCalendar();
             if (calendar.GetDayOfMonth(DateTime.Now.Date) < 10)
                 todaycollectionHijri.Add("0" + calendar.GetDayOfMonth(DateTime.Now.Date).ToString());
             else
