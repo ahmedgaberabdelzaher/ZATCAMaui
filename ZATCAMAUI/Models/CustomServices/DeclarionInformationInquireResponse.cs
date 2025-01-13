@@ -55,6 +55,7 @@ namespace ZATCAMAUI.Models.CustomServices
         public string seizureStartDate { get; set; }
         public string seizureMainResone { get; set; }
         public string seizureSubResone { get; set; }
+        public string seizureNote { get; set; }
     }
     public class DeclarionSeizeDetailsList
     {

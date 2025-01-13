@@ -222,6 +222,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 OnPropertyChanged();
             }
         }
+        string reservationNote { get; set; }
+
+        public string ReservationNote
+        {
+            get { return reservationNote; }
+
+            set
+            {
+                reservationNote = value;
+                OnPropertyChanged();
+            }
+        }
 
         bool showDetails { get; set; }
 
@@ -941,6 +953,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                             ReservationNumber = item.data.importerSeizures[0].seizureNumber;
                             ReservationReason = item.data.importerSeizures[0].seizureMainResone;
                             ReservationEntity = item.data.importerSeizures[0].seizureSubResone;
+                            ReservationNote = item.data.importerSeizures[0].seizureNote;
                             ShowDetails = true;
                         }
                         else

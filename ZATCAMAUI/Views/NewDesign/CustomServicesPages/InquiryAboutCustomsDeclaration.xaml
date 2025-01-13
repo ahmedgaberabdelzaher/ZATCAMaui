@@ -661,7 +661,7 @@
                                 StrokeShape="RoundRectangle 8,8,8,8">
 
                                 <Grid RowSpacing="10"
-                                      RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto">
+                                      RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto">
 
                                     <Grid Padding="8,0" ColumnDefinitions="1.25*,*">
 
@@ -770,6 +770,13 @@
                                            IsVisible="{Binding ShowDetails}"
                                            Text="{Binding ReservationEntity}"
                                            Grid.Row="9"/>
+
+                                     <Label Style="{StaticResource BodyLabelBlack}"
+                                           IsVisible="{Binding ShowDetails}"
+                                           Text="{Binding ReservationNote}"
+                                           Grid.Row="10"/>
+
+
 
                                 </Grid>
 
