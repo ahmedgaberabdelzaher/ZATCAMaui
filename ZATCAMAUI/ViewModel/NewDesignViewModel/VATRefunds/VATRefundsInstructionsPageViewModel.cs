@@ -127,7 +127,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
 
             catch (GAZTErrorException ex)
             {
-                await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
             }
             catch (GAZTNetworkConnectivityIssueException)
             {

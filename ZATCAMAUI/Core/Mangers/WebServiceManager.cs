@@ -4093,9 +4093,6 @@ namespace ZATCAMAUI.Core.Mangers
         {
             if (NetworkCheck.IsInternet())
             {
-                IDTypeValidateRootObject SignupIsIDTypeValid = new IDTypeValidateRootObject();
-                string IsIDTypeValidList = string.Empty;
-                string NewToken = string.Empty;
                 try
                 {
                     string lang = WebServiceManager.GetLangZParameterAREN();
@@ -4110,42 +4107,17 @@ namespace ZATCAMAUI.Core.Mangers
                     client.DefaultRequestHeaders.Add("X-Session-Language", lang);
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
-                    client.DefaultRequestHeaders.Add("Authorization", App.Token);
                     var serilized = JsonConvert.SerializeObject(TpInfo);
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
                     HttpResponseMessage SignupIsIDTypeValidList = await client.PostAsync(url, contentPost);
-                    if (SignupIsIDTypeValidList != null)
+                    var response = await SignupIsIDTypeValidList.Content.ReadAsStringAsync();
+                    ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(response);
+                    if (statusHeader?.header?.status?.code == "E999999")
                     {
-                        if (SignupIsIDTypeValidList.StatusCode == HttpStatusCode.Unauthorized)
-                        {
-                            App.IsSessionExpired = true;
-                            return null;
-                        }
-                        HttpHeaders headers = SignupIsIDTypeValidList.Headers;
-                        IEnumerable<string> values;
-                        if (headers.TryGetValues("token", out values))
-                        {
-                            NewToken = values.First();
-                        }
-                        if ((!string.IsNullOrEmpty(NewToken)))
-                        {
-                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
-                            {
-                                App.IsSessionExpired = true;
-                                return null;
-                            }
-                            App.Token = NewToken;
-                        }
-                        IsIDTypeValidList = await SignupIsIDTypeValidList.Content.ReadAsStringAsync();
-                        ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(IsIDTypeValidList);
-                        if (statusHeader?.header?.status?.code == "E999999")
-                        {
-                            throw new GAZTNetworkConnectivityIssueException();
-                        }
+                        throw new GAZTNetworkConnectivityIssueException();
                     }
-                    return IsIDTypeValidList;
+                    return response;
                 }
-
                 catch (HttpRequestException)
                 {
                     throw new GAZTNetworkConnectivityIssueException();

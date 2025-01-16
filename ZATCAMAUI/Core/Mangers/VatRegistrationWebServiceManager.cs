@@ -336,7 +336,7 @@ namespace ZATCAMAUI.Core.Mangers
                         if (statusHeader?.header?.status?.code != "E999999")
                         {
                             vATRegistrationDetails = JsonConvert.DeserializeObject<VATRegistrationDetails>(VatRegistrationData);
-                            if (vATRegistrationDetails.d == null)
+                            if ((statusHeader?.header?.moreInformation?.errorDetails != null || statusHeader?.header?.moreInformation?.errorDetails.Count > 0))
                             {
                                 string errorMessage = WebServiceManager.PrepareErrorMessageByJson(VatRegistrationData);
                                 throw new GAZTVATRegistrationInProcessException(errorMessage);

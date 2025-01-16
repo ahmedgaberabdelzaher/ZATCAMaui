@@ -997,95 +997,64 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                 if (!string.IsNullOrEmpty(viewModel.TxtIDNumber))
                 {
                     try
-
                     {
-                        string Result = await WebServiceManager.GAZTValidateIDTypesZAKATDelecration("ZS0001", viewModel.TxtIDNumber, DBO, viewModel.OtpMDl);
-                        IDTypeModelRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeModelRootObject>(Result);
-                        if (SignupIsIDTypeValid.d == null)
+                        string resultNID = await WebServiceManager.GAZTValidateIDTypesZAKATDelecration("ZS0001", viewModel.TxtIDNumber, DBO, viewModel.OtpMDl);
+                        ErrorObj statusHeaderNID = JsonConvert.DeserializeObject<ErrorObj>(resultNID);
+                        if (statusHeaderNID?.header?.status?.code != "E999999")
                         {
-                            IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
-                            if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
+                            var SignupIsIDTypeValidNID = JsonConvert.DeserializeObject<IDTypeModelRootObject>(resultNID);
+                            if (!string.IsNullOrEmpty(resultNID) && SignupIsIDTypeValidNID.d == null)
                             {
                                 viewModel.IsAllValidDataEntered = false;
                                 FrmIDNumber.HasError = true;
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                string errorMessage = WebServiceManager.PrepareErrorMessageByJson(resultNID);
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(errorMessage));
                             }
                             else
                             {
-                                viewModel.IsAllValidDataEntered = false;
+                                viewModel.TxtName = SignupIsIDTypeValidNID.d.Name1 + " " + SignupIsIDTypeValidNID.d.FatherName + " " + SignupIsIDTypeValidNID.d.FamilyName;
+                                viewModel.Title = SignupIsIDTypeValidNID.d.taxpayerTitle;
+                                viewModel.IsAllValidDataEntered = true;
                                 FrmIDNumber.HasError = false;
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
-                            }
-                        }
-                        else
-                        {
-                            viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.FatherName + " " + SignupIsIDTypeValid.d.FamilyName;
-                            viewModel.Title = SignupIsIDTypeValid.d.taxpayerTitle;
-                            viewModel.IsAllValidDataEntered = true;
-                            FrmIDNumber.HasError = false;
-
-
-                            if (viewModel.IsTIN)
-                            {
-                                if (string.IsNullOrEmpty(SignupIsIDTypeValid.d.Tin))
+                                if (viewModel.IsTIN)
                                 {
-                                    viewModel.TxtTIN = string.Empty;
-                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDYoushouldsignupasnewuser));
-                                }
-                                else
-                                {
-                                    if (string.IsNullOrEmpty(viewModel.TxtTIN))
+                                    if (string.IsNullOrEmpty(SignupIsIDTypeValidNID.d.Tin))
                                     {
-                                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseentertheTINNumber));
+                                        viewModel.TxtTIN = string.Empty;
+                                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDYoushouldsignupasnewuser));
+                                    }
+                                    else
+                                    {
+                                        if (string.IsNullOrEmpty(viewModel.TxtTIN))
+                                        {
+                                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseentertheTINNumber));
+                                        }
                                     }
                                 }
-
-
                             }
                         }
                     }
-                    catch
+                    catch (GAZTVATRegistrationInProcessException ex)
                     {
-                        try
-                        {
-                            string Result = await WebServiceManager.GAZTValidateIDTypesZAKATDelecration("ZS0001", viewModel.TxtIDNumber, DBO, viewModel.OtpMDl);
-                            IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
-                            if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
-                            {
-                                viewModel.IsAllValidDataEntered = false;
-                                FrmIDNumber.HasError = true;
-                                //   viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
-                            }
-                            else
-                            {
-                                viewModel.IsAllValidDataEntered = false;
-                                FrmIDNumber.HasError = true;
-                                //  viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
-                            }
-                        }
-                        catch (GAZTVATRegistrationInProcessException ex)
-                        {
-                            await UtilityManager.HandleExceptionMessage(ex.Message, false);
-                        }
-                        catch (GAZTNetworkConnectivityIssueException)
-                        {
-                            await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, viewModel._navigationService);
-                        }
-                        catch (InternetException)
-                        {
-                            await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, true, viewModel._navigationService);
-                        }
-                        catch (Exception)
-                        {
-                            await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
-                        }
-                        finally
-                        {
-                            viewModel.IsLoading = false;
-                        }
+                        await UtilityManager.HandleExceptionMessage(ex.Message, false);
                     }
+                    catch (GAZTNetworkConnectivityIssueException)
+                    {
+                        await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, viewModel._navigationService);
+                    }
+                    catch (InternetException)
+                    {
+                        await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, true, viewModel._navigationService);
+                    }
+                    catch (Exception)
+                    {
+                        await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+                    }
+                    finally
+                    {
+                        viewModel.IsLoading = false;
+                    }
+
                 }
             }
             if (viewModel.SelectedSignUpUsing.ID == 2)
@@ -1095,97 +1064,70 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                 {
                     try
                     {
-                        string Result = await WebServiceManager.GAZTValidateIDTypesZAKATDelecration("ZS0002", viewModel.TxtIDNumber, DBO, viewModel.OtpMDl);
-                        IDTypeModelRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeModelRootObject>(Result);
-                        if (SignupIsIDTypeValid.d == null)
+                        string resultIqama = await WebServiceManager.GAZTValidateIDTypesZAKATDelecration("ZS0002", viewModel.TxtIDNumber, DBO, viewModel.OtpMDl);
+                        ErrorObj statusHeaderIqama = JsonConvert.DeserializeObject<ErrorObj>(resultIqama);
+                        if (statusHeaderIqama?.header?.status?.code != "E999999")
                         {
-                            IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
-                            if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
+                            var SignupIsIDTypeValidIqama = JsonConvert.DeserializeObject<IDTypeModelRootObject>(resultIqama);
+                            if (!string.IsNullOrEmpty(resultIqama) && SignupIsIDTypeValidIqama.d == null)
                             {
                                 viewModel.IsAllValidDataEntered = false;
                                 FrmIDNumber.HasError = true;
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                string errorMessage = WebServiceManager.PrepareErrorMessageByJson(resultIqama);
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(errorMessage));
                             }
                             else
                             {
-                                viewModel.IsAllValidDataEntered = false;
-                                FrmIDNumber.HasError = true;
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
-                            }
-                        }
-                        else
-                        {
-                            viewModel.IsAllValidDataEntered = true;
-                            viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.FatherName + " " + SignupIsIDTypeValid.d.FamilyName;
-                            FrmIDNumber.HasError = false;
-                            if (SignupIsIDTypeValid.d.IqamaType.Length > 0)
-                            {
-                                viewModel.IqamaTypeDesc = SignupIsIDTypeValid.d.IqamaDesc;
-                                viewModel.ShowIqamaTypeDesc = true;
-                            }
-                            else
-                            {
-                                viewModel.IqamaTypeDesc = "";
-                                viewModel.ShowIqamaTypeDesc = false;
-                            }
-                            if (viewModel.IsTIN)
-                            {
-                                if (string.IsNullOrEmpty(SignupIsIDTypeValid.d.Tin))
+                                viewModel.IsAllValidDataEntered = true;
+                                viewModel.TxtName = SignupIsIDTypeValidIqama.d.Name1 + " " + SignupIsIDTypeValidIqama.d.FatherName + " " + SignupIsIDTypeValidIqama.d.FamilyName;
+                                FrmIDNumber.HasError = false;
+                                if (SignupIsIDTypeValidIqama.d.IqamaType.Length > 0)
                                 {
-                                    viewModel.TxtTIN = string.Empty;
-                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDYoushouldsignupasnewuser));
+                                    viewModel.IqamaTypeDesc = SignupIsIDTypeValidIqama.d.IqamaDesc;
+                                    viewModel.ShowIqamaTypeDesc = true;
                                 }
                                 else
                                 {
-                                    if (string.IsNullOrEmpty(viewModel.TxtTIN))
+                                    viewModel.IqamaTypeDesc = "";
+                                    viewModel.ShowIqamaTypeDesc = false;
+                                }
+                                if (viewModel.IsTIN)
+                                {
+                                    if (string.IsNullOrEmpty(SignupIsIDTypeValidIqama.d.Tin))
                                     {
-                                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseentertheTINNumber));
+                                        viewModel.TxtTIN = string.Empty;
+                                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDYoushouldsignupasnewuser));
+                                    }
+                                    else
+                                    {
+                                        if (string.IsNullOrEmpty(viewModel.TxtTIN))
+                                        {
+                                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseentertheTINNumber));
+                                        }
                                     }
                                 }
-
-
                             }
                         }
                     }
-                    catch
+                    catch (GAZTVATRegistrationInProcessException ex)
                     {
-                        try
-                        {
-                            string Result = await WebServiceManager.GAZTValidateIDTypesZAKATDelecration("ZS0002", viewModel.TxtIDNumber, DBO, viewModel.OtpMDl);
-                            IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
-                            if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
-                            {
-                                viewModel.IsAllValidDataEntered = false;
-                                FrmIDNumber.HasError = true;
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
-                            }
-                            else
-                            {
-                                viewModel.IsAllValidDataEntered = false;
-                                FrmIDNumber.HasError = false;
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
-                            }
-                        }
-                        catch (GAZTVATRegistrationInProcessException ex)
-                        {
-                            await UtilityManager.HandleExceptionMessage(ex.Message, false);
-                        }
-                        catch (GAZTNetworkConnectivityIssueException)
-                        {
-                            await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, viewModel._navigationService);
-                        }
-                        catch (InternetException)
-                        {
-                            await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, true, viewModel._navigationService);
-                        }
-                        catch (Exception)
-                        {
-                            await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
-                        }
-                        finally
-                        {
-                            viewModel.IsLoading = false;
-                        }
+                        await UtilityManager.HandleExceptionMessage(ex.Message, false);
+                    }
+                    catch (GAZTNetworkConnectivityIssueException)
+                    {
+                        await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, viewModel._navigationService);
+                    }
+                    catch (InternetException)
+                    {
+                        await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, true, viewModel._navigationService);
+                    }
+                    catch (Exception)
+                    {
+                        await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+                    }
+                    finally
+                    {
+                        viewModel.IsLoading = false;
                     }
                 }
             }
@@ -1196,85 +1138,56 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                 {
                     try
                     {
-                        string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0003", viewModel.TxtIDNumber, DBO);
-                        IDTypeModelRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeModelRootObject>(Result);
-                        if (SignupIsIDTypeValid.d == null)
+                        string resultGCC = await WebServiceManager.GAZTValidateIDTypes("ZS0003", viewModel.TxtIDNumber, DBO);
+                        ErrorObj statusHeaderGCC = JsonConvert.DeserializeObject<ErrorObj>(resultGCC);
+                        if (statusHeaderGCC?.header?.status?.code != "E999999")
                         {
-                            IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
-                            if (SignupIsIDTypeValidError.error.message.value == "An exception was raised.")
+                            var SignupIsIDTypeValidGCC = JsonConvert.DeserializeObject<IDTypeModelRootObject>(resultGCC);
+                            if (!string.IsNullOrEmpty(resultGCC) && SignupIsIDTypeValidGCC.d == null)
                             {
                                 viewModel.IsAllValidDataEntered = false;
                                 FrmIDNumber.HasError = true;
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
+                                string errorMessage = WebServiceManager.PrepareErrorMessageByJson(resultGCC);
+                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(errorMessage));
                             }
                             else
                             {
-                                viewModel.IsAllValidDataEntered = false;
-                                FrmIDNumber.HasError = true;
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.error.innererror.errordetails[0].message));
-                            }
-                        }
-                        else
-                        {
-                            viewModel.IsAllValidDataEntered = true;
-                            viewModel.TxtName = SignupIsIDTypeValid.d.Name1 + " " + SignupIsIDTypeValid.d.FatherName + " " + SignupIsIDTypeValid.d.FamilyName;
-                            FrmIDNumber.HasError = false;
-                            if (viewModel.IsTIN)
-                            {
-                                if (string.IsNullOrEmpty(SignupIsIDTypeValid.d.Tin))
+                                viewModel.IsAllValidDataEntered = true;
+                                viewModel.TxtName = SignupIsIDTypeValidGCC.d.Name1 + " " + SignupIsIDTypeValidGCC.d.FatherName + " " + SignupIsIDTypeValidGCC.d.FamilyName;
+                                FrmIDNumber.HasError = false;
+                                if (viewModel.IsTIN)
                                 {
-                                    viewModel.TxtTIN = string.Empty;
-                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDYoushouldsignupasnewuser));
-                                }
-                                else
-                                {
-                                    if (string.IsNullOrEmpty(viewModel.TxtTIN))
+                                    if (string.IsNullOrEmpty(SignupIsIDTypeValidGCC.d.Tin))
                                     {
-                                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseentertheTINNumber));
+                                        viewModel.TxtTIN = string.Empty;
+                                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDYoushouldsignupasnewuser));
+                                    }
+                                    else
+                                    {
+                                        if (string.IsNullOrEmpty(viewModel.TxtTIN))
+                                        {
+                                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseentertheTINNumber));
+                                        }
                                     }
                                 }
-
-
                             }
                         }
                     }
-                    catch
+                    catch (GAZTNetworkConnectivityIssueException)
                     {
-                        try
-                        {
-                            string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0003", viewModel.TxtIDNumber, DBO);
-                            IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
-                            if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
-                            {
-                                viewModel.IsAllValidDataEntered = false;
-                                FrmIDNumber.HasError = true;
-                                // viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
-                            }
-                            else
-                            {
-                                viewModel.IsAllValidDataEntered = false;
-                                FrmIDNumber.HasError = false;
-                                // viewModel._dialogService.ShowMessage(SignupIsIDTypeValid.error.innererror.errordetails[0].message, AppResources.Information);
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
-                            }
-                        }
-                        catch (GAZTNetworkConnectivityIssueException)
-                        {
-                            await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, viewModel._navigationService);
-                        }
-                        catch (InternetException)
-                        {
-                            await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, true, viewModel._navigationService);
-                        }
-                        catch (Exception)
-                        {
-                            await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
-                        }
-                        finally
-                        {
-                            viewModel.IsLoading = false;
-                        }
+                        await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, viewModel._navigationService);
+                    }
+                    catch (InternetException)
+                    {
+                        await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, true, viewModel._navigationService);
+                    }
+                    catch (Exception)
+                    {
+                        await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+                    }
+                    finally
+                    {
+                        viewModel.IsLoading = false;
                     }
                 }
             }

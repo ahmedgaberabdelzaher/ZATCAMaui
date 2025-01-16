@@ -8,7 +8,7 @@
     that is mostly human readable. The generation and parsing of the 
     various data types are done through the TypeConverter classes 
     associated with the data types.
-    
+     
     Example:
     
     ... ado.net/XML headers & schema ...
@@ -7767,10 +7767,10 @@ I acknowledge to clarify in the original bank guarantee the TIN of the company a
         <value>Request Details</value>
     </data>
 	<data name="NDAccounting" xml:space="preserve">
-        <value>Accounting</value>
+        <value>Accounting Method</value>
     </data>
-	<data name="NDEstimated" xml:space="preserve">
-        <value>Estimated</value>
+    <data name="NDEstimated" xml:space="preserve">
+        <value>Estimated Method</value>
     </data>
 	<data name="ZZExplore" xml:space="preserve">
         <value>Explore</value>

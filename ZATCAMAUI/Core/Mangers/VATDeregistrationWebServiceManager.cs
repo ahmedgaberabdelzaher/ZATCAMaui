@@ -666,12 +666,10 @@ namespace ZATCAMAUI.Core.Mangers
                         ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(VatRefundsListResultModelSetResponseJson);
                         if (statusHeader?.header?.status?.code != "E999999")
                         {
-                            if (VatRefundsResponse.StatusCode == HttpStatusCode.BadRequest)
+                            if (!string.IsNullOrEmpty(VatRefundsListResultModelSetResponseJson))
                             {
                                 string errorMessage = WebServiceManager.PrepareErrorMessageByJson(VatRefundsListResultModelSetResponseJson);
-
                                 throw new GAZTErrorException(errorMessage);
-
                             }
 
                             else if (!string.IsNullOrEmpty(VatRefundsListResultModelSetResponseJson))
