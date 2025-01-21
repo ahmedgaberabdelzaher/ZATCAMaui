@@ -1,5 +1,6 @@
 using System;
 using System.Windows.Input;
+using AppDynamics.Agent;
 using Mopups.Services;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Interfaces;
@@ -68,13 +69,17 @@ public class NafathChangeMobileNumberOptionsViewModel : BaseViewModel
             if (IndividualEnabled)
             {
                 await MopupService.Instance.PopAsync();
-              await  _navigationService.NavigateTo(App.NafathLoginView, ZATCAConstants.NAFATH_CHANGE_MOBILE_NUMBER);
+                var callTracker = Instrumentation.BeginCall("NafathChangeMobileNumberOptionsViewModel", "ChangeMobileNumberClicked-Establishment", "EST Change Mobile Number");
+                await  _navigationService.NavigateTo(App.NafathLoginView, ZATCAConstants.NAFATH_CHANGE_MOBILE_NUMBER);
+                callTracker.ReportCallEnded();
             }
             else if (CompanyEnabled)
             {
                 Dictionary<string, string> d = new Dictionary<string, string>();
                 await MopupService.Instance.PopAsync();
-               await _navigationService.NavigateTo(App.ChangeMobileRequestPageView, d);
+                var callTracker = Instrumentation.BeginCall("NafathChangeMobileNumberOptionsViewModel", "ChangeMobileNumberClicked-Company", "Company Change Mobile Number");
+                await _navigationService.NavigateTo(App.ChangeMobileRequestPageView, d);
+                callTracker.ReportCallEnded();
             }
             IndividualEnabled = false;
             CompanyEnabled = false;

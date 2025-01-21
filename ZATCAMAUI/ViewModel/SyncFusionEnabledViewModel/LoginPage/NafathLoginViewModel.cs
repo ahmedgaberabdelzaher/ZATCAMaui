@@ -1,6 +1,7 @@
 using System;
 using System.Windows.Input;
 using ZATCAMAUI.Core.Exceptions;
+using AppDynamics.Agent;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
@@ -103,8 +104,9 @@ public class NafathLoginViewModel : BaseViewModel
                         //setting location Data
                         result.result.lattitude = LocationData.lattitude;
                         result.result.longitude = LocationData.longitude;
+                        var callTracker = Instrumentation.BeginCall("NafathLoginViewModel", "Nafath-LoginClicked", "Nafath-LoginClicked");
                         await _navigationService.NavigateTo(App.NafathAuthenticationView, result);
-
+                        callTracker.ReportCallEnded();
                         var _navigation = Application.Current.MainPage.Navigation;
 
                         foreach (var item in _navigation.NavigationStack)
