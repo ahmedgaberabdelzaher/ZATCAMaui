@@ -9010,13 +9010,13 @@ info@zatca.gov.sa</value>
     <value>معلومات المستورد</value>
 </data>
 	<data name="NoInternet" xml:space="preserve">
-    <value>لا يوجد اتصال بالانترنت</value>
+    <value>لا يوجد اتصال بالإنترنت، يرجى التحقق من إعدادات الشبكة الخاصة بك</value>
 </data>
 	<data name="ServerError" xml:space="preserve">
-    <value>خطا بالسيرفر حاول مره اخري</value>
+    <value>الخدمة غير متوفرة حالياً، يرجى المحاولة مرة أخرى</value>
 </data>
 	<data name="ServerErrorOrNoInternetConnection" xml:space="preserve">
-    <value>حدث خطا حاول مره اخري</value>
+    <value>الخدمة غير متوفرة حالياً، يرجى المحاولة مرة أخرى</value>
 </data>
 	<data name="Valueinforeigncurrency" xml:space="preserve">
     <value>القيمة بالعملة الأجنبية</value>
