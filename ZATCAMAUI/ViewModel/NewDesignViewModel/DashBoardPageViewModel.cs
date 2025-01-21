@@ -4197,7 +4197,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
                 return new Command(async () =>
                 {
                     var callTracker = Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "Inbox_Tapped", "Inbox eService");
-
                     await _navigationService.NavigateTo(App.TaxpayerCorrespondancePageView);
                     Instrumentation.EndCall(callTracker);
                 });
@@ -4222,7 +4221,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
             {
                 return new Command(async () =>
                 {
+                    var callTracker = Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "LogoutCommand-tapped", "Logout");
                     await MopupService.Instance.PushAsync(new LogoutPageView(AppResources.LogoutConfirmationMessage));
+                    Instrumentation.EndCall(callTracker);
                 });
             }
         }
@@ -4248,7 +4249,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.DashBoardPageViewModel
             {
                 return new Command(async () =>
                 {
+                    var callTracker = Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "ProfitOnGoodsCommand", "ProfitOnGoods");
                     await _navigationService.NavigateTo(App.NewYesorNoPageView);
+                    Instrumentation.EndCall(callTracker);
                 });
             }
         }

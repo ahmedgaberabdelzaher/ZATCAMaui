@@ -561,14 +561,13 @@ Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MzUyMzAyMUAzMjM3
                     }
                 });
 
-                //InitializeAppDynamics();
+                InitializeAppDynamics();
             }
             catch (Exception)
             {
 
             }
         }
-
         public static void CreateClientHandler()
         {
             httpClientHandler = new HttpClientHandler();
@@ -850,14 +849,12 @@ Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MzUyMzAyMUAzMjM3
 
         public static void InitializeAppDynamics()
         {
-            var config = AgentConfiguration.Create("EUM-AAB-AUM");
+            //Prod
+            var config = AgentConfiguration.Create("EUM-AAB-BFR");
             config.LoggingLevel = LoggingLevel.Debug;
-
-            //Instrumentation.enableAggregateExceptionReporting = true;
-
             config.EnableAggregateExceptionReporting = true;
-            config.CollectorURL = "https://eum.gazt.gov.sa";
-            Instrumentation.InitWithConfiguration(config);
+            config.CollectorURL = "https://eum.zatca.gov.sa";
+            AppDynamics.Agent.Instrumentation.InitWithConfiguration(config);
         }
 
         public static void DisplayProgressView()

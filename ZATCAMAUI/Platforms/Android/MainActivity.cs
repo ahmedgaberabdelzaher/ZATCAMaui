@@ -31,8 +31,6 @@ public class MainActivity : MauiAppCompatActivity
     {
         try
         {
-
-
             PreventLinkerFromStrippingCommonLocalizationReferences();
             CrossMediaManager.Current.Init(this);
             UserDialogs.Init(this);
@@ -75,14 +73,13 @@ public class MainActivity : MauiAppCompatActivity
                 ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.ReadExternalStorage, Manifest.Permission.WriteExternalStorage }, 0);
             }
 
-            var config = AgentConfiguration.Create("EUM-AAB-AUM");
+            //Prod
+            var config = AgentConfiguration.Create("EUM-AAB-BFR");
             config.LoggingLevel = LoggingLevel.Debug;
-
-            //Instrumentation.enableAggregateExceptionReporting = true;
-
             config.EnableAggregateExceptionReporting = true;
-            config.CollectorURL = "https://eum.gazt.gov.sa";
-            Instrumentation.InitWithConfiguration(config);
+            config.CollectorURL = "https://eum.zatca.gov.sa";
+            AppDynamics.Agent.Instrumentation.InitWithConfiguration(config);
+
 
             PackageInfo info = PackageManager.GetPackageInfo(this.PackageName, 0);
             App.AppVersion = info.VersionName;

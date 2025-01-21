@@ -143,13 +143,16 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
         }
         private async Task WebLoginClicked()
         {
-
+            var callTracker = Instrumentation.BeginCall("SFLoginPageView", "WebLoginClicked", "I AM Loging Clicked");
             await _navigationService.NavigateTo(App.NafathLoginView, ZATCAConstants.NAFATH_LOGIN);
+            callTracker.ReportCallEnded();
         }
 
         private async Task ChangeMobileClicked()
         {
+            var callTracker = Instrumentation.BeginCall("SFLoginPageView", "ChangeMobileClicked", "Change Mobile Number");
             await MopupService.Instance.PushAsync(new NafathChangeMobleNumberOptionsView());
+            callTracker.ReportCallEnded();
         }
 
         #endregion
@@ -628,8 +631,9 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
         /// <param name="obj">The Object</param>
         private async Task SignUpClicked()
         {
+            var callTracker = Instrumentation.BeginCall("SFLoginPageView", "SignUpClicked", "Registration");
             await _navigationService.NavigateTo(App.EstablishmentSignUPPageView);
-            // Do something
+            callTracker.ReportCallEnded();
         }
         /// <summary>
         /// Invoked when the Forgot Password button is clicked.
@@ -637,7 +641,9 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
         /// <param name="obj">The Object</param>
         private async Task ForgotPasswordClicked()
         {
+            var callTracker = Instrumentation.BeginCall("SFLoginPageView", "ForgotPasswordClicked", "Forgot Password");
             await _navigationService.NavigateTo(App.GAZTNewDesignForgotPasswordPageView);
+            callTracker.ReportCallEnded();
         }
         private static byte[] ConvertRSAParametersField(BigInteger n, int size)
         {
@@ -668,7 +674,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
         private async Task LoginButtonClicked()
         {
             IsLoading = true;
-            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFLoginPageView", "LoginButtonClicked", "Anonymous Menu Opened");
+            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFLoginPageView", "LoginButtonClicked", "User Login Tried");
             try
             {
                 Asn1Object obj = Asn1Object.FromByteArray(Convert.FromBase64String(ZATCAConstants.publicKeyStr));

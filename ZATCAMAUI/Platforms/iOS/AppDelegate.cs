@@ -84,14 +84,12 @@ public class AppDelegate : MauiUIApplicationDelegate
             (sender, cert, chain, sslPolicyErrors) => true;
             App.AppVersion = NSBundle.MainBundle.InfoDictionary["CFBundleShortVersionString"].ToString();
 
-            //var config = AgentConfiguration.Create("EUM-AAB-AUM");
-            //config.LoggingLevel = LoggingLevel.Debug;
-
-            //// Instrumentation.enableAggregateExceptionReporting = true;
-            //config.CollectorURL = "https://eum.gazt.gov.sa:443";
-            //Instrumentation.InitWithConfiguration(config);
-
-            //App.InitializeAppDynamics();
+            //Prod
+            var config = AgentConfiguration.Create("EUM-AAB-BFR");
+            config.LoggingLevel = LoggingLevel.Debug;
+            config.EnableAggregateExceptionReporting = true;
+            config.CollectorURL = "https://eum.zatca.gov.sa";
+            AppDynamics.Agent.Instrumentation.InitWithConfiguration(config);
 
         }
         catch (Exception)

@@ -10,15 +10,7 @@ public class Program
     {
         // if you want to use a different Application Delegate class from "AppDelegate"
         // you can specify it here.
-        try
-        {
-            //rohith-login
-            UIApplication.Main(args, typeof(CustomApplication), typeof(AppDelegate));
-        }
-        catch (Exception ex)
-        {
-            LogUnhandledException(ex);
-        }
+        UIApplication.Main(args, typeof(CustomApplication), typeof(AppDelegate));
     }
 
     internal static void LogUnhandledException(Exception exception)

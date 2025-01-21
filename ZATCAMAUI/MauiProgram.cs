@@ -19,6 +19,7 @@ using IDeviceInfoZATCA = ZATCAMAUI.Core.Interfaces.IDeviceInfoZATCA;
 using Microsoft.Maui.Controls.Compatibility.Hosting;
 using Maui.GoogleMaps.Hosting;
 using ZXing.Net.Maui.Controls;
+using AppDynamics.Agent.Maui;
 
 namespace ZATCAMAUI;
 
@@ -31,6 +32,7 @@ public static class MauiProgram
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseAppDynamics()
                 .UseBarcodeReader()
                 .ConfigureMopups()
                 .UseMauiCommunityToolkit()
