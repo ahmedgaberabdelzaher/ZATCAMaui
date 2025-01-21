@@ -3950,8 +3950,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 createVatSignUPRequest.email = Email;
                 if (IsGulfER)
                 {
-                    createVatSignUPRequest.birthDate = $"{dt.Year}-{dt.Month}-{dt.Day}" + "T00:00:00";
-                    //createVatSignUPRequest.birthDate = dt.ToString("yyyy-MM-dd") + "T00:00:00";
+                    createVatSignUPRequest.birthDate = string.Format("{0}-{1:D2}-{2:D2}T00:00:00", dt.Year, dt.Month, dt.Day);
                 }
                 else
                 {
@@ -4016,19 +4015,9 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 response.data = response.Result;
                 if (response.data == null)
                 {
-                    ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(res);
-
-                    string Message = string.Empty;
-                    if (errorMesg != null && errorMesg.header != null && errorMesg.header.moreInformation != null && errorMesg.header.moreInformation.errorDetails != null && errorMesg.header.moreInformation.errorDetails[0].message != null)
-                    {
-                        WebServiceManager.ErrorMessageForVAT = errorMesg.header.moreInformation.errorDetails[0].message;
-                        WebServiceManager.ErrorMessageForVAT += errorMesg.header.moreInformation.errorDetails[1].message;
-                        Message = WebServiceManager.ErrorMessageForVAT.Replace("An exception was raised", string.Empty);
-                    }
+                    string errorMessage = WebServiceManager.PrepareErrorMessageByJson(res);
                     OTP = string.Empty;
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
-
-
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(errorMessage));
                 }
                 else
                 {
