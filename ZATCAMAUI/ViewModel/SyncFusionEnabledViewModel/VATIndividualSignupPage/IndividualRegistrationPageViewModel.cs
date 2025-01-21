@@ -3879,7 +3879,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
                 var Bdt1 = string.Empty;
                 string date1 = DOB;
-                DateTime dt = Convert.ToDateTime(date1);
+                DateTime dt = DateTime.Parse(date1,new CultureInfo("en"));
 
                 JsonSerializerSettings microsoftDateFormatSettings = new JsonSerializerSettings
                 {
@@ -3950,8 +3950,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 createVatSignUPRequest.email = Email;
                 if (IsGulfER)
                 {
-                    createVatSignUPRequest.birthDate = date1 + "T00:00:00";
-                    createVatSignUPRequest.birthDate = dt.ToString("yyyy-MM-dd") + "T00:00:00";
+                    createVatSignUPRequest.birthDate = $"{dt.Year}-{dt.Month}-{dt.Day}" + "T00:00:00";
+                    //createVatSignUPRequest.birthDate = dt.ToString("yyyy-MM-dd") + "T00:00:00";
                 }
                 else
                 {
@@ -4011,8 +4011,6 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     vATSignUpSubmit.AIqamaDesc = "";
                     vATSignUpSubmit.AIqamaFg = "";
                 }
-
-                //  VATSignUpSubmit response = await WebServiceManager.GAZTCreateVATSignUp(vATSignUpSubmit);
                 var res = await TaxEvasionWebServiceManager.VatSignUP(createVatSignUPRequest);
                 var response = JsonConvert.DeserializeObject<CreateVatSignUPResponse>(res);
                 response.data = response.Result;
