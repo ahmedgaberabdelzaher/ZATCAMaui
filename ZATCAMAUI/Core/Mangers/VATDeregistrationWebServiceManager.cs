@@ -666,43 +666,30 @@ namespace ZATCAMAUI.Core.Mangers
                         ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(VatRefundsListResultModelSetResponseJson);
                         if (statusHeader?.header?.status?.code != "E999999")
                         {
-                            if (!string.IsNullOrEmpty(VatRefundsListResultModelSetResponseJson))
+                            if (statusHeader?.header?.status?.code == "I000000")
                             {
-                                string errorMessage = WebServiceManager.PrepareErrorMessageByJson(VatRefundsListResultModelSetResponseJson);
-                                throw new GAZTErrorException(errorMessage);
-                            }
-
-                            else if (!string.IsNullOrEmpty(VatRefundsListResultModelSetResponseJson))
-                            {
-                                try
-                                {
-                                    VatRefundsListResultModelSetResponseJson = JObject.Parse(VatRefundsListResultModelSetResponseJson)["data"].ToString();
-
-                                    VatRefundDisplayDataModel = JsonConvert.DeserializeObject<VatRefundDisplayDataModel>(VatRefundsListResultModelSetResponseJson);
-
-                                }
-                                catch (Exception)
-                                {
-                                    string error = WebServiceManager.PrepareErrorMessageByJson(VatRefundsListResultModelSetResponseJson);
-                                    throw new GAZTErrorException(error);
-                                }
-                                if (VatRefundDisplayDataModel == null)
-                                {
-                                    throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
-                                }
-
+                                VatRefundsListResultModelSetResponseJson = JObject.Parse(VatRefundsListResultModelSetResponseJson)["data"].ToString();
+                                VatRefundDisplayDataModel = JsonConvert.DeserializeObject<VatRefundDisplayDataModel>(VatRefundsListResultModelSetResponseJson);
                             }
                             else
                             {
-                                throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
+                                ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(VatRefundsListResultModelSetResponseJson);
+                                if (errorMesg?.header?.moreInformation?.errorDetails != null)
+                                {
+                                    string errorMessage = WebServiceManager.PrepareErrorMessageByJson(VatRefundsListResultModelSetResponseJson);
+                                    throw new GAZTErrorException(errorMessage);
+                                }
+                                else
+                                {
+                                    string errorMessage = errorMesg?.header?.status?.description;
+                                    throw new GAZTErrorException(errorMessage);
+                                }
                             }
                         }
                         else
                         {
                             throw new GAZTNetworkConnectivityIssueException();
                         }
-
-
                     }
                     return VatRefundDisplayDataModel;
                 }

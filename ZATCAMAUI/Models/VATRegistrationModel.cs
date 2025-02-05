@@ -252,7 +252,7 @@ namespace ZATCAMAUI.Models
         [JsonProperty("questionOptionsDescription")]
         public string QoptTxt { get; set; }
         [DataMember]
-        [JsonProperty("questionOptionsAnswer")]
+        [JsonProperty("questionOptionsAnswers")]
         public string QoptAns { get; set; }
     }
 
@@ -491,7 +491,7 @@ namespace ZATCAMAUI.Models
         [JsonProperty("source")]
         public string Source { get; set; }
         [DataMember]
-        [JsonProperty("instructionAgree")]
+        [JsonProperty("agree")]
         public string AgrFg { get; set; }
         [DataMember]
         [JsonProperty("declarationName")]

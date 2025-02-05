@@ -8418,8 +8418,6 @@ namespace ZATCAMAUI.Core.Mangers
                             App.IsSessionExpired = true;
                             return null;
                         }
-
-
                         if (UpdatePWDResponse.Headers != null)
                         {
                             HttpHeaders headers = UpdatePWDResponse.Headers;
@@ -8435,10 +8433,35 @@ namespace ZATCAMAUI.Core.Mangers
                                 App.Token = NewToken;
                             }
                             BillResponse = await UpdatePWDResponse.Content.ReadAsStringAsync();
-                            BillResponse = JObject.Parse(BillResponse)["data"].ToString();
-                            if (string.IsNullOrEmpty(BillResponse) != true)
+                            ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(BillResponse);
+                            if (statusHeader?.header?.status?.code != "E999999")
                             {
-                                myBills = JsonConvert.DeserializeObject<ObservableCollection<MyBills>>(BillResponse);
+                                if (statusHeader?.header?.status?.code == "I000000")
+                                {
+                                    BillResponse = JObject.Parse(BillResponse)["data"].ToString();
+                                    if (string.IsNullOrEmpty(BillResponse) != true)
+                                    {
+                                        myBills = JsonConvert.DeserializeObject<ObservableCollection<MyBills>>(BillResponse);
+                                    }
+                                }
+                                else
+                                {
+                                    ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(BillResponse);
+                                    if (errorMesg?.header?.moreInformation?.errorDetails != null)
+                                    {
+                                        string errorMessage = WebServiceManager.PrepareErrorMessageByJson(BillResponse);
+                                        throw new GAZTVATRegistrationInProcessException(errorMessage);
+                                    }
+                                    else
+                                    {
+                                        string errorMessage = errorMesg?.header?.status?.description;
+                                        throw new GAZTVATRegistrationInProcessException(errorMessage);
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                throw new GAZTNetworkConnectivityIssueException();
                             }
                             return myBills;
                         }
@@ -8457,22 +8480,9 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     throw new GAZTNetworkConnectivityIssueException();
                 }
-
                 catch (Exception)
                 {
-                    if (!string.IsNullOrEmpty(BillResponse))
-                    {
-                        ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(BillResponse);
-                        if (errorMesg?.header?.moreInformation?.errorDetails != null ||
-               errorMesg?.header?.moreInformation?.errorDetails.Count > 0)
-                        {
-                            string errorMessage = WebServiceManager.PrepareErrorMessageByJson(BillResponse);
-                            throw new GAZTVATRegistrationInProcessException(errorMessage);
-                        }
-                    }
-                    else
-                        throw new GAZTNetworkConnectivityIssueException();
-
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
                 return myBills;
             }

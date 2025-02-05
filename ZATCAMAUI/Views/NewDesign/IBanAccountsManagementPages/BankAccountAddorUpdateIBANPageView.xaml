@@ -185,7 +185,7 @@
                                 <StackLayout Spacing="0">
 
                                     <!--  IdNumberTitle Label  -->
-                                    <Label Style="{StaticResource ValueLabelBlack}">
+                                    <Label Style="{StaticResource ValueLabelBlack}" HorizontalOptions="StartAndExpand">
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Style="{StaticResource ValueLabelBlack}" Text="{Binding IdNumberTitle}" />
@@ -195,19 +195,14 @@
                                     </Label>
 
                                     <!--  IdNumberTitle Entry  -->
-                                    <custom:CustomSfTextInputView>
+                                    <custom:CustomSfTextInputView IsVisible="{Binding IdNumberdropdown}">
                                         <custom:CustomSfTextInputView.TextInputView>
                                             <custom:GAZTBorderlessEntry
-                                                x:Name="EntryIDNumber"
                                                 IsEnabled="{Binding isNameEnabled}"
                                                 Placeholder="{Binding IdNumberTitle}"
                                                 Style="{StaticResource DefaultEntry}"
                                                 Text="{Binding SelectedIDNumber}"
-                                                TextColor="{StaticResource NeutralBlack}"
-                                                Unfocused="EntryIDNumber_Unfocused">
-
-                                              
-
+                                                TextColor="{StaticResource NeutralBlack}">
                                             </custom:GAZTBorderlessEntry>
 
                                         </custom:CustomSfTextInputView.TextInputView>
@@ -221,7 +216,23 @@
                                         </inputLayout:SfTextInputLayout.GestureRecognizers>
 
                                     </custom:CustomSfTextInputView>
+                                    <custom:CustomSfTextInputView IsVisible="{Binding IdNumberView}">
+                                        <custom:CustomSfTextInputView.TextInputView>
 
+                                            <custom:GAZTBorderlessEntry
+                                                x:Name="EntryIDNumber"
+                                                Keyboard="Numeric"
+                                                IsEnabled="{Binding isNameEnabled}"
+                                                Placeholder="{Binding IdNumberTitle}"
+                                                Style="{StaticResource DefaultEntry}"
+                                                Text="{Binding SelectedIDNumber}"
+                                                TextColor="{StaticResource NeutralBlack}"
+                                                Unfocused="EntryIDNumber_Unfocused">
+                                            </custom:GAZTBorderlessEntry>
+
+                                        </custom:CustomSfTextInputView.TextInputView>
+
+                                    </custom:CustomSfTextInputView>
                                     <!--<StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding ShowIDNumberPicker}" />
                                     </StackLayout.GestureRecognizers>-->

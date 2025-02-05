@@ -156,21 +156,7 @@ namespace ZATCAMAUI.Views.NewDesign.IBanAccountsManagementPages
                             _viewModel.IBANBankListViewDataTwo.Clear();
                         }
                         _viewModel.SelectedIDType = arg.SelectedValue;
-                        if (_viewModel.IBANAccountData.d.AutoPopFg == true)
-                        {
-                            if (!App.IsArabic)
-                            {
-                                _viewModel.IdNumberTitle = String.Format(AppResources.IBANIdNumberDynamic, _viewModel.SelectedIDType);
-                            }
-                            else
-                            {
-                                _viewModel.IdNumberTitle = _viewModel.SelectedIDType;
-                            }
-                        }
-                        else
-                        {
-                            _viewModel.IdNumberTitle = AppResources.IBANIdNumber;
-                        }
+                        _viewModel.IdNumberTitle = String.Format(AppResources.IBANIdNumberDynamic, _viewModel.SelectedIDType);
                         filteredList = _viewModel.IBANAccountData.d.IdTypeListSet.Where(x => x.IdDesc.Equals(_viewModel.SelectedIDType)).ToList();
                         _viewModel.FetchBankAccDetails();
 
@@ -186,8 +172,6 @@ namespace ZATCAMAUI.Views.NewDesign.IBanAccountsManagementPages
                                 EntryIDNumber.MaxLength = 15;
                             }
                         }
-
-
                     }
                     else if (arg.PickerId == "IBANIdNumberPicker")
                     {

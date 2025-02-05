@@ -3440,7 +3440,7 @@ public class VATAmendReactivationPageViewModel : BaseViewModel
         }
         catch (GAZTVATRegistrationInProcessException ex)
         {
-            await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            await UtilityManager.showErrorMessaagePopupAsync(ex.Message, _navigationService);
         }
         catch (GAZTNetworkConnectivityIssueException)
         {

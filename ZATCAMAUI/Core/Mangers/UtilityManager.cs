@@ -1635,6 +1635,19 @@ namespace ZATCAMAUI.Core.Mangers
             }
 
         }
+        public static async Task showErrorMessaagePopupAsync(string ErrorMsg, Interfaces.INavigationService _navigationService)
+        {
+            var ErrorPopup = new AttachmentInformationPopUp(ErrorMsg)
+            {
+                CloseWhenBackgroundIsClicked = false
+            };
+            ErrorPopup.OnDone = () =>
+            {
+                _navigationService.GoBack();
+            };
+            await MopupService.Instance.PushAsync(ErrorPopup);
+        }
+
         public static string FormatDateToYYYYDDMMFromDateTypeString(DateTime? dateToConvert)
         {
             string requiredDate = string.Empty;

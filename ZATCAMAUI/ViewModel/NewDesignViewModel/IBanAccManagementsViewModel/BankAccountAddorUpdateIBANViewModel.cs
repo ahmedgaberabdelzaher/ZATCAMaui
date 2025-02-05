@@ -527,7 +527,32 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 OnPropertyChanged("IdNumberTitle");
             }
         }
+        private bool _idNumberdropdown = false;
 
+        public bool IdNumberdropdown
+        {
+            get { return _idNumberdropdown; }
+            set
+            {
+                if (_idNumberdropdown == value) return;
+
+                _idNumberdropdown = value;
+                OnPropertyChanged("IdNumberdropdown");
+            }
+        }
+        private bool _idNumberView = false;
+
+        public bool IdNumberView
+        {
+            get { return _idNumberView; }
+            set
+            {
+                if (_idNumberView == value) return;
+
+                _idNumberView = value;
+                OnPropertyChanged("IdNumberView");
+            }
+        }
         private Color _isBorderColorRed = Colors.LightGray;
 
         public Color IsBorderColorRed
@@ -1044,6 +1069,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                     if (IBANAccountData.d.AutoPopFg == true)
                     {
                         AccountOwnerName = IBANAccountData.d.Name;
+                        IdNumberdropdown = true;
+                        IdNumberView = false;
                         isNameEnabled = false;
                         IsDropdownVisibile = true;
                         IsIdInfoVisibility = false;
@@ -1051,6 +1078,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                     }
                     else
                     {
+                        IdNumberdropdown = false;
+                        IdNumberView = true;
                         isNameEnabled = true;
                         IsDropdownVisibile = false;
                         AttachmentVisible = true;

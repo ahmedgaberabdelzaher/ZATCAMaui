@@ -50,46 +50,40 @@
                             <StackLayout Grid.Row="2" />
                         </StackLayout>
                         <StackLayout Padding="15,0,15,15">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto" />
-                                    <RowDefinition Height="auto" />
-                                    <RowDefinition Height="auto" />
-                                </Grid.RowDefinitions>
-                                <Label
-                                    Grid.Row="0"
-                                    Padding="0,0,0,0"
+
+                            <Label 
                                     FontFamily="{StaticResource SomarBold}"
                                     Text="{x:Static ResourceManager:AppResources.VATRAttachmentCategory}" />
 
-                                <custom:CustomSfTextInputView x:Name="FrmIDType" Grid.Row="1">
-
-                                    <custom:CustomSfTextInputView.TextInputView>
-                                        <custom:GAZTBorderlessEntry
+                            <custom:CustomSfTextInputView x:Name="btn1" >
+                                <custom:CustomSfTextInputView.TextInputView>
+                                    <custom:GAZTBorderlessEntry
+                                            InputTransparent="True"
+                                            IsReadOnly="True"
+                                            Placeholder="{x:Static ResourceManager:AppResources.VATRAttachmentCategory}"
+                                            Style="{StaticResource DefaultEntry}"
                                             FontSize="Small"
                                             HorizontalOptions="FillAndExpand"
                                             IsSpellCheckEnabled="False"
                                             Text="{Binding AttachmentTypeTxt}"
-                                            TextColor="{StaticResource PrimaryColor}" />
-                                    </custom:CustomSfTextInputView.TextInputView>
+                                            TextColor="{StaticResource PrimaryColor}">
 
-                                    <inputLayout:SfTextInputLayout.TrailingView>
+                                        <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="btn1_Clicked" />
+                                        </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                    </custom:GAZTBorderlessEntry>
+                                </custom:CustomSfTextInputView.TextInputView>
+                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="btn1_Clicked" />
+                                </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                <inputLayout:SfTextInputLayout.TrailingView>
 
-                                        <Image Aspect="AspectFit" Source="greyDropDown" />
-                                    </inputLayout:SfTextInputLayout.TrailingView>
-                                </custom:CustomSfTextInputView>
+                                    <Image Aspect="AspectFit" Source="greyDropDown" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
+                            </custom:CustomSfTextInputView>
 
-                                <buttons:SfButton
-                                    x:Name="btn1"
-                                    Grid.Row="1"
-                                    Margin="0,0,0,0"
-                                    Background="Transparent"
-                                    Clicked="btn1_Clicked"
-                                    FontSize="Small" />
-
-                                <custom:CustomSfPicker
+                            <custom:CustomSfPicker 
                                     x:Name="AttachmentTypePicker"
-                                    Grid.Row="1"
                                     Margin="0,0,0,0"
                                     Background="White"
                                     FlowDirection="RightToLeft"
@@ -97,106 +91,110 @@
                                     Mode="Dialog"
                                     SelectionChanged="DDlIDTypee_OkButtonClicked">
 
-                                    <syncfusion:SfPicker.TextStyle>
-                                        <syncfusion:PickerTextStyle FontSize="13" />
-                                    </syncfusion:SfPicker.TextStyle>
+                                <syncfusion:SfPicker.TextStyle>
+                                    <syncfusion:PickerTextStyle FontSize="13" />
+                                </syncfusion:SfPicker.TextStyle>
 
-                                    <syncfusion:SfPicker.Columns>
-                                        <syncfusion:PickerColumn
+                                <syncfusion:SfPicker.Columns>
+                                    <syncfusion:PickerColumn
                                             Width="270"
                                             DisplayMemberPath="Txt50"
                                             ItemsSource="{Binding ResultsItemForDOCSet}"
                                             SelectedIndex="{Binding SelectedAttachmentType}" />
-                                    </syncfusion:SfPicker.Columns>
+                                </syncfusion:SfPicker.Columns>
 
 
-                                    <syncfusion:SfPicker.SelectedTextStyle>
-                                        <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
-                                    </syncfusion:SfPicker.SelectedTextStyle>
+                                <syncfusion:SfPicker.SelectedTextStyle>
+                                    <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
+                                </syncfusion:SfPicker.SelectedTextStyle>
 
 
-                                    <syncfusion:SfPicker.SelectionView>
-                                        <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
-                                    </syncfusion:SfPicker.SelectionView>
+                                <syncfusion:SfPicker.SelectionView>
+                                    <syncfusion:PickerSelectionView Background="{StaticResource Secondary}" />
+                                </syncfusion:SfPicker.SelectionView>
 
-                                    <syncfusion:SfPicker.HeaderView>
+                                <syncfusion:SfPicker.HeaderView>
 
-                                        <syncfusion:PickerHeaderView
+                                    <syncfusion:PickerHeaderView
                                             Height="40"
                                             Background="{StaticResource Primary}"
                                             Text="{x:Static ResourceManager:AppResources.VATRAttachmentCategory}">
-                                            <syncfusion:PickerHeaderView.TextStyle>
-                                                <syncfusion:PickerTextStyle TextColor="White" />
-                                            </syncfusion:PickerHeaderView.TextStyle>
-                                        </syncfusion:PickerHeaderView>
+                                        <syncfusion:PickerHeaderView.TextStyle>
+                                            <syncfusion:PickerTextStyle TextColor="White" />
+                                        </syncfusion:PickerHeaderView.TextStyle>
+                                    </syncfusion:PickerHeaderView>
 
-                                    </syncfusion:SfPicker.HeaderView>
+                                </syncfusion:SfPicker.HeaderView>
 
-                                    <syncfusion:SfPicker.FooterView>
+                                <syncfusion:SfPicker.FooterView>
 
-                                        <syncfusion:PickerFooterView Height="46" Background="#EAF7CC">
+                                    <syncfusion:PickerFooterView Height="46" Background="#EAF7CC">
 
-                                            <syncfusion:PickerFooterView.TextStyle>
-                                                <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
-                                            </syncfusion:PickerFooterView.TextStyle>
+                                        <syncfusion:PickerFooterView.TextStyle>
+                                            <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
+                                        </syncfusion:PickerFooterView.TextStyle>
 
-                                        </syncfusion:PickerFooterView>
+                                    </syncfusion:PickerFooterView>
 
-                                    </syncfusion:SfPicker.FooterView>
+                                </syncfusion:SfPicker.FooterView>
 
 
-                                </custom:CustomSfPicker>
-                                <!--  OkButtonClicked="DDlIDType_OkButtonClicked"  CancelButtonClicked="DDlIDType_CancelButtonClicked"  -->
-                                <StackLayout Grid.Row="2" IsVisible="{Binding IsAttachmentVisibile}">
-                                    <Label
-                                        Grid.Row="2"
+                            </custom:CustomSfPicker>
+                            <!--  OkButtonClicked="DDlIDType_OkButtonClicked"  CancelButtonClicked="DDlIDType_CancelButtonClicked"  -->
+                            <StackLayout  IsVisible="{Binding IsAttachmentVisibile}">
+                                <Label
+                                        
                                         FontFamily="{StaticResource SomarBold}"
                                         Text="{x:Static ResourceManager:AppResources.Attachment}" />
 
-                                    <custom:CustomSfTextInputView x:Name="FrmAttachmentOptional" Grid.Row="3">
+                                <custom:CustomSfTextInputView x:Name="FrmAttachmentOptional" Grid.Row="3">
 
-                                        <custom:CustomSfTextInputView.TextInputView>
-                                            <custom:GAZTBorderlessEntry
+                                    <custom:CustomSfTextInputView.TextInputView>
+                                        <custom:GAZTBorderlessEntry
                                                 x:Name="EntryExploreAttachment"
                                                 FontFamily="{StaticResource SomarBold}"
                                                 FontSize="Small"
                                                 InputTransparent="True"
                                                 IsEnabled="False"
                                                 IsReadOnly="True"
-                                                Placeholder="{x:Static ResourceManager:AppResources.ZZExplore}">
+                                                Placeholder="{x:Static ResourceManager:AppResources.ZZExplore}"
+                                                Style="{StaticResource DefaultEntry}"
+                                                HorizontalOptions="FillAndExpand"
+                                                IsSpellCheckEnabled="False"
+                                                TextColor="{StaticResource PrimaryColor}">
 
-                                                <custom:GAZTBorderlessEntry.GestureRecognizers>
-                                                    <TapGestureRecognizer Command="{Binding OnAttachmentClick}" />
-                                                </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                            <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding OnAttachmentClick}" />
+                                            </custom:GAZTBorderlessEntry.GestureRecognizers>
 
-                                            </custom:GAZTBorderlessEntry>
-                                        </custom:CustomSfTextInputView.TextInputView>
+                                        </custom:GAZTBorderlessEntry>
+                                    </custom:CustomSfTextInputView.TextInputView>
 
-                                        <inputLayout:SfTextInputLayout.TrailingView>
+                                    <inputLayout:SfTextInputLayout.TrailingView>
 
-                                            <Image HorizontalOptions="EndAndExpand" Rotation="270">
-                                                <Image.Source>
-                                                    <FontImageSource
+                                        <Image HorizontalOptions="EndAndExpand" Rotation="270">
+                                            <Image.Source>
+                                                <FontImageSource
                                                         FontFamily="UserIconFont"
                                                         Glyph="{x:Static FontImage:IconFonts.Attachment}"
                                                         Size="25"
                                                         Color="{StaticResource SecondaryNew}" />
-                                                </Image.Source>
-                                            </Image>
-                                        </inputLayout:SfTextInputLayout.TrailingView>
+                                            </Image.Source>
+                                        </Image>
+                                    </inputLayout:SfTextInputLayout.TrailingView>
 
-                                        <custom:CustomSfTextInputView.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding OnAttachmentClick}" />
-                                        </custom:CustomSfTextInputView.GestureRecognizers>
-                                    </custom:CustomSfTextInputView>
-
-                                    <StackLayout.GestureRecognizers>
+                                    <custom:CustomSfTextInputView.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding OnAttachmentClick}" />
-                                    </StackLayout.GestureRecognizers>
+                                    </custom:CustomSfTextInputView.GestureRecognizers>
+                                </custom:CustomSfTextInputView>
 
-                                </StackLayout>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OnAttachmentClick}" />
+                                </StackLayout.GestureRecognizers>
 
-                            </Grid>
+                            </StackLayout>
+
+
                         </StackLayout>
                         <ListView
                             x:Name="List"

@@ -11602,4 +11602,7 @@ info@zatca.gov.sa</value>
 	<data name="OTPStatus" xml:space="preserve">
      <value>يوجد طلب مسبقاٌ، برجاء الأنتظار</value>
   </data>
+    <data name="VATRegistrationstartdatevalidation" xml:space="preserve">
+    <value>تاريخ غير صالح. تحقق من الحد الأدنى من النطاق</value>
+  </data>
 </root> 

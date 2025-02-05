@@ -12,6 +12,7 @@ using ZATCAMAUI.Views.NewDesign.Common;
 using ZATCAMAUI.Core.Exceptions;
 using Slider = Microsoft.Maui.Controls.Slider;
 using ZATCAMAUI.Core.CustomControls;
+using static ZATCAMAUI.Models.ErrorMessage;
 
 namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 {
@@ -72,8 +73,8 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             try
             {
-                string month = DpEStartDate.SelectedDate.Month.ToString();
-                string day = DpEStartDate.SelectedDate.Day.ToString();
+                string month = DpEStartDate.SelectedDate.Month.ToString("D2");
+                string day = DpEStartDate.SelectedDate.Day.ToString("D2");
                 string year = DpEStartDate.SelectedDate.Year.ToString();
 
                 await viewModel.getVatEligibleDate(year + "-" + month + "-" + day);
@@ -2444,77 +2445,57 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         public async Task ValidateTinNumber(string TinNumber)
         {
+            viewModel.IsLoading = true;
             try
             {
-                viewModel.IsLoading = true;
-
-                string Result = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateTinNumberStringResp(TinNumber);
-                VATSignUp vATSignUpData = new VATSignUp();
-                vATSignUpData = JsonConvert.DeserializeObject<VATSignUp>(Result);
-                if (vATSignUpData.d == null)
+                string ValidateTinResult = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateTinNumberStringResp(TinNumber);
+                ErrorObj statusHeaderNID = JsonConvert.DeserializeObject<ErrorObj>(ValidateTinResult);
+                if (statusHeaderNID?.header?.status?.code != "E999999")
                 {
-                    IDTypeValidateRootObject SignupIsIDTypeValidError = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
-                    if (SignupIsIDTypeValidError.header.moreInformation.errorDetails[0].message == "An exception was raised.")
+                    var vATSignUpData = JsonConvert.DeserializeObject<VATSignUp>(ValidateTinResult);
+                    if (!string.IsNullOrEmpty(ValidateTinResult) && vATSignUpData.d == null)
                     {
                         FrmTINNumber.HasError = true;
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.header.moreInformation.errorDetails[0].message));
                         EntryTINNumber.Text = string.Empty;
+                        string errorMessage = WebServiceManager.PrepareErrorMessageByJson(ValidateTinResult);
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(errorMessage));
                     }
                     else
                     {
+                        viewModel.SelectedIdTypeFR = viewModel.IdTypeListFR.Where(obj => obj.ID == vATSignUpData.d.Idtype).FirstOrDefault();
+                        viewModel.DOB = vATSignUpData.d.birthDate10;
+                        viewModel.FirstnmFR = vATSignUpData.d.name1;
+                        viewModel.LastnmFR = vATSignUpData.d.name2;
+                        viewModel.MobNumberFR = vATSignUpData.d.mobile;
+                        viewModel.IdnumberFR = vATSignUpData.d.Idnum;
+                        viewModel.SmtpAddrFR = vATSignUpData.d.email;
                         FrmTINNumber.HasError = false;
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValidError.header.moreInformation.errorDetails[0].message));
-                        EntryTINNumber.Text = string.Empty;
                     }
                 }
                 else
                 {
-                    viewModel.SelectedIdTypeFR = viewModel.IdTypeListFR.Where(obj => obj.ID == vATSignUpData.d.Idtype).FirstOrDefault();
-                    viewModel.DOB = vATSignUpData.d.birthDate10;
-                    viewModel.FirstnmFR = vATSignUpData.d.name1;
-                    viewModel.LastnmFR = vATSignUpData.d.name2;
-                    viewModel.MobNumberFR = vATSignUpData.d.mobile;
-                    viewModel.IdnumberFR = vATSignUpData.d.Idnum;
-                    viewModel.SmtpAddrFR = vATSignUpData.d.email;
-                    FrmTINNumber.HasError = false;
+                    throw new GAZTNetworkConnectivityIssueException();
                 }
+
             }
-            catch
+            catch (GAZTNetworkConnectivityIssueException)
             {
-                try
-                {
-                    string Result = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateTinNumberStringResp(TinNumber);
-                    IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
-                    if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
-                    {
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
-                        EntryTINNumber.Text = string.Empty;
-                    }
-                    else
-                    {
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(SignupIsIDTypeValid.error.innererror.errordetails[0].message));
-                        EntryTINNumber.Text = string.Empty;
-
-                    }
-                }
-                catch (GAZTNetworkConnectivityIssueException)
-                {
-                    await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, viewModel._navigationService);
-                }
-
-                catch (InternetException)
-                {
-                    await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, true, viewModel._navigationService);
-                }
-                catch (Exception)
-                {
-                    await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, viewModel._navigationService);
-                }
-                finally
-                {
-                    viewModel.IsLoading = false;
-                }
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, viewModel._navigationService);
             }
+
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, true, viewModel._navigationService);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, true, viewModel._navigationService);
+            }
+            finally
+            {
+                viewModel.IsLoading = false;
+            }
+            viewModel.IsLoading = false;
         }
 
 

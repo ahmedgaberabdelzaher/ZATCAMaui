@@ -195,54 +195,62 @@ public partial class ZakatExemptionPageView : ContentPage
 
     private void InitializationPopups()
     {
-        MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelected", (sender, arg) =>
+        try
         {
-            // viewModel.PickerModelExcemptionYear = arg;
+            MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelected", (sender, arg) =>
+            {
+                // viewModel.PickerModelExcemptionYear = arg;
 
-            var selectedType = string.Empty;
-            string SelectedIDTypeValue = string.Empty;
-            if (arg.PickerId == "ExemptionYearPicker")
-            {
-                viewModel.SelectedYear = arg.SelectedValue;
-                viewModel.SelectedYearID = viewModel.GetYearIDByType(arg.SelectedValue);
-                viewModel.ZakatExemptionYearConButtonEnabled = true;
-            }
-            else if (arg.PickerId == "EntityTypePicker")
-            {
-                viewModel.SelectedEntityType = arg.SelectedValue;
-                viewModel.SelectedEntityID = viewModel.GetEntityIDByType(arg.SelectedValue);
-                if (string.Equals(viewModel.SelectedEntityID, "03"))
+                var selectedType = string.Empty;
+                string SelectedIDTypeValue = string.Empty;
+                if (arg.PickerId == "ExemptionYearPicker")
                 {
-                    viewModel.IsCharitabletrustsAndFoundations = true;
+                    viewModel.SelectedYear = arg.SelectedValue;
+                    viewModel.SelectedYearID = viewModel.GetYearIDByType(arg.SelectedValue);
+                    viewModel.ZakatExemptionYearConButtonEnabled = true;
                 }
-                else
+                else if (arg.PickerId == "EntityTypePicker")
                 {
-                    viewModel.IsCharitabletrustsAndFoundations = false;
-                    viewModel.CompanyEstablishmentOther = string.Empty;
+                    viewModel.SelectedEntityType = arg.SelectedValue;
+                    viewModel.SelectedEntityID = viewModel.GetEntityIDByType(arg.SelectedValue);
+                    if (string.Equals(viewModel.SelectedEntityID, "03"))
+                    {
+                        viewModel.IsCharitabletrustsAndFoundations = true;
+                    }
+                    else
+                    {
+                        viewModel.IsCharitabletrustsAndFoundations = false;
+                        viewModel.CompanyEstablishmentOther = string.Empty;
+                    }
                 }
-            }
-            else if (arg.PickerId == "CompanyEstablishmentOther")
+                else if (arg.PickerId == "CompanyEstablishmentOther")
+                {
+                    viewModel.CompanyEstablishmentOther = arg.SelectedValue;
+                    viewModel.ZakatEntityInfoConButtonEnabled = true;
+
+                }
+                else if (arg.PickerId == "EntityCategory")
+                {
+                    viewModel.SelectedEntityIDCategory = arg.SelectedValue;
+                }
+
+            });
+
+            MessagingCenter.Subscribe<object, AttachmentsList>(this, "AttachmentReceived", (sender, arg) =>
             {
-                viewModel.CompanyEstablishmentOther = arg.SelectedValue;
-                viewModel.ZakatEntityInfoConButtonEnabled = true;
+                if (arg != null)
+                {
+                    viewModel.PopulateAttachments(arg.results);
+                }
+            });
 
-            }
-            else if (arg.PickerId == "EntityCategory")
-            {
-                viewModel.SelectedEntityIDCategory = arg.SelectedValue;
-            }
 
-        });
-
-        MessagingCenter.Subscribe<object, AttachmentsList>(this, "AttachmentReceived", (sender, arg) =>
+        }
+        catch (Exception)
         {
-            if (arg != null)
-            {
-                viewModel.PopulateAttachments(arg.results);
-            }
-        });
 
-
+        }
+      
     }
 
 

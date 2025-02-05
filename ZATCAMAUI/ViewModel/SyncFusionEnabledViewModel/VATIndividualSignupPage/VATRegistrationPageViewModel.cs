@@ -352,8 +352,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        private DateTime _vatRegDate;
-        public DateTime VatRegDate
+        private string _vatRegDate;
+        public string VatRegDate
         {
             get
             {
@@ -380,42 +380,39 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 {
                     try
                     {
-                        String DateTimeToBeParsed = DateTime.Parse(vATcommencementData.d.VatTaxDt).ToString("yyyy-MM-ddTHH:mm:ss");
-                        String dateSource = UtilityManager.DDMMFormatDateToYYYYFromDateTypeString(UtilityManager.ConvertDateStringtoDateTime(DateTimeToBeParsed, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture));
-                        DateTime ChangedDate = new DateTime(2018, 1, 1, 0, 0, 0);
-
-                        int Result = DateTime.Compare((DateTime)UtilityManager.ConvertDateStringtoDateTime(DateTimeToBeParsed, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture), (DateTime)VatRegDate);
-                        Result = 1;
-                        if (Result < 0)
+                        DateTimeFormatInfo DTFormat;
+                        DTFormat = new CultureInfo("en-US", false).DateTimeFormat;
+                        DTFormat.Calendar = new GregorianCalendar();
+                        DTFormat.ShortDatePattern = "dd/MM/yyyy";
+                        var dateSource = DateTime.Parse(vATcommencementData.d.VatTaxDt, DTFormat);
+                        DateTime ChangedDate = new DateTime(2018, 1, 1, 0, 0, 0, DTFormat.Calendar);
+                        if(DateTime.Compare(dateSource.Date, ChangedDate.Date) < 0)
                         {
                             await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VATEligibleDateError1));
                             VatEligibleStartDate = "";
+                            return;
+                        }
+                        var vatRegDate = DateTime.Parse(VatRegDate,  DTFormat);
+                        if (DateTime.Compare(dateSource.Date, vatRegDate.Date) < 0)
+                        {
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VATRegistrationstartdatevalidation));
+                            VatEligibleStartDate = "";
+                            return;
+                        }
+                        if (vATcommencementData.d.ErrorFg == "X")
+                        {
+                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VATEligibleDateError1));
                         }
                         else
                         {
-                            DateTime convertedDate = UtilityManager.ConvertDateStringtoDateTime(DateTimeToBeParsed, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture);
-
-                            int CompareDate = DateTime.Compare((DateTime)convertedDate, ChangedDate);
-
-                            if (CompareDate < 0)
-                            {
-                                await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VATEligibleDateError1));
-                                VatEligibleStartDate = dateSource;
-                            }
-                            else
-                            {
-                                if (vATcommencementData.d.ErrorFg == "X")
-                                {
-                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VATEligibleDateError1));
-                                }
-                                VatEligibleStartDate = dateSource;
-                            }
+                            VatEligibleStartDate = dateSource.ToString("dd/MM/yyyy", DTFormat);
                         }
                         IsLoading = false;
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
                         IsLoading = false;
+                        VatEligibleStartDate = "";
                     }
                 }
 
@@ -1985,7 +1982,9 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 var Bdt = string.Empty;
                 if (!string.IsNullOrEmpty(VatEligibleStartDate))
                 {
-                    Bdt = DateTime.Parse(VatEligibleStartDate).ToString("yyyy-MM-ddTHH:mm:ss");
+                    CultureInfo culture = new CultureInfo("en-US"); // Ensures correct parsing of dd/MM/yyyy
+                    DateTime parsedDate = DateTime.ParseExact(VatEligibleStartDate, "dd/MM/yyyy", culture);
+                    Bdt = parsedDate.ToString("yyyy-MM-ddTHH:mm:ss", culture);
                 }
                 VATRegistrationDetailsData.d.VatTaxDt = Bdt;
                 VATRegistrationDetailsData.d.StepNumberz = "2";
@@ -2023,7 +2022,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
         }
@@ -2351,7 +2350,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     //Added By Divya to display Start Date in TaxPayer Details page 1303,1304
                     if (vATRegistration.d.CrStdt != null)
                     {
-                        VatRegDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATRegistration.d.CrStdt + @"""");
+                        VatRegDate = JsonConvert.DeserializeObject<DateTime>(@"""" + vATRegistration.d.CrStdt + @"""").ToString("dd/MM/yyyy", new CultureInfo("en-US"));
                         StartdateToshow = JsonConvert.DeserializeObject<DateTime>(@"""" + vATRegistration.d.CrStdt + @"""").ToString("dd/MM/yyyy", new CultureInfo("en-US"));
                     }
                     if (VATRegistrationDetailsData != null && VATRegistrationDetailsData.d != null)

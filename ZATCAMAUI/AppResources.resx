@@ -10708,13 +10708,13 @@ We regret that you are unable to use the service at this time. Please sign up fo
     </data>
 	<!-- 5250 and 6073 -->
 	<data name="FinacialPeriodNormal" xml:space="preserve">
-        <value>Normal Period</value>
+        <value>Normal period</value>
     </data>
 	<data name="FinacialPeriodSmall" xml:space="preserve">
-        <value>Short Period</value>
+        <value>Short period</value>
     </data>
 	<data name="FinacialPeriodLong" xml:space="preserve">
-        <value>Long Period</value>
+        <value>Long period</value>
     </data>
 	<data name="Error896" xml:space="preserve">
         <value>Dear Taxpayer, the commercial registration(CR) is already registered under another owner.</value>
@@ -11879,5 +11879,8 @@ the credit balance of the current period will be carried forward, you can reques
  </data>
 	<data name="OTPStatus" xml:space="preserve">
      <value>There is a pre-access request, please wait</value>
+  </data>
+     <data name="VATRegistrationstartdatevalidation" xml:space="preserve">
+    <value>Invalid Date, check minimum range</value>
   </data>
 </root> 

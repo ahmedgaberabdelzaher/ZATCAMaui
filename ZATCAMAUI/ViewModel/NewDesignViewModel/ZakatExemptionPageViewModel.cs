@@ -1700,7 +1700,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
             {
                 setEntityTypePickerModel();
                 await MopupService.Instance.PushAsync(new PickerPageView(PickerModelEntityType));
-
             }
             catch (GAZTUnlockAccountException ex)
             {
@@ -1714,6 +1713,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ZakatExemptionRequestViewModel
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
                 });
+            }
+            catch (Exception ex)
+            {
+               
             }
         }
 

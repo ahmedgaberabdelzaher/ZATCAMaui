@@ -381,37 +381,25 @@ namespace ZATCAMAUI.Core.Mangers
 
                         if (statusHeader?.header?.status?.code != "E999999")
                         {
-                            try
+                            if (statusHeader?.header?.status?.code == "I000000")
                             {
                                 string deserialisedResponseJSONs = JObject.Parse(ESTBranchesDropDownResponseJSON)["result"]?.ToString();
-
-                                if (deserialisedResponseJSONs == null)
+                                if (!string.IsNullOrEmpty(deserialisedResponseJSONs))
                                 {
-                                    ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(ESTBranchesDropDownResponseJSON);
-                                    if (errorMesg?.header?.moreInformation?.errorDetails?.Count > 0)
-                                    {
-                                        string errorMessage = WebServiceManager.PrepareErrorMessageByJson(ESTBranchesDropDownResponseJSON);
-                                        throw new GAZTVATRegistrationInProcessException(errorMessage);
-                                    }
+                                    taxPayer = JsonConvert.DeserializeObject<TaxPayerDetails>(deserialisedResponseJSONs);
+                                }
+                            }
+                            else
+                            {
+                                ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(ESTBranchesDropDownResponseJSON);
+                                if (errorMesg?.header?.moreInformation?.errorDetails != null)
+                                {
+                                    string errorMessage = WebServiceManager.PrepareErrorMessageByJson(ESTBranchesDropDownResponseJSON);
+                                    throw new GAZTVATRegistrationInProcessException(errorMessage);
                                 }
                                 else
                                 {
-                                    if (!string.IsNullOrEmpty(deserialisedResponseJSONs))
-                                    {
-                                        taxPayer = JsonConvert.DeserializeObject<TaxPayerDetails>(deserialisedResponseJSONs);
-                                    }
-                                }
-                            }
-
-                            catch (GAZTVATRegistrationInProcessException ex)
-                            {
-                                throw new GAZTVATRegistrationInProcessException(ex.Message);
-                            }
-                            catch (Exception)
-                            {
-                                if (!string.IsNullOrEmpty(ESTBranchesDropDownResponseJSON))
-                                {
-                                    string errorMessage = WebServiceManager.PrepareErrorMessageByJson(ESTBranchesDropDownResponseJSON);
+                                    string errorMessage = errorMesg?.header?.status?.description;
                                     throw new GAZTVATRegistrationInProcessException(errorMessage);
                                 }
                             }
@@ -422,9 +410,9 @@ namespace ZATCAMAUI.Core.Mangers
                         }
                     }
                 }
-                catch (GAZTVATRegistrationInProcessException)
+                catch (GAZTVATRegistrationInProcessException ex)
                 {
-                    throw new GAZTVATRegistrationInProcessException();
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
                 catch (GAZTNetworkConnectivityIssueException)
                 {

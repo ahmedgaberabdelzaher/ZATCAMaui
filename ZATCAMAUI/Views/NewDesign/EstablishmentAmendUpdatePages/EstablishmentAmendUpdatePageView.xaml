@@ -1359,7 +1359,7 @@
                                 Spacing="24">
                                 <Label Style="{StaticResource SectionTitleBlackBold}" Text="{x:Static ResourceManager:AppResources.ZZZZPersonalInformation}" />
 
-                                <StackLayout HorizontalOptions="FillAndExpand">
+                                <!--<StackLayout HorizontalOptions="FillAndExpand">
                                     <Label Style="{StaticResource forLightLabel}">
                                         <Label.FormattedText>
                                             <FormattedString>
@@ -1390,7 +1390,7 @@
                                                 VerticalTextAlignment="Center" />
                                         </custom:CustomSfTextInputView.TextInputView>
                                     </custom:CustomSfTextInputView>
-                                </StackLayout>
+                                </StackLayout>-->
 
                                 <StackLayout HorizontalOptions="FillAndExpand">
                                     <Label Style="{StaticResource forLightLabel}">

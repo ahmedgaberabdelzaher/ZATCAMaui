@@ -265,8 +265,11 @@ namespace ZATCAMAUI.Core.Mangers
 
                         if (statusHeader?.header?.status?.code != "E999999")
                         {
-                            _zakatSummaryInputModel = JsonConvert.DeserializeObject<ZakatSummaryInputModel1>(_ZakatSummaryInputData);
-                            if (!string.IsNullOrEmpty(_ZakatSummaryInputData))
+                            if (statusHeader?.header?.status?.code == "I000000")
+                            {
+                                _zakatSummaryInputModel = JsonConvert.DeserializeObject<ZakatSummaryInputModel1>(_ZakatSummaryInputData);
+                            }
+                            else
                             {
                                 string errorMessage = WebServiceManager.PrepareErrorMessageByJson(_ZakatSummaryInputData);
                                 throw new GAZTVATRegistrationInProcessException(errorMessage);
