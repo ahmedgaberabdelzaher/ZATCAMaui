@@ -194,7 +194,7 @@
 
                                 <!--#region Declaration/Bill Number Values-->
                                 <Grid
-                                    ColumnDefinitions="2*,auto"
+                                    ColumnDefinitions="2*,*"
                                     RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto"
                                     RowSpacing="10">
 
@@ -266,7 +266,7 @@
                                         Grid.Column="1"
                                         FontFamily="{StaticResource SomarSemiBold}"
                                         FontSize="14"
-                                        HorizontalOptions="Start"
+                                        HorizontalOptions="StartAndExpand"
                                         IsVisible="{Binding IsExpressShipment}"
                                         LineBreakMode="WordWrap"
                                         Text="{Binding TrackShipmentResponse.carrierName}"

@@ -13,16 +13,16 @@
 
     <Grid RowDefinitions="auto,*">
 
+         <controls:Header x:Name="titel" TitleText="{x:Static ResourceManager:AppResources.Home}" />
+
         <Border
             x:Name="MainContainer"
             Grid.Row="1"
             Padding="0"
             x:FieldModifier="public"
             BackgroundColor="White"
-            Stroke="Transparent"
+            Stroke="#002447"
             StrokeShape="RoundRectangle 15,15,0,0" />
-
-        <controls:Header x:Name="titel" TitleText="{x:Static ResourceManager:AppResources.Home}" />
 
         <controls:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
 

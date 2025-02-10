@@ -73,8 +73,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TrackShipment
         string shipmentImporterYear;
         public string ShipmentImporterYear { get { return shipmentImporterYear; } set { shipmentImporterYear = value; OnPropertyChanged(); } }
 
-        ObservableCollection<string> yearsList = new ObservableCollection<string>();
-        public ObservableCollection<string> YearsList { get { return yearsList; } set { yearsList = value; OnPropertyChanged(); } }
+        ObservableCollection<BottomSheetModel> yearsList = new ObservableCollection<BottomSheetModel>();
+        public ObservableCollection<BottomSheetModel> YearsList { get { return yearsList; } set { yearsList = value; OnPropertyChanged(); } }
 
         #endregion Properties
 
@@ -441,7 +441,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TrackShipment
                     {
                         IsLoading = true;
                         await Task.Delay(1000);
-                        await GetYears();
+                        GetYears();
                         IsLoading = false;
 
                     }
@@ -473,7 +473,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TrackShipment
                     TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
 
                 }
-                else if(result?.Item1?.Code == 0)
+                else if (result?.Item1?.Code == 0)
                 {
                     IsShowMsgView = true;
                     MessageTxt = result.Item3;
@@ -495,22 +495,34 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TrackShipment
 
         }
 
-        private Task GetYears()
+        private void GetYears()
         {
-            UmAlQuraCalendar hijriCalendar = new UmAlQuraCalendar();
-            BottomSheetList = new ObservableCollection<BottomSheetModel>();
-            for (int i = hijriCalendar.GetYear(DateTime.Today); i >= 1349; i--)
+            try
             {
-                BottomSheetList.Add(new BottomSheetModel()
+                UmAlQuraCalendar hijriCalendar = new UmAlQuraCalendar();
+                if (YearsList != null && YearsList.Count == 0)
                 {
-                    Name = i.ToString()
-                });
+                    for (int i = hijriCalendar.GetYear(DateTime.Today); i >= 1349; i--)
+                    {
+                        YearsList.Add(new BottomSheetModel
+                        {
+                            Name = i.ToString()
+                        });
+
+                    }
+                }
+
+                HeaderTitle = AppResources.ImporterYear;
+                BottomSheetList = new ObservableCollection<BottomSheetModel>(YearsList);
+                TempBottomSheetList = new ObservableCollection<BottomSheetModel>(YearsList);
+                IsShowBottomSheet = true;
+               
+            }
+            catch (Exception)
+            {
 
             }
-            HeaderTitle = AppResources.ImporterYear;
-            IsShowBottomSheet = true;
-            TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
-            return Task.CompletedTask;
+           
         }
 
         private void FillDataFromAPI(Tuple<Models.BaseModels.DATAPowerBaseResponse<TrackShipmentModel>, bool, string> result)
@@ -828,7 +840,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.TrackShipment
             _navigationService.GoBack();
         }
 
-     
+
         #endregion Methods
 
 
