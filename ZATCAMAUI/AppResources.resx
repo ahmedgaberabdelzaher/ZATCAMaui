@@ -11886,4 +11886,4 @@ the credit balance of the current period will be carried forward, you can reques
      <data name="VATRegistrationstartdatevalidation" xml:space="preserve">
     <value>Invalid Date, check minimum range</value>
   </data>
-</root> 
+</root>
