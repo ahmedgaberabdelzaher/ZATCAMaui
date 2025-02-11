@@ -110,7 +110,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                 {
                     var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("ZakatRegistrationDetailsListPageView", "RegistrationDetailsListView_SelectionChanged", "TIN Deregistration eService");
 
-                    App.DisplayProgressView();
+                    viewModel.IsLoading = true;
 
                     await viewModel.GetNewTinDeregistrationDataCliked();
                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
@@ -119,7 +119,6 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                 var view = sender as SfListView;
                 view.SelectedItem = null;
             }
-
             catch (GAZTVATRegistrationInProcessException ex)
             {
                 await UtilityManager.HandleExceptionMessage(ex.Message, false);
@@ -138,6 +137,7 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
             }
             finally
             {
+                viewModel.IsLoading = false;
                 selectedLv.SelectedItem = null;
             }
 

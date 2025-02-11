@@ -252,8 +252,11 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 else
                 {
                     await _navigationService.NavigateTo(App.TINDeregistrationPageView, ZakatDeregResponseData);
-                
                 }
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                throw new GAZTVATRegistrationInProcessException(ex.Message);
             }
             catch (GAZTErrorException ex)
             {
@@ -338,7 +341,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             finally
             {
-                App.HideProgressView();
+                IsLoading = false;
             }
         }
 

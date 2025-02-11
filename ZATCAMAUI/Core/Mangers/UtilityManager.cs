@@ -1617,13 +1617,15 @@ namespace ZATCAMAUI.Core.Mangers
 
         }
 
-        public static async Task HandleExceptionMessage(string popUpMessage, bool isNavigateUp = false, Interfaces.INavigationService _navigationService = null)
+        public static async Task HandleExceptionMessage(string popUpMessage, bool isNavigateUp = false, Interfaces.INavigationService _navigationService = null, bool isPopStack = true)
         {
             try
             {
-                if (MopupService.Instance.PopupStack.Any())
-                    await MopupService.Instance.PopAllAsync(false);
-
+                if (isPopStack == true)
+                {
+                    if (MopupService.Instance.PopupStack.Any())
+                        await MopupService.Instance.PopAllAsync(false);
+                }
                 await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(popUpMessage));
                 if (isNavigateUp && _navigationService != null)
                 {

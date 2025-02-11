@@ -39,6 +39,7 @@ namespace ZATCAMAUI
 
         public static string GUIDFrSSO { get; set; }
         public static bool successMsg { get; set; }
+        public static bool VATSuccessMsg { get; set; }
         public static bool isAndroidUrlloaded = false;
         public static bool isVatEffectDateNav = false;
         public static Stopwatch stopWatch = new Stopwatch();

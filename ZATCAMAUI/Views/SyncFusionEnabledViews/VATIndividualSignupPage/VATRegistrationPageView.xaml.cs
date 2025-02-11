@@ -38,7 +38,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 viewModel.ShouldLoad = true;
                 viewModel.NewAccountText = AppResources.ZTERNewAccount;
                 viewModel.SetDefaultDate();
-
             }
             catch (Exception ex)
             {
@@ -401,6 +400,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             }
                             else
                             {
+                                App.VATSuccessMsg = true;
                                 await viewModel._navigationService.NavigateTo(App.VATRegistrationSuccessfullPageView, response);
                             }
                             App.HasToRefreshLoaderOnDashboard = true;

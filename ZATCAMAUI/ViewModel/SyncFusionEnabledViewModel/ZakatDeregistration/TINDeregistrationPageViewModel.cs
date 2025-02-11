@@ -5583,197 +5583,189 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
         public async Task SubmitRequest()
         {
+            IsLoading = true;
             try
             {
-
-                await MopupService.Instance.PushAsync(App.ActivityIndicatorView);
-
-                try
+                if (IsHijriCal)
                 {
-                    if (IsHijriCal)
+                    TinDeregistrationData.ASubmissionDateC = "Hijri";
+                    TinDeregistrationData.AEffectiveDtC = "Hijri";
+                    TinDeregistrationData.AExpdtC = "Hijri";
+                }
+                else if (IsDOBHijriCal)
+                {
+                    TinDeregistrationData.ADobC = "Hijri";
+                }
+                else
+                {
+                    TinDeregistrationData.ASubmissionDateC = "Gregorian";
+                    TinDeregistrationData.AEffectiveDtC = "Gregorian";
+                    TinDeregistrationData.AExpdtC = "Gregorian";
+                    TinDeregistrationData.ADobC = "Gregorian";
+
+                }
+
+                if (!string.IsNullOrEmpty(PickerDOBDateDisplay))
+                {
+                    TinDeregistrationData.ADob = ConvertDateFormat(Convert.ToDateTime(PickerDOBDateDisplay));
+                    TinDeregistrationData.ADobH = DeregistrationDate.ToString("yyyy-MM-dd");
+                }
+                else
+                {
+                    TinDeregistrationData.ADob = null;
+                }
+
+                TinDeregistrationData.ASubmissionDate = ConvertDateFormat(DeregistrationDate);
+                TinDeregistrationData.ASubmissionDateH = DeregistrationDate.ToString("yyyy-MM-dd");
+
+
+                TinDeregistrationData.AEffectiveDt = ConvertDateFormat(DeregistrationDate);
+
+                TinDeregistrationData.AEffectiveDtH = DeregistrationDate.ToString("yyyy-MM-dd");
+
+                TinDeregistrationData.ADecDate = ConvertDateFormat(DeregistrationDate);
+                TinDeregistrationData.ADecDateH = DeregistrationDate.ToString("yyyy-MM-dd");
+
+                TinDeregistrationData.AExpdt = ConvertDateFormat(DeregistrationDate);
+                TinDeregistrationData.AExpdtH = DeregistrationDate.ToString("yyyy-MM-dd");
+
+                IBANType idType = IBANTypesList.Where(m => m.Text == SelectedIdtype).FirstOrDefault();
+
+                if (idType != null)
+                    SelectedIDTypeCode = idType.key;
+
+                TinDeregistrationData.AIdType = SelectedIDTypeCode;// "ZS0005"
+                TinDeregistrationData.AIdNo = SelectedIdNumber;
+                //TinDeregistrationData.ATin = TINNumber;
+                if (TinDeregistrationData.ADregOpt == "2")
+                {
+                    TinDeregistrationData.ATransTin = TINNumber;
+                }
+                TinDeregistrationData.ANm1 = FirstNameFromIdType;
+                TinDeregistrationData.ANm2 = "";
+                TinDeregistrationData.ANm3 = FirstNameFromIdType;// IDTypeDataModel.Name1;
+                TinDeregistrationData.ANm4 = IDTypeDataModel.name2;
+                TinDeregistrationData.ANm5 = IDTypeDataModel.fatherName;
+                TinDeregistrationData.ANm6 = IDTypeDataModel.grandfatherName;
+                TinDeregistrationData.ANm7 = IDTypeDataModel.familyName;
+
+
+
+                OutletSetResult[] oldOutlets = new OutletSetResult[AllOutlets.Count];
+                AllOutlets.CopyTo(oldOutlets, 0);
+                List<OutletSetResult> listOutlets;
+                listOutlets = new List<OutletSetResult>(TinDeregistrationData.OutletSet);
+                List<PermitSetResult> allPermitTypes = new List<PermitSetResult>(TinDeregistrationData.PermitSet);
+                for (int i = 0; i < oldOutlets.Count(); i++)
+                {
+                    listOutlets[i].PermitTypes = oldOutlets[i].PermitTypes;
+                }
+                AllOutlets = listOutlets;
+
+                foreach (OutletSetResult outletInfo in AllOutlets)
+                {
+                    //TODO
+
+                    outletInfo.AOutletDobTb = ConvertDateFormat(DeregistrationDate);
+                    if (outletInfo.AOutletDobTb.Contains("/Date("))
                     {
-                        TinDeregistrationData.ASubmissionDateC = "Hijri";
-                        TinDeregistrationData.AEffectiveDtC = "Hijri";
-                        TinDeregistrationData.AExpdtC = "Hijri";
+                        outletInfo.AOutletDobTb = DeregistrationDate.ToString("yyyy-MM-ddTHH:mm:ss");
                     }
-                    else if (IsDOBHijriCal)
+                    outletInfo.AOutletToDeregTb = "1";
+
+                    if (SelectedPermitOutletOptionIndex == 0)
                     {
-                        TinDeregistrationData.ADobC = "Hijri";
+                        outletInfo.AOutletDregOptTb = "1";
+                    }
+                    else if (SelectedPermitOutletOptionIndex == 1)
+                    {
+                        outletInfo.AOutletDregOptTb = "2";
+
                     }
                     else
                     {
-                        TinDeregistrationData.ASubmissionDateC = "Gregorian";
-                        TinDeregistrationData.AEffectiveDtC = "Gregorian";
-                        TinDeregistrationData.AExpdtC = "Gregorian";
-                        TinDeregistrationData.ADobC = "Gregorian";
-
-                    }
-
-                    if (!string.IsNullOrEmpty(PickerDOBDateDisplay))
-                    {
-                        TinDeregistrationData.ADob = ConvertDateFormat(Convert.ToDateTime(PickerDOBDateDisplay));
-                        TinDeregistrationData.ADobH = DeregistrationDate.ToString("yyyy-MM-dd");
-                    }
-                    else
-                    {
-                        TinDeregistrationData.ADob = null;
-                    }
-
-                    TinDeregistrationData.ASubmissionDate = ConvertDateFormat(DeregistrationDate);
-                    TinDeregistrationData.ASubmissionDateH = DeregistrationDate.ToString("yyyy-MM-dd");
-
-
-                    TinDeregistrationData.AEffectiveDt = ConvertDateFormat(DeregistrationDate);
-
-                    TinDeregistrationData.AEffectiveDtH = DeregistrationDate.ToString("yyyy-MM-dd");
-
-                    TinDeregistrationData.ADecDate = ConvertDateFormat(DeregistrationDate);
-                    TinDeregistrationData.ADecDateH = DeregistrationDate.ToString("yyyy-MM-dd");
-
-                    TinDeregistrationData.AExpdt = ConvertDateFormat(DeregistrationDate);
-                    TinDeregistrationData.AExpdtH = DeregistrationDate.ToString("yyyy-MM-dd");
-
-                    IBANType idType = IBANTypesList.Where(m => m.Text == SelectedIdtype).FirstOrDefault();
-
-                    if (idType != null)
-                        SelectedIDTypeCode = idType.key;
-
-                    TinDeregistrationData.AIdType = SelectedIDTypeCode;// "ZS0005"
-                    TinDeregistrationData.AIdNo = SelectedIdNumber;
-                    //TinDeregistrationData.ATin = TINNumber;
-                    if (TinDeregistrationData.ADregOpt == "2")
-                    {
-                        TinDeregistrationData.ATransTin = TINNumber;
-                    }
-                    TinDeregistrationData.ANm1 = FirstNameFromIdType;
-                    TinDeregistrationData.ANm2 = "";
-                    TinDeregistrationData.ANm3 = FirstNameFromIdType;// IDTypeDataModel.Name1;
-                    TinDeregistrationData.ANm4 = IDTypeDataModel.name2;
-                    TinDeregistrationData.ANm5 = IDTypeDataModel.fatherName;
-                    TinDeregistrationData.ANm6 = IDTypeDataModel.grandfatherName;
-                    TinDeregistrationData.ANm7 = IDTypeDataModel.familyName;
-
-
-
-                    OutletSetResult[] oldOutlets = new OutletSetResult[AllOutlets.Count];
-                    AllOutlets.CopyTo(oldOutlets, 0);
-                    List<OutletSetResult> listOutlets;
-                    listOutlets = new List<OutletSetResult>(TinDeregistrationData.OutletSet);
-                    List<PermitSetResult> allPermitTypes = new List<PermitSetResult>(TinDeregistrationData.PermitSet);
-                    for (int i = 0; i < oldOutlets.Count(); i++)
-                    {
-                        listOutlets[i].PermitTypes = oldOutlets[i].PermitTypes;
-                    }
-                    AllOutlets = listOutlets;
-
-                    foreach (OutletSetResult outletInfo in AllOutlets)
-                    {
-                        //TODO
-
-                        outletInfo.AOutletDobTb = ConvertDateFormat(DeregistrationDate);
-                        if (outletInfo.AOutletDobTb.Contains("/Date("))
-                        {
-                            outletInfo.AOutletDobTb = DeregistrationDate.ToString("yyyy-MM-ddTHH:mm:ss");
-                        }
-                        outletInfo.AOutletToDeregTb = "1";
-
-                        if (SelectedPermitOutletOptionIndex == 0)
-                        {
-                            outletInfo.AOutletDregOptTb = "1";
-                        }
-                        else if (SelectedPermitOutletOptionIndex == 1)
-                        {
-                            outletInfo.AOutletDregOptTb = "2";
-
-                        }
-                        else
-                        {
-                            outletInfo.AOutletDregOptTb = "3";
-
-                        }
-                    }
-
-                    foreach (PermitSetResult permitInfo in allPermitTypes)
-                    {
-                        try
-                        {
-                            if (!string.IsNullOrEmpty(permitInfo.APermitEffDtTb))
-                            {
-
-                                if (permitInfo.APermitValfrDtTb != null)
-                                {
-                                    if (permitInfo.APermitValfrDtTb.Contains("/Date("))
-                                    {
-                                        permitInfo.APermitValfrDtTb = UtilityManager.ConvertToStringFromDate(permitInfo.APermitValfrDtTb);
-                                    }
-                                    if (permitInfo.APermitEffDtTb.Contains("/Date("))
-                                    {
-                                        permitInfo.APermitEffDtTb = UtilityManager.ConvertToStringFromDate(permitInfo.APermitEffDtTb);
-                                    }
-                                    else
-                                    {
-                                        var date = Convert.ToDateTime(permitInfo.APermitEffDtTb);
-                                        permitInfo.APermitEffDtTb = date.ToString("yyyy-MM-ddTHH:mm:ss");
-                                    }
-                                    permitInfo.APermitValfrDtCTb = "Gregorian";
-                                }
-                            }
-                        }
-                        catch (Exception)
-                        {
-
-
-                        }
-
-                        try
-                        {
-                            if (TinDeregistrationData.ADregOpt == "3")
-                            {
-                                if (permitInfo.IsHijiri)
-                                {
-
-                                    string date = UtilityManager.HijriToGreg(permitInfo.APermitDeregDisplayDate);
-                                    permitInfo.APermitEffDtTb = ConvertDateFormat(date);
-                                }
-                                else
-                                {
-                                    permitInfo.APermitEffDtTb = ConvertDateFormat(permitInfo.APermitDeregDisplayDate);
-
-                                }
-                                permitInfo.APermitEffDtCTb = "Gregorian";
-
-                                permitInfo.APermitDobCTb = string.IsNullOrEmpty(permitInfo.APermitDobTb) ? "" : "Gregorian";
-                                if (permitInfo.IsDOBHijiri)
-                                {
-
-                                    string date = UtilityManager.HijriToGreg(permitInfo.APermitDobTb);
-                                    permitInfo.APermitDobTb = ConvertDateFormat(date);
-                                }
-                                else
-                                {
-                                    permitInfo.APermitDobTb = ConvertDateFormat(permitInfo.APermitDobTb);
-
-                                }
-                            }
-                        }
-                        catch (Exception)
-                        {
-
-
-                        }
-
-                        if (permitInfo.APermitIdNoTb == null)
-                            permitInfo.APermitIdNoTb = "";
-
-                        if (permitInfo.APermitTransTinTb == null)
-                            permitInfo.APermitTransTinTb = "";
+                        outletInfo.AOutletDregOptTb = "3";
 
                     }
                 }
-                catch (Exception)
+
+                foreach (PermitSetResult permitInfo in allPermitTypes)
                 {
+                    try
+                    {
+                        if (!string.IsNullOrEmpty(permitInfo.APermitEffDtTb))
+                        {
+
+                            if (permitInfo.APermitValfrDtTb != null)
+                            {
+                                if (permitInfo.APermitValfrDtTb.Contains("/Date("))
+                                {
+                                    permitInfo.APermitValfrDtTb = UtilityManager.ConvertToStringFromDate(permitInfo.APermitValfrDtTb);
+                                }
+                                if (permitInfo.APermitEffDtTb.Contains("/Date("))
+                                {
+                                    permitInfo.APermitEffDtTb = UtilityManager.ConvertToStringFromDate(permitInfo.APermitEffDtTb);
+                                }
+                                else
+                                {
+                                    var date = Convert.ToDateTime(permitInfo.APermitEffDtTb);
+                                    permitInfo.APermitEffDtTb = date.ToString("yyyy-MM-ddTHH:mm:ss");
+                                }
+                                permitInfo.APermitValfrDtCTb = "Gregorian";
+                            }
+                        }
+                    }
+                    catch (Exception)
+                    {
+
+
+                    }
+
+                    try
+                    {
+                        if (TinDeregistrationData.ADregOpt == "3")
+                        {
+                            if (permitInfo.IsHijiri)
+                            {
+
+                                string date = UtilityManager.HijriToGreg(permitInfo.APermitDeregDisplayDate);
+                                permitInfo.APermitEffDtTb = ConvertDateFormat(date);
+                            }
+                            else
+                            {
+                                permitInfo.APermitEffDtTb = ConvertDateFormat(permitInfo.APermitDeregDisplayDate);
+
+                            }
+                            permitInfo.APermitEffDtCTb = "Gregorian";
+
+                            permitInfo.APermitDobCTb = string.IsNullOrEmpty(permitInfo.APermitDobTb) ? "" : "Gregorian";
+                            if (permitInfo.IsDOBHijiri)
+                            {
+
+                                string date = UtilityManager.HijriToGreg(permitInfo.APermitDobTb);
+                                permitInfo.APermitDobTb = ConvertDateFormat(date);
+                            }
+                            else
+                            {
+                                permitInfo.APermitDobTb = ConvertDateFormat(permitInfo.APermitDobTb);
+
+                            }
+                        }
+                    }
+                    catch (Exception)
+                    {
+
+
+                    }
+
+                    if (permitInfo.APermitIdNoTb == null)
+                        permitInfo.APermitIdNoTb = "";
+
+                    if (permitInfo.APermitTransTinTb == null)
+                        permitInfo.APermitTransTinTb = "";
 
                 }
+
 
                 List<Attachment> tempAttachDetSet = new List<Attachment>();
                 foreach (Attachment attachment in TinDeregistrationData.AttDetSet)
@@ -5783,96 +5775,66 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 string ErrorMessageForUnlockAccount = string.Empty;
                 List<Attachment> AttachmentsCopy = new List<Attachment>(TinDeregistrationData.AttDetSet);
-                try
+                string TinDeregistrationDataResponse = await TINDeregistrationWebServiceManager.GaztTinDeregistrationSubmitRequestData(TinDeregistrationData);
+                if (!string.IsNullOrEmpty(TinDeregistrationDataResponse))
                 {
-                    string TinDeregistrationDataResponse = await TINDeregistrationWebServiceManager.GaztTinDeregistrationSubmitRequestData(TinDeregistrationData);
-                    if (!string.IsNullOrEmpty(TinDeregistrationDataResponse))
+                    TinDeregistrationDataResponse = JObject.Parse(TinDeregistrationDataResponse)["result"].ToString();
+                    var tempTinDeregData = JsonConvert.DeserializeObject<TinDeregistrationResponseModel>(TinDeregistrationDataResponse);
+
+                    TinDeregistrationData.Fbnum = tempTinDeregData.Fbnum;
+                    TinDeregistrationData.Fbnumz = tempTinDeregData.Fbnumz;
+
+                    if (TinDeregistrationData == null)
                     {
-                        TinDeregistrationDataResponse = JObject.Parse(TinDeregistrationDataResponse)["result"].ToString();
-                        var tempTinDeregData = JsonConvert.DeserializeObject<TinDeregistrationResponseModel>(TinDeregistrationDataResponse);
-
-                        TinDeregistrationData.Fbnum = tempTinDeregData.Fbnum;
-                        TinDeregistrationData.Fbnumz = tempTinDeregData.Fbnumz;
-
-                        if (TinDeregistrationData == null)
-                        {
-                            isSubmitted = false;
-
-                            throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
-                        }
-                        else
-                        {
-                            isSubmitted = true;
-
-                        }
-
+                        isSubmitted = false;
+                        throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
                     }
                     else
                     {
-                        throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
+                        isSubmitted = true;
+
                     }
-
-                    TinDeregistrationData.AttDetSet = tempAttachDetSet;
-
-                    if (TinDeregistrationData.Xvoidz.Equals("X"))
-                    {
-                        string number = TinDeregistrationData.Fbnum;
-                        string displayMessage = AppResources.VATRSuccessFullVoidMessage + " " + number;
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(displayMessage));
-
-
-                        _navigationService.GoBack();
-                    }
-
-
                 }
-                catch (GAZTVATRegistrationInProcessException ex)
+                else
                 {
-                    await UtilityManager.HandleExceptionMessage(ex.Message, false);
+                    throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
                 }
 
-                catch (GAZTNetworkConnectivityIssueException)
-                {
-                    await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
-                }
+                TinDeregistrationData.AttDetSet = tempAttachDetSet;
 
-                catch (InternetException)
+                if (TinDeregistrationData.Xvoidz.Equals("X"))
                 {
-                    await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+                    string number = TinDeregistrationData.Fbnum;
+                    string displayMessage = AppResources.VATRSuccessFullVoidMessage + " " + number;
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(displayMessage));
+                    _navigationService.GoBack();
                 }
-                catch (Exception)
-                {
-                    await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
-                }
-                finally
-                {
-                    isSubmitted = false;
-                }
-
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+                isSubmitted = false;
+                await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
             }
 
             catch (GAZTNetworkConnectivityIssueException)
             {
-                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
+                isSubmitted = false;
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
             }
 
             catch (InternetException)
             {
+                isSubmitted = false;
                 await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
             catch (Exception)
             {
+                isSubmitted = false;
                 await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
             }
             finally
             {
-                isSubmitted = false;
-                if (MopupService.Instance.PopupStack.Count > 0)
-                    await MopupService.Instance.PopAsync(true);
+                IsLoading = false;
             }
         }
 

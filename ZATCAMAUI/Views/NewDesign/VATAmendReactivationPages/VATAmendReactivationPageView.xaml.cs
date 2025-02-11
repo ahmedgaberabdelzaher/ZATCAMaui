@@ -596,6 +596,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATAmendReactivationPages
                         }
                         else
                         {
+                            App.VATSuccessMsg = false;
                             await viewModel._navigationService.NavigateTo(App.VATRegistrationSuccessfullPageView, response);
                         }
                     }

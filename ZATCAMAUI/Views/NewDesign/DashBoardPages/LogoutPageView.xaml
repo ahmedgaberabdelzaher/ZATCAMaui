@@ -28,15 +28,15 @@
                 HorizontalOptions="CenterAndExpand"
                 Spacing="30">
 
-                <buttons:SfButton
+                <Button
                     Clicked="OnOkayButtonClicked"
                     HorizontalOptions="FillAndExpand"
-                    Style="{StaticResource PrimaryButtonStyle}"
+                    Style="{StaticResource PrimaryMauiButtonStyle}"
                     Text="{x:Static ResourceManager:AppResources.ZYes}"
                     WidthRequest="130" />
-                <buttons:SfButton
+                <Button
                     Clicked="OnCancelClicked"
-                    Style="{StaticResource PrimaryButtonStyle}"
+                    Style="{StaticResource PrimaryMauiButtonStyle}"
                     Text="{x:Static ResourceManager:AppResources.ZNo}"
                     VerticalOptions="FillAndExpand"
                     WidthRequest="130" />

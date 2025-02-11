@@ -74,84 +74,22 @@ namespace ZATCAMAUI.Core.Mangers
                         ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(_responseData);
                         if (statusHeader?.header?.status?.code != "E999999")
                         {
-                            if (_tinDeregNewRequestResponse.StatusCode == HttpStatusCode.BadRequest)
+                            if(statusHeader?.header?.status?.code == "I000000")
                             {
-                                ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_responseData);
-                                if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
-                                {
-                                    string errorCode = errorMesg.error.innererror.errordetails[0].code;
-
-                                    WebServiceManager.ErrorMessageForUnlockAccount = errorMesg.error.innererror.errordetails[0].message;
-
-                                    if (errorCode.Contains("206"))
-                                    {
-                                        WebServiceManager.ErrorMessageForUnlockAccount = "206";
-                                    }
-                                    else if (errorCode.Contains("112"))
-                                    {
-                                        WebServiceManager.ErrorMessageForUnlockAccount = "112";
-                                    }
-                                    string line1 = "";
-                                    for (int i = 0; i < errorMesg.error.innererror.errordetails.Count; i++)
-                                    {
-                                        if (i == 0)
-                                        {
-                                            line1 = line1 + errorMesg.error.innererror.errordetails[i].message + "\n";
-                                        }
-                                        else
-                                        {
-                                            if (i == errorMesg.error.innererror.errordetails.Count - 2)
-                                            {
-                                                line1 = line1 + "\n" + "\n" + errorMesg.error.innererror.errordetails[i].message;
-                                            }
-                                            else
-                                            {
-                                                line1 = line1 + "\u2022" + errorMesg.error.innererror.errordetails[i].message + "\n";
-                                            }
-                                        }
-
-                                    }
-                                    WebServiceManager.ErrorMessageForUnlockAccount = line1;
-
-                                    String WithReplacedString = WebServiceManager.ErrorMessageForUnlockAccount.Replace("\u2022An exception was raised", string.Empty);
-                                    throw new GAZTErrorException(WithReplacedString);
-
-                                }
-                            }
-                            else if (!string.IsNullOrEmpty(_responseData))
-                            {
-                                ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_responseData);
-                                if (errorMesg != null && errorMesg.header != null && errorMesg.header.moreInformation != null && errorMesg.header.moreInformation?.errorDetails != null && errorMesg.header.moreInformation.errorDetails[0].message != null)
-                                {
-                                    string errorMessage = WebServiceManager.PrepareErrorMessageByJson(_responseData);
-
-                                    throw new GAZTVATRegistrationInProcessException(errorMessage);
-
-                                }
-                                else
-                                {
-                                    _responseData = JObject.Parse(_responseData)["data"].ToString();
-                                    _tinDeregistrationResponseModel = JsonConvert.DeserializeObject<TinDeregistrationResponseModel>(_responseData);
-                                    //AttachmentSet attachments = new AttachmentSet();
-                                    List<Attachment> attachments = _tinDeregistrationResponseModel.AttDetSet;
-                                    _tinDeregistrationResponseModel.AttDetSet = attachments;
-                                    // Set set = new Set();
-                                    OutletSetResult[] set = _tinDeregistrationResponseModel.OutletSet;
-                                    _tinDeregistrationResponseModel.OutletSet = set;
-                                    PermitSetResult[] permits = _tinDeregistrationResponseModel.PermitSet;
-                                    _tinDeregistrationResponseModel.PermitSet = permits;
-
-                                    if (_tinDeregistrationResponseModel == null)
-                                    {
-                                        throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
-                                    }
-                                }
+                                _responseData = JObject.Parse(_responseData)["data"].ToString();
+                                _tinDeregistrationResponseModel = JsonConvert.DeserializeObject<TinDeregistrationResponseModel>(_responseData);
+                                List<Attachment> attachments = _tinDeregistrationResponseModel.AttDetSet;
+                                _tinDeregistrationResponseModel.AttDetSet = attachments;
+                                OutletSetResult[] set = _tinDeregistrationResponseModel.OutletSet;
+                                _tinDeregistrationResponseModel.OutletSet = set;
+                                PermitSetResult[] permits = _tinDeregistrationResponseModel.PermitSet;
+                                _tinDeregistrationResponseModel.PermitSet = permits;
                             }
                             else
                             {
-                                throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
+                                string errorMessage = WebServiceManager.PrepareErrorMessageByJson(_responseData);
+                                throw new GAZTVATRegistrationInProcessException(errorMessage);
                             }
-
                         }
                         else
                         {
@@ -162,6 +100,11 @@ namespace ZATCAMAUI.Core.Mangers
 
                     return _tinDeregistrationResponseModel;
                 }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+
                 catch (GAZTErrorException ex)
                 {
                     throw new GAZTErrorException(ex.Message);

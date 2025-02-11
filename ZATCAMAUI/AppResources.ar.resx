@@ -4101,6 +4101,9 @@
         <value>تم التسجيل في ضريبة القيمة المضافة بنجاح</value>
         <comment>VATRegistrationSuccessfullPageView</comment>
     </data>
+   <data name="VATRSAmendRegistrationSuccessful" xml:space="preserve">
+      <value>>تم استلام طلب تعديل التسجيل في ضريبة القيمة المضافة الخاص بك من قبل هيئة الزكاة والضريبة والجمارك</value>
+    </data>
 	<data name="VATRSummeryofExpenseDetailsComming12Months" xml:space="preserve">
         <value>قيمة المصروفات الخاضعة لضريبة القيمة المضافة (في الـ 12 شهرًا القادمة)</value>
         <comment>VATRegistrationPageView</comment>

@@ -4180,7 +4180,15 @@ namespace ZATCAMAUI.Core.Mangers
                         ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(IsIDTypeValidList);
                         if (statusHeader?.header?.status?.code != "E999999")
                         {
-                            CRValidationModelValid = JsonConvert.DeserializeObject<CRValidationModelRootObject>(IsIDTypeValidList);
+                            if (statusHeader?.header?.status?.code == "I000000")
+                            {
+                                CRValidationModelValid = JsonConvert.DeserializeObject<CRValidationModelRootObject>(IsIDTypeValidList);
+                            }
+                            else
+                            {
+                                string errorMessage = WebServiceManager.PrepareErrorMessageByJson(IsIDTypeValidList);
+                                throw new GAZTVATRegistrationInProcessException(errorMessage);
+                            }
                         }
                         else
                         {
@@ -4189,7 +4197,10 @@ namespace ZATCAMAUI.Core.Mangers
                     }
                     return CRValidationModelValid;
                 }
-
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
                 catch (HttpRequestException)
                 {
                     throw new GAZTNetworkConnectivityIssueException();
@@ -4270,7 +4281,16 @@ namespace ZATCAMAUI.Core.Mangers
                         ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(ValidateDuplicateListResult);
                         if (statusHeader?.header?.status?.code != "E999999")
                         {
-                            ValidateDuplicate = JsonConvert.DeserializeObject<DuplicateSignUpModelRootObject>(ValidateDuplicateListResult);
+                            if (statusHeader?.header?.status?.code == "I000000")
+                            {
+                                ValidateDuplicate = JsonConvert.DeserializeObject<DuplicateSignUpModelRootObject>(ValidateDuplicateListResult);
+                            }
+                            else
+                            {
+                                string errorMessage = WebServiceManager.PrepareErrorMessageByJson(ValidateDuplicateListResult);
+                                throw new GAZTVATRegistrationInProcessException(errorMessage);
+                            }
+
                         }
                         else
                         {
@@ -4280,7 +4300,10 @@ namespace ZATCAMAUI.Core.Mangers
                     }
                     return ValidateDuplicate;
                 }
-
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
                 catch (HttpRequestException)
                 {
                     throw new GAZTNetworkConnectivityIssueException();

@@ -10,7 +10,34 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 {
     public class VATRegistrationSuccessfullPageViewModel : BaseViewModel
     {
+        private bool _vATSuccessMessage;
+        public bool VATSuccessMessage
+        {
+            get
+            {
+                return _vATSuccessMessage;
+            }
+            set
+            {
+                _vATSuccessMessage = value;
 
+                OnPropertyChanged("VATSuccessMessage");
+            }
+        }
+        private bool _vATAmendSuccessMessage;
+        public bool VATAmendSuccessMessage
+        {
+            get
+            {
+                return _vATAmendSuccessMessage;
+            }
+            set
+            {
+                _vATAmendSuccessMessage = value;
+
+                OnPropertyChanged("VATAmendSuccessMessage");
+            }
+        }
         public VATRegistrationSuccessfullPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
 

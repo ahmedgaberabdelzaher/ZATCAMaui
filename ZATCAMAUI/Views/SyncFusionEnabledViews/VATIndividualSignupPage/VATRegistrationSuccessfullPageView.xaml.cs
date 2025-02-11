@@ -21,6 +21,16 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
                 if (response.d != null)
                 {
+                    if (App.VATSuccessMsg)
+                    {
+                        viewModel.VATSuccessMessage = true;
+                        viewModel.VATAmendSuccessMessage = false;
+                    }
+                    else
+                    {
+                        viewModel.VATSuccessMessage = false;
+                        viewModel.VATAmendSuccessMessage = true;
+                    }
                     Label_Name.Text = response.d.TinNm;
                     Label_ApplicationNumber.Text = response.d.Fbnumz;
                     Label_Date.Text = DateTime.Now.ToString("dd/MM/yyyy");

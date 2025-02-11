@@ -115,19 +115,16 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
         {
             try
             {
-                App.DisplayProgressView();
+                IsLoading = true;
                 VatRefundsDisplayDataModel = await VATDeregistrationWebServiceManager.GAZTGetVATRefundDisplayBankIdTypeData("");
-                
-                App.HideProgressView();
+
+                IsLoading = false;
                 IsInstructionsVisible = true;
-
-
             }
-
-
             catch (GAZTErrorException ex)
             {
-                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+                await MopupService.Instance.PopAsync();
+                await UtilityManager.HandleExceptionMessage(ex.Message, false, isPopStack:false);
             }
             catch (GAZTNetworkConnectivityIssueException)
             {
@@ -144,8 +141,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
             finally
             {
                 IsInstructionsVisible = false;
-                App.HideProgressView();
-                await MopupService.Instance.PopAsync();
+                IsLoading = false;
             }
         }
     }

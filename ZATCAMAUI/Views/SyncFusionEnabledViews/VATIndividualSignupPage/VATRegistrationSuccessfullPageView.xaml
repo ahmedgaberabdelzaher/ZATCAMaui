@@ -33,15 +33,20 @@
             <StackLayout Padding="40" VerticalOptions="CenterAndExpand">
 
                 <Image Aspect="AspectFit" Source="Forget_ic_success" />
-                <Label
+                <Label IsVisible="{Binding VATSuccessMessage}"
                     FontSize="Large"
                     HorizontalTextAlignment="Center"
                     Text="{x:Static ResourceManager:AppResources.VATRSRegistrationSuccessful}"
                     TextColor="White" />
-                <Label
+                <Label IsVisible="{Binding VATSuccessMessage}"
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
                     Text="{x:Static ResourceManager:AppResources.VATRSRegisteredToVATService}"
+                    TextColor="White" />
+                <Label IsVisible="{Binding VATAmendSuccessMessage}"
+                    FontSize="Large"
+                    HorizontalTextAlignment="Center"
+                    Text="{x:Static ResourceManager:AppResources.VATRSAmendRegistrationSuccessful}"
                     TextColor="White" />
             </StackLayout>
             <ScrollView>
