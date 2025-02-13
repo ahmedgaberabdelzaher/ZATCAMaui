@@ -1337,11 +1337,12 @@
                                             VerticalOptions="Center" />
                                     </StackLayout>
 
-                                    <buttons:SfButton
+                                    <Button
                                         Margin="0,16,0,0"
-                                        Background="Transparent"
                                         Command="{Binding ResendOtpCommand}"
                                         IsVisible="{Binding IsResendCodeEnabled}"
+                                        BackgroundColor="Transparent"
+                                        Style="{StaticResource PrimaryMauiButtonStyle}"
                                         Text="{x:Static ResourceManager:AppResources.NDResendVerificationCode}"
                                         TextColor="{Binding ResendOTPTextColor}"
                                         VerticalOptions="EndAndExpand" />
@@ -1350,10 +1351,9 @@
 
                             </StackLayout>
 
-                            <buttons:SfButton
-                                x:Name="btn"
+                            <Button
                                 Command="{Binding VerifyOTPCommand}"
-                                Style="{StaticResource PrimaryButtonStyle}"
+                                Style="{StaticResource PrimaryMauiButtonStyle}"
                                 Text="{x:Static ResourceManager:AppResources.Verify}" />
                         </StackLayout>
 

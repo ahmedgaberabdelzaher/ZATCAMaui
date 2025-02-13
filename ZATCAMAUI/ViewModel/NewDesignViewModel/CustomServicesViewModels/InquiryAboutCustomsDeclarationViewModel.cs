@@ -1302,7 +1302,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                         if (IsOtpValid)
                         {
 
-                            otpTimer.Stop();
+                            StopTimer();
                             EnteredOTP = OTPFirstDigit + OTPSecondDigit + OTPThirdDigit + OTPFourthDigit;
                             if (EnteredOTP == Preferences.Get("OTPValue", ""))
                             {
@@ -1409,7 +1409,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
         {
             try
             {
-                //PhoneNo = "0503455172";
+                PhoneNo = "0503455172";
                 Phone = PhoneNo;
                 IsLoading = true;
                 string otp = OTPHelper.Generate();
@@ -1532,50 +1532,56 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
             }
         }
 
-        public System.Timers.Timer otpTimer;
-        public int countDownSeconds;
         public string EnteredOTP = string.Empty;
         bool IsOtpValid;
+
+        private int counter = 120;
+
+        private System.Timers.Timer timer;
         public void StartOTPTimer()
         {
-            // Timer            
-            otpTimer = new System.Timers.Timer();
-            otpTimer.Interval = 1000;
+            timer = new System.Timers.Timer();
+            LblCountDownTimer = GetTime(counter);
+            timer.Interval = 1000;
+            timer.Elapsed += Timer_Elapsed;
+            timer.Start();
 
-            // Event
-            otpTimer.Elapsed += OnCountDownTimedOTPEvent;
-
-            countDownSeconds = 120;
-
-            otpTimer.Enabled = true;
         }
 
-        private void OnCountDownTimedOTPEvent(object sender, ElapsedEventArgs e)
+        private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            countDownSeconds--;
-
-            if (countDownSeconds <= 9 && countDownSeconds > 0)
-                LblCountDownTimer = "0:0" + countDownSeconds.ToString();
-            else if (countDownSeconds > 60)
+            if (counter > 0)
             {
-                int countDownSecondsL = countDownSeconds - 60;
-                LblCountDownTimer = "1:" + countDownSecondsL.ToString();
-
-                if (countDownSecondsL <= 9)
-                    LblCountDownTimer = "1:0" + countDownSecondsL.ToString();
+                counter--;
+                LblCountDownTimer = GetTime(counter);
             }
             else
-                LblCountDownTimer = "0:" + countDownSeconds.ToString();
-
-            // Stop timer
-            if (countDownSeconds == 0)
             {
-                otpTimer.Elapsed -= OnCountDownTimedOTPEvent;
-                otpTimer.Stop();
-                ResendOTPTextColor = (Color)Application.Current.Resources["Primary"];
-                IsOtpValid = false;
-                IsResendCodeEnabled = true;
+                timer.Stop();
+                Enable_Resend();
+                counter = 120;//To rest
             }
+        }
+        private void Enable_Resend()
+        {
+            ResendOTPTextColor = (Color)Application.Current.Resources["Primary"];
+            IsOtpValid = false;
+            IsResendCodeEnabled = true;
+        }
+        public void StopTimer()
+        {
+            if (timer != null)
+            {
+                timer.Stop();
+                counter = 120;//To rest
+               
+            }
+        }
+
+        private string GetTime(int s)
+        {
+            TimeSpan time = TimeSpan.FromSeconds(s);
+            return time.ToString(@"m\:ss");
         }
 
         public ICommand SearchInPortsCommand
