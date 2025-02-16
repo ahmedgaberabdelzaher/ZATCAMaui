@@ -60,11 +60,11 @@ namespace ZATCAMAUI.Core.Helper
 
 
         //QA
-        public static string BaseUrlOfODataServices = "https://test-api.zatca.gov.sa/test/third-party";
-        public static string BaseUrlForSSLCheck = "https://test-api.zatca.gov.sa";
-        public static string ClientId = "30ba76941a06e8b1141131800cd87139";
-        public static string ClientSecret = "3bfa87a6be6b87fcbc2fad2f6690c4e5";
-        public static string publicKeyStr = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCJMtl5sh5y3FjSasKyyfcAWLvhjSkECAm3sJmkyJbCg/PN3olhTqknqecmZ8qQw4MNbyfEUkWjQfV+0fJXtRJOUIoeVJxQRDTOZ10abWGOenXj8IC5ETxnpVZ6XqKAYUGGQRtSBU4U3Uk+78gKw68pCNJCcgq/Z88rbLQ+KB//dwIDAQAB";
+        //public static string BaseUrlOfODataServices = "https://test-api.zatca.gov.sa/test/third-party";
+        //public static string BaseUrlForSSLCheck = "https://test-api.zatca.gov.sa";
+        //public static string ClientId = "30ba76941a06e8b1141131800cd87139";
+        //public static string ClientSecret = "3bfa87a6be6b87fcbc2fad2f6690c4e5";
+        //public static string publicKeyStr = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCJMtl5sh5y3FjSasKyyfcAWLvhjSkECAm3sJmkyJbCg/PN3olhTqknqecmZ8qQw4MNbyfEUkWjQfV+0fJXtRJOUIoeVJxQRDTOZ10abWGOenXj8IC5ETxnpVZ6XqKAYUGGQRtSBU4U3Uk+78gKw68pCNJCcgq/Z88rbLQ+KB//dwIDAQAB";
 
 
         //UAT
