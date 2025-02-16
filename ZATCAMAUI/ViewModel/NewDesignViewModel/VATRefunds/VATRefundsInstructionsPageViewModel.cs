@@ -140,7 +140,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
             }
             finally
             {
-                IsInstructionsVisible = false;
+                //IsInstructionsVisible = false;
                 IsLoading = false;
             }
         }

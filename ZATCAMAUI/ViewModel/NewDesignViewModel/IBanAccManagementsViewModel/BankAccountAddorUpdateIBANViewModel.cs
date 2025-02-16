@@ -658,6 +658,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel
                 {
                     isIBanValid = false;
                     await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+                    isIBanValid = false;
                 }
                 finally
                 {
