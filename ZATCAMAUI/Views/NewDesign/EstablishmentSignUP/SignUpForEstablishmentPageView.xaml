@@ -737,7 +737,8 @@
                                             ContainerType="Outlined"
                                             InputViewPadding="16,0,16,0"
                                             LeadingViewPosition="Inside"
-                                            OutlineCornerRadius="10">
+                                            OutlineCornerRadius="10"
+                                            HasError="{Binding IsCRNumberInvalid, Mode=TwoWay}">
 
                                             <custom:CustomSfTextInputView.TextInputView>
 
@@ -749,11 +750,10 @@
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding TxtCRNumber}"
                                                     TextChanged="EntryCRNumber_TextChanged"
-                                                    Unfocused="EntryCRNumber_Unfocused"
                                                     VerticalTextAlignment="Center">
-
                                                     <custom:GAZTBorderlessEntry.Behaviors>
                                                         <behaviors:OnlyNumericValuesBehaviour />
+                                                        <xct:EventToCommandBehavior Command="{Binding CRNumberFocusChanged}" EventName="Completed" />
                                                     </custom:GAZTBorderlessEntry.Behaviors>
                                                 </custom:GAZTBorderlessEntry>
 

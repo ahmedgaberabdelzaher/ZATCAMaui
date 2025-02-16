@@ -18,7 +18,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeRegistration
             {
                 if (response.d != null)
                 {
-                    Label_Name.Text = response.d.headerSet.Contactnm;
+                    Label_Name.Text = response.d.headerSet.FullName;
                     Label_ApplicationNumber.Text = response.d.headerSet.Fbnumx;
                     viewModel.FBNumber = response.d.headerSet.Fbnumx;
                     string StartdateToshow = DateTime.Today.Date.ToString("yyyy/MM/dd").Replace('-', '/');

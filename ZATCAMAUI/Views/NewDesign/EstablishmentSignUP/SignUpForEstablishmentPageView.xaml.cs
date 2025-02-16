@@ -270,6 +270,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
             viewModel.IsHijriCal = false;
             viewModel.IqamaTypeDesc = string.Empty;
             viewModel.ShowIqamaTypeDesc = false;
+            viewModel.IsCRNumberInvalid = false;
         }
 
         protected async override void OnAppearing()
@@ -501,98 +502,6 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
 
             viewModel.StopTimer = false;
 
-        }
-
-        private async void EntryCRNumber_Unfocused(object sender, FocusEventArgs e)
-        {
-            try
-            {
-                viewModel.IsLoading = true;
-                if (!string.IsNullOrEmpty(EntryCRNumber.Text))
-                {
-                    if (EntryCRNumber.Text.Length == 10)
-                    {
-                        try
-                        {
-                            FrmCR.HasError = false;
-                            viewModel.IsLoading = true;
-                            CRValidationModelRootObject Result = await WebServiceManager.GAZTValidateCRNumber(EntryCRNumber.Text);
-                            if (Result != null)
-                            {
-                                if (Result.d != null)
-                                {
-                                    if (Result.d.NotFound == "X")
-                                    {
-                                        FrmCR.HasError = true;
-                                        viewModel.IsAllValidCRNumberEntered = false;
-                                        viewModel.TxtCRNumber = string.Empty;
-                                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseentervalidCRnumber));
-                                    }
-                                    else
-                                    {
-                                        FrmCR.HasError = false;
-                                        viewModel.IsAllValidCRNumberEntered = true;
-                                    }
-                                }
-                            }
-                            viewModel.IsLoading = false;
-                        }
-                        catch (InternetException)
-                        {
-                            viewModel.IsLoading = true;
-                            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
-                        }
-                    }
-                    else
-                    {
-                        PopUp popUp = new PopUp();
-                        popUp.Message = AppResources.ZZCommercialReiterationNumbershouddbe10digits;
-                        popUp.IsLinkAvailable = false;
-                        if (App.IsArabic)
-                        {
-                            popUp.FlowDirections = "RightToLeft";
-                            popUp.isFontSet = true;
-                        }
-                        else
-                        {
-                            popUp.FlowDirections = "LeftToRight";
-                        }
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZCommercialReiterationNumbershouddbe10digits));
-                        FrmCR.HasError = true;
-                        viewModel.IsAllValidCRNumberEntered = false;
-                        EntryCRNumber.Text = string.Empty;
-                        // EntryCRNumber.Focus();
-                    }
-                }
-                else
-                {
-                    if (viewModel.IsCRChecked == false)
-                    {
-                        viewModel.IsAllValidCRNumberEntered = true;
-                    }
-                }
-            }
-            catch (GAZTVATRegistrationInProcessException ex)
-            {
-                await UtilityManager.HandleExceptionMessage(ex.Message, false);
-            }
-            catch (GAZTNetworkConnectivityIssueException)
-            {
-                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, viewModel._navigationService);
-            }
-
-            catch (InternetException)
-            {
-                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
-            }
-            catch (Exception)
-            {
-                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
-            }
-            finally
-            {
-                viewModel.IsLoading = false;
-            }
         }
 
         private async void EntryEmail_TextChanged(object sender, FocusEventArgs e)

@@ -133,6 +133,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
         public ICommand OnNextButtonClick { get; private set; }
         public ICommand OnBackButtonClick { get; private set; }
         public ICommand OnResendOTPClicked { get; set; }
+        public ICommand CRNumberFocusChanged { get; set; }
         public ICommand GoToNextEntryCommand
         {
 
@@ -2109,8 +2110,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             OnNextButtonClick = new Command(() => navigateToNext());
             OnBackButtonClick = new Command(() => navigateBack());
             OnResendOTPClicked = new Command(async () => await ResendOTPAsync());
+            CRNumberFocusChanged = new Command(() => CRNumberChanged());
         }
-
 
         private string _txtCRNumber = string.Empty;
         public string TxtCRNumber
@@ -2125,7 +2126,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                 OnPropertyChanged("TxtCRNumber");
             }
         }
-
+        private bool _isCRNumberInvalid;
+        public bool IsCRNumberInvalid
+        {
+            get
+            {
+                return _isCRNumberInvalid;
+            }
+            set
+            {
+                _isCRNumberInvalid = value;
+                OnPropertyChanged("IsCRNumberInvalid");
+            }
+        }
         private bool _isAllValidContactDataEnteredEmail = false;
         public bool IsAllValidContactDataEnteredEmail
         {
@@ -2678,6 +2691,85 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 
         }
 
+        private async void CRNumberChanged()
+        {
+            try
+            {
+                IsLoading = true;
+                if (!string.IsNullOrEmpty(TxtCRNumber))
+                {
+                    if (TxtCRNumber.Length == 10)
+                    {
+                        CRValidationModelRootObject Result = await WebServiceManager.GAZTValidateCRNumber(TxtCRNumber);
+                        if (Result != null)
+                        {
+                            if (Result.d != null)
+                            {
+                                if (Result.d.NotFound == "X")
+                                {
+                                    IsCRNumberInvalid = true;
+                                    IsAllValidCRNumberEntered = false;
+                                    TxtCRNumber = string.Empty;
+                                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZPleaseentervalidCRnumber));
+                                }
+                                else
+                                {
+                                    IsCRNumberInvalid = false;
+                                    IsAllValidCRNumberEntered = true;
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        PopUp popUp = new PopUp();
+                        popUp.Message = AppResources.ZZCommercialReiterationNumbershouddbe10digits;
+                        popUp.IsLinkAvailable = false;
+                        if (App.IsArabic)
+                        {
+                            popUp.FlowDirections = "RightToLeft";
+                            popUp.isFontSet = true;
+                        }
+                        else
+                        {
+                            popUp.FlowDirections = "LeftToRight";
+                        }
+                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZCommercialReiterationNumbershouddbe10digits));
+                        IsCRNumberInvalid = true;
+                        IsAllValidCRNumberEntered = false;
+                        TxtCRNumber = string.Empty;
+                    }
+                }
+                else
+                {
+                    if (IsCRChecked == false)
+                    {
+                        IsAllValidCRNumberEntered = true;
+                    }
+                }
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, false);
+            }
+            catch (GAZTNetworkConnectivityIssueException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
+            }
+
+            catch (InternetException)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
+            }
+            catch (Exception)
+            {
+                await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
+            }
+            finally
+            {
+                IsLoading = false;
+            }
+        }
         public void PopulateDataInChips()
         {
             ChipDataFilterlist = new ObservableCollection<ChipModel>()

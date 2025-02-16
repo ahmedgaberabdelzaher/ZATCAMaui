@@ -51,7 +51,21 @@ public class OTPPageViewModel : BaseViewModel
     string oTPFourthDigit;
     public string OTPFourthDigit { get { return oTPFourthDigit; } set { oTPFourthDigit = value; OnPropertyChanged(); } }
 
+    private Location _userLocation = new Location();
+    public Location UserLocation
+    {
+        get
+        {
+            return _userLocation;
+        }
+        set
+        {
+            if (_userLocation == value) return;
 
+            _userLocation = value;
+            OnPropertyChanged("UserLocation");
+        }
+    }
 
     public OTPPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
     {
@@ -127,7 +141,18 @@ public class OTPPageViewModel : BaseViewModel
                 try
                 {
 
-                    var tokenRequestModel = new TokenRequestModel() { Token = App.Token, Lang = App.IsArabic ? "ar" : "en", OTP = OTPFirstDigit + OTPSecondDigit + OTPThirdDigit + OTPFourthDigit, SourceType = "M", OsName = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem, BrowserName = "chrome" };
+                    var tokenRequestModel = new TokenRequestModel()
+                    {
+                        Token = App.Token,
+                        Lang = App.IsArabic ? "ar" : "en",
+                        OTP = OTPFirstDigit + OTPSecondDigit + OTPThirdDigit + OTPFourthDigit,
+                        SourceType = "M",
+                        OsName = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem,
+                        BrowserName = DeviceInfo.Platform.ToString(),
+                        Latitude = UserLocation.Latitude == 0 ? "UNKNOWN" : UserLocation.Latitude.ToString(),
+                        Longitude = UserLocation.Longitude == 0 ? "UNKNOWN" : UserLocation.Longitude.ToString(),
+                        IpAddress = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetLocalIPAddress()
+                };
                     await TokenPostRequest(tokenRequestModel);
                 }
                 catch (Exception)
@@ -208,6 +233,7 @@ public class OTPPageViewModel : BaseViewModel
                 App.Token = result.Result.ErrorToken; //to Resend the request
                 IsShowMsgView = true;
                 MessageTxt = AppResources.OTPScreenErrMsg;
+                OTPFirstDigit = OTPSecondDigit = OTPThirdDigit = OTPFourthDigit = string.Empty;
                 if (result.Result.ErrorCode.Equals("M012"))
                 {
                     StopTimer();

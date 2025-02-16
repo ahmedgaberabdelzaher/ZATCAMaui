@@ -8,14 +8,14 @@ public partial class OTPPageView : ContentPage
 
 	OTPPageViewModel viewModel;
 	
-	public OTPPageView()
+	public OTPPageView(Location location)
 	{
         InitializeComponent();
 
 		viewModel = App.Locator.OtpPageViewModel;
 		this.BindingContext = viewModel;
 		viewModel.IsShowMsgView = false;
-
+		viewModel.UserLocation = location;
     }
 
 

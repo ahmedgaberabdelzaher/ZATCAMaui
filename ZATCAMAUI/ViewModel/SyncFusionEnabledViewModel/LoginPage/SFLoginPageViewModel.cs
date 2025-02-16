@@ -172,6 +172,21 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                 OnPropertyChanged("AppVersion");
             }
         }
+        private Location _userLocation = new Location();
+        public Location UserLocation
+        {
+            get
+            {
+                return _userLocation;
+            }
+            set
+            {
+                if (_userLocation == value) return;
+
+                _userLocation = value;
+                OnPropertyChanged("UserLocation");
+            }
+        }
         public string DeviceId { get; set; }
         /// <summary>
         /// Gets or sets the property that is bound with an entry that gets the password from user in the login page.
@@ -720,7 +735,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
                         App.MobileNumber = result.Result.MobileNumber;
                         App.LoginDataRetrieved = new LoginModel() { TIN = IsTinDropdownVisible ? this.SelectedTin : this.TIN };
 
-                        await _navigationService.NavigateTo(App.OtpLoginPageView);
+                        await _navigationService.NavigateTo(App.OtpLoginPageView, UserLocation);
                     }
                     else if (loginResponse != null && loginResponse.StatusCode == System.Net.HttpStatusCode.Unauthorized)
                     {

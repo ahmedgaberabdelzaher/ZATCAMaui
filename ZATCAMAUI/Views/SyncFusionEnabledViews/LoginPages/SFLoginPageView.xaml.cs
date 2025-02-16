@@ -35,7 +35,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
                 App.ArePreLoginLangCookiesSet = false;
                 App.IsLoginCalled = false;
                 viewModel.TINIndex = 0;
-
             }
             catch (Exception)
             {
@@ -44,12 +43,47 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
             }
         }
 
-        protected override void OnAppearing()
+        private async Task LocationAccess()
+        {
+            try
+            {
+                PermissionStatus status = await Permissions.CheckStatusAsync<Permissions.LocationWhenInUse>();
+
+                if (status != PermissionStatus.Granted && (DeviceInfo.Platform == DevicePlatform.Android || DeviceInfo.Platform == DevicePlatform.iOS))
+                {
+                    status = await Permissions.RequestAsync<Permissions.LocationWhenInUse>();
+                }
+                if (status == PermissionStatus.Granted)
+                {
+                    var request = new GeolocationRequest(GeolocationAccuracy.High, TimeSpan.FromSeconds(10));
+                    viewModel.UserLocation = await Geolocation.GetLocationAsync(request);
+                }
+            }
+            catch (FeatureNotSupportedException)
+            {
+
+            }
+            catch (FeatureNotEnabledException)
+            {
+
+            }
+            catch (PermissionException)
+            {
+               
+            }
+            catch (Exception)
+            {
+               
+            }
+        }
+
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
 
             try
             {
+                await LocationAccess();
                 MessagingCenter.Subscribe<string>(this, "TinList", message =>
                 {
                     viewModel.IsVisibleTinIds = true;
