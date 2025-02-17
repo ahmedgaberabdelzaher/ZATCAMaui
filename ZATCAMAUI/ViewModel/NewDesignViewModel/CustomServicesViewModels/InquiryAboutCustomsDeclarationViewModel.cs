@@ -1409,7 +1409,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
         {
             try
             {
-                PhoneNo = "0503455172";
+                //PhoneNo = "0503455172";
                 Phone = PhoneNo;
                 IsLoading = true;
                 string otp = OTPHelper.Generate();

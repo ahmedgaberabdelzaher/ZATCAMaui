@@ -389,7 +389,6 @@
                                         HorizontalOptions="FillAndExpand"
                                         IsSpellCheckEnabled="True"
                                         IsTextPredictionEnabled="False"
-                                        MaxLength="1000"
                                         MinimumHeightRequest="100"
                                         Style="{StaticResource BodyLabelBlack}"
                                         Text="{Binding SubmitReport.ReportDetails}" />
