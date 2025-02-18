@@ -23,11 +23,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages
             BindingContext = viewModel;
             viewModel.IsNavigationCompletedToSuccessfulPage = false;
 
-            MessagingCenter.Subscribe<SingleButtonPopupView, bool>(this, "SingleButtonPopupResponse", (obj, res) =>
-            {
-                MopupService.Instance.PopAsync();
-                viewModel._navigationService.GoBack();
-            });
+            
             viewModel.currentTab = EstablishmentRegistrationTabsEnum.RegistrationType;
             viewModel.CurrentIndex = (int)EstablishmentRegistrationTabsEnum.RegistrationType;
         }
@@ -38,6 +34,17 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages
             base.OnDisappearing();
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            MessagingCenter.Subscribe<SingleButtonPopupView, bool>(this, "SingleButtonPopupResponse", (obj, res) =>
+            {
+
+                MopupService.Instance.PopAsync();
+                viewModel._navigationService.GoBack();
+            });
+        }
+       
         void dOBDateClicked(object sender, EventArgs e)
         {
             if (EstablishmentRegistrationPageViewModel.taxPayerDetails?.Caltp == "Gregorian")

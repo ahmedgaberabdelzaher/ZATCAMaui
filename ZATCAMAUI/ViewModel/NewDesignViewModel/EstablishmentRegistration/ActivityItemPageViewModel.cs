@@ -1043,8 +1043,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     OutletDropDowns = await EstablishmentRegistrationWebServiceManager.ESTOutletDropDowns();
                     activityList = await EstablishmentRegistrationWebServiceManager.ESTOutletGetActivitySetsList();
                     EnableIssueByDropDown = false;
-                    CRNumber = validateCR?.Crnum;
-                    CrName = validateCR?.Crname;
+                   
 
 
                     CRIssueCountry = OutletDropDowns.country_dropdownSet.Where(i => i.Land1 == "SA").FirstOrDefault();
@@ -1056,11 +1055,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     {
                         CRIssueBy = CRIssueCountry.Land1 == "SA" ? ZATCAConstants.EnIssueBy["90702"] : ZATCAConstants.EnIssueBy["90718"];
                     }
-                    CRIssueCity = new CityDropdownItem()
+                    if(validateCR != null)
                     {
-                        CityName = OutletDropDowns.city_dropdownSet.Where(i => i.CityCode == validateCR?.CityCode).FirstOrDefault().CityName,
-                        CityCode = validateCR?.CityCode,
-                    };
+                        CRNumber = validateCR?.Crnum;
+                        CrName = validateCR?.Crname;
+
+                        CRIssueCity = new CityDropdownItem()
+                        {
+                            CityName = OutletDropDowns.city_dropdownSet.Where(i => i.CityCode == validateCR?.CityCode).FirstOrDefault().CityName,
+                            CityCode = validateCR?.CityCode,
+                        };
+                    }
+                   
                     CRValidFrom = validateCR?.Issuedt;
                     EnableCRInputField = string.IsNullOrEmpty(validateCR?.Crname);
                     SelectedCRItem = taxPayerDetails?.Nreg_ActivitySet?.FirstOrDefault(i => i.Type == "BUP002");
@@ -1068,10 +1074,16 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     {
                         EnableIssueByDropDown = false;
                         CRNumber = SelectedCRItem?.Idnumber;
+                        CrName = SelectedCRItem?.ActName;
                         CRIssueCountry = OutletDropDowns.country_dropdownSet.Where(i => i.Land1 == SelectedCRItem?.Country).FirstOrDefault();
                         CRIssueBy = App.IsArabic ? ZATCAConstants.ArIssueBy[SelectedCRItem?.Institute] : ZATCAConstants.EnIssueBy[SelectedCRItem?.Institute];
                         CRValidFrom = SelectedCRItem?.ValidDateFrom;
 
+                        CRIssueCity = new CityDropdownItem()
+                        {
+                            CityName = OutletDropDowns.city_dropdownSet.Where(i => i.CityCode == SelectedCRItem.CityCode).FirstOrDefault().CityName,
+                            CityCode = SelectedCRItem.CityCode,
+                        };
 
                         if (SelectedCRItem.Actcat.Equals("M"))
                         {
@@ -1114,8 +1126,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     makeDropdownFieldsNorEditable();
 
 
-                    if (!string.IsNullOrEmpty(CRNumber))
-                        await validateCRNumber();
+                    //if (!string.IsNullOrEmpty(CRNumber))
+                    //    await validateCRNumber();
                 }
                 else if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
                 {
@@ -1201,7 +1213,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
             finally
@@ -1656,7 +1668,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
                 else if (string.IsNullOrWhiteSpace(CrName))
                 {
-                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateACRNumber));
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ESTValidateACRName));
                     return false;
                 }
                 else if (string.IsNullOrWhiteSpace(CRNumber))

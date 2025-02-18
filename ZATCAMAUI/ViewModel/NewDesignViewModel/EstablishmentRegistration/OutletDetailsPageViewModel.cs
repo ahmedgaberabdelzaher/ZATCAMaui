@@ -947,26 +947,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         if (preLoadedItems.Count == 1)
                         {
                             var preLoadedItem = preLoadedItems.FirstOrDefault();
-                            if (preLoadedItem?.Type == "BUP002")
-                            {
-                                var result = await EstablishmentRegistrationWebServiceManager.ESTValidateCRNum(preLoadedItem?.Idnumber);
-                                    if (!string.IsNullOrEmpty(result))
-                                    {
-                                        validateCR = JsonConvert.DeserializeObject<ValidateCR>(result);
-                                    }
-                                    if (validateCR.Crnum == null)
-                                    {
-                                        PrepareError(result);
-                                    }
 
-                                if (!string.IsNullOrEmpty(validateCR?.Crname))
-                                {
-                                    OutletName = validateCR?.Crname;
-                                    validateCR.Crnum = preLoadedItem?.Idnumber;
-                                }
-                                PreLoadedLicenseItem = null;
-                            }
-                            else if (preLoadedItem?.Type == "ZS0004")
+                            if (preLoadedItem?.Type == "ZS0004")
                             {
                                 validateCR = null;
                                 PreLoadedLicenseItem = preLoadedItem;
