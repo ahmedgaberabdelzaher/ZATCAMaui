@@ -10627,7 +10627,7 @@ info@zatca.gov.sa</value>
     <value>يمكنك طلب تخفيض الضمان النقدي عن طريق الاتصال على الرقم: 19993</value>
 </data>
 	<!-- 5250 and 6073 -->
-	<data name="FinacialPeriodNormal" xml:space="preserve">
+	<!--<data name="FinacialPeriodNormal" xml:space="preserve">
     <value>الفترة العادية</value>
 </data>
 	<data name="FinacialPeriodSmall" xml:space="preserve">
@@ -10635,7 +10635,7 @@ info@zatca.gov.sa</value>
 </data>
 	<data name="FinacialPeriodLong" xml:space="preserve">
     <value>الفترة الطويلة</value>
-</data>
+</data>-->
 	<data name="Error896" xml:space="preserve">
     <value>عزيزي المكلف, السجل التجاري مسجل لدينا باسم آخر.</value>
 </data>
