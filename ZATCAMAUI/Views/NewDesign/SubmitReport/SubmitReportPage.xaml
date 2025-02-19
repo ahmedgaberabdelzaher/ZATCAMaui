@@ -656,7 +656,6 @@
                                     <custom:GAZTBorderlessEntry
                                         x:Name="reportCompanyNameEntry"
                                         Keyboard="Text"
-                                        MaxLength="100"
                                         Placeholder="{x:Static ResourceManager:AppResources.NDTaxEvasionFacilityName}"
                                         Style="{StaticResource DefaultEntry}"
                                         Text="{Binding SubmitReport.CompanyName}"

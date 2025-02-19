@@ -275,14 +275,29 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     {
                         if (!NetworkCheck.IsInternet())
                         {
+                            MessageTxt = AppResources.NoInternet;
                             IsShowMsgView = true;
                             IsLoading = false;
-                            MessageTxt = AppResources.NoInternet;
                             return;
                         }
-                        IsLoading = true;
+                        
 
-                        if (!string.IsNullOrWhiteSpace(CRNo) && CRNo.Length == 10)
+                        if (string.IsNullOrWhiteSpace(CRNo))
+                        {
+                            await MopupService.Instance.PopAsync(true);
+                            MessageTxt = AppResources.RequiredData;
+                            IsShowMsgView = true;
+                        }
+
+                        else if (CRNo.Length < 10 || !CRNo.Substring(0, 1).Equals("7"))
+                        {
+                            await MopupService.Instance.PopAsync(true);
+                            MessageTxt = AppResources.CRNumberValidation;
+                            IsShowMsgView = true;
+                        }
+
+                        else if (!string.IsNullOrWhiteSpace(CRNo) && CRNo.Length == 10
+                        && CRNo.Substring(0, 1).Equals("7"))
                         {
                             await MopupService.Instance.PopAsync(true);
                             var model = new AddNewCrBody()
@@ -291,17 +306,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                                 idNumber = NationalId,
                                 registeredUserID = IamRegisteredUserID
                             };
+                            IsLoading = true;
                             var response = await _twareedServices.TawreedAddNewCr(model);
+                            IsLoading = false;
                             if (response.IsSuccessStatusCode)
                             {
                                 var content = await response.Content.ReadAsStringAsync();
                                 var result = JsonConvert.DeserializeObject<SubmitFormResponse>(content);
                                 if (result.header.status.code == "I000000")
                                 {
-                                    // await MopupService.Instance.PopAsync(true);
                                     isCRDataFetched = false;
                                     IsOpenAddNewCr = false;
-                                    CRNo = "";
+                                    CRNo = string.Empty;
                                     MessageTxt = AppResources.CRNoAddedSuccess;
                                     IsShowMsgView = true;
                                     return;
@@ -324,16 +340,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                             {
                                 MessageTxt = AppResources.RequestTimeoutDescription;
                                 IsShowMsgView = true;
-                                IsLoading = false;
                             }
                         }
-                        else
-                        {
-                            await MopupService.Instance.PopAsync(true);
-                            MessageTxt = AppResources.RequiredData;
-                            IsShowMsgView = true;
-                            IsLoading = false;
-                        }
+                       
 
                     }
                     catch (Exception)

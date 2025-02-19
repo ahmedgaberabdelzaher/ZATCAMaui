@@ -211,7 +211,7 @@
                             <Label Style="{StaticResource CaptionLabelGrey}">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.UnifiedNumber}" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZCRNationalNumber}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -225,7 +225,7 @@
                                         InputTransparent="True"
                                         IsReadOnly="True"
                                         Keyboard="Text"
-                                        Placeholder="{x:Static ResourceManager:AppResources.UnifiedNumber}"
+                                        Placeholder="{x:Static ResourceManager:AppResources.ZZCRNationalNumber}"
                                         Style="{StaticResource DefaultEntry}"
                                         Text="{Binding SelectedCRNo}"
                                         TextColor="#58595B">
@@ -259,9 +259,25 @@
                                 FontFamily="{StaticResource FontSomarBold}"
                                 FontSize="16"
                                 HorizontalOptions="CenterAndExpand"
-                                Text="{x:Static ResourceManager:AppResources.AddNewCR}"
                                 TextColor="#4FBBBD"
-                                VerticalOptions="CenterAndExpand" />
+                                VerticalOptions="CenterAndExpand" >
+
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                         <Span Style="{StaticResource CaptionLabelGrey}"
+                                               FontFamily="{StaticResource FontSomarBold}"
+                                                FontSize="16"
+                                                TextColor="#4FBBBD"
+                                              Text="+" />
+                                        <Span Style="{StaticResource CaptionLabelGrey}"
+                                              FontFamily="{StaticResource FontSomarBold}"
+                                                FontSize="16"
+                                                TextColor="#4FBBBD"
+                                              Text="{x:Static ResourceManager:AppResources.AddNewCRTitle}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+
+                            </Label>
                             <Border.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding DisplayAddNewCRViewCommand}" CommandParameter="1" />
 

@@ -10021,7 +10021,7 @@ info@zatca.gov.sa</value>
     <value>اضافه</value>
 </data>
 	<data name="AddNewCRTitle" xml:space="preserve">
-    <value>إضافة الرقم الموحد للمنشأة</value>
+    <value>إضافة الرقم الموحد للسجل التجاري</value>
 </data>
 	<data name="Viewlist" xml:space="preserve">
     <value>اطلع على القائمة</value>
@@ -11607,5 +11607,8 @@ info@zatca.gov.sa</value>
   </data>
     <data name="VATRegistrationstartdatevalidation" xml:space="preserve">
     <value>تاريخ غير صالح. تحقق من الحد الأدنى من النطاق</value>
+  </data>
+  <data name="CRNumberValidation" xml:space="preserve">
+    <value>الرقم الموحد للسجل التجاري يجب أن يتكون من 10 أرقام و ان يبدأ برقم 7</value>
   </data>
 </root>

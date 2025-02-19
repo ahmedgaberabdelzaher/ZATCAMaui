@@ -10102,7 +10102,7 @@ Zakat, Tax and Customs Authority
         <value>Add</value>
     </data>
 	<data name="AddNewCRTitle" xml:space="preserve">
-        <value>Add Entity Unified Number</value>
+        <value>Add CR National Number</value>
     </data>
 	<data name="Viewlist" xml:space="preserve">
         <value>View list</value>
@@ -11885,5 +11885,8 @@ the credit balance of the current period will be carried forward, you can reques
   </data>
      <data name="VATRegistrationstartdatevalidation" xml:space="preserve">
     <value>Invalid Date, check minimum range</value>
+  </data>
+   <data name="CRNumberValidation" xml:space="preserve">
+   <value>The CR national number must consist of 10 numbers and begin with the number 7</value>
   </data>
 </root>
