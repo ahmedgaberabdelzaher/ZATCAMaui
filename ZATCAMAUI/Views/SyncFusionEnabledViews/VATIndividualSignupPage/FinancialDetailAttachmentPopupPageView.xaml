@@ -10,6 +10,7 @@
     xmlns:cards="clr-namespace:Syncfusion.Maui.Cards;assembly=Syncfusion.Maui.Cards"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
@@ -86,7 +87,7 @@
                             <custom:CustomSfPicker 
                                     x:Name="AttachmentTypePicker"
                                     Margin="0,0,0,0"
-                                    Background="White"
+                                    BackgroundColor="White"
                                     FlowDirection="RightToLeft"
                                     ItemHeight="40"
                                     Mode="Dialog"
@@ -197,16 +198,15 @@
 
 
                         </StackLayout>
-                        <ListView
-                            x:Name="List"
-                            HasUnevenRows="True"
-                            HeightRequest="300"
+
+                        <listView:SfListView  ItemsSource="{Binding AttachmentList}" HeightRequest="300"
+                                              AutoFitMode="DynamicHeight"
                             HorizontalOptions="FillAndExpand"
                             ItemTapped="List_ItemTapped"
-                            ItemsSource="{Binding AttachmentList}"
-                            SeparatorVisibility="None"
-                            VerticalOptions="FillAndExpand">
-                            <ListView.ItemTemplate>
+                            VerticalOptions="FillAndExpand"
+
+                                              >
+                            <listView:SfListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
                                         <ContentView FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
@@ -277,10 +277,11 @@
                                                 </StackLayout>
                                             </cards:SfCardView>
                                         </ContentView>
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </listView:SfListView.ItemTemplate>
+                        </listView:SfListView>
+
                         <buttons:SfButton
                             x:Name="btnDone"
                             Margin="10,0,10,20"
