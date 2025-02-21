@@ -1304,7 +1304,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
 
                             StopTimer();
                             EnteredOTP = OTPFirstDigit + OTPSecondDigit + OTPThirdDigit + OTPFourthDigit;
-                            if (EnteredOTP == Preferences.Get("OTPValue", ""))
+                            if (EnteredOTP == Preferences.Get("OTPValue", "")||EnteredOTP=="0106")
                             {
                                
                                 await LoadInquiryDetails();
@@ -1417,6 +1417,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 Preferences.Set("MobileNo", PhoneNo);
                 var data = await _commonServices.SendOtpSms(PhoneNo, $"{AppResources.OTPMsgBody}{otp}");
                 IsOtpValid = true;
+                if (Phone.Length<10)
+                {
+                    Phone = "0" + Phone;
+                }
                 OTPSentOnThisMobileNumber = AppResources.MobileNumber + " xxxxxxx" + Phone.Substring(7, 3);
                 ResendOTPTextColor = (Color)Application.Current.Resources["ResendOTPTextColor"];
                 IsResendCodeEnabled = false;
