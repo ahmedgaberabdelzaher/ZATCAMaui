@@ -31,12 +31,12 @@
                 VerticalOptions="Start"
                 VerticalScrollBarVisibility="Always">
                 <CollectionView.ItemsLayout>
-                    <LinearItemsLayout  Orientation="Vertical"/>
+
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
 
                     <DataTemplate>
-                        <StackLayout FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}">
+                        <StackLayout>
                             <Label
                                 Padding="10"
                                 FontFamily="{StaticResource SomarSemiBold}"

@@ -218,14 +218,14 @@
                             Text="{Binding LblCountDownTimer}"
                             VerticalOptions="Center" />
                     </StackLayout>
-                    <buttons:SfButton
+                    <!--<buttons:SfButton
                         Margin="0,16,0,0"
                         Background="Transparent"
                         Command="{Binding ResendOtpCommand}"
                         IsVisible="{Binding IsResendCodeEnabled}"
                         Text="{x:Static ResourceManager:AppResources.NDResendVerificationCode}"
                         TextColor="{Binding ResendOTPTextColor}"
-                        VerticalOptions="EndAndExpand" />
+                        VerticalOptions="EndAndExpand" />-->
                 </StackLayout>
 
 

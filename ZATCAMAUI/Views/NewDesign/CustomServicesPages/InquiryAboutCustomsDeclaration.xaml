@@ -1153,7 +1153,6 @@
 
                             <StackLayout>
                                 <Label Style="{StaticResource PageTitleBlack}" Text="{x:Static ResourceManager:AppResources.VerificationCode}" />
-
                                 <Label
                                     Padding="0,0,0,16"
                                     Style="{StaticResource BodyLabelGrey}"
@@ -1351,10 +1350,10 @@
 
                             </StackLayout>
 
-                            <Button
+                            <!--<Button
                                 Command="{Binding VerifyOTPCommand}"
                                 Style="{StaticResource PrimaryMauiButtonStyle}"
-                                Text="{x:Static ResourceManager:AppResources.Verify}" />
+                                Text="{x:Static ResourceManager:AppResources.Verify}" />-->
                         </StackLayout>
 
                     </StackLayout>

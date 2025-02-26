@@ -151,8 +151,10 @@ public class OTPPageViewModel : BaseViewModel
                         BrowserName = DeviceInfo.Platform.ToString(),
                         Latitude = UserLocation.Latitude == 0 ? "UNKNOWN" : UserLocation.Latitude.ToString(),
                         Longitude = UserLocation.Longitude == 0 ? "UNKNOWN" : UserLocation.Longitude.ToString(),
-                        IpAddress = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetLocalIPAddress()
-                };
+                        //  IpAddress = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetLocalIPAddress()
+                        IpAddress =("1.1.1.1") //DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetLocalIPAddress()
+
+                    };
                     await TokenPostRequest(tokenRequestModel);
                 }
                 catch (Exception)
