@@ -4102,7 +4102,7 @@
         <comment>VATRegistrationSuccessfullPageView</comment>
     </data>
    <data name="VATRSAmendRegistrationSuccessful" xml:space="preserve">
-      <value>>تم استلام طلب تعديل التسجيل في ضريبة القيمة المضافة الخاص بك من قبل هيئة الزكاة والضريبة والجمارك</value>
+      <value>تم استلام طلب تعديل التسجيل في ضريبة القيمة المضافة الخاص بك من قبل هيئة الزكاة والضريبة والجمارك</value>
     </data>
 	<data name="VATRSummeryofExpenseDetailsComming12Months" xml:space="preserve">
         <value>قيمة المصروفات الخاضعة لضريبة القيمة المضافة (في الـ 12 شهرًا القادمة)</value>
@@ -11611,4 +11611,10 @@ info@zatca.gov.sa</value>
   <data name="CRNumberValidation" xml:space="preserve">
     <value>الرقم الموحد للسجل التجاري يجب أن يتكون من 10 أرقام و ان يبدأ برقم 7</value>
   </data>
+  	<data name="VATRegistrationSuccessMessage" xml:space="preserve">
+        <value>طلبك للحصول على رقم تسجيل ضريبة القيمة المضافة</value>
+    </data>
+    	<data name="VatApproved" xml:space="preserve">
+        <value>تم الموافقة عليها بنجاح.</value>
+    </data>
 </root>
