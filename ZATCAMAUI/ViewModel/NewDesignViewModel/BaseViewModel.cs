@@ -72,6 +72,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 OnPropertyChanged();
             }
         }
+        bool chatbotVisibility;
+
+        public bool ChatbotVisibility
+        {
+            get { return chatbotVisibility; }
+
+            set
+            {
+                chatbotVisibility = value;
+                OnPropertyChanged();
+            }
+        }
+
         FlowDirection appDirection { get; set; }
 
         public FlowDirection AppDirection
@@ -523,6 +536,18 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
 
         }
-
+        public bool IsChatbotVisible()
+        {
+            try
+            {
+                DateTime utcNow = DateTime.UtcNow;
+                DateTime ksaTime = utcNow.AddHours(3);
+                return (ksaTime.Hour >= 18 && ksaTime.Hour < 19) || (ksaTime.Hour >= 3 && ksaTime.Hour < 4);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }

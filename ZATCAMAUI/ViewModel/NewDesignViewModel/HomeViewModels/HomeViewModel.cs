@@ -61,45 +61,66 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.HomeViewModels
         }
         public void GetSideMenuLst()
         {
-            SideMenuServiceLst = new ObservableCollection<MenuModel>()
-        {
-            new MenuModel()
+            SideMenuServiceLst = new ObservableCollection<MenuModel>
             {
-               Name=AppResources.AboutZATCA, ID=App.AboutUsPageView,ImageSource="AboutZatca"
-            },
-             new MenuModel()
+                    new MenuModel()
+                    {
+                         Name = AppResources.AboutZATCA,
+                         ID = App.AboutUsPageView,
+                         ImageSource = "AboutZatca"
+                    },
+                    new MenuModel()
+                    {
+                         Name = AppResources.FAQ,
+                         ID = App.FAQPageView,
+                         ImageSource = "FAQ"
+                    },
+                    new MenuModel()
+                    {
+                         Name = AppResources.RateUs,
+                         ID = "RateUs",
+                         ImageSource = "RateUS"
+                    },
+                    new MenuModel()
+                    {
+                         Name = AppResources.PrivacyPolicy,
+                         ID = App.PrivacyAndPolicyPageView,
+                         ImageSource = "PrivacyandPolicy"
+                    },
+                    new MenuModel()
+                    {
+                         Name = AppResources.ContactUs,
+                         ID = "ContactUs",
+                         ImageSource = "CallUS"
+                    }
+             };
+            if (!IsChatbotVisible())
             {
-               Name=AppResources.FAQ, ID=App.FAQPageView,ImageSource="FAQ"
-            },
-            new MenuModel()
+                SideMenuServiceLst.Add(new MenuModel()
+                {
+                    Name = AppResources.DBSMChat,
+                    ID = "ChatPotView",
+                    ImageSource = "thumbnail_chat"
+                });
+            }
+            SideMenuServiceLst.Add(new MenuModel()
             {
-               Name=AppResources.RateUs, ID="RateUs",ImageSource="RateUS"
-            },
-            new MenuModel()
+                Name = AppResources.ZZZEducationLink,
+                ID = "https://edujourneys.zatca.gov.sa/home/tracks",
+                ImageSource = "Education"
+            });
+            SideMenuServiceLst.Add(new MenuModel()
             {
-               Name=AppResources.PrivacyPolicy, ID=App.PrivacyAndPolicyPageView,ImageSource="PrivacyandPolicy"
-            },
-             new MenuModel()
+                Name = AppResources.Zakaty,
+                ID = "AboutZakatyView",
+                ImageSource = "ZAKATYlogoInMenu"
+            });
+            SideMenuServiceLst.Add(new MenuModel()
             {
-               Name=AppResources.ContactUs, ID="ContactUs",ImageSource="CallUS"
-            },
-             new MenuModel()
-            {
-               Name=AppResources.DBSMChat, ID="ChatPotView",ImageSource="thumbnail_chat"
-            },
-            new MenuModel()
-            {
-               Name=AppResources.EdcuationJourney, ID="https://edujourneys.zatca.gov.sa/home/tracks",ImageSource="Education"
-            },
-            new MenuModel()
-            {
-               Name=AppResources.Zakaty, ID="AboutZakatyView",ImageSource="ZAKATYlogoInMenu"
-            },
-            new MenuModel()
-            {
-               Name=AppResources.Langauge, ID="ChangeLang",ImageSource="LangaugeIcon"
-            },
-        };
+                Name = AppResources.Langauge,
+                ID = "ChangeLang",
+                ImageSource = "LangaugeIcon"
+            });
 
         }
 

@@ -78,6 +78,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SupportPageVM
         #region Constructor
         public SupportPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
+            UpdateChatbotVisibility();
         }
         #endregion
 
@@ -116,6 +117,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SupportPageVM
             else
             {
                 setSupportTab();
+            }
+        }
+        private void UpdateChatbotVisibility()
+        {
+            if (IsChatbotVisible())
+            {
+                ChatbotVisibility = false;
+            }
+            else
+            {
+                ChatbotVisibility = true;
             }
         }
         #endregion
