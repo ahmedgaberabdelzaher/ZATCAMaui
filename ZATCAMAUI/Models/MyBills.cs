@@ -19,7 +19,8 @@ namespace ZATCAMAUI.Models
         public string Opbel { get; set; } //CR1265
         [JsonProperty("paymentStatus")]
         public string PymtStatus { get; set; }
-
+        [JsonProperty("periodDescription")]
+        public string PerslDesc { get; set; }
         public string PaymentText
         {
             get
@@ -304,7 +305,6 @@ namespace ZATCAMAUI.Models
         }
 
         public string _billTitle = String.Empty;
-        [JsonProperty("transactionDescription")]
         public string BillTitle
         {
             get
@@ -335,7 +335,7 @@ namespace ZATCAMAUI.Models
 
         public string PeriodPart1 { get; set; }
         public string PeriodPart2 { get; set; }
-        [JsonProperty("periodDescription")]
+        [JsonProperty("transactionDescription")]
         public string Txt30 { get; set; }
 
         public string _Faednar;

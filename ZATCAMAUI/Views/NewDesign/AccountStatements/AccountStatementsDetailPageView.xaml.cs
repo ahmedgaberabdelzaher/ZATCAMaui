@@ -14,17 +14,13 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
     {
         MyBills myBills;
         AccountStatementDetailPageViewModel viewModel;
-        public AccountStatementsDetailPageView(MyBills myBills, AccoungtDetails details_bills)
+        public AccountStatementsDetailPageView(MyBills myBills)
         {
 
-            viewModel = App.Locator.AccPageDetailVM;
+            viewModel = App.Locator.AccountStatementsDetailPageView;
             this.BindingContext = viewModel;
-
-            viewModel.accoungtDetails = details_bills;
-
             InitializeComponent();
             this.myBills = myBills;
-            this.reload();
         }
 
         protected override void OnAppearing()
@@ -96,22 +92,8 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
                 }
 
             }
-            this.reload();
-
         }
-        public void reload()
-        {
-            viewModel.oBJDTLSets = new ObservableCollection<Result_Obj>(viewModel.accoungtDetails.d.OBJ_DTLSet);
-            viewModel.RETDTLSets = new ObservableCollection<Result_RET>(viewModel.accoungtDetails.d.RET_DTLSet);
-            viewModel.instDTLSET = new ObservableCollection<Result_InST>(viewModel.accoungtDetails.d.INSTL_DTLSet);
-            viewModel.billDetails = new ObservableCollection<Result_Bill>(viewModel.accoungtDetails.d.BILL_DTLSet);
-
-
-            ObjectionDetails.IsVisible = viewModel.isObjectionDetailsVisible;
-            ReturnDetails.IsVisible = viewModel.isRetunVisible;
-            ISTPlanDetails.IsVisible = viewModel.isInstalmentDetailsVisible;
-            InstPlanOBDetials.IsVisible = viewModel.isBIllDetialsVisble;
-        }
+    
         private Color stringToColor(string value)
         {
             Color StatusColor;

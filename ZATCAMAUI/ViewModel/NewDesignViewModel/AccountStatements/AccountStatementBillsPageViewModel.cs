@@ -661,13 +661,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
 
         }
 
-        public async Task<AccoungtDetails> ObjectBills(string Opbel, string fbnum)
-        {
-            string lang = UtilityManager.GetLanguageParameter();
-            return await WebServiceManager.ZATCAAccGetDetails(Opbel, fbnum, lang, "AccountStatements");
-        }
-
-
         public async Task onPageLoad(BillInfo billInfo)
         {
             IsLoading = true;
@@ -1196,8 +1189,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                             try
                             {
 
-                                var suggest = MyBillsOriginal.Where<MyBills>(c => c.VTRE2.ToLower().Contains(SearchText.ToLower()) || c.Fbnum.ToLower().Contains(SearchText.ToLower())).ToList();
-
+                                var suggest = MyBillsOriginal
+                                    .Where(c => c.GetType().GetProperties()
+                                        .Any(prop => prop.GetValue(c)?.ToString()?.ToLower().Contains(SearchText.ToLower()) == true))
+                                    .ToList();
                                 MyBills = new ObservableCollection<MyBills>(suggest);
                                 FilterOnTaxType(MyBills);
                             }

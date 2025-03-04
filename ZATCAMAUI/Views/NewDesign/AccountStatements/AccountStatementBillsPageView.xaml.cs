@@ -165,36 +165,14 @@ namespace ZATCAMAUI.Views.NewDesign.AccountStatements
             try
             {
                 var item = e.Item as MyBills;
-                viewModel.accoungtDetails1 = await viewModel.ObjectBills(item.Opbel, item.Fbnum);
-
-                if (viewModel.accoungtDetails1 == null)
-                {
-                    viewModel.accoungtDetails1 = new Models.AccountDetails.AccoungtDetails();
-                }
-                await Application.Current.MainPage.Navigation.PushAsync(new AccountStatementsDetailPageView(item, viewModel.accoungtDetails1));
+                await Application.Current.MainPage.Navigation.PushAsync(new AccountStatementsDetailPageView(item));
 
                 if (e.Item == null) return;
                 if (sender is ListView lv) lv.SelectedItem = null;
             }
-            catch (GAZTVATRegistrationInProcessException ex)
-            {
-                await UtilityManager.HandleExceptionMessage(ex.Message, false);
-            }
-            catch (GAZTNetworkConnectivityIssueException)
-            {
-                await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue,false);
-            }
-            catch (InternetException)
-            {
-                await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
-            }
             catch (Exception)
             {
                 await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
-            }
-            finally
-            {
-                viewModel.IsLoading = false;
             }
 
         }
