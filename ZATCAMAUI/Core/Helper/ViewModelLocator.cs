@@ -2769,7 +2769,7 @@ namespace ZATCAMAUI.Core.Helper
             navigationService.Configure(App.VATInstalmentPopupNotesPageView, typeof(VATInstalmentPopupNotesPageView));
             navigationService.Configure(App.NafathLoginView, typeof(NafathLoginView));
             navigationService.Configure(App.NafathChangeMobleNumberOptionsView, typeof(NafathChangeMobleNumberOptionsView));
-            navigationService.Configure("AccountStatementsDetailPageView", typeof(ContractReleasePageView));
+            navigationService.Configure(App.AccountStatementsDetailPageView, typeof(AccountStatementsDetailPageView));
             #endregion
 
             #region Payment Implementatoin
