@@ -45,7 +45,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LiveVideoVM
 
         public LiveVideoViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-
         }
 
         #region Commands
@@ -149,11 +148,11 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.LiveVideoVM
                             HeaderTitle = AppResources.LiveVideoTitle;
                             LiveVideoSubTitle = AppResources.PortLiveVideoSubTitle2;
                             LiveVideosList = new ObservableCollection<VideoModel>();
-                            SelectedPortName = string.Empty;
+                            SelectedPortName = AppResources.Salwa; ;
                             SelectedVideo = string.Empty;
                             VideoUrl = string.Empty;
                             ShowWebView = false;
-
+                            SetListOfLivePorts(0);
 
 
                         });

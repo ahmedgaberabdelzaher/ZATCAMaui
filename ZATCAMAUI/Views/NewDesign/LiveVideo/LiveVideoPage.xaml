@@ -92,9 +92,9 @@
                                 TextColor="#58595B" />
 
                             <!--  Port Field  -->
-                            <StackLayout Spacing="0">
+                            <!--<StackLayout Spacing="0">
 
-                                <!--  Port Label  -->
+                                  Port Label  
                                 <Label Style="{StaticResource CaptionLabelGrey}">
                                     <Label.FormattedText>
                                         <FormattedString>
@@ -105,7 +105,7 @@
                                     </Label.FormattedText>
                                 </Label>
 
-                                <!--  Port Entry  -->
+                                  Port Entry  
                                 <custom:CustomSfTextInputView>
                                     <custom:CustomSfTextInputView.TextInputView>
                                         <custom:GAZTBorderlessEntry
@@ -139,7 +139,7 @@
                                     <TapGestureRecognizer Command="{Binding OpenPortCommand}" />
                                 </StackLayout.GestureRecognizers>
 
-                            </StackLayout>
+                            </StackLayout>-->
 
 
                             <!--  Video URL  -->

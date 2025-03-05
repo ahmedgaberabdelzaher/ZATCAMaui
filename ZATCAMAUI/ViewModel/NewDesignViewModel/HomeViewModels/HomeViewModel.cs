@@ -268,13 +268,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.HomeViewModels
             //   Name=AppResources.CarImport, ID="FasahLoginView",ImageSource="BrokerOptionality",ColumnNo=0,Row=isvertical?6:3,IsVerticalView=isvertical,ServiceDesc=isvertical?"":""
             //}
                 ,
-             new MenuModel()
-            {
-               Name=AppResources.InquireaboutPaymentofInsuranceTitle, ID="LaboratoryPaymentOfInsuranceFees",ImageSource="LabfeesInquiry",ColumnNo=0,Row=isvertical?6:3,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.CustomNote4:""
-            },
+            // new MenuModel()
+            //{
+            //   Name=AppResources.InquireaboutPaymentofInsuranceTitle, ID="LaboratoryPaymentOfInsuranceFees",ImageSource="LabfeesInquiry",ColumnNo=0,Row=isvertical?6:3,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.CustomNote4:""
+            //},
         new MenuModel()
             {
-               Name=AppResources.InquiryaboutCustomsIssuesView, ID="InquiryaboutCustomsIssuesView",ImageSource="InquireCustomDeclerations",ColumnNo=isvertical?0:1,Row=isvertical?7:3,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.CustomNote4:""
+               Name=AppResources.InquiryaboutCustomsIssuesView, ID="InquiryaboutCustomsIssuesView",ImageSource="InquireCustomDeclerations",ColumnNo=0,Row=isvertical?6:3,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.CustomNote4:""
             }
             
        };

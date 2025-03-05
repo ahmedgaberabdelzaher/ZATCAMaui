@@ -11888,5 +11888,5 @@ the credit balance of the current period will be carried forward, you can reques
   </data>
    <data name="CRNumberValidation" xml:space="preserve">
    <value>The CR national number must consist of 10 numbers and begin with the number 7</value>
-  </data> 
+  </data>  
 </root>
