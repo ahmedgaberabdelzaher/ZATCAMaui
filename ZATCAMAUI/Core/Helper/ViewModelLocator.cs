@@ -326,7 +326,7 @@ namespace ZATCAMAUI.Core.Helper
                 .AddSingleton<OTPPageViewModel>()
                 .AddTransient<AttachmentViewModel>()
                 .AddSingleton<AccountLockedViewModel>()
-
+                .AddSingleton<AccountStatementDetailPageViewModel>()
             #endregion
 
             #region PaymentImplementation
@@ -575,7 +575,7 @@ namespace ZATCAMAUI.Core.Helper
                 }
             }
         }
-        public AccountStatementDetailPageViewModel AccPageDetailVM
+        public AccountStatementDetailPageViewModel AccountStatementsDetailPageView
         {
             get
             {
@@ -2769,7 +2769,7 @@ namespace ZATCAMAUI.Core.Helper
             navigationService.Configure(App.VATInstalmentPopupNotesPageView, typeof(VATInstalmentPopupNotesPageView));
             navigationService.Configure(App.NafathLoginView, typeof(NafathLoginView));
             navigationService.Configure(App.NafathChangeMobleNumberOptionsView, typeof(NafathChangeMobleNumberOptionsView));
-
+            navigationService.Configure(App.AccountStatementsDetailPageView, typeof(AccountStatementsDetailPageView));
             #endregion
 
             #region Payment Implementatoin

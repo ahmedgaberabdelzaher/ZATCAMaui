@@ -18,8 +18,7 @@
             <!--#region Header-->
             <Grid
                 Padding="20,15"
-                ColumnDefinitions="*,3*,*"
-                RowDefinitions="*,*">
+                ColumnDefinitions="*,3*,*">
 
                 <VerticalStackLayout Grid.Row="0" Grid.Column="0">
 
@@ -96,9 +95,13 @@
                         BackgroundColor="White"
                         HorizontalOptions="FillAndExpand"
                         IsVisible="{Binding IsCloseButtonVisible}"
-                        Placeholder="{x:Static ResourceManager:AppResources.SerachFieldinAcc}"
+                        Placeholder="{x:Static ResourceManager:AppResources.ZSearch}"
                         TextChanged="SearchBar_TextChanged"
-                        VerticalOptions="FillAndExpand" />
+                        VerticalOptions="FillAndExpand"
+                        Style="{StaticResource DefaultEntry}"
+                        Keyboard="Text"
+                        FontFamily="{StaticResource SomarBold}"
+                        TextColor="{StaticResource Primary}"/>
                     <Image
                         Grid.Column="1"
                         HeightRequest="24"

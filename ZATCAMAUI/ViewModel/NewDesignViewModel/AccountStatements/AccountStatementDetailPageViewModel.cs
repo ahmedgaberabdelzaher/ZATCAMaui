@@ -9,12 +9,9 @@ using static ZATCAMAUI.Models.AccountDetails.AccoungtDetails;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
 {
-    
+    //This page is not used because this CR is cancelled from ZATCA
     public class AccountStatementDetailPageViewModel:BaseViewModel
     {
-        public ICommand TapCommand { get; set; }
-   //     public AccoungtDetails accoungtDetails { get; set; }
-
         private AccoungtDetails _AccDertails = null;
         public AccoungtDetails accoungtDetails
         {
@@ -193,49 +190,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
 
         public AccountStatementDetailPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-            TapCommand = new Command((object s) => {
-                     this.onObjTapped(s);
-                });
+           
         }
-
-        public void onReload()
-        {
-
-        }
-
-
-        public void onObjTapped(object s)
-        {
-#pragma warning disable CS0252 // Possible unintended reference comparison; left hand side needs cast
-            if (s == "ObjDetails")
-            {
-                Application.Current.MainPage.Navigation.PushAsync(new AccountsStatementObjectionDetailsPage("Objection Details",this.accoungtDetails));
-            }
-            else if (s == "InstDetails")
-            {
-                Application.Current.MainPage.Navigation.PushAsync(new AccountsStatementObjectionDetailsPage("Instalment Plan Details", this.accoungtDetails));
-            }
-            else if (s == "InstObjeORdetails")
-            {
-                Application.Current.MainPage.Navigation.PushAsync(new AccountsStatementObjectionDetailsPage("Instalment Plan Orginal Bill Details", this.accoungtDetails));
-            }
-            else if (s == "ReturnDetails")
-            {
-                Application.Current.MainPage.Navigation.PushAsync(new AccountsStatementObjectionDetailsPage("Return Details", this.accoungtDetails));
-            }
-            else
-            {
-                throw GAZTErrorException();
-            }
-#pragma warning restore CS0252 // Possible unintended reference comparison; left hand side needs cast
-        }
-
-       
-
-        private Exception GAZTErrorException()
-        {
-            throw new NotImplementedException();
-        }
+    
     }
 }
 

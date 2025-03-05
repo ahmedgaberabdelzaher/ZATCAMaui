@@ -190,7 +190,7 @@
                                 </Border.GestureRecognizers>
                             </Border>
 
-                            <Border Style="{StaticResource GreyBorderFrameWithShadowSupportPage}">
+                            <Border Style="{StaticResource GreyBorderFrameWithShadowSupportPage}" IsVisible="{Binding ChatbotVisibility}">
                                 <StackLayout
                                     Padding="16,8,16,8"
                                     Orientation="Horizontal"
