@@ -71,10 +71,16 @@
         <MtouchLink>None</MtouchLink>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android|AnyCPU'">
-      <AndroidSigningKeyStore>/Users/ahmed/Documents/Zatca Docs/KeyStoreMaui/z-mobile.keystore</AndroidSigningKeyStore>
-      <AndroidSigningStorePass>zatca@123</AndroidSigningStorePass>
-      <AndroidSigningKeyAlias>z-mobile</AndroidSigningKeyAlias>
-      <AndroidSigningKeyPass>zatca@123</AndroidSigningKeyPass>
+      <AndroidSigningKeyStore>/Users/youxl/Public/Gaber/Gazet/ZATCA Mobile App Application/ZATCAMAUI/KeyStore/E-GAZT.keystore</AndroidSigningKeyStore>
+      <AndroidSigningStorePass>Pm@dmin**</AndroidSigningStorePass>
+      <AndroidSigningKeyAlias>e-gazt</AndroidSigningKeyAlias>
+      <AndroidSigningKeyPass>Pm@dmin**</AndroidSigningKeyPass>
+      <AndroidKeyStore>True</AndroidKeyStore>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+      <DebugSymbols>true</DebugSymbols>
+      <WarningLevel>4</WarningLevel>
+      <PlatformTarget>anycpu</PlatformTarget>
     </PropertyGroup>
     <ItemGroup>
         <Compile Remove="KeyStore\**" />
