@@ -569,7 +569,11 @@ namespace ZATCAMAUI.Core.Mangers
                                     VatRefundsListResultModelSetResponseJson = JObject.Parse(VatRefundsListResultModelSetResponseJson)["data"].ToString();
 
                                     VatRefundsListResultModelSet = JsonConvert.DeserializeObject<VatRefundsListResultModel>(VatRefundsListResultModelSetResponseJson);
-
+                                    if (VatRefundsListResultModelSetResponseJson == null || VatRefundsListResultModelSet == null)
+                                    {
+                                        string errorMessage = WebServiceManager.PrepareErrorMessageByJson(VatRefundsListResultModelSetResponseJson);
+                                        throw new GAZTErrorException(errorMessage);
+                                    }
                                 }
                                 catch (Exception)
                                 {
@@ -876,42 +880,21 @@ namespace ZATCAMAUI.Core.Mangers
                         ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(VatRefundsListResultModelSetResponseJson);
                         if (statusHeader?.header?.status?.code != "E999999")
                         {
-                            if (VatRefundsResponse.StatusCode == HttpStatusCode.BadRequest)
+                            if (statusHeader.header.status.code == "I000000")
                             {
-                                ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(VatRefundsListResultModelSetResponseJson);
-                                if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
-                                {
-                                    WebServiceManager.ErrorMessageForUnlockAccount = errorMesg.error.innererror.errordetails[0].message;
-                                    string WithReplacedString = WebServiceManager.ErrorMessageForUnlockAccount.Replace("An exception was raised", string.Empty);
-                                    WebServiceManager.ErrorMessageForUnlockAccount = WithReplacedString;
-                                }
-                            }
-                            else if (!string.IsNullOrEmpty(VatRefundsListResultModelSetResponseJson))
-                            {
-                                var result = JObject.Parse(VatRefundsListResultModelSetResponseJson);
-                                if (result["result"] != null)
-                                {
-                                    VatRefundsListResultModelSetResponseJson = JObject.Parse(VatRefundsListResultModelSetResponseJson)["result"].ToString();
-                                    _newRequestSummaryDataResponse = JsonConvert.DeserializeObject<VatRefundDisplayDataModel>(VatRefundsListResultModelSetResponseJson);
-                                }
-                                else
-                                {
-                                    var error_message = WebServiceManager.PrepareErrorMessageByJson(VatRefundsListResultModelSetResponseJson);
-                                    throw new GAZTErrorException(error_message);
-                                }
+                                string dataJson = JObject.Parse(VatRefundsListResultModelSetResponseJson)["result"].ToString();
+                                _newRequestSummaryDataResponse = JsonConvert.DeserializeObject<VatRefundDisplayDataModel>(dataJson);
                             }
                             else
                             {
-                                throw new GAZTErrorException(AppResources.ZZSomethingwentwrong);
+                                string errorMessage = WebServiceManager.PrepareErrorMessageByJson(VatRefundsListResultModelSetResponseJson);
+                                throw new GAZTErrorException(errorMessage);
                             }
-
                         }
                         else
                         {
                             throw new GAZTNetworkConnectivityIssueException();
                         }
-
-
                     }
                     return _newRequestSummaryDataResponse;
                 }

@@ -5278,7 +5278,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
         <value>Transferred</value>
     </data>
 	<data name="VATRefundsStatusDraft" xml:space="preserve">
-        <value>saved as draft</value>
+        <value>DRAFT</value>
     </data>
 	<data name="VATRefundsStatusInProcess" xml:space="preserve">
         <value> IN PROCESS </value>
@@ -10979,8 +10979,7 @@ Then The system should cancel (/delete) the draft and apply the necessary change
     </data>
 	<!-- start of VAT Refund Prod -->
 	<data name="VATRefundReqMessageInfo" xml:space="preserve">
-        <value>Dear taxpayer,
-     If you have a draft copy saved on your submitted returns, you won't be able to include it in the refund request. Please either cancel or submit it.</value>
+        <value>If you have a draft copy saved on your submitted returns, you won't be able to include it in the refund request. Please either cancel or submit it.</value>
     </data>
 	<data name="ZMaximumnoof9attachmentscanbeuploaded1" xml:space="preserve">
         <value>Maximum no. of 9 attachments can be uploaded.</value>
