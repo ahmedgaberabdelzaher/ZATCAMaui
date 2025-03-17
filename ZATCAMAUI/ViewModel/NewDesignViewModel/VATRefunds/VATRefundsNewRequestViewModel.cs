@@ -530,11 +530,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATRefunds
                 await _navigationService.NavigateTo(App.GAZTBankAccountManagementPageView,true);
             });
 
-            NewAccountCommand = new Command(async () =>
-            {
-                await MopupService.Instance.PushAsync(new NewAccountPopUpPageView(string.Empty));
-            });
-
 
             ContinueCommand = new Command(async () =>
             {
