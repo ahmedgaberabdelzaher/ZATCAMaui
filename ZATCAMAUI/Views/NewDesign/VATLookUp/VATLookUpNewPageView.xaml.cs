@@ -1,4 +1,6 @@
-﻿using Mopups.Services;
+﻿using Camera.MAUI;
+using Camera.MAUI.ZXing;
+using Mopups.Services;
 using Syncfusion.Maui.Picker;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
@@ -26,23 +28,42 @@ namespace ZATCAMAUI.Views.NewDesign.VATLookUp
             viewModel.OnPageLoad();
             viewModel.MaxDigids = "15";
             viewModel.LookUpButtonText = AppResources.ZVATLookUpSearchButtonText;
+            cameraView.BarCodeDecoder = new ZXingBarcodeDecoder();
 
             btnScan.Clicked += (a, e) =>
             {
                 viewModel.IsShowScanView = true;
                 viewModel.IsMainView = false;
-                zxing.IsDetecting = true;
-                zxing.AutoFocus();
+                if (cameraView.Cameras.Count > 0)
+                {
+                    cameraView.Camera = cameraView.Cameras.First();
+                    MainThread.BeginInvokeOnMainThread(async () =>
+                    {
+                        await cameraView.StopCameraAsync();
+                        await cameraView.StartCameraAsync();
+                    });
+                }
+                //zxing.IsDetecting = true;
+                //zxing.AutoFocus();
             };
 
             #region QR
-            zxing.Options = new BarcodeReaderOptions()
-            {
-                Formats = BarcodeFormats.All,
-                TryHarder = true,
-                AutoRotate = false,
+            //zxing.Options = new BarcodeReaderOptions()
+            //{
+            //    Formats = BarcodeFormats.All,
+            //    TryHarder = true,
+            //    AutoRotate = false,
 
+            //};
+            cameraView.BarCodeOptions = new BarcodeDecodeOptions
+            {
+                AutoRotate = true,
+                PossibleFormats = { Camera.MAUI.BarcodeFormat.QR_CODE },
+                ReadMultipleCodes = false,
+                TryHarder = true,
+                TryInverted = true
             };
+
             viewModel.IsShowScanView = false;
             #endregion
 
@@ -95,19 +116,67 @@ namespace ZATCAMAUI.Views.NewDesign.VATLookUp
         }
 
 
-        private void zxing_BarcodesDetected(object sender, BarcodeDetectionEventArgs e)
-        {
+        //private void zxing_BarcodesDetected(object sender, BarcodeDetectionEventArgs e)
+        //{
             
-            MainThread.BeginInvokeOnMainThread(async() =>
+        //    MainThread.BeginInvokeOnMainThread(async() =>
+        //    {
+        //        try
+        //        {
+        //            if (!scanFinished)
+        //            {
+        //                //zxing.IsDetecting = false;
+        //                foreach (var barcode in e.Results)
+        //                {
+        //                    barcodeResultValue = barcode.Value;
+        //                }
+
+        //                viewModel.SelectedParameterType = viewModel.ParameterTypeList?.Where(x => x.id == "3")?.FirstOrDefault();
+        //                await viewModel.getBarcodeData(barcodeResultValue);
+        //                scanFinished = true;
+        //            }
+
+        //        }
+        //        catch (Exception)
+        //        {
+
+        //        }    
+               
+        //    });
+        //}
+
+        void PPicker_OkButtonClicked(System.Object sender, System.EventArgs e)
+        {
+            var newvalue = sender as SfPicker;
+            VATParameterType vATParameterType = viewModel.ParameterTypeList[newvalue.Columns[0].SelectedIndex];
+            viewModel.SelectedParameterType = vATParameterType;
+        }
+        void cameraView_CamerasLoaded(System.Object sender, System.EventArgs e)
+        {
+            //if (cameraView.Cameras.Count > 0)
+            //{
+            //    cameraView.Camera = cameraView.Cameras.First();
+            //    MainThread.BeginInvokeOnMainThread(async () =>
+            //    {
+            //        await cameraView.StopCameraAsync();
+            //        await cameraView.StartCameraAsync();
+
+
+            //    });
+            // }
+        }
+
+        void cameraView_BarcodeDetected(System.Object sender, Camera.MAUI.ZXingHelper.BarcodeEventArgs args)
+        {
+            MainThread.BeginInvokeOnMainThread(async () =>
             {
                 try
                 {
                     if (!scanFinished)
                     {
-                        zxing.IsDetecting = false;
-                        foreach (var barcode in e.Results)
+                        foreach (var barcode in args.Result)
                         {
-                            barcodeResultValue = barcode.Value;
+                            barcodeResultValue = barcode.Text;
                         }
 
                         viewModel.SelectedParameterType = viewModel.ParameterTypeList?.Where(x => x.id == "3")?.FirstOrDefault();
@@ -119,16 +188,10 @@ namespace ZATCAMAUI.Views.NewDesign.VATLookUp
                 catch (Exception)
                 {
 
-                }    
-               
-            });
-        }
+                }
 
-        void PPicker_OkButtonClicked(System.Object sender, System.EventArgs e)
-        {
-            var newvalue = sender as SfPicker;
-            VATParameterType vATParameterType = viewModel.ParameterTypeList[newvalue.Columns[0].SelectedIndex];
-            viewModel.SelectedParameterType = vATParameterType;
+            });
+
         }
     }
 }

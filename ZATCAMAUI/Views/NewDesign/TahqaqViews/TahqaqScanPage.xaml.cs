@@ -1,4 +1,6 @@
-﻿using ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels;
+﻿using Camera.MAUI;
+using Camera.MAUI.ZXing;
+using ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels;
 using ZXing.Net.Maui;
 
 namespace ZATCAMAUI.Views.NewDesign.TahqaqViews
@@ -12,13 +14,25 @@ namespace ZATCAMAUI.Views.NewDesign.TahqaqViews
             InitializeComponent();
             viewModel = App.Locator.tahqaqScanPageViewModel;
             BindingContext = viewModel;
-            zxing.Options = new BarcodeReaderOptions()
-            {
-                Formats = BarcodeFormats.All,
-                TryHarder = true,
-                AutoRotate = false,
+            cameraView.BarCodeDecoder = new ZXingBarcodeDecoder();
 
+            //zxing.Options = new BarcodeReaderOptions()
+            //{
+            //    Formats = BarcodeFormats.All,
+            //    TryHarder = true,
+            //    AutoRotate = false,
+
+            //};
+
+            cameraView.BarCodeOptions = new BarcodeDecodeOptions
+            {
+                AutoRotate = true,
+                PossibleFormats = { Camera.MAUI.BarcodeFormat.QR_CODE },
+                ReadMultipleCodes = false,
+                TryHarder = true,
+                TryInverted = true
             };
+
         }
         protected override async void OnAppearing()
         {
@@ -28,14 +42,45 @@ namespace ZATCAMAUI.Views.NewDesign.TahqaqViews
             base.OnAppearing();
         }
 
-        private void zxing_BarcodesDetected(object sender, ZXing.Net.Maui.BarcodeDetectionEventArgs e)
+        //private void zxing_BarcodesDetected(object sender, ZXing.Net.Maui.BarcodeDetectionEventArgs e)
+        //{
+        //    try
+        //    {
+        //        zxing.IsDetecting = false;
+        //        foreach (var barcode in e.Results)
+        //        {
+        //            barcodeResultValue = barcode.Value;
+        //        }
+        //        MainThread.BeginInvokeOnMainThread(async () =>
+        //        {
+        //            viewModel.scanCode = barcodeResultValue;
+        //            await viewModel.CheckQr();
+        //        });
+        //    }
+        //    catch (Exception)
+        //    {
+        //    }
+        //}
+        void cameraView_CamerasLoaded(System.Object sender, System.EventArgs e)
+        {
+            if (cameraView.Cameras.Count > 0)
+            {
+                cameraView.Camera = cameraView.Cameras.First();
+                MainThread.BeginInvokeOnMainThread(async () =>
+                {
+                    await cameraView.StopCameraAsync();
+                    await cameraView.StartCameraAsync();
+                });
+            }
+        }
+
+        void cameraView_BarcodeDetected(System.Object sender, Camera.MAUI.ZXingHelper.BarcodeEventArgs args)
         {
             try
             {
-                zxing.IsDetecting = false;
-                foreach (var barcode in e.Results)
+                foreach (var barcode in args.Result)
                 {
-                    barcodeResultValue = barcode.Value;
+                    barcodeResultValue = barcode.Text;
                 }
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {

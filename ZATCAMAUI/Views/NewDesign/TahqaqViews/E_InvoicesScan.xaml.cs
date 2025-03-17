@@ -1,4 +1,6 @@
-﻿using ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels;
+﻿using Camera.MAUI;
+using Camera.MAUI.ZXing;
+using ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels;
 using ZXing.Net.Maui;
 
 namespace ZATCAMAUI.Views.NewDesign.TahqaqViews
@@ -13,13 +15,25 @@ namespace ZATCAMAUI.Views.NewDesign.TahqaqViews
             InitializeComponent();
             viewModel = App.Locator.tahqaqScanPageViewModel;
             BindingContext = viewModel;
-           
 
-            zxing.Options = new BarcodeReaderOptions()
+
+            cameraView.BarCodeDecoder = new ZXingBarcodeDecoder();
+
+            //zxing.Options = new BarcodeReaderOptions()
+            //{
+            //    Formats = BarcodeFormats.All,
+            //    TryHarder = true,
+            //    AutoRotate = false,
+
+            //};
+
+            cameraView.BarCodeOptions = new BarcodeDecodeOptions
             {
-                Formats = BarcodeFormats.All,
+                AutoRotate = true,
+                PossibleFormats = { Camera.MAUI.BarcodeFormat.QR_CODE },
+                ReadMultipleCodes = false,
                 TryHarder = true,
-                AutoRotate = false,
+                TryInverted = true
             };
 
         }
@@ -47,21 +61,68 @@ namespace ZATCAMAUI.Views.NewDesign.TahqaqViews
             return base.OnBackButtonPressed();
         }
 
-        private void zxing_BarcodesDetected(object sender, BarcodeDetectionEventArgs e)
+        //private void zxing_BarcodesDetected(object sender, BarcodeDetectionEventArgs e)
+        //{
+        //    try
+        //    {
+        //        MainThread.BeginInvokeOnMainThread(() =>
+        //        {
+
+        //            if (!scanFinished)
+        //            {
+        //                zxing.IsDetecting = false;
+        //                foreach (var barcode in e.Results)
+        //                {
+        //                    barcodeResultValue = barcode.Value;
+        //                }
+
+
+        //                if (int.TryParse(barcodeResultValue, out int res))
+        //                {
+        //                    return;
+        //                }
+        //                viewModel.IsScanning = false;
+        //                viewModel.scanCode = barcodeResultValue;
+        //                viewModel.ScanEnvoiceQrCommand.Execute(null);
+        //                viewModel.IsScanning = false;
+        //                scanFinished = true;
+        //            }
+
+        //        });
+        //    }
+        //    catch (Exception)
+        //    {
+        //    }
+
+        //}
+        void cameraView_CamerasLoaded(System.Object sender, System.EventArgs e)
+        {
+            if (cameraView.Cameras.Count > 0)
+            {
+                cameraView.Camera = cameraView.Cameras.First();
+                MainThread.BeginInvokeOnMainThread(async () =>
+                {
+                    await cameraView.StopCameraAsync();
+                    await cameraView.StartCameraAsync();
+                });
+            }
+        }
+
+        void cameraView_BarcodeDetected(System.Object sender, Camera.MAUI.ZXingHelper.BarcodeEventArgs args)
         {
             try
             {
                 MainThread.BeginInvokeOnMainThread(() =>
                 {
-                    
+
                     if (!scanFinished)
                     {
-                        zxing.IsDetecting = false;
-                        foreach (var barcode in e.Results)
+                        //zxing.IsDetecting = false;
+                        foreach (var barcode in args.Result)
                         {
-                            barcodeResultValue = barcode.Value;
+                            barcodeResultValue = barcode.Text;
                         }
-                            
+
 
                         if (int.TryParse(barcodeResultValue, out int res))
                         {
@@ -79,7 +140,8 @@ namespace ZATCAMAUI.Views.NewDesign.TahqaqViews
             catch (Exception)
             {
             }
-         
+
+
         }
     }
 }
