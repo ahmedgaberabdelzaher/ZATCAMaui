@@ -1,4 +1,4 @@
-﻿using Firebase.RemoteConfig;
+﻿//using Firebase.RemoteConfig;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Platforms.iOS.DependencyServices;
 [assembly: Dependency(typeof(ForceUpdate))]
@@ -23,8 +23,8 @@ namespace ZATCAMAUI.Platforms.iOS.DependencyServices
 
             };
 
-            RemoteConfig.SharedInstance.SetDefaults(dic);
-            RemoteConfig.SharedInstance.ConfigSettings = new RemoteConfigSettings();
+            //RemoteConfig.SharedInstance.SetDefaults(dic);
+            //RemoteConfig.SharedInstance.ConfigSettings = new RemoteConfigSettings();
         }
 
 
@@ -33,11 +33,11 @@ namespace ZATCAMAUI.Platforms.iOS.DependencyServices
 
             try
             {
-                var status = await RemoteConfig.SharedInstance.FetchAsync(0.0d);
-                if (status == RemoteConfigFetchStatus.Success)
-                {
-                    //RemoteConfig.SharedInstance.FetchAndActivate();
-                }
+                //var status = await RemoteConfig.SharedInstance.FetchAsync(0.0d);
+                //if (status == RemoteConfigFetchStatus.Success)
+                //{
+                //    //RemoteConfig.SharedInstance.FetchAndActivate();
+                //}
             }
             catch (Exception)
             {
@@ -48,8 +48,9 @@ namespace ZATCAMAUI.Platforms.iOS.DependencyServices
 
         public string GetValue(string key)
         {
-            var settings = RemoteConfig.SharedInstance[key].StringValue;
-            return settings;
+            //var settings = RemoteConfig.SharedInstance[key].StringValue;
+            //return settings;
+            return "";
         }
 
     }

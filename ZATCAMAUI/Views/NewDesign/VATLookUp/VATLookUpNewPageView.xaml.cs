@@ -5,7 +5,6 @@ using Syncfusion.Maui.Picker;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
-using ZXing.Net.Maui;
 
 namespace ZATCAMAUI.Views.NewDesign.VATLookUp
 {

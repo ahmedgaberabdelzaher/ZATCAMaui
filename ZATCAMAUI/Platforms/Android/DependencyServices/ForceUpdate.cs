@@ -1,4 +1,4 @@
-﻿using Firebase.RemoteConfig;
+﻿//using Firebase.RemoteConfig;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Platforms.Android.DependencyServices;
 
@@ -15,9 +15,9 @@ namespace ZATCAMAUI.Platforms.Android.DependencyServices
 
         private void SetDefault()
         {
-            FirebaseRemoteConfigSettings configSettings = new FirebaseRemoteConfigSettings.Builder()
-               .Build();
-            FirebaseRemoteConfig.Instance.SetConfigSettingsAsync(configSettings);
+            //FirebaseRemoteConfigSettings configSettings = new FirebaseRemoteConfigSettings.Builder()
+            //   .Build();
+            //FirebaseRemoteConfig.Instance.SetConfigSettingsAsync(configSettings);
 
             Dictionary<string, Java.Lang.Object> dic = new Dictionary<string, Java.Lang.Object>
             {
@@ -27,24 +27,26 @@ namespace ZATCAMAUI.Platforms.Android.DependencyServices
 
             };
 
-            FirebaseRemoteConfig.Instance.SetDefaultsAsync(dic);
+            //FirebaseRemoteConfig.Instance.SetDefaultsAsync(dic);
         }
 
         public async Task FetchAndActivateAsync()
         {
             //Fetch remote values
-            await FirebaseRemoteConfig.Instance.FetchAsync(0);
+            //await FirebaseRemoteConfig.Instance.FetchAsync(0);
 
             //Activate new values
-            FirebaseRemoteConfig.Instance.FetchAndActivate();
+         //   FirebaseRemoteConfig.Instance.FetchAndActivate();
         }
 
 
 
         public string GetValue(string key)
         {
-            var settings = FirebaseRemoteConfig.Instance.GetString(key);
-            return settings;
+            //var settings = FirebaseRemoteConfig.Instance.GetString(key);
+            //return settings;
+            return "";
+
         }
 
     }

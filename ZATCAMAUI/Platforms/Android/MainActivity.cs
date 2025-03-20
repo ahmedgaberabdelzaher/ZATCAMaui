@@ -34,7 +34,7 @@ public class MainActivity : MauiAppCompatActivity
             PreventLinkerFromStrippingCommonLocalizationReferences();
             CrossMediaManager.Current.Init(this);
             UserDialogs.Init(this);
-            Firebase.FirebaseApp.InitializeApp(this);
+            //Firebase.FirebaseApp.InitializeApp(this);
             base.OnCreate(savedInstanceState);
             if (Build.VERSION.SdkInt >= BuildVersionCodes.P)
             {

@@ -1,7 +1,6 @@
 ﻿using Camera.MAUI;
 using Camera.MAUI.ZXing;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.TahqaqViewModels;
-using ZXing.Net.Maui;
 
 namespace ZATCAMAUI.Views.NewDesign.TahqaqViews
 {
