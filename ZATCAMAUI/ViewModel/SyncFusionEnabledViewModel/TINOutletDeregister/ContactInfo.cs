@@ -17,6 +17,7 @@ public class ContactInfo_NestedListView : INotifyPropertyChanged
     private string aOutletTypeTb;
     private string aOutletNameTb;
     private string aOutletIdentificationNoTb;
+    private string aOutletZ700NumberTb;
     private string aOutletStatusTb;
     private string aoutletReason;
     private string aOutletValidToTb;
@@ -90,6 +91,11 @@ public class ContactInfo_NestedListView : INotifyPropertyChanged
     {
         get { return aOutletIdentificationNoTb; }
         set { aOutletIdentificationNoTb = value; this.RaisedOnPropertyChanged("AOutletIdentificationNoTb"); }
+    }
+    public string AOutletZ700NumberTb
+    {
+        get { return aOutletZ700NumberTb; }
+        set { aOutletZ700NumberTb = value; this.RaisedOnPropertyChanged("AOutletZ700NumberTb"); }
     }
     public string AOutletStatusTb
     {

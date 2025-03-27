@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Mopups:PopupPage
+    x:Class="ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages.ActivitiesPopupPageView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Mopups="clr-namespace:Mopups.Pages;assembly=Mopups"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    ios:Page.UseSafeArea="true"
+    xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
+    x:Name="ActivitiesPopupPage"
+    BackgroundColor="#88000000"
+    FlowDirection="{Binding AppDirection}">
+
+    <Border
+        BackgroundColor="White"
+        Stroke="{StaticResource NeutralLightGrey}"
+        StrokeShape="RoundRectangle 22,22,0,0"
+        VerticalOptions="End">
+        <StackLayout>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto">
+
+
+                    <!--  Back Button  -->
+
+
+                    <Image
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="0,15"
+                        HeightRequest="24"
+                        HorizontalOptions="Start"
+                        Rotation="0"
+                        Source="arrowRight.png"
+                        VerticalOptions="Start"
+                        WidthRequest="24">
+
+                        <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding AppDirection}"
+                                TargetType="Image"
+                                Value="LeftToRight">
+                                <Setter Property="Rotation" Value="180" />
+                            </DataTrigger>
+                        </Image.Triggers>
+
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoBackClick}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+
+
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Margin="0,15"
+                        FontFamily="{StaticResource SomarBold}"
+                        FontSize="18"
+                        HorizontalOptions="Start"
+                        Text="{x:Static ResourceManager:AppResources.ESTBusinessActivityDetails}"
+                        TextColor="{StaticResource NeutralBlack}" />
+
+                    <Border
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Margin="0,12,12,12"
+                        Padding="4"
+                        HorizontalOptions="End"
+                        IsVisible="{Binding isEditable}"
+                        Stroke="{StaticResource NeutralLightGrey}"
+                        StrokeShape="RoundRectangle 22,22,22,22">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+                            <Image
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                HeightRequest="18"
+                                HorizontalOptions="Start"
+                                Source="ic_add1.png"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="18" />
+                            <custom:CustomLabel
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Margin="0,0,6,0"
+                                FontFamily="{StaticResource SomarBold}"
+                                FontSize="18"
+                                HorizontalOptions="End"
+                                Text="{x:Static ResourceManager:AppResources.EstAdd}"
+                                TextColor="{StaticResource NeutralBlack}" />
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding onAddButtonClick}" />
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+
+                <listView:SfListView
+                    x:Name="activitiesListView"
+                    Grid.Row="1"
+                    Margin="0,5,0,5"
+                    AutoFitMode="DynamicHeight"
+                    IsVisible="{Binding isListVisible}"
+                    ItemsSource="{Binding AllActivitiesList}"
+                    ScrollBarVisibility="Never"
+                    SelectionMode="None"
+                    VerticalOptions="FillAndExpand">
+
+                    <listView:SfListView.ItemTemplate>
+                        <DataTemplate>
+
+                            <Border
+                                Margin="10"
+                                FlowDirection="{Binding Source={x:Reference ActivitiesPopupPage}, Path=FlowDirection}"
+                                Stroke="{StaticResource NeutralLightGrey}"
+                                StrokeShape="RoundRectangle 22,22,22,22">
+                                <StackLayout Padding="10,5,10,5">
+                                    <StackLayout HorizontalOptions="Fill" Orientation="Horizontal">
+                                        <Label
+                                            Margin="0,0,0,0"
+                                            HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource CaptionLabelGrey}"
+                                            VerticalOptions="Center">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{x:Static ResourceManager:AppResources.ESTMainGroup}" />
+                                                    <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+
+
+
+
+                                        <buttons:SfButton
+                                            Clicked="onItemDelete_ItemTapped"
+                                            CommandParameter="{Binding .}"
+                                            HorizontalOptions="End"
+                                            ImageSource="ic_delete.png"
+                                            IsVisible="{Binding Source={x:Reference ActivitiesPopupPage}, Path=BindingContext.isEditable}"
+                                            ShowIcon="True"
+                                            Style="{StaticResource NoBackgroundButtonStyle}"
+                                            VerticalOptions="Center" />
+                                    </StackLayout>
+
+                                    <custom:CustomSfTextInputView>
+                                        <custom:CustomSfTextInputView.TextInputView>
+                                            <custom:GAZTBorderlessEntry
+                                                FontFamily="{StaticResource SomarBold}"
+                                                InputTransparent="True"
+                                                IsEnabled="{Binding Source={x:Reference ActivitiesPopupPage}, Path=BindingContext.isEditable}"
+                                                IsReadOnly="True"
+                                                Keyboard="Text"
+                                                Placeholder="{x:Static ResourceManager:AppResources.ESTMainGroup}"
+                                                Style="{StaticResource DefaultEntry}"
+                                                Text="{Binding ActMgrp}"
+                                                TextColor="{StaticResource NeutralBlack}">
+                                                <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding Source={x:Reference ActivitiesPopupPage}, Path=BindingContext.OnMainGroupSelectButtonClick}" CommandParameter="{Binding .}" />
+                                                </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                            </custom:GAZTBorderlessEntry>
+
+                                        </custom:CustomSfTextInputView.TextInputView>
+                                        <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Source={x:Reference ActivitiesPopupPage}, Path=BindingContext.OnMainGroupSelectButtonClick}" CommandParameter="{Binding .}" />
+                                        </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                        <inputLayout:SfTextInputLayout.TrailingView>
+
+                                            <Image Aspect="AspectFit" Source="greyDropDown" />
+                                        </inputLayout:SfTextInputLayout.TrailingView>
+                                    </custom:CustomSfTextInputView>
+
+
+                                    <Label
+                                        Margin="0,10,0,0"
+                                        HorizontalOptions="StartAndExpand"
+                                        Style="{StaticResource CaptionLabelGrey}"
+                                        VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{x:Static ResourceManager:AppResources.ESTSubGroup}" />
+                                                <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+
+                                    <custom:CustomSfTextInputView>
+                                        <custom:CustomSfTextInputView.TextInputView>
+                                            <custom:GAZTBorderlessEntry
+                                                FontFamily="{StaticResource SomarBold}"
+                                                InputTransparent="True"
+                                                IsEnabled="{Binding Source={x:Reference ActivitiesPopupPage}, Path=BindingContext.isEditable}"
+                                                IsReadOnly="True"
+                                                Keyboard="Text"
+                                                Placeholder="{x:Static ResourceManager:AppResources.ESTSubGroup}"
+                                                Style="{StaticResource DefaultEntry}"
+                                                Text="{Binding ActSgrp}"
+                                                TextColor="{StaticResource NeutralBlack}">
+                                                <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding Source={x:Reference ActivitiesPopupPage}, Path=BindingContext.OnSubGroupSelectButtonClick}" CommandParameter="{Binding .}" />
+                                                </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                            </custom:GAZTBorderlessEntry>
+
+                                        </custom:CustomSfTextInputView.TextInputView>
+                                        <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Source={x:Reference ActivitiesPopupPage}, Path=BindingContext.OnSubGroupSelectButtonClick}" CommandParameter="{Binding .}" />
+                                        </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                        <inputLayout:SfTextInputLayout.TrailingView>
+
+                                            <Image Aspect="AspectFit" Source="greyDropDown" />
+                                        </inputLayout:SfTextInputLayout.TrailingView>
+                                    </custom:CustomSfTextInputView>
+
+                                    <Label
+                                        Margin="0,10,0,0"
+                                        HorizontalOptions="StartAndExpand"
+                                        Style="{StaticResource CaptionLabelGrey}"
+                                        VerticalOptions="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{x:Static ResourceManager:AppResources.ESTActivity}" />
+                                                <Span Text="*" TextColor="{StaticResource InformationRedColor}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+
+                                    <custom:CustomSfTextInputView>
+                                        <custom:CustomSfTextInputView.TextInputView>
+                                            <custom:GAZTBorderlessEntry
+                                                FontFamily="{StaticResource SomarBold}"
+                                                InputTransparent="True"
+                                                IsEnabled="{Binding Source={x:Reference ActivitiesPopupPage}, Path=BindingContext.isEditable}"
+                                                IsReadOnly="True"
+                                                Keyboard="Text"
+                                                Placeholder="{x:Static ResourceManager:AppResources.ESTActivity}"
+                                                Style="{StaticResource DefaultEntry}"
+                                                Text="{Binding Activity}"
+                                                TextColor="{StaticResource NeutralBlack}">
+                                                <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding Source={x:Reference ActivitiesPopupPage}, Path=BindingContext.OnAcitivitySelectButtonClick}" CommandParameter="{Binding .}" />
+                                                </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                            </custom:GAZTBorderlessEntry>
+
+                                        </custom:CustomSfTextInputView.TextInputView>
+                                        <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Source={x:Reference ActivitiesPopupPage}, Path=BindingContext.OnAcitivitySelectButtonClick}" CommandParameter="{Binding .}" />
+                                        </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                        <inputLayout:SfTextInputLayout.TrailingView>
+
+                                            <Image Aspect="AspectFit" Source="greyDropDown" />
+                                        </inputLayout:SfTextInputLayout.TrailingView>
+                                    </custom:CustomSfTextInputView>
+
+
+
+                                    <StackLayout Margin="0,10,0,10" HeightRequest="2" />
+                                </StackLayout>
+                            </Border>
+                        </DataTemplate>
+                    </listView:SfListView.ItemTemplate>
+
+                </listView:SfListView>
+
+
+                <Label
+                    Grid.Row="1"
+                    Margin="0,15"
+                    FontFamily="{StaticResource SomarBold}"
+                    FontSize="18"
+                    HorizontalOptions="Center"
+                    IsVisible="{Binding isNoData}"
+                    Text="{x:Static ResourceManager:AppResources.EstNoData}"
+                    TextColor="{StaticResource NeutralBlack}"
+                    VerticalOptions="CenterAndExpand" />
+
+
+
+            </Grid>
+
+            <buttons:SfButton
+                Command="{Binding OnNextButtonClick}"
+                Style="{StaticResource PrimaryButtonStyle}"
+                Text="{x:Static ResourceManager:AppResources.ZDone}" />
+        </StackLayout>
+    </Border>
+</Mopups:PopupPage>

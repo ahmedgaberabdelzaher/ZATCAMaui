@@ -10627,7 +10627,7 @@ info@zatca.gov.sa</value>
     <value>يمكنك طلب تخفيض الضمان النقدي عن طريق الاتصال على الرقم: 19993</value>
 </data>
 	<!-- 5250 and 6073 -->
-	<!--<data name="FinacialPeriodNormal" xml:space="preserve">
+	<data name="FinacialPeriodNormal" xml:space="preserve">
     <value>الفترة العادية</value>
 </data>
 	<data name="FinacialPeriodSmall" xml:space="preserve">
@@ -10635,7 +10635,7 @@ info@zatca.gov.sa</value>
 </data>
 	<data name="FinacialPeriodLong" xml:space="preserve">
     <value>الفترة الطويلة</value>
-</data>-->
+</data>
 	<data name="Error896" xml:space="preserve">
     <value>عزيزي المكلف, السجل التجاري مسجل لدينا باسم آخر.</value>
 </data>
@@ -11496,7 +11496,7 @@ info@zatca.gov.sa</value>
     </data>
 	<!--CR 7453-->
 	<data name="ZZCRNationalNumber" xml:space="preserve">
-    <value>الرقم الموحد للسجل التجاري</value>
+        <value>الرقم الموحد للسجل التجاري</value>
     <comment>Sign up</comment>
   </data>
 	<data name="ZZSelectatleastoneofthefieldsCommercialRegistrationNatiNumberorLicencebelow" xml:space="preserve">
@@ -11508,7 +11508,7 @@ info@zatca.gov.sa</value>
     <comment>Sign Up</comment>
 	</data>
 	<data name="ZZPleaseentervalidCRNationalnumber" xml:space="preserve">
-    <value>الرجاء إدخال الرقم الموحد للسجل التجاري الصحيح</value>
+        <value>الرجاء إدخال الرقم الموحد للسجل التجاري الصحيح</value>
     <comment>Sign Up</comment>
   </data>
 	<data name="EstActivities" xml:space="preserve">

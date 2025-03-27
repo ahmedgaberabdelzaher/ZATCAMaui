@@ -61,6 +61,7 @@ namespace ZATCAMAUI
         public static string TaxEvasionPageWebView = "TaxEvasionPageWebView";
         public static string NewTaxEvasionFormSuccessPaveView = "NewTaxEvasionFormSuccessPaveView";
         public static string TaxpayerSubsidyRequest = "TaxpayerSubsidyRequest";
+        public static string ActivitiesPopUpPageView = nameof(ActivitiesPopUpPageView);
 
 
         public static string MyReturnsNewPageView = "MyReturnsNewPageView";

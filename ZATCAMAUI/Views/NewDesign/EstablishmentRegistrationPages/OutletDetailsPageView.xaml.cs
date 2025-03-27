@@ -14,6 +14,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages
             InitializeComponent();
             viewModel = App.Locator.OutletDetailsPageView;
             viewModel.ClearData();
+            viewModel.activities = outletNavigation?.activitySetsList;
             viewModel.taxPayerDetails = outletNavigation.taxPayerDetails;
             viewModel.idItem = outletNavigation.idItem;
             viewModel.selectedOutletItem = outletNavigation.selectedOutletItem;

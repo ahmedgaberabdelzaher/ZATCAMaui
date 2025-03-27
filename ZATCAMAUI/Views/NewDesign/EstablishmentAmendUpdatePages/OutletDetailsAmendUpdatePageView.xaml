@@ -13,8 +13,8 @@
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:models="clr-namespace:ZATCAMAUI.Core.Enums"
+   ios:Page.UseSafeArea="true"
     x:Name="page"
-    ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
@@ -104,7 +104,8 @@
                     HorizontalOptions="End"
                     MarkSize="24"
                     MaxNum="{Binding MaxIndex}"
-                    MinNum="{Binding CurrentIndex}" />
+                    MinNum="{Binding CurrentIndex}"
+                    />
                 <Label
                     Padding="0,5,0,10"
                     FontFamily="{StaticResource SomarBold}"
@@ -144,9 +145,9 @@
                         <SfEffectsView:SfChipGroup.ItemTemplate>
                             <DataTemplate>
                                 <StackLayout
+                                    FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                     Margin="0"
                                     Padding="5,2,5,2"
-                                    FlowDirection="{Binding Source={x:Reference page}, Path=FlowDirection}"
                                     Orientation="Horizontal"
                                     Spacing="2">
                                     <Label
@@ -819,6 +820,7 @@
                         <StackLayout
                             Padding="10,0"
                             HorizontalOptions="FillAndExpand"
+                            IsVisible="False"
                             IsEnabled="{Binding AddressDetails.CBSameAsPhysical}"
                             Orientation="Horizontal"
                             VerticalOptions="EndAndExpand">
@@ -837,6 +839,7 @@
                         </StackLayout>
                         <StackLayout
                             x:Name="PostalAddressFields"
+                            IsVisible="False"
                             HorizontalOptions="FillAndExpand"
                             IsEnabled="{Binding PostalAsPhysical, Converter={StaticResource boolToVisibilityConverter}, ConverterParameter='invert'}"
                             VerticalOptions="StartAndExpand">
@@ -1180,8 +1183,8 @@
                 BackgroundColor="White">
                 <buttons:SfButton
                     Command="{Binding OnNextButtonClick}"
-                    IsEnabled="{Binding IsNextbttnEnable}"
                     Style="{StaticResource PrimaryButtonStyle}"
+                    IsEnabled="{Binding IsNextbttnEnable}"
                     Text="{Binding NxtButtonLabel}" />
             </Grid>
             <!--#endregion-->

@@ -4042,7 +4042,7 @@ namespace ZATCAMAUI.Core.Mangers
                 throw new InternetException();
             }
         }
-        public static async Task<CRValidationModelRootObject> GAZTValidateCRNumber(string CRNumber)
+        public static async Task<CRValidationModelRootObject> GAZTValidateCRNumber(string CRNumber, string Gpart = "")
         {
             if (NetworkCheck.IsInternet())
             {
@@ -4052,7 +4052,7 @@ namespace ZATCAMAUI.Core.Mangers
                 try
                 {
                     var lang = UtilityManager.GetLanguageParameter();
-                    String url = ZATCAConstants.GAZTSiguupValidateCR + CRNumber;
+                    String url = ZATCAConstants.GAZTSiguupValidateCR + CRNumber + "&TIN=" + Gpart + "&IdNumber=" + "" + "&IdType=" + "";
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient();
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
@@ -4125,7 +4125,7 @@ namespace ZATCAMAUI.Core.Mangers
                 throw new InternetException();
             }
         }
-        public static async Task<DuplicateSignUpModelRootObject> GAZTValidateDuplicate(string IDNum, string IDType, string Institude, string Country, string crNum)
+        public static async Task<DuplicateSignUpModelRootObject> GAZTValidateDuplicate(string IDNum, string IDType, string Institude, string Country, string crNum, string tin = "")
         {
             if (NetworkCheck.IsInternet())
             {
@@ -4137,7 +4137,7 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     var lang = UtilityManager.GetLanguageParameter();
                     DuplicateSignUpReqModel duplicateModel = new DuplicateSignUpReqModel();
-                    duplicateModel.TIN = "";
+                    duplicateModel.TIN = tin;
                     duplicateModel.idType = IDType;
                     duplicateModel.idNumber = IDNum;
                     if (!string.IsNullOrEmpty(crNum))
