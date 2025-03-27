@@ -648,7 +648,7 @@
                                 <!--#region Business Information-->
                                 <StackLayout IsVisible="{Binding CurrentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentSignUPTabEnum.BusinessInformation}}">
 
-                                    <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZSelectatleastoneofthefieldsCommercialRegistrationNumberorLicencebelow}" />
+                                    <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZSelectatleastoneofthefieldsCommercialRegistrationNatiNumberorLicencebelow}" />
 
                                     <!--  CRNumber/LicenseNumber View  -->
                                     <Grid
@@ -669,7 +669,7 @@
                                                 Margin="16,0,16,0"
                                                 Padding="16,8,16,8"
                                                 Style="{StaticResource ButtonLabelBlackBold}"
-                                                Text="{x:Static ResourceManager:AppResources.ZZCRNumber}"
+                                                Text="{x:Static ResourceManager:AppResources.ZZCRNationalNumber}"
                                                 VerticalOptions="End">
                                                 <Label.Triggers>
                                                     <DataTrigger
@@ -725,7 +725,7 @@
                                         <Label HorizontalOptions="Start" Style="{StaticResource CaptionLabelGrey}">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Style="{DynamicResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZCRNumber}" />
+                                                    <Span Style="{DynamicResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZCRNationalNumber}" />
                                                     <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
                                                 </FormattedString>
                                             </Label.FormattedText>
@@ -746,7 +746,7 @@
                                                     x:Name="EntryCRNumber"
                                                     Keyboard="Numeric"
                                                     MaxLength="10"
-                                                    Placeholder="{x:Static ResourceManager:AppResources.ZZCRNumber}"
+                                                    Placeholder="{x:Static ResourceManager:AppResources.ZZCRNationalNumber}"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding TxtCRNumber}"
                                                     TextChanged="EntryCRNumber_TextChanged"
