@@ -99,12 +99,14 @@
                             VerticalOptions="CenterAndExpand" />
                     </Grid>
 
-                    <Grid Grid.Row="1" VerticalOptions="FillAndExpand">
+                    <ScrollView VerticalScrollBarVisibility="Never" Grid.Row="1">
+
+                        <Grid VerticalOptions="FillAndExpand" RowDefinitions="auto,auto,auto,auto,auto">
 
 
 
                         <!--  DrpDowns and List  -->
-                        <StackLayout IsVisible="{Binding ShouldShowList}">
+                        <StackLayout IsVisible="{Binding ShouldShowList}" Grid.Row="0">
                             <listView:SfListView
                                 x:Name="outerListView"
                                 AutoFitMode="DynamicHeight"
@@ -251,6 +253,8 @@
                                                             <RowDefinition Height="auto" />
                                                             <RowDefinition Height="auto" />
                                                             <RowDefinition Height="auto" />
+                                                            <RowDefinition Height="auto" />
+                                                             <RowDefinition Height="auto" />
                                                         </Grid.RowDefinitions>
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition Width="*" />
@@ -346,9 +350,19 @@
 
                                                         </StackLayout>
 
-                                                        <StackLayout
+                                                       <StackLayout
                                                             Grid.Row="3"
                                                             Grid.Column="0"
+                                                            Spacing="5">
+                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZCRNationalNumber}" />
+                                                            <StackLayout HorizontalOptions="StartAndExpand">
+                                                                <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" Text="{Binding AOutletZ700NumberTb}" />
+                                                            </StackLayout>
+                                                        </StackLayout>
+
+                                                        <StackLayout
+                                                            Grid.Row="3"
+                                                            Grid.Column="1"
                                                             Spacing="-5">
                                                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinOutletIssueDate}" />
                                                             <StackLayout HorizontalOptions="StartAndExpand">
@@ -358,8 +372,8 @@
                                                         </StackLayout>
 
                                                         <StackLayout
-                                                            Grid.Row="3"
-                                                            Grid.Column="1"
+                                                            Grid.Row="4"
+                                                            Grid.Column="0"
                                                             Spacing="-5">
                                                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinOutletCRStatus}" />
                                                             <StackLayout HorizontalOptions="StartAndExpand">
@@ -370,7 +384,7 @@
 
                                                         <StackLayout
                                                             Grid.Row="4"
-                                                            Grid.Column="0"
+                                                            Grid.Column="1"
                                                             Spacing="-5">
                                                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinOutletValidto}" />
                                                             <StackLayout HorizontalOptions="StartAndExpand">
@@ -380,8 +394,8 @@
                                                         </StackLayout>
 
                                                         <StackLayout
-                                                            Grid.Row="4"
-                                                            Grid.Column="1"
+                                                            Grid.Row="5"
+                                                            Grid.Column="0"
                                                             Spacing="-5">
                                                             <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.TinOutletCRCloseTrnsfrDt}" />
                                                             <StackLayout HorizontalOptions="StartAndExpand">
@@ -438,7 +452,7 @@
 
                                                         <StackLayout
                                                             Grid.Row="5"
-                                                            Grid.Column="0"
+                                                            Grid.Column="1"
                                                             Grid.ColumnSpan="2"
                                                             Spacing="-5">
                                                             <Label
@@ -616,7 +630,7 @@
                                                                             </StackLayout>
                                                                             <StackLayout.GestureRecognizers>
                                                                                 <TapGestureRecognizer
-                                                                                    Command="{Binding BindingContext.LicenceCloseTransferDatePickerClicked, Source={x:Reference innerListItem}}"
+                                                                                    Command="{Binding BindingContext.LicenceCloseTransferDatePickerClicked, Source={x:Reference Name=page}}"
                                                                                     CommandParameter="{Binding .}"
                                                                                     NumberOfTapsRequired="1" />
                                                                             </StackLayout.GestureRecognizers>
@@ -666,7 +680,7 @@
                                                                             </Image.Source>
                                                                             <Image.GestureRecognizers>
                                                                                 <TapGestureRecognizer
-                                                                                    Command="{Binding BindingContext.ShowPermitReasonPicker, Source={x:Reference innerListItem}}"
+                                                                                    Command="{Binding BindingContext.ShowPermitReasonPicker, Source={x:Reference page}}"
                                                                                     CommandParameter="{Binding .}"
                                                                                     NumberOfTapsRequired="1" />
                                                                             </Image.GestureRecognizers>
@@ -740,7 +754,7 @@
 
 
                         <!--  Attachment Part  -->
-                        <StackLayout IsVisible="{Binding ShouldShowAttachments}">
+                        <StackLayout IsVisible="{Binding ShouldShowAttachments}" Grid.Row="0">
 
                             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
@@ -952,7 +966,7 @@
 
                             </StackLayout>
                             <StackLayout
-                                HorizontalOptions="Center"
+                                HorizontalOptions="Center" Spacing="10"
                                 IsVisible="{Binding ShowSaveSubmit}"
                                 Orientation="Horizontal">
                                 <buttons:SfButton
@@ -979,13 +993,15 @@
 
                         </StackLayout>
 
+                  
                         <custom:CustomDatePicker
+                            Grid.Row="1"
                             x:Name="TxDateNormalCalendar"
                             Margin="2"
                             BackgroundColor="White"
                             Closed="TxDateNormalCalendar_Closed"
                             HorizontalOptions="FillAndExpand"
-                            IsOpen="{Binding ShouldShowDatePicker}"
+                            IsOpen="{Binding ShouldShowDatePicker, Mode=TwoWay}"
                             ItemHeight="36"
                             Mode="Dialog"
                             SelectedItem="{Binding TodayDateNormal}">
@@ -1037,12 +1053,13 @@
                         </custom:CustomDatePicker>
 
                         <custom:CustomHijriDatePicker
+                             Grid.Row="2"
                             x:Name="TxDateHijriCalendar"
                             Margin="2"
                             BackgroundColor="White"
                             Closed="TxDateHijriCalendar_Closed"
                             HorizontalOptions="FillAndExpand"
-                            IsOpen="{Binding ShouldShowDatePickerHijiri}"
+                            IsOpen="{Binding ShouldShowDatePickerHijiri, Mode=TwoWay}"
                             ItemHeight="36"
                             Mode="Dialog"
                             SelectedItem="{Binding TodayDateinHijri}">
@@ -1093,12 +1110,13 @@
                         </custom:CustomHijriDatePicker>
 
                         <custom:CustomDatePicker
+                             Grid.Row="3"
                             x:Name="TxDateNormalCalendarOutlet"
                             Margin="2"
                             BackgroundColor="White"
                             Closed="TxDateNormalCalendarOutlet_Closed"
                             HorizontalOptions="FillAndExpand"
-                            IsOpen="{Binding ShouldShowDatePickerOutlet}"
+                            IsOpen="{Binding ShouldShowDatePickerOutlet, Mode=TwoWay}"
                             ItemHeight="36"
                             Mode="Dialog"
                             SelectedItem="{Binding TodayDateNormal}">
@@ -1150,14 +1168,14 @@
 
                         </custom:CustomDatePicker>
 
-
                         <custom:CustomHijriDatePicker
+                             Grid.Row="4"
                             x:Name="TxDateHijriCalendarOutlet"
                             Margin="2"
                             BackgroundColor="White"
                             Closed="TxDateHijriCalendarOutlet_Closed"
                             HorizontalOptions="FillAndExpand"
-                            IsOpen="{Binding ShouldShowDatePickerHijiriOutlet}"
+                            IsOpen="{Binding ShouldShowDatePickerHijiriOutlet, Mode=TwoWay}"
                             ItemHeight="36"
                             Mode="Dialog"
                             SelectedItem="{Binding TodayDateinHijri}">
@@ -1208,6 +1226,7 @@
                         </custom:CustomHijriDatePicker>
 
                     </Grid>
+                    </ScrollView>
 
                 </Grid>
 

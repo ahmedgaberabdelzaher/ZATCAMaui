@@ -9,20 +9,17 @@ public partial class TINOutletDeregistrationPageView : ContentPage
 
 	public TINOutletDeregistrationPageView()
 	{
-		InitializeComponent();
+		
 		try
 		{
-			viewModel = App.Locator.TINOutletDeregistrationPageView;
+            InitializeComponent();
+            viewModel = App.Locator.TINOutletDeregistrationPageView;
 			this.BindingContext = viewModel;
-
-
-			this.BindingContext = viewModel;
-
 			Task.Run(() => this.viewModel.GetTinOutletDeregisteredRequests()).Wait();
 
 
 		}
-		catch (Exception)
+		catch (Exception ex)
 		{
 
 		}
@@ -34,7 +31,11 @@ public partial class TINOutletDeregistrationPageView : ContentPage
 
 		try
 		{
-			MessagingCenter.Subscribe<object, string>(this, "OutletDeregTappedforAcc", (sender, arg) =>
+            viewModel.IsSearchButtonVisible = true;
+            viewModel.IsCloseButtonVisible = false;
+            viewModel.SearchText = "";
+
+            MessagingCenter.Subscribe<object, string>(this, "OutletDeregTappedforAcc", (sender, arg) =>
 			{
 				//viewModel.ClickSorted(arg);
 				PreviousRequests item = new PreviousRequests();

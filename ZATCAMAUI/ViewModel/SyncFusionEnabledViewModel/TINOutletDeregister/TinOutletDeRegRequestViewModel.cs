@@ -931,7 +931,7 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
 
         if (App.IsArabic)
         {
-            ShouldShowDatePickerOutlet = true;
+            ShouldShowDatePickerHijiriOutlet = true;
         }
         else
         {
@@ -944,7 +944,7 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
 
         if (App.IsArabic)
         {
-            ShouldShowDatePicker = true;
+            ShouldShowDatePickerHijiri = true;
         }
         else
         {
@@ -1332,7 +1332,7 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
                 OutlettListResponse = tinOutletPrevousRequestsModel.D;
                 App.DeRegRequestStatus = tinOutletPrevousRequestsModel.D.Status;
 
-                CopyResponseObjectToUiObject(OutlettListResponse);
+                await CopyResponseObjectToUiObject(OutlettListResponse);
                 if (SelectedDeRegType.Equals(AppResources.OutletDeReg))
                 {
                     ShowSaveSubmit = false;
@@ -1344,7 +1344,10 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
         {
             await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
         }
-
+        catch(GAZTVATRegistrationInProcessException ex)
+        {
+            await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
+        }
         catch (InternetException)
         {
             await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
@@ -1694,6 +1697,7 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
                 newItem.AOutletNoTb = item.AOutletNoTb;
                 newItem.AOutletNameTb = item.AOutletNameTb;
                 newItem.AOutletIdentificationNoTb = item.AOutletCrNoTb;
+
                 if (item.AOutletValidToTb != null)
                 {
                     newItem.AOutletValidToTb = Convert.ToDateTime(item.AOutletValidToTb.ToString()).ToShortDateString();

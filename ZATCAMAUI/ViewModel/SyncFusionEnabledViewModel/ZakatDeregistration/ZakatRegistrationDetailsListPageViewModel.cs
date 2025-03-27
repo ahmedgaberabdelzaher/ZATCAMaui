@@ -174,7 +174,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     {
                         tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
                         {
-                            ZDTitle = AppResources.DBSMTINDeregistration,
+                            ZDTitle = AppResources.DeregistrationServiceTitle,//AppResources.DBSMTIN_OUTLET_Deregistration
                             ZDImageSource = "ic_vatDe",
                             ArrowImageSource = fileImage
                         });

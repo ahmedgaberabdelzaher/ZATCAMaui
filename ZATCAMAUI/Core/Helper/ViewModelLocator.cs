@@ -328,6 +328,8 @@ namespace ZATCAMAUI.Core.Helper
                 .AddTransient<AttachmentViewModel>()
                 .AddSingleton<AccountLockedViewModel>()
                 .AddSingleton<AccountStatementDetailPageViewModel>()
+                .AddSingleton<TINOutletDeregistrationViewModel>()
+                .AddSingleton<TinOutletDeRegRequestViewModel>()
             #endregion
 
             #region PaymentImplementation
