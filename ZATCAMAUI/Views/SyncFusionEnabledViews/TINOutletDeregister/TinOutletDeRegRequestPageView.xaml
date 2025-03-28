@@ -353,10 +353,10 @@
                                                        <StackLayout
                                                             Grid.Row="3"
                                                             Grid.Column="0"
-                                                            Spacing="5">
-                                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZCRNationalNumber}" />
+                                                            Spacing="-5">
+                                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZCRNationalNumber}" />
                                                             <StackLayout HorizontalOptions="StartAndExpand">
-                                                                <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" Text="{Binding AOutletZ700NumberTb}" />
+                                                                <Label Style="{StaticResource ValueLabelBlack}" Text="{Binding AOutletZ700NumberTb}" />
                                                             </StackLayout>
                                                         </StackLayout>
 
@@ -383,6 +383,7 @@
                                                         </StackLayout>
 
                                                         <StackLayout
+                                                            IsVisible="False"
                                                             Grid.Row="4"
                                                             Grid.Column="1"
                                                             Spacing="-5">

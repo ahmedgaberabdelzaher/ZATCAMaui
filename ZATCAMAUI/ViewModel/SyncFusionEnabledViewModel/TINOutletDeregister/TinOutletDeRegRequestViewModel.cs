@@ -1201,22 +1201,25 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
     }
 
     public void UpdateOutletReason(string selectedValue)
-    {
 
+    {
         SelectedOutletItem.AoutletReason = selectedValue;
         SelectedOutletItem.AOutletActionTypeTb = GetOutletReasonCode(SelectedOutletItem.AoutletReason);
-
-        var msg = onOutletStatusSelection(SelectedOutletItem);
-        if (msg.Length > 0)
+        if (SelectedOutletItem.ACompFg != "X")
         {
-            SelectedOutletItem.AoutletReason = "";
-            SelectedOutletItem.AOutletActionTypeTb = GetOutletReasonCode(SelectedOutletItem.AoutletReason);
-        }
+            var msg = onOutletStatusSelection(SelectedOutletItem);
+            if (msg.Length > 0)
+            {
 
+                SelectedOutletItem.AoutletReason = "";
+
+                SelectedOutletItem.AOutletActionTypeTb = GetOutletReasonCode(SelectedOutletItem.AoutletReason);
+            }
+        }
         OnPropertyChanged("OutlettUiList");
     }
-
-    public void UpdatePermitReason(string selectedValue)
+ 
+public void UpdatePermitReason(string selectedValue)
     {
         SelectedPermitItem.APermitReason = selectedValue;
 
@@ -1715,7 +1718,7 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
 
 
 
-
+                newItem.ACompFg = item.ACompFg;
                 newItem.AOwner = item.AOwner;
                 newItem.AActFlag = item.AActFlag;
                 newItem.AOutletActionTypeTb = item.AOutletActionTypeTb;
@@ -1763,7 +1766,11 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
                             newItem.IsActionTypeEnabled = true;
                         }
                     }
-
+                    if (item.ACompFg == "X")
+                    {
+                        newItem.IsDateEnable = true;
+                        newItem.IsActionTypeEnabled = true;
+                    }
                     if (OutlettListResponse.Status == "IP011")
                     {
                         newItem.IsOutletCheckEnable = false;

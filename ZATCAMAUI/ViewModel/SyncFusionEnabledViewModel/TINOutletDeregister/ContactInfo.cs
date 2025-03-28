@@ -30,7 +30,7 @@ public class ContactInfo_NestedListView : INotifyPropertyChanged
     private string aActFlag;
     private string aOutletActionTypeTb;
     private bool ssActionTypeEnabled;
-
+    private string aCompFg;
 
 
 
@@ -162,7 +162,11 @@ public class ContactInfo_NestedListView : INotifyPropertyChanged
         get { return ssActionTypeEnabled; }
         set { ssActionTypeEnabled = value; this.RaisedOnPropertyChanged("IsActionTypeEnabled"); }
     }
-
+    public string ACompFg
+    {
+        get { return aCompFg; }
+        set { aCompFg = value; this.RaisedOnPropertyChanged("ACompFg"); }
+    }
 
 
 

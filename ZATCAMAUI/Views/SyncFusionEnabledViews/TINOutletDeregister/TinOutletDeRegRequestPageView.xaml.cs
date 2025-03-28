@@ -20,7 +20,6 @@ public partial class TinOutletDeRegRequestPageView : ContentPage
 		{
 			viewModel = App.Locator.TinOutletDeRegRequestPageView;
 			this.BindingContext = viewModel;
-			this.FlowDirection = FlowDirection.LeftToRight;
 			viewModel.SetDefaultDate();
 			this.BindingContext = viewModel;
 			InitializationPopups();
