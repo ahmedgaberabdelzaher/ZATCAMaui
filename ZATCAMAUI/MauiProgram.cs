@@ -19,6 +19,7 @@ using IDeviceInfoZATCA = ZATCAMAUI.Core.Interfaces.IDeviceInfoZATCA;
 using Microsoft.Maui.Controls.Compatibility.Hosting;
 using Maui.GoogleMaps.Hosting;
 using AppDynamics.Agent.Maui;
+using Camera.MAUI;
 
 namespace ZATCAMAUI;
 
@@ -36,6 +37,7 @@ public static class MauiProgram
                 .UseMauiCommunityToolkit()
                 .ConfigureSyncfusionCore()
                 .UseMauiCompatibility()
+                .UseMauiCameraView()
                 .UseMauiMaps()
                 //.UseMauiCommunityToolkitMaps("key")
                 .ConfigureFonts(fonts =>
