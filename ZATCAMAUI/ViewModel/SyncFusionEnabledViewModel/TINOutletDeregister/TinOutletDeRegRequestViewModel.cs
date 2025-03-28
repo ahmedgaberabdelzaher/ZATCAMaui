@@ -1700,6 +1700,7 @@ public void UpdatePermitReason(string selectedValue)
                 newItem.AOutletNoTb = item.AOutletNoTb;
                 newItem.AOutletNameTb = item.AOutletNameTb;
                 newItem.AOutletIdentificationNoTb = item.AOutletCrNoTb;
+                newItem.AOutletZ700NumberTb = item.AOutletZ700NumberTb;
 
                 if (item.AOutletValidToTb != null)
                 {
