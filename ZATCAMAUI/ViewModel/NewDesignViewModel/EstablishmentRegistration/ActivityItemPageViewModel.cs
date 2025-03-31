@@ -133,7 +133,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                 _enableInputFields = value;
                 OnIssueCountrySelectButtonClick.ChangeCanExecute();
-                OnIssueCitySelectButtonClick.ChangeCanExecute();
+
+                //OnIssueCitySelectButtonClick.ChangeCanExecute();
+
                 OnPropertyChanged(nameof(EnableInputFields));
             }
         }
@@ -734,7 +736,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 };
                 MopupService.Instance.PushAsync(poupWindow);
             }, CanIssueByExecuteClickCommand);
-            OnIssueCitySelectButtonClick = new Command((object o) =>
+
+            OnIssueCitySelectButtonClick = new Command(() =>
             {
                 if (!IsIssueCityEnable) return;
                 var filterCities = OutletDropDowns?.city_dropdownSet?.Where(i =>
@@ -767,7 +770,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     };
                     MopupService.Instance.PushAsync(poupWindow);
                 }
-            }, CanExecuteClickCommand);
+            });
+
             OnTransferCopyOfCRChoiceButtonClick = new Command(async (type) =>
             {
                 var typeValue = type as string;
@@ -1117,7 +1121,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     EnableIssueByDropDown = false;
                     CRNumber = validateCR?.Crnum;
                     CRNationalNumber = validateCR?.Z700Crnum;
-                    EnableCRNationalInputField = string.IsNullOrEmpty(CRNationalNumber);
+                    
                     CrName = validateCR?.Crname;
                     CRIssueCountry = OutletDropDowns.country_dropdownSet.Where(i => i.Land1 == "SA").FirstOrDefault();
                     if (App.IsArabic)
@@ -1156,6 +1160,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         }
                         updateCRAttachments();
                     }
+                    EnableCRNationalInputField = string.IsNullOrEmpty(CRNationalNumber);
                     updateDatePickers(CurrentTab);
                     if (CRIssueCountry.Land1.Length > 0)
                     {
@@ -1181,13 +1186,15 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         IsValidFromEnable = false;
                     }
 
+                    EnableInputFields = string.IsNullOrEmpty(CrName);
+
                     makeDropdownFieldsNorEditable();
 
 
-                    if (!string.IsNullOrEmpty(CRNumber))
+                    if (!string.IsNullOrEmpty(CRNationalNumber))
                     {
                         PrepareDataToDisplayActivitiesPoPup(SelectedCRItem?.Idnumber);
-                        validateCRNumber(CRNumber);
+                        //validateCRNumber(CRNationalNumber);
                     }
                 }
                 else if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)

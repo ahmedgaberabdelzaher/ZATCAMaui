@@ -28,6 +28,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
         private ValidateCR validateCR = null;
         private Nreg_ActivityItem PreLoadedLicenseItem = null;
         public OutletItem selectedOutletItem { get; set; } = null;
+        public Nreg_ActivityItem SelectedItem { get; set; } = null;
 
         private EstablishmentRegistrationOutletTabsEnum _currentTab = EstablishmentRegistrationOutletTabsEnum.OutletDetail;
         public EstablishmentRegistrationOutletTabsEnum currentTab
@@ -736,11 +737,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                     MainThread.BeginInvokeOnMainThread(() =>
                     {
+                        //var CR = new ValidateCR {
+                        //    Crnum = selectedOutletItem.Crlicenceno,
+                        //    Z700Crnum = 
+
+                        //};  
                         _navigationService.NavigateTo(App.ActivityItemPage, new ActivityNavigationModels()
                         {
                             openedTab = _enum,
                             taxPayerDetails = taxPayerDetails,
                             nextNumber = newNumber,
+                            validateCR = validateCR,
                             goBackAction = async (List<Nreg_ActivityItem> list) =>
                             {
                                 await addActivities(list);
@@ -986,12 +993,39 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     if (OutletActNumber == "00000")
                     {
                         var preLoadedItems = taxPayerDetails?.Nreg_ActivitySet.Where(i => (new List<string> { "BUP002", "ZS0004" }).Contains(i.Type)).ToList();
-                        if (preLoadedItems.Count == 1)
+                        if (preLoadedItems.Count > 0)
                         {
                             var preLoadedItem = preLoadedItems.FirstOrDefault();
 
-                            if (preLoadedItem?.Type == "ZS0004")
+                            if (preLoadedItem?.Type == "BUP002")
                             {
+                                var result = await EstablishmentRegistrationWebServiceManager.ESTValidateCRNum(preLoadedItem?.Z700Number);
+                                try
+                                {
+                                    if (!string.IsNullOrEmpty(result))
+                                    {
+                                        validateCR = JsonConvert.DeserializeObject<ValidateCR>(result);
+                                    }
+                                    //if (validateCR.Crnum == null)
+                                    //{
+                                    //    PrepareError(result);
+                                    //}
+                                }
+                                catch (Exception)
+                                {
+
+                                }
+
+                                if (!string.IsNullOrEmpty(validateCR?.Crname))
+                                {
+                                    OutletName = validateCR?.Crname;
+                                    validateCR.Crnum = preLoadedItem?.Idnumber;
+                                }
+                                PreLoadedLicenseItem = null;
+                            }
+                            else if (preLoadedItem?.Type == "ZS0004")
+                            {
+
                                 validateCR = null;
                                 PreLoadedLicenseItem = preLoadedItem;
                             }

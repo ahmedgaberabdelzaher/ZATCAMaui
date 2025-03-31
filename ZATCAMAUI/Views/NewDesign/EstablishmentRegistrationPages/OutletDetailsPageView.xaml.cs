@@ -19,6 +19,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages
             viewModel.idItem = outletNavigation.idItem;
             viewModel.selectedOutletItem = outletNavigation.selectedOutletItem;
             viewModel.currentTab = outletNavigation.openedTab;
+            viewModel.SelectedItem = outletNavigation.ActivityItem;
             BindingContext = viewModel;
             if (outletNavigation.selectedOutletItem.MciEntry == "X" || !string.IsNullOrEmpty(outletNavigation.selectedOutletItem.Actnm))
             {
