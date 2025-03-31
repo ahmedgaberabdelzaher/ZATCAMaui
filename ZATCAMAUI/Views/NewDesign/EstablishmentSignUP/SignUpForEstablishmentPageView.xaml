@@ -666,11 +666,10 @@
                                                 WidthRequest="160" />
 
                                             <Label
-                                                Margin="16,0,16,0"
-                                                Padding="16,8,16,8"
                                                 Style="{StaticResource ButtonLabelBlackBold}"
                                                 Text="{x:Static ResourceManager:AppResources.ZZCRNationalNumber}"
-                                                VerticalOptions="End">
+                                                VerticalOptions="Center"
+                                                HorizontalOptions="Center">
                                                 <Label.Triggers>
                                                     <DataTrigger
                                                         Binding="{Binding ImgBackgroundCRNubmer}"
@@ -697,11 +696,10 @@
                                                 WidthRequest="160" />
 
                                             <Label
-                                                Margin="16,0"
-                                                Padding="16,8"
                                                 Style="{StaticResource ButtonLabelBlackBold}"
                                                 Text="{x:Static ResourceManager:AppResources.ZZLicenseNumber}"
-                                                VerticalOptions="End">
+                                                VerticalOptions="Center"
+                                                HorizontalOptions="Center">
                                                 <Label.Triggers>
                                                     <DataTrigger
                                                         Binding="{Binding ImgBackgroundLicenseNubmer}"
@@ -1855,7 +1853,7 @@
 
 
                                                 <StackLayout IsVisible="false" Orientation="Horizontal">
-                                                    <Label Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZCRNumber}" />
+                                                    <Label Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZCRNationalNumber}" />
                                                     <Label
                                                         HorizontalOptions="EndAndExpand"
                                                         HorizontalTextAlignment="End"

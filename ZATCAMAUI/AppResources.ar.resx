@@ -2343,8 +2343,8 @@
         <comment>Sign Up</comment>
     </data>
 	<data name="ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit" xml:space="preserve">
-        <value>رقم هوية دول مجلس التعاون الخليجي يجب أن يكون بين 7 و 15 أرقام</value>
-        <comment>Sign Up</comment>
+    <value>رقم هوية دول مجلس التعاون الخليجي يجب أن يكون بين 6 و 15 أرقام</value>
+       <comment>Sign Up</comment>
     </data>
 	<data name="ZZGulfCooperationCouncilGCCIDstartswith0" xml:space="preserve">
         <value>يبدأ رقم هوية مجلس دول التعاون الخليجي بالرقم صفر</value>

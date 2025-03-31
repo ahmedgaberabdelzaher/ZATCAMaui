@@ -944,7 +944,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                             viewModel.IsAllValidDataEntered = false;
                             EntryName.Text = string.Empty;
                         }
-                        else if (!(EntryIDNumber.Text.Length <= 15 && EntryIDNumber.Text.Length >= 7))
+                        else if (!(EntryIDNumber.Text.Length <= 15 && EntryIDNumber.Text.Length >= 6))
                         {
                             popUp.Message = AppResources.ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit;
                             popUp.IsLinkAvailable = false;
