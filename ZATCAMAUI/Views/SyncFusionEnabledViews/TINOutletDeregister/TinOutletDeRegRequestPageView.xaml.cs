@@ -254,9 +254,9 @@ public partial class TinOutletDeRegRequestPageView : ContentPage
 		{
 
 
-			if (TxDateNormalCalendar.SelectedItem != null)
+			if (TxDateHijriCalendar.SelectedItem != null)
 			{
-				var selectedItem = TxDateNormalCalendar.SelectedItem as ObservableCollection<object>;
+				var selectedItem = TxDateHijriCalendar.SelectedItem as ObservableCollection<object>;
 				string month = selectedItem[1].ToString();
 				string day = selectedItem[0].ToString();
 				string year = selectedItem[2].ToString();

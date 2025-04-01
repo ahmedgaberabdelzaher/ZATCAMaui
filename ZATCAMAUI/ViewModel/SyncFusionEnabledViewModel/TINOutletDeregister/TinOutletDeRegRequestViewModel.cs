@@ -57,7 +57,6 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
     List<TinDeregReasonSetResult> ReasonsList = new List<TinDeregReasonSetResult>();
     List<string> ReasonsListUI = new List<string>();
 
-
     public bool MarkComplete { get; private set; } = false;
     int selectedPage = (int)PagesEnum.TinOutLetDeregReason;
 
@@ -823,12 +822,27 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
             }
             //outlet.AOutletCloseTransferDtTb
             DateTime outletDate = Convert.ToDateTime(outlet.AOutletCloseTransferDtTb);
-            if (outletDate > DateTime.Now.Date)
+            if (App.IsArabic)
             {
-                isvalid = false;
-                await OutletTransferDateError();
-                break;
+                var HijriDate = outletDate.ToString("yyyy/MM/dd");
+                string GregDate = UtilityManager.HijriToGreg(HijriDate);
+                if (Convert.ToDateTime(GregDate) > DateTime.Now.Date)
+                {
+                    isvalid = false;
+                    await OutletTransferDateError();
+                    break;
+                }
             }
+            else
+            {
+                if (outletDate > DateTime.Now.Date)
+                {
+                    isvalid = false;
+                    await OutletTransferDateError();
+                    break;
+                }
+            }
+            
         }
 
         if (isvalid)
@@ -844,9 +858,9 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
                 var outletDate = OutlettUiList.Where(x => x.AOutletNoTb == permit.APermitOutletNoTb).Select(x => x.AOutletCloseTransferDtTb).FirstOrDefault();
 
                 DateTime permitDate = Convert.ToDateTime(permit.ALicenceCloseTransfer);
-                DateTime permitvalidFromDate = Convert.ToDateTime(permit.APermitValfrDtTb);
-
                 DateTime outletDate2 = Convert.ToDateTime(outletDate);
+
+
 
                 if (permitDate > outletDate2)
                 {
@@ -855,12 +869,44 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
                     break;
                 }
 
-                if (permitvalidFromDate > permitDate)
-                {
-                    isvalid = false;
-                    await PermitTransferDateError();
-                    break;
-                }
+                //if (App.IsArabic)
+                //{
+                //    var HijriDate = permitDate.ToString("yyyy/MM/dd");
+                //    string GregDate = UtilityManager.HijriToGreg(HijriDate);
+                //    if (Convert.ToDateTime(GregDate) > outletDate2)
+                //    {
+                //        isvalid = false;
+                //        await PermitTransferDateError();
+                //        break;
+                //    }
+                //}
+                //else
+                //{
+                //}
+
+                //DateTime permitvalidFromDate = Convert.ToDateTime(permit.APermitValfrDtTb);
+
+                //DateTime permitvalidFromHijriDate = Convert.ToDateTime(permit.APermitValfrDtHTb);
+
+                //if (App.IsArabic)
+                //{
+                //    if (permitvalidFromHijriDate > permitDate)
+                //    {
+                //        isvalid = false;
+                //        await PermitTransferDateError();
+                //        break;
+                //    }
+                //}
+                //else
+                //{
+                //    if (permitvalidFromDate > permitDate)
+                //    {
+                //        isvalid = false;
+                //        await PermitTransferDateError();
+                //        break;
+                //    }
+                //}
+
             }
         }
         if (isvalid)
@@ -1542,6 +1588,10 @@ public void UpdatePermitReason(string selectedValue)
             tinOutletPrevousRequestsModel.D.ErrMsgSet = new List<ErrMesgs>();
             tinOutletPrevousRequestsModel.D.OffNotesSet = new List<object>();
             tinOutletPrevousRequestsModel.D.OffNotesSet = new List<object>();
+            if (string.IsNullOrEmpty(tinOutletPrevousRequestsModel.D.Fbnumz))
+            {
+                tinOutletPrevousRequestsModel.D.Fbnumz = "";
+            }
             if (IsLoading)
             {
                 tinOutletPrevousRequestsModel = await TINDeregistrationWebServiceManager.PostSubmitOrSaveDraft(tinOutletPrevousRequestsModel.D);
@@ -1553,7 +1603,7 @@ public void UpdatePermitReason(string selectedValue)
                     if (tinOutletPrevousRequestsModel.D.Cr2021popup.Length > 0 && tinOutletPrevousRequestsModel.D.Savez == "X")
                     {
                         await _dialogService.ShowMessage(tinOutletPrevousRequestsModel.D.Cr2021popup, AppResources.Information);
-                        GoBackAftersubmission();
+                        _navigationService.GoBack();
                     }
                     else if (tinOutletPrevousRequestsModel.D.Submitz == "X")
                     {
@@ -1562,7 +1612,7 @@ public void UpdatePermitReason(string selectedValue)
                     }
                     else
                     {
-                        GoBackAftersubmission();
+                        _navigationService.GoBack();
                     }
 
                 }
@@ -1834,7 +1884,6 @@ public void UpdatePermitReason(string selectedValue)
             }
         }
     }
-
     private ObservableCollection<DetailsContactInfo> GetPermitSetsOfOutlets(TinOutletDeregisterListModel.OutletResult itemOutlet)
     {
         ObservableCollection<DetailsContactInfo> newList = new ObservableCollection<DetailsContactInfo>();
@@ -1852,7 +1901,7 @@ public void UpdatePermitReason(string selectedValue)
                         newItem.APermitValfrDtTb = Convert.ToDateTime(item.APermitValfrDtTb.ToString()).ToShortDateString();
                     }
                     //    newItem.APermitValfrDtTb = item.APermitValfrDtTb;
-
+                    newItem.APermitValfrDtHTb = Convert.ToDateTime(item.APermitValfrDtHTb.ToString()).ToShortDateString();
                     newItem.APermitIssueName = item.APermitIssueName;
                     newItem.APermitOutletNoTb = item.APermitOutletnoTb;
                     if (!string.IsNullOrEmpty(item.APermitDregRsnTb))

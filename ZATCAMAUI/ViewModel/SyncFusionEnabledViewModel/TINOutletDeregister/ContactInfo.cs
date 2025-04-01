@@ -228,6 +228,7 @@ public class DetailsContactInfo : INotifyPropertyChanged
     private string aPermitOutletNoTb;
     private bool isPermitDateEnable;
     private bool isPermitActionTypeEnable;
+    private string aPermitValfrDtHTb;
 
     #endregion
 
@@ -299,7 +300,11 @@ public class DetailsContactInfo : INotifyPropertyChanged
         set { isPermitActionTypeEnable = value; this.RaisedOnPropertyChanged("IsPermitActionTypeEnable"); }
     }
 
-
+    public string APermitValfrDtHTb
+    {
+        get { return aPermitValfrDtHTb; }
+        set { aPermitValfrDtHTb = value; this.RaisedOnPropertyChanged("APermitValfrDtHTb"); }
+    }
 
     public string ContactName
     {

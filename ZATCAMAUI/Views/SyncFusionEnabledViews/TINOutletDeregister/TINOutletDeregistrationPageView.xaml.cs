@@ -15,8 +15,6 @@ public partial class TINOutletDeregistrationPageView : ContentPage
             InitializeComponent();
             viewModel = App.Locator.TINOutletDeregistrationPageView;
 			this.BindingContext = viewModel;
-			Task.Run(() => this.viewModel.GetTinOutletDeregisteredRequests()).Wait();
-
 
 		}
 		catch (Exception ex)
@@ -31,6 +29,7 @@ public partial class TINOutletDeregistrationPageView : ContentPage
 
 		try
 		{
+            Task.Run(() => this.viewModel.GetTinOutletDeregisteredRequests()).Wait();
             viewModel.IsSearchButtonVisible = true;
             viewModel.IsCloseButtonVisible = false;
             viewModel.SearchText = "";

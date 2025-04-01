@@ -940,7 +940,7 @@
                                     Grid.Row="0"
                                     Grid.Column="1"
                                     Orientation="Horizontal"
-                                    Spacing="-5">
+                                    Spacing="5">
                                     <CheckBox
                                         Grid.Row="0"
                                         Grid.Column="0"
