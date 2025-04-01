@@ -52,6 +52,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         break;
                     case EstablishmentOutletActivitiesTabsEnum.ActivityList:
                         ActivityTitle = AppResources.ESTLicenseDetails;
+                        SelectedLicenseItem = validateLicense = null;
                         break;
                     case EstablishmentOutletActivitiesTabsEnum.CRDetails:
                     default:
@@ -933,7 +934,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         Nreg_ActivityItem item = new Nreg_ActivityItem
                         {
                             Type = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? "BUP002" : "ZS0004",
-                            ValidDateFrom = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? crIssueDate.ToString("yyyy-MM-ddThh:mm:ss") : issueDate.ToString("yyyy-MM-ddThh:mm:ss"),
+                            ValidDateFrom = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? crIssueDate.ToString("yyyy-MM-ddThh:mm:ss") : SelectedLicenseItem == null?  issueDate.ToString("yyyy-MM-ddThh:mm:ss") : ValidFrom,
                             ValidDateTo = "9999-12-31T00:00:00", // As per business this date is fixed.
                             Idnumber = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRNumber : LicenseNumber,
                             Country = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRIssueCountry?.Land1 : LicenseIssueCountry?.Land1,
@@ -1656,6 +1657,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 LicenseIssueBy = null;
                 LicenseIssueCity = null;
                 LicenseNumber = string.Empty;
+                LicenseName = string.Empty;
                 LicensesCopies = new ObservableCollection<Attachment>();
                 MainActivity = false;
                 ValidFrom = string.Empty;

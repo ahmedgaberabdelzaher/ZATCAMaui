@@ -389,24 +389,18 @@ namespace ZATCAMAUI.Core.Mangers
                         {
                             try
                             {
+                                ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(ESTBranchesDropDownResponseJSON);
+                                if (errorMesg?.header?.moreInformation?.errorDetails?.Count > 0)
+                                {
+                                    string errorMessage = WebServiceManager.PrepareErrorMessageByJson(ESTBranchesDropDownResponseJSON);
+                                    throw new GAZTVATRegistrationInProcessException(errorMessage);
+                                }
 
                                 string deserialisedResponseJSONs = JObject.Parse(ESTBranchesDropDownResponseJSON)["result"]?.ToString();
 
-                                if (deserialisedResponseJSONs == null)
+                                if (!string.IsNullOrEmpty(deserialisedResponseJSONs))
                                 {
-                                    ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(ESTBranchesDropDownResponseJSON);
-                                    if (errorMesg?.header?.moreInformation?.errorDetails?.Count > 0)
-                                    {
-                                        string errorMessage = WebServiceManager.PrepareErrorMessageByJson(ESTBranchesDropDownResponseJSON);
-                                        throw new GAZTVATRegistrationInProcessException(errorMessage);
-                                    }
-                                }
-                                else
-                                {
-                                    if (!string.IsNullOrEmpty(deserialisedResponseJSONs))
-                                    {
-                                        taxPayer = JsonConvert.DeserializeObject<TaxPayerDetails>(deserialisedResponseJSONs);
-                                    }
+                                    taxPayer = JsonConvert.DeserializeObject<TaxPayerDetails>(deserialisedResponseJSONs);
                                 }
                             }
 
@@ -429,9 +423,9 @@ namespace ZATCAMAUI.Core.Mangers
                         }
                     }
                 }
-                catch (GAZTVATRegistrationInProcessException)
+                catch (GAZTVATRegistrationInProcessException ex)
                 {
-                    throw new GAZTVATRegistrationInProcessException();
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
                 catch (GAZTNetworkConnectivityIssueException)
                 {

@@ -3476,6 +3476,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     outletNavigationModels.idItem = idItem;
                     outletNavigationModels.selectedOutletItem = GetSelectedItem(item);
                     outletNavigationModels.ActivityItem = taxPayerDetails.Nreg_ActivitySet[0];
+                    outletNavigationModels.activitySetsList = activityList;
                     await _navigationService.NavigateTo(App.OutletDetailsPageView, outletNavigationModels);
                 }
 

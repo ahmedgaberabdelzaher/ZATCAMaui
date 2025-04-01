@@ -2524,6 +2524,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentSignUP
                                 }
                                 SiguupModel.CaseGuid = viewModel.Guid;
                                 SiguupModel.ACaptcha = viewModel.Captcha;
+                                viewModel.BirthDate = SiguupModel.ABirthdt;
                                 string ResultFirstSubmit = await WebServiceManager.GAZTSignUpFirstSubmit(SiguupModel);
                                 SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
                                 viewModel.SignUpFirstSubmitModel = ResultFirstSubmitModel;

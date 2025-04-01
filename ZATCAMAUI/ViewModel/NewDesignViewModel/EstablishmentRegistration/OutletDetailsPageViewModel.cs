@@ -781,6 +781,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         if (!string.IsNullOrEmpty(validateCR?.Crname) || PreLoadedLicenseItem != null)
                         {
                             CanExecute = true;
+
+                            List<NregMulSet> existingActivitiesList = new List<NregMulSet>();
+                            NregMulSet existingActivities = null;
+
+                            List<NregMulSet> filteredActivities = taxPayerDetails?.Nreg_Mul_ActivitySet?.Where(a => a.Idnumber == PreLoadedLicenseItem.Idnumber).ToList();
+
+                            existingActivitiesList = UtilityManager.GetExistingActivities(filteredActivities, existingActivities, activities);
+
+                            if (existingActivitiesList?.Count > 0)
+                            {
+                                PreLoadedLicenseItem?.activitySet?.Clear();
+                                foreach (var act in existingActivitiesList)
+                                    PreLoadedLicenseItem.activitySet.Add(act);
+                            }
+
                             await _navigationService.NavigateTo(App.ActivityItemPage, new ActivityNavigationModels()
                             {
                                 openedTab = PreLoadedLicenseItem != null ? EstablishmentOutletActivitiesTabsEnum.LicenseDetails : EstablishmentOutletActivitiesTabsEnum.CRDetails,

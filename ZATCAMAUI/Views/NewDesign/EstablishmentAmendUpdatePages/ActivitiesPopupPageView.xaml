@@ -20,12 +20,13 @@
         Stroke="{StaticResource NeutralLightGrey}"
         StrokeShape="RoundRectangle 22,22,0,0"
         VerticalOptions="End">
-        <StackLayout>
+        <ScrollView>
 
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto">
 
@@ -290,13 +291,15 @@
                     VerticalOptions="CenterAndExpand" />
 
 
-
-            </Grid>
-
-            <buttons:SfButton
+                <buttons:SfButton
+                    Grid.Row="2"
                 Command="{Binding OnNextButtonClick}"
                 Style="{StaticResource PrimaryButtonStyle}"
                 Text="{x:Static ResourceManager:AppResources.ZDone}" />
-        </StackLayout>
+
+            </Grid>
+
+            
+        </ScrollView>
     </Border>
 </Mopups:PopupPage>

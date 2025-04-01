@@ -254,7 +254,7 @@ namespace ZATCAMAUI.Core.Helper
                 .AddSingleton<OutletDetailsAmendUpdatePageViewModel>()
                 .AddSingleton<ActivityItemPageViewModel>()
                 .AddSingleton<ActivityItemAmendUpdatePageViewModel>()
-                .AddSingleton<ActivitiesPopUpViewModel>()
+                .AddTransient<ActivitiesPopUpViewModel>()
                 .AddSingleton<RegistrationSuccessfulViewModel>()
                 .AddSingleton<ZakatReturnDetailsSuccessfullPageViewModel>()
                 .AddSingleton<ZakatReturnNewSuccessViewModel>()
