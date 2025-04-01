@@ -787,7 +787,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                             List<NregMulSet> filteredActivities = taxPayerDetails?.Nreg_Mul_ActivitySet?.Where(a => a.Idnumber == PreLoadedLicenseItem.Idnumber).ToList();
 
-                            existingActivitiesList = UtilityManager.GetExistingActivities(filteredActivities, existingActivities, activities);
+                            existingActivitiesList = UtilityManager.GetExistingActivities(filteredActivities, existingActivities, activities, true);
 
                             if (existingActivitiesList?.Count > 0)
                             {
