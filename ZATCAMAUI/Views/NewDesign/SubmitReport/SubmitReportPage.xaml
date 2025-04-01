@@ -671,16 +671,16 @@
                         <StackLayout Spacing="0">
 
                             <!--  Commercial Registration Label  -->
-                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ESTCommercialRegistration}" />
+                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZCRNationalNumber}" />
 
                             <!--  Commercial Registration Entry  -->
                             <custom:CustomSfTextInputView>
                                 <custom:CustomSfTextInputView.TextInputView>
 
                                     <custom:GAZTBorderlessEntry
-                                        Placeholder="{x:Static ResourceManager:AppResources.ESTCommercialRegistration}"
+                                        Placeholder="{x:Static ResourceManager:AppResources.ZZCRNationalNumber}"
                                         Style="{StaticResource DefaultEntry}"
-                                        Text="{Binding SubmitReport.CR}"
+                                        Text="{Binding SubmitReport.CR,Mode=OneWayToSource}"
                                         MaxLength="10"
                                         Keyboard="Numeric"
                                         TextColor="#58595B" >

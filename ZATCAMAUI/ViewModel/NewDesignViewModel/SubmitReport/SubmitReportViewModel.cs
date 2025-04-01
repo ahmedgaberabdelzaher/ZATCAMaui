@@ -891,13 +891,19 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.SubmitReport
 
             else if (!string.IsNullOrWhiteSpace(SubmitReport.CR))
             {
-                if (!Regex.IsMatch(SubmitReport.CR, @"^\d{10}$"))
-                {
-                    IsShowMsgView = true;
-                    MessageTxt = AppResources.ZZCommercialReiterationNumberconsistsofnumbersonly + "; " + AppResources.ZZCommercialReiterationNumbershouddbe10digits;
-                    return false;
+                //if (!Regex.IsMatch(SubmitReport.CR, @"^\d{10}$"))
+                //{
 
-                }
+                    if (SubmitReport.CR.Length < 10 || !SubmitReport.CR.Substring(0, 1).Equals("7"))
+                    {
+                        MessageTxt = AppResources.CRNumberValidation;
+                        IsShowMsgView = true;
+                    return false;
+                    }
+                  //  MessageTxt = AppResources.ZZCommercialReiterationNumberconsistsofnumbersonly + "; " + AppResources.ZZCommercialReiterationNumbershouddbe10digits;
+                  
+
+                //}
 
             }
 
