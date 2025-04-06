@@ -707,8 +707,22 @@ namespace ZATCAMAUI.Core.Mangers
 
                         _responseData = _tinDeregNewRequestPrevousResponse.Content.ReadAsStringAsync().Result;
                         ErrorObj statusHeader = JsonConvert.DeserializeObject<ErrorObj>(_responseData);
-                        if (statusHeader?.header?.status?.code == "E999999")
-                            throw new GAZTNetworkConnectivityIssueException();
+                        if (statusHeader?.header?.status?.code != "E999999")
+                        {
+                            if (!string.IsNullOrEmpty(_responseData))
+                            {
+                                ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_responseData);
+                                if (errorMesg?.header?.moreInformation?.errorDetails != null)
+                                {
+                                    string errorMessage = WebServiceManager.PrepareErrorMessageByJson(_responseData);
+                                    throw new GAZTVATRegistrationInProcessException(errorMessage);
+                                }
+                                else
+                                {
+                                    return _responseData;
+                                }
+                            }
+                        }
 
                     }
 
@@ -717,6 +731,10 @@ namespace ZATCAMAUI.Core.Mangers
                 catch (GAZTNetworkConnectivityIssueException)
                 {
                     throw new GAZTNetworkConnectivityIssueException();
+                }
+                catch(GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
                 catch (Exception)
                 {

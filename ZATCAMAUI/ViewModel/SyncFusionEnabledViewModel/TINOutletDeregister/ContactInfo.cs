@@ -17,6 +17,7 @@ public class ContactInfo_NestedListView : INotifyPropertyChanged
     private string aOutletTypeTb;
     private string aOutletNameTb;
     private string aOutletIdentificationNoTb;
+    private string aOutletZ700NumberTb;
     private string aOutletStatusTb;
     private string aoutletReason;
     private string aOutletValidToTb;
@@ -29,7 +30,7 @@ public class ContactInfo_NestedListView : INotifyPropertyChanged
     private string aActFlag;
     private string aOutletActionTypeTb;
     private bool ssActionTypeEnabled;
-
+    private string aCompFg;
 
 
 
@@ -90,6 +91,11 @@ public class ContactInfo_NestedListView : INotifyPropertyChanged
     {
         get { return aOutletIdentificationNoTb; }
         set { aOutletIdentificationNoTb = value; this.RaisedOnPropertyChanged("AOutletIdentificationNoTb"); }
+    }
+    public string AOutletZ700NumberTb
+    {
+        get { return aOutletZ700NumberTb; }
+        set { aOutletZ700NumberTb = value; this.RaisedOnPropertyChanged("AOutletZ700NumberTb"); }
     }
     public string AOutletStatusTb
     {
@@ -156,7 +162,11 @@ public class ContactInfo_NestedListView : INotifyPropertyChanged
         get { return ssActionTypeEnabled; }
         set { ssActionTypeEnabled = value; this.RaisedOnPropertyChanged("IsActionTypeEnabled"); }
     }
-
+    public string ACompFg
+    {
+        get { return aCompFg; }
+        set { aCompFg = value; this.RaisedOnPropertyChanged("ACompFg"); }
+    }
 
 
 
@@ -218,6 +228,7 @@ public class DetailsContactInfo : INotifyPropertyChanged
     private string aPermitOutletNoTb;
     private bool isPermitDateEnable;
     private bool isPermitActionTypeEnable;
+    private string aPermitValfrDtHTb;
 
     #endregion
 
@@ -289,7 +300,11 @@ public class DetailsContactInfo : INotifyPropertyChanged
         set { isPermitActionTypeEnable = value; this.RaisedOnPropertyChanged("IsPermitActionTypeEnable"); }
     }
 
-
+    public string APermitValfrDtHTb
+    {
+        get { return aPermitValfrDtHTb; }
+        set { aPermitValfrDtHTb = value; this.RaisedOnPropertyChanged("APermitValfrDtHTb"); }
+    }
 
     public string ContactName
     {

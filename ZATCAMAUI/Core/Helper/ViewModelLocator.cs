@@ -254,6 +254,7 @@ namespace ZATCAMAUI.Core.Helper
                 .AddSingleton<OutletDetailsAmendUpdatePageViewModel>()
                 .AddSingleton<ActivityItemPageViewModel>()
                 .AddSingleton<ActivityItemAmendUpdatePageViewModel>()
+                .AddTransient<ActivitiesPopUpViewModel>()
                 .AddSingleton<RegistrationSuccessfulViewModel>()
                 .AddSingleton<ZakatReturnDetailsSuccessfullPageViewModel>()
                 .AddSingleton<ZakatReturnNewSuccessViewModel>()
@@ -327,6 +328,8 @@ namespace ZATCAMAUI.Core.Helper
                 .AddTransient<AttachmentViewModel>()
                 .AddSingleton<AccountLockedViewModel>()
                 .AddSingleton<AccountStatementDetailPageViewModel>()
+                .AddSingleton<TINOutletDeregistrationViewModel>()
+                .AddSingleton<TinOutletDeRegRequestViewModel>()
             #endregion
 
             #region PaymentImplementation
@@ -2710,6 +2713,8 @@ namespace ZATCAMAUI.Core.Helper
             navigationService.Configure(App.ZatcaInfoMenuPageView, typeof(ZatcaInfoMenuPageView));
 
             navigationService.Configure(App.NotesPopUpPageView, typeof(NotesPopUpPageView));
+
+            navigationService.Configure(App.ActivitiesPopUpPageView, typeof(ActivitiesPopupPageView));
             navigationService.Configure(App.NotesDescriptionPopUpPageView, typeof(NotesDescriptionPopUpPageView));
             navigationService.Configure(App.TaxManagementPageView, typeof(TaxManagementPageView));
 
@@ -3153,6 +3158,22 @@ namespace ZATCAMAUI.Core.Helper
             }
         }
 
+        public ActivitiesPopUpViewModel ActivityPopUpPageView
+        {
+            get
+            {
+                try
+                {
+                    return Ioc.Default.GetService<ActivitiesPopUpViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                    return null;
+                }
+            }
+        }
         public CustomLoginViewModel CustomLoginViewModel
         {
             get

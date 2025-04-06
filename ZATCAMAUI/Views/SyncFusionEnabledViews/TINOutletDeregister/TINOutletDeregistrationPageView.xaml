@@ -19,9 +19,9 @@
         <Grid RowDefinitions="Auto,*">
 
             <!--#region Header-->
-            <Grid Padding="20,10" ColumnDefinitions="*,2*,*">
+            <Grid Padding="20,10" ColumnDefinitions="auto,*,auto">
 
-                <StackLayout>
+                <StackLayout HorizontalOptions="Start">
 
                     <!--  Back Button  -->
                     <Image
@@ -58,7 +58,7 @@
                     VerticalOptions="Center" />
 
 
-                <StackLayout
+               <StackLayout
                     Grid.Row="0"
                     Grid.Column="2"
                     HorizontalOptions="EndAndExpand"
@@ -75,7 +75,9 @@
                         </Image.GestureRecognizers>
                     </Image>
                 </StackLayout>
-                <StackLayout
+
+                 <StackLayout
+                     IsVisible="{Binding IsCloseButtonVisible}"
                     Grid.Row="1"
                     Grid.ColumnSpan="3"
                     HorizontalOptions="FillAndExpand"
@@ -93,7 +95,6 @@
                             Margin="0"
                             BackgroundColor="White"
                             HorizontalOptions="FillAndExpand"
-                            IsVisible="{Binding IsCloseButtonVisible}"
                             Keyboard="Numeric"
                             Placeholder="Enter Request No."
                             TextChanged="SearchBar_TextChanged"
@@ -102,7 +103,7 @@
                         <Image
                             Grid.Column="1"
                             HeightRequest="24"
-                            IsVisible="{Binding IsCloseButtonVisible}"
+                           
                             Source="close"
                             WidthRequest="24">
                             <Image.GestureRecognizers>
@@ -119,7 +120,7 @@
             <!--#region Body-->
             <Border
                 Grid.Row="1"
-                Padding="10,0"
+                Padding="10,10"
                 Style="{StaticResource CommonTopCurves}">
 
                 <Grid>

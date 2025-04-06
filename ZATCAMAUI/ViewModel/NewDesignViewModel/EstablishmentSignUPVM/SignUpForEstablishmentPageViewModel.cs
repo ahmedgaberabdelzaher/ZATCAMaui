@@ -2227,6 +2227,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
         }
 
+        private string birthDate = string.Empty;
+        public string BirthDate
+        {
+            get
+            {
+                return birthDate;
+            }
+            set
+            {
+                if (birthDate == value) return;
+
+                birthDate = value;
+                OnPropertyChanged("birthDate");
+            }
+        }
 
         #endregion
 
@@ -3105,7 +3120,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             {
                 IsLoading = true;
                 CreateGaztAccountModel CreateModel = new CreateGaztAccountModel();
-                CreateModel.ABirthdt = SignUpModelRootObjectM.d.signupD.ABirthdt;
+                CreateModel.ABirthdt = SignUpModelRootObjectM.d.signupD.ABirthdt == null ? BirthDate : SignUpModelRootObjectM.d.signupD.ABirthdt;
                 CreateModel.ACity = SignUpModelRootObjectM.d.signupD.ACity;
                 CreateModel.ACityCode = SignUpModelRootObjectM.d.signupD.ACityCode;
                 CreateModel.ACommId = SignUpModelRootObjectM.d.signupD.ACommId;
@@ -3194,15 +3209,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     }
                 }
             }
-            catch (GAZTNetworkConnectivityIssueException)
+            
+
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
+            }
+            catch (GAZTNetworkConnectivityIssueException ex)
             {
                 await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, true, _navigationService);
             }
-            catch (InternetException)
+            catch (InternetException ex)
             {
                 await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 await UtilityManager.HandleExceptionMessage(AppResources.Somethingwentwrong, false);
             }

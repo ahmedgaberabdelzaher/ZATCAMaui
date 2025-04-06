@@ -15,7 +15,7 @@ using static ZATCAMAUI.Models.ErrorMessage;
 using ZATCAMAUI.Core.Interfaces;
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 {
- 
+
     public class OutletDetailsAmendUpdatePageViewModel : BaseViewModel
     {
         #region Variable
@@ -23,6 +23,8 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
         public bool isMainOutletExists = false;
         public List<OutletItem> ListOutlets { get; set; }
         public bool IsEditingMode { get; set; }
+        public ActivitySetsList activities { get; set; } = null;
+
         private List<string> _listOutletTypes;
         public List<string> ListOutletTypes
         {
@@ -35,7 +37,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 OnPropertyChanged(nameof(ListOutletTypes));
             }
         }
-        private string _selectedOutletType=string.Empty;
+        private string _selectedOutletType = string.Empty;
         public string SelectedOutletType
         {
             get => _selectedOutletType;
@@ -554,7 +556,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 OnPropertyChanged(nameof(CanExecute));
             }
         }
-        
+
         private bool _isNextbttnEnable = true;
         public bool IsNextbttnEnable
         {
@@ -899,7 +901,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 nextNumber = newNumber,
                 goBackAction = async (List<Nreg_ActivityItem> list) =>
                 {
-                    if (list.Count > 0|| IsEditingMode==true)
+                    if (list.Count > 0 || IsEditingMode == true)
                         IsNextbttnEnable = true;
                     else
                         return;
@@ -930,7 +932,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 }
                 else if (currentTab == EstablishmentRegistrationOutletTabsEnum.ActivityDetails)
                 {
-                    if(taxPayerDetails?.Nreg_ActivitySet?.Count == 0)
+                    if (taxPayerDetails?.Nreg_ActivitySet?.Count == 0)
                     {
                         return;
                     }
@@ -1010,6 +1012,23 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                         taxPayerDetails.StepNumberx = "03";
                         taxPayerDetails.Gpart = App.LoginDataRetrieved.TIN;
                         taxPayerDetails.UserTypx = "TP";
+
+                        taxPayerDetails?.Nreg_Mul_ActivitySet?.Clear();
+                        foreach (var items in taxPayerDetails?.Nreg_ActivitySet)
+                        {
+                            foreach (var acttivity in items.activitySet)
+                            {
+                                taxPayerDetails?.Nreg_Mul_ActivitySet?.Add(new NregMulSet
+                                {
+                                    ActMgrp = acttivity?.ActMgrpCode,
+                                    ActSgrp = acttivity?.ActSgrpCode,
+                                    Activity = acttivity?.ActivityCode,
+                                    Idnumber = acttivity?.Idnumber,
+                                });
+
+                            }
+
+                        }
 
                         //taxPayerDetails.off_notesSet = new Models.EstablishmentRegistration.OffNotesSet();
                         taxPayerDetails.off_notesSet = new List<OffNotes>();
@@ -1091,7 +1110,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 IsLoading = false;
             }
         }
-       
+
         private async Task fetchTabDataAndBind(EstablishmentRegistrationOutletTabsEnum _enum)
         {
             try
@@ -1139,14 +1158,30 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     OutletActNumber = newNumber == null || string.IsNullOrEmpty(newNumber?.Actno) ? "00000" : newNumber.Actno;
 
                     // OutletActNumber = $"{Int16.Parse(newNumber?.Actno):000}";
-                    taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ZakatAmendESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx, taxPayerDetails?.Fbstax, taxPayerDetails?.Fbustx
-                     );
+                    taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ZakatAmendESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx, taxPayerDetails?.Fbstax, taxPayerDetails?.Fbustx);
+                    foreach (var activityItem in taxPayerDetails?.Nreg_ActivitySet)
+                    {
+                        var selectedItemActivities = taxPayerDetails?.Nreg_Mul_ActivitySet?.Where(a => a.Idnumber == activityItem?.Idnumber)?.ToList();
+                        if (selectedItemActivities?.Count > 0)
+                        {
+                            foreach (var mulactivities in selectedItemActivities)
+                            {
+                                var existingActivities = new NregMulSet
+                                {
+                                    Activity = activities?.activitySet?.Where(i => i.IndSector == mulactivities?.Activity)?.FirstOrDefault()?.Text,
+                                    ActivityCode = activities?.activitySet?.Where(i => i.IndSector == mulactivities?.Activity)?.FirstOrDefault()?.IndSector,
+                                    ActMgrp = activities?.act_groupSet?.Where(i => i.IndSector == mulactivities?.ActMgrp)?.FirstOrDefault()?.Text,
+                                    ActMgrpCode = activities?.act_groupSet?.Where(i => i.IndSector == mulactivities?.ActMgrp)?.FirstOrDefault()?.IndSector,
+                                    ActSgrp = activities?.act_subgroupSet?.Where(i => i.IndSector == mulactivities?.ActSgrp)?.FirstOrDefault()?.Text,
+                                    ActSgrpCode = activities?.act_subgroupSet?.Where(i => i.IndSector == mulactivities?.ActSgrp)?.FirstOrDefault()?.IndSector,
+                                    Idnumber = mulactivities?.Idnumber,
+                                };
 
-
-
+                                activityItem?.activitySet.Add(existingActivities);
+                            }
+                        }
+                    }
                 }
-            
-           
                 else if (_enum == EstablishmentRegistrationOutletTabsEnum.AddressDetails)
                 {
                     OutletDropDowns = await EstablishmentRegistrationWebServiceManager.ESTOutletDropDowns();
@@ -1247,7 +1282,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                 IsLoading = false;
             }
         }
-        
+
         private void populateAddress(OutletAddress address)
         {
             BuildingNumber = address.BuildingNo;

@@ -378,6 +378,11 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
 
         [JsonIgnore]
         public string CRTypeDesc { get; set; } = string.Empty;
+        [JsonIgnore]
+        public List<NregMulSet> activitySet { get; set; } = new List<NregMulSet>();
+
+        [JsonProperty("700Number")]
+        public string Z700Number { get; set; } = string.Empty;
 
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
@@ -543,7 +548,87 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
         public string Bpkind { get; set; }
         public bool EditFg { get; set; }
     }
-    
+
+    public class NregMulSet : INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyRaised(string propertyname)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyname));
+            }
+        }
+        [JsonIgnore]
+        public Metadata __metadata { get; set; }
+        [JsonIgnore]
+        public string _ActMgrp { get; set; } = string.Empty;
+        [JsonIgnore]
+        public string _ActSgrp { get; set; } = string.Empty;
+        [JsonIgnore]
+        public string _Activity { get; set; } = string.Empty;
+
+        //User defined properties
+        [JsonIgnore]
+        public string ActMgrpCode { get; set; } = string.Empty;
+        [JsonIgnore]
+        public string ActSgrpCode { get; set; } = string.Empty;
+        [JsonIgnore]
+        public string ActivityCode { get; set; } = string.Empty;
+        [JsonProperty("idNumber")]
+        public string Idnumber { get; set; } = string.Empty;
+
+        [JsonProperty("activityMainGroup")]
+        public string ActMgrp
+        {
+            get
+            {
+                return _ActMgrp;
+            }
+            set
+            {
+                if (_ActMgrp == value) return;
+
+                _ActMgrp = value ?? string.Empty;
+                OnPropertyRaised(nameof(ActMgrp));
+            }
+        }
+
+        [JsonProperty("activitySubGroup")]
+        public string ActSgrp
+        {
+            get
+            {
+                return _ActSgrp;
+            }
+            set
+            {
+                if (_ActSgrp == value) return;
+
+                _ActSgrp = value ?? string.Empty;
+                OnPropertyRaised(nameof(ActSgrp));
+            }
+        }
+
+        [JsonProperty("activity")]
+        public string Activity
+        {
+            get
+            {
+                return _Activity;
+            }
+            set
+            {
+                if (_Activity == value) return;
+
+                _Activity = value ?? string.Empty;
+                OnPropertyRaised(nameof(Activity));
+            }
+        }
+
+    }
+
     public class OffNotes
     {
         [JsonIgnore]
@@ -577,19 +662,22 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
         [JsonProperty("notesLine")]
         public string Tdline { get; set; }
     }
-    
     public class OffNotesSet
     {
         public List<OffNotes> results { get; set; }
     }
 
 
-    
+
     public class NregMSGSet
     {
         public List<object> results { get; set; }
     }
 
+    public class NregMulActivtySet
+    {
+        public List<NregMulSet> results { get; set; }
+    }
     public class TaxPayerDetails
     {
         [JsonIgnore]
@@ -864,14 +952,16 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
         public List<OffNotes> off_notesSet { get; set; }
         [JsonProperty("messages")]
         public List<object> Nreg_MSGSet { get; set; }
+        [JsonProperty("multipleActivities")]
+        public List<NregMulSet> Nreg_Mul_ActivitySet { get; set; }
     }
 
-    
+
     public class TaxpayerNationality : TaxpayerNationalityLandx50
     {
         public override string ToString() => string.IsNullOrEmpty(Landx50) ? "" : Landx50;
     }
-    
+
     public class TaxpayerNationalityLandx50
     {
         [JsonIgnore]
@@ -902,9 +992,9 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
 
         [JsonProperty("superRegion")]
         public string PrqSpregt { get; set; }
-        public override string ToString() =>  string.IsNullOrEmpty(Landx50) ? "" : Landx50;
+        public override string ToString() => string.IsNullOrEmpty(Landx50) ? "" : Landx50;
     }
-    
+
     public class OutletNumber
     {
         [JsonIgnore]
@@ -918,7 +1008,7 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
         [JsonProperty("activityNumber")]
         public string Actno { get; set; }
     }
-    
+
     public class ActivityGroupSubGroup
     {
         [JsonIgnore]
@@ -1008,7 +1098,7 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
         public override string ToString() => string.IsNullOrEmpty(Text) ? "" : Text;
     }
 
-    
+
     public class ValidateCR
     {
         [JsonIgnore]
@@ -1059,7 +1149,7 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
         [JsonProperty("cityCode")]
         public string CityCode { get; set; }
     }
-    
+
     public class CityDropdownItem
     {
         [JsonIgnore]
@@ -1077,13 +1167,13 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
         public override string ToString() => string.IsNullOrEmpty(CityName) ? "" : CityName;
     }
 
-    
+
     public class CityDropdownSet
     {
         public List<CityDropdownItem> results { get; set; }
     }
 
-    
+
     public class StateDropdownItem
     {
         [JsonIgnore]
@@ -1096,14 +1186,14 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
         public string Bland { get; set; }
         [JsonProperty("description")]
         public string Bezei { get; set; } //desc
-        public override string ToString() =>  string.IsNullOrEmpty(Bezei) ? string.Empty : Bezei;
+        public override string ToString() => string.IsNullOrEmpty(Bezei) ? string.Empty : Bezei;
     }
-    
+
     public class StateDropdownSet
     {
         public List<StateDropdownItem> results { get; set; }
     }
-    
+
     public class CountryDropdownItem
     {
         [JsonIgnore]
@@ -1121,14 +1211,14 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
         public string Natio50 { get; set; }
         [JsonProperty("superRegion")]
         public string PrqSpregt { get; set; }
-        public override string ToString() =>   string.IsNullOrEmpty(Landx50) ? "" : Landx50;
+        public override string ToString() => string.IsNullOrEmpty(Landx50) ? "" : Landx50;
     }
-    
+
     public class CountryDropdownSet
     {
         public List<CountryDropdownItem> results { get; set; }
     }
-    
+
     public class OutletDropDowns
     {
         [JsonIgnore]
@@ -1147,7 +1237,7 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
         [JsonProperty("countries")]
         public List<CountryDropdownItem> country_dropdownSet { get; set; }
     }
-    
+
     public class OutletAddress
     {
         [JsonIgnore]
@@ -1189,7 +1279,7 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
         public string CityName { get; set; }
     }
 
-    
+
     public class DeleteOutletRequest
     {
         public string formBundleNumber { get; set; }
@@ -1198,7 +1288,7 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
         public string TIN { get; set; }
     }
 
-    
+
     public class FinancialDetail
     {
         [JsonIgnore]
@@ -1221,7 +1311,14 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
 
 
     }
-    
+
+    public class PopUpServiceModel
+    {
+        public ActivitySetsList activitiesList { get; set; }
+        public List<NregMulSet> existedActivities { get; set; }
+
+    }
+
 
     public class PeriodSetResult
     {
@@ -1264,13 +1361,13 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
     }
 
 
-    
+
 
     public class PeriodSet
     {
         public List<PeriodSetResult> results { get; set; }
     }
-    
+
     public class FinancialDetailRequest
     {
         [JsonProperty("calendarType")]
@@ -1412,7 +1509,7 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
 
 
     }
-    
+
     public class TaxPayerPersonalDetailsAvailability : INotifyPropertyChanged
     {
         private bool _dob;
@@ -1607,7 +1704,7 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
 
 
     }
-    
+
     public class PassportDetails : INotifyPropertyChanged
     {
         private bool _passportNo;
@@ -1697,7 +1794,7 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
         }
 
     }
-    
+
     public class ActivityDetails : INotifyPropertyChanged
     {
         private bool _issueCountry;
@@ -1858,7 +1955,7 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
         }
 
     }
-    
+
     public class LicenseDetails : INotifyPropertyChanged
     {
         private bool _issueCountry;
@@ -2010,7 +2107,7 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
         }
 
     }
-    
+
     public class AddressDetails : INotifyPropertyChanged
     {
         private bool _houseNo;
@@ -2210,6 +2307,65 @@ namespace ZATCAMAUI.Models.EstablishmentRegistration
         }
 
     }
+    public class CRMulActivityDetails
+    {
+        public Metadata __metadata;
 
+        [JsonProperty("client")]
+        public string Client;
+
+        [JsonProperty("language")]
+        public string Spras;
+
+        [JsonProperty("industrySystemType")]
+        public string Istype;
+
+        [JsonProperty("industrySector")]
+        public string IndSector;
+
+        [JsonProperty("description")]
+        public string Text;
+
+        [JsonProperty("shortDescription")]
+        public string TextShort;
+
+        [JsonProperty("idNumber")]
+        public string Idnumber;
+
+        [JsonProperty("TIN")]
+        public string Tin;
+
+        [JsonProperty("activityItems")]
+        public List<NregMulSet> results;
+    }
+
+
+
+    public class MulActItemSet
+    {
+        [JsonProperty("results")]
+        public List<NregMulSet> results;
+    }
+
+    public class Result
+    {
+        [JsonProperty("__metadata")]
+        public Metadata __metadata;
+
+        [JsonProperty("Mandt")]
+        public string Mandt;
+
+        [JsonProperty("Idnumber")]
+        public string Idnumber;
+
+        [JsonProperty("Activity")]
+        public string Activity;
+
+        [JsonProperty("ActSgrp")]
+        public string ActSgrp;
+
+        [JsonProperty("ActMgrp")]
+        public string ActMgrp;
+    }
 
 }

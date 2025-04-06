@@ -105,6 +105,12 @@ namespace ZATCAMAUI.Views.NewDesign.ZakatDeregistration
                     await MopupService.Instance.PushAsync(new VATDeregistrationInstructionsPage(IsInstructionChecked));
                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 }
+                else if (selectedItem.ZDTitle == AppResources.DeregistrationServiceTitle)
+                {
+                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "registrationDetailsListView_SelectionChanged", "TIN / Outlet Deregistration Service");
+                    await viewModel._navigationService.NavigateTo(App.TINOutletDeregistrationPageView);
+                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+                }
 
                 else
                 {

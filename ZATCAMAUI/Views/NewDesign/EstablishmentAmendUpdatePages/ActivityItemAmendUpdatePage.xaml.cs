@@ -1,9 +1,12 @@
-﻿using Syncfusion.Maui.Buttons;
+﻿using Mopups.Services;
+using Syncfusion.Maui.Buttons;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.EstablishmentRegistration;
 using ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel;
+using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
 
 namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
@@ -43,6 +46,7 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
 
                 viewModel.PickerModel = arg;
             });
+            ActivitiesPopUpViewModel.DataSent += OnDataReceivedFromScreen2;
         }
 
         protected override void OnAppearing()
@@ -50,9 +54,30 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
             base.OnAppearing();
             SetPickerFont();
             viewModel?.OnAppearing();
-
+            ActivitiesPopUpViewModel.DataSent += OnDataReceivedFromScreen2;
         }
+        private void OnDataReceivedFromScreen2(object sender, List<NregMulSet> data)
+        {
+            viewModel.NregMulActivityList = data;
 
+            if (viewModel.CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
+            {
+                if (viewModel?.SelectedLicenseItem != null)
+                {
+                    viewModel?.SelectedLicenseItem?.activitySet?.Clear();
+                    viewModel?.SelectedLicenseItem?.activitySet?.Concat(data);
+                }
+            }
+            else if (viewModel.CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
+            {
+                if (viewModel?.SelectedLicenseItem != null)
+                {
+                    viewModel?.SelectedCRItem?.activitySet?.Clear();
+                    viewModel?.SelectedCRItem?.activitySet?.Concat(data);
+                }
+
+            }
+        }
         public void SetPickerFont()
         {
             try
@@ -123,13 +148,29 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
+            ActivitiesPopUpViewModel.DataSent -= OnDataReceivedFromScreen2;
+
             viewModel?.OnDisappearing();
         }
 
-        void CREntry_Unfocused(object sender, FocusEventArgs e)
+        void CREntry_Unfocused(System.Object sender, FocusEventArgs e)
         {
-            viewModel?.validateCRNumber();
+            viewModel?.validateCRNumber(viewModel.CRNumber, true);
         }
+
+        void CR_National_Entry_Unfocused(System.Object sender, FocusEventArgs e)
+        {
+            if (string.IsNullOrEmpty(viewModel.CRNationalNumber) || !viewModel.CRNationalNumber.StartsWith("7") || viewModel.CRNationalNumber.Length != 10)
+            {
+                MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZCommercialRegistrationNumbershouddbe10digitswith7starts));
+                viewModel.CRNationalNumber = string.Empty;
+            }
+            else
+            {
+                viewModel?.validateCRNumber(viewModel.CRNationalNumber, true);
+            }
+        }
+
 
         void CRSwitch_StateChanged(object sender, SwitchStateChangedEventArgs e)
         {

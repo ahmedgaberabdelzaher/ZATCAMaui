@@ -57,7 +57,6 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
     List<TinDeregReasonSetResult> ReasonsList = new List<TinDeregReasonSetResult>();
     List<string> ReasonsListUI = new List<string>();
 
-
     public bool MarkComplete { get; private set; } = false;
     int selectedPage = (int)PagesEnum.TinOutLetDeregReason;
 
@@ -823,12 +822,27 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
             }
             //outlet.AOutletCloseTransferDtTb
             DateTime outletDate = Convert.ToDateTime(outlet.AOutletCloseTransferDtTb);
-            if (outletDate > DateTime.Now.Date)
+            if (App.IsArabic)
             {
-                isvalid = false;
-                await OutletTransferDateError();
-                break;
+                var HijriDate = outletDate.ToString("yyyy/MM/dd");
+                string GregDate = UtilityManager.HijriToGreg(HijriDate);
+                if (Convert.ToDateTime(GregDate) > DateTime.Now.Date)
+                {
+                    isvalid = false;
+                    await OutletTransferDateError();
+                    break;
+                }
             }
+            else
+            {
+                if (outletDate > DateTime.Now.Date)
+                {
+                    isvalid = false;
+                    await OutletTransferDateError();
+                    break;
+                }
+            }
+            
         }
 
         if (isvalid)
@@ -844,9 +858,9 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
                 var outletDate = OutlettUiList.Where(x => x.AOutletNoTb == permit.APermitOutletNoTb).Select(x => x.AOutletCloseTransferDtTb).FirstOrDefault();
 
                 DateTime permitDate = Convert.ToDateTime(permit.ALicenceCloseTransfer);
-                DateTime permitvalidFromDate = Convert.ToDateTime(permit.APermitValfrDtTb);
-
                 DateTime outletDate2 = Convert.ToDateTime(outletDate);
+
+
 
                 if (permitDate > outletDate2)
                 {
@@ -855,12 +869,44 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
                     break;
                 }
 
-                if (permitvalidFromDate > permitDate)
-                {
-                    isvalid = false;
-                    await PermitTransferDateError();
-                    break;
-                }
+                //if (App.IsArabic)
+                //{
+                //    var HijriDate = permitDate.ToString("yyyy/MM/dd");
+                //    string GregDate = UtilityManager.HijriToGreg(HijriDate);
+                //    if (Convert.ToDateTime(GregDate) > outletDate2)
+                //    {
+                //        isvalid = false;
+                //        await PermitTransferDateError();
+                //        break;
+                //    }
+                //}
+                //else
+                //{
+                //}
+
+                //DateTime permitvalidFromDate = Convert.ToDateTime(permit.APermitValfrDtTb);
+
+                //DateTime permitvalidFromHijriDate = Convert.ToDateTime(permit.APermitValfrDtHTb);
+
+                //if (App.IsArabic)
+                //{
+                //    if (permitvalidFromHijriDate > permitDate)
+                //    {
+                //        isvalid = false;
+                //        await PermitTransferDateError();
+                //        break;
+                //    }
+                //}
+                //else
+                //{
+                //    if (permitvalidFromDate > permitDate)
+                //    {
+                //        isvalid = false;
+                //        await PermitTransferDateError();
+                //        break;
+                //    }
+                //}
+
             }
         }
         if (isvalid)
@@ -931,7 +977,7 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
 
         if (App.IsArabic)
         {
-            ShouldShowDatePickerOutlet = true;
+            ShouldShowDatePickerHijiriOutlet = true;
         }
         else
         {
@@ -944,7 +990,7 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
 
         if (App.IsArabic)
         {
-            ShouldShowDatePicker = true;
+            ShouldShowDatePickerHijiri = true;
         }
         else
         {
@@ -1201,22 +1247,25 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
     }
 
     public void UpdateOutletReason(string selectedValue)
-    {
 
+    {
         SelectedOutletItem.AoutletReason = selectedValue;
         SelectedOutletItem.AOutletActionTypeTb = GetOutletReasonCode(SelectedOutletItem.AoutletReason);
-
-        var msg = onOutletStatusSelection(SelectedOutletItem);
-        if (msg.Length > 0)
+        if (SelectedOutletItem.ACompFg != "X")
         {
-            SelectedOutletItem.AoutletReason = "";
-            SelectedOutletItem.AOutletActionTypeTb = GetOutletReasonCode(SelectedOutletItem.AoutletReason);
-        }
+            var msg = onOutletStatusSelection(SelectedOutletItem);
+            if (msg.Length > 0)
+            {
 
+                SelectedOutletItem.AoutletReason = "";
+
+                SelectedOutletItem.AOutletActionTypeTb = GetOutletReasonCode(SelectedOutletItem.AoutletReason);
+            }
+        }
         OnPropertyChanged("OutlettUiList");
     }
-
-    public void UpdatePermitReason(string selectedValue)
+ 
+public void UpdatePermitReason(string selectedValue)
     {
         SelectedPermitItem.APermitReason = selectedValue;
 
@@ -1332,7 +1381,7 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
                 OutlettListResponse = tinOutletPrevousRequestsModel.D;
                 App.DeRegRequestStatus = tinOutletPrevousRequestsModel.D.Status;
 
-                CopyResponseObjectToUiObject(OutlettListResponse);
+                await CopyResponseObjectToUiObject(OutlettListResponse);
                 if (SelectedDeRegType.Equals(AppResources.OutletDeReg))
                 {
                     ShowSaveSubmit = false;
@@ -1344,7 +1393,10 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
         {
             await UtilityManager.HandleExceptionMessage(AppResources.NetworkConnectivityIssue, false);
         }
-
+        catch(GAZTVATRegistrationInProcessException ex)
+        {
+            await UtilityManager.HandleExceptionMessage(ex.Message, true, _navigationService);
+        }
         catch (InternetException)
         {
             await UtilityManager.HandleExceptionMessage(AppResources.ZZInternetConnectionMessage, false);
@@ -1536,6 +1588,10 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
             tinOutletPrevousRequestsModel.D.ErrMsgSet = new List<ErrMesgs>();
             tinOutletPrevousRequestsModel.D.OffNotesSet = new List<object>();
             tinOutletPrevousRequestsModel.D.OffNotesSet = new List<object>();
+            if (string.IsNullOrEmpty(tinOutletPrevousRequestsModel.D.Fbnumz))
+            {
+                tinOutletPrevousRequestsModel.D.Fbnumz = "";
+            }
             if (IsLoading)
             {
                 tinOutletPrevousRequestsModel = await TINDeregistrationWebServiceManager.PostSubmitOrSaveDraft(tinOutletPrevousRequestsModel.D);
@@ -1547,7 +1603,7 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
                     if (tinOutletPrevousRequestsModel.D.Cr2021popup.Length > 0 && tinOutletPrevousRequestsModel.D.Savez == "X")
                     {
                         await _dialogService.ShowMessage(tinOutletPrevousRequestsModel.D.Cr2021popup, AppResources.Information);
-                        GoBackAftersubmission();
+                        _navigationService.GoBack();
                     }
                     else if (tinOutletPrevousRequestsModel.D.Submitz == "X")
                     {
@@ -1556,7 +1612,7 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
                     }
                     else
                     {
-                        GoBackAftersubmission();
+                        _navigationService.GoBack();
                     }
 
                 }
@@ -1694,6 +1750,8 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
                 newItem.AOutletNoTb = item.AOutletNoTb;
                 newItem.AOutletNameTb = item.AOutletNameTb;
                 newItem.AOutletIdentificationNoTb = item.AOutletCrNoTb;
+                newItem.AOutletZ700NumberTb = item.AOutletZ700NumberTb;
+
                 if (item.AOutletValidToTb != null)
                 {
                     newItem.AOutletValidToTb = Convert.ToDateTime(item.AOutletValidToTb.ToString()).ToShortDateString();
@@ -1711,7 +1769,7 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
 
 
 
-
+                newItem.ACompFg = item.ACompFg;
                 newItem.AOwner = item.AOwner;
                 newItem.AActFlag = item.AActFlag;
                 newItem.AOutletActionTypeTb = item.AOutletActionTypeTb;
@@ -1759,7 +1817,11 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
                             newItem.IsActionTypeEnabled = true;
                         }
                     }
-
+                    if (item.ACompFg == "X")
+                    {
+                        newItem.IsDateEnable = true;
+                        newItem.IsActionTypeEnabled = true;
+                    }
                     if (OutlettListResponse.Status == "IP011")
                     {
                         newItem.IsOutletCheckEnable = false;
@@ -1822,7 +1884,6 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
             }
         }
     }
-
     private ObservableCollection<DetailsContactInfo> GetPermitSetsOfOutlets(TinOutletDeregisterListModel.OutletResult itemOutlet)
     {
         ObservableCollection<DetailsContactInfo> newList = new ObservableCollection<DetailsContactInfo>();
@@ -1840,7 +1901,7 @@ public class TinOutletDeRegRequestViewModel : BaseViewModel
                         newItem.APermitValfrDtTb = Convert.ToDateTime(item.APermitValfrDtTb.ToString()).ToShortDateString();
                     }
                     //    newItem.APermitValfrDtTb = item.APermitValfrDtTb;
-
+                    newItem.APermitValfrDtHTb = Convert.ToDateTime(item.APermitValfrDtHTb.ToString()).ToShortDateString();
                     newItem.APermitIssueName = item.APermitIssueName;
                     newItem.APermitOutletNoTb = item.APermitOutletnoTb;
                     if (!string.IsNullOrEmpty(item.APermitDregRsnTb))

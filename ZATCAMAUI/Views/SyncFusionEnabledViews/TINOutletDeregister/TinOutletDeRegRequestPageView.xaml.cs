@@ -20,13 +20,12 @@ public partial class TinOutletDeRegRequestPageView : ContentPage
 		{
 			viewModel = App.Locator.TinOutletDeRegRequestPageView;
 			this.BindingContext = viewModel;
-			this.FlowDirection = FlowDirection.LeftToRight;
 			viewModel.SetDefaultDate();
 			this.BindingContext = viewModel;
 			InitializationPopups();
 			SetViewsToDefault();
 
-			viewModel.LoadReasonSet();
+            _ = viewModel.LoadReasonSet();
 
 			int reqCode = 0;
 			if (requestCode != null && requestCode.TxnTp != null && !string.IsNullOrEmpty(requestCode.TxnTp))
@@ -74,8 +73,17 @@ public partial class TinOutletDeRegRequestPageView : ContentPage
 		viewModel.ShowMainOutletDropDown = false;
 	}
 
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        viewModel.ShouldShowList = true;
+        viewModel.ShouldShowAttachments = false;
 
-	protected override void OnDisappearing()
+		viewModel.DeregisterAttachmentsListViewData.Clear();
+
+    }
+
+    protected override void OnDisappearing()
 	{
 		base.OnDisappearing();
 
@@ -100,7 +108,7 @@ public partial class TinOutletDeRegRequestPageView : ContentPage
 					viewModel.ShowMainOutletDropDown = false;
 					viewModel.DeregistrationType = 1;
 					Task.Delay(500);
-					Task.Run(() => this.viewModel.GetTinOutletDeregistrationDataBeforeNewRequest(1)).Wait();
+                    _ = viewModel.GetTinOutletDeregistrationDataBeforeNewRequest(1);
 
 				}
 				else
@@ -246,9 +254,9 @@ public partial class TinOutletDeRegRequestPageView : ContentPage
 		{
 
 
-			if (TxDateNormalCalendar.SelectedItem != null)
+			if (TxDateHijriCalendar.SelectedItem != null)
 			{
-				var selectedItem = TxDateNormalCalendar.SelectedItem as ObservableCollection<object>;
+				var selectedItem = TxDateHijriCalendar.SelectedItem as ObservableCollection<object>;
 				string month = selectedItem[1].ToString();
 				string day = selectedItem[0].ToString();
 				string year = selectedItem[2].ToString();
@@ -301,4 +309,5 @@ public partial class TinOutletDeRegRequestPageView : ContentPage
 		var checkbox = (Image)sender;
 		viewModel.OnPermitChecked(checkbox.BindingContext as DetailsContactInfo);
 	}
+
 }

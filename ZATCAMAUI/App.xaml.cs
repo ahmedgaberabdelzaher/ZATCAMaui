@@ -61,6 +61,7 @@ namespace ZATCAMAUI
         public static string TaxEvasionPageWebView = "TaxEvasionPageWebView";
         public static string NewTaxEvasionFormSuccessPaveView = "NewTaxEvasionFormSuccessPaveView";
         public static string TaxpayerSubsidyRequest = "TaxpayerSubsidyRequest";
+        public static string ActivitiesPopUpPageView = nameof(ActivitiesPopUpPageView);
 
 
         public static string MyReturnsNewPageView = "MyReturnsNewPageView";
@@ -443,8 +444,8 @@ namespace ZATCAMAUI
 
                 IsAppRunningInBackground = false;
                 Preferences.Default.Set("timeOut", DateTime.Now);
-                PageSettings.CheckTarget_Environment("QA");
-                PageSettings.GetBaseURL("QA");
+                PageSettings.CheckTarget_Environment("Prod");
+                PageSettings.GetBaseURL("Prod");
 
 Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MzUyMzAyMUAzMjM3MmUzMDJlMzBQbGhybFVDcUVRclBQN1IzbjIwSHZtUUo1UDkybUZMVFJyUGUrU0N6dGg4PQ=="); //MAUI 27.*
 

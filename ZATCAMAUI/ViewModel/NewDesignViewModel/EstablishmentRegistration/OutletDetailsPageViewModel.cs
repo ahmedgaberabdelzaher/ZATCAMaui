@@ -22,11 +22,13 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
         #region Variable
 
         public TaxPayerDetails taxPayerDetails { get; set; } = null;
+        public ActivitySetsList activities { get; set; } = null;
         private OutletNumber newNumber = null;
         public Nreg_IdItem idItem { get; set; } = null;
         private ValidateCR validateCR = null;
         private Nreg_ActivityItem PreLoadedLicenseItem = null;
         public OutletItem selectedOutletItem { get; set; } = null;
+        public Nreg_ActivityItem SelectedItem { get; set; } = null;
 
         private EstablishmentRegistrationOutletTabsEnum _currentTab = EstablishmentRegistrationOutletTabsEnum.OutletDetail;
         public EstablishmentRegistrationOutletTabsEnum currentTab
@@ -735,11 +737,17 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                     MainThread.BeginInvokeOnMainThread(() =>
                     {
+                        //var CR = new ValidateCR {
+                        //    Crnum = selectedOutletItem.Crlicenceno,
+                        //    Z700Crnum = 
+
+                        //};  
                         _navigationService.NavigateTo(App.ActivityItemPage, new ActivityNavigationModels()
                         {
                             openedTab = _enum,
                             taxPayerDetails = taxPayerDetails,
                             nextNumber = newNumber,
+                            validateCR = validateCR,
                             goBackAction = async (List<Nreg_ActivityItem> list) =>
                             {
                                 await addActivities(list);
@@ -773,6 +781,21 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         if (!string.IsNullOrEmpty(validateCR?.Crname) || PreLoadedLicenseItem != null)
                         {
                             CanExecute = true;
+
+                            List<NregMulSet> existingActivitiesList = new List<NregMulSet>();
+                            NregMulSet existingActivities = null;
+
+                            List<NregMulSet> filteredActivities = taxPayerDetails?.Nreg_Mul_ActivitySet?.Where(a => a.Idnumber == PreLoadedLicenseItem.Idnumber).ToList();
+
+                            existingActivitiesList = UtilityManager.GetExistingActivities(filteredActivities, existingActivities, activities, true);
+
+                            if (existingActivitiesList?.Count > 0)
+                            {
+                                PreLoadedLicenseItem?.activitySet?.Clear();
+                                foreach (var act in existingActivitiesList)
+                                    PreLoadedLicenseItem.activitySet.Add(act);
+                            }
+
                             await _navigationService.NavigateTo(App.ActivityItemPage, new ActivityNavigationModels()
                             {
                                 openedTab = PreLoadedLicenseItem != null ? EstablishmentOutletActivitiesTabsEnum.LicenseDetails : EstablishmentOutletActivitiesTabsEnum.CRDetails,
@@ -851,6 +874,24 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         taxPayerDetails.StepNumberx = "03";
                         taxPayerDetails.Gpart = App.LoginDataRetrieved.TIN;
                         taxPayerDetails.UserTypx = "TP";
+
+                        //Attaching MulActivity Sets0106
+                        taxPayerDetails?.Nreg_Mul_ActivitySet?.Clear();
+                        foreach (var items in taxPayerDetails?.Nreg_ActivitySet)
+                        {
+                            foreach (var acttivity in items.activitySet)
+                            {
+                                taxPayerDetails?.Nreg_Mul_ActivitySet?.Add(new NregMulSet
+                                {
+                                    ActMgrp = acttivity?.ActMgrpCode,
+                                    ActSgrp = acttivity?.ActSgrpCode,
+                                    Activity = acttivity?.ActivityCode,
+                                    Idnumber = acttivity?.Idnumber,
+                                });
+
+                            }
+
+                        }
                         await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailPostService(taxPayerDetails);
                         IsLoading = false;
 
@@ -941,15 +982,65 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     OutletActNumber = newNumber == null || string.IsNullOrEmpty(newNumber?.Actno) ? "00000" : newNumber.Actno;
                     //$"{Int32.Parse(newNumber?.Actno):00000}";
                     taxPayerDetails = await EstablishmentRegistrationWebServiceManager.ESTTaxPayerDetailGetService("03", App.LoginDataRetrieved.TIN, App.LoginDataRetrieved.Emailid, OutletActNumber, taxPayerDetails?.Fbnumx);
+                    foreach (var activityItem in taxPayerDetails?.Nreg_ActivitySet)
+                    {
+                        var selectedItemActivities = taxPayerDetails?.Nreg_Mul_ActivitySet?.Where(a => a.Idnumber == activityItem?.Idnumber)?.ToList();
+                        if (selectedItemActivities?.Count > 0)
+                        {
+                            foreach (var mulactivities in selectedItemActivities)
+                            {
+                                var existingActivities = new NregMulSet
+                                {
+                                    Activity = activities?.activitySet?.Where(i => i.IndSector == mulactivities?.Activity)?.FirstOrDefault()?.Text,
+                                    ActivityCode = activities?.activitySet?.Where(i => i.IndSector == mulactivities?.Activity)?.FirstOrDefault()?.IndSector,
+                                    ActMgrp = activities?.act_groupSet?.Where(i => i.IndSector == mulactivities?.ActMgrp)?.FirstOrDefault()?.Text,
+                                    ActMgrpCode = activities?.act_groupSet?.Where(i => i.IndSector == mulactivities?.ActMgrp)?.FirstOrDefault()?.IndSector,
+                                    ActSgrp = activities?.act_subgroupSet?.Where(i => i.IndSector == mulactivities?.ActSgrp)?.FirstOrDefault()?.Text,
+                                    ActSgrpCode = activities?.act_subgroupSet?.Where(i => i.IndSector == mulactivities?.ActSgrp)?.FirstOrDefault()?.IndSector,
+                                    Idnumber = mulactivities?.Idnumber,
+                                };
+
+                                activityItem?.activitySet.Add(existingActivities);
+                            }
+                        }
+                    }
+
                     if (OutletActNumber == "00000")
                     {
                         var preLoadedItems = taxPayerDetails?.Nreg_ActivitySet.Where(i => (new List<string> { "BUP002", "ZS0004" }).Contains(i.Type)).ToList();
-                        if (preLoadedItems.Count == 1)
+                        if (preLoadedItems.Count > 0)
                         {
                             var preLoadedItem = preLoadedItems.FirstOrDefault();
 
-                            if (preLoadedItem?.Type == "ZS0004")
+                            if (preLoadedItem?.Type == "BUP002")
                             {
+                                var result = await EstablishmentRegistrationWebServiceManager.ESTValidateCRNum(preLoadedItem?.Z700Number);
+                                try
+                                {
+                                    if (!string.IsNullOrEmpty(result))
+                                    {
+                                        validateCR = JsonConvert.DeserializeObject<ValidateCR>(result);
+                                    }
+                                    //if (validateCR.Crnum == null)
+                                    //{
+                                    //    PrepareError(result);
+                                    //}
+                                }
+                                catch (Exception)
+                                {
+
+                                }
+
+                                if (!string.IsNullOrEmpty(validateCR?.Crname))
+                                {
+                                    OutletName = validateCR?.Crname;
+                                    validateCR.Crnum = preLoadedItem?.Idnumber;
+                                }
+                                PreLoadedLicenseItem = null;
+                            }
+                            else if (preLoadedItem?.Type == "ZS0004")
+                            {
+
                                 validateCR = null;
                                 PreLoadedLicenseItem = preLoadedItem;
                             }
