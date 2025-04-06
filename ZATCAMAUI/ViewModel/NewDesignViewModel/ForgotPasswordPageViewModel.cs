@@ -1657,6 +1657,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                                 else
                                 {
                                     IsTinDopDownVisible = false;
+                                    await SendOTPToRegisterMobileNumber();
                                 }
                             }
                             else
@@ -2040,7 +2041,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 }
                 else
                 {
-                    IsLoading = false;
                     MessageTxt = AppResources.ErrorCaptcha;
                     IsShowMsgView = true;
                 }
@@ -2067,11 +2067,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 IsLoading = false;
                 IsAPICalledSuccessfully = false;
                 SetIDNumberEnability = true;
-                IDNumber = String.Empty;
             }
-
-            IsLoading = false;
-
         }
         private async Task ValidateOTP()
         {
@@ -2126,7 +2122,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     VAliadteOTP vAliadteOTP = new VAliadteOTP();
                     vAliadteOTP.TIN = idNumber;
                     vAliadteOTP.language = UtilityManager.GetLanguageParameter();
-                    vAliadteOTP.captchaCode = captcha;
+                    vAliadteOTP.captchaCode = Captcha;
                     vAliadteOTP.GUID = GUID;
                     vAliadteOTP.OTP = EnteredOTP;
                     var response = await WebServiceManager.ValidateOTPNEW(vAliadteOTP);
@@ -2473,14 +2469,9 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     else
                     {
                         IsAPICalledSuccessfully = false;
-
                         IsVisibleTinIds = false;
-                        await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NoTINsAvailable));
-
                     }
-                    IsLoading = false;
                 }
-
                 catch (GAZTVATRegistrationInProcessException ex)
                 {
                     await UtilityManager.HandleExceptionMessage(ex.Message, false);
@@ -2500,8 +2491,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 finally
                 {
                     IsLoading = false;
-                    IsAPICalledSuccessfully = false;
-                    IsVisibleTinIds = false;
                 }
             }
             else

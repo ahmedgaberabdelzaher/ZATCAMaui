@@ -22,6 +22,7 @@ namespace ZATCAMAUI.Views.NewDesign.ForgotPasswordPages
                 viewModel = App.Locator.GAZTNewDesignForgotPasswordPageView;
                 BindingContext = viewModel;
                 viewModel.ClearData();
+                viewModel.OnPageLoad();
                 viewModel.ContinueORConfirmButtonText = AppResources.ZZZZContinue;
                 viewModel.StartPage = 1;
             }
