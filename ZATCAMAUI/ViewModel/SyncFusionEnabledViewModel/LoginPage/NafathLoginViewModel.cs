@@ -6,6 +6,10 @@ using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
+using Microsoft.Maui.ApplicationModel;
+using Mopups.Services;
+using ZATCAMAUI.Core.Helper;
+using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 
 namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage;
 
@@ -43,13 +47,15 @@ public class NafathLoginViewModel : BaseViewModel
 
     public ICommand OnAppearingNafathLoginViewCommand
     {
-
         get
         {
             return new Command(async () =>
             {
+                if (navigation?.Equals(ZATCAConstants.NAFATH_LOGIN) == true)
+                {
+                    await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.LoginPageNafathInformation));
+                }
                 await DisplayLocationPermissionDilaogAsync();
-
             });
         }
     }

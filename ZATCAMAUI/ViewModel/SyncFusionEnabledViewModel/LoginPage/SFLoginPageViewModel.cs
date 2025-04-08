@@ -139,7 +139,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
             this.WebLoginCommand = new Command(async () => await WebLoginClicked());
             this.ShowTinsPickerCommand = new Command(async () => await OpenTinsDropdown());
 
-
+            this.WebLoginInfoCommand = new Command(this.WebLoginInfoClicked);
         }
         private async Task WebLoginClicked()
         {
@@ -635,6 +635,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
         /// </summary>
         public ICommand ShowTinsPickerCommand { get; set; }
 
+        public Command WebLoginInfoCommand { get; set; }
 
         public static int LoginAttempt = 0;
 
@@ -892,6 +893,11 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
             var callTracker = Instrumentation.BeginCall("SFLoginPageView", "HamburgerMenuClicked", "Anonymous Menu Opened");
             await _navigationService.NavigateTo(App.DashboardAnonymousMenuPageView);
             Instrumentation.EndCall(callTracker);
+        }
+
+        private async void WebLoginInfoClicked(object obj)
+        {
+            await MopupService.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.LoginPageNafathInformation));
         }
         #endregion
         #region New Authentication

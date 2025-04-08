@@ -11886,6 +11886,11 @@ the credit balance of the current period will be carried forward, you can reques
   </data>
    <data name="CRNumberValidation" xml:space="preserve">
    <value>The CR national number must consist of 10 numbers and begin with the number 7</value>
-  </data>   
+  </data>
+  <!--Enahnce in Nafath at Login start-->
+  <data name="LoginPageNafathInformation" xml:space="preserve">
+    <value>Individual Registration: this service is for legal persons who do not have a commercial registration and engage in economic activities in the kingdom or activities that require registration with the authority through an individual ID, when registering for the service a TIN will be created.</value>
+  </data>
+  <!--Enahnce in Nafath at Login end-->
 </root>
 

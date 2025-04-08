@@ -11614,6 +11614,11 @@ info@zatca.gov.sa</value>
     </data>
     	<data name="VatApproved" xml:space="preserve">
         <value>تم الموافقة عليها بنجاح.</value>
-    </data>   
+    </data>
+  <!--Enahnce in Nafath at Login start-->
+  <data name="LoginPageNafathInformation" xml:space="preserve">
+    <value>تسجيل الافراد: تخص هذه الخدمة الأفراد الطبيعيين الذين لا يملكون سجل تجاري ويمارسون نشاطًا اقتصاديًا في المملكة أو أي أنشطة تستلزم التسجيل بالهيئة من خلال هوية تابعة للأفراد وعند التسجيل في الخدمة، سيتم إنشاء رقم مميز</value>
+  </data>
+  <!--Enahnce in Nafath at Login end-->
 </root>
 

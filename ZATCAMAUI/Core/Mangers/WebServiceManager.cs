@@ -102,13 +102,19 @@ namespace ZATCAMAUI.Core.Mangers
                 List<TINModel> TINs = null;
                 try
                 {
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    string lang = UtilityManager.GetLanguageParameter();
                     String url = ZATCAConstants.GetAllTin + Username;
-
-                    HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
-                    crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
-
-                    HttpClient client = new HttpClient(crmSignUphttpClientHandler);
-
+                    string deviceOs = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().OperatingSystem;
+                    string deviceUdid = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetDeviceUdid();
+                    string deviceModel = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().Model;
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    client.DefaultRequestHeaders.Add("X-Session-Language", lang);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", ZATCAConstants.ClientId);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", ZATCAConstants.ClientSecret);
+                    client.DefaultRequestHeaders.Add("X-Device-Id", deviceUdid);
+                    client.DefaultRequestHeaders.Add("X-Device-Name", deviceModel);
+                    client.DefaultRequestHeaders.Add("X-Device-Platform", deviceOs);
                     var uri = new Uri(url);
                     HttpResponseMessage GAZTGetTINsResponse = await client.GetAsync(uri);
 
