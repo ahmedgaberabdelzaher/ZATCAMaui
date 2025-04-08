@@ -138,34 +138,52 @@
                         </Image>
                     </custom:CustomSfTextInputView.TrailingView>
                 </custom:CustomSfTextInputView>
-
-                <Label
+                <StackLayout Padding="5,0">
+                    <Label
                     x:Name="forgotPasswordLabel"
                     FontSize="Small"
                     TextColor="white">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}" />
-                    </Label.GestureRecognizers>
-                </Label>
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
 
-                <Label
+                <StackLayout Padding="5,0">
+                    <Label 
                     x:Name="changeMobileNumberLabel"
                     FontSize="Small"
                     TextColor="white">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ChangeMCommand}" />
-                    </Label.GestureRecognizers>
-                </Label>
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ChangeMCommand}" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
 
-                <Label
-                    x:Name="loginLineLabel"
-                    FontFamily="{StaticResource SomarRegular}"
-                    FontSize="Small"
-                    TextColor="white">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding WebLoginCommand}" />
-                    </Label.GestureRecognizers>
-                </Label>
+                <StackLayout
+                    Padding="5,0"
+                    Orientation="Horizontal"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="Center">
+                    <Label
+                        x:Name="loginLineLabel"
+                        FontFamily="{StaticResource SomarRegular}"
+                        FontSize="Small"
+                        TextColor="white">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding WebLoginCommand}" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Image
+                        Source="ic_vat_info"
+                        VerticalOptions="Center"
+                        HorizontalOptions="EndAndExpand">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding WebLoginInfoCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+
 
                 <buttons:SfButton
                     x:Name="loginBtn"
