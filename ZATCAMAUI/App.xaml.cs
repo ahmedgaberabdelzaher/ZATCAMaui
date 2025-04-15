@@ -19,6 +19,7 @@ using ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages;
 using AppDynamics.Agent;
 using ZATCAMAUI.Core.Interfaces;
 using CommunityToolkit.Mvvm.DependencyInjection;
+using ZATCAMAUI.Views.NewDesign.EDeclaration;
 
 namespace ZATCAMAUI
 {
@@ -515,18 +516,29 @@ Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MzUyMzAyMUAzMjM3
                 CustomNavigation navigationPage;
                 bool hasKey = Preferences.ContainsKey("first_TimeLoging_key");
                 //NEw
-                if (!hasKey)
-                {
-                    //navigationPage = new CustomNavigation(new GAZTNewDesignOnBoardingAnimationPageView()) { BarTextColor = Colors.White };
+                //if (!hasKey)
+                //{
+                    string package = AppInfo.Current.PackageName;
+                    if (package== "com.zatca.AirPorts")
+                    {
+                        navigationPage = new CustomNavigation(new EDeclarationPage(false)) { BarTextColor = Colors.White };
 
-                   navigationPage = new CustomNavigation(new SFLoginPageView(App.GAZTNewDesignDashBoardPageView)) { BarTextColor = Colors.White };
-                }
-                else
-                {
-                    navigationPage = new CustomNavigation(new SFLoginPageView(App.GAZTNewDesignDashBoardPageView)) { BarTextColor = Colors.White };
+                    }
+                    else
+                    {
+                        navigationPage = new CustomNavigation(new SFLoginPageView(App.GAZTNewDesignDashBoardPageView)) { BarTextColor = Colors.White };
+
+                    }
+
+                    //   navigationPage = new CustomNavigation(new SFLoginPageView(App.GAZTNewDesignDashBoardPageView)) { BarTextColor = Colors.White };
+                //}
+                //else
+                //{
+                //    //   navigationPage = new CustomNavigation(new SFLoginPageView(App.GAZTNewDesignDashBoardPageView)) { BarTextColor = Colors.White };
+                //    navigationPage = new CustomNavigation(new EDeclarationPage(false)) { BarTextColor = Colors.White };
 
 
-                }
+                //}
                 var navigationService = (NavigationService)Ioc.Default.GetService<INavigationService>();
                 navigationService.Initialize(navigationPage);
                 _navigationService = navigationService;

@@ -11,7 +11,7 @@
         <!-- Display name -->
         <ApplicationTitle>ZATCA</ApplicationTitle>
         <!-- App Identifier -->
-        <ApplicationId>com.gazt.egazt</ApplicationId>
+        <ApplicationId>com.zatca.AirPorts</ApplicationId>
         <!--<ApplicationId>com.zatca.Maui</ApplicationId>-->
         <!-- <ApplicationId>com.gazt.enterprise.zatca</ApplicationId> -->
         <ApplicationIdGuid>c26ce74b-6e11-469c-a8c0-b07fe33a9b2d</ApplicationIdGuid>
@@ -26,14 +26,6 @@
 <!--     <PropertyGroup Condition="$(TargetFramework.Contains('-ios'))"> 
      <RuntimeIdentifier>ios-arm64</RuntimeIdentifier> 
      </PropertyGroup> -->
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-ios|AnyCPU'">
-        <CreatePackage>false</CreatePackage>
-        <CodesignKey>Apple Distribution: Department of Zakat and Income Tax (SB5JE2LC3K)</CodesignKey>
-        <CodesignProvision>ZATCA Mobile</CodesignProvision>
-        <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
-        <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-        <MtouchLink>SdkOnly</MtouchLink>
-    </PropertyGroup>
      <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android|AnyCPU'">
          <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
     </PropertyGroup>
@@ -50,7 +42,7 @@
     </ItemGroup>
     <ItemGroup>
         <!-- App Icon -->
-        <MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+        <MauiIcon Include="Resources\AppIcon\appicon.svg" />
         <!-- Splash Screen -->
         <!-- <MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" /> -->
         <!-- Images -->
@@ -67,13 +59,6 @@
     <PropertyGroup Condition="$(TargetFramework.Contains('-android'))">
         <IPhoneResourcePrefix>Platforms/Android/Resources</IPhoneResourcePrefix>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-ios|AnyCPU'">
-        <CreatePackage>false</CreatePackage>
-        <CodesignProvision>ZATCA Mobile</CodesignProvision>
-        <CodesignKey>Apple Distribution: Department of Zakat and Income Tax (SB5JE2LC3K)</CodesignKey>
-        <CodesignEntitlements></CodesignEntitlements>
-        <MtouchLink>None</MtouchLink>
-    </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android|AnyCPU'">
       <AndroidSigningKeyStore>/Users/youxl/Public/Gaber/Gazet/ZATCA Mobile App Application/ZATCAMAUI/Platforms/Android/KeyStore/E-GAZT.keystore</AndroidSigningKeyStore>
       <AndroidSigningStorePass>Pm@dmin**</AndroidSigningStorePass>
@@ -85,6 +70,20 @@
       <DebugSymbols>true</DebugSymbols>
       <WarningLevel>4</WarningLevel>
       <PlatformTarget>anycpu</PlatformTarget>
+    </PropertyGroup>
+<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-ios|AnyCPU'">
+        <CreatePackage>false</CreatePackage>
+      <CodesignKey>iPhone Developer</CodesignKey>
+        <CodesignEntitlements></CodesignEntitlements>
+        <MtouchLink>None</MtouchLink>
+        <RuntimeIdentifier>iossimulator-x64</RuntimeIdentifier>
+        <MtouchExtraArgs>--registrar:static</MtouchExtraArgs>
+        <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+        <DefineConstants>$(DefineConstants);DISABLE_GOOGLE_MAPS</DefineConstants>
+        <EnableSGenConc>true</EnableSGenConc>
+        <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
+        <MtouchDebug>true</MtouchDebug>
+ 
     </PropertyGroup>
     <ItemGroup>
         <Compile Remove="KeyStore\**" />

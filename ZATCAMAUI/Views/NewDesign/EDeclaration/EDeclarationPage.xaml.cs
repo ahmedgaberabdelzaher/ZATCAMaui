@@ -5,6 +5,16 @@ namespace ZATCAMAUI.Views.NewDesign.EDeclaration
     public partial class EDeclarationPage : BaseContentPage
     {
         EDeclerationViewModel viewModel;
+        public EDeclarationPage(bool hasBACK=true)
+        {
+
+            viewModel = App.Locator.EDeclerationViewModel;
+            BindingContext = viewModel;
+            InitializeComponent();
+            viewModel.ShowReviewEntries = false;
+            viewModel.IdentityType = 0;
+            HasBackButton = hasBACK;
+        }
         public EDeclarationPage()
         {
 
