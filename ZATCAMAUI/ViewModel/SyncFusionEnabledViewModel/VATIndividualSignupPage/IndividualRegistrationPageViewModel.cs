@@ -1845,6 +1845,23 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         public ChipModel ChipGroupStatusFilterSelectedItem { get { return chipGroupStatusFilterSelectedItem; } set { chipGroupStatusFilterSelectedItem = value; OnPropertyChanged(); } }
 
         ObservableCollection<InternationalMobileData> mobileData = null;
+
+        public string displayName;
+        public string DisplayName
+        {
+            get
+            {
+                return displayName;
+            }
+            set
+            {
+                if (displayName == value) return;
+
+                displayName = value;
+                OnPropertyChanged("DisplayName");
+            }
+        }
+
         #endregion
 
         #region Constructor
@@ -3313,6 +3330,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             else
             {
                 ContactInformationView = false;
+                DisplayName = IsGulfER ? Name : Firstname;
                 SummeryView = true;
                 CurrentIndex = 4;
                 ContinueButtonText = AppResources.Confirm;
@@ -3935,7 +3953,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 createVatSignUPRequest.type = "1";
                 createVatSignUPRequest.idType = SelectedIdType.ID;
                 createVatSignUPRequest.idNumber = IdNumber;
-                createVatSignUPRequest.firstName = Name;
+                createVatSignUPRequest.firstName = DisplayName;
                 createVatSignUPRequest.lastName = string.Empty;
                 createVatSignUPRequest.postCode = PostCode;
                 createVatSignUPRequest.city = _City;
@@ -3968,47 +3986,48 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
 
 
-                VATSignUpSubmit vATSignUpSubmit = new VATSignUpSubmit
-                {
-                    Type = "1",
-                    IdType = SelectedIdType.ID,//"ZS0018",
-                    Idnumber = IdNumber,
-                    Firstname = Name,
-                    Lastname = string.Empty,
-                    PostCode1 = "00000",
-                    City1 = _City,
-                    Region = _Region,
-                    Country = _Country,
-                    MobileCountry = MobileCountry,
+                //VATSignUpSubmit vATSignUpSubmit = new VATSignUpSubmit
+                //{
+                //    Type = "1",
+                //    IdType = SelectedIdType.ID,//"ZS0018",
+                //    Idnumber = IdNumber,
+                //    Firstname = Name,
+                //    Lastname = string.Empty,
+                //    PostCode1 = "00000",
+                //    City1 = _City,
+                //    Region = _Region,
+                //    Country = _Country,
+                //    MobileCountry = MobileCountry,
 
-                    Building = BuildingNumber,
-                    Floor = UnitNumber,
-                    Street = Neighborhood,
-                    Begda = "/Date(1593139376000)/",
-                    Endda = "/Date(253402251010000)/",
-                    Email = Email,
-                    Mobile = newCountryCodeString + MobileNumber,
-                    CaseGuid = LgId,
+                //    Building = BuildingNumber,
+                //    Floor = UnitNumber,
+                //    Street = Neighborhood,
+                //    Begda = "/Date(1593139376000)/",
+                //    Endda = "/Date(253402251010000)/",
+                //    Email = Email,
+                //    Mobile = newCountryCodeString + MobileNumber,
+                //    CaseGuid = LgId,
 
-                    Birthdt = Bdt1,//"/Date(1577846576000)/",
-                    Password = Password,
-                    SmsCode = OTP,
-                    EmailCode = "",
-                    Submit = submitValue,
-                    Captcha = Captcha,
-                    Mguid = Mguid
+                //    Birthdt = Bdt1,//"/Date(1577846576000)/",
+                //    Password = Password,
+                //    SmsCode = OTP,
+                //    EmailCode = "",
+                //    Submit = submitValue,
+                //    Captcha = Captcha,
+                //    Mguid = Mguid
 
-                };
+                //};
 
                 if (!string.IsNullOrEmpty(IqamaTypeDesc)) //CR6407
                 {
-                    vATSignUpSubmit.AIqamaDesc = IqamaTypeDesc;
-                    vATSignUpSubmit.AIqamaFg = "X";
+
+                    createVatSignUPRequest.AIqamaDesc = IqamaTypeDesc;
+                    createVatSignUPRequest.AIqamaFg = "X";
                 }
                 else
                 {
-                    vATSignUpSubmit.AIqamaDesc = "";
-                    vATSignUpSubmit.AIqamaFg = "";
+                    createVatSignUPRequest.AIqamaDesc = "";
+                    createVatSignUPRequest.AIqamaFg = "";
                 }
                 var res = await TaxEvasionWebServiceManager.VatSignUP(createVatSignUPRequest);
                 var response = JsonConvert.DeserializeObject<CreateVatSignUPResponse>(res);
@@ -4132,7 +4151,8 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     Email = Email,
                     Mobile = newCountryCodeString + MobileNumber,
                     CaseGuid = LgId,
-                    Birthdt = Bdt,//"/Date(1577846576000)/",
+                    // Birthdt = Bdt,//"/Date(1577846576000)/",
+                    Birthdt = IsGulfER ? Convert.ToDateTime(DOB).ToString("yyyy-MM-dd") + "T00:00:00" : BirthDate,
                     Password = "",
                     SmsCode = "",
                     EmailCode = "",

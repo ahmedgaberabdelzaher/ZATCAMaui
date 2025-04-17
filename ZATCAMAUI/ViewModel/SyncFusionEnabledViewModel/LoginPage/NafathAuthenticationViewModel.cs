@@ -247,7 +247,7 @@ public class NafathAuthenticationViewModel : BaseViewModel
                 model.latitude = "UNKNOWN";
                 model.longitude = "UNKNOWN";
             }
-            model.ipaddress = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetLocalIPAddress();
+           // model.ipaddress = DependencyService.Get<Core.Interfaces.IDeviceInfoZATCA>().GetLocalIPAddress();
             model.osname = DeviceInfo.Platform.ToString();
             model.sourceType = "ZM";
             model.browsername = DeviceInfo.Platform.ToString();

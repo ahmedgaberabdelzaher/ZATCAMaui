@@ -1,4 +1,7 @@
 ﻿
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+
 namespace ZATCAMAUI.Models.SignUP
 {
     public class CreateVatSignUPRequest
@@ -49,5 +52,10 @@ namespace ZATCAMAUI.Models.SignUP
         public string submit { get; set; }
         public string TIN { get; set; }
         public string type { get; set; }
+        [JsonProperty("iqamaDescription")]
+        public string AIqamaDesc { get; set; }
+        [DataMember]
+        [JsonProperty("iqamaFlag")]
+        public string AIqamaFg { get; set; }
     }
 }
