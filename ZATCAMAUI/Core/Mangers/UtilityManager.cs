@@ -15,14 +15,17 @@ namespace ZATCAMAUI.Core.Mangers
     {
         #region variable
         public static string emailIdValidation = @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*";
-        public static string passwordValidation = "^.*(?=.{8,})(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+=]).*$";
+       // public static string passwordValidation = "^.*(?=.{8,})(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+=]).*$";
+              public static string passwordValidation = @"^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()\[\]{}:;'<>,.?/~_+\-=|\\]).{8,16}$";
         public static string numberRegex = "^[0-9]+$";
         public static string mobileNumberValidation = "^([0-9]{9,9})$";
         public static string EnglishString = "^[a-zA-Z0-9,./+&-]*$";
         public static string IBANValidator = @"^[S][A]\d{22}$";
 
 
-        public static string NewPasswordValidationRegx = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.?/~_+-=|\\]).{8,16}$";
+      //  public static string NewPasswordValidationRegx = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.?/~_+-=|\\]).{8,16}$";
+        public static string NewPasswordValidationRegx = @"^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()\[\]{}:;'<>,.?/~_+\-=|\\]).{8,16}$";
+
         public static bool ValidMinEight = false;
         public static bool ValidCapsL = false;
         public static bool ValidSmallL = false;
