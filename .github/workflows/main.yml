@@ -49,7 +49,7 @@ jobs:
           zip -r ZATCA.ipa Payload
 
       - name: Upload IPA
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: ZATCA.ipa
           path: output/ZATCA.ipa
