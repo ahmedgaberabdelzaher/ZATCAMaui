@@ -1,0 +1,55 @@
+name: Build iOS
+
+on:
+  push:
+    branches:
+      - release/release2.1.33
+  pull_request:
+    branches:
+      - release/release2.1.33
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Install dependencies
+        run: dotnet restore ZATCAMAUI/ZATCAMAUI.csproj
+
+      - name: Set up Signing Certificate
+        run: |
+          echo "${{ secrets.IOS_CERTIFICATE }}" | base64 --decode > ios_certificate.p12
+          security import ios_certificate.p12 -P "${{ secrets.IOS_CERTIFICATE_PASSWORD }}" -T /usr/bin/codesign
+
+      - name: Set up Provisioning Profile
+        run: |
+          echo "${{ secrets.IOS_PROVISIONING_PROFILE }}" | base64 --decode > ZATCA.mobileprovision
+          mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+          cp ZATCA.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
+
+      - name: Build the project
+        run: dotnet build ZATCAMAUI/ZATCAMAUI.csproj --configuration Release
+
+      - name: Publish the iOS app
+        run: dotnet publish ZATCAMAUI/ZATCAMAUI.csproj -c Release -o output
+
+      - name: Create IPA file
+        run: |
+          cd output
+          mkdir -p Payload
+          cp -R *.app Payload/
+          zip -r ZATCA.ipa Payload
+
+      - name: Upload IPA
+        uses: actions/upload-artifact@v2
+        with:
+          name: ZATCA.ipa
+          path: output/ZATCA.ipa
