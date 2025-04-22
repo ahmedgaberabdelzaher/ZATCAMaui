@@ -232,6 +232,9 @@
         <EmbeddedResource Include="Resources\Fonts\Somar-Regular.otf" />
         <EmbeddedResource Include="Resources\Fonts\Somar-Bold.otf" />
     </ItemGroup>
+<ItemGroup>
+  <EmbeddedResource Include="AppResources.resx" />
+</ItemGroup>
     <ItemGroup>
         <EmbeddedResource Condition=" '$(EnableDefaultEmbeddedResourceItems)' == 'true' " Update="AppResources.resx">
             <Generator>PublicResXFileCodeGenerator</Generator>
