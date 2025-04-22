@@ -233,7 +233,7 @@
         <EmbeddedResource Include="Resources\Fonts\Somar-Bold.otf" />
     </ItemGroup>
 <ItemGroup>
-  <EmbeddedResource Include="AppResources.resx" />
+  <EmbeddedResource Include="AppResources.resx" Condition=" '$(EnableDefaultEmbeddedResourceItems)' == 'false' "/>
 </ItemGroup>
     <ItemGroup>
         <EmbeddedResource Condition=" '$(EnableDefaultEmbeddedResourceItems)' == 'true' " Update="AppResources.resx">
