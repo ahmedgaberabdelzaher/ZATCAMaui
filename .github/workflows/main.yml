@@ -43,8 +43,6 @@ jobs:
           dotnet build ZATCAMAUI/ZATCAMAUI.csproj \
             -f:net8.0-ios \
             -c Release \
-            -p:PublishTrimmed=false\
-            -p:BuildIpa=false\
             /p:Platform=iPhone
            
       - name: Publish the iOS app
