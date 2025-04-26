@@ -328,7 +328,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Account St..
+        ///   Looks up a localized string similar to Account S.
         /// </summary>
         public static string AccountS {
             get {
@@ -751,15 +751,6 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to All services.
-        /// </summary>
-        public static string AllServices {
-            get {
-                return ResourceManager.GetString("AllServices", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Alwadeeaa Port.
         /// </summary>
         public static string Alwadeeaa {
@@ -875,15 +866,6 @@ namespace ZATCAMAUI {
         public static string ArrivalDate {
             get {
                 return ResourceManager.GetString("ArrivalDate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Arrivals to Saudi Arabia.
-        /// </summary>
-        public static string ArrivalsToKSA {
-            get {
-                return ResourceManager.GetString("ArrivalsToKSA", resourceCulture);
             }
         }
         
@@ -1109,15 +1091,6 @@ namespace ZATCAMAUI {
         public static string ASIncomeTax {
             get {
                 return ResourceManager.GetString("ASIncomeTax", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Ask Ziyad.
-        /// </summary>
-        public static string AskAI {
-            get {
-                return ResourceManager.GetString("AskAI", resourceCulture);
             }
         }
         
@@ -1588,15 +1561,6 @@ namespace ZATCAMAUI {
         public static string BreakDownLabel {
             get {
                 return ResourceManager.GetString("BreakDownLabel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Browse Files.
-        /// </summary>
-        public static string BrowseFiles {
-            get {
-                return ResourceManager.GetString("BrowseFiles", resourceCulture);
             }
         }
         
@@ -2312,7 +2276,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Confirm the order by choosing the following number.
+        ///   Looks up a localized string similar to and Confirm the order by choosing the following number.
         /// </summary>
         public static string ConfirmOpenningNafath {
             get {
@@ -2353,15 +2317,6 @@ namespace ZATCAMAUI {
         public static string ContactUs {
             get {
                 return ResourceManager.GetString("ContactUs", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to You can contact us on our numbers below for any inquiries 24/7..
-        /// </summary>
-        public static string ContactUsSubtitle {
-            get {
-                return ResourceManager.GetString("ContactUsSubtitle", resourceCulture);
             }
         }
         
@@ -3676,7 +3631,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Customer Service.
+        ///   Looks up a localized string similar to Customer Services.
         /// </summary>
         public static string CustomerServices {
             get {
@@ -3685,7 +3640,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Customs and Tax Fees Calculator.
+        ///   Looks up a localized string similar to Custom and TAX Fees Calculator.
         /// </summary>
         public static string CustomFeesCalculator {
             get {
@@ -3883,20 +3838,11 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Integrated Tariffs.
+        ///   Looks up a localized string similar to Integrated Tarrifs.
         /// </summary>
         public static string CustomsZATCAIntegrat {
             get {
                 return ResourceManager.GetString("CustomsZATCAIntegrat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Dark Theme.
-        /// </summary>
-        public static string DarkTheme {
-            get {
-                return ResourceManager.GetString("DarkTheme", resourceCulture);
             }
         }
         
@@ -4243,7 +4189,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Declaration Number \ Bill Number.
+        ///   Looks up a localized string similar to Declaration Number\Bill Number.
         /// </summary>
         public static string DeclarationBillNumber {
             get {
@@ -4338,15 +4284,6 @@ namespace ZATCAMAUI {
         public static string DeleteWarningMsg {
             get {
                 return ResourceManager.GetString("DeleteWarningMsg", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Departures from Saudi Arabia.
-        /// </summary>
-        public static string DepartatureToKSA {
-            get {
-                return ResourceManager.GetString("DepartatureToKSA", resourceCulture);
             }
         }
         
@@ -4459,15 +4396,6 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hot line.
-        /// </summary>
-        public static string DirectLine {
-            get {
-                return ResourceManager.GetString("DirectLine", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Discard Changes.
         /// </summary>
         public static string DiscardChanges {
@@ -4491,15 +4419,6 @@ namespace ZATCAMAUI {
         public static string Districtname {
             get {
                 return ResourceManager.GetString("Districtname", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Don&apos;t have an account?.
-        /// </summary>
-        public static string DonthaveAccount {
-            get {
-                return ResourceManager.GetString("DonthaveAccount", resourceCulture);
             }
         }
         
@@ -4693,7 +4612,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Customs Declaration for Travelers.
+        ///   Looks up a localized string similar to E-Declaration.
         /// </summary>
         public static string eDeclaration {
             get {
@@ -5112,15 +5031,6 @@ namespace ZATCAMAUI {
         public static string EnterOTP {
             get {
                 return ResourceManager.GetString("EnterOTP", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Enter your password.
-        /// </summary>
-        public static string EnterPassword {
-            get {
-                return ResourceManager.GetString("EnterPassword", resourceCulture);
             }
         }
         
@@ -7069,15 +6979,6 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Explore our range of services.
-        /// </summary>
-        public static string ExploreServices {
-            get {
-                return ResourceManager.GetString("ExploreServices", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Export value.
         /// </summary>
         public static string ExportValue {
@@ -7150,7 +7051,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to FAQs.
+        ///   Looks up a localized string similar to FAQ.
         /// </summary>
         public static string FAQ {
             get {
@@ -8635,15 +8536,6 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Free.
-        /// </summary>
-        public static string FreeChannel {
-            get {
-                return ResourceManager.GetString("FreeChannel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Deregistration date cannot be in future.
         /// </summary>
         public static string FuterDateError {
@@ -8896,7 +8788,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Services.
+        ///   Looks up a localized string similar to Home.
         /// </summary>
         public static string Home {
             get {
@@ -9250,15 +9142,6 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Important Links.
-        /// </summary>
-        public static string ImportantLinks {
-            get {
-                return ResourceManager.GetString("ImportantLinks", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Importer information.
         /// </summary>
         public static string Importerinformation {
@@ -9394,7 +9277,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Inquiry with statement information.
+        ///   Looks up a localized string similar to InQuery with statement information.
         /// </summary>
         public static string InQuerywithstatementinformation {
             get {
@@ -9430,7 +9313,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Inquire About Customs Declaration.
+        ///   Looks up a localized string similar to Inquiry about a customs declaration.
         /// </summary>
         public static string Inquiryaboutacustomsdeclaration {
             get {
@@ -9439,7 +9322,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Inquire About Customs Issues.
+        ///   Looks up a localized string similar to Inquiry about Customs Issues.
         /// </summary>
         public static string InquiryaboutCustomsIssuesView {
             get {
@@ -9751,7 +9634,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Country of Issuance.
+        ///   Looks up a localized string similar to Its Source.
         /// </summary>
         public static string ItsSource {
             get {
@@ -9765,42 +9648,6 @@ namespace ZATCAMAUI {
         public static string Justification {
             get {
                 return ResourceManager.GetString("Justification", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Justification1.
-        /// </summary>
-        public static string Justification1 {
-            get {
-                return ResourceManager.GetString("Justification1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Justification2.
-        /// </summary>
-        public static string Justification2 {
-            get {
-                return ResourceManager.GetString("Justification2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Justification3.
-        /// </summary>
-        public static string Justification3 {
-            get {
-                return ResourceManager.GetString("Justification3", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Justification4.
-        /// </summary>
-        public static string Justification4 {
-            get {
-                return ResourceManager.GetString("Justification4", resourceCulture);
             }
         }
         
@@ -9837,24 +9684,6 @@ namespace ZATCAMAUI {
         public static string Langauge {
             get {
                 return ResourceManager.GetString("Langauge", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Learn More.
-        /// </summary>
-        public static string LearnMore {
-            get {
-                return ResourceManager.GetString("LearnMore", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Duration of service.
-        /// </summary>
-        public static string LengthOfService {
-            get {
-                return ResourceManager.GetString("LengthOfService", resourceCulture);
             }
         }
         
@@ -9913,15 +9742,6 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unified contact number.
-        /// </summary>
-        public static string LocalNumber {
-            get {
-                return ResourceManager.GetString("LocalNumber", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Please grant  Location access first..
         /// </summary>
         public static string LocationAccess {
@@ -9958,7 +9778,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Forgot your password or username?.
+        ///   Looks up a localized string similar to Forgot Password or Username?.
         /// </summary>
         public static string LoginForgotPassword {
             get {
@@ -9967,7 +9787,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to National Access Platform for Citizens and Residents.
+        ///   Looks up a localized string similar to For Citizens/Resident Individuals, Login through IAM.
         /// </summary>
         public static string LoginLine {
             get {
@@ -9976,7 +9796,16 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create an account.
+        ///   Looks up a localized string similar to Individual Registration: this service is for legal persons who do not have a commercial registration and engage in economic activities in the kingdom or activities that require registration with the authority through an individual ID, when registering for the service a TIN will be created..
+        /// </summary>
+        public static string LoginPageNafathInformation {
+            get {
+                return ResourceManager.GetString("LoginPageNafathInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Don&apos;t have an account? Register.
         /// </summary>
         public static string LoginRegister {
             get {
@@ -10048,16 +9877,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Or login via.
-        /// </summary>
-        public static string LoginVia {
-            get {
-                return ResourceManager.GetString("LoginVia", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to logout?.
+        ///   Looks up a localized string similar to Are you sure you want to log off?.
         /// </summary>
         public static string LogoutConfirmationMessage {
             get {
@@ -10210,7 +10030,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SAR Maximum Value .
+        ///   Looks up a localized string similar to SAR Maximum Value.
         /// </summary>
         public static string MaxFees {
             get {
@@ -10471,7 +10291,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Login through National Single Sign-On.
+        ///   Looks up a localized string similar to Login throw National Single Sign-On.
         /// </summary>
         public static string NafathLoginSubHeader {
             get {
@@ -10494,15 +10314,6 @@ namespace ZATCAMAUI {
         public static string NAFATHStatus {
             get {
                 return ResourceManager.GetString("NAFATHStatus", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Welcome to a new digital experience.
-        /// </summary>
-        public static string NafathSubtittle {
-            get {
-                return ResourceManager.GetString("NafathSubtittle", resourceCulture);
             }
         }
         
@@ -11362,7 +11173,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unified contact number.
+        ///   Looks up a localized string similar to Local Phone.
         /// </summary>
         public static string NDLocalPhone {
             get {
@@ -12181,7 +11992,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to VAT Registration Validation.
+        ///   Looks up a localized string similar to VAT Registration Verification.
         /// </summary>
         public static string NDVATRegistrationVerification {
             get {
@@ -12501,15 +12312,6 @@ namespace ZATCAMAUI {
         public static string NewTransactionReception {
             get {
                 return ResourceManager.GetString("NewTransactionReception", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Next Amount Due.
-        /// </summary>
-        public static string NextAmountDue {
-            get {
-                return ResourceManager.GetString("NextAmountDue", resourceCulture);
             }
         }
         
@@ -13087,15 +12889,6 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Passports.
-        /// </summary>
-        public static string Passports {
-            get {
-                return ResourceManager.GetString("Passports", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Password .
         /// </summary>
         public static string Password {
@@ -13146,15 +12939,6 @@ namespace ZATCAMAUI {
         public static string PayByMADA {
             get {
                 return ResourceManager.GetString("PayByMADA", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Payment channels.
-        /// </summary>
-        public static string PaymentChannels {
-            get {
-                return ResourceManager.GetString("PaymentChannels", resourceCulture);
             }
         }
         
@@ -13285,7 +13069,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Previous.
+        ///   Looks up a localized string similar to Pervious.
         /// </summary>
         public static string PerviousButton {
             get {
@@ -13299,15 +13083,6 @@ namespace ZATCAMAUI {
         public static string PerviousReports {
             get {
                 return ResourceManager.GetString("PerviousReports", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Unified contact number.
-        /// </summary>
-        public static string Phone {
-            get {
-                return ResourceManager.GetString("Phone", resourceCulture);
             }
         }
         
@@ -13564,6 +13339,42 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Arrivals to Saudi Arabia - Passports.
+        /// </summary>
+        public static string Port1Name {
+            get {
+                return ResourceManager.GetString("Port1Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Departures from Saudi Arabia - Passports.
+        /// </summary>
+        public static string Port2Name {
+            get {
+                return ResourceManager.GetString("Port2Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Arrivals to Saudi Arabia - Customs.
+        /// </summary>
+        public static string Port3Name {
+            get {
+                return ResourceManager.GetString("Port3Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Departures to Saudi Arabia - Customs.
+        /// </summary>
+        public static string Port4Name {
+            get {
+                return ResourceManager.GetString("Port4Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Live stream for.
         /// </summary>
         public static string PortLiveVideoSubTitle {
@@ -13695,15 +13506,6 @@ namespace ZATCAMAUI {
         public static string PPSubTitle9 {
             get {
                 return ResourceManager.GetString("PPSubTitle9", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Prerequisites.
-        /// </summary>
-        public static string Prerequisites {
-            get {
-                return ResourceManager.GetString("Prerequisites", resourceCulture);
             }
         }
         
@@ -13960,7 +13762,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Quantity (Number of belongings).
+        ///   Looks up a localized string similar to Quantity.
         /// </summary>
         public static string Quantity {
             get {
@@ -14095,15 +13897,6 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Atleast one Refund has to be selected.
-        /// </summary>
-        public static string RefundSelection {
-            get {
-                return ResourceManager.GetString("RefundSelection", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to VAT Registered.
         /// </summary>
         public static string Registered {
@@ -14167,7 +13960,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Issuance Date.
+        ///   Looks up a localized string similar to Release Date.
         /// </summary>
         public static string ReleaseDate {
             get {
@@ -14628,15 +14421,6 @@ namespace ZATCAMAUI {
         public static string RequiredData {
             get {
                 return ResourceManager.GetString("RequiredData", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Required Documents.
-        /// </summary>
-        public static string RequiredDocuments {
-            get {
-                return ResourceManager.GetString("RequiredDocuments", resourceCulture);
             }
         }
         
@@ -15218,7 +15002,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Searching and Viewing Indicative Prices for Excise Goods.
+        ///   Looks up a localized string similar to Searching and viewing the indicative prices for excise Goods.
         /// </summary>
         public static string searchingandviewingtheindicativepricesforexciseGoods {
             get {
@@ -15434,65 +15218,11 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Service channels.
-        /// </summary>
-        public static string ServiceChannels {
-            get {
-                return ResourceManager.GetString("ServiceChannels", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Service cost.
-        /// </summary>
-        public static string ServiceCost {
-            get {
-                return ResourceManager.GetString("ServiceCost", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Service Level Agreement (SLA).
-        /// </summary>
-        public static string ServiceLevelAgreement {
-            get {
-                return ResourceManager.GetString("ServiceLevelAgreement", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Service Steps.
-        /// </summary>
-        public static string ServiceSteps {
-            get {
-                return ResourceManager.GetString("ServiceSteps", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Service type.
         /// </summary>
         public static string Servicetype {
             get {
                 return ResourceManager.GetString("Servicetype", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Service User Manual.
-        /// </summary>
-        public static string ServiceUserManual {
-            get {
-                return ResourceManager.GetString("ServiceUserManual", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Your Feedback Matters.
-        /// </summary>
-        public static string ShareFeedBack {
-            get {
-                return ResourceManager.GetString("ShareFeedBack", resourceCulture);
             }
         }
         
@@ -15551,20 +15281,11 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to View Previous Reports.
+        ///   Looks up a localized string similar to View previous reports.
         /// </summary>
         public static string ShowPerviousReports {
             get {
                 return ResourceManager.GetString("ShowPerviousReports", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to SMS.
-        /// </summary>
-        public static string SMS {
-            get {
-                return ResourceManager.GetString("SMS", resourceCulture);
             }
         }
         
@@ -15659,15 +15380,6 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Start Service.
-        /// </summary>
-        public static string StartService {
-            get {
-                return ResourceManager.GetString("StartService", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Statement.
         /// </summary>
         public static string Statement {
@@ -15740,7 +15452,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Submit a Report.
+        ///   Looks up a localized string similar to Submit a report.
         /// </summary>
         public static string Submitareport {
             get {
@@ -15794,15 +15506,6 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Support Channels.
-        /// </summary>
-        public static string SupportChannels {
-            get {
-                return ResourceManager.GetString("SupportChannels", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Supporting Documents.
         /// </summary>
         public static string SupportingDocuments {
@@ -15817,15 +15520,6 @@ namespace ZATCAMAUI {
         public static string SupportingDocumentsMsg {
             get {
                 return ResourceManager.GetString("SupportingDocumentsMsg", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Arabic, English.
-        /// </summary>
-        public static string supportingLangues {
-            get {
-                return ResourceManager.GetString("supportingLangues", resourceCulture);
             }
         }
         
@@ -15887,15 +15581,6 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Target Audience.
-        /// </summary>
-        public static string TargetAudience {
-            get {
-                return ResourceManager.GetString("TargetAudience", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Tariff Sections.
         /// </summary>
         public static string TariffSections {
@@ -15914,7 +15599,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Merchant and Consumer VAT Calculator.
+        ///   Looks up a localized string similar to Merchant and Customer Calculator.
         /// </summary>
         public static string TaxCalculator {
             get {
@@ -17510,7 +17195,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to E-Transactions.
+        ///   Looks up a localized string similar to Transaction Reception.
         /// </summary>
         public static string TransactionReception {
             get {
@@ -17813,15 +17498,6 @@ namespace ZATCAMAUI {
         public static string UploadFile {
             get {
                 return ResourceManager.GetString("UploadFile", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Upload Files.
-        /// </summary>
-        public static string UploadFiles {
-            get {
-                return ResourceManager.GetString("UploadFiles", resourceCulture);
             }
         }
         
@@ -19153,15 +18829,6 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Minimum Number is 2 and maximum is 12.
-        /// </summary>
-        public static string VatIPNote {
-            get {
-                return ResourceManager.GetString("VatIPNote", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Dear XXXXX,Your Installment Plan submitted successfully..
         /// </summary>
         public static string VATIPSuccsMsg {
@@ -19379,8 +19046,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Dear taxpayer,
-        ///     If you have a draft copy saved on your submitted returns, you won&apos;t be able to include it in the refund request. Please either cancel or submit it..
+        ///   Looks up a localized string similar to If you have a draft copy saved on your submitted returns, you won&apos;t be able to include it in the refund request. Please either cancel or submit it..
         /// </summary>
         public static string VATRefundReqMessageInfo {
             get {
@@ -19588,7 +19254,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to saved as draft.
+        ///   Looks up a localized string similar to DRAFT.
         /// </summary>
         public static string VATRefundsStatusDraft {
             get {
@@ -20617,15 +20283,6 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to View All.
-        /// </summary>
-        public static string ViewAll {
-            get {
-                return ResourceManager.GetString("ViewAll", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to View list.
         /// </summary>
         public static string Viewlist {
@@ -20662,7 +20319,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bank Accounts.
+        ///   Looks up a localized string similar to Bank Accounts Management.
         /// </summary>
         public static string VisitIBanManagement {
             get {
@@ -21774,24 +21431,6 @@ namespace ZATCAMAUI {
         public static string Word {
             get {
                 return ResourceManager.GetString("Word", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Working Hours.
-        /// </summary>
-        public static string WorkHours {
-            get {
-                return ResourceManager.GetString("WorkHours", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Throughout the 7 days of the week, 24 hours a day..
-        /// </summary>
-        public static string WorkHoursSubtitle {
-            get {
-                return ResourceManager.GetString("WorkHoursSubtitle", resourceCulture);
             }
         }
         
@@ -23178,24 +22817,6 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  and maximum is .
-        /// </summary>
-        public static string ZakatIPNoteMax {
-            get {
-                return ResourceManager.GetString("ZakatIPNoteMax", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Minimum Number is .
-        /// </summary>
-        public static string ZakatIPNoteMin {
-            get {
-                return ResourceManager.GetString("ZakatIPNoteMin", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Max.
         /// </summary>
         public static string ZakatMax {
@@ -23273,15 +22894,6 @@ namespace ZATCAMAUI {
         public static string ZakatOtherReason {
             get {
                 return ResourceManager.GetString("ZakatOtherReason", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Zakat Ragistration.
-        /// </summary>
-        public static string ZakatRegistration {
-            get {
-                return ResourceManager.GetString("ZakatRegistration", resourceCulture);
             }
         }
         
@@ -23480,15 +23092,6 @@ namespace ZATCAMAUI {
         public static string ZAmountPayable {
             get {
                 return ResourceManager.GetString("ZAmountPayable", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Assessment Amount.
-        /// </summary>
-        public static string ZAssessmentAmount {
-            get {
-                return ResourceManager.GetString("ZAssessmentAmount", resourceCulture);
             }
         }
         
@@ -25046,7 +24649,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Search here.
+        ///   Looks up a localized string similar to Search.
         /// </summary>
         public static string ZSearch {
             get {
@@ -28724,7 +28327,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Gulf Cooperation Council (GCC) ID length is between 7 to 15 digit.
+        ///   Looks up a localized string similar to Gulf Cooperation Council (GCC) ID length is between 6 to 15 digit.
         /// </summary>
         public static string ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit {
             get {
@@ -28994,7 +28597,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mobile number has to start with number 05 and mobile number must consist of 10 numbers.
+        ///   Looks up a localized string similar to Mobile number has to start with number 05.
         /// </summary>
         public static string ZZMobilenumberhastostartwithnumber05 {
             get {
@@ -32169,7 +31772,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to FAQs.
+        ///   Looks up a localized string similar to FAQ.
         /// </summary>
         public static string ZZZZFAQ {
             get {
@@ -32187,7 +31790,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Acknowledgement.
+        ///   Looks up a localized string similar to Get Acknowledgement.
         /// </summary>
         public static string ZZZZGetAckNew {
             get {
