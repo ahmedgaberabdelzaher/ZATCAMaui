@@ -626,7 +626,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to عنوان السكن في المملكة العربية السعودية.
+        ///   Looks up a localized string similar to العنوان في المملكة العربية السعودية.
         /// </summary>
         public static string AddressKSA {
             get {
@@ -743,15 +743,6 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to كافة الخدمات.
-        /// </summary>
-        public static string AllServices {
-            get {
-                return ResourceManager.GetString("AllServices", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to منفذ الوديعة.
         /// </summary>
         public static string Alwadeeaa {
@@ -857,15 +848,6 @@ namespace ZATCAMAUI {
         public static string ArrivalDate {
             get {
                 return ResourceManager.GetString("ArrivalDate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to القادمون إلى المملكة.
-        /// </summary>
-        public static string ArrivalsToKSA {
-            get {
-                return ResourceManager.GetString("ArrivalsToKSA", resourceCulture);
             }
         }
         
@@ -1091,15 +1073,6 @@ namespace ZATCAMAUI {
         public static string ASIncomeTax {
             get {
                 return ResourceManager.GetString("ASIncomeTax", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to اسأل زياد .
-        /// </summary>
-        public static string AskAI {
-            get {
-                return ResourceManager.GetString("AskAI", resourceCulture);
             }
         }
         
@@ -1530,15 +1503,6 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to استعراض الملفات.
-        /// </summary>
-        public static string BrowseFiles {
-            get {
-                return ResourceManager.GetString("BrowseFiles", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to يجب ادخال أربعة ارقام فريدة تمثل مبنى سكني او تجاري.
         /// </summary>
         public static string BuildingNoValidationMsg {
@@ -1890,7 +1854,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to عزيزي المكلف، الشخص المخول بتغيير رقم الهاتف المحمول هو مدير الشركة حسب بيانات وزارة التجارة.
+        ///   Looks up a localized string similar to عزيزي المكلف، الشخص المخول بتغيير رقم الجوال هو مدير الشركة حسب بيانات وزارة التجارة.
         /// </summary>
         public static string ChangeMobHeader {
             get {
@@ -1899,7 +1863,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to تغيير رقم الهاتف المحمول.
+        ///   Looks up a localized string similar to تغيير رقم الجوال.
         /// </summary>
         public static string ChangeMobileNumber {
             get {
@@ -1908,7 +1872,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to عزيزي المكلف، تم استلام طلب تغيير رقم الهاتف المحمول بنجاح.
+        ///   Looks up a localized string similar to عزيزي المكلف، تم استلام طلب تغيير رقم الجوال بنجاح.
         /// </summary>
         public static string ChangeMobSuccessMsg {
             get {
@@ -1917,7 +1881,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to عزيزي المكلف, تم إعادة تعيين رقم الهاتف المحمول بنجاح للرقم المميز {0}.
+        ///   Looks up a localized string similar to عزيزي المكلف, تم إعادة تعيين رقم الجوال بنجاح للرقم المميز {0}.
         /// </summary>
         public static string ChangeMobSuccessMsg2 {
             get {
@@ -2300,15 +2264,6 @@ namespace ZATCAMAUI {
         public static string ContactUs {
             get {
                 return ResourceManager.GetString("ContactUs", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to يمكنك التواصل معنا على أرقامنا التالية بالأسفل على مدار الساعة.
-        /// </summary>
-        public static string ContactUsSubtitle {
-            get {
-                return ResourceManager.GetString("ContactUsSubtitle", resourceCulture);
             }
         }
         
@@ -2871,7 +2826,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to تم.
+        ///   Looks up a localized string similar to إغلاق.
         /// </summary>
         public static string CRDone {
             get {
@@ -3518,7 +3473,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to رقم الهاتف المحمول.
+        ///   Looks up a localized string similar to رقم الجوال.
         /// </summary>
         public static string CRTPZEMN {
             get {
@@ -3829,15 +3784,6 @@ namespace ZATCAMAUI {
         public static string CustomsZATCAIntegrat {
             get {
                 return ResourceManager.GetString("CustomsZATCAIntegrat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to المظهر الداكن.
-        /// </summary>
-        public static string DarkTheme {
-            get {
-                return ResourceManager.GetString("DarkTheme", resourceCulture);
             }
         }
         
@@ -4184,7 +4130,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to رقم البيان / رقم البوليصة.
+        ///   Looks up a localized string similar to رقم البيان/رقم الفاتورة.
         /// </summary>
         public static string DeclarationBillNumber {
             get {
@@ -4279,15 +4225,6 @@ namespace ZATCAMAUI {
         public static string DeleteWarningMsg {
             get {
                 return ResourceManager.GetString("DeleteWarningMsg", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to المغادرون من المملكة.
-        /// </summary>
-        public static string DepartatureToKSA {
-            get {
-                return ResourceManager.GetString("DepartatureToKSA", resourceCulture);
             }
         }
         
@@ -4400,15 +4337,6 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to الخط المباشر.
-        /// </summary>
-        public static string DirectLine {
-            get {
-                return ResourceManager.GetString("DirectLine", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to تجاهل التغييرات.
         /// </summary>
         public static string DiscardChanges {
@@ -4432,15 +4360,6 @@ namespace ZATCAMAUI {
         public static string Districtname {
             get {
                 return ResourceManager.GetString("Districtname", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ليس لديك حساب ؟.
-        /// </summary>
-        public static string DonthaveAccount {
-            get {
-                return ResourceManager.GetString("DonthaveAccount", resourceCulture);
             }
         }
         
@@ -4634,7 +4553,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  الإقرار الجمركي للمسافرين.
+        ///   Looks up a localized string similar to الإقرار الإلكتروني.
         /// </summary>
         public static string eDeclaration {
             get {
@@ -4967,7 +4886,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to يرجى إدخال رقم الهاتف المحمول.
+        ///   Looks up a localized string similar to يرجى إدخال رقم الجوال.
         /// </summary>
         public static string EnterMobileNumber {
             get {
@@ -4976,7 +4895,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to أدخل رقم الهاتف المحمول المكون من 9 أرقام.
+        ///   Looks up a localized string similar to أدخل رقم الجوال المكون من 9 أرقام.
         /// </summary>
         public static string EnterNewMobileNumber {
             get {
@@ -4999,15 +4918,6 @@ namespace ZATCAMAUI {
         public static string EnterOTP {
             get {
                 return ResourceManager.GetString("EnterOTP", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to أدخل كلمة المرور.
-        /// </summary>
-        public static string EnterPassword {
-            get {
-                return ResourceManager.GetString("EnterPassword", resourceCulture);
             }
         }
         
@@ -5107,15 +5017,6 @@ namespace ZATCAMAUI {
         public static string Entity {
             get {
                 return ResourceManager.GetString("Entity", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to فئة الكيان.
-        /// </summary>
-        public static string EntityCategory {
-            get {
-                return ResourceManager.GetString("EntityCategory", resourceCulture);
             }
         }
         
@@ -6958,15 +6859,6 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to استكشف مجموعة خدماتنا.
-        /// </summary>
-        public static string ExploreServices {
-            get {
-                return ResourceManager.GetString("ExploreServices", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to قيمة الصادرات.
         /// </summary>
         public static string ExportValue {
@@ -7039,7 +6931,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to الأسئلة الشائعة.
+        ///   Looks up a localized string similar to أسئلة شائعة.
         /// </summary>
         public static string FAQ {
             get {
@@ -8515,15 +8407,6 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to مجاناً.
-        /// </summary>
-        public static string FreeChannel {
-            get {
-                return ResourceManager.GetString("FreeChannel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to تاريخ الإيقاف يجب ان لا يكون تاريخ مستقبلي.
         /// </summary>
         public static string FuterDateError {
@@ -8776,7 +8659,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to الخدمات.
+        ///   Looks up a localized string similar to الرئيسية.
         /// </summary>
         public static string Home {
             get {
@@ -9130,15 +9013,6 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to روابط مهمة.
-        /// </summary>
-        public static string ImportantLinks {
-            get {
-                return ResourceManager.GetString("ImportantLinks", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to معلومات المستورد.
         /// </summary>
         public static string Importerinformation {
@@ -9301,7 +9175,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to الاستعلام بواسطة.
+        ///   Looks up a localized string similar to الاستعلام بواسطه.
         /// </summary>
         public static string Inquirethrough {
             get {
@@ -9337,7 +9211,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to الاستعلام بمعلومات البوليصة.
+        ///   Looks up a localized string similar to الاستعلام بمعلومات البوليصه.
         /// </summary>
         public static string Inquiryforpolicyinformation {
             get {
@@ -9649,42 +9523,6 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 1المبرر.
-        /// </summary>
-        public static string Justification1 {
-            get {
-                return ResourceManager.GetString("Justification1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 2المبرر.
-        /// </summary>
-        public static string Justification2 {
-            get {
-                return ResourceManager.GetString("Justification2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 3المبرر.
-        /// </summary>
-        public static string Justification3 {
-            get {
-                return ResourceManager.GetString("Justification3", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 4المبرر.
-        /// </summary>
-        public static string Justification4 {
-            get {
-                return ResourceManager.GetString("Justification4", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to منفذ الخفجي.
         /// </summary>
         public static string Khafji {
@@ -9717,24 +9555,6 @@ namespace ZATCAMAUI {
         public static string Langauge {
             get {
                 return ResourceManager.GetString("Langauge", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to وصف الخدمة.
-        /// </summary>
-        public static string LearnMore {
-            get {
-                return ResourceManager.GetString("LearnMore", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to مدة الخدمة.
-        /// </summary>
-        public static string LengthOfService {
-            get {
-                return ResourceManager.GetString("LengthOfService", resourceCulture);
             }
         }
         
@@ -9793,15 +9613,6 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to الرقم الموحد.
-        /// </summary>
-        public static string LocalNumber {
-            get {
-                return ResourceManager.GetString("LocalNumber", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to يرجى منح حق الوصول إلى الموقع أولاً..
         /// </summary>
         public static string LocationAccess {
@@ -9820,7 +9631,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to تغيير رقم الهاتف المحمول.
+        ///   Looks up a localized string similar to تغيير رقم الجوال.
         /// </summary>
         public static string LoginChangeMoblNum {
             get {
@@ -9838,7 +9649,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to نسيت كلمة المرور أو اسم المستخدم؟.
+        ///   Looks up a localized string similar to نسيت كلمة المرور أو اسم المستخدم.
         /// </summary>
         public static string LoginForgotPassword {
             get {
@@ -9847,7 +9658,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to منصة النفاذ الوطني للمواطنين والمقيمين.
+        ///   Looks up a localized string similar to  تسجيل الدخول عبر منصة النفاذ الوطني للمواطنيين والمقيمين .
         /// </summary>
         public static string LoginLine {
             get {
@@ -9856,7 +9667,16 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to إنشاء حساب.
+        ///   Looks up a localized string similar to تسجيل الافراد: تخص هذه الخدمة الأفراد الطبيعيين الذين لا يملكون سجل تجاري ويمارسون نشاطًا اقتصاديًا في المملكة أو أي أنشطة تستلزم التسجيل بالهيئة من خلال هوية تابعة للأفراد وعند التسجيل في الخدمة، سيتم إنشاء رقم مميز.
+        /// </summary>
+        public static string LoginPageNafathInformation {
+            get {
+                return ResourceManager.GetString("LoginPageNafathInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to لاتملك حساب؟ بإمكانك التسجيل.
         /// </summary>
         public static string LoginRegister {
             get {
@@ -9924,15 +9744,6 @@ namespace ZATCAMAUI {
         public static string LogintoCustoms {
             get {
                 return ResourceManager.GetString("LogintoCustoms", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to أو سجل دخولك عبر.
-        /// </summary>
-        public static string LoginVia {
-            get {
-                return ResourceManager.GetString("LoginVia", resourceCulture);
             }
         }
         
@@ -10172,7 +9983,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to اسم الأب.
+        ///   Looks up a localized string similar to الاسم الأب.
         /// </summary>
         public static string MiddleName {
             get {
@@ -10181,7 +9992,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to رقم الهاتف المحمول.
+        ///   Looks up a localized string similar to رقم الجوال.
         /// </summary>
         public static string MobileNumber {
             get {
@@ -10199,7 +10010,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to رقم الهاتف المحمول.
+        ///   Looks up a localized string similar to رقم الجوال.
         /// </summary>
         public static string MobileNumberText {
             get {
@@ -10208,7 +10019,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to تم تحديث رقم الهاتف المحمول بنجاح.
+        ///   Looks up a localized string similar to تم تحديث رقم الجوال بنجاح.
         /// </summary>
         public static string MobileNumberUpdatedSuccessfully {
             get {
@@ -10217,7 +10028,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to تم التحقق من رقم الهاتف المحمول بنجاح.
+        ///   Looks up a localized string similar to تم التحقق من رقم الجوال بنجاح.
         /// </summary>
         public static string MobileNumberVerificationSuccessful {
             get {
@@ -10375,15 +10186,6 @@ namespace ZATCAMAUI {
         public static string NAFATHStatus {
             get {
                 return ResourceManager.GetString("NAFATHStatus", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to مرحباً بك في تجربة رقمية جديدة.
-        /// </summary>
-        public static string NafathSubtittle {
-            get {
-                return ResourceManager.GetString("NafathSubtittle", resourceCulture);
             }
         }
         
@@ -11244,7 +11046,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to الرقم الموحد.
+        ///   Looks up a localized string similar to الرقم المحلي.
         /// </summary>
         public static string NDLocalPhone {
             get {
@@ -11271,7 +11073,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to رقم الهاتف المحمول يجب أن يبدأ برقم 5.
+        ///   Looks up a localized string similar to رقم الجوال يجب أن يبدأ برقم 5.
         /// </summary>
         public static string NDMobileNumberMustStartWithFive {
             get {
@@ -11280,7 +11082,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to رقم الهاتف المحمول xxxxxxx388.
+        ///   Looks up a localized string similar to رقم الجوال xxxxxxx388.
         /// </summary>
         public static string NDMoblieNumber {
             get {
@@ -11820,7 +11622,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to رقم الهاتف المحمول.
+        ///   Looks up a localized string similar to رقم الجوال.
         /// </summary>
         public static string NDTaxEvasionMobileNumber {
             get {
@@ -12288,7 +12090,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to رقم الهاتف المحمول الجديد.
+        ///   Looks up a localized string similar to رقم الجوال الجديد.
         /// </summary>
         public static string NewMobileNumber {
             get {
@@ -12329,15 +12131,6 @@ namespace ZATCAMAUI {
         public static string NewTransactionReception {
             get {
                 return ResourceManager.GetString("NewTransactionReception", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to المبلغ المستحق التالي.
-        /// </summary>
-        public static string NextAmountDue {
-            get {
-                return ResourceManager.GetString("NextAmountDue", resourceCulture);
             }
         }
         
@@ -12684,7 +12477,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to لقد بلغت الحد الأقصى لعدد المحاولات, يرجى إدخال رقم الهاتف المحمول مجددا.
+        ///   Looks up a localized string similar to لقد بلغت الحد الأقصى لعدد المحاولات, يرجى إدخال رقم الجوال مجددا.
         /// </summary>
         public static string OTPMaxAttempts {
             get {
@@ -12909,15 +12702,6 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to الجوازات.
-        /// </summary>
-        public static string Passports {
-            get {
-                return ResourceManager.GetString("Passports", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to كلمة المرور.
         /// </summary>
         public static string Password {
@@ -12968,15 +12752,6 @@ namespace ZATCAMAUI {
         public static string PayByMADA {
             get {
                 return ResourceManager.GetString("PayByMADA", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to قنوات الدفع.
-        /// </summary>
-        public static string PaymentChannels {
-            get {
-                return ResourceManager.GetString("PaymentChannels", resourceCulture);
             }
         }
         
@@ -13125,16 +12900,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to الرقم الموحد.
-        /// </summary>
-        public static string Phone {
-            get {
-                return ResourceManager.GetString("Phone", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to رقم الهاتف المحمول غير صحيح.
+        ///   Looks up a localized string similar to رقم الجوال غير صحيح.
         /// </summary>
         public static string PhoneNotCorrect {
             get {
@@ -13143,7 +12909,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to رقم الهاتف المحمول .
+        ///   Looks up a localized string similar to رقم الجوال .
         /// </summary>
         public static string PhoneNumber {
             get {
@@ -13386,6 +13152,42 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to القادمون إلى المملكة – الجوازات.
+        /// </summary>
+        public static string Port1Name {
+            get {
+                return ResourceManager.GetString("Port1Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to المغادرون من المملكة – الجوازات.
+        /// </summary>
+        public static string Port2Name {
+            get {
+                return ResourceManager.GetString("Port2Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to القادمون إلى المملكة – الجمارك.
+        /// </summary>
+        public static string Port3Name {
+            get {
+                return ResourceManager.GetString("Port3Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to المغادرون من المملكة – الجمارك.
+        /// </summary>
+        public static string Port4Name {
+            get {
+                return ResourceManager.GetString("Port4Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to البث المباشر ل.
         /// </summary>
         public static string PortLiveVideoSubTitle {
@@ -13520,15 +13322,6 @@ namespace ZATCAMAUI {
         public static string PPSubTitle9 {
             get {
                 return ResourceManager.GetString("PPSubTitle9", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to الأهلية.
-        /// </summary>
-        public static string Prerequisites {
-            get {
-                return ResourceManager.GetString("Prerequisites", resourceCulture);
             }
         }
         
@@ -13785,7 +13578,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to الكمية (عدد المقتنيات).
+        ///   Looks up a localized string similar to الكمية.
         /// </summary>
         public static string Quantity {
             get {
@@ -13916,15 +13709,6 @@ namespace ZATCAMAUI {
         public static string RefunableAmount {
             get {
                 return ResourceManager.GetString("RefunableAmount", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to يجب اختيار استرداد واحد على الأقل.
-        /// </summary>
-        public static string RefundSelection {
-            get {
-                return ResourceManager.GetString("RefundSelection", resourceCulture);
             }
         }
         
@@ -14118,7 +13902,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to قم بتحديد الموقع على الخريطة.
+        ///   Looks up a localized string similar to قم بتحديد الموقع علىالخريطة.
         /// </summary>
         public static string ReportLocationPlaceholder {
             get {
@@ -14352,15 +14136,6 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to طلب تحديث تاريخ سريان تسجيل ضريبة القيمة المضافة.
-        /// </summary>
-        public static string REQToUpdateVatEffDate {
-            get {
-                return ResourceManager.GetString("REQToUpdateVatEffDate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to تم إلغاء الطلب بنجاح.
         /// </summary>
         public static string RequestCancelMsg {
@@ -14446,20 +14221,11 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to الرجاء ملئ الحقول المطلوبة.
+        ///   Looks up a localized string similar to الرجاء ملء الحقول المطلوبة.
         /// </summary>
         public static string RequiredData {
             get {
                 return ResourceManager.GetString("RequiredData", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to المستندات المطلوبة.
-        /// </summary>
-        public static string RequiredDocuments {
-            get {
-                return ResourceManager.GetString("RequiredDocuments", resourceCulture);
             }
         }
         
@@ -14554,7 +14320,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to اعاده تعيين رقم الهاتف المحمول.
+        ///   Looks up a localized string similar to اعاده تعيين رقم الجوال.
         /// </summary>
         public static string ResetMobileNumber {
             get {
@@ -14833,7 +14599,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ر.س.
+        ///   Looks up a localized string similar to ريال.
         /// </summary>
         public static string SAR {
             get {
@@ -14968,7 +14734,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to اختر.
+        ///   Looks up a localized string similar to اختار.
         /// </summary>
         public static string Select {
             get {
@@ -15121,65 +14887,11 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to قنوات الخدمة.
-        /// </summary>
-        public static string ServiceChannels {
-            get {
-                return ResourceManager.GetString("ServiceChannels", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to تكلفة الخدمة.
-        /// </summary>
-        public static string ServiceCost {
-            get {
-                return ResourceManager.GetString("ServiceCost", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to اتفاقية مستوى الخدمة.
-        /// </summary>
-        public static string ServiceLevelAgreement {
-            get {
-                return ResourceManager.GetString("ServiceLevelAgreement", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to الخطوات.
-        /// </summary>
-        public static string ServiceSteps {
-            get {
-                return ResourceManager.GetString("ServiceSteps", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to نوع الخدمة.
         /// </summary>
         public static string Servicetype {
             get {
                 return ResourceManager.GetString("Servicetype", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to تحميل دليل المستخدم.
-        /// </summary>
-        public static string ServiceUserManual {
-            get {
-                return ResourceManager.GetString("ServiceUserManual", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Your Feedback Matters.
-        /// </summary>
-        public static string ShareFeedBack {
-            get {
-                return ResourceManager.GetString("ShareFeedBack", resourceCulture);
             }
         }
         
@@ -15243,15 +14955,6 @@ namespace ZATCAMAUI {
         public static string ShowPerviousReports {
             get {
                 return ResourceManager.GetString("ShowPerviousReports", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to الرسائل القصيرة.
-        /// </summary>
-        public static string SMS {
-            get {
-                return ResourceManager.GetString("SMS", resourceCulture);
             }
         }
         
@@ -15333,15 +15036,6 @@ namespace ZATCAMAUI {
         public static string StartChatting {
             get {
                 return ResourceManager.GetString("StartChatting", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to بدء الخدمة.
-        /// </summary>
-        public static string StartService {
-            get {
-                return ResourceManager.GetString("StartService", resourceCulture);
             }
         }
         
@@ -15472,15 +15166,6 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to تواصل معانا.
-        /// </summary>
-        public static string SupportChannels {
-            get {
-                return ResourceManager.GetString("SupportChannels", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to الوثائق الداعمة.
         /// </summary>
         public static string SupportingDocuments {
@@ -15495,15 +15180,6 @@ namespace ZATCAMAUI {
         public static string SupportingDocumentsMsg {
             get {
                 return ResourceManager.GetString("SupportingDocumentsMsg", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to العربية، الإنجليزية.
-        /// </summary>
-        public static string supportingLangues {
-            get {
-                return ResourceManager.GetString("supportingLangues", resourceCulture);
             }
         }
         
@@ -15560,15 +15236,6 @@ namespace ZATCAMAUI {
         public static string TahqaqService {
             get {
                 return ResourceManager.GetString("TahqaqService", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to الجمهور المستهدف.
-        /// </summary>
-        public static string TargetAudience {
-            get {
-                return ResourceManager.GetString("TargetAudience", resourceCulture);
             }
         }
         
@@ -15855,7 +15522,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  المرفقات - نسخة من عقد البيع.
+        ///   Looks up a localized string similar to (إلزامي)  المرفقات - نسخة من عقد البيع.
         /// </summary>
         public static string TinDeregistrationAttachmentCopyOfContractOfSaleAgreement {
             get {
@@ -15864,7 +15531,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to لمرفقات - نسخة من السجل التجاري بعد إغلاق / تحديث.
+        ///   Looks up a localized string similar to (إلزامي) المرفقات - نسخة من السجل التجاري بعد إغلاق / تحديث.
         /// </summary>
         public static string TinDeregistrationAttachmentCopyOfCRAfterClosing {
             get {
@@ -15873,7 +15540,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  المرفقات - نسخة من حكم الإفلاس.
+        ///   Looks up a localized string similar to (إلزامي) المرفقات - نسخة من حكم الإفلاس.
         /// </summary>
         public static string TinDeregistrationAttachmentCopyOfDeclaringBankruptcy {
             get {
@@ -15882,7 +15549,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  المرفقات - نسخة من الترخيص بعد إغلاق / تحديث.
+        ///   Looks up a localized string similar to (إلزامي) المرفقات - نسخة من الترخيص بعد إغلاق / تحديث.
         /// </summary>
         public static string TinDeregistrationAttachmentCopyOfLicneseAfterClosing {
             get {
@@ -15900,7 +15567,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  المرفقات - شهادة الوفاة للشخص الطبيعي.
+        ///   Looks up a localized string similar to (إلزامي) المرفقات - شهادة الوفاة للشخص الطبيعي.
         /// </summary>
         public static string TinDeregistrationAttachmentDeathCertificate {
             get {
@@ -15909,7 +15576,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  المرفقات - صورة من القرار الوزاري بالموافقة على عملية الاستحواذ.
+        ///   Looks up a localized string similar to (إلزامي) المرفقات - صورة من القرار الوزاري بالموافقة على عملية الاستحواذ.
         /// </summary>
         public static string TinDeregistrationAttachmentLiquidation {
             get {
@@ -15918,7 +15585,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  المرفقات - قرار وزاري للموافقة على عملية الاندماج.
+        ///   Looks up a localized string similar to (إلزامي) المرفقات - قرار وزاري للموافقة على عملية الاندماج.
         /// </summary>
         public static string TinDeregistrationAttachmentMerger {
             get {
@@ -15927,7 +15594,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  المرفقات - قرار وزاري بالموافقة على عملية الاستحواذ.
+        ///   Looks up a localized string similar to (إلزامي) المرفقات - قرار وزاري بالموافقة على عملية الاستحواذ.
         /// </summary>
         public static string TinDeregistrationAttachmentMinisterialResponse {
             get {
@@ -15936,7 +15603,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  المرفقات - عقد مبايعة نقل الملكية.
+        ///   Looks up a localized string similar to (إلزامي) المرفقات - عقد مبايعة نقل الملكية.
         /// </summary>
         public static string TinDeregistrationAttachmentOwnershipSellingAgreement {
             get {
@@ -15945,7 +15612,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to إرفاق المرفقات.
+        ///   Looks up a localized string similar to تحميل المرفقات.
         /// </summary>
         public static string TinDeregistrationAttachmentUploadYourDocument {
             get {
@@ -16926,7 +16593,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to الى رقم الهاتف المحمول التالي:.
+        ///   Looks up a localized string similar to الى رقم الجوال التالي:.
         /// </summary>
         public static string ToThisMobNumber {
             get {
@@ -16989,7 +16656,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to تم تحديث رقم الهاتف المحمول.
+        ///   Looks up a localized string similar to تم تحديث رقم الجوال.
         /// </summary>
         public static string TPMobileUpdate {
             get {
@@ -17070,7 +16737,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to تم تحديث رقم الهاتف المحمول بنجاح.
+        ///   Looks up a localized string similar to تم تحديث رقم الجوال بنجاح.
         /// </summary>
         public static string TPSuccessMobileUpdated {
             get {
@@ -17106,7 +16773,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to تحديث رقم الهاتف المحمول.
+        ///   Looks up a localized string similar to تحديث رقم الجوال.
         /// </summary>
         public static string TPUpdateMobile {
             get {
@@ -17487,15 +17154,6 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to إضافة مرفقات.
-        /// </summary>
-        public static string UploadFiles {
-            get {
-                return ResourceManager.GetString("UploadFiles", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to إرفاق صورة.
         /// </summary>
         public static string UploadImage {
@@ -17568,7 +17226,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to تم إرسال اسم المستخدم إلى رقم الهاتف المحمول والبريد الإلكتروني المسجل للمكلف.
+        ///   Looks up a localized string similar to تم إرسال اسم المستخدم إلى رقم الجوال والبريد الإلكتروني المسجل للمكلف.
         /// </summary>
         public static string Usernamehasbeensenttoregisteredmobilenumber {
             get {
@@ -17631,7 +17289,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to يجب أن يبدأ رقم الهاتف المحمول بـ 009665.
+        ///   Looks up a localized string similar to يجب أن يبدأ رقم الجوال بـ 009665.
         /// </summary>
         public static string VATAmendMobileNumberValidation {
             get {
@@ -18117,7 +17775,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to أخرى – الرجاء التحديد.
+        ///   Looks up a localized string similar to أخرى – يرجى التحديد.
         /// </summary>
         public static string VatDeregistrationofReturnReason4 {
             get {
@@ -18681,15 +18339,6 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to الحد الأدنى للعدد هو 2 والحد الأقصى هو 12.
-        /// </summary>
-        public static string VatIPNote {
-            get {
-                return ResourceManager.GetString("VatIPNote", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to أسباب تجاوز المدة النظامية لتقديم الاعتراض.
         /// </summary>
         public static string VatLateFilingObjection {
@@ -18889,9 +18538,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ملاحظة
-        ///عزيزنا المكلف في حال وجود نسخة محفوظة كمسودة على الإقرارات المقدمة لن تتمكن من تقديمها في طلب الاسترداد, يرجى إلغاؤها أو تقديمها.
-        ///  .
+        ///   Looks up a localized string similar to عزيزنا المكلف في حال وجود نسخة محفوظة كمسودة على الإقرارات المقدمة لن تتمكن من تقديمها في طلب الاسترداد, يرجى إلغاؤها أو تقديمها..
         /// </summary>
         public static string VATRefundReqMessageInfo {
             get {
@@ -19092,7 +18739,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to محفوظ كمسودة.
+        ///   Looks up a localized string similar to مسودة.
         /// </summary>
         public static string VATRefundsStatusDraft {
             get {
@@ -20045,15 +19692,6 @@ namespace ZATCAMAUI {
         public static string VFCSuccessDesc {
             get {
                 return ResourceManager.GetString("VFCSuccessDesc", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to مشاهدة الكل.
-        /// </summary>
-        public static string ViewAll {
-            get {
-                return ResourceManager.GetString("ViewAll", resourceCulture);
             }
         }
         
@@ -21175,7 +20813,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to مرحباَ بك في تجربة رقمية جديدة .
+        ///   Looks up a localized string similar to مرحباَ بك فى تجربة رقمية جديدة .
         /// </summary>
         public static string WelcomeLine {
             get {
@@ -21207,24 +20845,6 @@ namespace ZATCAMAUI {
         public static string Word {
             get {
                 return ResourceManager.GetString("Word", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ساعات العمل.
-        /// </summary>
-        public static string WorkHours {
-            get {
-                return ResourceManager.GetString("WorkHours", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to طوال أيام الأسبوع الـ7 على مدار 24 ساعة .
-        /// </summary>
-        public static string WorkHoursSubtitle {
-            get {
-                return ResourceManager.GetString("WorkHoursSubtitle", resourceCulture);
             }
         }
         
@@ -22524,24 +22144,6 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  والحد الأقصى هو .
-        /// </summary>
-        public static string ZakatIPNoteMax {
-            get {
-                return ResourceManager.GetString("ZakatIPNoteMax", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to الحد الأدنى للعدد هو.
-        /// </summary>
-        public static string ZakatIPNoteMin {
-            get {
-                return ResourceManager.GetString("ZakatIPNoteMin", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to الأعلى.
         /// </summary>
         public static string ZakatMax {
@@ -22619,15 +22221,6 @@ namespace ZATCAMAUI {
         public static string ZakatOtherReason {
             get {
                 return ResourceManager.GetString("ZakatOtherReason", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to التسجيل في الزكاة.
-        /// </summary>
-        public static string ZakatRegistration {
-            get {
-                return ResourceManager.GetString("ZakatRegistration", resourceCulture);
             }
         }
         
@@ -22832,15 +22425,6 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to مبلغ التقييم.
-        /// </summary>
-        public static string ZAssessmentAmount {
-            get {
-                return ResourceManager.GetString("ZAssessmentAmount", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to الخدمات الجمركية.
         /// </summary>
         public static string ZatcaInfoMenu {
@@ -22987,7 +22571,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to رقم الهاتف المحمول الحالي.
+        ///   Looks up a localized string similar to رقم الجوال الحالي.
         /// </summary>
         public static string ZCurrentMobileNumber {
             get {
@@ -23231,7 +22815,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to رقم الهاتف المحمول غير صحيح.
+        ///   Looks up a localized string similar to رقم الجوال غير صحيح.
         /// </summary>
         public static string ZInvalidMobileNoError {
             get {
@@ -24362,7 +23946,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ابحث هنا.
+        ///   Looks up a localized string similar to بحث.
         /// </summary>
         public static string ZSearch {
             get {
@@ -25001,7 +24585,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to رقم الهاتف المحمول *.
+        ///   Looks up a localized string similar to رقم الجوال *.
         /// </summary>
         public static string ZTERReportDetailNumber {
             get {
@@ -25678,7 +25262,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to تحديث رقم الهاتف المحمول.
+        ///   Looks up a localized string similar to تحديث رقم الجوال.
         /// </summary>
         public static string ZUpdateMobile {
             get {
@@ -27333,7 +26917,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to رمز التحقق المرسل إلى رقم الهاتف المحمول.
+        ///   Looks up a localized string similar to رمز التحقق المرسل إلى رقم الجوال.
         /// </summary>
         public static string ZZConfirmationcodesenttoMobileNumber {
             get {
@@ -28007,7 +27591,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to رقم هوية دول مجلس التعاون الخليجي يجب أن يكون بين 7 و 15 أرقام.
+        ///   Looks up a localized string similar to رقم هوية دول مجلس التعاون الخليجي يجب أن يكون بين 6 و 15 أرقام.
         /// </summary>
         public static string ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit {
             get {
@@ -28250,7 +27834,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to رقم الهاتف المحمول.
+        ///   Looks up a localized string similar to رقم الجوال.
         /// </summary>
         public static string ZZMobileNumber {
             get {
@@ -28268,7 +27852,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to رقم الهاتف المحمول مكون من أرقام فقط.
+        ///   Looks up a localized string similar to رقم الجوال مكون من أرقام فقط.
         /// </summary>
         public static string ZZMobilenumberconsistsofnumbersonly {
             get {
@@ -28277,7 +27861,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to رقم الهاتف المحمول يجب أن يبدأ بالرقم 05 و أن يكون مكون من 10 أرقام.
+        ///   Looks up a localized string similar to رقم الجوال يجب أن يبدأ بالرقم 05.
         /// </summary>
         public static string ZZMobilenumberhastostartwithnumber05 {
             get {
@@ -28286,7 +27870,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to رقم الهاتف المحمول يجب أن يبدأ برقم 5.
+        ///   Looks up a localized string similar to رقم الجوال يجب أن يبدأ برقم 5.
         /// </summary>
         public static string ZZMobilenumberhastostartwithnumber5 {
             get {
@@ -28295,7 +27879,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to رقم الهاتف المحمول لا يمكن أن يكون أقل من 9 أرقام.
+        ///   Looks up a localized string similar to رقم الجوال لا يمكن أن يكون أقل من 9 أرقام.
         /// </summary>
         public static string ZZMobilenumberlengthcannotbelessthan9digits {
             get {
@@ -28863,7 +28447,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to يمكنك استخدام الرمز التالي لتفعيل رقم الهاتف المحمول الجديد.
+        ///   Looks up a localized string similar to يمكنك استخدام الرمز التالي لتفعيل رقم الجوال الجديد.
         /// </summary>
         public static string ZZPleaseusetheOTPtoactivatethenewnobilenumber {
             get {
@@ -29198,7 +28782,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to رقم الهاتف المحمول الجديد يجب أن يكون مختلف عن رقم الهاتف المحمول الحالي.
+        ///   Looks up a localized string similar to رقم الجوال الجديد يجب أن يكون مختلف عن رقم الجوال الحالي.
         /// </summary>
         public static string ZZTheNewMobileNumberMustNotMatchtheexistingMobileNumber {
             get {
@@ -29713,7 +29297,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to هل تريد تغيير رقم الهاتف المحمول أو البريد الإلكتروني؟.
+        ///   Looks up a localized string similar to هل تريد تغيير رقم الجوال أو البريد الإلكتروني؟.
         /// </summary>
         public static string ZZZAmendFinancialRepCheck {
             get {
@@ -30262,7 +29846,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to للمتابعة، فضلًا أدخل رقم الهاتف المحمول.
+        ///   Looks up a localized string similar to للمتابعة، فضلًا أدخل رقم الجوال.
         /// </summary>
         public static string ZZZPleaseenteryourmobilenumbertoproceedfurther {
             get {
@@ -31133,7 +30717,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ترحيل الرصيد.
+        ///   Looks up a localized string similar to ترحيل الرصيد للفترة القادمة.
         /// </summary>
         public static string ZZZZCarriedCreditDetails {
             get {
@@ -31349,7 +30933,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to رقم الهاتف المحمول &amp; مستخدم مسبقاً, يرجى أدخل رقم جوال آخر.
+        ///   Looks up a localized string similar to رقم الجوال &amp; مستخدم مسبقاً, يرجى أدخل رقم جوال آخر.
         /// </summary>
         public static string ZZZZErroMessage3 {
             get {
@@ -31367,7 +30951,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to رقم الهاتف المحمول &amp; تم استخدامه مسبقاً في تسجيل بيانات الدخول.
+        ///   Looks up a localized string similar to رقم الجوال &amp; تم استخدامه مسبقاً في تسجيل بيانات الدخول.
         /// </summary>
         public static string ZZZZErroMessage5 {
             get {
@@ -31457,7 +31041,7 @@ namespace ZATCAMAUI {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to إشعار الاستلام.
+        ///   Looks up a localized string similar to الحصول على إشعار الاستلام.
         /// </summary>
         public static string ZZZZGetAckNew {
             get {
