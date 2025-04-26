@@ -75,7 +75,7 @@
         <CreatePackage>false</CreatePackage>
       <CodesignKey>iPhone Developer</CodesignKey>
         <CodesignEntitlements></CodesignEntitlements>
-        <MtouchLink>None</MtouchLink>
+      <MtouchLink>SdkOnly</MtouchLink>
         <RuntimeIdentifier>iossimulator-x64</RuntimeIdentifier>
         <MtouchExtraArgs>--registrar:static</MtouchExtraArgs>
         <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
