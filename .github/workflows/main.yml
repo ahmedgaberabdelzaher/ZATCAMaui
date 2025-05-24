@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: macos-13  # Xcode 15.x and iOS 17 SDK compatible
 
     steps:
       - name: Checkout code
@@ -43,15 +43,17 @@ jobs:
           dotnet build ZATCAMAUI/ZATCAMAUI.csproj \
             -f:net8.0-ios \
             -c Release \
-            /p:Platform=iPhone
-           
+            /p:Platform=iPhone \
+            /p:MtouchLink=SdkOnly
+
       - name: Publish the iOS app
         run: |
           dotnet publish ZATCAMAUI/ZATCAMAUI.csproj \
             -f:net8.0-ios \
             -c Release \
             -o output \
-            /p:Platform=iPhone
+            /p:Platform=iPhone \
+            /p:MtouchLink=SdkOnly
 
       - name: Create IPA file
         run: |
